@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "Kane Grills",
