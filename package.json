@@ -1,0 +1,29 @@
+{
+  "name": "laravel-vue-s2n-easyforms",
+  "description": "Front end npm package for the laravel package Second2None EasyForms",
+  "repository": "https://github.com/second-2None/laravel-vue-s2n-easyforms.git",
+  "bugs": "https://github.com/tushargugnani/vue-hello-world-simple/issues",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Tushar Gugnani",
+    "email": "tushar@5balloons.info"
+  },
+  "license": "MIT",
+  "files": ["dist"],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-library": "vue-cli-service build --target lib --name laravel-vue-s2n-easyforms ./src/install.js",
+    "lint": "vue-cli-service lint"
+  },
+  "main" : ".dist/laravel-vue-s2n-easyforms.common.js",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0"
+  },
+  "dependencies": {
+    "eslint": "^7.18.0"
+  }
+}
