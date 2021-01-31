@@ -1,13 +1,13 @@
 import FormLoader from "./components/forms/FormLoader.vue";
 
-const S2NEasyForms = {
+const LaravelEasyForms = {
   install(Vue) {
     Vue.component("form-loader", FormLoader);
   }
 };
 
 if (typeof window !== "undefined" && window.Vue) {
-  window.Vue.use(S2NEasyForms);
+  window.Vue.use(LaravelEasyForms);
 }
 
-export default S2NEasyForms;
+export default LaravelEasyForms;
