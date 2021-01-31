@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-s2n-easyforms",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Front end npm package for the laravel package Second2None EasyForms",
   "author": {
     "name": "Kane Grills",
@@ -29,7 +29,6 @@
     "cross-env": "^7.0",
     "eslint": "^7.18.0",
     "vee-validate": "^3.4.5",
-    "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12",
     "vuetify": "^2.4.3",
     "vuex": "^3.6.2"
@@ -43,7 +42,9 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "vuetify-loader": "^1.3.0",
+    "vue": "^2.6.12"
   },
   "bugs": "https://github.com/second-2None/laravel-vue-s2n-easyforms/issues",
   "license": "MIT",
