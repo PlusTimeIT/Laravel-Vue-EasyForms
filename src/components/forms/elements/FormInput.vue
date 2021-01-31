@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import ValidationProvider from "vee-validate";
+import { ValidationProvider } from "vee-validate";
 
 export default {
   $validates: true,
