@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import ValidationObserver from "vee-validate";
+import { ValidationObserver } from "vee-validate";
 
 export default {
   components: {
@@ -60,10 +60,10 @@ export default {
   },
   props: {
     identifier: {
-      type: [ Array, String, Object ],
+      type: [Array, String, Object],
       default: function() {
         return null;
-      },
+      }
     },
     additional_form_data: {
       type: Object,
