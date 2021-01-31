@@ -1,7 +1,6 @@
 {
   "name": "laravel-vue-s2n-easyforms",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.4",
   "description": "Front end npm package for the laravel package Second2None EasyForms",
   "author": {
     "name": "Kane Grills",

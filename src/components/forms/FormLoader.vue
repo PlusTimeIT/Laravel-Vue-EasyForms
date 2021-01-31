@@ -98,9 +98,7 @@ export default {
     async_field_list() {
       let new_field_list = {};
       let self = this;
-      console.log("Field List:", self.field_list);
       Object.keys(this.field_list).forEach(field => {
-        console.log();
         let this_field = self.field_list[field];
 
         if (!self.is_undefined(this_field.rules.hide)) {
@@ -114,7 +112,6 @@ export default {
                 self.field_list[value].rules.value ===
                   this_field.rules.show[value]
               ) {
-                console.log("async field list: added 1", this_field);
                 new_field_list[field] = this_field;
               }
             });
@@ -124,7 +121,6 @@ export default {
         }
       });
 
-      console.log("async field list: added 2", new_field_list);
       return new_field_list;
     }
   },
@@ -271,9 +267,6 @@ export default {
       },
       deep: true
     },
-    loaded_identifier: function(mnewval) {
-      console.log("NEWVAL loaded_identifier:", mnewval);
-    },
     loaded_form_name: function() {},
     form_loaded: function(val) {
       this.$emit("loaded", val);
@@ -353,8 +346,6 @@ export default {
         ) {
           result[this.loaded_form_data.custom_data.button.icon.size] = true;
         }
-      } else if (this.display_button) {
-        console.log( "Display buton" );
       }
 
       return result;
