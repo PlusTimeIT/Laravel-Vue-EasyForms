@@ -1,4 +1,5 @@
 import FormLoader from "./components/forms/FormLoader.vue";
+import axios from 'axios';
 
 const LaravelEasyForms = {
   install(Vue) {
