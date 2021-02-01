@@ -53,11 +53,13 @@
 
 <script>
 import { ValidationObserver } from "vee-validate";
+import FormInput from "./elements/FormInput.vue";
 import axios from 'axios';
 
 export default {
   components: {
-    ValidationObserver
+    ValidationObserver,
+    FormInput
   },
   props: {
     identifier: {

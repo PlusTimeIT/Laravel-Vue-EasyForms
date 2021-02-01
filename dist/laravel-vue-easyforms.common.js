@@ -668,6 +668,13 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
+/***/ "4a1d":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "4a7b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -953,6 +960,17 @@ module.exports = (
       };
     })()
 );
+
+
+/***/ }),
+
+/***/ "8221":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormInput_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4a1d");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormInput_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormInput_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -2313,14 +2331,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"117e7e27-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=e13ec236&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"117e7e27-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=33cf7f50&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{directives:[{name:"show",rawName:"v-show",value:(_vm.form_loaded),expression:"form_loaded"}],staticClass:"pa-0",attrs:{"cols":_vm.cols}},[_c('validation-observer',{ref:"form",attrs:{"tag":"div"}},[_c('form',_vm._b({key:_vm.update_form,ref:_vm.loaded_form_name},'form',_vm.form_props(),false),[_c('v-row',{staticClass:"px-4"},[_c('v-col',{attrs:{"cols":"12","mx-auto":""}},[_c('v-row',_vm._l((_vm.async_field_list),function(field,index_f){return _c('form-input',{key:index_f,attrs:{"form_field":field,"cols":_vm.input_cols(field),"additional_form_data":_vm.loaded_additional_form_data},on:{"field_update":_vm.update_field}})}),1),(_vm.display_button || _vm.cancel_button)?_c('v-row',[(_vm.display_button)?_c('v-col',[_c('v-btn',{staticClass:"p-4",attrs:{"color":_vm.button_colour,"rounded":false,"tile":""},on:{"click":_vm.process_form}},[_vm._v(" "+_vm._s(_vm.button_text)+" ")])],1):_vm._e(),(_vm.cancel_button)?_c('v-col',{staticClass:"text-right"},[_c('v-btn',{staticClass:"p-4",attrs:{"rounded":false,"tile":""},on:{"click":_vm.cancel_form}},[_vm._v(" Cancel ")])],1):_vm._e()],1):_vm._e(),(!_vm.display_icon)?_c('v-tooltip',{attrs:{"top":""},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g(_vm._b({on:{"click":function($event){$event.stopPropagation();return _vm.process_form($event)}}},'v-icon',_vm.prepare_props(),false),on),[_vm._v(" "+_vm._s(_vm.icon_mdi)+" ")])]}}],null,false,3894068156)},[_c('span',[_vm._v(_vm._s(_vm.icon_text))])]):_vm._e()],1)],1)],1)])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=e13ec236&
+// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=33cf7f50&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
@@ -4322,6 +4340,330 @@ var version = '3.4.5';
 
 
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"117e7e27-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/elements/FormInput.vue?vue&type=template&id=14d2b71e&
+var FormInputvue_type_template_id_14d2b71e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.field_data.validation,"tag":"div"},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+var errors = ref.errors;
+return [_c(_vm.field_data.rules.component,_vm._b({tag:"component",model:{value:(_vm.field_data.rules.value),callback:function ($$v) {_vm.$set(_vm.field_data.rules, "value", $$v)},expression:"field_data.rules.value"}},'component',_vm.prepare_props(errors),false),[(_vm.field_data.rules.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.field_data.rules.value)+" ")]):_vm._e(),(_vm.field_data.rules.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
+var on = ref.on;
+return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v("mdi-help-box")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.field_data.rules.help)+" ")])]):_vm._e()],1)]}}])})],1)}
+var FormInputvue_type_template_id_14d2b71e_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/forms/elements/FormInput.vue?vue&type=template&id=14d2b71e&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/elements/FormInput.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var FormInputvue_type_script_lang_js_ = ({
+  $validates: true,
+  components: {
+    ValidationProvider: ValidationProvider
+  },
+  props: {
+    form_field: {
+      type: Object,
+      default: () => ({})
+    },
+    cols: {
+      Type: String,
+      default: "6"
+    },
+    additional_form_data: {
+      type: Object,
+      default: () => ({})
+    },
+    offset: {
+      Type: String,
+      default: ""
+    }
+  },
+  watch: {
+    field_data: {
+      handler: function (val) {
+        this.$emit("update", val.rules.value);
+        this.$emit("field_update", val);
+      },
+      deep: true
+    }
+  },
+  data: () => ({
+    password: false,
+    confirm_password: false,
+    menu: false,
+    dates: [],
+    field_data: {}
+  }),
+
+  created() {
+    this.field_data = this.form_field;
+  },
+
+  computed: {
+    additional_form: function () {
+      return this.additional_form_data;
+    }
+  },
+  methods: {
+    prepare_props(errors) {
+      let result = {};
+      result["error-messages"] = errors;
+      result["label"] = this.prepare_label();
+      result["outlined"] = true;
+      result["dense"] = true;
+
+      if (!this.is_undefined(this.field_data.rules.help) && this.field_data.rules.help !== "") {//result['prepend-inner-icon'] = this.field_data.rules.value;
+      }
+
+      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "time") {
+        result["populate"] = this.field_data.rules.value;
+        result["ampm_in_title"] = true;
+        result["no_title"] = false;
+        result["class"] = "mt-2";
+      }
+
+      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "file-input") {
+        result["show-size"] = true;
+        result["accept"] = this.field_data.rules.accept;
+      }
+
+      if (!this.is_undefined(this.field_data.type) && (this.field_data.type == "select" || this.field_data.type == "customer-select" || this.field_data.type == "facility-select" || this.field_data.type == "zone-select" || this.field_data.type == "service-select")) {
+        result["selected"] = !this.is_undefined(this.field_data.rules.integer) && this.field_data.rules.integer ? parseInt(this.field_data.rules.value) : this.field_data.rules.value;
+        result["any_field"] = !this.is_undefined(this.field_data.rules.any_field) ? this.field_data.rules.any_field : false;
+        result["items"] = this.field_data.rules.items;
+        result["item-text"] = this.field_data.rules.item_text;
+        result["item-value"] = this.field_data.rules.item_value;
+        result["data-vv-name"] = "select";
+        result["chips"] = true;
+      }
+
+      if (!this.is_undefined(this.field_data.type) && this.field_data.type == "hidden") {
+        result["class"] = "hidden-input";
+      }
+
+      if (!this.is_undefined(this.field_data.rules.component_type) && this.field_data.rules.component_type == "password") {
+        result["type"] = this.field_data.rules.component_type;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.component) && this.field_data.rules.component == "date-picker") {
+        result["close-on-content-click"] = false;
+        result["controls"] = false;
+        if (!this.is_undefined(this.field_data.rules.close_on_content_click)) result["close-on-content-click"] = this.field_data.rules.close_on_content_click;
+        if (!this.is_undefined(this.field_data.rules.controls)) result["controls"] = this.field_data.rules.controls;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.step)) {
+        result["step"] = this.field_data.rules.step;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.component_type)) {
+        result["type"] = this.field_data.rules.component_type;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.min)) {
+        result["min"] = this.field_data.rules.min;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.max)) {
+        result["max"] = this.field_data.rules.max;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.placeholder)) {
+        result["placeholder"] = this.field_data.rules.placeholder;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.readonly)) {
+        result["readonly"] = this.field_data.rules.readonly;
+      }
+
+      if (!this.is_undefined(this.field_data.rules.multiple)) {
+        result["multiple"] = this.field_data.rules.multiple;
+      }
+
+      if (!this.is_undefined(this.additional_form_data)) {
+        result["additional_form_data"] = this.additional_form;
+      }
+
+      if (this.field_data.rules.component == "h2") {
+        result = {
+          "v-html": this.field_data.rules.value
+        };
+      }
+
+      return result;
+    },
+
+    prepare_label() {
+      let label = !this.is_undefined(this.field_data.rules.label) ? this.field_data.rules.label : this.field_data.validation;
+
+      if (!this.is_undefined(this.field_data.rules.required) && this.field_data.rules.required) {
+        label += " ( * required )";
+      } else {
+        label += " ( optional )";
+      }
+
+      if (!this.is_undefined(this.field_data.rules.readonly) && this.field_data.rules.readonly) {
+        label = this.field_data.rules.label + " ( readonly )";
+      }
+
+      return label;
+    }
+
+  }
+});
+// CONCATENATED MODULE: ./src/components/forms/elements/FormInput.vue?vue&type=script&lang=js&
+ /* harmony default export */ var elements_FormInputvue_type_script_lang_js_ = (FormInputvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/forms/elements/FormInput.vue?vue&type=style&index=0&lang=css&
+var FormInputvue_type_style_index_0_lang_css_ = __webpack_require__("8221");
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/components/forms/elements/FormInput.vue
+
+
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  elements_FormInputvue_type_script_lang_js_,
+  FormInputvue_type_template_id_14d2b71e_render,
+  FormInputvue_type_template_id_14d2b71e_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FormInput = (component.exports);
 // EXTERNAL MODULE: ./node_modules/axios/index.js
 var axios = __webpack_require__("bc3a");
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
@@ -4382,9 +4724,11 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 //
 
 
+
 /* harmony default export */ var FormLoadervue_type_script_lang_js_ = ({
   components: {
-    ValidationObserver: ValidationObserver
+    ValidationObserver: ValidationObserver,
+    FormInput: FormInput
   },
   props: {
     identifier: {
@@ -4757,106 +5101,6 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 });
 // CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=script&lang=js&
  /* harmony default export */ var forms_FormLoadervue_type_script_lang_js_ = (FormLoadervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
 // CONCATENATED MODULE: ./src/components/forms/FormLoader.vue
 
 
@@ -4865,7 +5109,7 @@ function normalizeComponent (
 
 /* normalize component */
 
-var component = normalizeComponent(
+var FormLoader_component = normalizeComponent(
   forms_FormLoadervue_type_script_lang_js_,
   render,
   staticRenderFns,
@@ -4876,7 +5120,7 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var FormLoader = (component.exports);
+/* harmony default export */ var FormLoader = (FormLoader_component.exports);
 // CONCATENATED MODULE: ./src/install.js
 
 const LaravelEasyForms = {
