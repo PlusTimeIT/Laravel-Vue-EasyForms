@@ -485,7 +485,7 @@ export default {
       snake_to_camel: function(s) {
         return s.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
       },
-      request: function(type, url, data = null, expecting_results = false , showalert = true , parameters = {} , loader = true) {
+      request: async function(type, url, data = null, expecting_results = false , showalert = true , parameters = {} , loader = true) {
         var _this = this;
         let default_parameters = { headers: { 'Content-Type': 'application/json' } };
         let send_parameters = { headers: { ...default_parameters, ...parameters } };
