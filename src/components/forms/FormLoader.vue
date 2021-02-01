@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       field_list: {},
-      form_loaded: false,
+      form_loaded: true,
       loaded_area: "",
       loaded_form_name: "",
       loaded_form_data: false,
@@ -398,7 +398,7 @@ export default {
       var self = this;
       self.form_loaded = false;
 
-      return this.request(
+      return await this.request(
         "post",
         "/axios/forms/load",
         this.merge_additional_load_form_data(
@@ -413,6 +413,7 @@ export default {
         true,
         false
       ).then(response => {
+        console.log( response );
         self.form_loaded = true;
         self.field_list = response.data.fields;
         self.loaded_form_data = response.data.form;
