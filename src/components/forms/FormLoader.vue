@@ -398,7 +398,7 @@ export default {
       var self = this;
       self.form_loaded = false;
 
-      await this.request(
+      return this.request(
         "post",
         "/axios/forms/load",
         this.merge_additional_load_form_data(
@@ -418,7 +418,6 @@ export default {
         self.field_list = response.data.fields;
         self.loaded_form_data = response.data.form;
       });
-      return true;
     },
     process_form: function() {
       var self = this;
@@ -485,12 +484,12 @@ export default {
       snake_to_camel: function(s) {
         return s.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
       },
-      request: async function(type, url, data = null, expecting_results = false , showalert = true , parameters = {} , loader = true) {
+      request: function(type, url, data = null, expecting_results = false , showalert = true , parameters = {} , loader = true) {
         var _this = this;
         let default_parameters = { headers: { 'Content-Type': 'application/json' } };
         let send_parameters = { headers: { ...default_parameters, ...parameters } };
         let return_reponse = {};
-        return await axios[type](url, data, send_parameters)
+        return axios[type](url, data, send_parameters)
         .then(response => {
             var request_response = response.data;
             if(this.is_object(request_response)) {
@@ -513,14 +512,10 @@ export default {
                   return_reponse.alert = { text: 'Connection Error - Please try again' , colour: 'error' };
             }
             return_reponse.reposne = request_response;
-            console.log( 'THEN' );
-            console.log( return_reponse );
-        })
-        .finally(() => {
             if(loader)  
               return_reponse.loader = false;
-            
-            console.log( 'FINALLY' );
+
+            console.log( 'THEN' );
             console.log( return_reponse );
             return return_reponse;
         });
