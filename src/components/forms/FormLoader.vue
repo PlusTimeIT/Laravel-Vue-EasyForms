@@ -398,7 +398,7 @@ export default {
       var self = this;
       self.form_loaded = false;
 
-      return await this.request(
+      await this.request(
         "post",
         "/axios/forms/load",
         this.merge_additional_load_form_data(
@@ -418,6 +418,7 @@ export default {
         self.field_list = response.data.fields;
         self.loaded_form_data = response.data.form;
       });
+      return true;
     },
     process_form: function() {
       var self = this;
@@ -489,7 +490,7 @@ export default {
         let default_parameters = { headers: { 'Content-Type': 'application/json' } };
         let send_parameters = { headers: { ...default_parameters, ...parameters } };
         let return_reponse = {};
-        return axios[type](url, data, send_parameters)
+        let axios_response = await axios[type](url, data, send_parameters)
         .then(response => {
             var request_response = response.data;
             if(this.is_object(request_response)) {
@@ -502,7 +503,6 @@ export default {
                           return_reponse.alert = { text: 'Please correct your form errors' , colour: 'error' };
                     }
                     return_reponse.reposne = request_response;
-                    return return_reponse;
                 } else {
                     if(showalert)
                       return_reponse.alert = { text: 'Connection Error - Please try again' , colour: 'error' };
@@ -519,6 +519,8 @@ export default {
               return_reponse.loader = false;
             return return_reponse;
         });
+
+        return axios_response;
       }
 
   }
