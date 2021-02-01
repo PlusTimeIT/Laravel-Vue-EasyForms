@@ -140,11 +140,11 @@ export default {
       var inputs = {};
       var form_data = new FormData();
       let multi_part =
-        !this.is_undefined(this.loaded_form_data.custom_data.axios) &&
+        !this.is_undefined(this.loaded_form_data.action.axios) &&
         !this.is_undefined(
-          this.loaded_form_data.custom_data.axios.multi_part
+          this.loaded_form_data.action.axios.multi_part
         ) &&
-        this.loaded_form_data.custom_data.axios.multi_part
+        this.loaded_form_data.action.axios.multi_part
           ? true
           : false;
       let identifier =
@@ -216,49 +216,49 @@ export default {
     },
     display_icon: function() {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon) ||
-        this.loaded_form_data.custom_data.button.button === false
+      return this.is_undefined(this.loaded_form_data.action.button.icon) ||
+        this.loaded_form_data.action.button.button === false
         ? false
         : true;
     },
     icon_text: function() {
       if (!this.form_loaded || !this.loaded_form_data) return "Loading...";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon)
+      return this.is_undefined(this.loaded_form_data.action.button.icon)
         ? "Submit"
-        : this.loaded_form_data.custom_data.button.icon.tooltip;
+        : this.loaded_form_data.action.button.icon.tooltip;
     },
     icon_mdi: function() {
       if (!this.form_loaded || !this.loaded_form_data) return "primary";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon)
+      return this.is_undefined(this.loaded_form_data.action.button.icon)
         ? ""
-        : this.loaded_form_data.custom_data.button.icon.mdi;
+        : this.loaded_form_data.action.button.icon.mdi;
     },
     display_button: function() {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.custom_data.button) ||
-        this.loaded_form_data.custom_data.button.button === false
+      return this.is_undefined(this.loaded_form_data.action.button) ||
+        this.loaded_form_data.action.button.button === false
         ? false
         : true;
     },
     cancel_button: function() {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      if (this.is_undefined(this.loaded_form_data.custom_data.button))
+      if (this.is_undefined(this.loaded_form_data.action.button))
         return false;
-      if (this.is_undefined(this.loaded_form_data.custom_data.button.cancel))
+      if (this.is_undefined(this.loaded_form_data.action.button.cancel))
         return false;
-      return this.loaded_form_data.custom_data.button.cancel;
+      return this.loaded_form_data.action.button.cancel;
     },
     button_text: function() {
       if (!this.form_loaded || !this.loaded_form_data) return "Loading...";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.text)
+      return this.is_undefined(this.loaded_form_data.action.button.text)
         ? "Submit"
-        : this.loaded_form_data.custom_data.button.text;
+        : this.loaded_form_data.action.button.text;
     },
     button_colour: function() {
       if (!this.form_loaded || !this.loaded_form_data) return "primary";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.colour)
+      return this.is_undefined(this.loaded_form_data.action.button.colour)
         ? "primary"
-        : this.loaded_form_data.custom_data.button.colour;
+        : this.loaded_form_data.action.button.colour;
     }
   },
   watch: {
@@ -318,11 +318,11 @@ export default {
       let result = {};
       if (!this.loaded_form_data) return result;
       if (
-        !this.is_undefined(this.loaded_form_data.custom_data.axios) &&
+        !this.is_undefined(this.loaded_form_data.action.axios) &&
         !this.is_undefined(
-          this.loaded_form_data.custom_data.axios.multi_part
+          this.loaded_form_data.action.axios.multi_part
         ) &&
-        this.loaded_form_data.custom_data.axios.multi_part
+        this.loaded_form_data.action.axios.multi_part
       ) {
         result["enctype"] = "application/x-www-form-urlencoded";
       }
@@ -333,19 +333,19 @@ export default {
 
       if (this.display_icon) {
         result.color = !this.is_undefined(
-          this.loaded_form_data.custom_data.button.colour
+          this.loaded_form_data.action.button.colour
         )
-          ? this.loaded_form_data.custom_data.button.colour
+          ? this.loaded_form_data.action.button.colour
           : "primary";
         result.class = !this.is_undefined(
-          this.loaded_form_data.custom_data.button.icon.class
+          this.loaded_form_data.action.button.icon.class
         )
-          ? this.loaded_form_data.custom_data.button.icon.class
+          ? this.loaded_form_data.action.button.icon.class
           : "";
         if (
-          this.is_undefined(this.loaded_form_data.custom_data.button.icon.size)
+          this.is_undefined(this.loaded_form_data.action.button.icon.size)
         ) {
-          result[this.loaded_form_data.custom_data.button.icon.size] = true;
+          result[this.loaded_form_data.action.button.icon.size] = true;
         }
       }
 
@@ -356,11 +356,11 @@ export default {
     },
     merge_addition_data: function(form_data, additional_data) {
       let multi_part =
-        !this.is_undefined(this.loaded_form_data.custom_data.axios) &&
+        !this.is_undefined(this.loaded_form_data.action.axios) &&
         !this.is_undefined(
-          this.loaded_form_data.custom_data.axios.multi_part
+          this.loaded_form_data.action.axios.multi_part
         ) &&
-        this.loaded_form_data.custom_data.axios.multi_part
+        this.loaded_form_data.action.axios.multi_part
           ? true
           : false;
       Object.keys(additional_data).forEach(function(key) {
@@ -432,9 +432,9 @@ export default {
           this.form_data,
           this.loaded_additional_form_data
         ),
-        this.loaded_form_data.custom_data.axios.expecting_results,
-        this.loaded_form_data.custom_data.axios.display_notification,
-        this.loaded_form_data.custom_data.axios.headers
+        this.loaded_form_data.action.axios.expecting_results,
+        this.loaded_form_data.action.axios.display_notification,
+        this.loaded_form_data.action.axios.headers
       ).then(response => {
         self.form_loaded = true;
         if (!response.success) {
@@ -445,8 +445,8 @@ export default {
 
         self.$refs.form.reset();
 
-        if (self.loaded_form_data.custom_data.axios.expecting_results) {
-          self[self.loaded_form_data.custom_data.axios.result_variable] =
+        if (self.loaded_form_data.action.axios.expecting_results) {
+          self[self.loaded_form_data.action.axios.result_variable] =
             response.data;
           self.$emit("results", response.data);
         }
@@ -456,8 +456,8 @@ export default {
           response.redirect_override !== false
         ) {
           self.redirect(response.redirect_override);
-        } else if (self.loaded_form_data.custom_data.axios.redirect !== false) {
-          self.redirect(self.loaded_form_data.custom_data.axios.redirect);
+        } else if (self.loaded_form_data.action.axios.redirect !== false) {
+          self.redirect(self.loaded_form_data.action.axios.redirect);
         }
       });
     },

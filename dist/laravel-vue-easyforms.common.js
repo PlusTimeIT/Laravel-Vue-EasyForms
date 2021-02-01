@@ -2313,14 +2313,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"117e7e27-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=52d4e92d&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"117e7e27-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=e13ec236&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{directives:[{name:"show",rawName:"v-show",value:(_vm.form_loaded),expression:"form_loaded"}],staticClass:"pa-0",attrs:{"cols":_vm.cols}},[_c('validation-observer',{ref:"form",attrs:{"tag":"div"}},[_c('form',_vm._b({key:_vm.update_form,ref:_vm.loaded_form_name},'form',_vm.form_props(),false),[_c('v-row',{staticClass:"px-4"},[_c('v-col',{attrs:{"cols":"12","mx-auto":""}},[_c('v-row',_vm._l((_vm.async_field_list),function(field,index_f){return _c('form-input',{key:index_f,attrs:{"form_field":field,"cols":_vm.input_cols(field),"additional_form_data":_vm.loaded_additional_form_data},on:{"field_update":_vm.update_field}})}),1),(_vm.display_button || _vm.cancel_button)?_c('v-row',[(_vm.display_button)?_c('v-col',[_c('v-btn',{staticClass:"p-4",attrs:{"color":_vm.button_colour,"rounded":false,"tile":""},on:{"click":_vm.process_form}},[_vm._v(" "+_vm._s(_vm.button_text)+" ")])],1):_vm._e(),(_vm.cancel_button)?_c('v-col',{staticClass:"text-right"},[_c('v-btn',{staticClass:"p-4",attrs:{"rounded":false,"tile":""},on:{"click":_vm.cancel_form}},[_vm._v(" Cancel ")])],1):_vm._e()],1):_vm._e(),(!_vm.display_icon)?_c('v-tooltip',{attrs:{"top":""},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g(_vm._b({on:{"click":function($event){$event.stopPropagation();return _vm.process_form($event)}}},'v-icon',_vm.prepare_props(),false),on),[_vm._v(" "+_vm._s(_vm.icon_mdi)+" ")])]}}],null,false,3894068156)},[_c('span',[_vm._v(_vm._s(_vm.icon_text))])]):_vm._e()],1)],1)],1)])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=52d4e92d&
+// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=e13ec236&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
@@ -4461,7 +4461,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       var self = this;
       var inputs = {};
       var form_data = new FormData();
-      let multi_part = !this.is_undefined(this.loaded_form_data.custom_data.axios) && !this.is_undefined(this.loaded_form_data.custom_data.axios.multi_part) && this.loaded_form_data.custom_data.axios.multi_part ? true : false;
+      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part ? true : false;
       let identifier = !this.is_undefined(this.loaded_identifier) && this.loaded_identifier !== null && this.loaded_identifier !== 0 ? true : false;
       Object.keys(this.async_field_list).forEach(item => {
         if (multi_part) {
@@ -4504,33 +4504,33 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
     },
     display_icon: function () {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon) || this.loaded_form_data.custom_data.button.button === false ? false : true;
+      return this.is_undefined(this.loaded_form_data.action.button.icon) || this.loaded_form_data.action.button.button === false ? false : true;
     },
     icon_text: function () {
       if (!this.form_loaded || !this.loaded_form_data) return "Loading...";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon) ? "Submit" : this.loaded_form_data.custom_data.button.icon.tooltip;
+      return this.is_undefined(this.loaded_form_data.action.button.icon) ? "Submit" : this.loaded_form_data.action.button.icon.tooltip;
     },
     icon_mdi: function () {
       if (!this.form_loaded || !this.loaded_form_data) return "primary";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.icon) ? "" : this.loaded_form_data.custom_data.button.icon.mdi;
+      return this.is_undefined(this.loaded_form_data.action.button.icon) ? "" : this.loaded_form_data.action.button.icon.mdi;
     },
     display_button: function () {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      return this.is_undefined(this.loaded_form_data.custom_data.button) || this.loaded_form_data.custom_data.button.button === false ? false : true;
+      return this.is_undefined(this.loaded_form_data.action.button) || this.loaded_form_data.action.button.button === false ? false : true;
     },
     cancel_button: function () {
       if (!this.form_loaded || !this.loaded_form_data) return false;
-      if (this.is_undefined(this.loaded_form_data.custom_data.button)) return false;
-      if (this.is_undefined(this.loaded_form_data.custom_data.button.cancel)) return false;
-      return this.loaded_form_data.custom_data.button.cancel;
+      if (this.is_undefined(this.loaded_form_data.action.button)) return false;
+      if (this.is_undefined(this.loaded_form_data.action.button.cancel)) return false;
+      return this.loaded_form_data.action.button.cancel;
     },
     button_text: function () {
       if (!this.form_loaded || !this.loaded_form_data) return "Loading...";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.text) ? "Submit" : this.loaded_form_data.custom_data.button.text;
+      return this.is_undefined(this.loaded_form_data.action.button.text) ? "Submit" : this.loaded_form_data.action.button.text;
     },
     button_colour: function () {
       if (!this.form_loaded || !this.loaded_form_data) return "primary";
-      return this.is_undefined(this.loaded_form_data.custom_data.button.colour) ? "primary" : this.loaded_form_data.custom_data.button.colour;
+      return this.is_undefined(this.loaded_form_data.action.button.colour) ? "primary" : this.loaded_form_data.action.button.colour;
     }
   },
   watch: {
@@ -4591,7 +4591,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       let result = {};
       if (!this.loaded_form_data) return result;
 
-      if (!this.is_undefined(this.loaded_form_data.custom_data.axios) && !this.is_undefined(this.loaded_form_data.custom_data.axios.multi_part) && this.loaded_form_data.custom_data.axios.multi_part) {
+      if (!this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part) {
         result["enctype"] = "application/x-www-form-urlencoded";
       }
 
@@ -4601,11 +4601,11 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       let result = {};
 
       if (this.display_icon) {
-        result.color = !this.is_undefined(this.loaded_form_data.custom_data.button.colour) ? this.loaded_form_data.custom_data.button.colour : "primary";
-        result.class = !this.is_undefined(this.loaded_form_data.custom_data.button.icon.class) ? this.loaded_form_data.custom_data.button.icon.class : "";
+        result.color = !this.is_undefined(this.loaded_form_data.action.button.colour) ? this.loaded_form_data.action.button.colour : "primary";
+        result.class = !this.is_undefined(this.loaded_form_data.action.button.icon.class) ? this.loaded_form_data.action.button.icon.class : "";
 
-        if (this.is_undefined(this.loaded_form_data.custom_data.button.icon.size)) {
-          result[this.loaded_form_data.custom_data.button.icon.size] = true;
+        if (this.is_undefined(this.loaded_form_data.action.button.icon.size)) {
+          result[this.loaded_form_data.action.button.icon.size] = true;
         }
       }
 
@@ -4615,7 +4615,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       return this.is_undefined(field.cols) ? 12 : field.cols;
     },
     merge_addition_data: function (form_data, additional_data) {
-      let multi_part = !this.is_undefined(this.loaded_form_data.custom_data.axios) && !this.is_undefined(this.loaded_form_data.custom_data.axios.multi_part) && this.loaded_form_data.custom_data.axios.multi_part ? true : false;
+      let multi_part = !this.is_undefined(this.loaded_form_data.action.axios) && !this.is_undefined(this.loaded_form_data.action.axios.multi_part) && this.loaded_form_data.action.axios.multi_part ? true : false;
       Object.keys(additional_data).forEach(function (key) {
         if (multi_part) {
           if (form_data.has(key)) {
@@ -4655,7 +4655,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
     process_form: function () {
       var self = this;
       self.form_loaded = false;
-      this.request("post", "/axios/forms/process/" + this.loaded_form_data.area + "/" + this.loaded_form_data.name, this.merge_addition_data(this.form_data, this.loaded_additional_form_data), this.loaded_form_data.custom_data.axios.expecting_results, this.loaded_form_data.custom_data.axios.display_notification, this.loaded_form_data.custom_data.axios.headers).then(response => {
+      this.request("post", "/axios/forms/process/" + this.loaded_form_data.area + "/" + this.loaded_form_data.name, this.merge_addition_data(this.form_data, this.loaded_additional_form_data), this.loaded_form_data.action.axios.expecting_results, this.loaded_form_data.action.axios.display_notification, this.loaded_form_data.action.axios.headers).then(response => {
         self.form_loaded = true;
 
         if (!response.success) {
@@ -4665,15 +4665,15 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
         self.$refs.form.reset();
 
-        if (self.loaded_form_data.custom_data.axios.expecting_results) {
-          self[self.loaded_form_data.custom_data.axios.result_variable] = response.data;
+        if (self.loaded_form_data.action.axios.expecting_results) {
+          self[self.loaded_form_data.action.axios.result_variable] = response.data;
           self.$emit("results", response.data);
         }
 
         if (!self.is_undefined(response.redirect_override) && response.redirect_override !== false) {
           self.redirect(response.redirect_override);
-        } else if (self.loaded_form_data.custom_data.axios.redirect !== false) {
-          self.redirect(self.loaded_form_data.custom_data.axios.redirect);
+        } else if (self.loaded_form_data.action.axios.redirect !== false) {
+          self.redirect(self.loaded_form_data.action.axios.redirect);
         }
       });
     },
