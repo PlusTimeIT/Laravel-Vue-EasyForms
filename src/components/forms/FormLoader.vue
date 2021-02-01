@@ -412,11 +412,11 @@ export default {
         ),
         true,
         false
-      ).then(response => {
-        console.log( response );
-        self.form_loaded = true;
-        self.field_list = response.data.fields;
-        self.loaded_form_data = response.data.form;
+      ).then(axios_response => {
+        console.log( axios_response );
+        self.form_loaded = ! axios_response.loader;
+        self.field_list = axios_response.response.data.fields;
+        self.loaded_form_data = axios_response.response.data.form;
       });
     },
     process_form: function() {
