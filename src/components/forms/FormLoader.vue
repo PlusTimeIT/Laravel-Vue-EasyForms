@@ -490,7 +490,7 @@ export default {
         let default_parameters = { headers: { 'Content-Type': 'application/json' } };
         let send_parameters = { headers: { ...default_parameters, ...parameters } };
         let return_reponse = {};
-        let axios_response = await axios[type](url, data, send_parameters)
+        return await axios[type](url, data, send_parameters)
         .then(response => {
             var request_response = response.data;
             if(this.is_object(request_response)) {
@@ -517,10 +517,9 @@ export default {
         .finally(() => {
             if(loader)  
               return_reponse.loader = false;
+              console.log( return_reponse );
             return return_reponse;
         });
-
-        return axios_response;
       }
 
   }
