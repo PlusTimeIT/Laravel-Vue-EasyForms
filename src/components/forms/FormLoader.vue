@@ -513,11 +513,15 @@ export default {
                   return_reponse.alert = { text: 'Connection Error - Please try again' , colour: 'error' };
             }
             return_reponse.reposne = request_response;
+            console.log( 'THEN' );
+            console.log( return_reponse );
         })
         .finally(() => {
             if(loader)  
               return_reponse.loader = false;
-              console.log( return_reponse );
+            
+            console.log( 'FINALLY' );
+            console.log( return_reponse );
             return return_reponse;
         });
       }
