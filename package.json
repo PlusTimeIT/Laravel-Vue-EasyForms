@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "PlusTimeIT",
@@ -29,7 +29,7 @@
     "vue"
   ],
   "files": [
-    "dist"
+    "dist/*"
   ],
   "dependencies": {
     "axios": "^0.21.1",

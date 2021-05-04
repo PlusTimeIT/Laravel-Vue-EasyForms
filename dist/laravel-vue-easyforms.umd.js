@@ -30580,18 +30580,12 @@ var FormLoader_component = Object(componentNormalizer["a" /* default */])(
 /* harmony default export */ var FormLoader = (FormLoader_component.exports);
 // CONCATENATED MODULE: ./src/install.js
 
-const LaravelEasyForms = {
+/* harmony default export */ var install = ({
   install(Vue) {
     Vue.component("form-loader", FormLoader);
   }
 
-};
-
-if (typeof window !== "undefined" && window.Vue) {
-  window.Vue.use(LaravelEasyForms);
-}
-
-/* harmony default export */ var install = (LaravelEasyForms);
+});
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
