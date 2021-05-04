@@ -1,18 +1,19 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "PlusTimeIT",
-    "email": "kane@plustime.com.au" ,
-    "url" : "https://plustime.com.au/"
+    "email": "kane@plustime.com.au",
+    "url": "https://plustime.com.au/"
   },
   "contributors": [
-    { "name" : "LionEagleSolutions", 
-      "email" : "james@lioneagle.solutions", 
-      "url" : "https://lioneagle.solutions/"
+    {
+      "name": "LionEagleSolutions",
+      "email": "james@lioneagle.solutions",
+      "url": "https://lioneagle.solutions/"
     }
-  ],  
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -34,6 +35,7 @@
     "axios": "^0.21.1",
     "cross-env": "^7.0",
     "eslint": "^7.18.0",
+    "moment-timezone": "^0.5.33",
     "vee-validate": "^3.4.5",
     "vue-template-compiler": "^2.6.12",
     "vuetify": "^2.4.3",
@@ -49,8 +51,8 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^1.19.1",
-    "vuetify-loader": "^1.3.0",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vuetify-loader": "^1.3.0"
   },
   "bugs": "https://github.com/PlusTimeIT/Laravel-Vue-EasyForms/issues",
   "license": "MIT",
