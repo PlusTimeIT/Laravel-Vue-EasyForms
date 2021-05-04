@@ -9,7 +9,7 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
-        v-mask="fieldData.masking"
+        :v-mask="fieldData.masking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
