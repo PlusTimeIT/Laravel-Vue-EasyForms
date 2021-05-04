@@ -64,12 +64,8 @@
       prepareButtonIconProps: function() {
         const result = {};
         if (this.displayButtonIcon()) {
-          result.color = !this.isUndefined(this.loadedButton.icon.color) ?
-          this.loadedButton.icon.color : 'primary';
-
-          result.class = !this.isUndefined(this.loadedButton.icon.class) ?
-          this.loadedButton.icon.class : '';
-
+          result.color = !this.isUndefined(this.loadedButton.icon.color) ? this.loadedButton.icon.color : 'primary';
+          result.class = !this.isUndefined(this.loadedButton.icon.class) ? this.loadedButton.icon.class : '';
           if (!this.isUndefined(this.loadedButton.icon.size) && this.loadedButton.icon.size !== null) {
             result[this.loadedButton.icon.size] = true;
           }

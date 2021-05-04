@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.0.37",
+  "version": "0.0.39",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "PlusTimeIT",
@@ -18,7 +18,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-library": "vue-cli-service build --target lib --name laravel-vue-easyforms ./src/install.js"
+    "build-library": "vue-cli-service build --target lib --name laravel-vue-easyforms ./src/install.js --fix"
   },
   "main": "dist/laravel-vue-easyforms.common.js",
   "keywords": [
@@ -30,7 +30,6 @@
   ],
   "files": [
     "dist/*",
-    "src/*",
     "*.json"
   ],
   "dependencies": {
