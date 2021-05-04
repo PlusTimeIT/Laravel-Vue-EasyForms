@@ -499,14 +499,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Button.vue?vue&type=template&id=1fbb4756&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Button.vue?vue&type=template&id=31e8f7c9&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedButton.tooltip) || _vm.loadedButton.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/parts/Button.vue?vue&type=template&id=1fbb4756&
+// CONCATENATED MODULE: ./src/components/forms/parts/Button.vue?vue&type=template&id=31e8f7c9&
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
@@ -565,7 +565,6 @@ var Icon = __webpack_require__("8366");
   },
 
   created() {
-    console.log('BUTTON', this.button);
     this.loadedButton = this.button;
   },
 
@@ -744,7 +743,6 @@ const FormMixin = {
       Object.keys(additionalData).forEach(function (key) {
         formData[key] = additionalData[key];
       });
-      console.log('FORMDATA', formData);
       return formData;
     },
 
@@ -11067,14 +11065,14 @@ moment.tz.load(__webpack_require__("6cd2"));
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Icon.vue?vue&type=template&id=290b3f2f&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Icon.vue?vue&type=template&id=4f716749&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedIcon.tooltip) || _vm.loadedIcon.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"dismissible":""},on:{"click":function($event){return _vm.iconClick(_vm.loadedIdentifier)}}},on),[_vm._v(" "+_vm._s(_vm.loadedIcon.icon)+" ")])]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedIcon.tooltip))])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/parts/Icon.vue?vue&type=template&id=290b3f2f&
+// CONCATENATED MODULE: ./src/components/forms/parts/Icon.vue?vue&type=template&id=4f716749&
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
@@ -11120,7 +11118,6 @@ var FormMixins = __webpack_require__("0658");
   },
 
   created() {
-    console.log('BUTTON', this.icon);
     this.loadedIcon = this.icon;
     this.loadedIdentifier = this.identifier;
   },
@@ -24681,12 +24678,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=39989122&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"dd12cc90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=3f81e898&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{attrs:{"cols":_vm.cols,"sm":_vm.sm,"md":_vm.md,"lg":_vm.lg}},[_c('v-row',[(_vm.loadedFormName == '')?_c('v-col',[_c('h1',[_vm._v("Error Loading Form")])]):_vm._e()],1),_c('validation-observer',{ref:"observer"},[_c('v-row',[_c('v-col',{attrs:{"cols":"12"}},_vm._l((_vm.loadedAlerts),function(alert,index){return _c('v-alert',_vm._b({key:index,model:{value:(_vm.alerts[index].display),callback:function ($$v) {_vm.$set(_vm.alerts[index], "display", $$v)},expression:"alerts[index].display"}},'v-alert',_vm.prepareAlertProps(alert),false),[_c('div',{domProps:{"innerHTML":_vm._s(alert.contents)}})])}),1)],1),_c('v-row',{directives:[{name:"show",rawName:"v-show",value:(_vm.formLoading),expression:"formLoading"}]},[_c('v-col',[_c('v-progress-circular',{attrs:{"indeterminate":"","color":"primary"}})],1)],1),(!_vm.formLoading)?_c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('input-form',{attrs:{"form":_vm.loadedFormData},on:{"results":_vm.formHasResults,"errors":_vm.formHasErrors,"loading":_vm.formIsLoading,"reset":_vm.formIsReset,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}}):_vm._e(),(_vm.loadedFormData.form_type == 'action')?_c('action-form',{attrs:{"form":_vm.loadedFormData},on:{"loading":_vm.formIsLoading,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}}):_vm._e()],1):_vm._e()],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=39989122&
+// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=3f81e898&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
@@ -30537,7 +30534,6 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
         populate: this.populate,
         id: id
       }, this.loadedAdditionalLoadFormData)).then(axiosResponse => {
-        console.log(axiosResponse);
         _this.formLoading = axiosResponse.loader;
 
         if (!axiosResponse.result) {

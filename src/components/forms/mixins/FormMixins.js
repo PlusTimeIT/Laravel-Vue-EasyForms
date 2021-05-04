@@ -92,7 +92,6 @@ export const FormMixin = {
       Object.keys(additionalData).forEach(function(key) {
         formData[key] = additionalData[key];
       });
-      console.log( 'FORMDATA', formData);
       return formData;
     },
 

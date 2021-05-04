@@ -49,7 +49,6 @@
       };
     },
     created() {
-        console.log( 'BUTTON', this.button );
         this.loadedButton = this.button;
     },
     methods: {

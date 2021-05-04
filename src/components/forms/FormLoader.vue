@@ -218,7 +218,6 @@ export default {
             this.loadedAdditionalLoadFormData,
           ),
       ).then((axiosResponse) => {
-          console.log( axiosResponse );
         _this.formLoading = axiosResponse.loader;
         if (!axiosResponse.result) {
           _this.triggerAlerts('failed_load');

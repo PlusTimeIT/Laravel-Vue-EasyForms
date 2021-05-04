@@ -39,7 +39,6 @@
       };
     },
     created() {
-        console.log( 'BUTTON', this.icon );
         this.loadedIcon = this.icon;
         this.loadedIdentifier = this.identifier;
     },

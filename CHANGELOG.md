@@ -1,6 +1,9 @@
 # Change Log
 
 
+## 0.0.37
+- Removed console.logs
+
 ## 0.0.36
 - v-mask update in Input.vue
 
