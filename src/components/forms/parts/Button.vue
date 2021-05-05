@@ -1,81 +1,91 @@
 <template>
-
-    <v-tooltip top :disabled="isUndefined(loadedButton.tooltip) || loadedButton.tooltip === null">
-        <template v-slot:activator="{ on }">
-            <v-btn
-                :class="loadedButton.class"
-                :color="loadedButton.color"
-                @click="buttonClick(identifier)"
-                :rounded="loadedButton.rounded"
-                :tile="loadedButton.tile"
-            >
-                {{ loadedButton.text }}
-                <easy-icon
-                    v-if="displayButtonIcon()"
-                    :icon="loadedButton.icon"
-                >
-                </easy-icon>
-            </v-btn>
-        </template>
-        <span>{{ loadedButton.tooltip }}</span>
-    </v-tooltip>
-
+  <v-tooltip
+    top
+    :disabled="
+      isUndefined(loadedButton.tooltip) || loadedButton.tooltip === null
+    "
+  >
+    <template v-slot:activator="{ on }">
+      <v-btn
+        :on="on"
+        :class="loadedButton.class"
+        :color="loadedButton.color"
+        @click="buttonClick(identifier)"
+        :rounded="loadedButton.rounded"
+        :tile="loadedButton.tile"
+      >
+        {{ loadedButton.text }}
+        <easy-icon v-if="displayButtonIcon()" :icon="loadedButton.icon">
+        </easy-icon>
+      </v-btn>
+    </template>
+    <span>{{ loadedButton.tooltip }}</span>
+  </v-tooltip>
 </template>
 
 <script>
+import { FormMixin } from "../mixins/FormMixins";
+import EasyIcon from "../parts/Icon.vue";
 
-  import {FormMixin} from '../mixins/FormMixins';
-  import EasyIcon from '../parts/Icon.vue';
-
-  export default {
-    name: 'Button',
-    components: {
-      EasyIcon
+export default {
+  name: "Button",
+  components: {
+    EasyIcon
+  },
+  mixins: [FormMixin],
+  props: {
+    button: {
+      type: Object,
+      default: () => ({})
     },
-    mixins: [FormMixin],
-    props: {
-      button: {
-        type: Object,
-        default: () => ({}),
-      },
-      identifier: {
-        type: String|Number,
-        default: '',
-      },
+    identifier: {
+      type: [String, Number],
+      default: () => ""
+    }
+  },
+  data() {
+    return {
+      loadedButton: false
+    };
+  },
+  created() {
+    this.loadedButton = this.button;
+  },
+  methods: {
+    buttonClick(identifier) {
+      this.$emit("click", identifier);
     },
-    data() {
-      return {
-        loadedButton: false,
-      };
+    buttonIconText: function() {
+      return !this.isUndefined(this.loadedButton.icon.tooltip)
+        ? this.loadedButton.icon.tooltip
+        : "Submit";
     },
-    created() {
-        this.loadedButton = this.button;
+    buttonIconMdi: function() {
+      return !this.isUndefined(this.loadedButton.icon.icon)
+        ? this.loadedButton.icon.icon
+        : "";
     },
-    methods: {
-      buttonClick(identifier){
-        this.$emit('click', identifier);
-      },
-      buttonIconText: function() {
-        return !this.isUndefined(this.loadedButton.icon.tooltip) ? this.loadedButton.icon.tooltip : 'Submit';
-      },
-      buttonIconMdi: function() {
-        return !this.isUndefined(this.loadedButton.icon.icon) ? this.loadedButton.icon.icon : '';
-      },
-      prepareButtonIconProps: function() {
-        const result = {};
-        if (this.displayButtonIcon()) {
-          result.color = !this.isUndefined(this.loadedButton.icon.color) ? this.loadedButton.icon.color : 'primary';
-          result.class = !this.isUndefined(this.loadedButton.icon.class) ? this.loadedButton.icon.class : '';
-          if (!this.isUndefined(this.loadedButton.icon.size) && this.loadedButton.icon.size !== null) {
-            result[this.loadedButton.icon.size] = true;
-          }
+    prepareButtonIconProps: function() {
+      const result = {};
+      if (this.displayButtonIcon()) {
+        result.color = !this.isUndefined(this.loadedButton.icon.color)
+          ? this.loadedButton.icon.color
+          : "primary";
+        result.class = !this.isUndefined(this.loadedButton.icon.class)
+          ? this.loadedButton.icon.class
+          : "";
+        if (
+          !this.isUndefined(this.loadedButton.icon.size) &&
+          this.loadedButton.icon.size !== null
+        ) {
+          result[this.loadedButton.icon.size] = true;
         }
-        return result;
-      },
-      displayButtonIcon: function() {
-        return !this.isUndefined(this.loadedButton.icon) ? true : false;
-      },
+      }
+      return result;
+    },
+    displayButtonIcon: function() {
+      return !this.isUndefined(this.loadedButton.icon) ? true : false;
     }
   }
-
+};
 </script>

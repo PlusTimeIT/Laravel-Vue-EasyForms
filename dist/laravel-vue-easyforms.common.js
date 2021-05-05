@@ -490,14 +490,14 @@ module.exports =
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Button.vue?vue&type=template&id=4ff47ab6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Button.vue?vue&type=template&id=0bdcb19a&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedButton.tooltip) || _vm.loadedButton.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
-return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
+return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"on":on,"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/parts/Button.vue?vue&type=template&id=4ff47ab6&
+// CONCATENATED MODULE: ./src/components/forms/parts/Button.vue?vue&type=template&id=0bdcb19a&
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
@@ -530,10 +530,11 @@ var Icon = __webpack_require__("8366");
 //
 //
 //
+//
 
 
 /* harmony default export */ var Buttonvue_type_script_lang_js_ = ({
-  name: 'Button',
+  name: "Button",
   components: {
     EasyIcon: Icon["a" /* default */]
   },
@@ -544,8 +545,8 @@ var Icon = __webpack_require__("8366");
       default: () => ({})
     },
     identifier: {
-      type: String | Number,
-      default: ''
+      type: [String, Number],
+      default: () => ""
     }
   },
 
@@ -561,21 +562,21 @@ var Icon = __webpack_require__("8366");
 
   methods: {
     buttonClick(identifier) {
-      this.$emit('click', identifier);
+      this.$emit("click", identifier);
     },
 
     buttonIconText: function () {
-      return !this.isUndefined(this.loadedButton.icon.tooltip) ? this.loadedButton.icon.tooltip : 'Submit';
+      return !this.isUndefined(this.loadedButton.icon.tooltip) ? this.loadedButton.icon.tooltip : "Submit";
     },
     buttonIconMdi: function () {
-      return !this.isUndefined(this.loadedButton.icon.icon) ? this.loadedButton.icon.icon : '';
+      return !this.isUndefined(this.loadedButton.icon.icon) ? this.loadedButton.icon.icon : "";
     },
     prepareButtonIconProps: function () {
       const result = {};
 
       if (this.displayButtonIcon()) {
-        result.color = !this.isUndefined(this.loadedButton.icon.color) ? this.loadedButton.icon.color : 'primary';
-        result.class = !this.isUndefined(this.loadedButton.icon.class) ? this.loadedButton.icon.class : '';
+        result.color = !this.isUndefined(this.loadedButton.icon.color) ? this.loadedButton.icon.color : "primary";
+        result.class = !this.isUndefined(this.loadedButton.icon.class) ? this.loadedButton.icon.class : "";
 
         if (!this.isUndefined(this.loadedButton.icon.size) && this.loadedButton.icon.size !== null) {
           result[this.loadedButton.icon.size] = true;
@@ -637,16 +638,16 @@ const FormMixin = {
       return true;
     },
     isObject: function (o) {
-      return typeof o === 'object';
+      return typeof o === "object";
     },
     isArray: function (o) {
       return Array.isArray(o);
     },
     isFile: function (o) {
-      return 'File' in window && o instanceof File ? true : false;
+      return "File" in window && o instanceof File ? true : false;
     },
     isUndefined: function (o) {
-      return typeof o === 'undefined';
+      return typeof o === "undefined";
     },
     snakeToCamel: function (s) {
       return s.toLowerCase().replace(/[-_][a-z0-9]/g, group => group.slice(-1).toUpperCase());
@@ -654,7 +655,7 @@ const FormMixin = {
     request: function (type, url, data = null, parameters = {}) {
       const defaultParameters = {
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       };
       const sendParameters = {
@@ -677,7 +678,7 @@ const FormMixin = {
       return errors;
     },
     redirect: function (location) {
-      if (location == 'reload') {
+      if (location == "reload") {
         window.location.reload();
         return false;
       }
@@ -689,7 +690,7 @@ const FormMixin = {
       const _this = this;
 
       this.alerts.forEach(function (alert, index) {
-        if (alert.trigger == 'failed_processing' || alert.trigger == 'successful_processing') {
+        if (alert.trigger == "failed_processing" || alert.trigger == "successful_processing") {
           alert.display = false;
           alert.contents = alert.old_contents;
 
@@ -702,7 +703,7 @@ const FormMixin = {
       Object.keys(alert).forEach(function (key) {
         result[key] = alert[key];
 
-        if (key == 'icon' && alert[key] !== null) {
+        if (key == "icon" && alert[key] !== null) {
           result[key] = alert[key].icon;
         }
       });
@@ -715,7 +716,7 @@ const FormMixin = {
       this.alerts.forEach(function (alert, index) {
         if (alert.trigger == alertTrigger) {
           alert.display = true;
-          alert.contents = alert.old_contents.replace('<response-data>', _this.isObject(text) ? 'There is validation errors' : text);
+          alert.contents = alert.old_contents.replace("<response-data>", _this.isObject(text) ? "There is validation errors" : text);
 
           if (alert.auto_close_timer !== 0) {
             setTimeout(function () {
@@ -740,27 +741,27 @@ const FormMixin = {
     async processForm(form, data, identifier = 0, additionalData = {}, action = []) {
       const _this = this;
 
-      this.$emit('processing');
+      this.$emit("processing");
       this.formLoading = true;
       let formAxios = form.axios;
 
-      _this.request('post', '/axios/forms/process', _this.mergeAdditionData(form, _this.formData(form, data, identifier), additionalData, action), formAxios.headers).then(axiosResponse => {
+      _this.request("post", "/axios/forms/process", _this.mergeAdditionData(form, _this.formData(form, data, identifier), additionalData, action), formAxios.headers).then(axiosResponse => {
         _this.formLoading = axiosResponse.loader;
 
         if (formAxios.expecting_results) {
-          _this.$emit('results', axiosResponse);
+          _this.$emit("results", axiosResponse);
         }
 
         if (!axiosResponse.result) {
-          this.$emit('errors', axiosResponse.data);
-          this.$emit('failed', axiosResponse.data);
+          this.$emit("errors", axiosResponse.data);
+          this.$emit("failed", axiosResponse.data);
           return Promise.resolve(axiosResponse.data);
         }
 
-        this.$emit('successful', axiosResponse.data);
+        this.$emit("successful", axiosResponse.data);
 
         if (!_this.isUndefined(formAxios.redirect) && formAxios.redirect !== false || !_this.isUndefined(axiosResponse.redirect) && axiosResponse.redirect !== null) {
-          this.$emit('redirect', axiosResponse.redirect);
+          this.$emit("redirect", axiosResponse.redirect);
 
           _this.redirect(formAxios.redirect);
         }
@@ -783,34 +784,34 @@ const FormMixin = {
       Object.keys(data).forEach(item => {
         if (multiPart) {
           if (formData.has(data[item].name)) {
-            formData.set(data[item].name, this.isObject(data[item].value) || this.isArray(data[item].value) ? JSON.stringify(data[item].value) : data[item].value);
+            formData.set(data[item].name, _this.isObject(data[item].value) || _this.isArray(data[item].value) ? JSON.stringify(data[item].value) : data[item].value);
           } else {
-            formData.append(data[item].name, this.isObject(data[item].value) || this.isArray(data[item].value) ? JSON.stringify(data[item].value) : data[item].value);
+            formData.append(data[item].name, _this.isObject(data[item].value) || _this.isArray(data[item].value) ? JSON.stringify(data[item].value) : data[item].value);
           }
         } else {
           inputs[data[item].name] = data[item].value;
         }
       });
-      let identifier_data = this.isObject(identifier) || this.isArray(identifier) ? JSON.stringify(identifier) : identifier;
+      let identifier_data = _this.isObject(identifier) || _this.isArray(identifier) ? JSON.stringify(identifier) : identifier;
 
       if (multiPart) {
-        formData.append('form_name', form.name);
+        formData.append("form_name", form.name);
 
         if (identifierIsPresent) {
-          if (formData.has('id')) {
-            formData.set('id', identifier_data);
+          if (formData.has("id")) {
+            formData.set("id", identifier_data);
           } else {
-            formData.append('id', identifier_data);
+            formData.append("id", identifier_data);
           }
         }
 
         return formData;
       }
 
-      inputs['form_name'] = form.name;
+      inputs["form_name"] = form.name;
 
       if (identifierIsPresent) {
-        inputs['id'] = identifier;
+        inputs["id"] = identifier;
       }
 
       return inputs;
@@ -833,17 +834,11 @@ const FormMixin = {
       });
 
       if (multiPart) {
-        formData.append('action', action);
+        formData.append("action", action);
       } else {
-        formData['action'] = action;
+        formData["action"] = action;
       }
 
-      return formData;
-    },
-    mergeAdditionalLoadFormData: function (formData, additionalData) {
-      Object.keys(additionalData).forEach(function (key) {
-        formData[key] = additionalData[key];
-      });
       return formData;
     }
   }
@@ -11056,14 +11051,14 @@ moment.tz.load(__webpack_require__("6cd2"));
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Icon.vue?vue&type=template&id=4f716749&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Icon.vue?vue&type=template&id=79a57f48&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedIcon.tooltip) || _vm.loadedIcon.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"dismissible":""},on:{"click":function($event){return _vm.iconClick(_vm.loadedIdentifier)}}},on),[_vm._v(" "+_vm._s(_vm.loadedIcon.icon)+" ")])]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedIcon.tooltip))])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/parts/Icon.vue?vue&type=template&id=4f716749&
+// CONCATENATED MODULE: ./src/components/forms/parts/Icon.vue?vue&type=template&id=79a57f48&
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
@@ -11083,12 +11078,9 @@ var FormMixins = __webpack_require__("0658");
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ var Iconvue_type_script_lang_js_ = ({
-  name: 'Icon',
+  name: "Icon",
   mixins: [FormMixins["a" /* FormMixin */]],
   props: {
     icon: {
@@ -11096,8 +11088,8 @@ var FormMixins = __webpack_require__("0658");
       default: () => ({})
     },
     identifier: {
-      type: String | Number,
-      default: ''
+      type: [String, Number],
+      default: ""
     }
   },
 
@@ -11115,23 +11107,23 @@ var FormMixins = __webpack_require__("0658");
 
   methods: {
     iconClick(identifier) {
-      this.$emit('click', identifier);
+      this.$emit("click", identifier);
     },
 
     iconIconText: function () {
-      return !this.isUndefined(this.loadedIcon.icon.tooltip) ? this.loadedIcon.icon.tooltip : 'Submit';
+      return !this.isUndefined(this.loadedIcon.icon.tooltip) ? this.loadedIcon.icon.tooltip : "Submit";
     },
     iconIconMdi: function () {
-      return !this.isUndefined(this.loadedIcon.icon.icon) ? this.loadedIcon.icon.icon : '';
+      return !this.isUndefined(this.loadedIcon.icon.icon) ? this.loadedIcon.icon.icon : "";
     },
     prepareButtonIconProps: function () {
       const result = {};
 
       if (this.displayButtonIcon()) {
-        result.color = !this.isUndefined(this.loadedIcon.icon.color) ? this.loadedIcon.icon.color : 'primary';
-        result.class = !this.isUndefined(this.loadedIcon.icon.class) ? this.loadedIcon.icon.class : '';
+        result.color = !this.isUndefined(this.loadedIcon.icon.color) ? this.loadedIcon.icon.color : "primary";
+        result.class = !this.isUndefined(this.loadedIcon.icon.class) ? this.loadedIcon.icon.class : "";
 
-        if (!this.isUndefined(loadedIcon.icon.size) && this.loadedIcon.icon.size !== null) {
+        if (!this.isUndefined(this.loadedIcon.icon.size) && this.loadedIcon.icon.size !== null) {
           result[this.loadedIcon.icon.size] = true;
         }
       }
@@ -23679,13 +23671,11 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 //
 //
 //
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'ActionForm',
+  name: "ActionForm",
   components: {
     EasyButton: _parts_Button_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
     EasyIcon: _parts_Icon_vue__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]
@@ -23739,6 +23729,20 @@ module.exports = function combineURLs(baseURL, relativeURL) {
   },
 
   methods: {
+    getJustify() {
+      return !this.isUndefined(this.loadedForm.justify) ? this.loadedForm.justify : "center";
+    },
+
+    getCols(action) {
+      let cols = !this.isUndefined(this.loadedForm.inline) && this.loadedForm.inline ? "auto" : 12; //override if set on action
+
+      if (!this.isUndefined(action.cols) && action.cols !== null) {
+        cols = action.cols;
+      }
+
+      return cols;
+    },
+
     runAction(identifier) {
       this.processForm(this.loadedForm, [], this.loadedIdentifier, this.loadedAdditionalFormData, identifier);
     },
@@ -24669,12 +24673,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=3f81e898&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=68d687eb&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{attrs:{"cols":_vm.cols,"sm":_vm.sm,"md":_vm.md,"lg":_vm.lg}},[_c('v-row',[(_vm.loadedFormName == '')?_c('v-col',[_c('h1',[_vm._v("Error Loading Form")])]):_vm._e()],1),_c('validation-observer',{ref:"observer"},[_c('v-row',[_c('v-col',{attrs:{"cols":"12"}},_vm._l((_vm.loadedAlerts),function(alert,index){return _c('v-alert',_vm._b({key:index,model:{value:(_vm.alerts[index].display),callback:function ($$v) {_vm.$set(_vm.alerts[index], "display", $$v)},expression:"alerts[index].display"}},'v-alert',_vm.prepareAlertProps(alert),false),[_c('div',{domProps:{"innerHTML":_vm._s(alert.contents)}})])}),1)],1),_c('v-row',{directives:[{name:"show",rawName:"v-show",value:(_vm.formLoading),expression:"formLoading"}]},[_c('v-col',[_c('v-progress-circular',{attrs:{"indeterminate":"","color":"primary"}})],1)],1),(!_vm.formLoading)?_c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('input-form',{attrs:{"form":_vm.loadedFormData},on:{"results":_vm.formHasResults,"errors":_vm.formHasErrors,"loading":_vm.formIsLoading,"reset":_vm.formIsReset,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}}):_vm._e(),(_vm.loadedFormData.form_type == 'action')?_c('action-form',{attrs:{"form":_vm.loadedFormData},on:{"loading":_vm.formIsLoading,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}}):_vm._e()],1):_vm._e()],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=3f81e898&
+// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue?vue&type=template&id=68d687eb&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
@@ -26679,25 +26683,25 @@ var version = '3.4.5';
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=1d8c7148&
-var InputFormvue_type_template_id_1d8c7148_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field),"additional_form_data":_vm.loadedAdditionalFormData},on:{"field_update":_vm.updateField},model:{value:(_vm.fieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.fieldList, index_f, $$v)},expression:"fieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction( button )}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
-var InputFormvue_type_template_id_1d8c7148_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=6ad8ee84&
+var InputFormvue_type_template_id_6ad8ee84_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field),"additional_form_data":_vm.loadedAdditionalFormData},on:{"field_update":_vm.updateField},model:{value:(_vm.fieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.fieldList, index_f, $$v)},expression:"fieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
+var InputFormvue_type_template_id_6ad8ee84_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/forms/InputForm.vue?vue&type=template&id=1d8c7148&
+// CONCATENATED MODULE: ./src/components/forms/forms/InputForm.vue?vue&type=template&id=6ad8ee84&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Input.vue?vue&type=template&id=5befab81&
-var Inputvue_type_template_id_5befab81_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Input.vue?vue&type=template&id=92f4e47c&
+var Inputvue_type_template_id_92f4e47c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
-return [_c(_vm.fieldData.component,_vm._b({tag:"component",attrs:{"v-mask":_vm.fieldData.masking},scopedSlots:_vm._u([(!_vm.isUndefined( _vm.fieldData.counter ) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
+return [_c(_vm.fieldData.component,_vm._b({tag:"component",attrs:{"v-mask":_vm.fieldData.masking},scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
 return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
-return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]}}],null,false,1800436461)})],1):_vm._e()}
-var Inputvue_type_template_id_5befab81_staticRenderFns = []
+return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]}}],null,false,2915833901)})],1):_vm._e()}
+var Inputvue_type_template_id_92f4e47c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/parts/Input.vue?vue&type=template&id=5befab81&
+// CONCATENATED MODULE: ./src/components/forms/parts/Input.vue?vue&type=template&id=92f4e47c&
 
 // CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
 /**
@@ -29460,20 +29464,28 @@ vee_validate_full_esm_localize('en', en);
 
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/DatePicker.vue?vue&type=template&id=b89b427e&
-var DatePickervue_type_template_id_b89b427e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-menu',{ref:"menu",attrs:{"close-on-content-click":_vm.closeOnContentClick,"transition":"scale-transition","offset-y":"","max-width":"290px","min-width":"290px"},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/DatePicker.vue?vue&type=template&id=6ca1cc56&
+var DatePickervue_type_template_id_6ca1cc56_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-menu',{ref:"menu",attrs:{"close-on-content-click":_vm.closeOnContentClick,"transition":"scale-transition","offset-y":"","max-width":"290px","min-width":"290px"},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-text-field',_vm._g({attrs:{"persistent-hint":"","readonly":"","error-messages":_vm.loadedErrorMessages,"outlined":"","dense":"","label":_vm.label},model:{value:(_vm.formattedDates),callback:function ($$v) {_vm.formattedDates=$$v},expression:"formattedDates"}},on))]}}]),model:{value:(_vm.menu),callback:function ($$v) {_vm.menu=$$v},expression:"menu"}},[_c('v-date-picker',{attrs:{"range":_vm.multiple,"no-title":"","scrollable":"","dark":""},model:{value:(_vm.dates),callback:function ($$v) {_vm.dates=$$v},expression:"dates"}},[(_vm.controls)?_c('v-spacer'):_vm._e(),(_vm.controls)?_c('v-btn',{attrs:{"text":"","color":"primary"},on:{"click":function($event){_vm.menu = false}}},[_vm._v("Cancel")]):_vm._e(),(_vm.controls)?_c('v-btn',{attrs:{"text":"","color":"primary"},on:{"click":function($event){return _vm.$refs.menu.save(_vm.dates)}}},[_vm._v("OK")]):_vm._e()],1)],1)}
-var DatePickervue_type_template_id_b89b427e_staticRenderFns = []
+var DatePickervue_type_template_id_6ca1cc56_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/fields/DatePicker.vue?vue&type=template&id=b89b427e&
+// CONCATENATED MODULE: ./src/components/forms/fields/DatePicker.vue?vue&type=template&id=6ca1cc56&
 
 // EXTERNAL MODULE: ./node_modules/moment-timezone/index.js
 var moment_timezone = __webpack_require__("7f45");
 var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/DatePicker.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29514,7 +29526,7 @@ var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone
     },
     label: {
       type: String,
-      default: ''
+      default: ""
     },
     errorMessages: {
       type: Array,
@@ -29534,8 +29546,8 @@ var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone
     }
   },
   data: () => ({
-    dates: '',
-    datesFormatted: '',
+    dates: "",
+    datesFormatted: "",
     menu: false
   }),
 
@@ -29559,23 +29571,23 @@ var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone
         return this.formatPickerDate(this.dates);
       }
 
-      return this.formatPickerDate(this.dates).join(' ~ ');
+      return this.formatPickerDate(this.dates).join(" ~ ");
     }
 
   },
   watch: {
-    dates(val) {
+    dates() {
       this.datesFormatted = this.formatPickerDate(this.dates);
-      this.$emit('input', this.datesFormatted);
+      this.$emit("input", this.datesFormatted);
     }
 
   },
   methods: {
-    formatPickerDate(date, locale = 'en-au') {
+    formatPickerDate(date, locale = "en-au") {
       if (!this.isArray(date)) {
         const today = moment_timezone_default()(date);
         today.locale(locale);
-        return today.format('L');
+        return today.format("L");
       }
 
       const addedDates = [];
@@ -29587,7 +29599,7 @@ var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone
       date.forEach(dates => {
         const newDate = moment_timezone_default()(dates);
         newDate.locale(locale);
-        addedDates.push(newDate.format('L'));
+        addedDates.push(newDate.format("L"));
       });
       return addedDates;
     }
@@ -29609,8 +29621,8 @@ var componentNormalizer = __webpack_require__("2877");
 
 var component = Object(componentNormalizer["a" /* default */])(
   fields_DatePickervue_type_script_lang_js_,
-  DatePickervue_type_template_id_b89b427e_render,
-  DatePickervue_type_template_id_b89b427e_staticRenderFns,
+  DatePickervue_type_template_id_6ca1cc56_render,
+  DatePickervue_type_template_id_6ca1cc56_staticRenderFns,
   false,
   null,
   null,
@@ -29619,16 +29631,19 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var DatePicker = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/TimePicker.vue?vue&type=template&id=d8d54362&
-var TimePickervue_type_template_id_d8d54362_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-menu',{ref:"menu",attrs:{"close-on-content-click":false,"transition":"scale-transition","offset-y":"","max-width":"290px","min-width":"290px"},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/TimePicker.vue?vue&type=template&id=009890b3&
+var TimePickervue_type_template_id_009890b3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-menu',{ref:"menu",attrs:{"close-on-content-click":false,"transition":"scale-transition","offset-y":"","max-width":"290px","min-width":"290px"},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-text-field',_vm._g({attrs:{"persistent-hint":"","readonly":"","outlined":"","error-messages":_vm.loadedErrorMessages,"dense":"","label":_vm.label},model:{value:(_vm.time_input),callback:function ($$v) {_vm.time_input=$$v},expression:"time_input"}},on))]}}]),model:{value:(_vm.menu),callback:function ($$v) {_vm.menu=$$v},expression:"menu"}},[_c('v-time-picker',{attrs:{"scrollable":"","range":"","dark":"","ampm-in-title":_vm.ampm_in_title},model:{value:(_vm.time_input),callback:function ($$v) {_vm.time_input=$$v},expression:"time_input"}})],1)}
-var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
+var TimePickervue_type_template_id_009890b3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/fields/TimePicker.vue?vue&type=template&id=d8d54362&
+// CONCATENATED MODULE: ./src/components/forms/fields/TimePicker.vue?vue&type=template&id=009890b3&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/fields/TimePicker.vue?vue&type=script&lang=js&
+//
+//
+//
 //
 //
 //
@@ -29661,7 +29676,7 @@ var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
 /* harmony default export */ var TimePickervue_type_script_lang_js_ = ({
   props: {
     value: {
-      default: ''
+      default: ""
     },
     errorMessages: {
       type: Array,
@@ -29669,7 +29684,7 @@ var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
     },
     label: {
       type: String,
-      default: ''
+      default: ""
     },
     ampm_in_title: {
       type: Boolean,
@@ -29681,14 +29696,14 @@ var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
     },
     populate: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   data: function () {
     return {
       menu1: false,
       menu: false,
-      time_input: ''
+      time_input: ""
     };
   },
 
@@ -29707,7 +29722,7 @@ var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
   },
   watch: {
     time_input: function (val) {
-      this.$emit('input', val);
+      this.$emit("input", val);
     }
   },
   methods: {}
@@ -29724,8 +29739,8 @@ var TimePickervue_type_template_id_d8d54362_staticRenderFns = []
 
 var TimePicker_component = Object(componentNormalizer["a" /* default */])(
   fields_TimePickervue_type_script_lang_js_,
-  TimePickervue_type_template_id_d8d54362_render,
-  TimePickervue_type_template_id_d8d54362_staticRenderFns,
+  TimePickervue_type_template_id_009890b3_render,
+  TimePickervue_type_template_id_009890b3_staticRenderFns,
   false,
   null,
   null,
@@ -29783,16 +29798,12 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
 //
 //
 //
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ var Inputvue_type_script_lang_js_ = ({
-  name: 'Input',
+  name: "Input",
   $validates: true,
   mixins: [FormMixins["a" /* FormMixin */]],
   components: {
@@ -29807,7 +29818,7 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
     },
     cols: {
       Type: String,
-      default: '6'
+      default: "6"
     },
     additional_form_data: {
       type: Object,
@@ -29815,16 +29826,16 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
     },
     offset: {
       Type: String,
-      default: ''
+      default: ""
     },
     value: {
-      default: ''
+      default: ""
     }
   },
   watch: {
     fieldData: {
       handler: function (val) {
-        this.$emit('field_update', val);
+        this.$emit("field_update", val);
       },
       deep: true
     }
@@ -29850,11 +29861,11 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
       let label = !this.isUndefined(this.fieldData.label) ? this.fieldData.label : this.fieldData.name;
 
       if (!this.isUndefined(this.fieldData.required) && this.fieldData.required) {
-        label += ' ( * required )';
+        label += " ( * required )";
       } else if (!this.isUndefined(this.fieldData.readonly) && this.fieldData.readonly) {
-        label += ' ( readonly )';
+        label += " ( readonly )";
       } else {
-        label += ' ( optional )';
+        label += " ( optional )";
       }
 
       return label;
@@ -29868,7 +29879,7 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
 
     displayCol() {
       if (this.isUndefined(this.fieldData.type)) return false;
-      if (this.fieldData.type == 'hidden') return false;
+      if (this.fieldData.type == "hidden") return false;
       return true;
     },
 
@@ -29876,130 +29887,130 @@ var TimePicker_component = Object(componentNormalizer["a" /* default */])(
       // BUILD FIELD RULES
       const rules = [];
       this.fieldData.rules.forEach(function (rule) {
-        if (typeof rule.value === 'boolean') {
+        if (typeof rule.value === "boolean") {
           if (rule.value) {
             rules.push(rule.name);
           }
         } else {
-          rules.push(rule.name + ':' + rule.value);
+          rules.push(rule.name + ":" + rule.value);
         }
       });
-      return rules.join('|');
+      return rules.join("|");
     },
 
     prepareProps(errors) {
       let result = {};
       const field = this.fieldData;
-      result['error-messages'] = errors;
-      result['label'] = this.displayLabel;
-      result['outlined'] = this.fieldData.outlined;
-      result['dense'] = this.fieldData.dense; // TO DO PREPEND ICON
+      result["error-messages"] = errors;
+      result["label"] = this.displayLabel;
+      result["outlined"] = this.fieldData.outlined;
+      result["dense"] = this.fieldData.dense; // TO DO PREPEND ICON
 
-      if (!this.isUndefined(field.help) && field.help !== '') {// result['prepend-inner-icon'] = 'mdi-help-box';
+      if (!this.isUndefined(field.help) && field.help !== "") {// result['prepend-inner-icon'] = 'mdi-help-box';
       }
 
-      if (!this.isUndefined(field.type) && field.type == 'time') {
-        result['populate'] = field.value;
-        result['ampm_in_title'] = true;
-        result['no_title'] = false;
-        result['class'] = 'mt-2';
+      if (!this.isUndefined(field.type) && field.type == "time") {
+        result["populate"] = field.value;
+        result["ampm_in_title"] = true;
+        result["no_title"] = false;
+        result["class"] = "mt-2";
       }
 
-      if (!this.isUndefined(field.type) && field.type == 'file-input') {
-        result['show-size'] = true;
-        result['accept'] = field.accept;
+      if (!this.isUndefined(field.type) && field.type == "file-input") {
+        result["show-size"] = true;
+        result["accept"] = field.accept;
       }
 
-      if (!this.isUndefined(field.type) && (field.type == 'select' || field.type == 'autocomplete')) {
-        result['selected'] = !this.isUndefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
+      if (!this.isUndefined(field.type) && (field.type == "select" || field.type == "autocomplete")) {
+        result["selected"] = !this.isUndefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
         const selectItems = field.items;
 
         if (!this.isUndefined(field.any_field) && field.any_field) {
           const anyfield = {};
-          anyfield[field.item_value] = 'any';
-          anyfield[field.item_text] = 'Any';
+          anyfield[field.item_value] = "any";
+          anyfield[field.item_text] = "Any";
 
-          if (!selectItems.some(e => e[field.item_value] === 'any')) {
+          if (!selectItems.some(e => e[field.item_value] === "any")) {
             selectItems.unshift(anyfield);
           }
         }
 
-        result['items'] = selectItems;
-        result['item-text'] = field.item_text;
-        result['item-value'] = field.item_value;
-        result['chips'] = field.chips;
-        result['data-vv-name'] = 'select';
+        result["items"] = selectItems;
+        result["item-text"] = field.item_text;
+        result["item-value"] = field.item_value;
+        result["chips"] = field.chips;
+        result["data-vv-name"] = "select";
       }
 
-      if (!this.isUndefined(field.type) && field.type == 'hidden') {
-        result['class'] = 'hidden-input';
+      if (!this.isUndefined(field.type) && field.type == "hidden") {
+        result["class"] = "hidden-input";
       }
 
-      if (!this.isUndefined(field.component_type) && field.component_type == 'password') {
-        result['type'] = field.component_type;
+      if (!this.isUndefined(field.component_type) && field.component_type == "password") {
+        result["type"] = field.component_type;
       }
 
-      if (!this.isUndefined(field.component) && field.component == 'date-picker') {
-        result['close-on-content-click'] = false;
+      if (!this.isUndefined(field.component) && field.component == "date-picker") {
+        result["close-on-content-click"] = false;
       }
 
-      result['controls'] = false;
+      result["controls"] = false;
 
       if (!this.isUndefined(field.close_on_content_click)) {
-        result['close-on-content-click'] = field.close_on_content_click;
+        result["close-on-content-click"] = field.close_on_content_click;
       }
 
       if (!this.isUndefined(field.controls)) {
-        result['controls'] = field.controls;
+        result["controls"] = field.controls;
       }
 
       if (!this.isUndefined(field.step)) {
-        result['step'] = field.step;
+        result["step"] = field.step;
       }
 
-      if (!this.isUndefined(field.component_type) && field.component_type !== '') {
-        result['type'] = field.component_type;
+      if (!this.isUndefined(field.component_type) && field.component_type !== "") {
+        result["type"] = field.component_type;
       }
 
       if (!this.isUndefined(field.min)) {
-        result['min'] = field.min;
+        result["min"] = field.min;
       }
 
       if (!this.isUndefined(field.max)) {
-        result['max'] = field.max;
+        result["max"] = field.max;
       }
 
       if (!this.isUndefined(field.placeholder)) {
-        result['placeholder'] = field.placeholder;
+        result["placeholder"] = field.placeholder;
       }
 
       if (!this.isUndefined(field.readonly)) {
-        result['readonly'] = field.readonly;
+        result["readonly"] = field.readonly;
       }
 
       if (!this.isUndefined(field.multiple)) {
-        result['multiple'] = field.multiple;
+        result["multiple"] = field.multiple;
       }
 
       if (!this.isUndefined(field.clearable)) {
-        result['clearable'] = field.clearable;
+        result["clearable"] = field.clearable;
       }
 
       if (!this.isUndefined(field.counter)) {
-        result['counter'] = field.counter;
+        result["counter"] = field.counter;
       }
 
       if (!this.isUndefined(field.maxlength)) {
-        result['maxlength'] = field.maxlength;
+        result["maxlength"] = field.maxlength;
       }
 
       if (!this.isUndefined(this.additional_form_data)) {
-        result['additional_form_data'] = this.additionalForm;
+        result["additional_form_data"] = this.additionalForm;
       }
 
-      if (field.component == 'h2') {
+      if (field.component == "h2") {
         result = {
-          'v-html': field.value
+          "v-html": field.value
         };
       }
 
@@ -30024,8 +30035,8 @@ var Inputvue_type_style_index_0_lang_css_ = __webpack_require__("b502");
 
 var Input_component = Object(componentNormalizer["a" /* default */])(
   parts_Inputvue_type_script_lang_js_,
-  Inputvue_type_template_id_5befab81_render,
-  Inputvue_type_template_id_5befab81_staticRenderFns,
+  Inputvue_type_template_id_92f4e47c_render,
+  Inputvue_type_template_id_92f4e47c_staticRenderFns,
   false,
   null,
   null,
@@ -30065,6 +30076,14 @@ var Button = __webpack_require__("0578");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
  // This form emits the current events
@@ -30073,7 +30092,7 @@ var Button = __webpack_require__("0578");
 //
 
 /* harmony default export */ var InputFormvue_type_script_lang_js_ = ({
-  name: 'InputForm',
+  name: "InputForm",
   components: {
     EasyInput: Input,
     EasyButton: Button["a" /* default */]
@@ -30115,7 +30134,7 @@ var Button = __webpack_require__("0578");
       fieldList: {},
       formLoading: true,
       formLoaded: true,
-      loadedFormName: '',
+      loadedFormName: "",
       loadedFormData: false,
       originalFormData: false,
       updateForm: 0
@@ -30174,14 +30193,12 @@ var Button = __webpack_require__("0578");
       deep: true
     },
     formLoading: function (val) {
-      this.$emit('loading', val);
+      this.$emit("loading", val);
     }
   },
 
   async created() {
     if (this.isObject(this.form)) {
-      const _this = this;
-
       this.loadedFormName = this.form.name;
       this.formLoaded = true;
       this.loadedFormData = this.form;
@@ -30205,12 +30222,16 @@ var Button = __webpack_require__("0578");
       this.loadedFormData = { ...this.originalFormData
       };
       this.fieldList = [...this.originalFormData.fields];
-      this.$emit('reset', true);
+
+      if (triggerAlerts) {
+        this.$emit("reset", true);
+      }
+
       this.formLoading = false;
     },
 
     cancelForm() {
-      this.$emit('cancelled', true);
+      this.$emit("cancelled", true);
       this.formLoading = false;
     },
 
@@ -30219,7 +30240,7 @@ var Button = __webpack_require__("0578");
       if (!this.loadedFormData) return result;
 
       if (!this.isUndefined(this.loadedFormData.axios) && !this.isUndefined(this.loadedFormData.axios.multiPart) && this.loadedFormData.axios.multiPart) {
-        result['enctype'] = 'application/x-www-form-urlencoded';
+        result["enctype"] = "application/x-www-form-urlencoded";
       }
 
       return result;
@@ -30232,15 +30253,15 @@ var Button = __webpack_require__("0578");
       this.formLoading = true;
 
       if (!this.isUndefined(button.type)) {
-        if (button.type == 'process') {
+        if (button.type == "process") {
           this.processForm(this.loadedFormData, this.loadedFormData.fields, this.loadedIdentifier, this.loadedAdditionalFormData);
         }
 
-        if (button.type == 'reset') {
+        if (button.type == "reset") {
           this.resetForm();
         }
 
-        if (button.type == 'cancel') {
+        if (button.type == "cancel") {
           this.cancelForm();
         }
 
@@ -30248,7 +30269,7 @@ var Button = __webpack_require__("0578");
         return 0;
       }
 
-      alert('button action error :(');
+      alert("button action error :(");
       return 0;
     }
 
@@ -30266,8 +30287,8 @@ var Button = __webpack_require__("0578");
 
 var InputForm_component = Object(componentNormalizer["a" /* default */])(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_1d8c7148_render,
-  InputFormvue_type_template_id_1d8c7148_staticRenderFns,
+  InputFormvue_type_template_id_6ad8ee84_render,
+  InputFormvue_type_template_id_6ad8ee84_staticRenderFns,
   false,
   null,
   null,
@@ -30276,12 +30297,12 @@ var InputForm_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var InputForm = (InputForm_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"567f4c1e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=template&id=d879f0d2&
-var ActionFormvue_type_template_id_d879f0d2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',{attrs:{"justify":"center"}},_vm._l((_vm.filteredActions),function(action,index){return _c('v-col',{key:index,staticClass:"py-0 px-2",attrs:{"cols":"auto"}},[(!_vm.isUndefined(action.icon))?_c('easy-icon',{attrs:{"icon":action.icon,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e(),(!_vm.isUndefined(action.button))?_c('easy-button',{attrs:{"button":action.button,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e()],1)}),1)}
-var ActionFormvue_type_template_id_d879f0d2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"94380218-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=template&id=461576c4&
+var ActionFormvue_type_template_id_461576c4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',{attrs:{"justify":_vm.getJustify}},_vm._l((_vm.filteredActions),function(action,index){return _c('v-col',{key:index,staticClass:"py-0 px-2",attrs:{"cols":_vm.getCols(action)}},[(!_vm.isUndefined(action.icon))?_c('easy-icon',{attrs:{"icon":action.icon,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e(),(!_vm.isUndefined(action.button))?_c('easy-button',{attrs:{"button":action.button,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e()],1)}),1)}
+var ActionFormvue_type_template_id_461576c4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/forms/ActionForm.vue?vue&type=template&id=d879f0d2&
+// CONCATENATED MODULE: ./src/components/forms/forms/ActionForm.vue?vue&type=template&id=461576c4&
 
 // EXTERNAL MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=script&lang=js&
 var ActionFormvue_type_script_lang_js_ = __webpack_require__("ea68");
@@ -30298,8 +30319,8 @@ var ActionFormvue_type_script_lang_js_ = __webpack_require__("ea68");
 
 var ActionForm_component = Object(componentNormalizer["a" /* default */])(
   forms_ActionFormvue_type_script_lang_js_,
-  ActionFormvue_type_template_id_d879f0d2_render,
-  ActionFormvue_type_template_id_d879f0d2_staticRenderFns,
+  ActionFormvue_type_template_id_461576c4_render,
+  ActionFormvue_type_template_id_461576c4_staticRenderFns,
   false,
   null,
   null,
@@ -30364,7 +30385,6 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
 //
 //
 //
-//
 // This man form emits the current events
 // @loaded - boolean - whether the form has been successfully loaded.
 
@@ -30372,7 +30392,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
 
 
 /* harmony default export */ var FormLoadervue_type_script_lang_js_ = ({
-  name: 'FormLoader',
+  name: "FormLoader",
   components: {
     ValidationObserver: ValidationObserver,
     ActionForm: ActionForm,
@@ -30412,7 +30432,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
     },
     load_form: {
       type: [String, Object],
-      default: ''
+      default: ""
     },
     populate: {
       type: Boolean,
@@ -30426,7 +30446,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
       formLoading: true,
       formLoaded: true,
       results: false,
-      loadedFormName: '',
+      loadedFormName: "",
       loadedFormData: false,
       originalFormData: false
     };
@@ -30452,7 +30472,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
   },
   watch: {
     formLoaded: function (val) {
-      this.$emit('loaded', val);
+      this.$emit("loaded", val);
 
       if (val) {
         this.formLoading = false;
@@ -30475,11 +30495,11 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
 
         _this.$set(_this.alerts, index, alert);
       });
-      this.triggerAlerts('before_load');
+      this.triggerAlerts("before_load");
       this.originalFormData = { ...this.load_form
       };
       this.formLoading = false;
-      this.triggerAlerts('after_load');
+      this.triggerAlerts("after_load");
     } else {
       // load by axios call from form name
       this.formLoading = true;
@@ -30498,21 +30518,21 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
     formIsLoading: function (event) {
       this.formLoading = event;
     },
-    formIsReset: function (event) {
-      this.triggerAlerts('reset_form');
+    formIsReset: function () {
+      this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
-    formIsCancelled: function (event) {
-      this.triggerAlerts('cancelled');
+    formIsCancelled: function () {
+      this.triggerAlerts("cancelled");
     },
-    formIsProcessing: function (event) {
-      this.triggerAlerts('before_processing');
+    formIsProcessing: function () {
+      this.triggerAlerts("before_processing");
     },
     formHasFailedProcessing: function (event) {
-      this.triggerAlerts('failed_processing', event);
+      this.triggerAlerts("failed_processing", event);
     },
     formHasSuccessfulProcessing: function (event) {
-      this.triggerAlerts('successful_processing', event);
+      this.triggerAlerts("successful_processing", event);
     },
 
     async getFormDetails(id) {
@@ -30520,7 +30540,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
 
       const _this = this;
 
-      return this.request('post', '/axios/forms/load', this.mergeAdditionalLoadFormData({
+      return this.request("post", "/axios/forms/load", this.mergeAdditionalLoadFormData({
         form_name: this.loadedFormName,
         populate: this.populate,
         id: id
@@ -30528,7 +30548,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
         _this.formLoading = axiosResponse.loader;
 
         if (!axiosResponse.result) {
-          _this.triggerAlerts('failed_load');
+          _this.triggerAlerts("failed_load");
 
           return false;
         }
@@ -30537,7 +30557,7 @@ var ActionForm_component = Object(componentNormalizer["a" /* default */])(
         _this.loadedFormData = axiosResponse.data;
         _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
 
-        _this.triggerAlerts('after_load');
+        _this.triggerAlerts("after_load");
       });
     }
 

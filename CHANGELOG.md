@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.41
+- Fixed col-auto on action button
 
 ## 0.0.40
 - Added cols to action form to handle inline forms or not
