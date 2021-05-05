@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.42
+- Justify bug 
+
 ## 0.0.41
 - Fixed col-auto on action button
 

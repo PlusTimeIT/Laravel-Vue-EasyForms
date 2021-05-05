@@ -1,5 +1,5 @@
 <template>
-  <v-row :justify="getJustify">
+  <v-row :justify="getJustify()">
     <v-col
       v-for="(action, index) in filteredActions"
       :key="index"
