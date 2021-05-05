@@ -1,6 +1,10 @@
 # Change Log
 
 
+## 0.0.40
+- Added cols to action form to handle inline forms or not
+- Added ability to accept justify attribute on the form object, defaults to center if not present
+
 ## 0.0.39
 - Removed es6 lol
 

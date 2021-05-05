@@ -1,10 +1,10 @@
 <template>
 
-    <v-row justify="center">
+    <v-row :justify="getJustify">
         <v-col
             v-for="(action, index) in filteredActions"
             :key="index"
-            cols="auto"
+            :cols="getCols(action)"
             class="py-0 px-2"
         >
             <easy-icon
@@ -84,6 +84,17 @@ export default {
       this.loadedForm = this.form;
   },
   methods:{
+      getJustify(){
+        return !this.isUndefined(this.loadedForm.justify) ? this.loadedForm.justify : 'center';
+      },
+      getCols(action){
+        let cols = (!this.isUndefined(this.loadedForm.inline) && this.loadedForm.inline) ? 'col-auto' : 12;
+        //override if set on action
+        if( !this.isUndefined(action.cols) && action.cols !== null ){
+          cols = action.cols;
+        }
+        return cols;
+      },
       runAction(identifier){
         this.processForm(this.loadedForm, [], this.loadedIdentifier, this.loadedAdditionalFormData, identifier );
       },
