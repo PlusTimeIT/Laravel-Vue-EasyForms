@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.44
+- Additional form data fix for separated forms
+
+## 0.0.43
+- V-mask binding fix 
+
 ## 0.0.42
 - Justify bug 
 

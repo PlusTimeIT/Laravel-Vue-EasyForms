@@ -38,8 +38,8 @@ import { FormMixin } from "../mixins/FormMixins";
 import EasyInput from "../parts/Input.vue";
 import EasyButton from "../parts/Button.vue";
 
-// This form emits the current events
-// @loading - boolean - whether the form is in a loading state
+// Input Form emits the current events
+// @loading - boolean - true if form is loading, false if loaded
 // @reset - boolean - the form has been reset
 //
 
@@ -52,10 +52,6 @@ export default {
   mixins: [FormMixin],
   props: {
     additional_form_data: {
-      type: Object,
-      default: () => ({})
-    },
-    additional_load_form_data: {
       type: Object,
       default: () => ({})
     },
@@ -84,7 +80,7 @@ export default {
     return {
       fieldList: {},
       formLoading: true,
-      formLoaded: true,
+      formLoaded: false,
       loadedFormName: "",
       loadedFormData: false,
       originalFormData: false,
@@ -126,9 +122,6 @@ export default {
   computed: {
     loadedAdditionalFormData: function() {
       return this.additional_form_data;
-    },
-    loadedAdditionalLoadFormData: function() {
-      return this.additional_load_form_data;
     },
     loadedIdentifier: function() {
       return this.identifier;

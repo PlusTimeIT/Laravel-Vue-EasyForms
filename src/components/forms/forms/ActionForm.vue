@@ -72,6 +72,20 @@ export default {
       default: false
     }
   },
+  computed: {
+    loadedIdentifier: function() {
+      return this.identifier;
+    },
+    loadedAdditionalFormData: function() {
+      return this.additional_form_data;
+    },
+    filteredActions: function() {
+      let _this = this;
+      return this.loadedForm.actions.filter(function(action) {
+        return _this.checkActionDisplay(action);
+      });
+    }
+  },
   data() {
     return {
       loadedForm: false
@@ -128,20 +142,6 @@ export default {
         }
       }
       return true;
-    }
-  },
-  computed: {
-    loadedIdentifier: function() {
-      return this.identifier;
-    },
-    loadedAdditionalFormData: function() {
-      return this.additional_form_data;
-    },
-    filteredActions: function() {
-      let _this = this;
-      return this.loadedForm.actions.filter(function(action) {
-        return _this.checkActionDisplay(action);
-      });
     }
   }
 };

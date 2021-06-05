@@ -30,6 +30,7 @@
         <input-form
           v-if="loadedFormData.form_type == 'input'"
           :form="loadedFormData"
+          :additional_form_data="loadedAdditionalFormData"
           @results="formHasResults"
           @errors="formHasErrors"
           @loading="formIsLoading"
@@ -42,6 +43,7 @@
         <action-form
           v-if="loadedFormData.form_type == 'action'"
           :form="loadedFormData"
+          :additional_form_data="loadedAdditionalFormData"
           @loading="formIsLoading"
           @cancelled="formIsCancelled"
           @processing="formIsProcessing"
@@ -54,7 +56,7 @@
 </template>
 
 <script>
-// This man form emits the current events
+// This main form emits the current events
 // @loaded - boolean - whether the form has been successfully loaded.
 
 import { ValidationObserver } from "vee-validate";
@@ -78,10 +80,12 @@ export default {
       }
     },
     additional_form_data: {
+      // additional form data to be passed to on form processing
       type: Object,
       default: () => ({})
     },
     additional_load_form_data: {
+      // additional form data to be passed to on form loading
       type: Object,
       default: () => ({})
     },

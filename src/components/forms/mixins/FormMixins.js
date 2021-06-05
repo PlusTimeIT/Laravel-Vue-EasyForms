@@ -117,6 +117,7 @@ export const FormMixin = {
       this.$emit("processing");
       this.formLoading = true;
       let formAxios = form.axios;
+      console.log('Additional Data', additionalData);
       _this
         .request(
           "post",
@@ -217,9 +218,7 @@ export const FormMixin = {
     },
     mergeAdditionData: function(form, formData, additionalData, action) {
       const multiPart =
-        !this.isUndefined(form.axios) &&
-        !this.isUndefined(form.axios.multi_part) &&
-        form.axios.multiPart
+        !this.isUndefined(form.axios) && !this.isUndefined(form.axios.multi_part) && form.axios.multiPart
           ? true
           : false;
       const _this = this;
@@ -228,16 +227,14 @@ export const FormMixin = {
           if (formData.has(key)) {
             formData.set(
               key,
-              _this.isObject(additionalData[key]) ||
-                _this.isArray(additionalData[key])
+              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key])
                 ? JSON.stringify(additionalData[key])
                 : additionalData[key]
             );
           } else {
             formData.append(
               key,
-              _this.isObject(additionalData[key]) ||
-                _this.isArray(additionalData[key])
+              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key])
                 ? JSON.stringify(additionalData[key])
                 : additionalData[key]
             );
