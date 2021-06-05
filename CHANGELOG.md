@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.48
+- Remove v-masking from Date, Time and Textarea fields
+
 ## 0.0.47
 - Remove v-masking from Date, Time and Textarea fields
 

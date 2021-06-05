@@ -155,7 +155,7 @@ export default {
       result["outlined"] = field.outlined;
       result["dense"] = field.dense;
 
-      if (field.type == "text") {
+      if (!this.isUndefined(field.masking)) {
         result["v-mask"] = field.masking;
       }
 
