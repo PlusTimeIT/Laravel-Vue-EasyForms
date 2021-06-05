@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.45
+- Fixes to redirection
+- Set precedence to axios response redirect over form redirect 
+
 ## 0.0.44
 - Additional form data fix for separated forms
 
