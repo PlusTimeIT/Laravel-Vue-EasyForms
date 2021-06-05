@@ -125,6 +125,15 @@ export default {
       if (!this.isUndefined(action.conditions) && action.conditions !== null) {
         let results = [];
         action.conditions.forEach(function(condition) {
+          console.log(
+            '"' +
+            _this.loadedAdditionalFormData[condition.check] +
+            '" ' +
+            condition.operator +
+            ' "' +
+            condition.against +
+            '"'
+          );
           results.push(
             eval(
               '"' +

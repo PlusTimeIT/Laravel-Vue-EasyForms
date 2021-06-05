@@ -117,7 +117,6 @@ export const FormMixin = {
       this.$emit("processing");
       this.formLoading = true;
       let formAxios = form.axios;
-      console.log('Additional Data', additionalData);
       _this
         .request(
           "post",

@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.46
+- Action Input conditions check 
+
 ## 0.0.45
 - Fixes to redirection
 - Set precedence to axios response redirect over form redirect 

@@ -754,15 +754,24 @@ const FormMixin = {
         }
 
         if (!axiosResponse.result) {
-          this.$emit("errors", axiosResponse.data);
-          this.$emit("failed", axiosResponse.data);
+          _this.$emit("errors", axiosResponse.data);
+
+          _this.$emit("failed", axiosResponse.data);
+
           return Promise.resolve(axiosResponse.data);
         }
 
-        this.$emit("successful", axiosResponse.data);
+        _this.$emit("successful", axiosResponse.data); // Response redirect should override form redirect
 
-        if (!_this.isUndefined(formAxios.redirect) && formAxios.redirect !== false || !_this.isUndefined(axiosResponse.redirect) && axiosResponse.redirect !== null) {
-          this.$emit("redirect", axiosResponse.redirect);
+
+        if (!_this.isUndefined(axiosResponse.redirect) && axiosResponse.redirect !== null) {
+          _this.$emit("redirect", axiosResponse.redirect);
+
+          _this.redirect(axiosResponse.redirect);
+        }
+
+        if (!_this.isUndefined(formAxios.redirect) && formAxios.redirect !== false) {
+          _this.$emit("redirect", formAxios.redirect);
 
           _this.redirect(formAxios.redirect);
         }
