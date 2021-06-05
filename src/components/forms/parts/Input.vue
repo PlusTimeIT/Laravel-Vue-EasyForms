@@ -9,6 +9,7 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
+        v-mask="fieldData.masking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -154,10 +155,6 @@ export default {
       result["label"] = this.displayLabel;
       result["outlined"] = field.outlined;
       result["dense"] = field.dense;
-
-      if (!this.isUndefined(field.masking)) {
-        result["v-mask"] = field.masking;
-      }
 
       if (field.type == "time") {
         result["populate"] = field.value;
