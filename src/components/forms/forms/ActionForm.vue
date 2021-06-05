@@ -82,7 +82,7 @@ export default {
     filteredActions: function() {
       let _this = this;
       return this.loadedForm.actions.filter(function(action) {
-        return _this.checkActionDisplay(action);
+        return _this.checkConditionals(action);
       });
     }
   },
@@ -120,29 +120,16 @@ export default {
         identifier
       );
     },
-    checkActionDisplay: function(action) {
+    checkConditionals: function(action) {
       let _this = this;
       if (!this.isUndefined(action.conditions) && action.conditions !== null) {
         let results = [];
         action.conditions.forEach(function(condition) {
-          console.log(
-            '"' +
-            _this.loadedAdditionalFormData[condition.check] +
-            '" ' +
-            condition.operator +
-            ' "' +
-            condition.against +
-            '"'
-          );
           results.push(
             eval(
-              '"' +
-                _this.loadedAdditionalFormData[condition.check] +
-                '" ' +
-                condition.operator +
-                ' "' +
-                condition.against +
-                '"'
+            '"' + _this.loadedAdditionalFormData[condition.check] + '" ' +
+            condition.operator +
+            ' "' + condition.against + '"'
             )
           );
         });

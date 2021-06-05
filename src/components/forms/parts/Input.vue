@@ -9,7 +9,6 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
-        v-mask="fieldData.masking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -153,30 +152,21 @@ export default {
       const field = this.fieldData;
       result["error-messages"] = errors;
       result["label"] = this.displayLabel;
-      result["outlined"] = this.fieldData.outlined;
-      result["dense"] = this.fieldData.dense;
+      result["outlined"] = field.outlined;
+      result["dense"] = field.dense;
 
-      // TO DO PREPEND ICON
-      if (!this.isUndefined(field.help) && field.help !== "") {
-        // result['prepend-inner-icon'] = 'mdi-help-box';
+      if (field.type == "text") {
+        result["v-mask"] = field.masking;
       }
 
-      if (!this.isUndefined(field.type) && field.type == "time") {
+      if (field.type == "time") {
         result["populate"] = field.value;
         result["ampm_in_title"] = true;
         result["no_title"] = false;
         result["class"] = "mt-2";
       }
 
-      if (!this.isUndefined(field.type) && field.type == "file-input") {
-        result["show-size"] = true;
-        result["accept"] = field.accept;
-      }
-
-      if (
-        !this.isUndefined(field.type) &&
-        (field.type == "select" || field.type == "autocomplete")
-      ) {
+      if ((field.type == "select" || field.type == "autocomplete")) {
         result["selected"] =
           !this.isUndefined(field.integer) && field.integer
             ? parseInt(field.value)
@@ -197,24 +187,11 @@ export default {
         result["chips"] = field.chips;
         result["data-vv-name"] = "select";
       }
-      if (!this.isUndefined(field.type) && field.type == "hidden") {
+      
+      if (field.type == "hidden") {
         result["class"] = "hidden-input";
       }
 
-      if (
-        !this.isUndefined(field.component_type) &&
-        field.component_type == "password"
-      ) {
-        result["type"] = field.component_type;
-      }
-
-      if (
-        !this.isUndefined(field.component) &&
-        field.component == "date-picker"
-      ) {
-        result["close-on-content-click"] = false;
-      }
-      result["controls"] = false;
       if (!this.isUndefined(field.close_on_content_click)) {
         result["close-on-content-click"] = field.close_on_content_click;
       }
@@ -227,10 +204,7 @@ export default {
         result["step"] = field.step;
       }
 
-      if (
-        !this.isUndefined(field.component_type) &&
-        field.component_type !== ""
-      ) {
+      if (!this.isUndefined(field.component_type) && field.component_type !== "") {
         result["type"] = field.component_type;
       }
 
