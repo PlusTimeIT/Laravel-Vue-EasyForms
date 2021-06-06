@@ -142,7 +142,11 @@ export default {
   },
   methods: {
     getField: function(fieldName){
-      return this.fieldList[fieldName];
+       const fieldIndex = this.fieldList.findIndex(
+        element => element.name == fieldName
+      );
+        console.log('FIELD INDEX', fieldIndex);
+      return this.fieldList[fieldIndex];
     },
     parentLoadingData: function(field){
       if(field.dependsOn === null){
@@ -152,14 +156,16 @@ export default {
       return { dependsOn: parentField.value }
     },
     parentLoaded: function(field){
-      if(field.dependsOn === null){
-        // depends on not set or null 
+      if(field.dependsOn == null){
+        // depends on not set or null
         // no parents so load field
         return true;
       }
       //parent detected
+      console.log('DEPENDS ON', field.dependsOn);
+      console.log('FIELD LIST', this.fieldList);
       let parentField = this.getField(field.dependsOn);
-      // load field values for 
+      // load field values for
       console.log('Parent Field', parentField);
       console.log('Parent Field Value', parentField.value);
     },

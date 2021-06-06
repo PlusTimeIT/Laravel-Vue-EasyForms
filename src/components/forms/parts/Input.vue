@@ -91,10 +91,10 @@ export default {
     fieldData: {}
   }),
   created() {
-    
+
     this.fieldData = this.value;
     if(this.fieldData.dependsOn !== null){
-      console.log( 'FIELD DATA DEPENDS ON', this.fieldData.dependsOn);  
+      console.log( 'FIELD DATA DEPENDS ON', this.fieldData.dependsOn);
       this.fieldLoaded = true;
     }else{
       this.fieldLoaded = true;
@@ -105,8 +105,8 @@ export default {
       return this.$parent.form;
     },
     hasMasking: function() {
-      if(fieldData.masking.length){
-        return fieldData.masking
+      if(this.fieldData.masking !== null && this.fieldData.masking.length){
+        return this.fieldData.masking
       }
       return "";
     },
@@ -219,7 +219,7 @@ export default {
         result["chips"] = field.chips;
         result["data-vv-name"] = "select";
       }
-      
+
       if (field.type == "hidden") {
         result["class"] = "hidden-input";
       }

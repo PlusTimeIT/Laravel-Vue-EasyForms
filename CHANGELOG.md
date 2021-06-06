@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.51
+- Dependson updates and fixes
 ## 0.0.50
 - Dependson 
 
