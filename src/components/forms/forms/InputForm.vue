@@ -10,11 +10,11 @@
       <v-col cols="12">
         <v-row>
           <easy-input
-            v-for="(field, index_f) in asyncFieldList"
+            v-for="(field, index_f) in asyncFilteredFieldList"
             :key="index_f"
-            v-model="fieldList[index_f]"
+            v-model="asyncFilteredFieldList[index_f]"
             :cols="getInputCols(field)"
-            :additional_form_data="loadedAdditionalFormData"
+            :loading_data="parentLoadingData(field)"
             @field_update="updateField"
           >
           </easy-input>
@@ -88,35 +88,19 @@ export default {
     };
   },
   asyncComputed: {
-    asyncFieldList() {
-      const newFieldList = {};
+    asyncFilteredFieldList() {
+      const fields = {};
       const _this = this;
-      if (!this.isUndefined(this.fieldList)) {
-        Object.keys(this.fieldList).forEach(field => {
-          const thisField = _this.fieldList[field];
 
-          if (!_this.isUndefined(thisField.hide)) {
-            if (
-              !_this.isUndefined(thisField.show) &&
-              _this.isObject(thisField.show)
-            ) {
-              Object.keys(thisField.show).forEach(value => {
-                if (
-                  !_this.isUndefined(_this.fieldList[value].value) &&
-                  _this.fieldList[value].value === thisField.show[value]
-                ) {
-                  newFieldList[field] = thisField;
-                }
-              });
-            }
-          } else {
-            newFieldList[field] = thisField;
-          }
-        });
+      Object.keys(this.fieldList).forEach(field => {
+        const thisField = _this.fieldList[field];
+        if( this.parentLoaded(thisField) ){
+          // parent null or is loaded so add to fieldList
+          fields[field] = thisField;
+        }
+      });
 
-        return newFieldList;
-      }
-      return [];
+      return fields;
     }
   },
   computed: {
@@ -138,7 +122,7 @@ export default {
   watch: {
     fieldList: {
       handler: function() {
-        this.$asyncComputed.asyncFieldList.update();
+        this.$asyncComputed.asyncFilteredFieldList.update();
       },
       deep: true
     },
@@ -157,6 +141,28 @@ export default {
     }
   },
   methods: {
+    getField: function(fieldName){
+      return this.fieldList[fieldName];
+    },
+    parentLoadingData: function(field){
+      if(field.dependsOn === null){
+        return null
+      }
+      let parentField = this.getField(field.dependsOn);
+      return { dependsOn: parentField.value }
+    },
+    parentLoaded: function(field){
+      if(field.dependsOn === null){
+        // depends on not set or null 
+        // no parents so load field
+        return true;
+      }
+      //parent detected
+      let parentField = this.getField(field.dependsOn);
+      // load field values for 
+      console.log('Parent Field', parentField);
+      console.log('Parent Field Value', parentField.value);
+    },
     updateField(event) {
       const fieldIndex = this.fieldList.findIndex(
         element => element.name == event.name

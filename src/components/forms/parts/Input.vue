@@ -9,7 +9,7 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
-        v-mask="fieldData.masking"
+        v-mask="hasMasking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -62,15 +62,11 @@ export default {
     TimePicker
   },
   props: {
-    form_field: {
-      type: Object,
-      default: () => ({})
-    },
     cols: {
       Type: String,
       default: "6"
     },
-    additional_form_data: {
+    loading_data: {
       type: Object,
       default: () => ({})
     },
@@ -91,18 +87,31 @@ export default {
     }
   },
   data: () => ({
-    password: false,
-    confirm_password: false,
-    menu: false,
-    dates: [],
+    fieldLoaded: false,
     fieldData: {}
   }),
   created() {
+    
     this.fieldData = this.value;
+    if(this.fieldData.dependsOn !== null){
+      console.log( 'FIELD DATA DEPENDS ON', this.fieldData.dependsOn);  
+      this.fieldLoaded = true;
+    }else{
+      this.fieldLoaded = true;
+    }
   },
   computed: {
-    additionalForm: function() {
-      return this.additional_form_data;
+    form: function(){
+      return this.$parent.form;
+    },
+    hasMasking: function() {
+      if(fieldData.masking.length){
+        return fieldData.masking
+      }
+      return "";
+    },
+    loadingData: function() {
+      return this.loading_data;
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)
@@ -126,12 +135,38 @@ export default {
     }
   },
   methods: {
+    async loadField(fieldName) {
+      this.fieldLoaded = false;
+      const _this = this;
+      return this.request(
+        "post",
+        "/axios/forms/fields/load",
+        this.mergeAdditionalLoadFormData(
+          {
+            form_name: this.form,
+            field_name: fieldName
+          },
+          this.loadingData
+        )
+      ).then(axiosResponse => {
+        _this.formLoading = axiosResponse.loader;
+        if (!axiosResponse.result) {
+          _this.triggerAlerts("failed_load");
+          return false;
+        }
+        _this.formLoaded = true;
+        _this.loadedFormData = axiosResponse.data;
+        _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
+        _this.triggerAlerts("after_load");
+      });
+    },
     fieldValueLength: function(value) {
       return value != null ? value.length : 0;
     },
     displayCol() {
       if (this.isUndefined(this.fieldData.type)) return false;
       if (this.fieldData.type == "hidden") return false;
+      if (!this.fieldLoaded) return false;
       return true;
     },
     prepareRules() {
@@ -235,10 +270,6 @@ export default {
 
       if (!this.isUndefined(field.maxlength)) {
         result["maxlength"] = field.maxlength;
-      }
-
-      if (!this.isUndefined(this.additional_form_data)) {
-        result["additional_form_data"] = this.additionalForm;
       }
 
       if (field.component == "h2") {
