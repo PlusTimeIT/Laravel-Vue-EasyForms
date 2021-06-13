@@ -141,6 +141,27 @@ export default {
     }
   },
   methods: {
+    async loadField(field) {
+      this.fieldLoaded = false;
+      const _this = this;
+      return this.request(
+        "post",
+        "/axios/forms/fields/load",
+        this.mergeAdditionalLoadFormData(
+          {
+            form_name: this.form,
+            field_name: field.name
+          },
+          this.parentLoadingData(field)
+        )
+      ).then(axiosResponse => {
+        _this.formLoading = axiosResponse.loader;
+        if (!axiosResponse.result) {
+          return Promise.resolve(false);
+        }
+        return Promise.resolve(axiosResponse.data);
+      });
+    },
     getField: function(fieldName){
        const fieldIndex = this.fieldList.findIndex(
         element => element.name == fieldName
@@ -157,17 +178,11 @@ export default {
     },
     parentLoaded: function(field){
       if(field.dependsOn == null){
-        // depends on not set or null
-        // no parents so load field
         return true;
       }
-      //parent detected
-      console.log('DEPENDS ON', field.dependsOn);
-      console.log('FIELD LIST', this.fieldList);
-      let parentField = this.getField(field.dependsOn);
-      // load field values for
-      console.log('Parent Field', parentField);
-      console.log('Parent Field Value', parentField.value);
+      let fieldData = this.loadField(field);
+      console.log('FIELD DATA', fieldData);
+
     },
     updateField(event) {
       const fieldIndex = this.fieldList.findIndex(

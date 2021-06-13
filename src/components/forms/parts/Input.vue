@@ -8,8 +8,46 @@
     >
       <component
         :is="fieldData.component"
+        v-if="hasMasking"
         v-model="fieldData.value"
-        v-mask="hasMasking"
+        v-mask="fieldData.masking"
+        v-bind="prepareProps(errors)"
+      >
+        <div v-if="fieldData.component == 'v-radio-group'">
+          <v-radio
+            v-for="(item, index) in fieldData.items"
+            :key="index"
+            :label="item.label"
+            :value="item.value"
+            :color="item.color"
+          ></v-radio>
+        </div>
+        <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+          {{ fieldData.value }}
+        </p>
+        <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+          <template #activator="{ on }">
+            <v-icon slot="activator" color="primary" dark v-on="on">
+              mdi-help-box
+            </v-icon>
+          </template>
+          <span>{{ fieldData.help }} </span>
+        </v-tooltip>
+        <template
+          v-if="!isUndefined(fieldData.counter) && fieldData.counter"
+          v-slot:counter="{ props }"
+        >
+          <v-counter
+            v-bind="props"
+            :value="fieldValueLength(fieldData.value)"
+          ></v-counter>
+        </template>
+      </component>
+      <component
+        :is="fieldData.component"
+        v-else
+        v-model="fieldData.value"
+        v-mask="fieldData.masking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -94,7 +132,6 @@ export default {
 
     this.fieldData = this.value;
     if(this.fieldData.dependsOn !== null){
-      console.log( 'FIELD DATA DEPENDS ON', this.fieldData.dependsOn);
       this.fieldLoaded = true;
     }else{
       this.fieldLoaded = true;
@@ -106,9 +143,9 @@ export default {
     },
     hasMasking: function() {
       if(this.fieldData.masking !== null && this.fieldData.masking.length){
-        return this.fieldData.masking
+        return true
       }
-      return "";
+      return false;
     },
     loadingData: function() {
       return this.loading_data;
@@ -135,31 +172,7 @@ export default {
     }
   },
   methods: {
-    async loadField(fieldName) {
-      this.fieldLoaded = false;
-      const _this = this;
-      return this.request(
-        "post",
-        "/axios/forms/fields/load",
-        this.mergeAdditionalLoadFormData(
-          {
-            form_name: this.form,
-            field_name: fieldName
-          },
-          this.loadingData
-        )
-      ).then(axiosResponse => {
-        _this.formLoading = axiosResponse.loader;
-        if (!axiosResponse.result) {
-          _this.triggerAlerts("failed_load");
-          return false;
-        }
-        _this.formLoaded = true;
-        _this.loadedFormData = axiosResponse.data;
-        _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
-        _this.triggerAlerts("after_load");
-      });
-    },
+    
     fieldValueLength: function(value) {
       return value != null ? value.length : 0;
     },
