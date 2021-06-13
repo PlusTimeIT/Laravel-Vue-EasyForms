@@ -149,7 +149,7 @@ export default {
         "/axios/forms/fields/load",
         this.mergeAdditionalLoadFormData(
           {
-            form_name: this.form,
+            form_name: this.form.name,
             field_name: field.name
           },
           this.parentLoadingData(field)
