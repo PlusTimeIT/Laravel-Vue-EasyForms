@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.55
+- Remove v-if on masking and add v-mask only to textfields 
+
+## 0.0.54
+- InputForm 
+
 ## 0.0.52
 - Input v-if for masking (attempt at length fix)
 - Load field request

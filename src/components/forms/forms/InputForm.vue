@@ -180,7 +180,8 @@ export default {
       if(field.dependsOn == null){
         return true;
       }
-      let fieldData = this.loadField(field);
+      let fieldData = await this.loadField(field);
+      field.items = 
       console.log('FIELD DATA', fieldData);
 
     },
