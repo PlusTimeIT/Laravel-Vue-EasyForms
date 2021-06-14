@@ -176,7 +176,7 @@ export default {
       let parentField = this.getField(field.dependsOn);
       return { dependsOn: parentField.value }
     },
-    parentLoaded: function(field){
+    async parentLoaded(field){
       if(field.dependsOn == null){
         return true;
       }
