@@ -170,7 +170,7 @@ export default {
     },
     parentLoadingData: function(field){
       if(field.dependsOn === null){
-        return null
+        return { dependsOn: null }
       }
       let parentField = this.getField(field.dependsOn);
       return { dependsOn: parentField.value }
@@ -187,28 +187,37 @@ export default {
         return false;
       }
 
-      let fieldData = await this.loadField(field);
       
-      const fieldIndex = this.fieldList.findIndex(
-        element => element.name == field.name
-      );
-      if( field.type == 'select' ){
-        field.items = fieldData;
-        this.fieldList[fieldIndex].items = fieldData;
-        console.log('SELECT ITEMS DATA', fieldData);
-      }else{
-        field.value = fieldData;
-        this.fieldList[fieldIndex].value = fieldData;
-        console.log('FIELD DATA', fieldData);
-      }
-      
+      return true;
 
     },
-    updateField(event) {
+    async updateField(event) {
+      let _this = this;
       const fieldIndex = this.fieldList.findIndex(
         element => element.name == event.name
       );
       this.fieldList[fieldIndex] = event;
+
+      // if parent to fields
+      let childFieldIndexs = this.fieldList.reduce((a,field,index)=>{
+        if( !_this.isUndefined(field.dependsOn) && field.dependsOn == event.name)
+          a.push(index);
+        return a;
+      }, [] );
+
+      for (const index of childFieldIndexs) {
+          let tmp_field = this.fieldList[index];
+          let fieldData = await this.loadField(tmp_field);
+          if( tmp_field.type == 'select' ){
+            tmp_field.items = fieldData;
+            this.fieldList[index].items = fieldData;
+            console.log('SELECT ITEMS DATA', fieldData);
+          }else{
+            field.value = fieldData;
+            this.fieldList[index].value = fieldData;
+            console.log('FIELD DATA', fieldData);
+          }
+      }     
     },
     resetForm(triggerAlerts = true) {
       // clear data
