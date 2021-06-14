@@ -14,7 +14,6 @@
             :key="index_f"
             v-model="asyncFilteredFieldList[index_f]"
             :cols="getInputCols(field)"
-            :loading_data="parentLoadingData(field)"
             @field_update="updateField"
           >
           </easy-input>
@@ -180,9 +179,29 @@ export default {
       if(field.dependsOn == null){
         return true;
       }
+
+      //check if parent loading data
+      let parentData = this.parentLoadingData(field);
+      if( parentData.dependsOn === null || parentData.dependsOn.length === 0 ) {
+        console.log( 'PARENT NULL OR NOT SET' );
+        return false;
+      }
+
       let fieldData = await this.loadField(field);
-      field.items = 
-      console.log('FIELD DATA', fieldData);
+      
+      const fieldIndex = this.fieldList.findIndex(
+        element => element.name == field.name
+      );
+      if( field.type == 'select' ){
+        field.items = fieldData;
+        this.fieldList[fieldIndex].items = fieldData;
+        console.log('SELECT ITEMS DATA', fieldData);
+      }else{
+        field.value = fieldData;
+        this.fieldList[fieldIndex].value = fieldData;
+        console.log('FIELD DATA', fieldData);
+      }
+      
 
     },
     updateField(event) {

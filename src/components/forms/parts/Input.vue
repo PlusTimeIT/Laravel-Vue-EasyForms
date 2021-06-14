@@ -66,10 +66,6 @@ export default {
       Type: String,
       default: "6"
     },
-    loading_data: {
-      type: Object,
-      default: () => ({})
-    },
     offset: {
       Type: String,
       default: ""
@@ -108,9 +104,6 @@ export default {
         return this.fieldData.masking
       }
       return null;
-    },
-    loadingData: function() {
-      return this.loading_data;
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.56
+- loadField updates
+- removed field updating from input to inputform
+- check if parent loading data
+
+
 ## 0.0.55
 - Remove v-if on masking and add v-mask only to textfields 
 
