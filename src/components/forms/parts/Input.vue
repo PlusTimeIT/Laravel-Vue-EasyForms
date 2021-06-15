@@ -100,10 +100,19 @@ export default {
       return this.$parent.form;
     },
     getMasking: function() {
-      if( !this.isUndefined(this.fieldData.masking) && this.fieldData.masking.length > 0){
-        return this.fieldData.masking
+      if( this.isUndefined(this.fieldData.masking)){
+        return null;
       }
-      return null;
+      
+      if(this.fieldData.masking == null){
+        return null;
+      }
+
+      if(this.fieldData.masking.length > 0){
+        return null;
+      }
+
+      return this.fieldData.masking
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)

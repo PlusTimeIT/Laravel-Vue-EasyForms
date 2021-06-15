@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.59
+- getMasking better function structure and null check on masking value
+
 ## 0.0.58
 - Remove console.logs
 
