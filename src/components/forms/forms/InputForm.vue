@@ -93,7 +93,7 @@ export default {
 
       Object.keys(this.fieldList).forEach(field => {
         const thisField = _this.fieldList[field];
-        if( this.parentLoaded(thisField) ){
+        if( this.parentLoaded(thisField)){
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
@@ -165,7 +165,6 @@ export default {
        const fieldIndex = this.fieldList.findIndex(
         element => element.name == fieldName
       );
-        console.log('FIELD INDEX', fieldIndex);
       return this.fieldList[fieldIndex];
     },
     parentLoadingData: function(field){
@@ -176,20 +175,18 @@ export default {
       return { dependsOn: parentField.value }
     },
     async parentLoaded(field){
-      if(field.dependsOn == null){
+      if( this.isUndefined(field.dependsOn) || field.dependsOn == null){
         return true;
       }
-
       //check if parent loading data
       let parentData = this.parentLoadingData(field);
-      if( parentData.dependsOn === null || parentData.dependsOn.length === 0 ) {
-        console.log( 'PARENT NULL OR NOT SET' );
+      if( parentData.dependsOn == null) {
         return false;
       }
-
-      
+      if(parentData.dependsOn.length == 0) {
+        return false;
+      }
       return true;
-
     },
     async updateField(event) {
       let _this = this;
@@ -209,13 +206,9 @@ export default {
           let tmp_field = this.fieldList[index];
           let fieldData = await this.loadField(tmp_field);
           if( tmp_field.type == 'select' ){
-            tmp_field.items = fieldData;
             this.fieldList[index].items = fieldData;
-            console.log('SELECT ITEMS DATA', fieldData);
           }else{
-            field.value = fieldData;
             this.fieldList[index].value = fieldData;
-            console.log('FIELD DATA', fieldData);
           }
       }     
     },

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.58
+- Remove console.logs
+
+## 0.0.57
+- 
+
 ## 0.0.56
 - loadField updates
 - removed field updating from input to inputform
