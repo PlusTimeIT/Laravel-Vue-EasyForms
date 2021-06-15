@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-form
-      v-if="loadedFormData.form_type == 'input'"
+      v-if="loadedFormData.type == 'input'"
       v-bind="formProps()"
       ref="loadedForm"
       :key="updateForm"
@@ -96,7 +96,6 @@ export default {
       for (const field of fieldKeys) {
         const thisField = _this.fieldList[field];
         let isParentLoaded = await _this.parentLoaded(thisField);
-        console.log('isParentLoaded', isParentLoaded);
         if(isParentLoaded){
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;

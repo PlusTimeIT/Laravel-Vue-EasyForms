@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.62
+- Rename form_type to type
+
+## 0.0.61
+- 
+
 ## 0.0.60
 - parent dependsOn changes
 ## 0.0.59

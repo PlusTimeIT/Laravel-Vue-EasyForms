@@ -28,7 +28,7 @@
       </v-row>
       <v-row v-if="!formLoading">
         <input-form
-          v-if="loadedFormData.form_type == 'input'"
+          v-if="loadedFormData.type == 'input'"
           :form="loadedFormData"
           :additional_form_data="loadedAdditionalFormData"
           @results="formHasResults"
@@ -41,7 +41,7 @@
           @successful="formHasSuccessfulProcessing"
         ></input-form>
         <action-form
-          v-if="loadedFormData.form_type == 'action'"
+          v-if="loadedFormData.type == 'action'"
           :form="loadedFormData"
           :additional_form_data="loadedAdditionalFormData"
           @loading="formIsLoading"
