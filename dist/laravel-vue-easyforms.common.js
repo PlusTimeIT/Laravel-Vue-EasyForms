@@ -26692,12 +26692,12 @@ var version = '3.4.5';
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__("0658");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72769ac8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=6ac2fc74&
-var InputFormvue_type_template_id_6ac2fc74_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
-var InputFormvue_type_template_id_6ac2fc74_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72769ac8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=19f87e56&
+var InputFormvue_type_template_id_19f87e56_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.form_type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
+var InputFormvue_type_template_id_19f87e56_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/forms/forms/InputForm.vue?vue&type=template&id=6ac2fc74&
+// CONCATENATED MODULE: ./src/components/forms/forms/InputForm.vue?vue&type=template&id=19f87e56&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72769ac8-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/forms/parts/Input.vue?vue&type=template&id=6fc18dd6&
 var Inputvue_type_template_id_6fc18dd6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
@@ -30141,9 +30141,11 @@ var Button = __webpack_require__("0578");
       const _this = this;
 
       Object.keys(this.fieldList).forEach(field => {
+        console.log('FIELD OBJ', field);
         const thisField = _this.fieldList[field];
+        console.log('THIS FIELD', thisField);
 
-        if (this.parentLoaded(thisField)) {
+        if (_this.parentLoaded(thisField)) {
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
@@ -30226,21 +30228,33 @@ var Button = __webpack_require__("0578");
     },
 
     async parentLoaded(field) {
-      if (this.isUndefined(field.dependsOn) || field.dependsOn == null) {
+      console.log('Parent Loaded check');
+
+      if (this.isUndefined(field.dependsOn)) {
+        console.log('dependsOn Not defined - no parent ' + field.name);
         return true;
-      } //check if parent loading data
+      }
+
+      if (field.dependsOn == null) {
+        console.log('dependsOn null - no parent ' + field.name);
+        return true;
+      } //check if parent loading data has been set
 
 
       let parentData = this.parentLoadingData(field);
+      console.log('dependsOn parent data ', parentData);
 
       if (parentData.dependsOn == null) {
+        console.log('parentData dependsOn null');
         return false;
       }
 
       if (parentData.dependsOn.length == 0) {
+        console.log('parentData.dependsOn.length == 0');
         return false;
       }
 
+      console.log('dependsOn - parentData Show - parent loaded');
       return true;
     },
 
@@ -30339,8 +30353,8 @@ var Button = __webpack_require__("0578");
 
 var InputForm_component = Object(componentNormalizer["a" /* default */])(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_6ac2fc74_render,
-  InputFormvue_type_template_id_6ac2fc74_staticRenderFns,
+  InputFormvue_type_template_id_19f87e56_render,
+  InputFormvue_type_template_id_19f87e56_staticRenderFns,
   false,
   null,
   null,

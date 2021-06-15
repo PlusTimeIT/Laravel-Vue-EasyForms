@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.60
+- parent dependsOn changes
 ## 0.0.59
 - getMasking better function structure and null check on masking value
 

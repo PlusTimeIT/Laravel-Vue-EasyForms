@@ -92,8 +92,11 @@ export default {
       const _this = this;
 
       Object.keys(this.fieldList).forEach(field => {
+        console.log('FIELD OBJ', field);
+        
         const thisField = _this.fieldList[field];
-        if( this.parentLoaded(thisField)){
+        console.log('THIS FIELD', thisField);
+        if( _this.parentLoaded(thisField)){
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
@@ -175,17 +178,28 @@ export default {
       return { dependsOn: parentField.value }
     },
     async parentLoaded(field){
-      if( this.isUndefined(field.dependsOn) || field.dependsOn == null){
+      console.log('Parent Loaded check');
+      if(this.isUndefined(field.dependsOn)){
+        console.log('dependsOn Not defined - no parent ' + field.name);
         return true;
       }
-      //check if parent loading data
+      if(field.dependsOn == null){
+        console.log('dependsOn null - no parent ' + field.name);
+        return true;
+      }
+
+      //check if parent loading data has been set
       let parentData = this.parentLoadingData(field);
+      console.log('dependsOn parent data ', parentData);
       if( parentData.dependsOn == null) {
+        console.log('parentData dependsOn null');
         return false;
       }
       if(parentData.dependsOn.length == 0) {
+        console.log('parentData.dependsOn.length == 0');
         return false;
       }
+      console.log('dependsOn - parentData Show - parent loaded');
       return true;
     },
     async updateField(event) {
