@@ -87,20 +87,21 @@ export default {
     };
   },
   asyncComputed: {
-    asyncFilteredFieldList() {
+    async asyncFilteredFieldList() {
       const fields = {};
       const _this = this;
 
-      Object.keys(this.fieldList).forEach(field => {
-        console.log('FIELD OBJ', field);
+      const fieldKeys = Object.keys(this.fieldList)   
         
+      for (const field of fieldKeys) {
         const thisField = _this.fieldList[field];
-        console.log('THIS FIELD', thisField);
-        if( _this.parentLoaded(thisField)){
+        let isParentLoaded = await _this.parentLoaded(thisField);
+        console.log('isParentLoaded', isParentLoaded);
+        if(isParentLoaded){
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
-      });
+      }
 
       return fields;
     }
