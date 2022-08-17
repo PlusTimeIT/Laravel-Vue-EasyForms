@@ -63,7 +63,8 @@ import {
     VSlider,
     VSelect,
     VSwitch,
-    VTextarea
+    VTextarea,
+    VTextField
 } from 'vuetify/lib'
 
 export default {
@@ -85,7 +86,8 @@ export default {
     VSlider,
     VSelect,
     VSwitch,
-    VTextarea
+    VTextarea,
+    VTextField,
   },
   props: {
     cols: {
