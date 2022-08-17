@@ -19,7 +19,7 @@
           </easy-input>
         </v-row>
         <v-row v-if="displayButton" :align="loadedFormData.buttonAlignRow" :justify="loadedFormData.buttonJustifyRow">
-          <v-col v-for="(button, index) in loadedFormData.buttons" :key="index">
+          <v-col cols="auto" v-for="(button, index) in loadedFormData.buttons" :key="index">
             <easy-button
               :button="button"
               :identifier="index"
