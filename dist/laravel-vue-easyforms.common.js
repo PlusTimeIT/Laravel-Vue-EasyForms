@@ -21938,7 +21938,7 @@ webpackContext.id = 6700;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6905);
+/* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3967);
 /* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4316);
 /* harmony import */ var _parts_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(689);
 //
@@ -22079,21 +22079,13 @@ webpackContext.id = 6700;
 
 /***/ }),
 
-/***/ 6905:
+/***/ 3967:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "T": () => (/* binding */ FormMixin)
-});
-
-;// CONCATENATED MODULE: external "axios"
-const external_axios_namespaceObject = require("axios");
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_namespaceObject);
-;// CONCATENATED MODULE: ./src/components/forms/mixins/FormMixins.js
-
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "T": () => (/* binding */ FormMixin)
+/* harmony export */ });
 const FormMixin = {
   methods: {
     isObjectEmpty: function (o) {
@@ -22131,7 +22123,7 @@ const FormMixin = {
           ...parameters
         }
       };
-      return (external_axios_default())[type](url, data, sendParameters).then(response => {
+      return this.$axios[type](url, data, sendParameters).then(response => {
         return response.data;
       });
     },
@@ -22340,8 +22332,8 @@ return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"on":on,"color":_vm.load
 var staticRenderFns = []
 
 
-// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js + 1 modules
-var FormMixins = __webpack_require__(6905);
+// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
+var FormMixins = __webpack_require__(3967);
 // EXTERNAL MODULE: ./src/components/forms/parts/LvefIcon.vue + 3 modules
 var LvefIcon = __webpack_require__(689);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=script&lang=js&
@@ -22487,8 +22479,8 @@ return [_c('v-icon',_vm._g({attrs:{"dismissible":""},on:{"click":function($event
 var staticRenderFns = []
 
 
-// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js + 1 modules
-var FormMixins = __webpack_require__(6905);
+// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
+var FormMixins = __webpack_require__(3967);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefIcon.vue?vue&type=script&lang=js&
 //
 //
@@ -30383,8 +30375,8 @@ var version = '3.4.14';
 
 
 
-// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js + 1 modules
-var FormMixins = __webpack_require__(6905);
+// EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
+var FormMixins = __webpack_require__(3967);
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=5f75a326&
 var InputFormvue_type_template_id_5f75a326_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
 var InputFormvue_type_template_id_5f75a326_staticRenderFns = []

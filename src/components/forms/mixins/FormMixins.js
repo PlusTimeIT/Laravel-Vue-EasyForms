@@ -33,7 +33,7 @@ export const FormMixin = {
       const sendParameters = {
         headers: { ...defaultParameters, ...parameters }
       };
-      return axios[type](url, data, sendParameters).then(response => {
+      return this.$axios[type](url, data, sendParameters).then(response => {
         return response.data;
       });
     },

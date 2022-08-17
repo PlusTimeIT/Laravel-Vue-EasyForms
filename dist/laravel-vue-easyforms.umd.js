@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("axios"), require("vue"));
+		module.exports = factory(require("vue"));
 	else if(typeof define === 'function' && define.amd)
-		define(["axios", "vue"], factory);
+		define(["vue"], factory);
 	else if(typeof exports === 'object')
-		exports["laravel-vue-easyforms"] = factory(require("axios"), require("vue"));
+		exports["laravel-vue-easyforms"] = factory(require("vue"));
 	else
-		root["laravel-vue-easyforms"] = factory(root["axios"], root["vue"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__3300__, __WEBPACK_EXTERNAL_MODULE__748__) {
+		root["laravel-vue-easyforms"] = factory(root["vue"]);
+})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__748__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -22096,9 +22096,6 @@ webpackContext.id = 6700;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "T": () => (/* binding */ FormMixin)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3300);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
 const FormMixin = {
   methods: {
     isObjectEmpty: function (o) {
@@ -22136,7 +22133,7 @@ const FormMixin = {
           ...parameters
         }
       };
-      return (axios__WEBPACK_IMPORTED_MODULE_0___default())[type](url, data, sendParameters).then(response => {
+      return this.$axios[type](url, data, sendParameters).then(response => {
         return response.data;
       });
     },
@@ -28204,14 +28201,6 @@ function mixins(...args) {
   });
 }
 //# sourceMappingURL=mixins.js.map
-
-/***/ }),
-
-/***/ 3300:
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__3300__;
 
 /***/ }),
 
