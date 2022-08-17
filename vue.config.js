@@ -7,7 +7,7 @@ module.exports = {
     output: {
       libraryExport: "default"
     },
-    externals: ["vuetify", "vue", "axios"],
+    externals: ["vuetify", "vue", "axios", "vuetify/lib"],
     plugins: [new VuetifyLoaderPlugin()]
   }
 };
