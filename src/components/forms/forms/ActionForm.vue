@@ -26,8 +26,8 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyButton from "../parts/Button.vue";
-import EasyIcon from "../parts/Icon.vue";
+import EasyButton from "../parts/LvefButton.vue";
+import EasyIcon from "../parts/LvefIcon.vue";
 
 export default {
   name: "ActionForm",
@@ -127,9 +127,13 @@ export default {
         action.conditions.forEach(function(condition) {
           results.push(
             eval(
-            '"' + _this.loadedAdditionalFormData[condition.check] + '" ' +
-            condition.operator +
-            ' "' + condition.against + '"'
+              '"' +
+                _this.loadedAdditionalFormData[condition.check] +
+                '" ' +
+                condition.operator +
+                ' "' +
+                condition.against +
+                '"'
             )
           );
         });

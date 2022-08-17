@@ -10,7 +10,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-text-field
-        v-model="formattedDates"
+        v-model="selectedColor"
         persistent-hint
         readonly
         v-on="on"
@@ -20,19 +20,8 @@
         :label="label"
       ></v-text-field>
     </template>
-    <v-date-picker v-model="dates" :range="multiple" no-title scrollable dark>
-      <v-spacer v-if="controls"></v-spacer>
-      <v-btn v-if="controls" text color="primary" @click="menu = false"
-        >Cancel</v-btn
-      >
-      <v-btn
-        v-if="controls"
-        text
-        color="primary"
-        @click="$refs.menu.save(dates)"
-        >OK</v-btn
-      >
-    </v-date-picker>
+    <v-color-picker v-model="dates" :range="multiple" no-title scrollable dark>
+    </v-color-picker>
   </v-menu>
 </template>
 
@@ -42,7 +31,6 @@ import { FormMixin } from "../mixins/FormMixins";
 
 export default {
   mixins: [FormMixin],
-  name: "DatePicker",
   props: {
     value: {
       default: () => []
@@ -69,35 +57,21 @@ export default {
     }
   },
   data: () => ({
-    dates: "",
+    selectedColor: "",
     datesFormatted: "",
     menu: false
   }),
   mounted() {
-    if (!this.multiple) {
-      this.datesFormatted = this.formatPickerDate(this.dates);
-      this.dates = this.value;
-    } else {
-      this.datesFormatted = [];
-      this.dates = this.value;
-    }
+    this.selectedColor = this.value;
   },
   computed: {
     loadedErrorMessages() {
       return this.errorMessages;
-    },
-    formattedDates() {
-      if (!this.isArray(this.dates)) {
-        return this.formatPickerDate(this.dates);
-      }
-
-      return this.formatPickerDate(this.dates).join(" ~ ");
     }
   },
   watch: {
-    dates() {
-      this.datesFormatted = this.formatPickerDate(this.dates);
-      this.$emit("input", this.datesFormatted);
+    selectedColor() {
+      this.$emit("input", this.selectedColor);
     }
   },
 

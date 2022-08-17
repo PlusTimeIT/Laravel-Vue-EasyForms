@@ -48,12 +48,12 @@
 
 <script>
 import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
-import { FormMixin } from "../mixins/FormMixins";
-import DatePicker from "../fields/DatePicker";
-import TimePicker from "../fields/TimePicker";
+import { FormMixin } from "/src/components/forms/mixins/FormMixins";
+import DatePicker from "/src/components/forms/fields/DatePicker.vue";
+import TimePicker from "/src/components/forms/fields/TimePicker.vue";
 
 export default {
-  name: "Input",
+  name: "LvefInput",
   $validates: true,
   mixins: [FormMixin],
   components: {
@@ -87,32 +87,31 @@ export default {
     fieldData: {}
   }),
   created() {
-
     this.fieldData = this.value;
-    if(this.fieldData.dependsOn !== null){
+    if (this.fieldData.dependsOn !== null) {
       this.fieldLoaded = true;
-    }else{
+    } else {
       this.fieldLoaded = true;
     }
   },
   computed: {
-    form: function(){
+    form: function() {
       return this.$parent.form;
     },
     getMasking: function() {
-      if( this.isUndefined(this.fieldData.masking)){
-        return null;
-      }
-      
-      if(this.fieldData.masking == null){
+      if (this.isUndefined(this.fieldData.masking)) {
         return null;
       }
 
-      if(this.fieldData.masking.length > 0){
+      if (this.fieldData.masking == null) {
         return null;
       }
 
-      return this.fieldData.masking
+      if (this.fieldData.masking.length > 0) {
+        return null;
+      }
+
+      return this.fieldData.masking;
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)
@@ -136,7 +135,6 @@ export default {
     }
   },
   methods: {
-    
     fieldValueLength: function(value) {
       return value != null ? value.length : 0;
     },
@@ -175,7 +173,7 @@ export default {
         result["class"] = "mt-2";
       }
 
-      if ((field.type == "select" || field.type == "autocomplete")) {
+      if (field.type == "select" || field.type == "autocomplete") {
         result["selected"] =
           !this.isUndefined(field.integer) && field.integer
             ? parseInt(field.value)
@@ -213,7 +211,10 @@ export default {
         result["step"] = field.step;
       }
 
-      if (!this.isUndefined(field.component_type) && field.component_type !== "") {
+      if (
+        !this.isUndefined(field.component_type) &&
+        field.component_type !== ""
+      ) {
         result["type"] = field.component_type;
       }
 

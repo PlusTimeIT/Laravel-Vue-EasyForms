@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const FormMixin = {
   methods: {
@@ -120,7 +120,7 @@ export const FormMixin = {
       _this
         .request(
           "post",
-          "/axios/forms/process",
+          this.$axiosPrefix + "/forms/process",
           _this.mergeAdditionData(
             form,
             _this.formData(form, data, identifier),
@@ -143,17 +143,26 @@ export const FormMixin = {
 
           _this.$emit("successful", axiosResponse.data);
           // Response redirect should override form redirect
-          if ((!_this.isUndefined(axiosResponse.redirect) && axiosResponse.redirect !== null)) {
+          if (
+            !_this.isUndefined(axiosResponse.redirect) &&
+            axiosResponse.redirect !== null
+          ) {
             _this.$emit("redirect", axiosResponse.redirect);
             _this.redirect(axiosResponse.redirect);
           }
 
-          if ((!_this.isUndefined(formAxios.redirect) && formAxios.redirect !== false)) {
+          if (
+            !_this.isUndefined(formAxios.redirect) &&
+            formAxios.redirect !== false
+          ) {
             _this.$emit("redirect", formAxios.redirect);
             _this.redirect(formAxios.redirect);
           }
 
-          if ( !_this.isUndefined(formAxios.form_reset) && formAxios.form_reset !== false ) {
+          if (
+            !_this.isUndefined(formAxios.form_reset) &&
+            formAxios.form_reset !== false
+          ) {
             _this.resetForm(false);
           }
 
@@ -176,14 +185,16 @@ export const FormMixin = {
           if (formData.has(data[item].name)) {
             formData.set(
               data[item].name,
-              _this.isObject(data[item].value) || _this.isArray(data[item].value)
+              _this.isObject(data[item].value) ||
+                _this.isArray(data[item].value)
                 ? JSON.stringify(data[item].value)
                 : data[item].value
             );
           } else {
             formData.append(
               data[item].name,
-              _this.isObject(data[item].value) || _this.isArray(data[item].value)
+              _this.isObject(data[item].value) ||
+                _this.isArray(data[item].value)
                 ? JSON.stringify(data[item].value)
                 : data[item].value
             );
@@ -216,7 +227,9 @@ export const FormMixin = {
     },
     mergeAdditionData: function(form, formData, additionalData, action) {
       const multiPart =
-        !this.isUndefined(form.axios) && !this.isUndefined(form.axios.multi_part) && form.axios.multiPart
+        !this.isUndefined(form.axios) &&
+        !this.isUndefined(form.axios.multi_part) &&
+        form.axios.multiPart
           ? true
           : false;
       const _this = this;
@@ -225,14 +238,16 @@ export const FormMixin = {
           if (formData.has(key)) {
             formData.set(
               key,
-              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key])
+              _this.isObject(additionalData[key]) ||
+                _this.isArray(additionalData[key])
                 ? JSON.stringify(additionalData[key])
                 : additionalData[key]
             );
           } else {
             formData.append(
               key,
-              _this.isObject(additionalData[key]) || _this.isArray(additionalData[key])
+              _this.isObject(additionalData[key]) ||
+                _this.isArray(additionalData[key])
                 ? JSON.stringify(additionalData[key])
                 : additionalData[key]
             );

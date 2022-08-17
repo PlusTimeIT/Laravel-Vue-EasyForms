@@ -10,3 +10,7 @@ To be used with Laravel EasyForms Backend Package
 - Run `npm run build-library --fix`
 - Increase version number from package.json
 - Upload to npmjs.com `npm publish`
+
+
+## Installing the package:
+- Axios must be imported into the parent project and set: `Vue.prototype.axios = axios;`

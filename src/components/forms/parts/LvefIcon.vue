@@ -16,7 +16,7 @@
 import { FormMixin } from "../mixins/FormMixins";
 
 export default {
-  name: "Icon",
+  name: "LvefIcon",
   mixins: [FormMixin],
   props: {
     icon: {

@@ -34,8 +34,8 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyInput from "../parts/Input.vue";
-import EasyButton from "../parts/Button.vue";
+import EasyInput from "../parts/LvefInput.vue";
+import EasyButton from "../parts/LvefButton.vue";
 
 // Input Form emits the current events
 // @loading - boolean - true if form is loading, false if loaded
@@ -91,12 +91,12 @@ export default {
       const fields = {};
       const _this = this;
 
-      const fieldKeys = Object.keys(this.fieldList)   
-        
+      const fieldKeys = Object.keys(this.fieldList);
+
       for (const field of fieldKeys) {
         const thisField = _this.fieldList[field];
         let isParentLoaded = await _this.parentLoaded(thisField);
-        if(isParentLoaded){
+        if (isParentLoaded) {
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
@@ -148,7 +148,7 @@ export default {
       const _this = this;
       return this.request(
         "post",
-        "/axios/forms/fields/load",
+        this.$axiosPrefix + "/forms/fields/load",
         this.mergeAdditionalLoadFormData(
           {
             form_name: this.form.name,
@@ -164,42 +164,42 @@ export default {
         return Promise.resolve(axiosResponse.data);
       });
     },
-    getField: function(fieldName){
-       const fieldIndex = this.fieldList.findIndex(
+    getField: function(fieldName) {
+      const fieldIndex = this.fieldList.findIndex(
         element => element.name == fieldName
       );
       return this.fieldList[fieldIndex];
     },
-    parentLoadingData: function(field){
-      if(field.dependsOn === null){
-        return { dependsOn: null }
+    parentLoadingData: function(field) {
+      if (field.dependsOn === null) {
+        return { dependsOn: null };
       }
       let parentField = this.getField(field.dependsOn);
-      return { dependsOn: parentField.value }
+      return { dependsOn: parentField.value };
     },
-    async parentLoaded(field){
-      console.log('Parent Loaded check');
-      if(this.isUndefined(field.dependsOn)){
-        console.log('dependsOn Not defined - no parent ' + field.name);
+    async parentLoaded(field) {
+      console.log("Parent Loaded check");
+      if (this.isUndefined(field.dependsOn)) {
+        console.log("dependsOn Not defined - no parent " + field.name);
         return true;
       }
-      if(field.dependsOn == null){
-        console.log('dependsOn null - no parent ' + field.name);
+      if (field.dependsOn == null) {
+        console.log("dependsOn null - no parent " + field.name);
         return true;
       }
 
       //check if parent loading data has been set
       let parentData = this.parentLoadingData(field);
-      console.log('dependsOn parent data ', parentData);
-      if( parentData.dependsOn == null) {
-        console.log('parentData dependsOn null');
+      console.log("dependsOn parent data ", parentData);
+      if (parentData.dependsOn == null) {
+        console.log("parentData dependsOn null");
         return false;
       }
-      if(parentData.dependsOn.length == 0) {
-        console.log('parentData.dependsOn.length == 0');
+      if (parentData.dependsOn.length == 0) {
+        console.log("parentData.dependsOn.length == 0");
         return false;
       }
-      console.log('dependsOn - parentData Show - parent loaded');
+      console.log("dependsOn - parentData Show - parent loaded");
       return true;
     },
     async updateField(event) {
@@ -210,21 +210,24 @@ export default {
       this.fieldList[fieldIndex] = event;
 
       // if parent to fields
-      let childFieldIndexs = this.fieldList.reduce((a,field,index)=>{
-        if( !_this.isUndefined(field.dependsOn) && field.dependsOn == event.name)
+      let childFieldIndexs = this.fieldList.reduce((a, field, index) => {
+        if (
+          !_this.isUndefined(field.dependsOn) &&
+          field.dependsOn == event.name
+        )
           a.push(index);
         return a;
-      }, [] );
+      }, []);
 
       for (const index of childFieldIndexs) {
-          let tmp_field = this.fieldList[index];
-          let fieldData = await this.loadField(tmp_field);
-          if( tmp_field.type == 'select' ){
-            this.fieldList[index].items = fieldData;
-          }else{
-            this.fieldList[index].value = fieldData;
-          }
-      }     
+        let tmp_field = this.fieldList[index];
+        let fieldData = await this.loadField(tmp_field);
+        if (tmp_field.type == "select") {
+          this.fieldList[index].items = fieldData;
+        } else {
+          this.fieldList[index].value = fieldData;
+        }
+      }
     },
     resetForm(triggerAlerts = true) {
       // clear data

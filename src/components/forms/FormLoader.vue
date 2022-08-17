@@ -27,8 +27,8 @@
         </v-col>
       </v-row>
       <v-row v-if="!formLoading">
-        <input-form
-          v-if="loadedFormData.type == 'input'"
+        <component
+          :is="formComponent"
           :form="loadedFormData"
           :additional_form_data="loadedAdditionalFormData"
           @results="formHasResults"
@@ -39,17 +39,7 @@
           @processing="formIsProcessing"
           @failed="formHasFailedProcessing"
           @successful="formHasSuccessfulProcessing"
-        ></input-form>
-        <action-form
-          v-if="loadedFormData.type == 'action'"
-          :form="loadedFormData"
-          :additional_form_data="loadedAdditionalFormData"
-          @loading="formIsLoading"
-          @cancelled="formIsCancelled"
-          @processing="formIsProcessing"
-          @failed="formHasFailedProcessing"
-          @successful="formHasSuccessfulProcessing"
-        ></action-form>
+        ></component>
       </v-row>
     </validation-observer>
   </v-col>
@@ -126,6 +116,16 @@ export default {
     };
   },
   computed: {
+    formComponent: function() {
+      if (this.loadedFormData.type == "input") {
+        return "input-form";
+      }
+      if (this.loadedFormData.type == "action") {
+        return "action-form";
+      }
+
+      return false;
+    },
     loadedAlerts: function() {
       return this.alerts;
     },
@@ -210,7 +210,7 @@ export default {
       const _this = this;
       return this.request(
         "post",
-        "/axios/forms/load",
+        this.$axiosPrefix + "/forms/load",
         this.mergeAdditionalLoadFormData(
           {
             form_name: this.loadedFormName,

@@ -1,5 +1,19 @@
 # Change Log
 
+## 0.2.18
+- NPM and Node updates
+- Include axios in ./formmixins.js
+
+## 0.2.15
+- vuetify added to externals
+
+## 0.2.14
+- Fix config bug
+
+## 0.2.13
+- Updates to Axios routes through import variables
+- Update axios to use parent axios variable
+
 ## 0.0.62
 - Rename form_type to type
 
@@ -19,7 +33,7 @@
 
 ## 0.0.56
 - loadField updates
-- removed field updating from input to inputform
+- removed field updating from input to input form
 - check if parent loading data
 
 

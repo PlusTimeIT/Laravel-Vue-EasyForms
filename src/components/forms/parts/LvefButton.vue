@@ -25,10 +25,10 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyIcon from "../parts/Icon.vue";
+import EasyIcon from "./LvefIcon.vue";
 
 export default {
-  name: "Button",
+  name: "LvefButton",
   components: {
     EasyIcon
   },
