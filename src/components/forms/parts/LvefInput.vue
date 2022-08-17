@@ -51,6 +51,20 @@ import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
 import { FormMixin } from "/src/components/forms/mixins/FormMixins";
 import DatePicker from "/src/components/forms/fields/DatePicker.vue";
 import TimePicker from "/src/components/forms/fields/TimePicker.vue";
+import { 
+    VAutoComplete, 
+    VCheckbox, 
+    VCombobox,
+    VFileInput,
+    VInput,
+    VOtpInput,
+    VOverflowBtn,
+    VRadio,
+    VSlider,
+    VSelect,
+    VSwitch,
+    VTextarea
+} from 'vuetify/lib'
 
 export default {
   name: "LvefInput",
@@ -59,7 +73,19 @@ export default {
   components: {
     ValidationProvider,
     DatePicker,
-    TimePicker
+    TimePicker,
+    VAutoComplete, 
+    VCheckbox, 
+    VCombobox,
+    VFileInput,
+    VInput,
+    VOtpInput,
+    VOverflowBtn,
+    VRadio,
+    VSlider,
+    VSelect,
+    VSwitch,
+    VTextarea
   },
   props: {
     cols: {

@@ -22438,8 +22438,8 @@ var componentNormalizer = __webpack_require__(1001);
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(3453);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 3 modules
-var VBtn = __webpack_require__(2686);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 2 modules
+var VBtn = __webpack_require__(8746);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4928);
 ;// CONCATENATED MODULE: ./src/components/forms/parts/LvefButton.vue
@@ -22630,7 +22630,7 @@ module.exports = function installComponents (component, components) {
 
 /***/ }),
 
-/***/ 2686:
+/***/ 8746:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22643,8 +22643,8 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VBtn/VBtn.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
-var VSheet = __webpack_require__(6625);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+var VSheet = __webpack_require__(9744);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
 var VProgressCircular = __webpack_require__(4568);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/index.js
@@ -22660,164 +22660,8 @@ var toggleable = __webpack_require__(4552);
 var elevatable = __webpack_require__(8427);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/positionable/index.js
 var positionable = __webpack_require__(8747);
-// EXTERNAL MODULE: external "vue"
-var external_vue_ = __webpack_require__(748);
-var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/directives/ripple/index.js + 1 modules
-var ripple = __webpack_require__(7898);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/helpers.js
-var helpers = __webpack_require__(8131);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
- // Directives
-
- // Utilities
-
-
-/* harmony default export */ const routable = (external_vue_default().extend({
-  name: 'routable',
-  directives: {
-    Ripple: ripple/* default */.Z
-  },
-  props: {
-    activeClass: String,
-    append: Boolean,
-    disabled: Boolean,
-    exact: {
-      type: Boolean,
-      default: undefined
-    },
-    exactPath: Boolean,
-    exactActiveClass: String,
-    link: Boolean,
-    href: [String, Object],
-    to: [String, Object],
-    nuxt: Boolean,
-    replace: Boolean,
-    ripple: {
-      type: [Boolean, Object],
-      default: null
-    },
-    tag: String,
-    target: String
-  },
-  data: () => ({
-    isActive: false,
-    proxyClass: ''
-  }),
-  computed: {
-    classes() {
-      const classes = {};
-      if (this.to) return classes;
-      if (this.activeClass) classes[this.activeClass] = this.isActive;
-      if (this.proxyClass) classes[this.proxyClass] = this.isActive;
-      return classes;
-    },
-
-    computedRipple() {
-      var _this$ripple;
-
-      return (_this$ripple = this.ripple) != null ? _this$ripple : !this.disabled && this.isClickable;
-    },
-
-    isClickable() {
-      if (this.disabled) return false;
-      return Boolean(this.isLink || this.$listeners.click || this.$listeners['!click'] || this.$attrs.tabindex);
-    },
-
-    isLink() {
-      return this.to || this.href || this.link;
-    },
-
-    styles: () => ({})
-  },
-  watch: {
-    $route: 'onRouteChange'
-  },
-
-  mounted() {
-    this.onRouteChange();
-  },
-
-  methods: {
-    generateRouteLink() {
-      let exact = this.exact;
-      let tag;
-      const data = {
-        attrs: {
-          tabindex: 'tabindex' in this.$attrs ? this.$attrs.tabindex : undefined
-        },
-        class: this.classes,
-        style: this.styles,
-        props: {},
-        directives: [{
-          name: 'ripple',
-          value: this.computedRipple
-        }],
-        [this.to ? 'nativeOn' : 'on']: { ...this.$listeners,
-          ...('click' in this ? {
-            click: this.click
-          } : undefined)
-        },
-        ref: 'link'
-      };
-
-      if (typeof this.exact === 'undefined') {
-        exact = this.to === '/' || this.to === Object(this.to) && this.to.path === '/';
-      }
-
-      if (this.to) {
-        // Add a special activeClass hook
-        // for component level styles
-        let activeClass = this.activeClass;
-        let exactActiveClass = this.exactActiveClass || activeClass;
-
-        if (this.proxyClass) {
-          activeClass = `${activeClass} ${this.proxyClass}`.trim();
-          exactActiveClass = `${exactActiveClass} ${this.proxyClass}`.trim();
-        }
-
-        tag = this.nuxt ? 'nuxt-link' : 'router-link';
-        Object.assign(data.props, {
-          to: this.to,
-          exact,
-          exactPath: this.exactPath,
-          activeClass,
-          exactActiveClass,
-          append: this.append,
-          replace: this.replace
-        });
-      } else {
-        tag = this.href && 'a' || this.tag || 'div';
-        if (tag === 'a' && this.href) data.attrs.href = this.href;
-      }
-
-      if (this.target) data.attrs.target = this.target;
-      return {
-        tag,
-        data
-      };
-    },
-
-    onRouteChange() {
-      if (!this.to || !this.$refs.link || !this.$route) return;
-      const activeClass = `${this.activeClass || ''} ${this.proxyClass || ''}`.trim();
-      const exactActiveClass = `${this.exactActiveClass || ''} ${this.proxyClass || ''}`.trim() || activeClass;
-      const path = '_vnode.data.class.' + (this.exact ? exactActiveClass : activeClass);
-      this.$nextTick(() => {
-        /* istanbul ignore else */
-        if (!(0,helpers/* getObjectValueByPath */.vO)(this.$refs.link, path) === this.isActive) {
-          this.toggle();
-        }
-      });
-    },
-
-    toggle() {
-      this.isActive = !this.isActive;
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
+var routable = __webpack_require__(9367);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/sizeable/index.js
 var sizeable = __webpack_require__(2412);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
@@ -22841,7 +22685,7 @@ var console = __webpack_require__(6235);
 
 
 
-const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable, positionable/* default */.Z, sizeable/* default */.Z, (0,groupable/* factory */.d)('btnToggle'), (0,toggleable/* factory */.d)('inputValue')
+const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable/* default */.Z, positionable/* default */.Z, sizeable/* default */.Z, (0,groupable/* factory */.d)('btnToggle'), (0,toggleable/* factory */.d)('inputValue')
 /* @vue/component */
 );
 /* harmony default export */ const VBtn = (baseMixins.extend().extend({
@@ -22884,7 +22728,7 @@ const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable, po
     classes() {
       return {
         'v-btn': true,
-        ...routable.options.computed.classes.call(this),
+        ...routable/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
         'v-btn--absolute': this.absolute,
         'v-btn--block': this.block,
         'v-btn--bottom': this.bottom,
@@ -23451,17 +23295,15 @@ var helpers = __webpack_require__(8131);
 
 /***/ }),
 
-/***/ 6625:
+/***/ 7536:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ components_VSheet)
+  "Z": () => (/* binding */ VSheet)
 });
-
-// UNUSED EXPORTS: VSheet
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSheet/VSheet.sass
 // extracted by mini-css-extract-plugin
@@ -23472,47 +23314,8 @@ var binds_attrs = __webpack_require__(6141);
 var colorable = __webpack_require__(5836);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/elevatable/index.js
 var elevatable = __webpack_require__(8427);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/helpers.js
-var helpers = __webpack_require__(8131);
-// EXTERNAL MODULE: external "vue"
-var external_vue_ = __webpack_require__(748);
-var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/measurable/index.js
-// Helpers
- // Types
-
-
-/* harmony default export */ const measurable = (external_vue_default().extend({
-  name: 'measurable',
-  props: {
-    height: [Number, String],
-    maxHeight: [Number, String],
-    maxWidth: [Number, String],
-    minHeight: [Number, String],
-    minWidth: [Number, String],
-    width: [Number, String]
-  },
-  computed: {
-    measurableStyles() {
-      const styles = {};
-      const height = (0,helpers/* convertToUnit */.kb)(this.height);
-      const minHeight = (0,helpers/* convertToUnit */.kb)(this.minHeight);
-      const minWidth = (0,helpers/* convertToUnit */.kb)(this.minWidth);
-      const maxHeight = (0,helpers/* convertToUnit */.kb)(this.maxHeight);
-      const maxWidth = (0,helpers/* convertToUnit */.kb)(this.maxWidth);
-      const width = (0,helpers/* convertToUnit */.kb)(this.width);
-      if (height) styles.height = height;
-      if (minHeight) styles.minHeight = minHeight;
-      if (minWidth) styles.minWidth = minWidth;
-      if (maxHeight) styles.maxHeight = maxHeight;
-      if (maxWidth) styles.maxWidth = maxWidth;
-      if (width) styles.width = width;
-      return styles;
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/measurable/index.js
+var measurable = __webpack_require__(9548);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/roundable/index.js
 var roundable = __webpack_require__(5357);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/themeable/index.js
@@ -23533,7 +23336,7 @@ var mixins = __webpack_require__(5530);
 
 /* @vue/component */
 
-/* harmony default export */ const VSheet = ((0,mixins/* default */.Z)(binds_attrs/* default */.Z, colorable/* default */.Z, elevatable/* default */.Z, measurable, roundable/* default */.Z, themeable/* default */.Z).extend({
+/* harmony default export */ const VSheet = ((0,mixins/* default */.Z)(binds_attrs/* default */.Z, colorable/* default */.Z, elevatable/* default */.Z, measurable/* default */.Z, roundable/* default */.Z, themeable/* default */.Z).extend({
   name: 'v-sheet',
   props: {
     outlined: Boolean,
@@ -23572,10 +23375,20 @@ var mixins = __webpack_require__(5530);
 
 }));
 //# sourceMappingURL=VSheet.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+
+/***/ }),
+
+/***/ 9744:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VSheet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7536);
 
 
-/* harmony default export */ const components_VSheet = (VSheet);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_VSheet__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -23601,8 +23414,8 @@ var colorable = __webpack_require__(5836);
 var delayable = __webpack_require__(1811);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/dependent/index.js
 var dependent = __webpack_require__(4665);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/menuable/index.js + 3 modules
-var menuable = __webpack_require__(7008);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/menuable/index.js + 2 modules
+var menuable = __webpack_require__(2807);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/toggleable/index.js
 var toggleable = __webpack_require__(4552);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/helpers.js
@@ -24502,6 +24315,70 @@ function makeWatcher(property) {
 
 /***/ }),
 
+/***/ 6986:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6235);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(748);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+// Utilities
+ // Types
+
+
+/**
+ * Bootable
+ * @mixin
+ *
+ * Used to add lazy content functionality to components
+ * Looks for change in "isActive" to automatically boot
+ * Otherwise can be set manually
+ */
+
+/* @vue/component */
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (vue__WEBPACK_IMPORTED_MODULE_0___default().extend().extend({
+  name: 'bootable',
+  props: {
+    eager: Boolean
+  },
+  data: () => ({
+    isBooted: false
+  }),
+  computed: {
+    hasContent() {
+      return this.isBooted || this.eager || this.isActive;
+    }
+
+  },
+  watch: {
+    isActive() {
+      this.isBooted = true;
+    }
+
+  },
+
+  created() {
+    /* istanbul ignore next */
+    if ('lazy' in this.$attrs) {
+      (0,_util_console__WEBPACK_IMPORTED_MODULE_1__/* .removed */ .Jk)('lazy', this);
+    }
+  },
+
+  methods: {
+    showLazyContent(content) {
+      return this.hasContent && content ? content() : [this.$createElement()];
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ 5836:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -24836,7 +24713,55 @@ const Groupable = factory('itemGroup');
 
 /***/ }),
 
-/***/ 7008:
+/***/ 9548:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8131);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(748);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+// Helpers
+ // Types
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (vue__WEBPACK_IMPORTED_MODULE_0___default().extend({
+  name: 'measurable',
+  props: {
+    height: [Number, String],
+    maxHeight: [Number, String],
+    maxWidth: [Number, String],
+    minHeight: [Number, String],
+    minWidth: [Number, String],
+    width: [Number, String]
+  },
+  computed: {
+    measurableStyles() {
+      const styles = {};
+      const height = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.height);
+      const minHeight = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.minHeight);
+      const minWidth = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.minWidth);
+      const maxHeight = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.maxHeight);
+      const maxWidth = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.maxWidth);
+      const width = (0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__/* .convertToUnit */ .kb)(this.width);
+      if (height) styles.height = height;
+      if (minHeight) styles.minHeight = minHeight;
+      if (minWidth) styles.minWidth = minWidth;
+      if (maxHeight) styles.maxHeight = maxHeight;
+      if (maxWidth) styles.maxWidth = maxWidth;
+      if (width) styles.width = width;
+      return styles;
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 2807:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24908,62 +24833,12 @@ var helpers = __webpack_require__(8131);
 var positionable = __webpack_require__(8747);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/activatable/index.js
 var activatable = __webpack_require__(7561);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
-var console = __webpack_require__(6235);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/bootable/index.js
-// Utilities
- // Types
-
-
-/**
- * Bootable
- * @mixin
- *
- * Used to add lazy content functionality to components
- * Looks for change in "isActive" to automatically boot
- * Otherwise can be set manually
- */
-
-/* @vue/component */
-
-/* harmony default export */ const bootable = (external_vue_default().extend().extend({
-  name: 'bootable',
-  props: {
-    eager: Boolean
-  },
-  data: () => ({
-    isBooted: false
-  }),
-  computed: {
-    hasContent() {
-      return this.isBooted || this.eager || this.isActive;
-    }
-
-  },
-  watch: {
-    isActive() {
-      this.isBooted = true;
-    }
-
-  },
-
-  created() {
-    /* istanbul ignore next */
-    if ('lazy' in this.$attrs) {
-      (0,console/* removed */.Jk)('lazy', this);
-    }
-  },
-
-  methods: {
-    showLazyContent(content) {
-      return this.hasContent && content ? content() : [this.$createElement()];
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/bootable/index.js
+var bootable = __webpack_require__(6986);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
 var mixins = __webpack_require__(5530);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
+var console = __webpack_require__(6235);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/detachable/index.js
 // Mixins
  // Utilities
@@ -24986,7 +24861,7 @@ function removeActivator(activator) {
 /* @vue/component */
 
 
-/* harmony default export */ const detachable = ((0,mixins/* default */.Z)(bootable).extend({
+/* harmony default export */ const detachable = ((0,mixins/* default */.Z)(bootable/* default */.Z).extend({
   name: 'detachable',
   props: {
     attach: {
@@ -25643,6 +25518,170 @@ function provide(namespace, self = false) {
       return composite.length > 0 ? {
         [composite.join(' ')]: true
       } : {};
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 9367:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(748);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7898);
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8131);
+ // Directives
+
+ // Utilities
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (vue__WEBPACK_IMPORTED_MODULE_0___default().extend({
+  name: 'routable',
+  directives: {
+    Ripple: _directives_ripple__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z
+  },
+  props: {
+    activeClass: String,
+    append: Boolean,
+    disabled: Boolean,
+    exact: {
+      type: Boolean,
+      default: undefined
+    },
+    exactPath: Boolean,
+    exactActiveClass: String,
+    link: Boolean,
+    href: [String, Object],
+    to: [String, Object],
+    nuxt: Boolean,
+    replace: Boolean,
+    ripple: {
+      type: [Boolean, Object],
+      default: null
+    },
+    tag: String,
+    target: String
+  },
+  data: () => ({
+    isActive: false,
+    proxyClass: ''
+  }),
+  computed: {
+    classes() {
+      const classes = {};
+      if (this.to) return classes;
+      if (this.activeClass) classes[this.activeClass] = this.isActive;
+      if (this.proxyClass) classes[this.proxyClass] = this.isActive;
+      return classes;
+    },
+
+    computedRipple() {
+      var _this$ripple;
+
+      return (_this$ripple = this.ripple) != null ? _this$ripple : !this.disabled && this.isClickable;
+    },
+
+    isClickable() {
+      if (this.disabled) return false;
+      return Boolean(this.isLink || this.$listeners.click || this.$listeners['!click'] || this.$attrs.tabindex);
+    },
+
+    isLink() {
+      return this.to || this.href || this.link;
+    },
+
+    styles: () => ({})
+  },
+  watch: {
+    $route: 'onRouteChange'
+  },
+
+  mounted() {
+    this.onRouteChange();
+  },
+
+  methods: {
+    generateRouteLink() {
+      let exact = this.exact;
+      let tag;
+      const data = {
+        attrs: {
+          tabindex: 'tabindex' in this.$attrs ? this.$attrs.tabindex : undefined
+        },
+        class: this.classes,
+        style: this.styles,
+        props: {},
+        directives: [{
+          name: 'ripple',
+          value: this.computedRipple
+        }],
+        [this.to ? 'nativeOn' : 'on']: { ...this.$listeners,
+          ...('click' in this ? {
+            click: this.click
+          } : undefined)
+        },
+        ref: 'link'
+      };
+
+      if (typeof this.exact === 'undefined') {
+        exact = this.to === '/' || this.to === Object(this.to) && this.to.path === '/';
+      }
+
+      if (this.to) {
+        // Add a special activeClass hook
+        // for component level styles
+        let activeClass = this.activeClass;
+        let exactActiveClass = this.exactActiveClass || activeClass;
+
+        if (this.proxyClass) {
+          activeClass = `${activeClass} ${this.proxyClass}`.trim();
+          exactActiveClass = `${exactActiveClass} ${this.proxyClass}`.trim();
+        }
+
+        tag = this.nuxt ? 'nuxt-link' : 'router-link';
+        Object.assign(data.props, {
+          to: this.to,
+          exact,
+          exactPath: this.exactPath,
+          activeClass,
+          exactActiveClass,
+          append: this.append,
+          replace: this.replace
+        });
+      } else {
+        tag = this.href && 'a' || this.tag || 'div';
+        if (tag === 'a' && this.href) data.attrs.href = this.href;
+      }
+
+      if (this.target) data.attrs.target = this.target;
+      return {
+        tag,
+        data
+      };
+    },
+
+    onRouteChange() {
+      if (!this.to || !this.$refs.link || !this.$route) return;
+      const activeClass = `${this.activeClass || ''} ${this.proxyClass || ''}`.trim();
+      const exactActiveClass = `${this.exactActiveClass || ''} ${this.proxyClass || ''}`.trim() || activeClass;
+      const path = '_vnode.data.class.' + (this.exact ? exactActiveClass : activeClass);
+      this.$nextTick(() => {
+        /* istanbul ignore else */
+        if (!(0,_util_helpers__WEBPACK_IMPORTED_MODULE_2__/* .getObjectValueByPath */ .vO)(this.$refs.link, path) === this.isActive) {
+          this.toggle();
+        }
+      });
+    },
+
+    toggle() {
+      this.isActive = !this.isActive;
     }
 
   }
@@ -27709,11 +27748,15 @@ function generateComponentTrace(vm) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Ji": () => (/* binding */ createSimpleFunctional),
+/* harmony export */   "qh": () => (/* binding */ addOnceEventListener),
+/* harmony export */   "e$": () => (/* binding */ passiveSupported),
 /* harmony export */   "qw": () => (/* binding */ getNestedValue),
 /* harmony export */   "vZ": () => (/* binding */ deepEqual),
 /* harmony export */   "vO": () => (/* binding */ getObjectValueByPath),
+/* harmony export */   "qF": () => (/* binding */ getPropertyFromItem),
 /* harmony export */   "MT": () => (/* binding */ createRange),
 /* harmony export */   "KK": () => (/* binding */ getZIndex),
+/* harmony export */   "r": () => (/* binding */ escapeHTML),
 /* harmony export */   "ji": () => (/* binding */ filterObjectOnKeys),
 /* harmony export */   "kb": () => (/* binding */ convertToUnit),
 /* harmony export */   "GL": () => (/* binding */ kebabCase),
@@ -27727,9 +27770,10 @@ function generateComponentTrace(vm) {
 /* harmony export */   "P2": () => (/* binding */ throttle),
 /* harmony export */   "z9": () => (/* binding */ getSlot),
 /* harmony export */   "uZ": () => (/* binding */ clamp),
+/* harmony export */   "XE": () => (/* binding */ humanReadableFileSize),
 /* harmony export */   "Ee": () => (/* binding */ mergeDeep)
 /* harmony export */ });
-/* unused harmony exports directiveConfig, addOnceEventListener, passiveSupported, addPassiveEventListener, getPropertyFromItem, escapeHTML, isObject, arrayDiff, groupItems, sortItems, defaultFilter, searchItems, debounce, getPrefixedScopedSlots, padEnd, chunk, humanReadableFileSize, camelizeObjectKeys, fillArray, composedPath */
+/* unused harmony exports directiveConfig, addPassiveEventListener, isObject, arrayDiff, groupItems, sortItems, defaultFilter, searchItems, debounce, getPrefixedScopedSlots, padEnd, chunk, camelizeObjectKeys, fillArray, composedPath */
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(748);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -28314,6 +28358,10 @@ var __webpack_exports__ = {};
 __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ entry_lib)
 });
+
+// NAMESPACE OBJECT: ./node_modules/vuetify/lib/index.js
+var lib_namespaceObject = {};
+__webpack_require__.r(lib_namespaceObject);
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 /* eslint-disable no-var */
@@ -30392,15 +30440,15 @@ var InputFormvue_type_template_id_5f75a326_render = function () {var _vm=this;va
 var InputFormvue_type_template_id_5f75a326_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=5ca0af78&
-var LvefInputvue_type_template_id_5ca0af78_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=109e87b7&
+var LvefInputvue_type_template_id_109e87b7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 return [_c(_vm.fieldData.component,_vm._b({directives:[{name:"mask",rawName:"v-mask",value:(_vm.getMasking),expression:"getMasking"}],tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
 return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]}}],null,false,1812898201)})],1):_vm._e()}
-var LvefInputvue_type_template_id_5ca0af78_staticRenderFns = []
+var LvefInputvue_type_template_id_109e87b7_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
@@ -33357,8 +33405,8 @@ var componentNormalizer = __webpack_require__(1001);
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(3453);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 3 modules
-var VBtn = __webpack_require__(2686);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 2 modules
+var VBtn = __webpack_require__(8746);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VDatePicker/VDatePickerTitle.sass
 // extracted by mini-css-extract-plugin
 
@@ -35821,8 +35869,8 @@ var activatable = __webpack_require__(7561);
 var delayable = __webpack_require__(1811);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/dependent/index.js
 var dependent = __webpack_require__(4665);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/menuable/index.js + 3 modules
-var menuable = __webpack_require__(7008);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/menuable/index.js + 2 modules
+var menuable = __webpack_require__(2807);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/returnable/index.js
 
 /* @vue/component */
@@ -39305,6 +39353,5014 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTextField,VTimePicker: VTimePicker})
 
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/index.js
+
+
+
+
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCheckbox/VCheckbox.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/styles/components/_selection-controls.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/rippleable/index.js
+// Directives
+ // Types
+
+
+/* harmony default export */ const rippleable = (external_vue_default().extend({
+  name: 'rippleable',
+  directives: {
+    ripple: ripple/* default */.Z
+  },
+  props: {
+    ripple: {
+      type: [Boolean, Object],
+      default: true
+    }
+  },
+  methods: {
+    genRipple(data = {}) {
+      if (!this.ripple) return null;
+      data.staticClass = 'v-input--selection-controls__ripple';
+      data.directives = data.directives || [];
+      data.directives.push({
+        name: 'ripple',
+        value: {
+          center: true
+        }
+      });
+      return this.$createElement('div', data);
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/comparable/index.js
+
+
+/* harmony default export */ const comparable = (external_vue_default().extend({
+  name: 'comparable',
+  props: {
+    valueComparator: {
+      type: Function,
+      default: helpers/* deepEqual */.vZ
+    }
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/selectable/index.js
+// Components
+ // Mixins
+
+
+ // Utilities
+
+
+function prevent(e) {
+  e.preventDefault();
+}
+/* @vue/component */
+
+/* harmony default export */ const selectable = ((0,mixins/* default */.Z)(components_VInput, rippleable, comparable).extend({
+  name: 'selectable',
+  model: {
+    prop: 'inputValue',
+    event: 'change'
+  },
+  props: {
+    id: String,
+    inputValue: null,
+    falseValue: null,
+    trueValue: null,
+    multiple: {
+      type: Boolean,
+      default: null
+    },
+    label: String
+  },
+
+  data() {
+    return {
+      hasColor: this.inputValue,
+      lazyValue: this.inputValue
+    };
+  },
+
+  computed: {
+    computedColor() {
+      if (!this.isActive) return undefined;
+      if (this.color) return this.color;
+      if (this.isDark && !this.appIsDark) return 'white';
+      return 'primary';
+    },
+
+    isMultiple() {
+      return this.multiple === true || this.multiple === null && Array.isArray(this.internalValue);
+    },
+
+    isActive() {
+      const value = this.value;
+      const input = this.internalValue;
+
+      if (this.isMultiple) {
+        if (!Array.isArray(input)) return false;
+        return input.some(item => this.valueComparator(item, value));
+      }
+
+      if (this.trueValue === undefined || this.falseValue === undefined) {
+        return value ? this.valueComparator(value, input) : Boolean(input);
+      }
+
+      return this.valueComparator(input, this.trueValue);
+    },
+
+    isDirty() {
+      return this.isActive;
+    },
+
+    rippleState() {
+      return !this.isDisabled && !this.validationState ? undefined : this.validationState;
+    }
+
+  },
+  watch: {
+    inputValue(val) {
+      this.lazyValue = val;
+      this.hasColor = val;
+    }
+
+  },
+  methods: {
+    genLabel() {
+      const label = components_VInput.options.methods.genLabel.call(this);
+      if (!label) return label;
+      label.data.on = {
+        // Label shouldn't cause the input to focus
+        click: prevent
+      };
+      return label;
+    },
+
+    genInput(type, attrs) {
+      return this.$createElement('input', {
+        attrs: Object.assign({
+          'aria-checked': this.isActive.toString(),
+          disabled: this.isDisabled,
+          id: this.computedId,
+          role: type,
+          type
+        }, attrs),
+        domProps: {
+          value: this.value,
+          checked: this.isActive
+        },
+        on: {
+          blur: this.onBlur,
+          change: this.onChange,
+          focus: this.onFocus,
+          keydown: this.onKeydown,
+          click: prevent
+        },
+        ref: 'input'
+      });
+    },
+
+    onBlur() {
+      this.isFocused = false;
+    },
+
+    onClick(e) {
+      this.onChange();
+      this.$emit('click', e);
+    },
+
+    onChange() {
+      if (!this.isInteractive) return;
+      const value = this.value;
+      let input = this.internalValue;
+
+      if (this.isMultiple) {
+        if (!Array.isArray(input)) {
+          input = [];
+        }
+
+        const length = input.length;
+        input = input.filter(item => !this.valueComparator(item, value));
+
+        if (input.length === length) {
+          input.push(value);
+        }
+      } else if (this.trueValue !== undefined && this.falseValue !== undefined) {
+        input = this.valueComparator(input, this.trueValue) ? this.falseValue : this.trueValue;
+      } else if (value) {
+        input = this.valueComparator(input, value) ? null : value;
+      } else {
+        input = !input;
+      }
+
+      this.validate(true, input);
+      this.internalValue = input;
+      this.hasColor = input;
+    },
+
+    onFocus() {
+      this.isFocused = true;
+    },
+
+    /** @abstract */
+    onKeydown(e) {}
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCheckbox/VCheckbox.js
+// Styles
+
+ // Components
+
+
+ // Mixins
+
+
+/* @vue/component */
+
+/* harmony default export */ const VCheckbox = (selectable.extend({
+  name: 'v-checkbox',
+  props: {
+    indeterminate: Boolean,
+    indeterminateIcon: {
+      type: String,
+      default: '$checkboxIndeterminate'
+    },
+    offIcon: {
+      type: String,
+      default: '$checkboxOff'
+    },
+    onIcon: {
+      type: String,
+      default: '$checkboxOn'
+    }
+  },
+
+  data() {
+    return {
+      inputIndeterminate: this.indeterminate
+    };
+  },
+
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input--selection-controls': true,
+        'v-input--checkbox': true,
+        'v-input--indeterminate': this.inputIndeterminate
+      };
+    },
+
+    computedIcon() {
+      if (this.inputIndeterminate) {
+        return this.indeterminateIcon;
+      } else if (this.isActive) {
+        return this.onIcon;
+      } else {
+        return this.offIcon;
+      }
+    },
+
+    // Do not return undefined if disabled,
+    // according to spec, should still show
+    // a color when disabled and active
+    validationState() {
+      if (this.isDisabled && !this.inputIndeterminate) return undefined;
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor !== null) return this.computedColor;
+      return undefined;
+    }
+
+  },
+  watch: {
+    indeterminate(val) {
+      // https://github.com/vuetifyjs/vuetify/issues/8270
+      this.$nextTick(() => this.inputIndeterminate = val);
+    },
+
+    inputIndeterminate(val) {
+      this.$emit('update:indeterminate', val);
+    },
+
+    isActive() {
+      if (!this.indeterminate) return;
+      this.inputIndeterminate = false;
+    }
+
+  },
+  methods: {
+    genCheckbox() {
+      const {
+        title,
+        ...checkboxAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.$createElement(components_VIcon, this.setTextColor(this.validationState, {
+        props: {
+          dense: this.dense,
+          dark: this.dark,
+          light: this.light
+        }
+      }), this.computedIcon), this.genInput('checkbox', { ...checkboxAttrs,
+        'aria-checked': this.inputIndeterminate ? 'mixed' : this.isActive.toString()
+      }), this.genRipple(this.setTextColor(this.rippleState))]);
+    },
+
+    genDefaultSlot() {
+      return [this.genCheckbox(), this.genLabel()];
+    }
+
+  }
+}));
+//# sourceMappingURL=VCheckbox.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VAutocomplete/VAutocomplete.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSelect/VSelect.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VChip/VChip.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/groupable/index.js
+var groupable = __webpack_require__(1302);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
+var routable = __webpack_require__(9367);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/sizeable/index.js
+var sizeable = __webpack_require__(2412);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VChip/VChip.js
+// Styles
+
+ // Components
+
+
+ // Mixins
+
+
+
+
+
+
+ // Utilities
+
+
+/* @vue/component */
+
+/* harmony default export */ const VChip = ((0,mixins/* default */.Z)(colorable/* default */.Z, sizeable/* default */.Z, routable/* default */.Z, themeable/* default */.Z, (0,groupable/* factory */.d)('chipGroup'), (0,toggleable/* factory */.d)('inputValue')).extend({
+  name: 'v-chip',
+  props: {
+    active: {
+      type: Boolean,
+      default: true
+    },
+    activeClass: {
+      type: String,
+
+      default() {
+        if (!this.chipGroup) return '';
+        return this.chipGroup.activeClass;
+      }
+
+    },
+    close: Boolean,
+    closeIcon: {
+      type: String,
+      default: '$delete'
+    },
+    closeLabel: {
+      type: String,
+      default: '$vuetify.close'
+    },
+    disabled: Boolean,
+    draggable: Boolean,
+    filter: Boolean,
+    filterIcon: {
+      type: String,
+      default: '$complete'
+    },
+    label: Boolean,
+    link: Boolean,
+    outlined: Boolean,
+    pill: Boolean,
+    tag: {
+      type: String,
+      default: 'span'
+    },
+    textColor: String,
+    value: null
+  },
+  data: () => ({
+    proxyClass: 'v-chip--active'
+  }),
+  computed: {
+    classes() {
+      return {
+        'v-chip': true,
+        ...routable/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
+        'v-chip--clickable': this.isClickable,
+        'v-chip--disabled': this.disabled,
+        'v-chip--draggable': this.draggable,
+        'v-chip--label': this.label,
+        'v-chip--link': this.isLink,
+        'v-chip--no-color': !this.color,
+        'v-chip--outlined': this.outlined,
+        'v-chip--pill': this.pill,
+        'v-chip--removable': this.hasClose,
+        ...this.themeClasses,
+        ...this.sizeableClasses,
+        ...this.groupClasses
+      };
+    },
+
+    hasClose() {
+      return Boolean(this.close);
+    },
+
+    isClickable() {
+      return Boolean(routable/* default.options.computed.isClickable.call */.Z.options.computed.isClickable.call(this) || this.chipGroup);
+    }
+
+  },
+
+  created() {
+    const breakingProps = [['outline', 'outlined'], ['selected', 'input-value'], ['value', 'active'], ['@input', '@active.sync']];
+    /* istanbul ignore next */
+
+    breakingProps.forEach(([original, replacement]) => {
+      if (this.$attrs.hasOwnProperty(original)) (0,util_console/* breaking */.fK)(original, replacement, this);
+    });
+  },
+
+  methods: {
+    click(e) {
+      this.$emit('click', e);
+      this.chipGroup && this.toggle();
+    },
+
+    genFilter() {
+      const children = [];
+
+      if (this.isActive) {
+        children.push(this.$createElement(components_VIcon, {
+          staticClass: 'v-chip__filter',
+          props: {
+            left: true
+          }
+        }, this.filterIcon));
+      }
+
+      return this.$createElement(VExpandXTransition, children);
+    },
+
+    genClose() {
+      return this.$createElement(components_VIcon, {
+        staticClass: 'v-chip__close',
+        props: {
+          right: true,
+          size: 18
+        },
+        attrs: {
+          'aria-label': this.$vuetify.lang.t(this.closeLabel)
+        },
+        on: {
+          click: e => {
+            e.stopPropagation();
+            e.preventDefault();
+            this.$emit('click:close');
+            this.$emit('update:active', false);
+          }
+        }
+      }, this.closeIcon);
+    },
+
+    genContent() {
+      return this.$createElement('span', {
+        staticClass: 'v-chip__content'
+      }, [this.filter && this.genFilter(), this.$slots.default, this.hasClose && this.genClose()]);
+    }
+
+  },
+
+  render(h) {
+    const children = [this.genContent()];
+    let {
+      tag,
+      data
+    } = this.generateRouteLink();
+    data.attrs = { ...data.attrs,
+      draggable: this.draggable ? 'true' : undefined,
+      tabindex: this.chipGroup && !this.disabled ? 0 : data.attrs.tabindex
+    };
+    data.directives.push({
+      name: 'show',
+      value: this.active
+    });
+    data = this.setBackgroundColor(this.color, data);
+    const color = this.textColor || this.outlined && this.color;
+    return h(tag, this.setTextColor(color, data), children);
+  }
+
+}));
+//# sourceMappingURL=VChip.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VChip/index.js
+
+
+/* harmony default export */ const components_VChip = (VChip);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VMenu/index.js
+
+
+/* harmony default export */ const components_VMenu = (VMenu);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCheckbox/VSimpleCheckbox.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCheckbox/VSimpleCheckbox.js
+
+
+
+ // Mixins
+
+
+ // Utilities
+
+
+
+/* harmony default export */ const VSimpleCheckbox = (external_vue_default().extend({
+  name: 'v-simple-checkbox',
+  functional: true,
+  directives: {
+    ripple: ripple/* default */.Z
+  },
+  props: { ...colorable/* default.options.props */.Z.options.props,
+    ...themeable/* default.options.props */.Z.options.props,
+    disabled: Boolean,
+    ripple: {
+      type: Boolean,
+      default: true
+    },
+    value: Boolean,
+    indeterminate: Boolean,
+    indeterminateIcon: {
+      type: String,
+      default: '$checkboxIndeterminate'
+    },
+    onIcon: {
+      type: String,
+      default: '$checkboxOn'
+    },
+    offIcon: {
+      type: String,
+      default: '$checkboxOff'
+    }
+  },
+
+  render(h, {
+    props,
+    data,
+    listeners
+  }) {
+    const children = [];
+    let icon = props.offIcon;
+    if (props.indeterminate) icon = props.indeterminateIcon;else if (props.value) icon = props.onIcon;
+    children.push(h(VIcon/* default */.Z, colorable/* default.options.methods.setTextColor */.Z.options.methods.setTextColor(props.value && props.color, {
+      props: {
+        disabled: props.disabled,
+        dark: props.dark,
+        light: props.light
+      }
+    }), icon));
+
+    if (props.ripple && !props.disabled) {
+      const ripple = h('div', colorable/* default.options.methods.setTextColor */.Z.options.methods.setTextColor(props.color, {
+        staticClass: 'v-input--selection-controls__ripple',
+        directives: [{
+          name: 'ripple',
+          value: {
+            center: true
+          }
+        }]
+      }));
+      children.push(ripple);
+    }
+
+    return h('div', mergeData(data, {
+      class: {
+        'v-simple-checkbox': true,
+        'v-simple-checkbox--disabled': props.disabled
+      },
+      on: {
+        click: e => {
+          e.stopPropagation();
+
+          if (data.on && data.on.input && !props.disabled) {
+            (0,helpers/* wrapInArray */.TI)(data.on.input).forEach(f => f(!props.value));
+          }
+        }
+      }
+    }), [h('div', {
+      staticClass: 'v-input--selection-controls__input'
+    }, children)]);
+  }
+
+}));
+//# sourceMappingURL=VSimpleCheckbox.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VDivider/VDivider.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VDivider/VDivider.js
+// Styles
+ // Mixins
+
+
+/* harmony default export */ const VDivider = (themeable/* default.extend */.Z.extend({
+  name: 'v-divider',
+  props: {
+    inset: Boolean,
+    vertical: Boolean
+  },
+
+  render(h) {
+    // WAI-ARIA attributes
+    let orientation;
+
+    if (!this.$attrs.role || this.$attrs.role === 'separator') {
+      orientation = this.vertical ? 'vertical' : 'horizontal';
+    }
+
+    return h('hr', {
+      class: {
+        'v-divider': true,
+        'v-divider--inset': this.inset,
+        'v-divider--vertical': this.vertical,
+        ...this.themeClasses
+      },
+      attrs: {
+        role: 'separator',
+        'aria-orientation': orientation,
+        ...this.$attrs
+      },
+      on: this.$listeners
+    });
+  }
+
+}));
+//# sourceMappingURL=VDivider.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VDivider/index.js
+
+
+/* harmony default export */ const components_VDivider = (VDivider);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSubheader/VSubheader.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSubheader/VSubheader.js
+// Styles
+ // Mixins
+
+
+
+/* harmony default export */ const VSubheader = ((0,mixins/* default */.Z)(themeable/* default */.Z
+/* @vue/component */
+).extend({
+  name: 'v-subheader',
+  props: {
+    inset: Boolean
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-subheader',
+      class: {
+        'v-subheader--inset': this.inset,
+        ...this.themeClasses
+      },
+      attrs: this.$attrs,
+      on: this.$listeners
+    }, this.$slots.default);
+  }
+
+}));
+//# sourceMappingURL=VSubheader.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSubheader/index.js
+
+
+/* harmony default export */ const components_VSubheader = (VSubheader);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VList/VList.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/VSheet.js + 1 modules
+var VSheet = __webpack_require__(7536);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VList.js
+// Styles
+ // Components
+
+
+/* @vue/component */
+
+/* harmony default export */ const VList = (VSheet/* default.extend */.Z.extend().extend({
+  name: 'v-list',
+
+  provide() {
+    return {
+      isInList: true,
+      list: this
+    };
+  },
+
+  inject: {
+    isInMenu: {
+      default: false
+    },
+    isInNav: {
+      default: false
+    }
+  },
+  props: {
+    dense: Boolean,
+    disabled: Boolean,
+    expand: Boolean,
+    flat: Boolean,
+    nav: Boolean,
+    rounded: Boolean,
+    subheader: Boolean,
+    threeLine: Boolean,
+    twoLine: Boolean
+  },
+  data: () => ({
+    groups: []
+  }),
+  computed: {
+    classes() {
+      return { ...VSheet/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
+        'v-list--dense': this.dense,
+        'v-list--disabled': this.disabled,
+        'v-list--flat': this.flat,
+        'v-list--nav': this.nav,
+        'v-list--rounded': this.rounded,
+        'v-list--subheader': this.subheader,
+        'v-list--two-line': this.twoLine,
+        'v-list--three-line': this.threeLine
+      };
+    }
+
+  },
+  methods: {
+    register(content) {
+      this.groups.push(content);
+    },
+
+    unregister(content) {
+      const index = this.groups.findIndex(g => g._uid === content._uid);
+      if (index > -1) this.groups.splice(index, 1);
+    },
+
+    listClick(uid) {
+      if (this.expand) return;
+
+      for (const group of this.groups) {
+        group.toggle(uid);
+      }
+    }
+
+  },
+
+  render(h) {
+    const data = {
+      staticClass: 'v-list',
+      class: this.classes,
+      style: this.styles,
+      attrs: {
+        role: this.isInNav || this.isInMenu ? undefined : 'list',
+        ...this.attrs$
+      }
+    };
+    return h(this.tag, this.setBackgroundColor(this.color, data), [this.$slots.default]);
+  }
+
+}));
+//# sourceMappingURL=VList.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VList/VListGroup.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VList/VListItem.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListItem.js
+// Styles
+ // Mixins
+
+
+
+
+
+ // Directives
+
+ // Utilities
+
+
+ // Types
+
+
+const VListItem_baseMixins = (0,mixins/* default */.Z)(colorable/* default */.Z, routable/* default */.Z, themeable/* default */.Z, (0,groupable/* factory */.d)('listItemGroup'), (0,toggleable/* factory */.d)('inputValue'));
+/* @vue/component */
+
+/* harmony default export */ const VListItem = (VListItem_baseMixins.extend().extend({
+  name: 'v-list-item',
+  directives: {
+    Ripple: ripple/* default */.Z
+  },
+  inject: {
+    isInGroup: {
+      default: false
+    },
+    isInList: {
+      default: false
+    },
+    isInMenu: {
+      default: false
+    },
+    isInNav: {
+      default: false
+    }
+  },
+  inheritAttrs: false,
+  props: {
+    activeClass: {
+      type: String,
+
+      default() {
+        if (!this.listItemGroup) return '';
+        return this.listItemGroup.activeClass;
+      }
+
+    },
+    dense: Boolean,
+    inactive: Boolean,
+    link: Boolean,
+    selectable: {
+      type: Boolean
+    },
+    tag: {
+      type: String,
+      default: 'div'
+    },
+    threeLine: Boolean,
+    twoLine: Boolean,
+    value: null
+  },
+  data: () => ({
+    proxyClass: 'v-list-item--active'
+  }),
+  computed: {
+    classes() {
+      return {
+        'v-list-item': true,
+        ...routable/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
+        'v-list-item--dense': this.dense,
+        'v-list-item--disabled': this.disabled,
+        'v-list-item--link': this.isClickable && !this.inactive,
+        'v-list-item--selectable': this.selectable,
+        'v-list-item--three-line': this.threeLine,
+        'v-list-item--two-line': this.twoLine,
+        ...this.themeClasses
+      };
+    },
+
+    isClickable() {
+      return Boolean(routable/* default.options.computed.isClickable.call */.Z.options.computed.isClickable.call(this) || this.listItemGroup);
+    }
+
+  },
+
+  created() {
+    /* istanbul ignore next */
+    if (this.$attrs.hasOwnProperty('avatar')) {
+      (0,util_console/* removed */.Jk)('avatar', this);
+    }
+  },
+
+  methods: {
+    click(e) {
+      if (e.detail) this.$el.blur();
+      this.$emit('click', e);
+      this.to || this.toggle();
+    },
+
+    genAttrs() {
+      const attrs = {
+        'aria-disabled': this.disabled ? true : undefined,
+        tabindex: this.isClickable && !this.disabled ? 0 : -1,
+        ...this.$attrs
+      };
+
+      if (this.$attrs.hasOwnProperty('role')) {// do nothing, role already provided
+      } else if (this.isInNav) {// do nothing, role is inherit
+      } else if (this.isInGroup) {
+        attrs.role = 'option';
+        attrs['aria-selected'] = String(this.isActive);
+      } else if (this.isInMenu) {
+        attrs.role = this.isClickable ? 'menuitem' : undefined;
+        attrs.id = attrs.id || `list-item-${this._uid}`;
+      } else if (this.isInList) {
+        attrs.role = 'listitem';
+      }
+
+      return attrs;
+    },
+
+    toggle() {
+      if (this.to && this.inputValue === undefined) {
+        this.isActive = !this.isActive;
+      }
+
+      this.$emit('change');
+    }
+
+  },
+
+  render(h) {
+    let {
+      tag,
+      data
+    } = this.generateRouteLink();
+    data.attrs = { ...data.attrs,
+      ...this.genAttrs()
+    };
+    data[this.to ? 'nativeOn' : 'on'] = { ...data[this.to ? 'nativeOn' : 'on'],
+      keydown: e => {
+        /* istanbul ignore else */
+        if (e.keyCode === helpers/* keyCodes.enter */.Do.enter) this.click(e);
+        this.$emit('keydown', e);
+      }
+    };
+    if (this.inactive) tag = 'div';
+
+    if (this.inactive && this.to) {
+      data.on = data.nativeOn;
+      delete data.nativeOn;
+    }
+
+    const children = this.$scopedSlots.default ? this.$scopedSlots.default({
+      active: this.isActive,
+      toggle: this.toggle
+    }) : this.$slots.default;
+    return h(tag, this.isActive ? this.setTextColor(this.color, data) : data, children);
+  }
+
+}));
+//# sourceMappingURL=VListItem.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListItemIcon.js
+// Types
+
+/* @vue/component */
+
+/* harmony default export */ const VListItemIcon = (external_vue_default().extend({
+  name: 'v-list-item-icon',
+  functional: true,
+
+  render(h, {
+    data,
+    children
+  }) {
+    data.staticClass = `v-list-item__icon ${data.staticClass || ''}`.trim();
+    return h('div', data, children);
+  }
+
+}));
+//# sourceMappingURL=VListItemIcon.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/bootable/index.js
+var bootable = __webpack_require__(6986);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListGroup.js
+// Styles
+ // Components
+
+
+
+ // Mixins
+
+
+
+
+
+ // Directives
+
+ // Transitions
+
+ // Utils
+
+
+
+const VListGroup_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, bootable/* default */.Z, colorable/* default */.Z, (0,registrable/* inject */.f)('list'), toggleable/* default */.Z);
+/* harmony default export */ const VListGroup = (VListGroup_baseMixins.extend().extend({
+  name: 'v-list-group',
+  directives: {
+    ripple: ripple/* default */.Z
+  },
+  props: {
+    activeClass: {
+      type: String,
+      default: ''
+    },
+    appendIcon: {
+      type: String,
+      default: '$expand'
+    },
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    disabled: Boolean,
+    group: [String, RegExp],
+    noAction: Boolean,
+    prependIcon: String,
+    ripple: {
+      type: [Boolean, Object],
+      default: true
+    },
+    subGroup: Boolean
+  },
+  computed: {
+    classes() {
+      return {
+        'v-list-group--active': this.isActive,
+        'v-list-group--disabled': this.disabled,
+        'v-list-group--no-action': this.noAction,
+        'v-list-group--sub-group': this.subGroup
+      };
+    }
+
+  },
+  watch: {
+    isActive(val) {
+      /* istanbul ignore else */
+      if (!this.subGroup && val) {
+        this.list && this.list.listClick(this._uid);
+      }
+    },
+
+    $route: 'onRouteChange'
+  },
+
+  created() {
+    this.list && this.list.register(this);
+
+    if (this.group && this.$route && this.value == null) {
+      this.isActive = this.matchRoute(this.$route.path);
+    }
+  },
+
+  beforeDestroy() {
+    this.list && this.list.unregister(this);
+  },
+
+  methods: {
+    click(e) {
+      if (this.disabled) return;
+      this.isBooted = true;
+      this.$emit('click', e);
+      this.$nextTick(() => this.isActive = !this.isActive);
+    },
+
+    genIcon(icon) {
+      return this.$createElement(components_VIcon, icon);
+    },
+
+    genAppendIcon() {
+      const icon = !this.subGroup ? this.appendIcon : false;
+      if (!icon && !this.$slots.appendIcon) return null;
+      return this.$createElement(VListItemIcon, {
+        staticClass: 'v-list-group__header__append-icon'
+      }, [this.$slots.appendIcon || this.genIcon(icon)]);
+    },
+
+    genHeader() {
+      return this.$createElement(VListItem, {
+        staticClass: 'v-list-group__header',
+        attrs: {
+          'aria-expanded': String(this.isActive),
+          role: 'button'
+        },
+        class: {
+          [this.activeClass]: this.isActive
+        },
+        props: {
+          inputValue: this.isActive
+        },
+        directives: [{
+          name: 'ripple',
+          value: this.ripple
+        }],
+        on: { ...this.listeners$,
+          click: this.click
+        }
+      }, [this.genPrependIcon(), this.$slots.activator, this.genAppendIcon()]);
+    },
+
+    genItems() {
+      return this.showLazyContent(() => [this.$createElement('div', {
+        staticClass: 'v-list-group__items',
+        directives: [{
+          name: 'show',
+          value: this.isActive
+        }]
+      }, (0,helpers/* getSlot */.z9)(this))]);
+    },
+
+    genPrependIcon() {
+      const icon = this.subGroup && this.prependIcon == null ? '$subgroup' : this.prependIcon;
+      if (!icon && !this.$slots.prependIcon) return null;
+      return this.$createElement(VListItemIcon, {
+        staticClass: 'v-list-group__header__prepend-icon'
+      }, [this.$slots.prependIcon || this.genIcon(icon)]);
+    },
+
+    onRouteChange(to) {
+      /* istanbul ignore if */
+      if (!this.group) return;
+      const isActive = this.matchRoute(to.path);
+      /* istanbul ignore else */
+
+      if (isActive && this.isActive !== isActive) {
+        this.list && this.list.listClick(this._uid);
+      }
+
+      this.isActive = isActive;
+    },
+
+    toggle(uid) {
+      const isActive = this._uid === uid;
+      if (isActive) this.isBooted = true;
+      this.$nextTick(() => this.isActive = isActive);
+    },
+
+    matchRoute(to) {
+      return to.match(this.group) !== null;
+    }
+
+  },
+
+  render(h) {
+    return h('div', this.setTextColor(this.isActive && this.color, {
+      staticClass: 'v-list-group',
+      class: this.classes
+    }), [this.genHeader(), h(VExpandTransition, this.genItems())]);
+  }
+
+}));
+//# sourceMappingURL=VListGroup.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VList/VListItemGroup.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VItemGroup/VItemGroup.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VItemGroup/VItemGroup.js
+// Styles
+ // Mixins
+
+
+
+ // Utilities
+
+
+
+const BaseItemGroup = (0,mixins/* default */.Z)(comparable, proxyable, themeable/* default */.Z).extend({
+  name: 'base-item-group',
+  props: {
+    activeClass: {
+      type: String,
+      default: 'v-item--active'
+    },
+    mandatory: Boolean,
+    max: {
+      type: [Number, String],
+      default: null
+    },
+    multiple: Boolean,
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  },
+
+  data() {
+    return {
+      // As long as a value is defined, show it
+      // Otherwise, check if multiple
+      // to determine which default to provide
+      internalLazyValue: this.value !== undefined ? this.value : this.multiple ? [] : undefined,
+      items: []
+    };
+  },
+
+  computed: {
+    classes() {
+      return {
+        'v-item-group': true,
+        ...this.themeClasses
+      };
+    },
+
+    selectedIndex() {
+      return this.selectedItem && this.items.indexOf(this.selectedItem) || -1;
+    },
+
+    selectedItem() {
+      if (this.multiple) return undefined;
+      return this.selectedItems[0];
+    },
+
+    selectedItems() {
+      return this.items.filter((item, index) => {
+        return this.toggleMethod(this.getValue(item, index));
+      });
+    },
+
+    selectedValues() {
+      if (this.internalValue == null) return [];
+      return Array.isArray(this.internalValue) ? this.internalValue : [this.internalValue];
+    },
+
+    toggleMethod() {
+      if (!this.multiple) {
+        return v => this.valueComparator(this.internalValue, v);
+      }
+
+      const internalValue = this.internalValue;
+
+      if (Array.isArray(internalValue)) {
+        return v => internalValue.some(intern => this.valueComparator(intern, v));
+      }
+
+      return () => false;
+    }
+
+  },
+  watch: {
+    internalValue: 'updateItemsState',
+    items: 'updateItemsState'
+  },
+
+  created() {
+    if (this.multiple && !Array.isArray(this.internalValue)) {
+      (0,util_console/* consoleWarn */.Kd)('Model must be bound to an array if the multiple property is true.', this);
+    }
+  },
+
+  methods: {
+    genData() {
+      return {
+        class: this.classes
+      };
+    },
+
+    getValue(item, i) {
+      return item.value === undefined ? i : item.value;
+    },
+
+    onClick(item) {
+      this.updateInternalValue(this.getValue(item, this.items.indexOf(item)));
+    },
+
+    register(item) {
+      const index = this.items.push(item) - 1;
+      item.$on('change', () => this.onClick(item)); // If no value provided and mandatory,
+      // assign first registered item
+
+      if (this.mandatory && !this.selectedValues.length) {
+        this.updateMandatory();
+      }
+
+      this.updateItem(item, index);
+    },
+
+    unregister(item) {
+      if (this._isDestroyed) return;
+      const index = this.items.indexOf(item);
+      const value = this.getValue(item, index);
+      this.items.splice(index, 1);
+      const valueIndex = this.selectedValues.indexOf(value); // Items is not selected, do nothing
+
+      if (valueIndex < 0) return; // If not mandatory, use regular update process
+
+      if (!this.mandatory) {
+        return this.updateInternalValue(value);
+      } // Remove the value
+
+
+      if (this.multiple && Array.isArray(this.internalValue)) {
+        this.internalValue = this.internalValue.filter(v => v !== value);
+      } else {
+        this.internalValue = undefined;
+      } // If mandatory and we have no selection
+      // add the last item as value
+
+      /* istanbul ignore else */
+
+
+      if (!this.selectedItems.length) {
+        this.updateMandatory(true);
+      }
+    },
+
+    updateItem(item, index) {
+      const value = this.getValue(item, index);
+      item.isActive = this.toggleMethod(value);
+    },
+
+    // https://github.com/vuetifyjs/vuetify/issues/5352
+    updateItemsState() {
+      this.$nextTick(() => {
+        if (this.mandatory && !this.selectedItems.length) {
+          return this.updateMandatory();
+        } // TODO: Make this smarter so it
+        // doesn't have to iterate every
+        // child in an update
+
+
+        this.items.forEach(this.updateItem);
+      });
+    },
+
+    updateInternalValue(value) {
+      this.multiple ? this.updateMultiple(value) : this.updateSingle(value);
+    },
+
+    updateMandatory(last) {
+      if (!this.items.length) return;
+      const items = this.items.slice();
+      if (last) items.reverse();
+      const item = items.find(item => !item.disabled); // If no tabs are available
+      // aborts mandatory value
+
+      if (!item) return;
+      const index = this.items.indexOf(item);
+      this.updateInternalValue(this.getValue(item, index));
+    },
+
+    updateMultiple(value) {
+      const defaultValue = Array.isArray(this.internalValue) ? this.internalValue : [];
+      const internalValue = defaultValue.slice();
+      const index = internalValue.findIndex(val => val === value);
+      if (this.mandatory && // Item already exists
+      index > -1 && // value would be reduced below min
+      internalValue.length - 1 < 1) return;
+      if ( // Max is set
+      this.max != null && // Item doesn't exist
+      index < 0 && // value would be increased above max
+      internalValue.length + 1 > this.max) return;
+      index > -1 ? internalValue.splice(index, 1) : internalValue.push(value);
+      this.internalValue = internalValue;
+    },
+
+    updateSingle(value) {
+      const isSame = value === this.internalValue;
+      if (this.mandatory && isSame) return;
+      this.internalValue = isSame ? undefined : value;
+    }
+
+  },
+
+  render(h) {
+    return h(this.tag, this.genData(), this.$slots.default);
+  }
+
+});
+/* harmony default export */ const VItemGroup = (BaseItemGroup.extend({
+  name: 'v-item-group',
+
+  provide() {
+    return {
+      itemGroup: this
+    };
+  }
+
+}));
+//# sourceMappingURL=VItemGroup.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListItemGroup.js
+// Styles
+ // Extensions
+
+ // Mixins
+
+ // Utilities
+
+
+/* harmony default export */ const VListItemGroup = ((0,mixins/* default */.Z)(BaseItemGroup, colorable/* default */.Z).extend({
+  name: 'v-list-item-group',
+
+  provide() {
+    return {
+      isInGroup: true,
+      listItemGroup: this
+    };
+  },
+
+  computed: {
+    classes() {
+      return { ...BaseItemGroup.options.computed.classes.call(this),
+        'v-list-item-group': true
+      };
+    }
+
+  },
+  methods: {
+    genData() {
+      return this.setTextColor(this.color, { ...BaseItemGroup.options.methods.genData.call(this),
+        attrs: {
+          role: 'listbox'
+        }
+      });
+    }
+
+  }
+}));
+//# sourceMappingURL=VListItemGroup.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListItemAction.js
+// Types
+
+/* @vue/component */
+
+/* harmony default export */ const VListItemAction = (external_vue_default().extend({
+  name: 'v-list-item-action',
+  functional: true,
+
+  render(h, {
+    data,
+    children = []
+  }) {
+    data.staticClass = data.staticClass ? `v-list-item__action ${data.staticClass}` : 'v-list-item__action';
+    const filteredChild = children.filter(VNode => {
+      return VNode.isComment === false && VNode.text !== ' ';
+    });
+    if (filteredChild.length > 1) data.staticClass += ' v-list-item__action--stack';
+    return h('div', data, children);
+  }
+
+}));
+//# sourceMappingURL=VListItemAction.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VAvatar/VAvatar.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/measurable/index.js
+var measurable = __webpack_require__(9548);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VAvatar/VAvatar.js
+ // Mixins
+
+
+
+ // Utilities
+
+
+
+/* harmony default export */ const VAvatar = ((0,mixins/* default */.Z)(colorable/* default */.Z, measurable/* default */.Z, roundable/* default */.Z).extend({
+  name: 'v-avatar',
+  props: {
+    left: Boolean,
+    right: Boolean,
+    size: {
+      type: [Number, String],
+      default: 48
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        'v-avatar--left': this.left,
+        'v-avatar--right': this.right,
+        ...this.roundedClasses
+      };
+    },
+
+    styles() {
+      return {
+        height: (0,helpers/* convertToUnit */.kb)(this.size),
+        minWidth: (0,helpers/* convertToUnit */.kb)(this.size),
+        width: (0,helpers/* convertToUnit */.kb)(this.size),
+        ...this.measurableStyles
+      };
+    }
+
+  },
+
+  render(h) {
+    const data = {
+      staticClass: 'v-avatar',
+      class: this.classes,
+      style: this.styles,
+      on: this.$listeners
+    };
+    return h('div', this.setBackgroundColor(this.color, data), this.$slots.default);
+  }
+
+}));
+//# sourceMappingURL=VAvatar.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VAvatar/index.js
+
+
+/* harmony default export */ const components_VAvatar = (VAvatar);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/VListItemAvatar.js
+// Components
+
+/* @vue/component */
+
+/* harmony default export */ const VListItemAvatar = (components_VAvatar.extend({
+  name: 'v-list-item-avatar',
+  props: {
+    horizontal: Boolean,
+    size: {
+      type: [Number, String],
+      default: 40
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        'v-list-item__avatar--horizontal': this.horizontal,
+        ...components_VAvatar.options.computed.classes.call(this),
+        'v-avatar--tile': this.tile || this.horizontal
+      };
+    }
+
+  },
+
+  render(h) {
+    const render = components_VAvatar.options.render.call(this, h);
+    render.data = render.data || {};
+    render.data.staticClass += ' v-list-item__avatar';
+    return render;
+  }
+
+}));
+//# sourceMappingURL=VListItemAvatar.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VList/index.js
+
+
+
+
+
+
+
+
+const VListItemActionText = (0,helpers/* createSimpleFunctional */.Ji)('v-list-item__action-text', 'span');
+const VListItemContent = (0,helpers/* createSimpleFunctional */.Ji)('v-list-item__content', 'div');
+const VListItemTitle = (0,helpers/* createSimpleFunctional */.Ji)('v-list-item__title', 'div');
+const VListItemSubtitle = (0,helpers/* createSimpleFunctional */.Ji)('v-list-item__subtitle', 'div');
+
+/* harmony default export */ const components_VList = ({
+  $_vuetify_subcomponents: {
+    VList: VList,
+    VListGroup: VListGroup,
+    VListItem: VListItem,
+    VListItemAction: VListItemAction,
+    VListItemActionText,
+    VListItemAvatar: VListItemAvatar,
+    VListItemContent,
+    VListItemGroup: VListItemGroup,
+    VListItemIcon: VListItemIcon,
+    VListItemSubtitle,
+    VListItemTitle
+  }
+});
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSelect/VSelectList.js
+// Components
+
+
+
+ // Directives
+
+ // Mixins
+
+
+ // Helpers
+
+ // Types
+
+
+/* @vue/component */
+
+/* harmony default export */ const VSelectList = ((0,mixins/* default */.Z)(colorable/* default */.Z, themeable/* default */.Z).extend({
+  name: 'v-select-list',
+  // https://github.com/vuejs/vue/issues/6872
+  directives: {
+    ripple: ripple/* default */.Z
+  },
+  props: {
+    action: Boolean,
+    dense: Boolean,
+    hideSelected: Boolean,
+    items: {
+      type: Array,
+      default: () => []
+    },
+    itemDisabled: {
+      type: [String, Array, Function],
+      default: 'disabled'
+    },
+    itemText: {
+      type: [String, Array, Function],
+      default: 'text'
+    },
+    itemValue: {
+      type: [String, Array, Function],
+      default: 'value'
+    },
+    noDataText: String,
+    noFilter: Boolean,
+    searchInput: null,
+    selectedItems: {
+      type: Array,
+      default: () => []
+    }
+  },
+  computed: {
+    parsedItems() {
+      return this.selectedItems.map(item => this.getValue(item));
+    },
+
+    tileActiveClass() {
+      return Object.keys(this.setTextColor(this.color).class || {}).join(' ');
+    },
+
+    staticNoDataTile() {
+      const tile = {
+        attrs: {
+          role: undefined
+        },
+        on: {
+          mousedown: e => e.preventDefault()
+        }
+      };
+      return this.$createElement(VListItem, tile, [this.genTileContent(this.noDataText)]);
+    }
+
+  },
+  methods: {
+    genAction(item, inputValue) {
+      return this.$createElement(VListItemAction, [this.$createElement(VSimpleCheckbox, {
+        props: {
+          color: this.color,
+          value: inputValue,
+          ripple: false
+        },
+        on: {
+          input: () => this.$emit('select', item)
+        }
+      })]);
+    },
+
+    genDivider(props) {
+      return this.$createElement(components_VDivider, {
+        props
+      });
+    },
+
+    genFilteredText(text) {
+      text = text || '';
+      if (!this.searchInput || this.noFilter) return (0,helpers/* escapeHTML */.r)(text);
+      const {
+        start,
+        middle,
+        end
+      } = this.getMaskedCharacters(text);
+      return `${(0,helpers/* escapeHTML */.r)(start)}${this.genHighlight(middle)}${(0,helpers/* escapeHTML */.r)(end)}`;
+    },
+
+    genHeader(props) {
+      return this.$createElement(components_VSubheader, {
+        props
+      }, props.header);
+    },
+
+    genHighlight(text) {
+      return `<span class="v-list-item__mask">${(0,helpers/* escapeHTML */.r)(text)}</span>`;
+    },
+
+    getMaskedCharacters(text) {
+      const searchInput = (this.searchInput || '').toString().toLocaleLowerCase();
+      const index = text.toLocaleLowerCase().indexOf(searchInput);
+      if (index < 0) return {
+        start: text,
+        middle: '',
+        end: ''
+      };
+      const start = text.slice(0, index);
+      const middle = text.slice(index, index + searchInput.length);
+      const end = text.slice(index + searchInput.length);
+      return {
+        start,
+        middle,
+        end
+      };
+    },
+
+    genTile({
+      item,
+      index,
+      disabled = null,
+      value = false
+    }) {
+      if (!value) value = this.hasItem(item);
+
+      if (item === Object(item)) {
+        disabled = disabled !== null ? disabled : this.getDisabled(item);
+      }
+
+      const tile = {
+        attrs: {
+          // Default behavior in list does not
+          // contain aria-selected by default
+          'aria-selected': String(value),
+          id: `list-item-${this._uid}-${index}`,
+          role: 'option'
+        },
+        on: {
+          mousedown: e => {
+            // Prevent onBlur from being called
+            e.preventDefault();
+          },
+          click: () => disabled || this.$emit('select', item)
+        },
+        props: {
+          activeClass: this.tileActiveClass,
+          disabled,
+          ripple: true,
+          inputValue: value
+        }
+      };
+
+      if (!this.$scopedSlots.item) {
+        return this.$createElement(VListItem, tile, [this.action && !this.hideSelected && this.items.length > 0 ? this.genAction(item, value) : null, this.genTileContent(item, index)]);
+      }
+
+      const parent = this;
+      const scopedSlot = this.$scopedSlots.item({
+        parent,
+        item,
+        attrs: { ...tile.attrs,
+          ...tile.props
+        },
+        on: tile.on
+      });
+      return this.needsTile(scopedSlot) ? this.$createElement(VListItem, tile, scopedSlot) : scopedSlot;
+    },
+
+    genTileContent(item, index = 0) {
+      const innerHTML = this.genFilteredText(this.getText(item));
+      return this.$createElement(VListItemContent, [this.$createElement(VListItemTitle, {
+        domProps: {
+          innerHTML
+        }
+      })]);
+    },
+
+    hasItem(item) {
+      return this.parsedItems.indexOf(this.getValue(item)) > -1;
+    },
+
+    needsTile(slot) {
+      return slot.length !== 1 || slot[0].componentOptions == null || slot[0].componentOptions.Ctor.options.name !== 'v-list-item';
+    },
+
+    getDisabled(item) {
+      return Boolean((0,helpers/* getPropertyFromItem */.qF)(item, this.itemDisabled, false));
+    },
+
+    getText(item) {
+      return String((0,helpers/* getPropertyFromItem */.qF)(item, this.itemText, item));
+    },
+
+    getValue(item) {
+      return (0,helpers/* getPropertyFromItem */.qF)(item, this.itemValue, this.getText(item));
+    }
+
+  },
+
+  render() {
+    const children = [];
+    const itemsLength = this.items.length;
+
+    for (let index = 0; index < itemsLength; index++) {
+      const item = this.items[index];
+      if (this.hideSelected && this.hasItem(item)) continue;
+      if (item == null) children.push(this.genTile({
+        item,
+        index
+      }));else if (item.header) children.push(this.genHeader(item));else if (item.divider) children.push(this.genDivider(item));else children.push(this.genTile({
+        item,
+        index
+      }));
+    }
+
+    children.length || children.push(this.$slots['no-data'] || this.staticNoDataTile);
+    this.$slots['prepend-item'] && children.unshift(this.$slots['prepend-item']);
+    this.$slots['append-item'] && children.push(this.$slots['append-item']);
+    return this.$createElement(VList, {
+      staticClass: 'v-select-list',
+      class: this.themeClasses,
+      attrs: {
+        role: 'listbox',
+        tabindex: -1
+      },
+      props: {
+        dense: this.dense
+      }
+    }, children);
+  }
+
+}));
+//# sourceMappingURL=VSelectList.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/filterable/index.js
+
+/* @vue/component */
+
+/* harmony default export */ const filterable = (external_vue_default().extend({
+  name: 'filterable',
+  props: {
+    noDataText: {
+      type: String,
+      default: '$vuetify.noDataText'
+    }
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSelect/VSelect.js
+// Styles
+
+ // Components
+
+
+
+ // Extensions
+
+
+ // Mixins
+
+
+
+ // Directives
+
+ // Utilities
+
+
+
+ // Types
+
+
+const defaultMenuProps = {
+  closeOnClick: false,
+  closeOnContentClick: false,
+  disableKeys: true,
+  openOnClick: false,
+  maxHeight: 304
+}; // Types
+
+const VSelect_baseMixins = (0,mixins/* default */.Z)(VTextField, comparable, dependent/* default */.Z, filterable);
+/* @vue/component */
+
+/* harmony default export */ const VSelect = (VSelect_baseMixins.extend().extend({
+  name: 'v-select',
+  directives: {
+    ClickOutside: click_outside
+  },
+  props: {
+    appendIcon: {
+      type: String,
+      default: '$dropdown'
+    },
+    attach: {
+      type: null,
+      default: false
+    },
+    cacheItems: Boolean,
+    chips: Boolean,
+    clearable: Boolean,
+    deletableChips: Boolean,
+    disableLookup: Boolean,
+    eager: Boolean,
+    hideSelected: Boolean,
+    items: {
+      type: Array,
+      default: () => []
+    },
+    itemColor: {
+      type: String,
+      default: 'primary'
+    },
+    itemDisabled: {
+      type: [String, Array, Function],
+      default: 'disabled'
+    },
+    itemText: {
+      type: [String, Array, Function],
+      default: 'text'
+    },
+    itemValue: {
+      type: [String, Array, Function],
+      default: 'value'
+    },
+    menuProps: {
+      type: [String, Array, Object],
+      default: () => defaultMenuProps
+    },
+    multiple: Boolean,
+    openOnClear: Boolean,
+    returnObject: Boolean,
+    smallChips: Boolean
+  },
+
+  data() {
+    return {
+      cachedItems: this.cacheItems ? this.items : [],
+      menuIsBooted: false,
+      isMenuActive: false,
+      lastItem: 20,
+      // As long as a value is defined, show it
+      // Otherwise, check if multiple
+      // to determine which default to provide
+      lazyValue: this.value !== undefined ? this.value : this.multiple ? [] : undefined,
+      selectedIndex: -1,
+      selectedItems: [],
+      keyboardLookupPrefix: '',
+      keyboardLookupLastTime: 0
+    };
+  },
+
+  computed: {
+    /* All items that the select has */
+    allItems() {
+      return this.filterDuplicates(this.cachedItems.concat(this.items));
+    },
+
+    classes() {
+      return { ...VTextField.options.computed.classes.call(this),
+        'v-select': true,
+        'v-select--chips': this.hasChips,
+        'v-select--chips--small': this.smallChips,
+        'v-select--is-menu-active': this.isMenuActive,
+        'v-select--is-multi': this.multiple
+      };
+    },
+
+    /* Used by other components to overwrite */
+    computedItems() {
+      return this.allItems;
+    },
+
+    computedOwns() {
+      return `list-${this._uid}`;
+    },
+
+    computedCounterValue() {
+      const value = this.multiple ? this.selectedItems : (this.getText(this.selectedItems[0]) || '').toString();
+
+      if (typeof this.counterValue === 'function') {
+        return this.counterValue(value);
+      }
+
+      return value.length;
+    },
+
+    directives() {
+      return this.isFocused ? [{
+        name: 'click-outside',
+        value: {
+          handler: this.blur,
+          closeConditional: this.closeConditional,
+          include: () => this.getOpenDependentElements()
+        }
+      }] : undefined;
+    },
+
+    dynamicHeight() {
+      return 'auto';
+    },
+
+    hasChips() {
+      return this.chips || this.smallChips;
+    },
+
+    hasSlot() {
+      return Boolean(this.hasChips || this.$scopedSlots.selection);
+    },
+
+    isDirty() {
+      return this.selectedItems.length > 0;
+    },
+
+    listData() {
+      const scopeId = this.$vnode && this.$vnode.context.$options._scopeId;
+      const attrs = scopeId ? {
+        [scopeId]: true
+      } : {};
+      return {
+        attrs: { ...attrs,
+          id: this.computedOwns
+        },
+        props: {
+          action: this.multiple,
+          color: this.itemColor,
+          dense: this.dense,
+          hideSelected: this.hideSelected,
+          items: this.virtualizedItems,
+          itemDisabled: this.itemDisabled,
+          itemText: this.itemText,
+          itemValue: this.itemValue,
+          noDataText: this.$vuetify.lang.t(this.noDataText),
+          selectedItems: this.selectedItems
+        },
+        on: {
+          select: this.selectItem
+        },
+        scopedSlots: {
+          item: this.$scopedSlots.item
+        }
+      };
+    },
+
+    staticList() {
+      if (this.$slots['no-data'] || this.$slots['prepend-item'] || this.$slots['append-item']) {
+        (0,util_console/* consoleError */.N6)('assert: staticList should not be called if slots are used');
+      }
+
+      return this.$createElement(VSelectList, this.listData);
+    },
+
+    virtualizedItems() {
+      return this.$_menuProps.auto ? this.computedItems : this.computedItems.slice(0, this.lastItem);
+    },
+
+    menuCanShow: () => true,
+
+    $_menuProps() {
+      let normalisedProps = typeof this.menuProps === 'string' ? this.menuProps.split(',') : this.menuProps;
+
+      if (Array.isArray(normalisedProps)) {
+        normalisedProps = normalisedProps.reduce((acc, p) => {
+          acc[p.trim()] = true;
+          return acc;
+        }, {});
+      }
+
+      return { ...defaultMenuProps,
+        eager: this.eager,
+        value: this.menuCanShow && this.isMenuActive,
+        nudgeBottom: normalisedProps.offsetY ? 1 : 0,
+        ...normalisedProps
+      };
+    }
+
+  },
+  watch: {
+    internalValue(val) {
+      this.initialValue = val;
+      this.setSelectedItems();
+    },
+
+    isMenuActive(val) {
+      window.setTimeout(() => this.onMenuActiveChange(val));
+    },
+
+    items: {
+      immediate: true,
+
+      handler(val) {
+        if (this.cacheItems) {
+          // Breaks vue-test-utils if
+          // this isn't calculated
+          // on the next tick
+          this.$nextTick(() => {
+            this.cachedItems = this.filterDuplicates(this.cachedItems.concat(val));
+          });
+        }
+
+        this.setSelectedItems();
+      }
+
+    }
+  },
+  methods: {
+    /** @public */
+    blur(e) {
+      VTextField.options.methods.blur.call(this, e);
+      this.isMenuActive = false;
+      this.isFocused = false;
+      this.selectedIndex = -1;
+      this.setMenuIndex(-1);
+    },
+
+    /** @public */
+    activateMenu() {
+      if (!this.isInteractive || this.isMenuActive) return;
+      this.isMenuActive = true;
+    },
+
+    clearableCallback() {
+      this.setValue(this.multiple ? [] : null);
+      this.setMenuIndex(-1);
+      this.$nextTick(() => this.$refs.input && this.$refs.input.focus());
+      if (this.openOnClear) this.isMenuActive = true;
+    },
+
+    closeConditional(e) {
+      if (!this.isMenuActive) return true;
+      return !this._isDestroyed && ( // Click originates from outside the menu content
+      // Multiple selects don't close when an item is clicked
+      !this.getContent() || !this.getContent().contains(e.target)) && // Click originates from outside the element
+      this.$el && !this.$el.contains(e.target) && e.target !== this.$el;
+    },
+
+    filterDuplicates(arr) {
+      const uniqueValues = new Map();
+
+      for (let index = 0; index < arr.length; ++index) {
+        const item = arr[index]; // Do not return null values if existant (#14421)
+
+        if (item == null) {
+          continue;
+        } // Do not deduplicate headers or dividers (#12517)
+
+
+        if (item.header || item.divider) {
+          uniqueValues.set(item, item);
+          continue;
+        }
+
+        const val = this.getValue(item); // TODO: comparator
+
+        !uniqueValues.has(val) && uniqueValues.set(val, item);
+      }
+
+      return Array.from(uniqueValues.values());
+    },
+
+    findExistingIndex(item) {
+      const itemValue = this.getValue(item);
+      return (this.internalValue || []).findIndex(i => this.valueComparator(this.getValue(i), itemValue));
+    },
+
+    getContent() {
+      return this.$refs.menu && this.$refs.menu.$refs.content;
+    },
+
+    genChipSelection(item, index) {
+      const isDisabled = this.isDisabled || this.getDisabled(item);
+      const isInteractive = !isDisabled && this.isInteractive;
+      return this.$createElement(components_VChip, {
+        staticClass: 'v-chip--select',
+        attrs: {
+          tabindex: -1
+        },
+        props: {
+          close: this.deletableChips && isInteractive,
+          disabled: isDisabled,
+          inputValue: index === this.selectedIndex,
+          small: this.smallChips
+        },
+        on: {
+          click: e => {
+            if (!isInteractive) return;
+            e.stopPropagation();
+            this.selectedIndex = index;
+          },
+          'click:close': () => this.onChipInput(item)
+        },
+        key: JSON.stringify(this.getValue(item))
+      }, this.getText(item));
+    },
+
+    genCommaSelection(item, index, last) {
+      const color = index === this.selectedIndex && this.computedColor;
+      const isDisabled = this.isDisabled || this.getDisabled(item);
+      return this.$createElement('div', this.setTextColor(color, {
+        staticClass: 'v-select__selection v-select__selection--comma',
+        class: {
+          'v-select__selection--disabled': isDisabled
+        },
+        key: JSON.stringify(this.getValue(item))
+      }), `${this.getText(item)}${last ? '' : ', '}`);
+    },
+
+    genDefaultSlot() {
+      const selections = this.genSelections();
+      const input = this.genInput(); // If the return is an empty array
+      // push the input
+
+      if (Array.isArray(selections)) {
+        selections.push(input); // Otherwise push it into children
+      } else {
+        selections.children = selections.children || [];
+        selections.children.push(input);
+      }
+
+      return [this.genFieldset(), this.$createElement('div', {
+        staticClass: 'v-select__slot',
+        directives: this.directives
+      }, [this.genLabel(), this.prefix ? this.genAffix('prefix') : null, selections, this.suffix ? this.genAffix('suffix') : null, this.genClearIcon(), this.genIconSlot(), this.genHiddenInput()]), this.genMenu(), this.genProgress()];
+    },
+
+    genIcon(type, cb, extraData) {
+      const icon = components_VInput.options.methods.genIcon.call(this, type, cb, extraData);
+
+      if (type === 'append') {
+        // Don't allow the dropdown icon to be focused
+        icon.children[0].data = mergeData(icon.children[0].data, {
+          attrs: {
+            tabindex: icon.children[0].componentOptions.listeners && '-1',
+            'aria-hidden': 'true',
+            'aria-label': undefined
+          }
+        });
+      }
+
+      return icon;
+    },
+
+    genInput() {
+      const input = VTextField.options.methods.genInput.call(this);
+      delete input.data.attrs.name;
+      input.data = mergeData(input.data, {
+        domProps: {
+          value: null
+        },
+        attrs: {
+          readonly: true,
+          type: 'text',
+          'aria-readonly': String(this.isReadonly),
+          'aria-activedescendant': (0,helpers/* getObjectValueByPath */.vO)(this.$refs.menu, 'activeTile.id'),
+          autocomplete: (0,helpers/* getObjectValueByPath */.vO)(input.data, 'attrs.autocomplete', 'off'),
+          placeholder: !this.isDirty && (this.persistentPlaceholder || this.isFocused || !this.hasLabel) ? this.placeholder : undefined
+        },
+        on: {
+          keypress: this.onKeyPress
+        }
+      });
+      return input;
+    },
+
+    genHiddenInput() {
+      return this.$createElement('input', {
+        domProps: {
+          value: this.lazyValue
+        },
+        attrs: {
+          type: 'hidden',
+          name: this.attrs$.name
+        }
+      });
+    },
+
+    genInputSlot() {
+      const render = VTextField.options.methods.genInputSlot.call(this);
+      render.data.attrs = { ...render.data.attrs,
+        role: 'button',
+        'aria-haspopup': 'listbox',
+        'aria-expanded': String(this.isMenuActive),
+        'aria-owns': this.computedOwns
+      };
+      return render;
+    },
+
+    genList() {
+      // If there's no slots, we can use a cached VNode to improve performance
+      if (this.$slots['no-data'] || this.$slots['prepend-item'] || this.$slots['append-item']) {
+        return this.genListWithSlot();
+      } else {
+        return this.staticList;
+      }
+    },
+
+    genListWithSlot() {
+      const slots = ['prepend-item', 'no-data', 'append-item'].filter(slotName => this.$slots[slotName]).map(slotName => this.$createElement('template', {
+        slot: slotName
+      }, this.$slots[slotName])); // Requires destructuring due to Vue
+      // modifying the `on` property when passed
+      // as a referenced object
+
+      return this.$createElement(VSelectList, { ...this.listData
+      }, slots);
+    },
+
+    genMenu() {
+      const props = this.$_menuProps;
+      props.activator = this.$refs['input-slot']; // Attach to root el so that
+      // menu covers prepend/append icons
+
+      if ( // TODO: make this a computed property or helper or something
+      this.attach === '' || // If used as a boolean prop (<v-menu attach>)
+      this.attach === true || // If bound to a boolean (<v-menu :attach="true">)
+      this.attach === 'attach' // If bound as boolean prop in pug (v-menu(attach))
+      ) {
+          props.attach = this.$el;
+        } else {
+        props.attach = this.attach;
+      }
+
+      return this.$createElement(components_VMenu, {
+        attrs: {
+          role: undefined
+        },
+        props,
+        on: {
+          input: val => {
+            this.isMenuActive = val;
+            this.isFocused = val;
+          },
+          scroll: this.onScroll
+        },
+        ref: 'menu'
+      }, [this.genList()]);
+    },
+
+    genSelections() {
+      let length = this.selectedItems.length;
+      const children = new Array(length);
+      let genSelection;
+
+      if (this.$scopedSlots.selection) {
+        genSelection = this.genSlotSelection;
+      } else if (this.hasChips) {
+        genSelection = this.genChipSelection;
+      } else {
+        genSelection = this.genCommaSelection;
+      }
+
+      while (length--) {
+        children[length] = genSelection(this.selectedItems[length], length, length === children.length - 1);
+      }
+
+      return this.$createElement('div', {
+        staticClass: 'v-select__selections'
+      }, children);
+    },
+
+    genSlotSelection(item, index) {
+      return this.$scopedSlots.selection({
+        attrs: {
+          class: 'v-chip--select'
+        },
+        parent: this,
+        item,
+        index,
+        select: e => {
+          e.stopPropagation();
+          this.selectedIndex = index;
+        },
+        selected: index === this.selectedIndex,
+        disabled: !this.isInteractive
+      });
+    },
+
+    getMenuIndex() {
+      return this.$refs.menu ? this.$refs.menu.listIndex : -1;
+    },
+
+    getDisabled(item) {
+      return (0,helpers/* getPropertyFromItem */.qF)(item, this.itemDisabled, false);
+    },
+
+    getText(item) {
+      return (0,helpers/* getPropertyFromItem */.qF)(item, this.itemText, item);
+    },
+
+    getValue(item) {
+      return (0,helpers/* getPropertyFromItem */.qF)(item, this.itemValue, this.getText(item));
+    },
+
+    onBlur(e) {
+      e && this.$emit('blur', e);
+    },
+
+    onChipInput(item) {
+      if (this.multiple) this.selectItem(item);else this.setValue(null); // If all items have been deleted,
+      // open `v-menu`
+
+      if (this.selectedItems.length === 0) {
+        this.isMenuActive = true;
+      } else {
+        this.isMenuActive = false;
+      }
+
+      this.selectedIndex = -1;
+    },
+
+    onClick(e) {
+      if (!this.isInteractive) return;
+
+      if (!this.isAppendInner(e.target)) {
+        this.isMenuActive = true;
+      }
+
+      if (!this.isFocused) {
+        this.isFocused = true;
+        this.$emit('focus');
+      }
+
+      this.$emit('click', e);
+    },
+
+    onEscDown(e) {
+      e.preventDefault();
+
+      if (this.isMenuActive) {
+        e.stopPropagation();
+        this.isMenuActive = false;
+      }
+    },
+
+    onKeyPress(e) {
+      if (this.multiple || !this.isInteractive || this.disableLookup) return;
+      const KEYBOARD_LOOKUP_THRESHOLD = 1000; // milliseconds
+
+      const now = performance.now();
+
+      if (now - this.keyboardLookupLastTime > KEYBOARD_LOOKUP_THRESHOLD) {
+        this.keyboardLookupPrefix = '';
+      }
+
+      this.keyboardLookupPrefix += e.key.toLowerCase();
+      this.keyboardLookupLastTime = now;
+      const index = this.allItems.findIndex(item => {
+        const text = (this.getText(item) || '').toString();
+        return text.toLowerCase().startsWith(this.keyboardLookupPrefix);
+      });
+      const item = this.allItems[index];
+
+      if (index !== -1) {
+        this.lastItem = Math.max(this.lastItem, index + 5);
+        this.setValue(this.returnObject ? item : this.getValue(item));
+        this.$nextTick(() => this.$refs.menu.getTiles());
+        setTimeout(() => this.setMenuIndex(index));
+      }
+    },
+
+    onKeyDown(e) {
+      if (this.isReadonly && e.keyCode !== helpers/* keyCodes.tab */.Do.tab) return;
+      const keyCode = e.keyCode;
+      const menu = this.$refs.menu;
+      this.$emit('keydown', e);
+      if (!menu) return; // If menu is active, allow default
+      // listIndex change from menu
+
+      if (this.isMenuActive && [helpers/* keyCodes.up */.Do.up, helpers/* keyCodes.down */.Do.down, helpers/* keyCodes.home */.Do.home, helpers/* keyCodes.end */.Do.end, helpers/* keyCodes.enter */.Do.enter].includes(keyCode)) {
+        this.$nextTick(() => {
+          menu.changeListIndex(e);
+          this.$emit('update:list-index', menu.listIndex);
+        });
+      } // If enter, space, open menu
+
+
+      if ([helpers/* keyCodes.enter */.Do.enter, helpers/* keyCodes.space */.Do.space].includes(keyCode)) this.activateMenu(); // If menu is not active, up/down/home/end can do
+      // one of 2 things. If multiple, opens the
+      // menu, if not, will cycle through all
+      // available options
+
+      if (!this.isMenuActive && [helpers/* keyCodes.up */.Do.up, helpers/* keyCodes.down */.Do.down, helpers/* keyCodes.home */.Do.home, helpers/* keyCodes.end */.Do.end].includes(keyCode)) return this.onUpDown(e); // If escape deactivate the menu
+
+      if (keyCode === helpers/* keyCodes.esc */.Do.esc) return this.onEscDown(e); // If tab - select item or close menu
+
+      if (keyCode === helpers/* keyCodes.tab */.Do.tab) return this.onTabDown(e); // If space preventDefault
+
+      if (keyCode === helpers/* keyCodes.space */.Do.space) return this.onSpaceDown(e);
+    },
+
+    onMenuActiveChange(val) {
+      // If menu is closing and mulitple
+      // or menuIndex is already set
+      // skip menu index recalculation
+      if (this.multiple && !val || this.getMenuIndex() > -1) return;
+      const menu = this.$refs.menu;
+      if (!menu || !this.isDirty) return; // When menu opens, set index of first active item
+
+      this.$refs.menu.getTiles();
+
+      for (let i = 0; i < menu.tiles.length; i++) {
+        if (menu.tiles[i].getAttribute('aria-selected') === 'true') {
+          this.setMenuIndex(i);
+          break;
+        }
+      }
+    },
+
+    onMouseUp(e) {
+      // eslint-disable-next-line sonarjs/no-collapsible-if
+      if (this.hasMouseDown && e.which !== 3 && this.isInteractive) {
+        // If append inner is present
+        // and the target is itself
+        // or inside, toggle menu
+        if (this.isAppendInner(e.target)) {
+          this.$nextTick(() => this.isMenuActive = !this.isMenuActive);
+        }
+      }
+
+      VTextField.options.methods.onMouseUp.call(this, e);
+    },
+
+    onScroll() {
+      if (!this.isMenuActive) {
+        requestAnimationFrame(() => this.getContent().scrollTop = 0);
+      } else {
+        if (this.lastItem > this.computedItems.length) return;
+        const showMoreItems = this.getContent().scrollHeight - (this.getContent().scrollTop + this.getContent().clientHeight) < 200;
+
+        if (showMoreItems) {
+          this.lastItem += 20;
+        }
+      }
+    },
+
+    onSpaceDown(e) {
+      e.preventDefault();
+    },
+
+    onTabDown(e) {
+      const menu = this.$refs.menu;
+      if (!menu) return;
+      const activeTile = menu.activeTile; // An item that is selected by
+      // menu-index should toggled
+
+      if (!this.multiple && activeTile && this.isMenuActive) {
+        e.preventDefault();
+        e.stopPropagation();
+        activeTile.click();
+      } else {
+        // If we make it here,
+        // the user has no selected indexes
+        // and is probably tabbing out
+        this.blur(e);
+      }
+    },
+
+    onUpDown(e) {
+      const menu = this.$refs.menu;
+      if (!menu) return;
+      e.preventDefault(); // Multiple selects do not cycle their value
+      // when pressing up or down, instead activate
+      // the menu
+
+      if (this.multiple) return this.activateMenu();
+      const keyCode = e.keyCode; // Cycle through available values to achieve
+      // select native behavior
+
+      menu.isBooted = true;
+      window.requestAnimationFrame(() => {
+        menu.getTiles();
+        if (!menu.hasClickableTiles) return this.activateMenu();
+
+        switch (keyCode) {
+          case helpers/* keyCodes.up */.Do.up:
+            menu.prevTile();
+            break;
+
+          case helpers/* keyCodes.down */.Do.down:
+            menu.nextTile();
+            break;
+
+          case helpers/* keyCodes.home */.Do.home:
+            menu.firstTile();
+            break;
+
+          case helpers/* keyCodes.end */.Do.end:
+            menu.lastTile();
+            break;
+        }
+
+        this.selectItem(this.allItems[this.getMenuIndex()]);
+      });
+    },
+
+    selectItem(item) {
+      if (!this.multiple) {
+        this.setValue(this.returnObject ? item : this.getValue(item));
+        this.isMenuActive = false;
+      } else {
+        const internalValue = (this.internalValue || []).slice();
+        const i = this.findExistingIndex(item);
+        i !== -1 ? internalValue.splice(i, 1) : internalValue.push(item);
+        this.setValue(internalValue.map(i => {
+          return this.returnObject ? i : this.getValue(i);
+        })); // When selecting multiple
+        // adjust menu after each
+        // selection
+
+        this.$nextTick(() => {
+          this.$refs.menu && this.$refs.menu.updateDimensions();
+        }); // There is no item to re-highlight
+        // when selections are hidden
+
+        if (this.hideSelected) {
+          this.setMenuIndex(-1);
+        } else {
+          const index = this.allItems.indexOf(item);
+
+          if (~index) {
+            this.$nextTick(() => this.$refs.menu.getTiles());
+            setTimeout(() => this.setMenuIndex(index));
+          }
+        }
+      }
+    },
+
+    setMenuIndex(index) {
+      this.$refs.menu && (this.$refs.menu.listIndex = index);
+    },
+
+    setSelectedItems() {
+      const selectedItems = [];
+      const values = !this.multiple || !Array.isArray(this.internalValue) ? [this.internalValue] : this.internalValue;
+
+      for (const value of values) {
+        const index = this.allItems.findIndex(v => this.valueComparator(this.getValue(v), this.getValue(value)));
+
+        if (index > -1) {
+          selectedItems.push(this.allItems[index]);
+        }
+      }
+
+      this.selectedItems = selectedItems;
+    },
+
+    setValue(value) {
+      if (!this.valueComparator(value, this.internalValue)) {
+        this.internalValue = value;
+        this.$emit('change', value);
+      }
+    },
+
+    isAppendInner(target) {
+      // return true if append inner is present
+      // and the target is itself or inside
+      const appendInner = this.$refs['append-inner'];
+      return appendInner && (appendInner === target || appendInner.contains(target));
+    }
+
+  }
+}));
+//# sourceMappingURL=VSelect.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VAutocomplete/VAutocomplete.js
+// Styles
+ // Extensions
+
+
+ // Utilities
+
+
+
+const VAutocomplete_defaultMenuProps = { ...defaultMenuProps,
+  offsetY: true,
+  offsetOverflow: true,
+  transition: false
+};
+/* @vue/component */
+
+/* harmony default export */ const VAutocomplete = (VSelect.extend({
+  name: 'v-autocomplete',
+  props: {
+    allowOverflow: {
+      type: Boolean,
+      default: true
+    },
+    autoSelectFirst: {
+      type: Boolean,
+      default: false
+    },
+    filter: {
+      type: Function,
+      default: (item, queryText, itemText) => {
+        return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1;
+      }
+    },
+    hideNoData: Boolean,
+    menuProps: {
+      type: VSelect.options.props.menuProps.type,
+      default: () => VAutocomplete_defaultMenuProps
+    },
+    noFilter: Boolean,
+    searchInput: {
+      type: String
+    }
+  },
+
+  data() {
+    return {
+      lazySearch: this.searchInput
+    };
+  },
+
+  computed: {
+    classes() {
+      return { ...VSelect.options.computed.classes.call(this),
+        'v-autocomplete': true,
+        'v-autocomplete--is-selecting-index': this.selectedIndex > -1
+      };
+    },
+
+    computedItems() {
+      return this.filteredItems;
+    },
+
+    selectedValues() {
+      return this.selectedItems.map(item => this.getValue(item));
+    },
+
+    hasDisplayedItems() {
+      return this.hideSelected ? this.filteredItems.some(item => !this.hasItem(item)) : this.filteredItems.length > 0;
+    },
+
+    currentRange() {
+      if (this.selectedItem == null) return 0;
+      return String(this.getText(this.selectedItem)).length;
+    },
+
+    filteredItems() {
+      if (!this.isSearching || this.noFilter || this.internalSearch == null) return this.allItems;
+      return this.allItems.filter(item => {
+        const value = (0,helpers/* getPropertyFromItem */.qF)(item, this.itemText);
+        const text = value != null ? String(value) : '';
+        return this.filter(item, String(this.internalSearch), text);
+      });
+    },
+
+    internalSearch: {
+      get() {
+        return this.lazySearch;
+      },
+
+      set(val) {
+        // emit update event only when the new
+        // search value is different from previous
+        if (this.lazySearch !== val) {
+          this.lazySearch = val;
+          this.$emit('update:search-input', val);
+        }
+      }
+
+    },
+
+    isAnyValueAllowed() {
+      return false;
+    },
+
+    isDirty() {
+      return this.searchIsDirty || this.selectedItems.length > 0;
+    },
+
+    isSearching() {
+      return this.multiple && this.searchIsDirty || this.searchIsDirty && this.internalSearch !== this.getText(this.selectedItem);
+    },
+
+    menuCanShow() {
+      if (!this.isFocused) return false;
+      return this.hasDisplayedItems || !this.hideNoData;
+    },
+
+    $_menuProps() {
+      const props = VSelect.options.computed.$_menuProps.call(this);
+      props.contentClass = `v-autocomplete__content ${props.contentClass || ''}`.trim();
+      return { ...VAutocomplete_defaultMenuProps,
+        ...props
+      };
+    },
+
+    searchIsDirty() {
+      return this.internalSearch != null && this.internalSearch !== '';
+    },
+
+    selectedItem() {
+      if (this.multiple) return null;
+      return this.selectedItems.find(i => {
+        return this.valueComparator(this.getValue(i), this.getValue(this.internalValue));
+      });
+    },
+
+    listData() {
+      const data = VSelect.options.computed.listData.call(this);
+      data.props = { ...data.props,
+        items: this.virtualizedItems,
+        noFilter: this.noFilter || !this.isSearching || !this.filteredItems.length,
+        searchInput: this.internalSearch
+      };
+      return data;
+    }
+
+  },
+  watch: {
+    filteredItems: 'onFilteredItemsChanged',
+    internalValue: 'setSearch',
+
+    isFocused(val) {
+      if (val) {
+        document.addEventListener('copy', this.onCopy);
+        this.$refs.input && this.$refs.input.select();
+      } else {
+        document.removeEventListener('copy', this.onCopy);
+        this.blur();
+        this.updateSelf();
+      }
+    },
+
+    isMenuActive(val) {
+      if (val || !this.hasSlot) return;
+      this.lazySearch = null;
+    },
+
+    items(val, oldVal) {
+      // If we are focused, the menu
+      // is not active, hide no data is enabled,
+      // and items change
+      // User is probably async loading
+      // items, try to activate the menu
+      if (!(oldVal && oldVal.length) && this.hideNoData && this.isFocused && !this.isMenuActive && val.length) this.activateMenu();
+    },
+
+    searchInput(val) {
+      this.lazySearch = val;
+    },
+
+    internalSearch: 'onInternalSearchChanged',
+    itemText: 'updateSelf'
+  },
+
+  created() {
+    this.setSearch();
+  },
+
+  destroyed() {
+    document.removeEventListener('copy', this.onCopy);
+  },
+
+  methods: {
+    onFilteredItemsChanged(val, oldVal) {
+      // TODO: How is the watcher triggered
+      // for duplicate items? no idea
+      if (val === oldVal) return;
+
+      if (!this.autoSelectFirst) {
+        const preSelectedItem = oldVal[this.$refs.menu.listIndex];
+
+        if (preSelectedItem) {
+          this.setMenuIndex(val.findIndex(i => i === preSelectedItem));
+        } else {
+          this.setMenuIndex(-1);
+        }
+
+        this.$emit('update:list-index', this.$refs.menu.listIndex);
+      }
+
+      this.$nextTick(() => {
+        if (!this.internalSearch || val.length !== 1 && !this.autoSelectFirst) return;
+        this.$refs.menu.getTiles();
+
+        if (this.autoSelectFirst && val.length) {
+          this.setMenuIndex(0);
+          this.$emit('update:list-index', this.$refs.menu.listIndex);
+        }
+      });
+    },
+
+    onInternalSearchChanged() {
+      this.updateMenuDimensions();
+    },
+
+    updateMenuDimensions() {
+      // Type from menuable is not making it through
+      this.isMenuActive && this.$refs.menu && this.$refs.menu.updateDimensions();
+    },
+
+    changeSelectedIndex(keyCode) {
+      // Do not allow changing of selectedIndex
+      // when search is dirty
+      if (this.searchIsDirty) return;
+
+      if (this.multiple && keyCode === helpers/* keyCodes.left */.Do.left) {
+        if (this.selectedIndex === -1) {
+          this.selectedIndex = this.selectedItems.length - 1;
+        } else {
+          this.selectedIndex--;
+        }
+      } else if (this.multiple && keyCode === helpers/* keyCodes.right */.Do.right) {
+        if (this.selectedIndex >= this.selectedItems.length - 1) {
+          this.selectedIndex = -1;
+        } else {
+          this.selectedIndex++;
+        }
+      } else if (keyCode === helpers/* keyCodes.backspace */.Do.backspace || keyCode === helpers/* keyCodes.delete */.Do["delete"]) {
+        this.deleteCurrentItem();
+      }
+    },
+
+    deleteCurrentItem() {
+      const curIndex = this.selectedIndex;
+      const curItem = this.selectedItems[curIndex]; // Do nothing if input or item is disabled
+
+      if (!this.isInteractive || this.getDisabled(curItem)) return;
+      const lastIndex = this.selectedItems.length - 1; // Select the last item if
+      // there is no selection
+
+      if (this.selectedIndex === -1 && lastIndex !== 0) {
+        this.selectedIndex = lastIndex;
+        return;
+      }
+
+      const length = this.selectedItems.length;
+      const nextIndex = curIndex !== length - 1 ? curIndex : curIndex - 1;
+      const nextItem = this.selectedItems[nextIndex];
+
+      if (!nextItem) {
+        this.setValue(this.multiple ? [] : null);
+      } else {
+        this.selectItem(curItem);
+      }
+
+      this.selectedIndex = nextIndex;
+    },
+
+    clearableCallback() {
+      this.internalSearch = null;
+      VSelect.options.methods.clearableCallback.call(this);
+    },
+
+    genInput() {
+      const input = VTextField.options.methods.genInput.call(this);
+      input.data = mergeData(input.data, {
+        attrs: {
+          'aria-activedescendant': (0,helpers/* getObjectValueByPath */.vO)(this.$refs.menu, 'activeTile.id'),
+          autocomplete: (0,helpers/* getObjectValueByPath */.vO)(input.data, 'attrs.autocomplete', 'off')
+        },
+        domProps: {
+          value: this.internalSearch
+        }
+      });
+      return input;
+    },
+
+    genInputSlot() {
+      const slot = VSelect.options.methods.genInputSlot.call(this);
+      slot.data.attrs.role = 'combobox';
+      return slot;
+    },
+
+    genSelections() {
+      return this.hasSlot || this.multiple ? VSelect.options.methods.genSelections.call(this) : [];
+    },
+
+    onClick(e) {
+      if (!this.isInteractive) return;
+      this.selectedIndex > -1 ? this.selectedIndex = -1 : this.onFocus();
+      if (!this.isAppendInner(e.target)) this.activateMenu();
+    },
+
+    onInput(e) {
+      if (this.selectedIndex > -1 || !e.target) return;
+      const target = e.target;
+      const value = target.value; // If typing and menu is not currently active
+
+      if (target.value) this.activateMenu();
+      if (!this.multiple && value === '') this.deleteCurrentItem();
+      this.internalSearch = value;
+      this.badInput = target.validity && target.validity.badInput;
+    },
+
+    onKeyDown(e) {
+      const keyCode = e.keyCode;
+
+      if (e.ctrlKey || ![helpers/* keyCodes.home */.Do.home, helpers/* keyCodes.end */.Do.end].includes(keyCode)) {
+        VSelect.options.methods.onKeyDown.call(this, e);
+      } // The ordering is important here
+      // allows new value to be updated
+      // and then moves the index to the
+      // proper location
+
+
+      this.changeSelectedIndex(keyCode);
+    },
+
+    onSpaceDown(e) {},
+
+    onTabDown(e) {
+      VSelect.options.methods.onTabDown.call(this, e);
+      this.updateSelf();
+    },
+
+    onUpDown(e) {
+      // Prevent screen from scrolling
+      e.preventDefault(); // For autocomplete / combobox, cycling
+      // interfers with native up/down behavior
+      // instead activate the menu
+
+      this.activateMenu();
+    },
+
+    selectItem(item) {
+      VSelect.options.methods.selectItem.call(this, item);
+      this.setSearch();
+    },
+
+    setSelectedItems() {
+      VSelect.options.methods.setSelectedItems.call(this); // #4273 Don't replace if searching
+      // #4403 Don't replace if focused
+
+      if (!this.isFocused) this.setSearch();
+    },
+
+    setSearch() {
+      // Wait for nextTick so selectedItem
+      // has had time to update
+      this.$nextTick(() => {
+        if (!this.multiple || !this.internalSearch || !this.isMenuActive) {
+          this.internalSearch = !this.selectedItems.length || this.multiple || this.hasSlot ? null : this.getText(this.selectedItem);
+        }
+      });
+    },
+
+    updateSelf() {
+      if (!this.searchIsDirty && !this.internalValue) return;
+
+      if (!this.multiple && !this.valueComparator(this.internalSearch, this.getValue(this.internalValue))) {
+        this.setSearch();
+      }
+    },
+
+    hasItem(item) {
+      return this.selectedValues.indexOf(this.getValue(item)) > -1;
+    },
+
+    onCopy(event) {
+      var _event$clipboardData, _event$clipboardData2;
+
+      if (this.selectedIndex === -1) return;
+      const currentItem = this.selectedItems[this.selectedIndex];
+      const currentItemText = this.getText(currentItem);
+      (_event$clipboardData = event.clipboardData) == null ? void 0 : _event$clipboardData.setData('text/plain', currentItemText);
+      (_event$clipboardData2 = event.clipboardData) == null ? void 0 : _event$clipboardData2.setData('text/vnd.vuetify.autocomplete.item+plain', currentItemText);
+      event.preventDefault();
+    }
+
+  }
+}));
+//# sourceMappingURL=VAutocomplete.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCombobox/VCombobox.js
+// Styles
+ // Extensions
+
+
+ // Utils
+
+
+/* @vue/component */
+
+/* harmony default export */ const VCombobox = (VAutocomplete.extend({
+  name: 'v-combobox',
+  props: {
+    delimiters: {
+      type: Array,
+      default: () => []
+    },
+    returnObject: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data: () => ({
+    editingIndex: -1
+  }),
+  computed: {
+    computedCounterValue() {
+      return this.multiple ? this.selectedItems.length : (this.internalSearch || '').toString().length;
+    },
+
+    hasSlot() {
+      return VSelect.options.computed.hasSlot.call(this) || this.multiple;
+    },
+
+    isAnyValueAllowed() {
+      return true;
+    },
+
+    menuCanShow() {
+      if (!this.isFocused) return false;
+      return this.hasDisplayedItems || !!this.$slots['no-data'] && !this.hideNoData;
+    },
+
+    searchIsDirty() {
+      return this.internalSearch != null;
+    }
+
+  },
+  methods: {
+    onInternalSearchChanged(val) {
+      if (val && this.multiple && this.delimiters.length) {
+        const delimiter = this.delimiters.find(d => val.endsWith(d));
+
+        if (delimiter != null) {
+          this.internalSearch = val.slice(0, val.length - delimiter.length);
+          this.updateTags();
+        }
+      }
+
+      this.updateMenuDimensions();
+    },
+
+    genInput() {
+      const input = VAutocomplete.options.methods.genInput.call(this);
+      delete input.data.attrs.name;
+      input.data.on.paste = this.onPaste;
+      return input;
+    },
+
+    genChipSelection(item, index) {
+      const chip = VSelect.options.methods.genChipSelection.call(this, item, index); // Allow user to update an existing value
+
+      if (this.multiple) {
+        chip.componentOptions.listeners = { ...chip.componentOptions.listeners,
+          dblclick: () => {
+            this.editingIndex = index;
+            this.internalSearch = this.getText(item);
+            this.selectedIndex = -1;
+          }
+        };
+      }
+
+      return chip;
+    },
+
+    onChipInput(item) {
+      VSelect.options.methods.onChipInput.call(this, item);
+      this.editingIndex = -1;
+    },
+
+    // Requires a manual definition
+    // to overwrite removal in v-autocomplete
+    onEnterDown(e) {
+      e.preventDefault(); // If has menu index, let v-select-list handle
+
+      if (this.getMenuIndex() > -1) return;
+      this.$nextTick(this.updateSelf);
+    },
+
+    onKeyDown(e) {
+      const keyCode = e.keyCode;
+
+      if (e.ctrlKey || ![helpers/* keyCodes.home */.Do.home, helpers/* keyCodes.end */.Do.end].includes(keyCode)) {
+        VSelect.options.methods.onKeyDown.call(this, e);
+      } // If user is at selection index of 0
+      // create a new tag
+
+
+      if (this.multiple && keyCode === helpers/* keyCodes.left */.Do.left && this.$refs.input.selectionStart === 0) {
+        this.updateSelf();
+      } else if (keyCode === helpers/* keyCodes.enter */.Do.enter) {
+        this.onEnterDown(e);
+      } // The ordering is important here
+      // allows new value to be updated
+      // and then moves the index to the
+      // proper location
+
+
+      this.changeSelectedIndex(keyCode);
+    },
+
+    onTabDown(e) {
+      // When adding tags, if searching and
+      // there is not a filtered options,
+      // add the value to the tags list
+      if (this.multiple && this.internalSearch && this.getMenuIndex() === -1) {
+        e.preventDefault();
+        e.stopPropagation();
+        return this.updateTags();
+      }
+
+      VAutocomplete.options.methods.onTabDown.call(this, e);
+    },
+
+    selectItem(item) {
+      // Currently only supports items:<string[]>
+      if (this.editingIndex > -1) {
+        this.updateEditing();
+      } else {
+        VAutocomplete.options.methods.selectItem.call(this, item); // if selected item contains search value,
+        // remove the search string
+
+        if (this.internalSearch && this.multiple && this.getText(item).toLocaleLowerCase().includes(this.internalSearch.toLocaleLowerCase())) {
+          this.internalSearch = null;
+        }
+      }
+    },
+
+    setSelectedItems() {
+      if (this.internalValue == null || this.internalValue === '') {
+        this.selectedItems = [];
+      } else {
+        this.selectedItems = this.multiple ? this.internalValue : [this.internalValue];
+      }
+    },
+
+    setValue(value) {
+      VSelect.options.methods.setValue.call(this, value === undefined ? this.internalSearch : value);
+    },
+
+    updateEditing() {
+      const value = this.internalValue.slice();
+      const index = this.selectedItems.findIndex(item => this.getText(item) === this.internalSearch); // If user enters a duplicate text on chip edit,
+      // don't add it, move it to the end of the list
+
+      if (index > -1) {
+        const item = typeof value[index] === 'object' ? Object.assign({}, value[index]) : value[index];
+        value.splice(index, 1);
+        value.push(item);
+      } else {
+        value[this.editingIndex] = this.internalSearch;
+      }
+
+      this.setValue(value);
+      this.editingIndex = -1;
+      this.internalSearch = null;
+    },
+
+    updateCombobox() {
+      // If search is not dirty, do nothing
+      if (!this.searchIsDirty) return; // The internal search is not matching
+      // the internal value, update the input
+
+      if (this.internalSearch !== this.getText(this.internalValue)) this.setValue(); // Reset search if using slot to avoid a double input
+
+      const isUsingSlot = Boolean(this.$scopedSlots.selection) || this.hasChips;
+      if (isUsingSlot) this.internalSearch = null;
+    },
+
+    updateSelf() {
+      this.multiple ? this.updateTags() : this.updateCombobox();
+    },
+
+    updateTags() {
+      const menuIndex = this.getMenuIndex(); // If the user is not searching
+      // and no menu item is selected
+      // or if the search is empty
+      // do nothing
+
+      if (menuIndex < 0 && !this.searchIsDirty || !this.internalSearch) return;
+
+      if (this.editingIndex > -1) {
+        return this.updateEditing();
+      }
+
+      const index = this.selectedItems.findIndex(item => this.internalSearch === this.getText(item)); // If the duplicate item is an object,
+      // copy it, so that it can be added again later
+
+      const itemToSelect = index > -1 && typeof this.selectedItems[index] === 'object' ? Object.assign({}, this.selectedItems[index]) : this.internalSearch; // If it already exists, do nothing
+      // this might need to change to bring
+      // the duplicated item to the last entered
+
+      if (index > -1) {
+        const internalValue = this.internalValue.slice();
+        internalValue.splice(index, 1);
+        this.setValue(internalValue);
+      } // If menu index is greater than 1
+      // the selection is handled elsewhere
+      // TODO: find out where
+
+
+      if (menuIndex > -1) return this.internalSearch = null;
+      this.selectItem(itemToSelect);
+      this.internalSearch = null;
+    },
+
+    onPaste(event) {
+      var _event$clipboardData;
+
+      if (!this.multiple || this.searchIsDirty) return;
+      const pastedItemText = (_event$clipboardData = event.clipboardData) == null ? void 0 : _event$clipboardData.getData('text/vnd.vuetify.autocomplete.item+plain');
+
+      if (pastedItemText && this.findExistingIndex(pastedItemText) === -1) {
+        event.preventDefault();
+        VSelect.options.methods.selectItem.call(this, pastedItemText);
+      }
+    },
+
+    clearableCallback() {
+      this.editingIndex = -1;
+      VAutocomplete.options.methods.clearableCallback.call(this);
+    }
+
+  }
+}));
+//# sourceMappingURL=VCombobox.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VFileInput/VFileInput.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VTextField/index.js
+
+
+/* harmony default export */ const components_VTextField = (VTextField);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VFileInput/VFileInput.js
+// Styles
+ // Extensions
+
+ // Components
+
+ // Utilities
+
+
+
+
+/* harmony default export */ const VFileInput = (components_VTextField.extend({
+  name: 'v-file-input',
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
+  props: {
+    chips: Boolean,
+    clearable: {
+      type: Boolean,
+      default: true
+    },
+    counterSizeString: {
+      type: String,
+      default: '$vuetify.fileInput.counterSize'
+    },
+    counterString: {
+      type: String,
+      default: '$vuetify.fileInput.counter'
+    },
+    hideInput: Boolean,
+    multiple: Boolean,
+    placeholder: String,
+    prependIcon: {
+      type: String,
+      default: '$file'
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    showSize: {
+      type: [Boolean, Number],
+      default: false,
+      validator: v => {
+        return typeof v === 'boolean' || [1000, 1024].includes(v);
+      }
+    },
+    smallChips: Boolean,
+    truncateLength: {
+      type: [Number, String],
+      default: 22
+    },
+    type: {
+      type: String,
+      default: 'file'
+    },
+    value: {
+      default: undefined,
+      validator: val => {
+        return (0,helpers/* wrapInArray */.TI)(val).every(v => v != null && typeof v === 'object');
+      }
+    }
+  },
+  computed: {
+    classes() {
+      return { ...components_VTextField.options.computed.classes.call(this),
+        'v-file-input': true
+      };
+    },
+
+    computedCounterValue() {
+      const fileCount = this.multiple && this.lazyValue ? this.lazyValue.length : this.lazyValue instanceof File ? 1 : 0;
+      if (!this.showSize) return this.$vuetify.lang.t(this.counterString, fileCount);
+      const bytes = this.internalArrayValue.reduce((bytes, {
+        size = 0
+      }) => {
+        return bytes + size;
+      }, 0);
+      return this.$vuetify.lang.t(this.counterSizeString, fileCount, (0,helpers/* humanReadableFileSize */.XE)(bytes, this.base === 1024));
+    },
+
+    internalArrayValue() {
+      return (0,helpers/* wrapInArray */.TI)(this.internalValue);
+    },
+
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+
+      set(val) {
+        this.lazyValue = val;
+        this.$emit('change', this.lazyValue);
+      }
+
+    },
+
+    isDirty() {
+      return this.internalArrayValue.length > 0;
+    },
+
+    isLabelActive() {
+      return this.isDirty;
+    },
+
+    text() {
+      if (!this.isDirty && (this.persistentPlaceholder || this.isFocused || !this.hasLabel)) return [this.placeholder];
+      return this.internalArrayValue.map(file => {
+        const {
+          name = '',
+          size = 0
+        } = file;
+        const truncatedText = this.truncateText(name);
+        return !this.showSize ? truncatedText : `${truncatedText} (${(0,helpers/* humanReadableFileSize */.XE)(size, this.base === 1024)})`;
+      });
+    },
+
+    base() {
+      return typeof this.showSize !== 'boolean' ? this.showSize : undefined;
+    },
+
+    hasChips() {
+      return this.chips || this.smallChips;
+    }
+
+  },
+  watch: {
+    readonly: {
+      handler(v) {
+        if (v === true) (0,util_console/* consoleError */.N6)('readonly is not supported on <v-file-input>', this);
+      },
+
+      immediate: true
+    },
+
+    value(v) {
+      const value = this.multiple ? v : v ? [v] : [];
+
+      if (!(0,helpers/* deepEqual */.vZ)(value, this.$refs.input.files)) {
+        // When the input value is changed programatically, clear the
+        // internal input's value so that the `onInput` handler
+        // can be triggered again if the user re-selects the exact
+        // same file(s). Ideally, `input.files` should be
+        // manipulated directly but that property is readonly.
+        this.$refs.input.value = '';
+      }
+    }
+
+  },
+  methods: {
+    clearableCallback() {
+      this.internalValue = this.multiple ? [] : null;
+      this.$refs.input.value = '';
+    },
+
+    genChips() {
+      if (!this.isDirty) return [];
+      return this.text.map((text, index) => this.$createElement(VChip, {
+        props: {
+          small: this.smallChips
+        },
+        on: {
+          'click:close': () => {
+            const internalValue = this.internalValue;
+            internalValue.splice(index, 1);
+            this.internalValue = internalValue; // Trigger the watcher
+          }
+        }
+      }, [text]));
+    },
+
+    genControl() {
+      const render = components_VTextField.options.methods.genControl.call(this);
+
+      if (this.hideInput) {
+        render.data.style = mergeStyles(render.data.style, {
+          display: 'none'
+        });
+      }
+
+      return render;
+    },
+
+    genInput() {
+      const input = components_VTextField.options.methods.genInput.call(this);
+      input.data.attrs.multiple = this.multiple; // We should not be setting value
+      // programmatically on the input
+      // when it is using type="file"
+
+      delete input.data.domProps.value; // This solves an issue in Safari where
+      // nothing happens when adding a file
+      // do to the input event not firing
+      // https://github.com/vuetifyjs/vuetify/issues/7941
+
+      delete input.data.on.input;
+      input.data.on.change = this.onInput;
+      return [this.genSelections(), input];
+    },
+
+    genPrependSlot() {
+      if (!this.prependIcon) return null;
+      const icon = this.genIcon('prepend', () => {
+        this.$refs.input.click();
+      });
+      return this.genSlot('prepend', 'outer', [icon]);
+    },
+
+    genSelectionText() {
+      const length = this.text.length;
+      if (length < 2) return this.text;
+      if (this.showSize && !this.counter) return [this.computedCounterValue];
+      return [this.$vuetify.lang.t(this.counterString, length)];
+    },
+
+    genSelections() {
+      const children = [];
+
+      if (this.isDirty && this.$scopedSlots.selection) {
+        this.internalArrayValue.forEach((file, index) => {
+          if (!this.$scopedSlots.selection) return;
+          children.push(this.$scopedSlots.selection({
+            text: this.text[index],
+            file,
+            index
+          }));
+        });
+      } else {
+        children.push(this.hasChips && this.isDirty ? this.genChips() : this.genSelectionText());
+      }
+
+      return this.$createElement('div', {
+        staticClass: 'v-file-input__text',
+        class: {
+          'v-file-input__text--placeholder': this.placeholder && !this.isDirty,
+          'v-file-input__text--chips': this.hasChips && !this.$scopedSlots.selection
+        }
+      }, children);
+    },
+
+    genTextFieldSlot() {
+      const node = components_VTextField.options.methods.genTextFieldSlot.call(this);
+      node.data.on = { ...(node.data.on || {}),
+        click: () => this.$refs.input.click()
+      };
+      return node;
+    },
+
+    onInput(e) {
+      const files = [...(e.target.files || [])];
+      this.internalValue = this.multiple ? files : files[0]; // Set initialValue here otherwise isFocused
+      // watcher in VTextField will emit a change
+      // event whenever the component is blurred
+
+      this.initialValue = this.internalValue;
+    },
+
+    onKeyDown(e) {
+      this.$emit('keydown', e);
+    },
+
+    truncateText(str) {
+      if (str.length < Number(this.truncateLength)) return str;
+      const charsKeepOneSide = Math.floor((Number(this.truncateLength) - 1) / 2);
+      return `${str.slice(0, charsKeepOneSide)}…${str.slice(str.length - charsKeepOneSide)}`;
+    }
+
+  }
+}));
+//# sourceMappingURL=VFileInput.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VOtpInput/VOtpInput.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VOtpInput/VOtpInput.js
+// Styles
+
+ // Extensions
+
+
+ // Directives
+
+ // Utilities
+
+
+ // Types
+
+
+const VOtpInput_baseMixins = (0,mixins/* default */.Z)(components_VInput);
+/* @vue/component */
+
+/* harmony default export */ const VOtpInput = (VOtpInput_baseMixins.extend().extend({
+  name: 'v-otp-input',
+  directives: {
+    ripple: ripple/* default */.Z
+  },
+  inheritAttrs: false,
+  props: {
+    length: {
+      type: [Number, String],
+      default: 6
+    },
+    type: {
+      type: String,
+      default: 'text'
+    },
+    plain: Boolean
+  },
+  data: () => ({
+    badInput: false,
+    initialValue: null,
+    isBooted: false,
+    otp: []
+  }),
+  computed: {
+    outlined() {
+      return !this.plain;
+    },
+
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        ...VTextField.options.computed.classes.call(this),
+        'v-otp-input--plain': this.plain
+      };
+    },
+
+    isDirty() {
+      return components_VInput.options.computed.isDirty.call(this) || this.badInput;
+    }
+
+  },
+  watch: {
+    isFocused: 'updateValue',
+
+    value(val) {
+      this.lazyValue = val;
+      this.otp = (val == null ? void 0 : val.split('')) || [];
+    }
+
+  },
+
+  created() {
+    var _this$internalValue;
+
+    /* istanbul ignore next */
+    if (this.$attrs.hasOwnProperty('browser-autocomplete')) {
+      (0,util_console/* breaking */.fK)('browser-autocomplete', 'autocomplete', this);
+    }
+
+    this.otp = ((_this$internalValue = this.internalValue) == null ? void 0 : _this$internalValue.split('')) || [];
+  },
+
+  mounted() {
+    requestAnimationFrame(() => this.isBooted = true);
+  },
+
+  methods: {
+    /** @public */
+    focus(e, otpIdx) {
+      this.onFocus(e, otpIdx || 0);
+    },
+
+    genInputSlot(otpIdx) {
+      return this.$createElement('div', this.setBackgroundColor(this.backgroundColor, {
+        staticClass: 'v-input__slot',
+        style: {
+          height: (0,helpers/* convertToUnit */.kb)(this.height)
+        },
+        on: {
+          click: () => this.onClick(otpIdx),
+          mousedown: e => this.onMouseDown(e, otpIdx),
+          mouseup: e => this.onMouseUp(e, otpIdx)
+        }
+      }), [this.genDefaultSlot(otpIdx)]);
+    },
+
+    genControl(otpIdx) {
+      return this.$createElement('div', {
+        staticClass: 'v-input__control'
+      }, [this.genInputSlot(otpIdx)]);
+    },
+
+    genDefaultSlot(otpIdx) {
+      return [this.genFieldset(), this.genTextFieldSlot(otpIdx)];
+    },
+
+    genContent() {
+      return Array.from({
+        length: +this.length
+      }, (_, i) => {
+        return this.$createElement('div', this.setTextColor(this.validationState, {
+          staticClass: 'v-input',
+          class: this.classes
+        }), [this.genControl(i)]);
+      });
+    },
+
+    genFieldset() {
+      return this.$createElement('fieldset', {
+        attrs: {
+          'aria-hidden': true
+        }
+      }, [this.genLegend()]);
+    },
+
+    genLegend() {
+      const span = this.$createElement('span', {
+        domProps: {
+          innerHTML: '&#8203;'
+        }
+      });
+      return this.$createElement('legend', {
+        style: {
+          width: '0px'
+        }
+      }, [span]);
+    },
+
+    genInput(otpIdx) {
+      const listeners = Object.assign({}, this.listeners$);
+      delete listeners.change; // Change should not be bound externally
+
+      return this.$createElement('input', {
+        style: {},
+        domProps: {
+          value: this.otp[otpIdx],
+          min: this.type === 'number' ? 0 : null
+        },
+        attrs: { ...this.attrs$,
+          disabled: this.isDisabled,
+          readonly: this.isReadonly,
+          type: this.type,
+          id: `${this.computedId}--${otpIdx}`,
+          class: `otp-field-box--${otpIdx}`,
+          maxlength: 1
+        },
+        on: Object.assign(listeners, {
+          blur: this.onBlur,
+          input: e => this.onInput(e, otpIdx),
+          focus: e => this.onFocus(e, otpIdx),
+          paste: e => this.onPaste(e, otpIdx),
+          keydown: this.onKeyDown,
+          keyup: e => this.onKeyUp(e, otpIdx)
+        }),
+        ref: 'input',
+        refInFor: true
+      });
+    },
+
+    genTextFieldSlot(otpIdx) {
+      return this.$createElement('div', {
+        staticClass: 'v-text-field__slot'
+      }, [this.genInput(otpIdx)]);
+    },
+
+    onBlur(e) {
+      this.isFocused = false;
+      e && this.$nextTick(() => this.$emit('blur', e));
+    },
+
+    onClick(otpIdx) {
+      if (this.isFocused || this.isDisabled || !this.$refs.input[otpIdx]) return;
+      this.onFocus(undefined, otpIdx);
+    },
+
+    onFocus(e, otpIdx) {
+      e == null ? void 0 : e.preventDefault();
+      e == null ? void 0 : e.stopPropagation();
+      const elements = this.$refs.input;
+      const ref = this.$refs.input && elements[otpIdx || 0];
+      if (!ref) return;
+
+      if (document.activeElement !== ref) {
+        ref.focus();
+        return ref.select();
+      }
+
+      if (!this.isFocused) {
+        this.isFocused = true;
+        ref.select();
+        e && this.$emit('focus', e);
+      }
+    },
+
+    onInput(e, otpIdx) {
+      const target = e.target;
+      const value = target.value;
+      this.applyValue(otpIdx, target.value, () => {
+        this.internalValue = this.otp.join('');
+      });
+      this.badInput = target.validity && target.validity.badInput;
+      const nextIndex = otpIdx + 1;
+
+      if (value) {
+        if (nextIndex < +this.length) {
+          this.changeFocus(nextIndex);
+        } else {
+          this.clearFocus(otpIdx);
+          this.onCompleted();
+        }
+      }
+    },
+
+    clearFocus(index) {
+      const input = this.$refs.input[index];
+      input.blur();
+    },
+
+    onKeyDown(e) {
+      if (e.keyCode === helpers/* keyCodes.enter */.Do.enter) {
+        this.$emit('change', this.internalValue);
+      }
+
+      this.$emit('keydown', e);
+    },
+
+    onMouseDown(e, otpIdx) {
+      // Prevent input from being blurred
+      if (e.target !== this.$refs.input[otpIdx]) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      components_VInput.options.methods.onMouseDown.call(this, e);
+    },
+
+    onMouseUp(e, otpIdx) {
+      if (this.hasMouseDown) this.focus(e, otpIdx);
+      components_VInput.options.methods.onMouseUp.call(this, e);
+    },
+
+    onPaste(event, index) {
+      var _event$clipboardData;
+
+      const maxCursor = +this.length - 1;
+      const inputVal = event == null ? void 0 : (_event$clipboardData = event.clipboardData) == null ? void 0 : _event$clipboardData.getData('Text');
+      const inputDataArray = (inputVal == null ? void 0 : inputVal.split('')) || [];
+      event.preventDefault();
+      const newOtp = [...this.otp];
+
+      for (let i = 0; i < inputDataArray.length; i++) {
+        const appIdx = index + i;
+        if (appIdx > maxCursor) break;
+        newOtp[appIdx] = inputDataArray[i].toString();
+      }
+
+      this.otp = newOtp;
+      this.internalValue = this.otp.join('');
+      const targetFocus = Math.min(index + inputDataArray.length, maxCursor);
+      this.changeFocus(targetFocus);
+
+      if (newOtp.length === +this.length) {
+        this.onCompleted();
+        this.clearFocus(targetFocus);
+      }
+    },
+
+    applyValue(index, inputVal, next) {
+      const newOtp = [...this.otp];
+      newOtp[index] = inputVal;
+      this.otp = newOtp;
+      next();
+    },
+
+    changeFocus(index) {
+      this.onFocus(undefined, index || 0);
+    },
+
+    updateValue(val) {
+      // Sets validationState from validatable
+      this.hasColor = val;
+
+      if (val) {
+        this.initialValue = this.lazyValue;
+      } else if (this.initialValue !== this.lazyValue) {
+        this.$emit('change', this.lazyValue);
+      }
+    },
+
+    onKeyUp(event, index) {
+      event.preventDefault();
+      const eventKey = event.key;
+
+      if (['Tab', 'Shift', 'Meta', 'Control', 'Alt'].includes(eventKey)) {
+        return;
+      }
+
+      if (['Delete'].includes(eventKey)) {
+        return;
+      }
+
+      if (eventKey === 'ArrowLeft' || eventKey === 'Backspace' && !this.otp[index]) {
+        return index > 0 && this.changeFocus(index - 1);
+      }
+
+      if (eventKey === 'ArrowRight') {
+        return index + 1 < +this.length && this.changeFocus(index + 1);
+      }
+    },
+
+    onCompleted() {
+      const rsp = this.otp.join('');
+
+      if (rsp.length === +this.length) {
+        this.$emit('finish', rsp);
+      }
+    }
+
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-otp-input',
+      class: this.themeClasses
+    }, this.genContent());
+  }
+
+}));
+//# sourceMappingURL=VOtpInput.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VOverflowBtn/VOverflowBtn.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VAutocomplete/index.js
+
+
+/* harmony default export */ const components_VAutocomplete = (VAutocomplete);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VOverflowBtn/VOverflowBtn.js
+// Styles
+ // Extensions
+
+
+
+ // Components
+
+ // Utilities
+
+
+/* @vue/component */
+
+/* harmony default export */ const VOverflowBtn = (components_VAutocomplete.extend({
+  name: 'v-overflow-btn',
+  props: {
+    editable: Boolean,
+    segmented: Boolean
+  },
+  computed: {
+    classes() {
+      return { ...components_VAutocomplete.options.computed.classes.call(this),
+        'v-overflow-btn': true,
+        'v-overflow-btn--segmented': this.segmented,
+        'v-overflow-btn--editable': this.editable
+      };
+    },
+
+    isAnyValueAllowed() {
+      return this.editable || components_VAutocomplete.options.computed.isAnyValueAllowed.call(this);
+    },
+
+    isSingle() {
+      return true;
+    },
+
+    computedItems() {
+      return this.segmented ? this.allItems : this.filteredItems;
+    }
+
+  },
+  methods: {
+    genSelections() {
+      return this.editable ? components_VAutocomplete.options.methods.genSelections.call(this) : VSelect.options.methods.genSelections.call(this); // Override v-autocomplete's override
+    },
+
+    genCommaSelection(item, index, last) {
+      return this.segmented ? this.genSegmentedBtn(item) : VSelect.options.methods.genCommaSelection.call(this, item, index, last);
+    },
+
+    genInput() {
+      const input = VTextField.options.methods.genInput.call(this);
+      input.data = input.data || {};
+      input.data.domProps.value = this.editable ? this.internalSearch : '';
+      input.data.attrs.readonly = !this.isAnyValueAllowed;
+      return input;
+    },
+
+    genLabel() {
+      if (this.editable && this.isFocused) return null;
+      const label = VTextField.options.methods.genLabel.call(this);
+      if (!label) return label;
+      label.data = label.data || {}; // Reset previously set styles from parent
+
+      label.data.style = {};
+      return label;
+    },
+
+    genSegmentedBtn(item) {
+      const itemValue = this.getValue(item);
+      const itemObj = this.computedItems.find(i => this.getValue(i) === itemValue) || item;
+
+      if (!itemObj.text || !itemObj.callback) {
+        (0,util_console/* consoleWarn */.Kd)('When using "segmented" prop without a selection slot, items must contain both a text and callback property', this);
+        return null;
+      }
+
+      return this.$createElement(components_VBtn, {
+        props: {
+          text: true
+        },
+        on: {
+          click(e) {
+            e.stopPropagation();
+            itemObj.callback(e);
+          }
+
+        }
+      }, [itemObj.text]);
+    },
+
+    updateValue(val) {
+      if (val) {
+        this.initialValue = this.lazyValue;
+      } else if (this.initialValue !== this.lazyValue) {
+        this.$emit('change', this.lazyValue);
+      }
+    }
+
+  }
+}));
+//# sourceMappingURL=VOverflowBtn.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VRadioGroup/VRadio.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VRadioGroup/VRadio.js
+// Styles
+
+
+
+ // Mixins
+
+
+
+
+
+
+ // Utilities
+
+
+
+
+const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, colorable/* default */.Z, rippleable, (0,groupable/* factory */.d)('radioGroup'), themeable/* default */.Z);
+/* @vue/component */
+
+/* harmony default export */ const VRadio = (VRadio_baseMixins.extend().extend({
+  name: 'v-radio',
+  inheritAttrs: false,
+  props: {
+    disabled: Boolean,
+    id: String,
+    label: String,
+    name: String,
+    offIcon: {
+      type: String,
+      default: '$radioOff'
+    },
+    onIcon: {
+      type: String,
+      default: '$radioOn'
+    },
+    readonly: Boolean,
+    value: {
+      default: null
+    }
+  },
+  data: () => ({
+    isFocused: false
+  }),
+  computed: {
+    classes() {
+      return {
+        'v-radio--is-disabled': this.isDisabled,
+        'v-radio--is-focused': this.isFocused,
+        ...this.themeClasses,
+        ...this.groupClasses
+      };
+    },
+
+    computedColor() {
+      return selectable.options.computed.computedColor.call(this);
+    },
+
+    computedIcon() {
+      return this.isActive ? this.onIcon : this.offIcon;
+    },
+
+    computedId() {
+      return components_VInput.options.computed.computedId.call(this);
+    },
+
+    hasLabel: components_VInput.options.computed.hasLabel,
+
+    hasState() {
+      return (this.radioGroup || {}).hasState;
+    },
+
+    isDisabled() {
+      return this.disabled || !!this.radioGroup && this.radioGroup.isDisabled;
+    },
+
+    isReadonly() {
+      return this.readonly || !!this.radioGroup && this.radioGroup.isReadonly;
+    },
+
+    computedName() {
+      if (this.name || !this.radioGroup) {
+        return this.name;
+      }
+
+      return this.radioGroup.name || `radio-${this.radioGroup._uid}`;
+    },
+
+    rippleState() {
+      return selectable.options.computed.rippleState.call(this);
+    },
+
+    validationState() {
+      return (this.radioGroup || {}).validationState || this.computedColor;
+    }
+
+  },
+  methods: {
+    genInput(args) {
+      // We can't actually use the mixin directly because
+      // it's made for standalone components, but its
+      // genInput method is exactly what we need
+      return selectable.options.methods.genInput.call(this, 'radio', args);
+    },
+
+    genLabel() {
+      if (!this.hasLabel) return null;
+      return this.$createElement(components_VLabel, {
+        on: {
+          // Label shouldn't cause the input to focus
+          click: prevent
+        },
+        attrs: {
+          for: this.computedId
+        },
+        props: {
+          color: this.validationState,
+          focused: this.hasState
+        }
+      }, (0,helpers/* getSlot */.z9)(this, 'label') || this.label);
+    },
+
+    genRadio() {
+      const {
+        title,
+        ...radioAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.$createElement(components_VIcon, this.setTextColor(this.validationState, {
+        props: {
+          dense: this.radioGroup && this.radioGroup.dense
+        }
+      }), this.computedIcon), this.genInput({
+        name: this.computedName,
+        value: this.value,
+        ...radioAttrs
+      }), this.genRipple(this.setTextColor(this.rippleState))]);
+    },
+
+    onFocus(e) {
+      this.isFocused = true;
+      this.$emit('focus', e);
+    },
+
+    onBlur(e) {
+      this.isFocused = false;
+      this.$emit('blur', e);
+    },
+
+    onChange() {
+      if (this.isDisabled || this.isReadonly || this.isActive) return;
+      this.toggle();
+    },
+
+    onKeydown: () => {}
+  },
+
+  render(h) {
+    const data = {
+      staticClass: 'v-radio',
+      class: this.classes,
+      on: mergeListeners({
+        click: this.onChange
+      }, this.listeners$),
+      attrs: {
+        title: this.attrs$.title
+      }
+    };
+    return h('div', data, [this.genRadio(), this.genLabel()]);
+  }
+
+}));
+//# sourceMappingURL=VRadio.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSlider/VSlider.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSlider/VSlider.js
+ // Components
+
+
+ // Mixins
+
+
+ // Directives
+
+ // Helpers
+
+
+
+/* harmony default export */ const VSlider = ((0,mixins/* default */.Z)(components_VInput, loadable
+/* @vue/component */
+).extend({
+  name: 'v-slider',
+  directives: {
+    ClickOutside: click_outside
+  },
+  mixins: [loadable],
+  props: {
+    disabled: Boolean,
+    inverseLabel: Boolean,
+    max: {
+      type: [Number, String],
+      default: 100
+    },
+    min: {
+      type: [Number, String],
+      default: 0
+    },
+    step: {
+      type: [Number, String],
+      default: 1
+    },
+    thumbColor: String,
+    thumbLabel: {
+      type: [Boolean, String],
+      default: undefined,
+      validator: v => typeof v === 'boolean' || v === 'always'
+    },
+    thumbSize: {
+      type: [Number, String],
+      default: 32
+    },
+    tickLabels: {
+      type: Array,
+      default: () => []
+    },
+    ticks: {
+      type: [Boolean, String],
+      default: false,
+      validator: v => typeof v === 'boolean' || v === 'always'
+    },
+    tickSize: {
+      type: [Number, String],
+      default: 2
+    },
+    trackColor: String,
+    trackFillColor: String,
+    value: [Number, String],
+    vertical: Boolean
+  },
+  data: () => ({
+    app: null,
+    oldValue: null,
+    thumbPressed: false,
+    mouseTimeout: -1,
+    isFocused: false,
+    isActive: false,
+    noClick: false,
+    startOffset: 0
+  }),
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input__slider': true,
+        'v-input__slider--vertical': this.vertical,
+        'v-input__slider--inverse-label': this.inverseLabel
+      };
+    },
+
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+
+      set(val) {
+        val = isNaN(val) ? this.minValue : val; // Round value to ensure the
+        // entire slider range can
+        // be selected with step
+
+        const value = this.roundValue(Math.min(Math.max(val, this.minValue), this.maxValue));
+        if (value === this.lazyValue) return;
+        this.lazyValue = value;
+        this.$emit('input', value);
+      }
+
+    },
+
+    trackTransition() {
+      return this.thumbPressed ? this.showTicks || this.stepNumeric ? '0.1s cubic-bezier(0.25, 0.8, 0.5, 1)' : 'none' : '';
+    },
+
+    minValue() {
+      return parseFloat(this.min);
+    },
+
+    maxValue() {
+      return parseFloat(this.max);
+    },
+
+    stepNumeric() {
+      return this.step > 0 ? parseFloat(this.step) : 0;
+    },
+
+    inputWidth() {
+      const inputWidth = (this.roundValue(this.internalValue) - this.minValue) / (this.maxValue - this.minValue) * 100;
+      return isNaN(inputWidth) ? 0 : inputWidth;
+    },
+
+    trackFillStyles() {
+      const startDir = this.vertical ? 'bottom' : 'left';
+      const endDir = this.vertical ? 'top' : 'right';
+      const valueDir = this.vertical ? 'height' : 'width';
+      const start = this.$vuetify.rtl ? 'auto' : '0';
+      const end = this.$vuetify.rtl ? '0' : 'auto';
+      const value = this.isDisabled ? `calc(${this.inputWidth}% - 10px)` : `${this.inputWidth}%`;
+      return {
+        transition: this.trackTransition,
+        [startDir]: start,
+        [endDir]: end,
+        [valueDir]: value
+      };
+    },
+
+    trackStyles() {
+      const startDir = this.vertical ? this.$vuetify.rtl ? 'bottom' : 'top' : this.$vuetify.rtl ? 'left' : 'right';
+      const endDir = this.vertical ? 'height' : 'width';
+      const start = '0px';
+      const end = this.isDisabled ? `calc(${100 - this.inputWidth}% - 10px)` : `calc(${100 - this.inputWidth}%)`;
+      return {
+        transition: this.trackTransition,
+        [startDir]: start,
+        [endDir]: end
+      };
+    },
+
+    showTicks() {
+      return this.tickLabels.length > 0 || !!(!this.isDisabled && this.stepNumeric && this.ticks);
+    },
+
+    numTicks() {
+      return Math.ceil((this.maxValue - this.minValue) / this.stepNumeric);
+    },
+
+    showThumbLabel() {
+      return !this.isDisabled && !!(this.thumbLabel || this.$scopedSlots['thumb-label']);
+    },
+
+    computedTrackColor() {
+      if (this.isDisabled) return undefined;
+      if (this.trackColor) return this.trackColor;
+      if (this.isDark) return this.validationState;
+      return this.validationState || 'primary lighten-3';
+    },
+
+    computedTrackFillColor() {
+      if (this.isDisabled) return undefined;
+      if (this.trackFillColor) return this.trackFillColor;
+      return this.validationState || this.computedColor;
+    },
+
+    computedThumbColor() {
+      if (this.thumbColor) return this.thumbColor;
+      return this.validationState || this.computedColor;
+    }
+
+  },
+  watch: {
+    min(val) {
+      const parsed = parseFloat(val);
+      parsed > this.internalValue && this.$emit('input', parsed);
+    },
+
+    max(val) {
+      const parsed = parseFloat(val);
+      parsed < this.internalValue && this.$emit('input', parsed);
+    },
+
+    value: {
+      handler(v) {
+        this.internalValue = v;
+      }
+
+    }
+  },
+
+  // If done in as immediate in
+  // value watcher, causes issues
+  // with vue-test-utils
+  beforeMount() {
+    this.internalValue = this.value;
+  },
+
+  mounted() {
+    // Without a v-app, iOS does not work with body selectors
+    this.app = document.querySelector('[data-app]') || (0,util_console/* consoleWarn */.Kd)('Missing v-app or a non-body wrapping element with the [data-app] attribute', this);
+  },
+
+  methods: {
+    genDefaultSlot() {
+      const children = [this.genLabel()];
+      const slider = this.genSlider();
+      this.inverseLabel ? children.unshift(slider) : children.push(slider);
+      children.push(this.genProgress());
+      return children;
+    },
+
+    genSlider() {
+      return this.$createElement('div', {
+        class: {
+          'v-slider': true,
+          'v-slider--horizontal': !this.vertical,
+          'v-slider--vertical': this.vertical,
+          'v-slider--focused': this.isFocused,
+          'v-slider--active': this.isActive,
+          'v-slider--disabled': this.isDisabled,
+          'v-slider--readonly': this.isReadonly,
+          ...this.themeClasses
+        },
+        directives: [{
+          name: 'click-outside',
+          value: this.onBlur
+        }],
+        on: {
+          click: this.onSliderClick,
+          mousedown: this.onSliderMouseDown,
+          touchstart: this.onSliderMouseDown
+        }
+      }, this.genChildren());
+    },
+
+    genChildren() {
+      return [this.genInput(), this.genTrackContainer(), this.genSteps(), this.genThumbContainer(this.internalValue, this.inputWidth, this.isActive, this.isFocused, this.onFocus, this.onBlur)];
+    },
+
+    genInput() {
+      return this.$createElement('input', {
+        attrs: {
+          value: this.internalValue,
+          id: this.computedId,
+          disabled: true,
+          readonly: true,
+          tabindex: -1,
+          ...this.$attrs
+        }
+      });
+    },
+
+    genTrackContainer() {
+      const children = [this.$createElement('div', this.setBackgroundColor(this.computedTrackColor, {
+        staticClass: 'v-slider__track-background',
+        style: this.trackStyles
+      })), this.$createElement('div', this.setBackgroundColor(this.computedTrackFillColor, {
+        staticClass: 'v-slider__track-fill',
+        style: this.trackFillStyles
+      }))];
+      return this.$createElement('div', {
+        staticClass: 'v-slider__track-container',
+        ref: 'track'
+      }, children);
+    },
+
+    genSteps() {
+      if (!this.step || !this.showTicks) return null;
+      const tickSize = parseFloat(this.tickSize);
+      const range = (0,helpers/* createRange */.MT)(this.numTicks + 1);
+      const direction = this.vertical ? 'bottom' : this.$vuetify.rtl ? 'right' : 'left';
+      const offsetDirection = this.vertical ? this.$vuetify.rtl ? 'left' : 'right' : 'top';
+      if (this.vertical) range.reverse();
+      const ticks = range.map(index => {
+        const children = [];
+
+        if (this.tickLabels[index]) {
+          children.push(this.$createElement('div', {
+            staticClass: 'v-slider__tick-label'
+          }, this.tickLabels[index]));
+        }
+
+        const width = index * (100 / this.numTicks);
+        const filled = this.$vuetify.rtl ? 100 - this.inputWidth < width : width < this.inputWidth;
+        return this.$createElement('span', {
+          key: index,
+          staticClass: 'v-slider__tick',
+          class: {
+            'v-slider__tick--filled': filled
+          },
+          style: {
+            width: `${tickSize}px`,
+            height: `${tickSize}px`,
+            [direction]: `calc(${width}% - ${tickSize / 2}px)`,
+            [offsetDirection]: `calc(50% - ${tickSize / 2}px)`
+          }
+        }, children);
+      });
+      return this.$createElement('div', {
+        staticClass: 'v-slider__ticks-container',
+        class: {
+          'v-slider__ticks-container--always-show': this.ticks === 'always' || this.tickLabels.length > 0
+        }
+      }, ticks);
+    },
+
+    genThumbContainer(value, valueWidth, isActive, isFocused, onFocus, onBlur, ref = 'thumb') {
+      const children = [this.genThumb()];
+      const thumbLabelContent = this.genThumbLabelContent(value);
+      this.showThumbLabel && children.push(this.genThumbLabel(thumbLabelContent));
+      return this.$createElement('div', this.setTextColor(this.computedThumbColor, {
+        ref,
+        key: ref,
+        staticClass: 'v-slider__thumb-container',
+        class: {
+          'v-slider__thumb-container--active': isActive,
+          'v-slider__thumb-container--focused': isFocused,
+          'v-slider__thumb-container--show-label': this.showThumbLabel
+        },
+        style: this.getThumbContainerStyles(valueWidth),
+        attrs: {
+          role: 'slider',
+          tabindex: this.isDisabled ? -1 : this.$attrs.tabindex ? this.$attrs.tabindex : 0,
+          'aria-label': this.$attrs['aria-label'] || this.label,
+          'aria-valuemin': this.min,
+          'aria-valuemax': this.max,
+          'aria-valuenow': this.internalValue,
+          'aria-readonly': String(this.isReadonly),
+          'aria-orientation': this.vertical ? 'vertical' : 'horizontal'
+        },
+        on: {
+          focus: onFocus,
+          blur: onBlur,
+          keydown: this.onKeyDown
+        }
+      }), children);
+    },
+
+    genThumbLabelContent(value) {
+      return this.$scopedSlots['thumb-label'] ? this.$scopedSlots['thumb-label']({
+        value
+      }) : [this.$createElement('span', [String(value)])];
+    },
+
+    genThumbLabel(content) {
+      const size = (0,helpers/* convertToUnit */.kb)(this.thumbSize);
+      const transform = this.vertical ? `translateY(20%) translateY(${Number(this.thumbSize) / 3 - 1}px) translateX(55%) rotate(135deg)` : `translateY(-20%) translateY(-12px) translateX(-50%) rotate(45deg)`;
+      return this.$createElement(VScaleTransition, {
+        props: {
+          origin: 'bottom center'
+        }
+      }, [this.$createElement('div', {
+        staticClass: 'v-slider__thumb-label-container',
+        directives: [{
+          name: 'show',
+          value: this.isFocused || this.isActive || this.thumbLabel === 'always'
+        }]
+      }, [this.$createElement('div', this.setBackgroundColor(this.computedThumbColor, {
+        staticClass: 'v-slider__thumb-label',
+        style: {
+          height: size,
+          width: size,
+          transform
+        }
+      }), [this.$createElement('div', content)])])]);
+    },
+
+    genThumb() {
+      return this.$createElement('div', this.setBackgroundColor(this.computedThumbColor, {
+        staticClass: 'v-slider__thumb'
+      }));
+    },
+
+    getThumbContainerStyles(width) {
+      const direction = this.vertical ? 'top' : 'left';
+      let value = this.$vuetify.rtl ? 100 - width : width;
+      value = this.vertical ? 100 - value : value;
+      return {
+        transition: this.trackTransition,
+        [direction]: `${value}%`
+      };
+    },
+
+    onSliderMouseDown(e) {
+      var _e$target;
+
+      e.preventDefault();
+      this.oldValue = this.internalValue;
+      this.isActive = true;
+
+      if ((_e$target = e.target) != null && _e$target.matches('.v-slider__thumb-container, .v-slider__thumb-container *')) {
+        this.thumbPressed = true;
+        const domRect = e.target.getBoundingClientRect();
+        const touch = 'touches' in e ? e.touches[0] : e;
+        this.startOffset = this.vertical ? touch.clientY - (domRect.top + domRect.height / 2) : touch.clientX - (domRect.left + domRect.width / 2);
+      } else {
+        this.startOffset = 0;
+        window.clearTimeout(this.mouseTimeout);
+        this.mouseTimeout = window.setTimeout(() => {
+          this.thumbPressed = true;
+        }, 300);
+      }
+
+      const mouseUpOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true,
+        capture: true
+      } : true;
+      const mouseMoveOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true
+      } : false;
+      const isTouchEvent = ('touches' in e);
+      this.onMouseMove(e);
+      this.app.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', this.onMouseMove, mouseMoveOptions);
+      (0,helpers/* addOnceEventListener */.qh)(this.app, isTouchEvent ? 'touchend' : 'mouseup', this.onSliderMouseUp, mouseUpOptions);
+      this.$emit('start', this.internalValue);
+    },
+
+    onSliderMouseUp(e) {
+      e.stopPropagation();
+      window.clearTimeout(this.mouseTimeout);
+      this.thumbPressed = false;
+      const mouseMoveOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true
+      } : false;
+      this.app.removeEventListener('touchmove', this.onMouseMove, mouseMoveOptions);
+      this.app.removeEventListener('mousemove', this.onMouseMove, mouseMoveOptions);
+      this.$emit('mouseup', e);
+      this.$emit('end', this.internalValue);
+
+      if (!(0,helpers/* deepEqual */.vZ)(this.oldValue, this.internalValue)) {
+        this.$emit('change', this.internalValue);
+        this.noClick = true;
+      }
+
+      this.isActive = false;
+    },
+
+    onMouseMove(e) {
+      if (e.type === 'mousemove') {
+        this.thumbPressed = true;
+      }
+
+      this.internalValue = this.parseMouseMove(e);
+    },
+
+    onKeyDown(e) {
+      if (!this.isInteractive) return;
+      const value = this.parseKeyDown(e, this.internalValue);
+      if (value == null || value < this.minValue || value > this.maxValue) return;
+      this.internalValue = value;
+      this.$emit('change', value);
+    },
+
+    onSliderClick(e) {
+      if (this.noClick) {
+        this.noClick = false;
+        return;
+      }
+
+      const thumb = this.$refs.thumb;
+      thumb.focus();
+      this.onMouseMove(e);
+      this.$emit('change', this.internalValue);
+    },
+
+    onBlur(e) {
+      this.isFocused = false;
+      this.$emit('blur', e);
+    },
+
+    onFocus(e) {
+      this.isFocused = true;
+      this.$emit('focus', e);
+    },
+
+    parseMouseMove(e) {
+      const start = this.vertical ? 'top' : 'left';
+      const length = this.vertical ? 'height' : 'width';
+      const click = this.vertical ? 'clientY' : 'clientX';
+      const {
+        [start]: trackStart,
+        [length]: trackLength
+      } = this.$refs.track.getBoundingClientRect();
+      const clickOffset = 'touches' in e ? e.touches[0][click] : e[click]; // It is possible for left to be NaN, force to number
+
+      let clickPos = Math.min(Math.max((clickOffset - trackStart - this.startOffset) / trackLength, 0), 1) || 0;
+      if (this.vertical) clickPos = 1 - clickPos;
+      if (this.$vuetify.rtl) clickPos = 1 - clickPos;
+      return parseFloat(this.min) + clickPos * (this.maxValue - this.minValue);
+    },
+
+    parseKeyDown(e, value) {
+      if (!this.isInteractive) return;
+      const {
+        pageup,
+        pagedown,
+        end,
+        home,
+        left,
+        right,
+        down,
+        up
+      } = helpers/* keyCodes */.Do;
+      if (![pageup, pagedown, end, home, left, right, down, up].includes(e.keyCode)) return;
+      e.preventDefault();
+      const step = this.stepNumeric || 1;
+      const steps = (this.maxValue - this.minValue) / step;
+
+      if ([left, right, down, up].includes(e.keyCode)) {
+        const increase = this.$vuetify.rtl ? [left, up] : [right, up];
+        const direction = increase.includes(e.keyCode) ? 1 : -1;
+        const multiplier = e.shiftKey ? 3 : e.ctrlKey ? 2 : 1;
+        value = value + direction * step * multiplier;
+      } else if (e.keyCode === home) {
+        value = this.minValue;
+      } else if (e.keyCode === end) {
+        value = this.maxValue;
+      } else {
+        const direction = e.keyCode === pagedown ? 1 : -1;
+        value = value - direction * step * (steps > 100 ? steps / 10 : 10);
+      }
+
+      return value;
+    },
+
+    roundValue(value) {
+      if (!this.stepNumeric) return value; // Format input value using the same number
+      // of decimals places as in the step prop
+
+      const trimmedStep = this.step.toString().trim();
+      const decimals = trimmedStep.indexOf('.') > -1 ? trimmedStep.length - trimmedStep.indexOf('.') - 1 : 0;
+      const offset = this.minValue % this.stepNumeric;
+      const newValue = Math.round((value - offset) / this.stepNumeric) * this.stepNumeric + offset;
+      return parseFloat(Math.min(newValue, this.maxValue).toFixed(decimals));
+    }
+
+  }
+}));
+//# sourceMappingURL=VSlider.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSwitch/VSwitch.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
+var VProgressCircular = __webpack_require__(4568);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSwitch/VSwitch.js
+// Styles
+
+ // Mixins
+
+
+ // Directives
+
+ // Components
+
+
+ // Helpers
+
+
+/* @vue/component */
+
+/* harmony default export */ const VSwitch = (selectable.extend({
+  name: 'v-switch',
+  directives: {
+    Touch: touch
+  },
+  props: {
+    inset: Boolean,
+    loading: {
+      type: [Boolean, String],
+      default: false
+    },
+    flat: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input--selection-controls v-input--switch': true,
+        'v-input--switch--flat': this.flat,
+        'v-input--switch--inset': this.inset
+      };
+    },
+
+    attrs() {
+      return {
+        'aria-checked': String(this.isActive),
+        'aria-disabled': String(this.isDisabled),
+        role: 'switch'
+      };
+    },
+
+    // Do not return undefined if disabled,
+    // according to spec, should still show
+    // a color when disabled and active
+    validationState() {
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor !== null) return this.computedColor;
+      return undefined;
+    },
+
+    switchData() {
+      return this.setTextColor(this.loading ? undefined : this.validationState, {
+        class: this.themeClasses
+      });
+    }
+
+  },
+  methods: {
+    genDefaultSlot() {
+      return [this.genSwitch(), this.genLabel()];
+    },
+
+    genSwitch() {
+      const {
+        title,
+        ...switchAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.genInput('checkbox', { ...this.attrs,
+        ...switchAttrs
+      }), this.genRipple(this.setTextColor(this.validationState, {
+        directives: [{
+          name: 'touch',
+          value: {
+            left: this.onSwipeLeft,
+            right: this.onSwipeRight
+          }
+        }]
+      })), this.$createElement('div', {
+        staticClass: 'v-input--switch__track',
+        ...this.switchData
+      }), this.$createElement('div', {
+        staticClass: 'v-input--switch__thumb',
+        ...this.switchData
+      }, [this.genProgress()])]);
+    },
+
+    genProgress() {
+      return this.$createElement(VFabTransition, {}, [this.loading === false ? null : this.$slots.progress || this.$createElement(VProgressCircular/* default */.Z, {
+        props: {
+          color: this.loading === true || this.loading === '' ? this.color || 'primary' : this.loading,
+          size: 16,
+          width: 2,
+          indeterminate: true
+        }
+      })]);
+    },
+
+    onSwipeLeft() {
+      if (this.isActive) this.onChange();
+    },
+
+    onSwipeRight() {
+      if (!this.isActive) this.onChange();
+    },
+
+    onKeydown(e) {
+      if (e.keyCode === helpers/* keyCodes.left */.Do.left && this.isActive || e.keyCode === helpers/* keyCodes.right */.Do.right && !this.isActive) this.onChange();
+    }
+
+  }
+}));
+//# sourceMappingURL=VSwitch.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VTextarea/VTextarea.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VTextarea/VTextarea.js
+// Styles
+ // Extensions
+
+ // Utilities
+
+
+const VTextarea_baseMixins = (0,mixins/* default */.Z)(VTextField);
+/* @vue/component */
+
+/* harmony default export */ const VTextarea = (VTextarea_baseMixins.extend({
+  name: 'v-textarea',
+  props: {
+    autoGrow: Boolean,
+    noResize: Boolean,
+    rowHeight: {
+      type: [Number, String],
+      default: 24,
+      validator: v => !isNaN(parseFloat(v))
+    },
+    rows: {
+      type: [Number, String],
+      default: 5,
+      validator: v => !isNaN(parseInt(v, 10))
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        'v-textarea': true,
+        'v-textarea--auto-grow': this.autoGrow,
+        'v-textarea--no-resize': this.noResizeHandle,
+        ...VTextField.options.computed.classes.call(this)
+      };
+    },
+
+    noResizeHandle() {
+      return this.noResize || this.autoGrow;
+    }
+
+  },
+  watch: {
+    autoGrow(val) {
+      this.$nextTick(() => {
+        var _this$$refs$input;
+
+        val ? this.calculateInputHeight() : (_this$$refs$input = this.$refs.input) == null ? void 0 : _this$$refs$input.style.removeProperty('height');
+      });
+    },
+
+    lazyValue() {
+      this.autoGrow && this.$nextTick(this.calculateInputHeight);
+    },
+
+    rowHeight() {
+      this.autoGrow && this.$nextTick(this.calculateInputHeight);
+    }
+
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.autoGrow && this.calculateInputHeight();
+    }, 0);
+  },
+
+  methods: {
+    calculateInputHeight() {
+      const input = this.$refs.input;
+      if (!input) return;
+      input.style.height = '0';
+      const height = input.scrollHeight;
+      const minHeight = parseInt(this.rows, 10) * parseFloat(this.rowHeight); // This has to be done ASAP, waiting for Vue
+      // to update the DOM causes ugly layout jumping
+
+      input.style.height = Math.max(minHeight, height) + 'px';
+    },
+
+    genInput() {
+      const input = VTextField.options.methods.genInput.call(this);
+      input.tag = 'textarea';
+      delete input.data.attrs.type;
+      input.data.attrs.rows = this.rows;
+      return input;
+    },
+
+    onInput(e) {
+      VTextField.options.methods.onInput.call(this, e);
+      this.autoGrow && this.calculateInputHeight();
+    },
+
+    onKeyDown(e) {
+      // Prevents closing of a
+      // dialog when pressing
+      // enter
+      if (this.isFocused && e.keyCode === 13) {
+        e.stopPropagation();
+      }
+
+      this.$emit('keydown', e);
+    }
+
+  }
+}));
+//# sourceMappingURL=VTextarea.js.map
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=script&lang=js&
 //
 //
@@ -39358,6 +44414,7 @@ installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTex
 
 
 
+
 /* harmony default export */ const LvefInputvue_type_script_lang_js_ = ({
   name: "LvefInput",
   $validates: true,
@@ -39365,7 +44422,19 @@ installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTex
   components: {
     ValidationProvider: vee_validate_full_esm_ValidationProvider,
     DatePicker: DatePicker,
-    TimePicker: TimePicker
+    TimePicker: TimePicker,
+    VAutoComplete: lib_namespaceObject.VAutoComplete,
+    VCheckbox: VCheckbox,
+    VCombobox: VCombobox,
+    VFileInput: VFileInput,
+    VInput: VInput,
+    VOtpInput: VOtpInput,
+    VOverflowBtn: VOverflowBtn,
+    VRadio: VRadio,
+    VSlider: VSlider,
+    VSelect: VSelect,
+    VSwitch: VSwitch,
+    VTextarea: VTextarea
   },
   props: {
     cols: {
@@ -39721,396 +44790,6 @@ const cache = new Map();
 
 }));
 //# sourceMappingURL=VCol.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VRadioGroup/VRadio.sass
-// extracted by mini-css-extract-plugin
-
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/groupable/index.js
-var groupable = __webpack_require__(1302);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/rippleable/index.js
-// Directives
- // Types
-
-
-/* harmony default export */ const rippleable = (external_vue_default().extend({
-  name: 'rippleable',
-  directives: {
-    ripple: ripple/* default */.Z
-  },
-  props: {
-    ripple: {
-      type: [Boolean, Object],
-      default: true
-    }
-  },
-  methods: {
-    genRipple(data = {}) {
-      if (!this.ripple) return null;
-      data.staticClass = 'v-input--selection-controls__ripple';
-      data.directives = data.directives || [];
-      data.directives.push({
-        name: 'ripple',
-        value: {
-          center: true
-        }
-      });
-      return this.$createElement('div', data);
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/comparable/index.js
-
-
-/* harmony default export */ const comparable = (external_vue_default().extend({
-  name: 'comparable',
-  props: {
-    valueComparator: {
-      type: Function,
-      default: helpers/* deepEqual */.vZ
-    }
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/selectable/index.js
-// Components
- // Mixins
-
-
- // Utilities
-
-
-function prevent(e) {
-  e.preventDefault();
-}
-/* @vue/component */
-
-/* harmony default export */ const selectable = ((0,mixins/* default */.Z)(components_VInput, rippleable, comparable).extend({
-  name: 'selectable',
-  model: {
-    prop: 'inputValue',
-    event: 'change'
-  },
-  props: {
-    id: String,
-    inputValue: null,
-    falseValue: null,
-    trueValue: null,
-    multiple: {
-      type: Boolean,
-      default: null
-    },
-    label: String
-  },
-
-  data() {
-    return {
-      hasColor: this.inputValue,
-      lazyValue: this.inputValue
-    };
-  },
-
-  computed: {
-    computedColor() {
-      if (!this.isActive) return undefined;
-      if (this.color) return this.color;
-      if (this.isDark && !this.appIsDark) return 'white';
-      return 'primary';
-    },
-
-    isMultiple() {
-      return this.multiple === true || this.multiple === null && Array.isArray(this.internalValue);
-    },
-
-    isActive() {
-      const value = this.value;
-      const input = this.internalValue;
-
-      if (this.isMultiple) {
-        if (!Array.isArray(input)) return false;
-        return input.some(item => this.valueComparator(item, value));
-      }
-
-      if (this.trueValue === undefined || this.falseValue === undefined) {
-        return value ? this.valueComparator(value, input) : Boolean(input);
-      }
-
-      return this.valueComparator(input, this.trueValue);
-    },
-
-    isDirty() {
-      return this.isActive;
-    },
-
-    rippleState() {
-      return !this.isDisabled && !this.validationState ? undefined : this.validationState;
-    }
-
-  },
-  watch: {
-    inputValue(val) {
-      this.lazyValue = val;
-      this.hasColor = val;
-    }
-
-  },
-  methods: {
-    genLabel() {
-      const label = components_VInput.options.methods.genLabel.call(this);
-      if (!label) return label;
-      label.data.on = {
-        // Label shouldn't cause the input to focus
-        click: prevent
-      };
-      return label;
-    },
-
-    genInput(type, attrs) {
-      return this.$createElement('input', {
-        attrs: Object.assign({
-          'aria-checked': this.isActive.toString(),
-          disabled: this.isDisabled,
-          id: this.computedId,
-          role: type,
-          type
-        }, attrs),
-        domProps: {
-          value: this.value,
-          checked: this.isActive
-        },
-        on: {
-          blur: this.onBlur,
-          change: this.onChange,
-          focus: this.onFocus,
-          keydown: this.onKeydown,
-          click: prevent
-        },
-        ref: 'input'
-      });
-    },
-
-    onBlur() {
-      this.isFocused = false;
-    },
-
-    onClick(e) {
-      this.onChange();
-      this.$emit('click', e);
-    },
-
-    onChange() {
-      if (!this.isInteractive) return;
-      const value = this.value;
-      let input = this.internalValue;
-
-      if (this.isMultiple) {
-        if (!Array.isArray(input)) {
-          input = [];
-        }
-
-        const length = input.length;
-        input = input.filter(item => !this.valueComparator(item, value));
-
-        if (input.length === length) {
-          input.push(value);
-        }
-      } else if (this.trueValue !== undefined && this.falseValue !== undefined) {
-        input = this.valueComparator(input, this.trueValue) ? this.falseValue : this.trueValue;
-      } else if (value) {
-        input = this.valueComparator(input, value) ? null : value;
-      } else {
-        input = !input;
-      }
-
-      this.validate(true, input);
-      this.internalValue = input;
-      this.hasColor = input;
-    },
-
-    onFocus() {
-      this.isFocused = true;
-    },
-
-    /** @abstract */
-    onKeydown(e) {}
-
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VRadioGroup/VRadio.js
-// Styles
-
-
-
- // Mixins
-
-
-
-
-
-
- // Utilities
-
-
-
-
-const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, colorable/* default */.Z, rippleable, (0,groupable/* factory */.d)('radioGroup'), themeable/* default */.Z);
-/* @vue/component */
-
-/* harmony default export */ const VRadio = (VRadio_baseMixins.extend().extend({
-  name: 'v-radio',
-  inheritAttrs: false,
-  props: {
-    disabled: Boolean,
-    id: String,
-    label: String,
-    name: String,
-    offIcon: {
-      type: String,
-      default: '$radioOff'
-    },
-    onIcon: {
-      type: String,
-      default: '$radioOn'
-    },
-    readonly: Boolean,
-    value: {
-      default: null
-    }
-  },
-  data: () => ({
-    isFocused: false
-  }),
-  computed: {
-    classes() {
-      return {
-        'v-radio--is-disabled': this.isDisabled,
-        'v-radio--is-focused': this.isFocused,
-        ...this.themeClasses,
-        ...this.groupClasses
-      };
-    },
-
-    computedColor() {
-      return selectable.options.computed.computedColor.call(this);
-    },
-
-    computedIcon() {
-      return this.isActive ? this.onIcon : this.offIcon;
-    },
-
-    computedId() {
-      return components_VInput.options.computed.computedId.call(this);
-    },
-
-    hasLabel: components_VInput.options.computed.hasLabel,
-
-    hasState() {
-      return (this.radioGroup || {}).hasState;
-    },
-
-    isDisabled() {
-      return this.disabled || !!this.radioGroup && this.radioGroup.isDisabled;
-    },
-
-    isReadonly() {
-      return this.readonly || !!this.radioGroup && this.radioGroup.isReadonly;
-    },
-
-    computedName() {
-      if (this.name || !this.radioGroup) {
-        return this.name;
-      }
-
-      return this.radioGroup.name || `radio-${this.radioGroup._uid}`;
-    },
-
-    rippleState() {
-      return selectable.options.computed.rippleState.call(this);
-    },
-
-    validationState() {
-      return (this.radioGroup || {}).validationState || this.computedColor;
-    }
-
-  },
-  methods: {
-    genInput(args) {
-      // We can't actually use the mixin directly because
-      // it's made for standalone components, but its
-      // genInput method is exactly what we need
-      return selectable.options.methods.genInput.call(this, 'radio', args);
-    },
-
-    genLabel() {
-      if (!this.hasLabel) return null;
-      return this.$createElement(components_VLabel, {
-        on: {
-          // Label shouldn't cause the input to focus
-          click: prevent
-        },
-        attrs: {
-          for: this.computedId
-        },
-        props: {
-          color: this.validationState,
-          focused: this.hasState
-        }
-      }, (0,helpers/* getSlot */.z9)(this, 'label') || this.label);
-    },
-
-    genRadio() {
-      const {
-        title,
-        ...radioAttrs
-      } = this.attrs$;
-      return this.$createElement('div', {
-        staticClass: 'v-input--selection-controls__input'
-      }, [this.$createElement(components_VIcon, this.setTextColor(this.validationState, {
-        props: {
-          dense: this.radioGroup && this.radioGroup.dense
-        }
-      }), this.computedIcon), this.genInput({
-        name: this.computedName,
-        value: this.value,
-        ...radioAttrs
-      }), this.genRipple(this.setTextColor(this.rippleState))]);
-    },
-
-    onFocus(e) {
-      this.isFocused = true;
-      this.$emit('focus', e);
-    },
-
-    onBlur(e) {
-      this.isFocused = false;
-      this.$emit('blur', e);
-    },
-
-    onChange() {
-      if (this.isDisabled || this.isReadonly || this.isActive) return;
-      this.toggle();
-    },
-
-    onKeydown: () => {}
-  },
-
-  render(h) {
-    const data = {
-      staticClass: 'v-radio',
-      class: this.classes,
-      on: mergeListeners({
-        click: this.onChange
-      }, this.listeners$),
-      attrs: {
-        title: this.attrs$.title
-      }
-    };
-    return h('div', data, [this.genRadio(), this.genLabel()]);
-  }
-
-}));
-//# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4928);
 ;// CONCATENATED MODULE: ./src/components/forms/parts/LvefInput.vue
@@ -40124,8 +44803,8 @@ var VTooltip = __webpack_require__(4928);
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   parts_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_5ca0af78_render,
-  LvefInputvue_type_template_id_5ca0af78_staticRenderFns,
+  LvefInputvue_type_template_id_109e87b7_render,
+  LvefInputvue_type_template_id_109e87b7_staticRenderFns,
   false,
   null,
   null,
@@ -41032,8 +45711,8 @@ installComponents_default()(ActionForm_component, {VCol: VCol,VRow: VRow})
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VAlert/VAlert.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
-var VSheet = __webpack_require__(6625);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+var components_VSheet = __webpack_require__(9744);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/transitionable/index.js
 
 /* harmony default export */ const transitionable = (external_vue_default().extend({
@@ -41062,7 +45741,7 @@ var VSheet = __webpack_require__(6625);
 
 /* @vue/component */
 
-/* harmony default export */ const VAlert = ((0,mixins/* default */.Z)(VSheet/* default */.Z, toggleable/* default */.Z, transitionable).extend({
+/* harmony default export */ const VAlert = ((0,mixins/* default */.Z)(components_VSheet/* default */.Z, toggleable/* default */.Z, transitionable).extend({
   name: 'v-alert',
   props: {
     border: {
@@ -41161,7 +45840,7 @@ var VSheet = __webpack_require__(6625);
     },
 
     classes() {
-      const classes = { ...VSheet/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
+      const classes = { ...components_VSheet/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
         'v-alert--border': Boolean(this.border),
         'v-alert--dense': this.dense,
         'v-alert--outlined': this.outlined,
@@ -41274,8 +45953,6 @@ var VSheet = __webpack_require__(6625);
 
 }));
 //# sourceMappingURL=VAlert.js.map
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
-var VProgressCircular = __webpack_require__(4568);
 ;// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue
 
 
