@@ -127,6 +127,7 @@ export default {
       return this.$parent.form;
     },
     getMasking: function() {
+        console.log('MASKING', this.fieldData.masking);
       if (this.isUndefined(this.fieldData.masking)) {
         return null;
       }
