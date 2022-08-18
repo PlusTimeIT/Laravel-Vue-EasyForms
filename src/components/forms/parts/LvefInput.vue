@@ -129,17 +129,20 @@ export default {
     getMasking: function() {
         console.log('MASKING', this.fieldData.masking);
       if (this.isUndefined(this.fieldData.masking)) {
+        console.log('MASKING', 'undefined triggered');
         return null;
       }
 
       if (this.fieldData.masking == null) {
+        console.log('MASKING', 'null triggered');
         return null;
       }
 
       if (this.fieldData.masking.length > 0) {
+        console.log('MASKING', 'length less than 0 triggered');
         return null;
       }
-
+        console.log('MASKING', 'return fieldValue triggered');
       return this.fieldData.masking;
     },
     displayLabel() {
