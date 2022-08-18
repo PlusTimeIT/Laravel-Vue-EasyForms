@@ -127,23 +127,17 @@ export default {
       return this.$parent.form;
     },
     getMasking: function() {
-        console.log('MASKING', this.fieldData.masking);
-      if (this.isUndefined(this.fieldData.masking) || this.fieldData.masking == null) {
-        console.log('MASKING', 'undefined or null triggered');
-        return null;
-      }
-
-      if (this.fieldData.masking == null) {
-        console.log('MASKING', 'null triggered');
-        return null;
-      }
-
-      if (this.fieldData.masking.length > 0) {
-        console.log('MASKING', 'length less than 0 triggered');
-        return null;
-      }
-        console.log('MASKING', 'return fieldValue triggered');
-      return this.fieldData.masking;
+        if (
+            this.isUndefined(this.fieldData.masking) || 
+            this.fieldData.masking == null ||
+            this.fieldData.masking.length > 0
+        ) {
+            console.log('MASKING', 'undefined or null triggered');
+            return null;
+        }else{
+            console.log('MASKING', 'return fieldValue triggered');
+            return this.fieldData.masking;
+        }
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)
