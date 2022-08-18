@@ -129,10 +129,9 @@ export default {
     getMasking: function() {
         if (
             !this.isUndefined(this.fieldData.masking) && 
-            this.fieldData.masking !== null ||
-            this.fieldData.masking.length > 0
+            this.fieldData.masking !== null
         ) {
-            console.log('MASKING', 'return data triggered');
+            console.log('MASKING', 'return data triggered', this.fieldData.masking);
             return this.fieldData.masking;
         }else{
             console.log('MASKING', 'return null triggered');
