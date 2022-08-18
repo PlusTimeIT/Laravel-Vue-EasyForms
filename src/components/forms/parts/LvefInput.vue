@@ -135,7 +135,7 @@ export default {
             return this.fieldData.masking;
         }else{
             console.log('MASKING', 'return null triggered');
-            return null;
+            return '';
         }
     },
     displayLabel() {
