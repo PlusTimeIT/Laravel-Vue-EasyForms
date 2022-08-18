@@ -9,6 +9,7 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
+        v-mask="getMasking"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -127,13 +128,15 @@ export default {
     },
     getMasking: function() {
         if (
-            this.isUndefined(this.fieldData.masking) || 
-            this.fieldData.masking == null ||
+            !this.isUndefined(this.fieldData.masking) && 
+            this.fieldData.masking !== null ||
             this.fieldData.masking.length > 0
         ) {
-            return null;
-        }else{
+            console.log('MASKING', 'return data triggered');
             return this.fieldData.masking;
+        }else{
+            console.log('MASKING', 'return null triggered');
+            return null;
         }
     },
     displayLabel() {
@@ -275,11 +278,6 @@ export default {
 
       if (field.component == "h2") {
         result = { "v-html": field.value };
-      }
-
-    var masking = this.getMasking;
-      if (masking !== null) {
-        result['v-mask'] = masking;
       }
       return result;
     }
