@@ -279,7 +279,7 @@ export default {
 
     var masking = this.getMasking;
       if (masking !== null) {
-        result = { "v-mask": masking };
+        result['v-mask'] = masking;
       }
       return result;
     }
