@@ -121,6 +121,7 @@ export default {
     } else {
       this.fieldLoaded = true;
     }
+    console.log('getMasking', this.getMasking);
   },
   computed: {
     form: function() {
