@@ -21949,7 +21949,7 @@ webpackContext.id = 6700;
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2108);
-/* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(963);
+/* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7986);
 /* harmony import */ var _parts_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(264);
 //
 //
@@ -22325,7 +22325,7 @@ const FormMixin = {
 
 /***/ }),
 
-/***/ 963:
+/***/ 7986:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22335,7 +22335,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": () => (/* binding */ LvefButton)
 });
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=template&id=1d02dad1&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=template&id=40133a18&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedButton.tooltip) || _vm.loadedButton.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"on":on,"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
@@ -22427,7 +22427,7 @@ var LvefIcon = __webpack_require__(264);
       return result;
     },
     displayButtonIcon: function () {
-      return !this.isUndefined(this.loadedButton.icon) ? true : false;
+      return !this.isUndefined(this.loadedButton.icon) && this.loadedButton.icon !== null ? true : false;
     }
   }
 });
@@ -30395,9 +30395,9 @@ var version = '3.4.14';
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__(2108);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=1f25aa77&
-var InputFormvue_type_template_id_1f25aa77_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
-var InputFormvue_type_template_id_1f25aa77_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=38956c53&
+var InputFormvue_type_template_id_38956c53_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
+var InputFormvue_type_template_id_38956c53_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=0222b7d9&
@@ -40169,7 +40169,7 @@ var LvefInput_component = (0,componentNormalizer/* default */.Z)(
 installComponents_default()(LvefInput_component, {VCol: VCol,VCounter: VCounter,VIcon: VIcon/* default */.Z,VRadio: VRadio,VTooltip: VTooltip/* default */.Z})
 
 // EXTERNAL MODULE: ./src/components/forms/parts/LvefButton.vue + 3 modules
-var LvefButton = __webpack_require__(963);
+var LvefButton = __webpack_require__(7986);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=script&lang=js&
 //
 //
@@ -40354,33 +40354,25 @@ var LvefButton = __webpack_require__(963);
     },
 
     async parentLoaded(field) {
-      console.log("Parent Loaded check");
-
       if (this.isUndefined(field.dependsOn)) {
-        console.log("dependsOn Not defined - no parent " + field.name);
         return true;
       }
 
       if (field.dependsOn == null) {
-        console.log("dependsOn null - no parent " + field.name);
         return true;
       } //check if parent loading data has been set
 
 
       let parentData = this.parentLoadingData(field);
-      console.log("dependsOn parent data ", parentData);
 
       if (parentData.dependsOn == null) {
-        console.log("parentData dependsOn null");
         return false;
       }
 
       if (parentData.dependsOn.length == 0) {
-        console.log("parentData.dependsOn.length == 0");
         return false;
       }
 
-      console.log("dependsOn - parentData Show - parent loaded");
       return true;
     },
 
@@ -40758,8 +40750,8 @@ const VRow_cache = new Map();
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_1f25aa77_render,
-  InputFormvue_type_template_id_1f25aa77_staticRenderFns,
+  InputFormvue_type_template_id_38956c53_render,
+  InputFormvue_type_template_id_38956c53_staticRenderFns,
   false,
   null,
   null,

@@ -84,7 +84,7 @@ export default {
       return result;
     },
     displayButtonIcon: function() {
-      return !this.isUndefined(this.loadedButton.icon) ? true : false;
+      return (!this.isUndefined(this.loadedButton.icon) && this.loadedButton.icon !== null ) ? true : false;
     }
   }
 };
