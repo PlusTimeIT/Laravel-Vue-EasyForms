@@ -9,7 +9,6 @@
       <component
         :is="fieldData.component"
         v-model="fieldData.value"
-        v-mask="getMasking()"
         v-bind="prepareProps(errors)"
       >
         <div v-if="fieldData.component == 'v-radio-group'">
@@ -121,11 +120,21 @@ export default {
     } else {
       this.fieldLoaded = true;
     }
-    console.log('getMasking', this.getMasking());
   },
   computed: {
     form: function() {
       return this.$parent.form;
+    },
+    getMasking: function() {
+        if (
+            this.isUndefined(this.fieldData.masking) || 
+            this.fieldData.masking == null ||
+            this.fieldData.masking.length > 0
+        ) {
+            return null;
+        }else{
+            return this.fieldData.masking;
+        }
     },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)
@@ -149,19 +158,6 @@ export default {
     }
   },
   methods: {
-    getMasking: function() {
-        if (
-            this.isUndefined(this.fieldData.masking) || 
-            this.fieldData.masking == null ||
-            this.fieldData.masking.length > 0
-        ) {
-            console.log('MASKING', 'undefined or null triggered');
-            return null;
-        }else{
-            console.log('MASKING', 'return fieldValue triggered');
-            return this.fieldData.masking;
-        }
-    },
     fieldValueLength: function(value) {
       return (value != null && !this.isUndefined(value)) ? value.length : 0;
     },
@@ -279,6 +275,11 @@ export default {
 
       if (field.component == "h2") {
         result = { "v-html": field.value };
+      }
+
+    var masking = this.getMasking;
+      if (masking !== null) {
+        result = { "v-mask": masking };
       }
       return result;
     }
