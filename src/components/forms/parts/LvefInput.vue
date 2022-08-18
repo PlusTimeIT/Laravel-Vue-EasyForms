@@ -164,7 +164,7 @@ export default {
   },
   methods: {
     fieldValueLength: function(value) {
-      return value != null ? value.length : 0;
+      return (value != null && !this.isUndefined(value)) ? value.length : 0;
     },
     displayCol() {
       if (this.isUndefined(this.fieldData.type)) return false;
