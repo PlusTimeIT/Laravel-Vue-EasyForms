@@ -11,6 +11,7 @@
                 :is="fieldData.component"
                 v-model="fieldData.value"
                 v-bind="prepareProps(errors)"
+                @field_update="customFieldUpdate"
             >
                 <div v-if="fieldData.component == 'v-radio-group'">
                 <v-radio
@@ -204,6 +205,10 @@ export default {
     }
   },
   methods: {
+    customFieldUpdate: function(event){
+        console.log('custom event field update')
+        this.fieldData.value = event;
+    },
     getMasking: function() {
         if (
             !this.isUndefined(this.fieldData.masking) && 
@@ -269,10 +274,14 @@ export default {
           }
         }
         result["items"] = selectItems;
-        result["item-text"] = field.item_text;
-        result["item-value"] = field.item_value;
         result["chips"] = field.chips;
         result["data-vv-name"] = "select";
+      }
+
+      if (field.type == "lvef-checkbox-group") {
+        result["items"] = field.items;
+        result["item"] = field.item_value;
+        result["data-vv-name"] = "checkbox";
       }
 
       if (field.type == "hidden") {

@@ -43,10 +43,10 @@
             },
             items: {
                 Type: Array,
-                default: () => ([])
+                 default: () => []
             },
             value: {
-                default: () => ([])
+                 default: () => []
             }
         },
         data: () => ({
