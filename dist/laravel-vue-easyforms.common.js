@@ -21939,7 +21939,7 @@ webpackContext.id = 6700;
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3967);
-/* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2899);
+/* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8095);
 /* harmony import */ var _parts_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(689);
 //
 //
@@ -22315,7 +22315,7 @@ const FormMixin = {
 
 /***/ }),
 
-/***/ 2899:
+/***/ 8095:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22325,7 +22325,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": () => (/* binding */ LvefButton)
 });
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=template&id=40133a18&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=template&id=f12194d0&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedButton.tooltip) || _vm.loadedButton.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"on":on,"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
@@ -22393,6 +22393,7 @@ var LvefIcon = __webpack_require__(689);
 
   methods: {
     buttonClick(identifier) {
+      console.log('button clicked', identifier);
       this.$emit("click", identifier);
     },
 
@@ -28330,7 +28331,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ const setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=8e5cd1fe&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=d6c0d054&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{attrs:{"cols":_vm.cols,"sm":_vm.sm,"md":_vm.md,"lg":_vm.lg}},[_c('v-row',[(_vm.loadedFormName == '')?_c('v-col',[_c('h1',[_vm._v("Error Loading Form")])]):_vm._e()],1),_c('validation-observer',{ref:"observer"},[_c('v-row',[_c('v-col',{attrs:{"cols":"12"}},_vm._l((_vm.loadedAlerts),function(alert,index){return _c('v-alert',_vm._b({key:index,model:{value:(_vm.alerts[index].display),callback:function ($$v) {_vm.$set(_vm.alerts[index], "display", $$v)},expression:"alerts[index].display"}},'v-alert',_vm.prepareAlertProps(alert),false),[_c('div',{domProps:{"innerHTML":_vm._s(alert.contents)}})])}),1)],1),_c('v-row',{directives:[{name:"show",rawName:"v-show",value:(_vm.formLoading),expression:"formLoading"}]},[_c('v-col',[_c('v-progress-circular',{attrs:{"indeterminate":"","color":"primary"}})],1)],1),(!_vm.formLoading)?_c('v-row',[_c(_vm.formComponent,{tag:"component",attrs:{"form":_vm.loadedFormData,"additional_form_data":_vm.loadedAdditionalFormData},on:{"results":_vm.formHasResults,"errors":_vm.formHasErrors,"loading":_vm.formIsLoading,"reset":_vm.formIsReset,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}})],1):_vm._e()],1)],1)}
 var staticRenderFns = []
 
@@ -30377,20 +30378,24 @@ var version = '3.4.14';
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__(3967);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=38956c53&
-var InputFormvue_type_template_id_38956c53_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
-var InputFormvue_type_template_id_38956c53_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=56aa4370&
+var InputFormvue_type_template_id_56aa4370_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
+var InputFormvue_type_template_id_56aa4370_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=03753d80&
-var LvefInputvue_type_template_id_03753d80_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=b3df5bc8&
+var LvefInputvue_type_template_id_b3df5bc8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
-return [_c(_vm.fieldData.component,_vm._b({directives:[{name:"mask",rawName:"v-mask",value:(_vm.getMasking),expression:"getMasking"}],tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
+return [(_vm.getMasking() === null)?[_c(_vm.fieldData.component,_vm._b({tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
 return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
-return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]}}],null,false,1812898201)})],1):_vm._e()}
-var LvefInputvue_type_template_id_03753d80_staticRenderFns = []
+return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]:[_c(_vm.fieldData.component,_vm._b({directives:[{name:"mask",rawName:"v-mask",value:(_vm.getMasking),expression:"getMasking"}],tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
+var props = ref.props;
+return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
+var on = ref.on;
+return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,false,500127703)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]]}}],null,false,2252208277)})],1):_vm._e()}
+var LvefInputvue_type_template_id_b3df5bc8_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
@@ -39346,6 +39351,49 @@ const lib_namespaceObject = require("vuetify/lib");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -39413,15 +39461,6 @@ const lib_namespaceObject = require("vuetify/lib");
     form: function () {
       return this.$parent.form;
     },
-    getMasking: function () {
-      if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
-        console.log('MASKING', 'return data triggered', this.fieldData.masking);
-        return this.fieldData.masking;
-      } else {
-        console.log('MASKING', 'return false triggered');
-        return 'undefined';
-      }
-    },
 
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label) ? this.fieldData.label : this.fieldData.name;
@@ -39439,6 +39478,15 @@ const lib_namespaceObject = require("vuetify/lib");
 
   },
   methods: {
+    getMasking: function () {
+      if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
+        console.log('MASKING', 'return data triggered', this.fieldData.masking);
+        return this.fieldData.masking;
+      }
+
+      console.log('MASKING', 'return false triggered');
+      return null;
+    },
     fieldValueLength: function (value) {
       return value != null && !this.isUndefined(value) ? value.length : 0;
     },
@@ -40124,8 +40172,8 @@ var VTooltip = __webpack_require__(127);
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   parts_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_03753d80_render,
-  LvefInputvue_type_template_id_03753d80_staticRenderFns,
+  LvefInputvue_type_template_id_b3df5bc8_render,
+  LvefInputvue_type_template_id_b3df5bc8_staticRenderFns,
   false,
   null,
   null,
@@ -40145,7 +40193,7 @@ var LvefInput_component = (0,componentNormalizer/* default */.Z)(
 installComponents_default()(LvefInput_component, {VCol: VCol,VCounter: VCounter,VIcon: VIcon/* default */.Z,VRadio: VRadio,VTooltip: VTooltip/* default */.Z})
 
 // EXTERNAL MODULE: ./src/components/forms/parts/LvefButton.vue + 3 modules
-var LvefButton = __webpack_require__(2899);
+var LvefButton = __webpack_require__(8095);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=script&lang=js&
 //
 //
@@ -40391,6 +40439,7 @@ var LvefButton = __webpack_require__(2899);
     },
 
     cancelForm() {
+      console.log('cancel form - cancelled');
       this.$emit("cancelled", true);
       this.formLoading = false;
     },
@@ -40411,17 +40460,21 @@ var LvefButton = __webpack_require__(2899);
 
     async buttonAction(button) {
       this.formLoading = true;
+      console.log('button action', button);
 
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
           this.processForm(this.loadedFormData, this.loadedFormData.fields, this.loadedIdentifier, this.loadedAdditionalFormData);
+          console.log('button process');
         }
 
         if (button.type == "reset") {
+          console.log('button reset');
           this.resetForm();
         }
 
         if (button.type == "cancel") {
+          console.log('button cancel');
           this.cancelForm();
         }
 
@@ -40726,8 +40779,8 @@ const VRow_cache = new Map();
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_38956c53_render,
-  InputFormvue_type_template_id_38956c53_staticRenderFns,
+  InputFormvue_type_template_id_56aa4370_render,
+  InputFormvue_type_template_id_56aa4370_staticRenderFns,
   false,
   null,
   null,
@@ -40972,13 +41025,16 @@ installComponents_default()(ActionForm_component, {VCol: VCol,VRow: VRow})
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function (event) {
+      this.$emit("loading", event);
       this.formLoading = event;
     },
     formIsReset: function () {
+      this.$emit("reset", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
     formIsCancelled: function () {
+      this.$emit("cancelled", true);
       this.triggerAlerts("cancelled");
     },
     formIsProcessing: function () {

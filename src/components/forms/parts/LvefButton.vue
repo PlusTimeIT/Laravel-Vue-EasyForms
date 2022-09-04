@@ -53,7 +53,8 @@ export default {
   },
   methods: {
     buttonClick(identifier) {
-      this.$emit("click", identifier);
+        console.log('button clicked', identifier)
+        this.$emit("click", identifier);
     },
     buttonIconText: function() {
       return !this.isUndefined(this.loadedButton.icon.tooltip)

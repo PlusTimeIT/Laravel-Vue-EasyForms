@@ -187,13 +187,16 @@ export default {
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function(event) {
+      this.$emit("loading", event);
       this.formLoading = event;
     },
     formIsReset: function() {
+      this.$emit("reset", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
     formIsCancelled: function() {
+      this.$emit("cancelled", true);  
       this.triggerAlerts("cancelled");
     },
     formIsProcessing: function() {

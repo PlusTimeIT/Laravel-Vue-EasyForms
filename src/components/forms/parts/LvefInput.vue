@@ -6,42 +6,85 @@
       tag="div"
       :rules="prepareRules()"
     >
-      <component
-        :is="fieldData.component"
-        v-model="fieldData.value"
-        v-mask="getMasking"
-        v-bind="prepareProps(errors)"
-      >
-        <div v-if="fieldData.component == 'v-radio-group'">
-          <v-radio
-            v-for="(item, index) in fieldData.items"
-            :key="index"
-            :label="item.label"
-            :value="item.value"
-            :color="item.color"
-          ></v-radio>
-        </div>
-        <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
-          {{ fieldData.value }}
-        </p>
-        <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
-          <template #activator="{ on }">
-            <v-icon slot="activator" color="primary" dark v-on="on">
-              mdi-help-box
-            </v-icon>
-          </template>
-          <span>{{ fieldData.help }} </span>
-        </v-tooltip>
-        <template
-          v-if="!isUndefined(fieldData.counter) && fieldData.counter"
-          v-slot:counter="{ props }"
-        >
-          <v-counter
-            v-bind="props"
-            :value="fieldValueLength(fieldData.value)"
-          ></v-counter>
+        <template v-if="getMasking() === null">
+            <component
+                :is="fieldData.component"
+                v-model="fieldData.value"
+                v-bind="prepareProps(errors)"
+            >
+                <div v-if="fieldData.component == 'v-radio-group'">
+                <v-radio
+                    v-for="(item, index) in fieldData.items"
+                    :key="index"
+                    :label="item.label"
+                    :value="item.value"
+                    :color="item.color"
+                ></v-radio>
+                </div>
+                <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+                {{ fieldData.value }}
+                </p>
+                <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+                <template #activator="{ on }">
+                    <v-icon slot="activator" color="primary" dark v-on="on">
+                    mdi-help-box
+                    </v-icon>
+                </template>
+                <span>{{ fieldData.help }} </span>
+                </v-tooltip>
+                <template
+                v-if="!isUndefined(fieldData.counter) && fieldData.counter"
+                v-slot:counter="{ props }"
+                >
+                <v-counter
+                    v-bind="props"
+                    :value="fieldValueLength(fieldData.value)"
+                ></v-counter>
+                </template>
+            </component>
         </template>
-      </component>
+        <template v-else>
+            <component
+                :is="fieldData.component"
+                v-model="fieldData.value"
+                v-mask="getMasking"
+                v-bind="prepareProps(errors)"
+            >
+                <div v-if="fieldData.component == 'v-radio-group'">
+                <v-radio
+                    v-for="(item, index) in fieldData.items"
+                    :key="index"
+                    :label="item.label"
+                    :value="item.value"
+                    :color="item.color"
+                ></v-radio>
+                </div>
+                <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+                {{ fieldData.value }}
+                </p>
+                <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+                <template #activator="{ on }">
+                    <v-icon slot="activator" color="primary" dark v-on="on">
+                    mdi-help-box
+                    </v-icon>
+                </template>
+                <span>{{ fieldData.help }} </span>
+                </v-tooltip>
+                <template
+                v-if="!isUndefined(fieldData.counter) && fieldData.counter"
+                v-slot:counter="{ props }"
+                >
+                <v-counter
+                    v-bind="props"
+                    :value="fieldValueLength(fieldData.value)"
+                ></v-counter>
+                </template>
+            </component>
+            
+        </template>
+
+      
+        
     </validation-provider>
   </v-col>
 </template>
@@ -126,18 +169,6 @@ export default {
     form: function() {
       return this.$parent.form;
     },
-    getMasking: function() {
-        if (
-            !this.isUndefined(this.fieldData.masking) && 
-            this.fieldData.masking !== null
-        ) {
-            console.log('MASKING', 'return data triggered', this.fieldData.masking);
-            return this.fieldData.masking;
-        }else{
-            console.log('MASKING', 'return false triggered');
-            return 'undefined';
-        }
-    },
     displayLabel() {
       let label = !this.isUndefined(this.fieldData.label)
         ? this.fieldData.label
@@ -160,6 +191,17 @@ export default {
     }
   },
   methods: {
+    getMasking: function() {
+        if (
+            !this.isUndefined(this.fieldData.masking) && 
+            this.fieldData.masking !== null
+        ) {
+            console.log('MASKING', 'return data triggered', this.fieldData.masking);
+            return this.fieldData.masking;
+        }
+        console.log('MASKING', 'return false triggered');
+        return null;
+    },
     fieldValueLength: function(value) {
       return (value != null && !this.isUndefined(value)) ? value.length : 0;
     },
