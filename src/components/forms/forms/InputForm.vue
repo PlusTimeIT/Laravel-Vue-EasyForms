@@ -34,8 +34,8 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyInput from "../parts/LvefInput.vue";
-import EasyButton from "../parts/LvefButton.vue";
+import EasyInput from "../fields/LvefInput.vue";
+import EasyButton from "../fields/LvefButton.vue";
 
 // Input Form emits the current events
 // @loading - boolean - true if form is loading, false if loaded
@@ -236,7 +236,6 @@ export default {
       this.formLoading = false;
     },
     cancelForm() {
-      console.log('cancel form - cancelled');
       this.$emit("cancelled", true);
       this.formLoading = false;
     },
@@ -257,7 +256,6 @@ export default {
     },
     async buttonAction(button) {
       this.formLoading = true;
-      console.log('button action', button);
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
           this.processForm(
@@ -266,16 +264,13 @@ export default {
             this.loadedIdentifier,
             this.loadedAdditionalFormData
           );
-          console.log('button process');
         }
 
         if (button.type == "reset") {
-            console.log('button reset');
           this.resetForm();
         }
 
         if (button.type == "cancel") {
-            console.log('button cancel');
           this.cancelForm();
         }
 
@@ -283,7 +278,6 @@ export default {
         return 0;
       }
 
-      alert("button action error :(");
       return 0;
     }
   }

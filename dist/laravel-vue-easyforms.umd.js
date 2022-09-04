@@ -21949,8 +21949,8 @@ webpackContext.id = 6700;
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2108);
-/* harmony import */ var _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(372);
-/* harmony import */ var _parts_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(264);
+/* harmony import */ var _fields_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3929);
+/* harmony import */ var _fields_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8314);
 //
 //
 //
@@ -21983,8 +21983,8 @@ webpackContext.id = 6700;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ActionForm",
   components: {
-    EasyButton: _parts_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z,
-    EasyIcon: _parts_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z
+    EasyButton: _fields_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z,
+    EasyIcon: _fields_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z
   },
   mixins: [_mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__/* .FormMixin */ .T],
   props: {
@@ -22325,7 +22325,7 @@ const FormMixin = {
 
 /***/ }),
 
-/***/ 372:
+/***/ 3929:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22335,7 +22335,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": () => (/* binding */ LvefButton)
 });
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=template&id=f12194d0&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefButton.vue?vue&type=template&id=2133a1f5&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedButton.tooltip) || _vm.loadedButton.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-btn',{class:_vm.loadedButton.class,attrs:{"on":on,"color":_vm.loadedButton.color,"rounded":_vm.loadedButton.rounded,"tile":_vm.loadedButton.tile},on:{"click":function($event){return _vm.buttonClick(_vm.identifier)}}},[_vm._v(" "+_vm._s(_vm.loadedButton.text)+" "),(_vm.displayButtonIcon())?_c('easy-icon',{attrs:{"icon":_vm.loadedButton.icon}}):_vm._e()],1)]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedButton.tooltip))])])}
@@ -22344,9 +22344,9 @@ var staticRenderFns = []
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__(2108);
-// EXTERNAL MODULE: ./src/components/forms/parts/LvefIcon.vue + 3 modules
-var LvefIcon = __webpack_require__(264);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefButton.vue?vue&type=script&lang=js&
+// EXTERNAL MODULE: ./src/components/forms/fields/LvefIcon.vue + 3 modules
+var LvefIcon = __webpack_require__(8314);
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefButton.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -22403,7 +22403,6 @@ var LvefIcon = __webpack_require__(264);
 
   methods: {
     buttonClick(identifier) {
-      console.log('button clicked', identifier);
       this.$emit("click", identifier);
     },
 
@@ -22432,18 +22431,18 @@ var LvefIcon = __webpack_require__(264);
     }
   }
 });
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefButton.vue?vue&type=script&lang=js&
- /* harmony default export */ const parts_LvefButtonvue_type_script_lang_js_ = (LvefButtonvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefButton.vue?vue&type=script&lang=js&
+ /* harmony default export */ const fields_LvefButtonvue_type_script_lang_js_ = (LvefButtonvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(1001);
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(3453);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 3 modules
-var VBtn = __webpack_require__(2686);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 2 modules
+var VBtn = __webpack_require__(8746);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4928);
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefButton.vue
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefButton.vue
 
 
 
@@ -22452,7 +22451,7 @@ var VTooltip = __webpack_require__(4928);
 /* normalize component */
 ;
 var component = (0,componentNormalizer/* default */.Z)(
-  parts_LvefButtonvue_type_script_lang_js_,
+  fields_LvefButtonvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -22473,7 +22472,7 @@ installComponents_default()(component, {VBtn: VBtn/* default */.Z,VTooltip: VToo
 
 /***/ }),
 
-/***/ 264:
+/***/ 8314:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22483,7 +22482,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": () => (/* binding */ LvefIcon)
 });
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefIcon.vue?vue&type=template&id=37a603bc&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefIcon.vue?vue&type=template&id=3e0e5c85&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-tooltip',{attrs:{"top":"","disabled":_vm.isUndefined(_vm.loadedIcon.tooltip) || _vm.loadedIcon.tooltip === null},scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"dismissible":""},on:{"click":function($event){return _vm.iconClick(_vm.loadedIdentifier)}}},on),[_vm._v(" "+_vm._s(_vm.loadedIcon.icon)+" ")])]}}])},[_c('span',[_vm._v(_vm._s(_vm.loadedIcon.tooltip))])])}
@@ -22492,7 +22491,7 @@ var staticRenderFns = []
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__(2108);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefIcon.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefIcon.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -22564,8 +22563,8 @@ var FormMixins = __webpack_require__(2108);
     }
   }
 });
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefIcon.vue?vue&type=script&lang=js&
- /* harmony default export */ const parts_LvefIconvue_type_script_lang_js_ = (LvefIconvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefIcon.vue?vue&type=script&lang=js&
+ /* harmony default export */ const fields_LvefIconvue_type_script_lang_js_ = (LvefIconvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(1001);
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
@@ -22575,7 +22574,7 @@ var installComponents_default = /*#__PURE__*/__webpack_require__.n(installCompon
 var VIcon = __webpack_require__(5679);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4928);
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefIcon.vue
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefIcon.vue
 
 
 
@@ -22584,7 +22583,7 @@ var VTooltip = __webpack_require__(4928);
 /* normalize component */
 ;
 var component = (0,componentNormalizer/* default */.Z)(
-  parts_LvefIconvue_type_script_lang_js_,
+  fields_LvefIconvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -22631,7 +22630,7 @@ module.exports = function installComponents (component, components) {
 
 /***/ }),
 
-/***/ 2686:
+/***/ 8746:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22661,164 +22660,8 @@ var toggleable = __webpack_require__(4552);
 var elevatable = __webpack_require__(8427);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/positionable/index.js
 var positionable = __webpack_require__(8747);
-// EXTERNAL MODULE: external "vue"
-var external_vue_ = __webpack_require__(748);
-var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/directives/ripple/index.js + 1 modules
-var ripple = __webpack_require__(7898);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/helpers.js
-var helpers = __webpack_require__(8131);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
- // Directives
-
- // Utilities
-
-
-/* harmony default export */ const routable = (external_vue_default().extend({
-  name: 'routable',
-  directives: {
-    Ripple: ripple/* default */.Z
-  },
-  props: {
-    activeClass: String,
-    append: Boolean,
-    disabled: Boolean,
-    exact: {
-      type: Boolean,
-      default: undefined
-    },
-    exactPath: Boolean,
-    exactActiveClass: String,
-    link: Boolean,
-    href: [String, Object],
-    to: [String, Object],
-    nuxt: Boolean,
-    replace: Boolean,
-    ripple: {
-      type: [Boolean, Object],
-      default: null
-    },
-    tag: String,
-    target: String
-  },
-  data: () => ({
-    isActive: false,
-    proxyClass: ''
-  }),
-  computed: {
-    classes() {
-      const classes = {};
-      if (this.to) return classes;
-      if (this.activeClass) classes[this.activeClass] = this.isActive;
-      if (this.proxyClass) classes[this.proxyClass] = this.isActive;
-      return classes;
-    },
-
-    computedRipple() {
-      var _this$ripple;
-
-      return (_this$ripple = this.ripple) != null ? _this$ripple : !this.disabled && this.isClickable;
-    },
-
-    isClickable() {
-      if (this.disabled) return false;
-      return Boolean(this.isLink || this.$listeners.click || this.$listeners['!click'] || this.$attrs.tabindex);
-    },
-
-    isLink() {
-      return this.to || this.href || this.link;
-    },
-
-    styles: () => ({})
-  },
-  watch: {
-    $route: 'onRouteChange'
-  },
-
-  mounted() {
-    this.onRouteChange();
-  },
-
-  methods: {
-    generateRouteLink() {
-      let exact = this.exact;
-      let tag;
-      const data = {
-        attrs: {
-          tabindex: 'tabindex' in this.$attrs ? this.$attrs.tabindex : undefined
-        },
-        class: this.classes,
-        style: this.styles,
-        props: {},
-        directives: [{
-          name: 'ripple',
-          value: this.computedRipple
-        }],
-        [this.to ? 'nativeOn' : 'on']: { ...this.$listeners,
-          ...('click' in this ? {
-            click: this.click
-          } : undefined)
-        },
-        ref: 'link'
-      };
-
-      if (typeof this.exact === 'undefined') {
-        exact = this.to === '/' || this.to === Object(this.to) && this.to.path === '/';
-      }
-
-      if (this.to) {
-        // Add a special activeClass hook
-        // for component level styles
-        let activeClass = this.activeClass;
-        let exactActiveClass = this.exactActiveClass || activeClass;
-
-        if (this.proxyClass) {
-          activeClass = `${activeClass} ${this.proxyClass}`.trim();
-          exactActiveClass = `${exactActiveClass} ${this.proxyClass}`.trim();
-        }
-
-        tag = this.nuxt ? 'nuxt-link' : 'router-link';
-        Object.assign(data.props, {
-          to: this.to,
-          exact,
-          exactPath: this.exactPath,
-          activeClass,
-          exactActiveClass,
-          append: this.append,
-          replace: this.replace
-        });
-      } else {
-        tag = this.href && 'a' || this.tag || 'div';
-        if (tag === 'a' && this.href) data.attrs.href = this.href;
-      }
-
-      if (this.target) data.attrs.target = this.target;
-      return {
-        tag,
-        data
-      };
-    },
-
-    onRouteChange() {
-      if (!this.to || !this.$refs.link || !this.$route) return;
-      const activeClass = `${this.activeClass || ''} ${this.proxyClass || ''}`.trim();
-      const exactActiveClass = `${this.exactActiveClass || ''} ${this.proxyClass || ''}`.trim() || activeClass;
-      const path = '_vnode.data.class.' + (this.exact ? exactActiveClass : activeClass);
-      this.$nextTick(() => {
-        /* istanbul ignore else */
-        if (!(0,helpers/* getObjectValueByPath */.vO)(this.$refs.link, path) === this.isActive) {
-          this.toggle();
-        }
-      });
-    },
-
-    toggle() {
-      this.isActive = !this.isActive;
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
+var routable = __webpack_require__(9367);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/sizeable/index.js
 var sizeable = __webpack_require__(2412);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
@@ -22842,7 +22685,7 @@ var console = __webpack_require__(6235);
 
 
 
-const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable, positionable/* default */.Z, sizeable/* default */.Z, (0,groupable/* factory */.d)('btnToggle'), (0,toggleable/* factory */.d)('inputValue')
+const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable/* default */.Z, positionable/* default */.Z, sizeable/* default */.Z, (0,groupable/* factory */.d)('btnToggle'), (0,toggleable/* factory */.d)('inputValue')
 /* @vue/component */
 );
 /* harmony default export */ const VBtn = (baseMixins.extend().extend({
@@ -22885,7 +22728,7 @@ const baseMixins = (0,mixins/* default */.Z)(VSheet/* default */.Z, routable, po
     classes() {
       return {
         'v-btn': true,
-        ...routable.options.computed.classes.call(this),
+        ...routable/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
         'v-btn--absolute': this.absolute,
         'v-btn--block': this.block,
         'v-btn--bottom': this.bottom,
@@ -25652,6 +25495,170 @@ function provide(namespace, self = false) {
 
 /***/ }),
 
+/***/ 9367:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(748);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7898);
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8131);
+ // Directives
+
+ // Utilities
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (vue__WEBPACK_IMPORTED_MODULE_0___default().extend({
+  name: 'routable',
+  directives: {
+    Ripple: _directives_ripple__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z
+  },
+  props: {
+    activeClass: String,
+    append: Boolean,
+    disabled: Boolean,
+    exact: {
+      type: Boolean,
+      default: undefined
+    },
+    exactPath: Boolean,
+    exactActiveClass: String,
+    link: Boolean,
+    href: [String, Object],
+    to: [String, Object],
+    nuxt: Boolean,
+    replace: Boolean,
+    ripple: {
+      type: [Boolean, Object],
+      default: null
+    },
+    tag: String,
+    target: String
+  },
+  data: () => ({
+    isActive: false,
+    proxyClass: ''
+  }),
+  computed: {
+    classes() {
+      const classes = {};
+      if (this.to) return classes;
+      if (this.activeClass) classes[this.activeClass] = this.isActive;
+      if (this.proxyClass) classes[this.proxyClass] = this.isActive;
+      return classes;
+    },
+
+    computedRipple() {
+      var _this$ripple;
+
+      return (_this$ripple = this.ripple) != null ? _this$ripple : !this.disabled && this.isClickable;
+    },
+
+    isClickable() {
+      if (this.disabled) return false;
+      return Boolean(this.isLink || this.$listeners.click || this.$listeners['!click'] || this.$attrs.tabindex);
+    },
+
+    isLink() {
+      return this.to || this.href || this.link;
+    },
+
+    styles: () => ({})
+  },
+  watch: {
+    $route: 'onRouteChange'
+  },
+
+  mounted() {
+    this.onRouteChange();
+  },
+
+  methods: {
+    generateRouteLink() {
+      let exact = this.exact;
+      let tag;
+      const data = {
+        attrs: {
+          tabindex: 'tabindex' in this.$attrs ? this.$attrs.tabindex : undefined
+        },
+        class: this.classes,
+        style: this.styles,
+        props: {},
+        directives: [{
+          name: 'ripple',
+          value: this.computedRipple
+        }],
+        [this.to ? 'nativeOn' : 'on']: { ...this.$listeners,
+          ...('click' in this ? {
+            click: this.click
+          } : undefined)
+        },
+        ref: 'link'
+      };
+
+      if (typeof this.exact === 'undefined') {
+        exact = this.to === '/' || this.to === Object(this.to) && this.to.path === '/';
+      }
+
+      if (this.to) {
+        // Add a special activeClass hook
+        // for component level styles
+        let activeClass = this.activeClass;
+        let exactActiveClass = this.exactActiveClass || activeClass;
+
+        if (this.proxyClass) {
+          activeClass = `${activeClass} ${this.proxyClass}`.trim();
+          exactActiveClass = `${exactActiveClass} ${this.proxyClass}`.trim();
+        }
+
+        tag = this.nuxt ? 'nuxt-link' : 'router-link';
+        Object.assign(data.props, {
+          to: this.to,
+          exact,
+          exactPath: this.exactPath,
+          activeClass,
+          exactActiveClass,
+          append: this.append,
+          replace: this.replace
+        });
+      } else {
+        tag = this.href && 'a' || this.tag || 'div';
+        if (tag === 'a' && this.href) data.attrs.href = this.href;
+      }
+
+      if (this.target) data.attrs.target = this.target;
+      return {
+        tag,
+        data
+      };
+    },
+
+    onRouteChange() {
+      if (!this.to || !this.$refs.link || !this.$route) return;
+      const activeClass = `${this.activeClass || ''} ${this.proxyClass || ''}`.trim();
+      const exactActiveClass = `${this.exactActiveClass || ''} ${this.proxyClass || ''}`.trim() || activeClass;
+      const path = '_vnode.data.class.' + (this.exact ? exactActiveClass : activeClass);
+      this.$nextTick(() => {
+        /* istanbul ignore else */
+        if (!(0,_util_helpers__WEBPACK_IMPORTED_MODULE_2__/* .getObjectValueByPath */ .vO)(this.$refs.link, path) === this.isActive) {
+          this.toggle();
+        }
+      });
+    },
+
+    toggle() {
+      this.isActive = !this.isActive;
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ 2412:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -28349,7 +28356,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ const setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=d6c0d054&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=a802e592&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-col',{attrs:{"cols":_vm.cols,"sm":_vm.sm,"md":_vm.md,"lg":_vm.lg}},[_c('v-row',[(_vm.loadedFormName == '')?_c('v-col',[_c('h1',[_vm._v("Error Loading Form")])]):_vm._e()],1),_c('validation-observer',{ref:"observer"},[_c('v-row',[_c('v-col',{attrs:{"cols":"12"}},_vm._l((_vm.loadedAlerts),function(alert,index){return _c('v-alert',_vm._b({key:index,model:{value:(_vm.alerts[index].display),callback:function ($$v) {_vm.$set(_vm.alerts[index], "display", $$v)},expression:"alerts[index].display"}},'v-alert',_vm.prepareAlertProps(alert),false),[_c('div',{domProps:{"innerHTML":_vm._s(alert.contents)}})])}),1)],1),_c('v-row',{directives:[{name:"show",rawName:"v-show",value:(_vm.formLoading),expression:"formLoading"}]},[_c('v-col',[_c('v-progress-circular',{attrs:{"indeterminate":"","color":"primary"}})],1)],1),(!_vm.formLoading)?_c('v-row',[_c(_vm.formComponent,{tag:"component",attrs:{"form":_vm.loadedFormData,"additional_form_data":_vm.loadedAdditionalFormData},on:{"results":_vm.formHasResults,"errors":_vm.formHasErrors,"loading":_vm.formIsLoading,"reset":_vm.formIsReset,"cancelled":_vm.formIsCancelled,"processing":_vm.formIsProcessing,"failed":_vm.formHasFailedProcessing,"successful":_vm.formHasSuccessfulProcessing}})],1):_vm._e()],1)],1)}
 var staticRenderFns = []
 
@@ -30396,13 +30403,13 @@ var version = '3.4.14';
 
 // EXTERNAL MODULE: ./src/components/forms/mixins/FormMixins.js
 var FormMixins = __webpack_require__(2108);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=56aa4370&
-var InputFormvue_type_template_id_56aa4370_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
-var InputFormvue_type_template_id_56aa4370_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=25c25895&
+var InputFormvue_type_template_id_25c25895_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[(_vm.loadedFormData.type == 'input')?_c('v-form',_vm._b({key:_vm.updateForm,ref:"loadedForm",staticClass:"mx-auto w-100"},'v-form',_vm.formProps(),false),[_c('v-col',{attrs:{"cols":"12"}},[_c('v-row',_vm._l((_vm.asyncFilteredFieldList),function(field,index_f){return _c('easy-input',{key:index_f,attrs:{"cols":_vm.getInputCols(field)},on:{"field_update":_vm.updateField},model:{value:(_vm.asyncFilteredFieldList[index_f]),callback:function ($$v) {_vm.$set(_vm.asyncFilteredFieldList, index_f, $$v)},expression:"asyncFilteredFieldList[index_f]"}})}),1),(_vm.displayButton)?_c('v-row',{attrs:{"align":_vm.loadedFormData.buttonAlignRow,"justify":_vm.loadedFormData.buttonJustifyRow}},_vm._l((_vm.loadedFormData.buttons),function(button,index){return _c('v-col',{key:index,attrs:{"cols":"auto"}},[_c('easy-button',{attrs:{"button":button,"identifier":index},on:{"click":function($event){return _vm.buttonAction(button)}}})],1)}),1):_vm._e()],1)],1):_vm._e()],1)}
+var InputFormvue_type_template_id_25c25895_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=template&id=b3df5bc8&
-var LvefInputvue_type_template_id_b3df5bc8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=3fe86bbe&
+var LvefInputvue_type_template_id_3fe86bbe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 return [(_vm.getMasking() === null)?[_c(_vm.fieldData.component,_vm._b({tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
@@ -30410,10 +30417,10 @@ return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,true)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]:[_c(_vm.fieldData.component,_vm._b({directives:[{name:"mask",rawName:"v-mask",value:(_vm.getMasking),expression:"getMasking"}],tag:"component",scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
-return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
+return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'v-checkbox-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
-return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,false,500127703)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]]}}],null,false,2252208277)})],1):_vm._e()}
-var LvefInputvue_type_template_id_b3df5bc8_staticRenderFns = []
+return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,false,500127703)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]]}}],null,false,2702842026)})],1):_vm._e()}
+var LvefInputvue_type_template_id_3fe86bbe_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
@@ -33370,8 +33377,8 @@ var componentNormalizer = __webpack_require__(1001);
 // EXTERNAL MODULE: ./node_modules/vuetify-loader/lib/runtime/installComponents.js
 var installComponents = __webpack_require__(3453);
 var installComponents_default = /*#__PURE__*/__webpack_require__.n(installComponents);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 3 modules
-var VBtn = __webpack_require__(2686);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 2 modules
+var VBtn = __webpack_require__(8746);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VDatePicker/VDatePickerTitle.sass
 // extracted by mini-css-extract-plugin
 
@@ -39318,480 +39325,197 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTextField,VTimePicker: VTimePicker})
 
-// EXTERNAL MODULE: external "vuetify/lib"
-var lib_ = __webpack_require__(6537);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=template&id=9f29af84&
+var LvefCheckboxGroupvue_type_template_id_9f29af84_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-card',[_c('v-card-title',{domProps:{"textContent":_vm._s(_vm.loadedLabel)}}),_c('v-card-text',[_c('v-row',_vm._l((_vm.loadedItems),function(item,index){return _c('v-col',{key:index,attrs:{"cols":12,"md":item.cols}},[_c('v-checkbox',{attrs:{"multiple":"","label":item.label,"value":item.value,"color":item.color},model:{value:(_vm.selectedItems),callback:function ($$v) {_vm.selectedItems=$$v},expression:"selectedItems"}})],1)}),1)],1)],1)}
+var LvefCheckboxGroupvue_type_template_id_9f29af84_staticRenderFns = []
 
 
-
-
-
-/* harmony default export */ const LvefInputvue_type_script_lang_js_ = ({
-  name: "LvefInput",
-  $validates: true,
-  mixins: [FormMixins/* FormMixin */.T],
-  components: {
-    ValidationProvider: vee_validate_full_esm_ValidationProvider,
-    DatePicker: DatePicker,
-    TimePicker: TimePicker,
-    VAutoComplete: lib_.VAutoComplete,
-    VCheckbox: lib_.VCheckbox,
-    VCombobox: lib_.VCombobox,
-    VFileInput: lib_.VFileInput,
-    VInput: lib_.VInput,
-    VOtpInput: lib_.VOtpInput,
-    VOverflowBtn: lib_.VOverflowBtn,
-    VRadio: lib_.VRadio,
-    VSlider: lib_.VSlider,
-    VSelect: lib_.VSelect,
-    VSwitch: lib_.VSwitch,
-    VTextarea: lib_.VTextarea,
-    VTextField: lib_.VTextField
-  },
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const LvefCheckboxGroupvue_type_script_lang_js_ = ({
+  name: "LvefCheckboxGroup",
   props: {
     cols: {
       Type: String,
       default: "6"
     },
+    label: {
+      type: String,
+      default: ""
+    },
     offset: {
       Type: String,
       default: ""
     },
+    items: {
+      Type: Array,
+      default: []
+    },
     value: {
-      default: ""
+      default: []
     }
   },
+  data: () => ({
+    selectedItems: []
+  }),
+
+  created() {
+    this.selectedItems = this.value;
+  },
+
   watch: {
-    fieldData: {
+    selectedItems: {
       handler: function (val) {
         this.$emit("field_update", val);
       },
       deep: true
     }
   },
-  data: () => ({
-    fieldLoaded: false,
-    fieldData: {}
-  }),
-
-  created() {
-    this.fieldData = this.value;
-
-    if (this.fieldData.dependsOn !== null) {
-      this.fieldLoaded = true;
-    } else {
-      this.fieldLoaded = true;
-    }
-  },
-
   computed: {
-    form: function () {
-      return this.$parent.form;
+    loadedItems: function () {
+      return this.items;
+    },
+    loadedLabel: function () {
+      return this.label;
+    }
+  }
+});
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=script&lang=js&
+ /* harmony default export */ const fields_LvefCheckboxGroupvue_type_script_lang_js_ = (LvefCheckboxGroupvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
+var VSheet = __webpack_require__(6625);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
+var routable = __webpack_require__(9367);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
+// Styles
+ // Extensions
+
+ // Mixins
+
+
+ // Helpers
+
+
+/* @vue/component */
+
+/* harmony default export */ const VCard = ((0,mixins/* default */.Z)(loadable, routable/* default */.Z, VSheet/* default */.Z).extend({
+  name: 'v-card',
+  props: {
+    flat: Boolean,
+    hover: Boolean,
+    img: String,
+    link: Boolean,
+    loaderHeight: {
+      type: [Number, String],
+      default: 4
+    },
+    raised: Boolean
+  },
+  computed: {
+    classes() {
+      return {
+        'v-card': true,
+        ...routable/* default.options.computed.classes.call */.Z.options.computed.classes.call(this),
+        'v-card--flat': this.flat,
+        'v-card--hover': this.hover,
+        'v-card--link': this.isClickable,
+        'v-card--loading': this.loading,
+        'v-card--disabled': this.disabled,
+        'v-card--raised': this.raised,
+        ...VSheet/* default.options.computed.classes.call */.Z.options.computed.classes.call(this)
+      };
     },
 
-    displayLabel() {
-      let label = !this.isUndefined(this.fieldData.label) ? this.fieldData.label : this.fieldData.name;
+    styles() {
+      const style = { ...VSheet/* default.options.computed.styles.call */.Z.options.computed.styles.call(this)
+      };
 
-      if (!this.isUndefined(this.fieldData.required) && this.fieldData.required) {
-        label += " ( * required )";
-      } else if (!this.isUndefined(this.fieldData.readonly) && this.fieldData.readonly) {
-        label += " ( readonly )";
-      } else {
-        label += " ( optional )";
+      if (this.img) {
+        style.background = `url("${this.img}") center center / cover no-repeat`;
       }
 
-      return label;
+      return style;
     }
 
   },
   methods: {
-    getMasking: function () {
-      if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
-        console.log('MASKING', 'return data triggered', this.fieldData.masking);
-        return this.fieldData.masking;
-      }
-
-      console.log('MASKING', 'return false triggered');
-      return null;
-    },
-    fieldValueLength: function (value) {
-      return value != null && !this.isUndefined(value) ? value.length : 0;
-    },
-
-    displayCol() {
-      if (this.isUndefined(this.fieldData.type)) return false;
-      if (this.fieldData.type == "hidden") return false;
-      if (!this.fieldLoaded) return false;
-      return true;
-    },
-
-    prepareRules() {
-      // BUILD FIELD RULES
-      const rules = [];
-      this.fieldData.rules.forEach(function (rule) {
-        if (typeof rule.value === "boolean") {
-          if (rule.value) {
-            rules.push(rule.name);
-          }
-        } else {
-          rules.push(rule.name + ":" + rule.value);
-        }
-      });
-      return rules.join("|");
-    },
-
-    prepareProps(errors) {
-      let result = {};
-      const field = this.fieldData;
-      result["error-messages"] = errors;
-      result["label"] = this.displayLabel;
-      result["outlined"] = field.outlined;
-      result["dense"] = field.dense;
-
-      if (field.type == "time") {
-        result["populate"] = field.value;
-        result["ampm_in_title"] = true;
-        result["no_title"] = false;
-        result["class"] = "mt-2";
-      }
-
-      if (field.type == "select" || field.type == "autocomplete") {
-        result["selected"] = !this.isUndefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
-        const selectItems = field.items;
-
-        if (!this.isUndefined(field.any_field) && field.any_field) {
-          const anyfield = {};
-          anyfield[field.item_value] = "any";
-          anyfield[field.item_text] = "Any";
-
-          if (!selectItems.some(e => e[field.item_value] === "any")) {
-            selectItems.unshift(anyfield);
-          }
-        }
-
-        result["items"] = selectItems;
-        result["item-text"] = field.item_text;
-        result["item-value"] = field.item_value;
-        result["chips"] = field.chips;
-        result["data-vv-name"] = "select";
-      }
-
-      if (field.type == "hidden") {
-        result["class"] = "hidden-input";
-      }
-
-      if (!this.isUndefined(field.close_on_content_click)) {
-        result["close-on-content-click"] = field.close_on_content_click;
-      }
-
-      if (!this.isUndefined(field.controls)) {
-        result["controls"] = field.controls;
-      }
-
-      if (!this.isUndefined(field.step)) {
-        result["step"] = field.step;
-      }
-
-      if (!this.isUndefined(field.component_type) && field.component_type !== "") {
-        result["type"] = field.component_type;
-      }
-
-      if (!this.isUndefined(field.min)) {
-        result["min"] = field.min;
-      }
-
-      if (!this.isUndefined(field.max)) {
-        result["max"] = field.max;
-      }
-
-      if (!this.isUndefined(field.placeholder)) {
-        result["placeholder"] = field.placeholder;
-      }
-
-      if (!this.isUndefined(field.readonly)) {
-        result["readonly"] = field.readonly;
-      }
-
-      if (!this.isUndefined(field.multiple)) {
-        result["multiple"] = field.multiple;
-      }
-
-      if (!this.isUndefined(field.clearable)) {
-        result["clearable"] = field.clearable;
-      }
-
-      if (!this.isUndefined(field.counter)) {
-        result["counter"] = field.counter;
-      }
-
-      if (!this.isUndefined(field.maxlength)) {
-        result["maxlength"] = field.maxlength;
-      }
-
-      if (field.component == "h2") {
-        result = {
-          "v-html": field.value
-        };
-      }
-
-      return result;
+    genProgress() {
+      const render = loadable.options.methods.genProgress.call(this);
+      if (!render) return null;
+      return this.$createElement('div', {
+        staticClass: 'v-card__progress',
+        key: 'progress'
+      }, [render]);
     }
 
-  }
-});
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefInput.vue?vue&type=script&lang=js&
- /* harmony default export */ const parts_LvefInputvue_type_script_lang_js_ = (LvefInputvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-52[0].rules[0].use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-52[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-52[0].rules[0].use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/parts/LvefInput.vue?vue&type=style&index=0&lang=css&
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefInput.vue?vue&type=style&index=0&lang=css&
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VGrid/VGrid.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-
-
-
- // no xs
-
-const breakpoints = ['sm', 'md', 'lg', 'xl'];
-
-const breakpointProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    props[val] = {
-      type: [Boolean, String, Number],
-      default: false
-    };
-    return props;
-  }, {});
-})();
-
-const offsetProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    props['offset' + (0,helpers/* upperFirst */.jC)(val)] = {
-      type: [String, Number],
-      default: null
-    };
-    return props;
-  }, {});
-})();
-
-const orderProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    props['order' + (0,helpers/* upperFirst */.jC)(val)] = {
-      type: [String, Number],
-      default: null
-    };
-    return props;
-  }, {});
-})();
-
-const propMap = {
-  col: Object.keys(breakpointProps),
-  offset: Object.keys(offsetProps),
-  order: Object.keys(orderProps)
-};
-
-function breakpointClass(type, prop, val) {
-  let className = type;
-
-  if (val == null || val === false) {
-    return undefined;
-  }
-
-  if (prop) {
-    const breakpoint = prop.replace(type, '');
-    className += `-${breakpoint}`;
-  } // Handling the boolean style prop when accepting [Boolean, String, Number]
-  // means Vue will not convert <v-col sm></v-col> to sm: true for us.
-  // Since the default is false, an empty string indicates the prop's presence.
-
-
-  if (type === 'col' && (val === '' || val === true)) {
-    // .col-md
-    return className.toLowerCase();
-  } // .order-md-6
-
-
-  className += `-${val}`;
-  return className.toLowerCase();
-}
-
-const cache = new Map();
-/* harmony default export */ const VCol = (external_vue_default().extend({
-  name: 'v-col',
-  functional: true,
-  props: {
-    cols: {
-      type: [Boolean, String, Number],
-      default: false
-    },
-    ...breakpointProps,
-    offset: {
-      type: [String, Number],
-      default: null
-    },
-    ...offsetProps,
-    order: {
-      type: [String, Number],
-      default: null
-    },
-    ...orderProps,
-    alignSelf: {
-      type: String,
-      default: null,
-      validator: str => ['auto', 'start', 'end', 'center', 'baseline', 'stretch'].includes(str)
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    }
   },
 
-  render(h, {
-    props,
-    data,
-    children,
-    parent
-  }) {
-    // Super-fast memoization based on props, 5x faster than JSON.stringify
-    let cacheKey = '';
+  render(h) {
+    const {
+      tag,
+      data
+    } = this.generateRouteLink();
+    data.style = this.styles;
 
-    for (const prop in props) {
-      cacheKey += String(props[prop]);
+    if (this.isClickable) {
+      data.attrs = data.attrs || {};
+      data.attrs.tabindex = 0;
     }
 
-    let classList = cache.get(cacheKey);
-
-    if (!classList) {
-      classList = []; // Loop through `col`, `offset`, `order` breakpoint props
-
-      let type;
-
-      for (type in propMap) {
-        propMap[type].forEach(prop => {
-          const value = props[prop];
-          const className = breakpointClass(type, prop, value);
-          if (className) classList.push(className);
-        });
-      }
-
-      const hasColClasses = classList.some(className => className.startsWith('col-'));
-      classList.push({
-        // Default to .col if no other col-{bp}-* classes generated nor `cols` specified.
-        col: !hasColClasses || !props.cols,
-        [`col-${props.cols}`]: props.cols,
-        [`offset-${props.offset}`]: props.offset,
-        [`order-${props.order}`]: props.order,
-        [`align-self-${props.alignSelf}`]: props.alignSelf
-      });
-      cache.set(cacheKey, classList);
-    }
-
-    return h(props.tag, mergeData(data, {
-      class: classList
-    }), children);
+    return h(tag, this.setBackgroundColor(this.color, data), [this.genProgress(), this.$slots.default]);
   }
 
 }));
-//# sourceMappingURL=VCol.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VRadioGroup/VRadio.sass
+//# sourceMappingURL=VCard.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCard/index.js
+
+
+const VCardActions = (0,helpers/* createSimpleFunctional */.Ji)('v-card__actions');
+const VCardSubtitle = (0,helpers/* createSimpleFunctional */.Ji)('v-card__subtitle');
+const VCardText = (0,helpers/* createSimpleFunctional */.Ji)('v-card__text');
+const VCardTitle = (0,helpers/* createSimpleFunctional */.Ji)('v-card__title');
+
+/* harmony default export */ const components_VCard = ({
+  $_vuetify_subcomponents: {
+    VCard: VCard,
+    VCardActions,
+    VCardSubtitle,
+    VCardText,
+    VCardTitle
+  }
+});
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCheckbox/VCheckbox.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/groupable/index.js
-var groupable = __webpack_require__(1302);
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/styles/components/_selection-controls.sass
+// extracted by mini-css-extract-plugin
+
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/rippleable/index.js
 // Directives
  // Types
@@ -40003,6 +39727,775 @@ function prevent(e) {
   }
 }));
 //# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCheckbox/VCheckbox.js
+// Styles
+
+ // Components
+
+
+ // Mixins
+
+
+/* @vue/component */
+
+/* harmony default export */ const VCheckbox = (selectable.extend({
+  name: 'v-checkbox',
+  props: {
+    indeterminate: Boolean,
+    indeterminateIcon: {
+      type: String,
+      default: '$checkboxIndeterminate'
+    },
+    offIcon: {
+      type: String,
+      default: '$checkboxOff'
+    },
+    onIcon: {
+      type: String,
+      default: '$checkboxOn'
+    }
+  },
+
+  data() {
+    return {
+      inputIndeterminate: this.indeterminate
+    };
+  },
+
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input--selection-controls': true,
+        'v-input--checkbox': true,
+        'v-input--indeterminate': this.inputIndeterminate
+      };
+    },
+
+    computedIcon() {
+      if (this.inputIndeterminate) {
+        return this.indeterminateIcon;
+      } else if (this.isActive) {
+        return this.onIcon;
+      } else {
+        return this.offIcon;
+      }
+    },
+
+    // Do not return undefined if disabled,
+    // according to spec, should still show
+    // a color when disabled and active
+    validationState() {
+      if (this.isDisabled && !this.inputIndeterminate) return undefined;
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor !== null) return this.computedColor;
+      return undefined;
+    }
+
+  },
+  watch: {
+    indeterminate(val) {
+      // https://github.com/vuetifyjs/vuetify/issues/8270
+      this.$nextTick(() => this.inputIndeterminate = val);
+    },
+
+    inputIndeterminate(val) {
+      this.$emit('update:indeterminate', val);
+    },
+
+    isActive() {
+      if (!this.indeterminate) return;
+      this.inputIndeterminate = false;
+    }
+
+  },
+  methods: {
+    genCheckbox() {
+      const {
+        title,
+        ...checkboxAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.$createElement(components_VIcon, this.setTextColor(this.validationState, {
+        props: {
+          dense: this.dense,
+          dark: this.dark,
+          light: this.light
+        }
+      }), this.computedIcon), this.genInput('checkbox', { ...checkboxAttrs,
+        'aria-checked': this.inputIndeterminate ? 'mixed' : this.isActive.toString()
+      }), this.genRipple(this.setTextColor(this.rippleState))]);
+    },
+
+    genDefaultSlot() {
+      return [this.genCheckbox(), this.genLabel()];
+    }
+
+  }
+}));
+//# sourceMappingURL=VCheckbox.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VGrid/VGrid.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
+
+
+
+ // no xs
+
+const breakpoints = ['sm', 'md', 'lg', 'xl'];
+
+const breakpointProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props[val] = {
+      type: [Boolean, String, Number],
+      default: false
+    };
+    return props;
+  }, {});
+})();
+
+const offsetProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props['offset' + (0,helpers/* upperFirst */.jC)(val)] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+
+const orderProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props['order' + (0,helpers/* upperFirst */.jC)(val)] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+
+const propMap = {
+  col: Object.keys(breakpointProps),
+  offset: Object.keys(offsetProps),
+  order: Object.keys(orderProps)
+};
+
+function breakpointClass(type, prop, val) {
+  let className = type;
+
+  if (val == null || val === false) {
+    return undefined;
+  }
+
+  if (prop) {
+    const breakpoint = prop.replace(type, '');
+    className += `-${breakpoint}`;
+  } // Handling the boolean style prop when accepting [Boolean, String, Number]
+  // means Vue will not convert <v-col sm></v-col> to sm: true for us.
+  // Since the default is false, an empty string indicates the prop's presence.
+
+
+  if (type === 'col' && (val === '' || val === true)) {
+    // .col-md
+    return className.toLowerCase();
+  } // .order-md-6
+
+
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+
+const cache = new Map();
+/* harmony default export */ const VCol = (external_vue_default().extend({
+  name: 'v-col',
+  functional: true,
+  props: {
+    cols: {
+      type: [Boolean, String, Number],
+      default: false
+    },
+    ...breakpointProps,
+    offset: {
+      type: [String, Number],
+      default: null
+    },
+    ...offsetProps,
+    order: {
+      type: [String, Number],
+      default: null
+    },
+    ...orderProps,
+    alignSelf: {
+      type: String,
+      default: null,
+      validator: str => ['auto', 'start', 'end', 'center', 'baseline', 'stretch'].includes(str)
+    },
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  },
+
+  render(h, {
+    props,
+    data,
+    children,
+    parent
+  }) {
+    // Super-fast memoization based on props, 5x faster than JSON.stringify
+    let cacheKey = '';
+
+    for (const prop in props) {
+      cacheKey += String(props[prop]);
+    }
+
+    let classList = cache.get(cacheKey);
+
+    if (!classList) {
+      classList = []; // Loop through `col`, `offset`, `order` breakpoint props
+
+      let type;
+
+      for (type in propMap) {
+        propMap[type].forEach(prop => {
+          const value = props[prop];
+          const className = breakpointClass(type, prop, value);
+          if (className) classList.push(className);
+        });
+      }
+
+      const hasColClasses = classList.some(className => className.startsWith('col-'));
+      classList.push({
+        // Default to .col if no other col-{bp}-* classes generated nor `cols` specified.
+        col: !hasColClasses || !props.cols,
+        [`col-${props.cols}`]: props.cols,
+        [`offset-${props.offset}`]: props.offset,
+        [`order-${props.order}`]: props.order,
+        [`align-self-${props.alignSelf}`]: props.alignSelf
+      });
+      cache.set(cacheKey, classList);
+    }
+
+    return h(props.tag, mergeData(data, {
+      class: classList
+    }), children);
+  }
+
+}));
+//# sourceMappingURL=VCol.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
+
+
+
+ // no xs
+
+const VRow_breakpoints = ['sm', 'md', 'lg', 'xl'];
+const ALIGNMENT = ['start', 'end', 'center'];
+
+function makeProps(prefix, def) {
+  return VRow_breakpoints.reduce((props, val) => {
+    props[prefix + (0,helpers/* upperFirst */.jC)(val)] = def();
+    return props;
+  }, {});
+}
+
+const alignValidator = str => [...ALIGNMENT, 'baseline', 'stretch'].includes(str);
+
+const alignProps = makeProps('align', () => ({
+  type: String,
+  default: null,
+  validator: alignValidator
+}));
+
+const justifyValidator = str => [...ALIGNMENT, 'space-between', 'space-around'].includes(str);
+
+const justifyProps = makeProps('justify', () => ({
+  type: String,
+  default: null,
+  validator: justifyValidator
+}));
+
+const alignContentValidator = str => [...ALIGNMENT, 'space-between', 'space-around', 'stretch'].includes(str);
+
+const alignContentProps = makeProps('alignContent', () => ({
+  type: String,
+  default: null,
+  validator: alignContentValidator
+}));
+const VRow_propMap = {
+  align: Object.keys(alignProps),
+  justify: Object.keys(justifyProps),
+  alignContent: Object.keys(alignContentProps)
+};
+const classMap = {
+  align: 'align',
+  justify: 'justify',
+  alignContent: 'align-content'
+};
+
+function VRow_breakpointClass(type, prop, val) {
+  let className = classMap[type];
+
+  if (val == null) {
+    return undefined;
+  }
+
+  if (prop) {
+    // alignSm -> Sm
+    const breakpoint = prop.replace(type, '');
+    className += `-${breakpoint}`;
+  } // .align-items-sm-center
+
+
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+
+const VRow_cache = new Map();
+/* harmony default export */ const VRow = (external_vue_default().extend({
+  name: 'v-row',
+  functional: true,
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    },
+    dense: Boolean,
+    noGutters: Boolean,
+    align: {
+      type: String,
+      default: null,
+      validator: alignValidator
+    },
+    ...alignProps,
+    justify: {
+      type: String,
+      default: null,
+      validator: justifyValidator
+    },
+    ...justifyProps,
+    alignContent: {
+      type: String,
+      default: null,
+      validator: alignContentValidator
+    },
+    ...alignContentProps
+  },
+
+  render(h, {
+    props,
+    data,
+    children
+  }) {
+    // Super-fast memoization based on props, 5x faster than JSON.stringify
+    let cacheKey = '';
+
+    for (const prop in props) {
+      cacheKey += String(props[prop]);
+    }
+
+    let classList = VRow_cache.get(cacheKey);
+
+    if (!classList) {
+      classList = []; // Loop through `align`, `justify`, `alignContent` breakpoint props
+
+      let type;
+
+      for (type in VRow_propMap) {
+        VRow_propMap[type].forEach(prop => {
+          const value = props[prop];
+          const className = VRow_breakpointClass(type, prop, value);
+          if (className) classList.push(className);
+        });
+      }
+
+      classList.push({
+        'no-gutters': props.noGutters,
+        'row--dense': props.dense,
+        [`align-${props.align}`]: props.align,
+        [`justify-${props.justify}`]: props.justify,
+        [`align-content-${props.alignContent}`]: props.alignContent
+      });
+      VRow_cache.set(cacheKey, classList);
+    }
+
+    return h(props.tag, mergeData(data, {
+      staticClass: 'row',
+      class: classList
+    }), children);
+  }
+
+}));
+//# sourceMappingURL=VRow.js.map
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefCheckboxGroup.vue
+
+
+
+
+
+/* normalize component */
+;
+var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
+  fields_LvefCheckboxGroupvue_type_script_lang_js_,
+  LvefCheckboxGroupvue_type_template_id_9f29af84_render,
+  LvefCheckboxGroupvue_type_template_id_9f29af84_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ const LvefCheckboxGroup = (LvefCheckboxGroup_component.exports);
+
+/* vuetify-loader */
+;
+
+
+
+
+
+
+installComponents_default()(LvefCheckboxGroup_component, {VCard: VCard,VCardText: VCardText,VCardTitle: VCardTitle,VCheckbox: VCheckbox,VCol: VCol,VRow: VRow})
+
+// EXTERNAL MODULE: external "vuetify/lib"
+var lib_ = __webpack_require__(6537);
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ const LvefInputvue_type_script_lang_js_ = ({
+  name: "LvefInput",
+  $validates: true,
+  mixins: [FormMixins/* FormMixin */.T],
+  components: {
+    LvefCheckboxGroup: LvefCheckboxGroup,
+    ValidationProvider: vee_validate_full_esm_ValidationProvider,
+    DatePicker: DatePicker,
+    TimePicker: TimePicker,
+    VAutoComplete: lib_.VAutoComplete,
+    VCheckbox: lib_.VCheckbox,
+    VCombobox: lib_.VCombobox,
+    VFileInput: lib_.VFileInput,
+    VInput: lib_.VInput,
+    VOtpInput: lib_.VOtpInput,
+    VOverflowBtn: lib_.VOverflowBtn,
+    VRadio: lib_.VRadio,
+    VSlider: lib_.VSlider,
+    VSelect: lib_.VSelect,
+    VSwitch: lib_.VSwitch,
+    VTextarea: lib_.VTextarea,
+    VTextField: lib_.VTextField
+  },
+  props: {
+    cols: {
+      Type: String,
+      default: "6"
+    },
+    offset: {
+      Type: String,
+      default: ""
+    },
+    value: {
+      default: ""
+    }
+  },
+  watch: {
+    fieldData: {
+      handler: function (val) {
+        this.$emit("field_update", val);
+      },
+      deep: true
+    }
+  },
+  data: () => ({
+    fieldLoaded: false,
+    fieldData: {}
+  }),
+
+  created() {
+    this.fieldData = this.value;
+
+    if (this.fieldData.dependsOn !== null) {
+      this.fieldLoaded = true;
+    } else {
+      this.fieldLoaded = true;
+    }
+  },
+
+  computed: {
+    form: function () {
+      return this.$parent.form;
+    },
+
+    displayLabel() {
+      let label = !this.isUndefined(this.fieldData.label) ? this.fieldData.label : this.fieldData.name;
+
+      if (!this.isUndefined(this.fieldData.required) && this.fieldData.required) {
+        label += " ( * required )";
+      } else if (!this.isUndefined(this.fieldData.readonly) && this.fieldData.readonly) {
+        label += " ( readonly )";
+      } else {
+        label += " ( optional )";
+      }
+
+      return label;
+    }
+
+  },
+  methods: {
+    getMasking: function () {
+      if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
+        console.log('MASKING', 'return data triggered', this.fieldData.masking);
+        return this.fieldData.masking;
+      }
+
+      console.log('MASKING', 'return false triggered');
+      return null;
+    },
+    fieldValueLength: function (value) {
+      return value != null && !this.isUndefined(value) ? value.length : 0;
+    },
+
+    displayCol() {
+      if (this.isUndefined(this.fieldData.type)) return false;
+      if (this.fieldData.type == "hidden") return false;
+      if (!this.fieldLoaded) return false;
+      return true;
+    },
+
+    prepareRules() {
+      // BUILD FIELD RULES
+      const rules = [];
+      this.fieldData.rules.forEach(function (rule) {
+        if (typeof rule.value === "boolean") {
+          if (rule.value) {
+            rules.push(rule.name);
+          }
+        } else {
+          rules.push(rule.name + ":" + rule.value);
+        }
+      });
+      return rules.join("|");
+    },
+
+    prepareProps(errors) {
+      let result = {};
+      const field = this.fieldData;
+      result["error-messages"] = errors;
+      result["label"] = this.displayLabel;
+      result["outlined"] = field.outlined;
+      result["dense"] = field.dense;
+
+      if (field.type == "time") {
+        result["populate"] = field.value;
+        result["ampm_in_title"] = true;
+        result["no_title"] = false;
+        result["class"] = "mt-2";
+      }
+
+      if (field.type == "select" || field.type == "autocomplete") {
+        result["selected"] = !this.isUndefined(field.integer) && field.integer ? parseInt(field.value) : field.value;
+        const selectItems = field.items;
+
+        if (!this.isUndefined(field.any_field) && field.any_field) {
+          const anyfield = {};
+          anyfield[field.item_value] = "any";
+          anyfield[field.item_text] = "Any";
+
+          if (!selectItems.some(e => e[field.item_value] === "any")) {
+            selectItems.unshift(anyfield);
+          }
+        }
+
+        result["items"] = selectItems;
+        result["item-text"] = field.item_text;
+        result["item-value"] = field.item_value;
+        result["chips"] = field.chips;
+        result["data-vv-name"] = "select";
+      }
+
+      if (field.type == "hidden") {
+        result["class"] = "hidden-input";
+      }
+
+      if (!this.isUndefined(field.close_on_content_click)) {
+        result["close-on-content-click"] = field.close_on_content_click;
+      }
+
+      if (!this.isUndefined(field.controls)) {
+        result["controls"] = field.controls;
+      }
+
+      if (!this.isUndefined(field.step)) {
+        result["step"] = field.step;
+      }
+
+      if (!this.isUndefined(field.component_type) && field.component_type !== "") {
+        result["type"] = field.component_type;
+      }
+
+      if (!this.isUndefined(field.min)) {
+        result["min"] = field.min;
+      }
+
+      if (!this.isUndefined(field.max)) {
+        result["max"] = field.max;
+      }
+
+      if (!this.isUndefined(field.placeholder)) {
+        result["placeholder"] = field.placeholder;
+      }
+
+      if (!this.isUndefined(field.readonly)) {
+        result["readonly"] = field.readonly;
+      }
+
+      if (!this.isUndefined(field.multiple)) {
+        result["multiple"] = field.multiple;
+      }
+
+      if (!this.isUndefined(field.clearable)) {
+        result["clearable"] = field.clearable;
+      }
+
+      if (!this.isUndefined(field.counter)) {
+        result["counter"] = field.counter;
+      }
+
+      if (!this.isUndefined(field.maxlength)) {
+        result["maxlength"] = field.maxlength;
+      }
+
+      if (field.component == "h2") {
+        result = {
+          "v-html": field.value
+        };
+      }
+
+      return result;
+    }
+
+  }
+});
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=script&lang=js&
+ /* harmony default export */ const fields_LvefInputvue_type_script_lang_js_ = (LvefInputvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-52[0].rules[0].use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-52[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-52[0].rules[0].use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&lang=css&
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&lang=css&
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VRadioGroup/VRadio.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/groupable/index.js
+var groupable = __webpack_require__(1302);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VRadioGroup/VRadio.js
 // Styles
 
@@ -40179,7 +40672,7 @@ const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, 
 //# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4928);
-;// CONCATENATED MODULE: ./src/components/forms/parts/LvefInput.vue
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue
 
 
 
@@ -40189,9 +40682,9 @@ var VTooltip = __webpack_require__(4928);
 /* normalize component */
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
-  parts_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_b3df5bc8_render,
-  LvefInputvue_type_template_id_b3df5bc8_staticRenderFns,
+  fields_LvefInputvue_type_script_lang_js_,
+  LvefInputvue_type_template_id_3fe86bbe_render,
+  LvefInputvue_type_template_id_3fe86bbe_staticRenderFns,
   false,
   null,
   null,
@@ -40210,8 +40703,8 @@ var LvefInput_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(LvefInput_component, {VCol: VCol,VCounter: VCounter,VIcon: VIcon/* default */.Z,VRadio: VRadio,VTooltip: VTooltip/* default */.Z})
 
-// EXTERNAL MODULE: ./src/components/forms/parts/LvefButton.vue + 3 modules
-var LvefButton = __webpack_require__(372);
+// EXTERNAL MODULE: ./src/components/forms/fields/LvefButton.vue + 3 modules
+var LvefButton = __webpack_require__(3929);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=script&lang=js&
 //
 //
@@ -40457,7 +40950,6 @@ var LvefButton = __webpack_require__(372);
     },
 
     cancelForm() {
-      console.log('cancel form - cancelled');
       this.$emit("cancelled", true);
       this.formLoading = false;
     },
@@ -40478,21 +40970,17 @@ var LvefButton = __webpack_require__(372);
 
     async buttonAction(button) {
       this.formLoading = true;
-      console.log('button action', button);
 
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
           this.processForm(this.loadedFormData, this.loadedFormData.fields, this.loadedIdentifier, this.loadedAdditionalFormData);
-          console.log('button process');
         }
 
         if (button.type == "reset") {
-          console.log('button reset');
           this.resetForm();
         }
 
         if (button.type == "cancel") {
-          console.log('button cancel');
           this.cancelForm();
         }
 
@@ -40500,7 +40988,6 @@ var LvefButton = __webpack_require__(372);
         return 0;
       }
 
-      alert("button action error :(");
       return 0;
     }
 
@@ -40643,150 +41130,6 @@ var LvefButton = __webpack_require__(372);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VRow.js
-
-
-
- // no xs
-
-const VRow_breakpoints = ['sm', 'md', 'lg', 'xl'];
-const ALIGNMENT = ['start', 'end', 'center'];
-
-function makeProps(prefix, def) {
-  return VRow_breakpoints.reduce((props, val) => {
-    props[prefix + (0,helpers/* upperFirst */.jC)(val)] = def();
-    return props;
-  }, {});
-}
-
-const alignValidator = str => [...ALIGNMENT, 'baseline', 'stretch'].includes(str);
-
-const alignProps = makeProps('align', () => ({
-  type: String,
-  default: null,
-  validator: alignValidator
-}));
-
-const justifyValidator = str => [...ALIGNMENT, 'space-between', 'space-around'].includes(str);
-
-const justifyProps = makeProps('justify', () => ({
-  type: String,
-  default: null,
-  validator: justifyValidator
-}));
-
-const alignContentValidator = str => [...ALIGNMENT, 'space-between', 'space-around', 'stretch'].includes(str);
-
-const alignContentProps = makeProps('alignContent', () => ({
-  type: String,
-  default: null,
-  validator: alignContentValidator
-}));
-const VRow_propMap = {
-  align: Object.keys(alignProps),
-  justify: Object.keys(justifyProps),
-  alignContent: Object.keys(alignContentProps)
-};
-const classMap = {
-  align: 'align',
-  justify: 'justify',
-  alignContent: 'align-content'
-};
-
-function VRow_breakpointClass(type, prop, val) {
-  let className = classMap[type];
-
-  if (val == null) {
-    return undefined;
-  }
-
-  if (prop) {
-    // alignSm -> Sm
-    const breakpoint = prop.replace(type, '');
-    className += `-${breakpoint}`;
-  } // .align-items-sm-center
-
-
-  className += `-${val}`;
-  return className.toLowerCase();
-}
-
-const VRow_cache = new Map();
-/* harmony default export */ const VRow = (external_vue_default().extend({
-  name: 'v-row',
-  functional: true,
-  props: {
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    dense: Boolean,
-    noGutters: Boolean,
-    align: {
-      type: String,
-      default: null,
-      validator: alignValidator
-    },
-    ...alignProps,
-    justify: {
-      type: String,
-      default: null,
-      validator: justifyValidator
-    },
-    ...justifyProps,
-    alignContent: {
-      type: String,
-      default: null,
-      validator: alignContentValidator
-    },
-    ...alignContentProps
-  },
-
-  render(h, {
-    props,
-    data,
-    children
-  }) {
-    // Super-fast memoization based on props, 5x faster than JSON.stringify
-    let cacheKey = '';
-
-    for (const prop in props) {
-      cacheKey += String(props[prop]);
-    }
-
-    let classList = VRow_cache.get(cacheKey);
-
-    if (!classList) {
-      classList = []; // Loop through `align`, `justify`, `alignContent` breakpoint props
-
-      let type;
-
-      for (type in VRow_propMap) {
-        VRow_propMap[type].forEach(prop => {
-          const value = props[prop];
-          const className = VRow_breakpointClass(type, prop, value);
-          if (className) classList.push(className);
-        });
-      }
-
-      classList.push({
-        'no-gutters': props.noGutters,
-        'row--dense': props.dense,
-        [`align-${props.align}`]: props.align,
-        [`justify-${props.justify}`]: props.justify,
-        [`align-content-${props.alignContent}`]: props.alignContent
-      });
-      VRow_cache.set(cacheKey, classList);
-    }
-
-    return h(props.tag, mergeData(data, {
-      staticClass: 'row',
-      class: classList
-    }), children);
-  }
-
-}));
-//# sourceMappingURL=VRow.js.map
 ;// CONCATENATED MODULE: ./src/components/forms/forms/InputForm.vue
 
 
@@ -40797,8 +41140,8 @@ const VRow_cache = new Map();
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_56aa4370_render,
-  InputFormvue_type_template_id_56aa4370_staticRenderFns,
+  InputFormvue_type_template_id_25c25895_render,
+  InputFormvue_type_template_id_25c25895_staticRenderFns,
   false,
   null,
   null,
@@ -40815,9 +41158,9 @@ var InputForm_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(InputForm_component, {VCol: VCol,VForm: VForm,VRow: VRow})
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=template&id=4a222399&
-var ActionFormvue_type_template_id_4a222399_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',{attrs:{"justify":_vm.getJustify()}},_vm._l((_vm.filteredActions),function(action,index){return _c('v-col',{key:index,staticClass:"py-0 px-2",attrs:{"cols":_vm.getCols(action)}},[(!_vm.isUndefined(action.icon))?_c('easy-icon',{attrs:{"icon":action.icon,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e(),(!_vm.isUndefined(action.button))?_c('easy-button',{attrs:{"button":action.button,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e()],1)}),1)}
-var ActionFormvue_type_template_id_4a222399_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=template&id=67ee3bde&
+var ActionFormvue_type_template_id_67ee3bde_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',{attrs:{"justify":_vm.getJustify()}},_vm._l((_vm.filteredActions),function(action,index){return _c('v-col',{key:index,staticClass:"py-0 px-2",attrs:{"cols":_vm.getCols(action)}},[(!_vm.isUndefined(action.icon))?_c('easy-icon',{attrs:{"icon":action.icon,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e(),(!_vm.isUndefined(action.button))?_c('easy-button',{attrs:{"button":action.button,"identifier":action.identifier},on:{"click":function($event){return _vm.runAction(action.identifier)}}}):_vm._e()],1)}),1)}
+var ActionFormvue_type_template_id_67ee3bde_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-80[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/ActionForm.vue?vue&type=script&lang=js&
@@ -40834,8 +41177,8 @@ var ActionFormvue_type_script_lang_js_ = __webpack_require__(1596);
 ;
 var ActionForm_component = (0,componentNormalizer/* default */.Z)(
   forms_ActionFormvue_type_script_lang_js_,
-  ActionFormvue_type_template_id_4a222399_render,
-  ActionFormvue_type_template_id_4a222399_staticRenderFns,
+  ActionFormvue_type_template_id_67ee3bde_render,
+  ActionFormvue_type_template_id_67ee3bde_staticRenderFns,
   false,
   null,
   null,
@@ -41047,7 +41390,7 @@ installComponents_default()(ActionForm_component, {VCol: VCol,VRow: VRow})
       this.formLoading = event;
     },
     formIsReset: function () {
-      this.$emit("reset", true);
+      this.$emit("reset_form", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
@@ -41098,8 +41441,6 @@ installComponents_default()(ActionForm_component, {VCol: VCol,VRow: VRow})
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VAlert/VAlert.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
-var VSheet = __webpack_require__(6625);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/transitionable/index.js
 
 /* harmony default export */ const transitionable = (external_vue_default().extend({

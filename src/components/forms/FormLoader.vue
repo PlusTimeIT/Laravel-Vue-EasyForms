@@ -191,7 +191,7 @@ export default {
       this.formLoading = event;
     },
     formIsReset: function() {
-      this.$emit("reset", true);
+      this.$emit("reset_form", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },

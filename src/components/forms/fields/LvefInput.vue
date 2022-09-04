@@ -21,6 +21,7 @@
                     :color="item.color"
                 ></v-radio>
                 </div>
+                
                 <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
                 {{ fieldData.value }}
                 </p>
@@ -51,6 +52,15 @@
                 v-bind="prepareProps(errors)"
             >
                 <div v-if="fieldData.component == 'v-radio-group'">
+                <v-radio
+                    v-for="(item, index) in fieldData.items"
+                    :key="index"
+                    :label="item.label"
+                    :value="item.value"
+                    :color="item.color"
+                ></v-radio>
+                </div>
+                <div v-if="fieldData.component == 'v-checkbox-group'">
                 <v-radio
                     v-for="(item, index) in fieldData.items"
                     :key="index"
@@ -94,6 +104,8 @@ import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
 import { FormMixin } from "/src/components/forms/mixins/FormMixins";
 import DatePicker from "/src/components/forms/fields/DatePicker.vue";
 import TimePicker from "/src/components/forms/fields/TimePicker.vue";
+import LvefCheckboxGroup from "./LvefCheckboxGroup.vue";
+
 import { 
     VAutoComplete, 
     VCheckbox, 
@@ -115,6 +127,7 @@ export default {
   $validates: true,
   mixins: [FormMixin],
   components: {
+    LvefCheckboxGroup,
     ValidationProvider,
     DatePicker,
     TimePicker,

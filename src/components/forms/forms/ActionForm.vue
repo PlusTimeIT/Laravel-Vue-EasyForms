@@ -26,8 +26,8 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyButton from "../parts/LvefButton.vue";
-import EasyIcon from "../parts/LvefIcon.vue";
+import EasyButton from "../fields/LvefButton.vue";
+import EasyIcon from "../fields/LvefIcon.vue";
 
 export default {
   name: "ActionForm",

@@ -25,7 +25,7 @@
 
 <script>
 import { FormMixin } from "../mixins/FormMixins";
-import EasyIcon from "./LvefIcon.vue";
+import EasyIcon from "../fields/LvefIcon.vue";
 
 export default {
   name: "LvefButton",
@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     buttonClick(identifier) {
-        console.log('button clicked', identifier)
         this.$emit("click", identifier);
     },
     buttonIconText: function() {
