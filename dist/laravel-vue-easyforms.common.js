@@ -39307,9 +39307,9 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTextField,VTimePicker: VTimePicker})
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=template&id=9f29af84&
-var LvefCheckboxGroupvue_type_template_id_9f29af84_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-card',[_c('v-card-title',{domProps:{"textContent":_vm._s(_vm.loadedLabel)}}),_c('v-card-text',[_c('v-row',_vm._l((_vm.loadedItems),function(item,index){return _c('v-col',{key:index,attrs:{"cols":12,"md":item.cols}},[_c('v-checkbox',{attrs:{"multiple":"","label":item.label,"value":item.value,"color":item.color},model:{value:(_vm.selectedItems),callback:function ($$v) {_vm.selectedItems=$$v},expression:"selectedItems"}})],1)}),1)],1)],1)}
-var LvefCheckboxGroupvue_type_template_id_9f29af84_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=template&id=00ec91b8&
+var LvefCheckboxGroupvue_type_template_id_00ec91b8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-card',[_c('v-card-title',{domProps:{"textContent":_vm._s(_vm.loadedLabel)}}),_c('v-card-text',[_c('v-row',_vm._l((_vm.loadedItems),function(item,index){return _c('v-col',{key:index,attrs:{"cols":12,"md":item.cols}},[_c('v-checkbox',{attrs:{"multiple":"","label":item.label,"value":item.value,"color":item.color},model:{value:(_vm.selectedItems),callback:function ($$v) {_vm.selectedItems=$$v},expression:"selectedItems"}})],1)}),1)],1)],1)}
+var LvefCheckboxGroupvue_type_template_id_00ec91b8_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=script&lang=js&
@@ -39356,10 +39356,10 @@ var LvefCheckboxGroupvue_type_template_id_9f29af84_staticRenderFns = []
     },
     items: {
       Type: Array,
-      default: []
+      default: () => []
     },
     value: {
-      default: []
+      default: () => []
     }
   },
   data: () => ({
@@ -40121,8 +40121,8 @@ const VRow_cache = new Map();
 ;
 var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefCheckboxGroupvue_type_script_lang_js_,
-  LvefCheckboxGroupvue_type_template_id_9f29af84_render,
-  LvefCheckboxGroupvue_type_template_id_9f29af84_staticRenderFns,
+  LvefCheckboxGroupvue_type_template_id_00ec91b8_render,
+  LvefCheckboxGroupvue_type_template_id_00ec91b8_staticRenderFns,
   false,
   null,
   null,
