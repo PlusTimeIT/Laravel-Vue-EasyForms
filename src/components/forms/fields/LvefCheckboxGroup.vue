@@ -1,8 +1,29 @@
 <template>
 
-    <v-card>
-        <v-card-title v-text="loadedLabel"></v-card-title>
+    <v-card elevation="0">
+        <v-card-title :class="{'error--text': showErrors}">
+        {{ loadedLabel }} 
+            <v-switch
+              v-if="loadedSwitch.display"
+              class="ml-auto"
+              v-model="selectAll"
+              :label="loadedSwitch.label"
+              :color="loadedSwitch.color"
+              :value="loadedSwitch.value"
+              :dense="loadedSwitch.dense"
+            ></v-switch>
+        </v-card-title>
         <v-card-text>
+            <v-row v-if="showErrors">
+                <v-col 
+                    v-for="(error, index) in loadedErrorMessages" 
+                    :key="index"
+                    :cols="12"
+                    class="error--text"
+                >
+                {{ error }}
+                </v-col>
+            </v-row>
             <v-row>
                 <v-col 
                     v-for="(item, index) in loadedItems" 
@@ -47,15 +68,38 @@
             },
             value: {
                  default: () => []
-            }
+            },
+            errorMessages: {
+                type: Array,
+                default: () => []
+            },
+            switch: {
+                 default: () => ({
+                    display: false,
+                    label: 'Select All / Deselect All',
+                    color: 'primary',
+                    value: false,
+                    dense: false,
+                 })
+            },
         },
         data: () => ({
-            selectedItems: []
+            selectedItems: [],
+            selectAll: false
         }),
         created(){
             this.selectedItems = this.value;
         },
         watch:{
+            selectAll: function(update){
+                if( ! update){
+                    // remove all selected.
+                    this.selectedItems = [];
+                }else{
+                    // add all
+                    this.selectedItems = [...this.loadedItems.map((item) => item.value)]
+                }
+            },
             selectedItems:{
                 handler: function(val) {
                     this.$emit("field_update", val);
@@ -64,6 +108,15 @@
             }
         },
         computed: {
+            showErrors: function(){
+                return this.loadedErrorMessages.length > 0;
+            },
+            loadedErrorMessages: function(){
+                return this.errorMessages;
+            },
+            loadedSwitch: function(){
+                return this.switch;
+            },
             loadedItems: function(){
                 return this.items;
             },

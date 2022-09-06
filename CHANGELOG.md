@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.2.57
+- Fixed bug in selectAll for checkbox group - idiot
+- 
+## 0.2.56
+- Fixed bug in selectAll for checkbox group
+
+## 0.2.55
+- Added more support for checkbox groups including v-switch
+
+## 0.2.54
+- Added support for checkbox groups
+
 ## 0.2.18
 - NPM and Node updates
 - Include axios in ./formmixins.js

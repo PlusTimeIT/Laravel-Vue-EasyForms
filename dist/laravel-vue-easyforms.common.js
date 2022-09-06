@@ -30390,8 +30390,8 @@ var InputFormvue_type_template_id_25c25895_render = function () {var _vm=this;va
 var InputFormvue_type_template_id_25c25895_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=34b40cd0&
-var LvefInputvue_type_template_id_34b40cd0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=34cb11ec&
+var LvefInputvue_type_template_id_34cb11ec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.displayCol())?_c('v-col',{staticClass:"pt-0 pb-0",attrs:{"cols":_vm.cols,"offset":_vm.offset}},[_c('validation-provider',{attrs:{"name":_vm.fieldData.name,"tag":"div","rules":_vm.prepareRules()},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 return [(_vm.getMasking() === null)?[_c(_vm.fieldData.component,_vm._b({tag:"component",on:{"field_update":_vm.customFieldUpdate},scopedSlots:_vm._u([(!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter)?{key:"counter",fn:function(ref){
 var props = ref.props;
@@ -30402,7 +30402,7 @@ var props = ref.props;
 return [_c('v-counter',_vm._b({attrs:{"value":_vm.fieldValueLength(_vm.fieldData.value)}},'v-counter',props,false))]}}:null],null,true),model:{value:(_vm.fieldData.value),callback:function ($$v) {_vm.$set(_vm.fieldData, "value", $$v)},expression:"fieldData.value"}},'component',_vm.prepareProps(errors),false),[(_vm.fieldData.component == 'v-radio-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'v-checkbox-group')?_c('div',_vm._l((_vm.fieldData.items),function(item,index){return _c('v-radio',{key:index,attrs:{"label":item.label,"value":item.value,"color":item.color}})}),1):_vm._e(),(_vm.fieldData.component == 'h2')?_c('p',{staticClass:"mb-3 mt-4"},[_vm._v(" "+_vm._s(_vm.fieldData.value)+" ")]):_vm._e(),(_vm.fieldData.help !== '')?_c('v-tooltip',{attrs:{"slot":"append","bottom":""},slot:"append",scopedSlots:_vm._u([{key:"activator",fn:function(ref){
 var on = ref.on;
 return [_c('v-icon',_vm._g({attrs:{"slot":"activator","color":"primary","dark":""},slot:"activator"},on),[_vm._v(" mdi-help-box ")])]}}],null,false,500127703)},[_c('span',[_vm._v(_vm._s(_vm.fieldData.help)+" ")])]):_vm._e()],1)]]}}],null,false,3486454029)})],1):_vm._e()}
-var LvefInputvue_type_template_id_34b40cd0_staticRenderFns = []
+var LvefInputvue_type_template_id_34cb11ec_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
@@ -39307,12 +39307,33 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
 
 installComponents_default()(TimePicker_component, {VMenu: VMenu,VTextField: VTextField,VTimePicker: VTimePicker})
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=template&id=79b52d16&
-var LvefCheckboxGroupvue_type_template_id_79b52d16_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-card',[_c('v-card-title',{domProps:{"textContent":_vm._s(_vm.loadedLabel)}}),_c('v-card-text',[_c('v-row',_vm._l((_vm.loadedItems),function(item,index){return _c('v-col',{key:index,attrs:{"cols":12,"md":item.cols}},[_c('v-checkbox',{attrs:{"multiple":"","label":item.label,"value":item.value,"color":item.color},model:{value:(_vm.selectedItems),callback:function ($$v) {_vm.selectedItems=$$v},expression:"selectedItems"}})],1)}),1)],1)],1)}
-var LvefCheckboxGroupvue_type_template_id_79b52d16_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=template&id=413e78f3&
+var LvefCheckboxGroupvue_type_template_id_413e78f3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-card',{attrs:{"elevation":"0"}},[_c('v-card-title',{class:{'error--text': _vm.showErrors}},[_vm._v(" "+_vm._s(_vm.loadedLabel)+" "),(_vm.loadedSwitch.display)?_c('v-switch',{staticClass:"ml-auto",attrs:{"label":_vm.loadedSwitch.label,"color":_vm.loadedSwitch.color,"value":_vm.loadedSwitch.value,"dense":_vm.loadedSwitch.dense},model:{value:(_vm.selectAll),callback:function ($$v) {_vm.selectAll=$$v},expression:"selectAll"}}):_vm._e()],1),_c('v-card-text',[(_vm.showErrors)?_c('v-row',_vm._l((_vm.loadedErrorMessages),function(error,index){return _c('v-col',{key:index,staticClass:"error--text",attrs:{"cols":12}},[_vm._v(" "+_vm._s(error)+" ")])}),1):_vm._e(),_c('v-row',_vm._l((_vm.loadedItems),function(item,index){return _c('v-col',{key:index,attrs:{"cols":12,"md":item.cols}},[_c('v-checkbox',{attrs:{"multiple":"","label":item.label,"value":item.value,"color":item.color},model:{value:(_vm.selectedItems),callback:function ($$v) {_vm.selectedItems=$$v},expression:"selectedItems"}})],1)}),1)],1)],1)}
+var LvefCheckboxGroupvue_type_template_id_413e78f3_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40[0].rules[0].use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefCheckboxGroup.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39360,10 +39381,24 @@ var LvefCheckboxGroupvue_type_template_id_79b52d16_staticRenderFns = []
     },
     value: {
       default: () => []
+    },
+    errorMessages: {
+      type: Array,
+      default: () => []
+    },
+    switch: {
+      default: () => ({
+        display: false,
+        label: 'Select All / Deselect All',
+        color: 'primary',
+        value: false,
+        dense: false
+      })
     }
   },
   data: () => ({
-    selectedItems: []
+    selectedItems: [],
+    selectAll: false
   }),
 
   created() {
@@ -39371,6 +39406,15 @@ var LvefCheckboxGroupvue_type_template_id_79b52d16_staticRenderFns = []
   },
 
   watch: {
+    selectAll: function (update) {
+      if (!update) {
+        // remove all selected.
+        this.selectedItems = [];
+      } else {
+        // add all
+        this.selectedItems = [...this.loadedItems.map(item => item.value)];
+      }
+    },
     selectedItems: {
       handler: function (val) {
         this.$emit("field_update", val);
@@ -39379,6 +39423,15 @@ var LvefCheckboxGroupvue_type_template_id_79b52d16_staticRenderFns = []
     }
   },
   computed: {
+    showErrors: function () {
+      return this.loadedErrorMessages.length > 0;
+    },
+    loadedErrorMessages: function () {
+      return this.errorMessages;
+    },
+    loadedSwitch: function () {
+      return this.switch;
+    },
     loadedItems: function () {
       return this.items;
     },
@@ -40111,6 +40164,134 @@ const VRow_cache = new Map();
 
 }));
 //# sourceMappingURL=VRow.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSwitch/VSwitch.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
+var VProgressCircular = __webpack_require__(3297);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSwitch/VSwitch.js
+// Styles
+
+ // Mixins
+
+
+ // Directives
+
+ // Components
+
+
+ // Helpers
+
+
+/* @vue/component */
+
+/* harmony default export */ const VSwitch = (selectable.extend({
+  name: 'v-switch',
+  directives: {
+    Touch: touch
+  },
+  props: {
+    inset: Boolean,
+    loading: {
+      type: [Boolean, String],
+      default: false
+    },
+    flat: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input--selection-controls v-input--switch': true,
+        'v-input--switch--flat': this.flat,
+        'v-input--switch--inset': this.inset
+      };
+    },
+
+    attrs() {
+      return {
+        'aria-checked': String(this.isActive),
+        'aria-disabled': String(this.isDisabled),
+        role: 'switch'
+      };
+    },
+
+    // Do not return undefined if disabled,
+    // according to spec, should still show
+    // a color when disabled and active
+    validationState() {
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor !== null) return this.computedColor;
+      return undefined;
+    },
+
+    switchData() {
+      return this.setTextColor(this.loading ? undefined : this.validationState, {
+        class: this.themeClasses
+      });
+    }
+
+  },
+  methods: {
+    genDefaultSlot() {
+      return [this.genSwitch(), this.genLabel()];
+    },
+
+    genSwitch() {
+      const {
+        title,
+        ...switchAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.genInput('checkbox', { ...this.attrs,
+        ...switchAttrs
+      }), this.genRipple(this.setTextColor(this.validationState, {
+        directives: [{
+          name: 'touch',
+          value: {
+            left: this.onSwipeLeft,
+            right: this.onSwipeRight
+          }
+        }]
+      })), this.$createElement('div', {
+        staticClass: 'v-input--switch__track',
+        ...this.switchData
+      }), this.$createElement('div', {
+        staticClass: 'v-input--switch__thumb',
+        ...this.switchData
+      }, [this.genProgress()])]);
+    },
+
+    genProgress() {
+      return this.$createElement(VFabTransition, {}, [this.loading === false ? null : this.$slots.progress || this.$createElement(VProgressCircular/* default */.Z, {
+        props: {
+          color: this.loading === true || this.loading === '' ? this.color || 'primary' : this.loading,
+          size: 16,
+          width: 2,
+          indeterminate: true
+        }
+      })]);
+    },
+
+    onSwipeLeft() {
+      if (this.isActive) this.onChange();
+    },
+
+    onSwipeRight() {
+      if (!this.isActive) this.onChange();
+    },
+
+    onKeydown(e) {
+      if (e.keyCode === helpers/* keyCodes.left */.Do.left && this.isActive || e.keyCode === helpers/* keyCodes.right */.Do.right && !this.isActive) this.onChange();
+    }
+
+  }
+}));
+//# sourceMappingURL=VSwitch.js.map
 ;// CONCATENATED MODULE: ./src/components/forms/fields/LvefCheckboxGroup.vue
 
 
@@ -40121,8 +40302,8 @@ const VRow_cache = new Map();
 ;
 var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefCheckboxGroupvue_type_script_lang_js_,
-  LvefCheckboxGroupvue_type_template_id_79b52d16_render,
-  LvefCheckboxGroupvue_type_template_id_79b52d16_staticRenderFns,
+  LvefCheckboxGroupvue_type_template_id_413e78f3_render,
+  LvefCheckboxGroupvue_type_template_id_413e78f3_staticRenderFns,
   false,
   null,
   null,
@@ -40140,7 +40321,8 @@ var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
 
 
 
-installComponents_default()(LvefCheckboxGroup_component, {VCard: VCard,VCardText: VCardText,VCardTitle: VCardTitle,VCheckbox: VCheckbox,VCol: VCol,VRow: VRow})
+
+installComponents_default()(LvefCheckboxGroup_component, {VCard: VCard,VCardText: VCardText,VCardTitle: VCardTitle,VCheckbox: VCheckbox,VCol: VCol,VRow: VRow,VSwitch: VSwitch})
 
 ;// CONCATENATED MODULE: external "vuetify/lib"
 const lib_namespaceObject = require("vuetify/lib");
@@ -40334,16 +40516,13 @@ const lib_namespaceObject = require("vuetify/lib");
   },
   methods: {
     customFieldUpdate: function (event) {
-      console.log('custom event field update');
       this.fieldData.value = event;
     },
     getMasking: function () {
       if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
-        console.log('MASKING', 'return data triggered', this.fieldData.masking);
         return this.fieldData.masking;
       }
 
-      console.log('MASKING', 'return false triggered');
       return null;
     },
     fieldValueLength: function (value) {
@@ -40406,7 +40585,11 @@ const lib_namespaceObject = require("vuetify/lib");
         result["data-vv-name"] = "select";
       }
 
-      if (field.type == "lvef-checkbox-group") {
+      if (field.type == "checkbox-group") {
+        if (!this.isUndefined(field.switch)) {
+          result["switch"] = field.switch;
+        }
+
         result["items"] = field.items;
         result["item"] = field.item_value;
         result["data-vv-name"] = "checkbox";
@@ -40462,6 +40645,94 @@ const lib_namespaceObject = require("vuetify/lib");
 
       if (!this.isUndefined(field.maxlength)) {
         result["maxlength"] = field.maxlength;
+      }
+
+      if (!this.isUndefined(field.appendIcon)) {
+        result["appendIcon"] = field.appendIcon;
+      }
+
+      if (!this.isUndefined(field.backgroundColor)) {
+        result["backgroundColor"] = field.backgroundColor;
+      }
+
+      if (!this.isUndefined(field.error)) {
+        result["error"] = field.error;
+      }
+
+      if (!this.isUndefined(field.errorCount)) {
+        result["errorCount"] = field.errorCount;
+      }
+
+      if (!this.isUndefined(field.errorMessages)) {
+        result["errorMessages"] = field.errorMessages;
+      }
+
+      if (!this.isUndefined(field.falseValue)) {
+        result["falseValue"] = field.falseValue;
+      }
+
+      if (!this.isUndefined(field.flat)) {
+        result["flat"] = field.flat;
+      }
+
+      if (!this.isUndefined(field.hideDetails)) {
+        result["hideDetails"] = field.hideDetails;
+      }
+
+      if (!this.isUndefined(field.hideSpinButtons)) {
+        result["hideSpinButtons"] = field.hideSpinButtons;
+      }
+
+      if (!this.isUndefined(field.hint)) {
+        result["hint"] = field.hint;
+      }
+
+      if (!this.isUndefined(field.inputValue)) {
+        result["inputValue"] = field.inputValue;
+      }
+
+      if (!this.isUndefined(field.inset)) {
+        result["inset"] = field.inset;
+      }
+
+      if (!this.isUndefined(field.dark)) {
+        result["dark"] = field.dark;
+      }
+
+      if (!this.isUndefined(field.light)) {
+        result["light"] = field.light;
+      }
+
+      if (!this.isUndefined(field.messages)) {
+        result["messages"] = field.messages;
+      }
+
+      if (!this.isUndefined(field.persistentHint)) {
+        result["persistentHint"] = field.persistentHint;
+      }
+
+      if (!this.isUndefined(field.prependIcon)) {
+        result["prependIcon"] = field.prependIcon;
+      }
+
+      if (!this.isUndefined(field.success)) {
+        result["success"] = field.success;
+      }
+
+      if (!this.isUndefined(field.successMessages)) {
+        result["successMessages"] = field.successMessages;
+      }
+
+      if (!this.isUndefined(field.trueValue)) {
+        result["trueValue"] = field.trueValue;
+      }
+
+      if (!this.isUndefined(field.validateOnBlur)) {
+        result["validateOnBlur"] = field.validateOnBlur;
+      }
+
+      if (!this.isUndefined(field.display)) {
+        result["display"] = field.display;
       }
 
       if (field.component == "h2") {
@@ -40674,8 +40945,8 @@ var VTooltip = __webpack_require__(127);
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_34b40cd0_render,
-  LvefInputvue_type_template_id_34b40cd0_staticRenderFns,
+  LvefInputvue_type_template_id_34cb11ec_render,
+  LvefInputvue_type_template_id_34cb11ec_staticRenderFns,
   false,
   null,
   null,
@@ -41672,8 +41943,6 @@ installComponents_default()(ActionForm_component, {VCol: VCol,VRow: VRow})
 
 }));
 //# sourceMappingURL=VAlert.js.map
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
-var VProgressCircular = __webpack_require__(3297);
 ;// CONCATENATED MODULE: ./src/components/forms/FormLoader.vue
 
 
