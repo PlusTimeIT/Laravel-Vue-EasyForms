@@ -18,8 +18,16 @@
           >
           </easy-input>
         </v-row>
-        <v-row v-if="displayButton" :align="loadedFormData.buttonAlignRow" :justify="loadedFormData.buttonJustifyRow">
-          <v-col cols="auto" v-for="(button, index) in loadedFormData.buttons" :key="index">
+        <v-row
+          v-if="displayButton"
+          :align="loadedFormData.buttonAlignRow"
+          :justify="loadedFormData.buttonJustifyRow"
+        >
+          <v-col
+            cols="auto"
+            v-for="(button, index) in loadedFormData.buttons"
+            :key="index"
+          >
             <easy-button
               :button="button"
               :identifier="index"
@@ -77,7 +85,7 @@ export default {
   },
   data() {
     return {
-      fieldList: {},
+      fieldList: [],
       formLoading: true,
       formLoaded: false,
       loadedFormName: "",
@@ -137,6 +145,7 @@ export default {
       this.loadedFormName = this.form.name;
       this.formLoaded = true;
       this.loadedFormData = this.form;
+      console.log('this.loadedFormData.fields', this.loadedFormData.fields);
       this.fieldList = this.loadedFormData.fields;
       this.originalFormData = { ...this.loadedFormData };
       this.formLoading = false;
@@ -165,6 +174,7 @@ export default {
       });
     },
     getField: function(fieldName) {
+      console.log('FIELD LIST', this.fieldList);
       const fieldIndex = this.fieldList.findIndex(
         element => element.name == fieldName
       );

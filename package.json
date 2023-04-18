@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.2.57",
+  "version": "0.2.80-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "PlusTimeIT",
@@ -18,7 +18,7 @@
     "serve": "vue-cli-service serve",
     "build": "bili --name index --plugin vue --vue.css false",
     "lint": "vue-cli-service lint",
-    "build-library": "vue-cli-service build --target lib --name laravel-vue-easyforms ./src/index.js --inline-vue --fix"
+    "build-library": "vue-cli-service build --target lib --name laravel-vue-easyforms ./src/main.js --inline-vue --fix"
   },
   "main": "dist/laravel-vue-easyforms.common.js",
   "module": "dist/laravel-vue-easyforms.esm.js",
@@ -35,14 +35,15 @@
   ],
   "files": [
     "dist/*",
-    "*.json"
+    "src/*",
+    "*.json",
+    "*.md"
   ],
   "dependencies": {
     "axios": "^0.21.1",
     "cross-env": "^7.0",
     "moment-timezone": "^0.5.33",
     "sass": "^1.49.8",
-    "sass-loader": "^12.6.0",
     "vee-validate": "^3.4.5",
     "vuetify": "^2.4.3",
     "vuex": "^3.6.2"
@@ -53,6 +54,7 @@
     "@vue/cli-plugin-eslint": "^5.0.1",
     "@vue/cli-service": "^5.0.1",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "sass-loader": "^12.6.0",
     "eslint": "^8.10.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^8.5.0",
@@ -60,7 +62,11 @@
     "rollup-plugin-vue": "^6.0.0",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.14",
-    "vuetify-loader": "^1.7.3"
+    "vuetify-loader": "^1.7.3",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.12"
   },
   "bugs": "https://github.com/PlusTimeIT/Laravel-Vue-EasyForms/issues",
   "license": "MIT",

@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     buttonClick(identifier) {
-        this.$emit("click", identifier);
+      this.$emit("click", identifier);
     },
     buttonIconText: function() {
       return !this.isUndefined(this.loadedButton.icon.tooltip)
@@ -84,7 +84,10 @@ export default {
       return result;
     },
     displayButtonIcon: function() {
-      return (!this.isUndefined(this.loadedButton.icon) && this.loadedButton.icon !== null ) ? true : false;
+      return !this.isUndefined(this.loadedButton.icon) &&
+        this.loadedButton.icon !== null
+        ? true
+        : false;
     }
   }
 };

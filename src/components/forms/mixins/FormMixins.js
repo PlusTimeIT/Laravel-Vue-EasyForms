@@ -1,4 +1,3 @@
-
 export const FormMixin = {
   methods: {
     isObjectEmpty: function(o) {

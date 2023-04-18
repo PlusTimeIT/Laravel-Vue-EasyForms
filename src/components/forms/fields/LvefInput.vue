@@ -6,87 +6,83 @@
       tag="div"
       :rules="prepareRules()"
     >
-        <template v-if="getMasking() === null">
-            <component
-                :is="fieldData.component"
-                v-model="fieldData.value"
-                v-bind="prepareProps(errors)"
-                @field_update="customFieldUpdate"
-            >
-                <div v-if="fieldData.component == 'v-radio-group'">
-                <v-radio
-                    v-for="(item, index) in fieldData.items"
-                    :key="index"
-                    :label="item.label"
-                    :value="item.value"
-                    :color="item.color"
-                ></v-radio>
-                </div>
-                
-                <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
-                {{ fieldData.value }}
-                </p>
-                <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
-                <template #activator="{ on }">
-                    <v-icon slot="activator" color="primary" dark v-on="on">
-                    mdi-help-box
-                    </v-icon>
-                </template>
-                <span>{{ fieldData.help }} </span>
-                </v-tooltip>
-                <template
-                v-if="!isUndefined(fieldData.counter) && fieldData.counter"
-                v-slot:counter="{ props }"
-                >
-                <v-counter
-                    v-bind="props"
-                    :value="fieldValueLength(fieldData.value)"
-                ></v-counter>
-                </template>
-            </component>
-        </template>
-        <template v-else>
-            <component
-                :is="fieldData.component"
-                v-model="fieldData.value"
-                v-mask="getMasking"
-                v-bind="prepareProps(errors)"
-            >
-                <div v-if="fieldData.component == 'v-radio-group'">
-                <v-radio
-                    v-for="(item, index) in fieldData.items"
-                    :key="index"
-                    :label="item.label"
-                    :value="item.value"
-                    :color="item.color"
-                ></v-radio>
-                </div>
-                <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
-                {{ fieldData.value }}
-                </p>
-                <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
-                <template #activator="{ on }">
-                    <v-icon slot="activator" color="primary" dark v-on="on">
-                    mdi-help-box
-                    </v-icon>
-                </template>
-                <span>{{ fieldData.help }} </span>
-                </v-tooltip>
-                <template
-                v-if="!isUndefined(fieldData.counter) && fieldData.counter"
-                v-slot:counter="{ props }"
-                >
-                <v-counter
-                    v-bind="props"
-                    :value="fieldValueLength(fieldData.value)"
-                ></v-counter>
-                </template>
-            </component>
-            
-        </template>
+      <template v-if="getMasking() === null">
+        <component
+          :is="fieldData.component"
+          v-model="fieldData.value"
+          v-bind="prepareProps(errors)"
+          @field_update="customFieldUpdate"
+        >
+          <div v-if="fieldData.component == 'v-radio-group'">
+            <v-radio
+              v-for="(item, index) in fieldData.items"
+              :key="index"
+              :label="item.label"
+              :value="item.value"
+              :color="item.color"
+            ></v-radio>
+          </div>
 
-      
-        
+          <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+            {{ fieldData.value }}
+          </p>
+          <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+            <template #activator="{ on }">
+              <v-icon slot="activator" color="primary" dark v-on="on">
+                mdi-help-box
+              </v-icon>
+            </template>
+            <span>{{ fieldData.help }} </span>
+          </v-tooltip>
+          <template
+            v-if="!isUndefined(fieldData.counter) && fieldData.counter"
+            v-slot:counter="{ props }"
+          >
+            <v-counter
+              v-bind="props"
+              :value="fieldValueLength(fieldData.value)"
+            ></v-counter>
+          </template>
+        </component>
+      </template>
+      <template v-else>
+        <component
+          :is="fieldData.component"
+          v-model="fieldData.value"
+          v-mask="getMasking"
+          v-bind="prepareProps(errors)"
+        >
+          <div v-if="fieldData.component == 'v-radio-group'">
+            <v-radio
+              v-for="(item, index) in fieldData.items"
+              :key="index"
+              :label="item.label"
+              :value="item.value"
+              :color="item.color"
+            ></v-radio>
+          </div>
+          <p class="mb-3 mt-4" v-if="fieldData.component == 'h2'">
+            {{ fieldData.value }}
+          </p>
+          <v-tooltip v-if="fieldData.help !== ''" slot="append" bottom>
+            <template #activator="{ on }">
+              <v-icon slot="activator" color="primary" dark v-on="on">
+                mdi-help-box
+              </v-icon>
+            </template>
+            <span>{{ fieldData.help }} </span>
+          </v-tooltip>
+          <template
+            v-if="!isUndefined(fieldData.counter) && fieldData.counter"
+            v-slot:counter="{ props }"
+          >
+            <v-counter
+              v-bind="props"
+              :value="fieldValueLength(fieldData.value)"
+            ></v-counter>
+          </template>
+        </component>
+      </template>
     </validation-provider>
   </v-col>
 </template>
@@ -98,9 +94,33 @@ import DatePicker from "/src/components/forms/fields/DatePicker.vue";
 import TimePicker from "/src/components/forms/fields/TimePicker.vue";
 import LvefCheckboxGroup from "./LvefCheckboxGroup.vue";
 
-import { 
-    VAutoComplete, 
-    VCheckbox, 
+import {
+  VAutoComplete,
+  VCheckbox,
+  VCombobox,
+  VFileInput,
+  VInput,
+  VOtpInput,
+  VOverflowBtn,
+  VRadio,
+  VSlider,
+  VSelect,
+  VSwitch,
+  VTextarea,
+  VTextField
+} from "vuetify/lib";
+
+export default {
+  name: "LvefInput",
+  $validates: true,
+  mixins: [FormMixin],
+  components: {
+    LvefCheckboxGroup,
+    ValidationProvider,
+    DatePicker,
+    TimePicker,
+    VAutoComplete,
+    VCheckbox,
     VCombobox,
     VFileInput,
     VInput,
@@ -112,30 +132,6 @@ import {
     VSwitch,
     VTextarea,
     VTextField
-} from 'vuetify/lib'
-
-export default {
-  name: "LvefInput",
-  $validates: true,
-  mixins: [FormMixin],
-  components: {
-    LvefCheckboxGroup,
-    ValidationProvider,
-    DatePicker,
-    TimePicker,
-    VAutoComplete, 
-    VCheckbox, 
-    VCombobox,
-    VFileInput,
-    VInput,
-    VOtpInput,
-    VOverflowBtn,
-    VRadio,
-    VSlider,
-    VSelect,
-    VSwitch,
-    VTextarea,
-    VTextField,
   },
   props: {
     cols: {
@@ -196,20 +192,20 @@ export default {
     }
   },
   methods: {
-    customFieldUpdate: function(event){
-        this.fieldData.value = event;
+    customFieldUpdate: function(event) {
+      this.fieldData.value = event;
     },
     getMasking: function() {
-        if (
-            !this.isUndefined(this.fieldData.masking) && 
-            this.fieldData.masking !== null
-        ) {
-            return this.fieldData.masking;
-        }
-        return null;
+      if (
+        !this.isUndefined(this.fieldData.masking) &&
+        this.fieldData.masking !== null
+      ) {
+        return this.fieldData.masking;
+      }
+      return null;
     },
     fieldValueLength: function(value) {
-      return (value != null && !this.isUndefined(value)) ? value.length : 0;
+      return value != null && !this.isUndefined(value) ? value.length : 0;
     },
     displayCol() {
       if (this.isUndefined(this.fieldData.type)) return false;
@@ -270,7 +266,7 @@ export default {
 
       if (field.type == "checkbox-group") {
         if (!this.isUndefined(field.switch)) {
-            result["switch"] = field.switch;
+          result["switch"] = field.switch;
         }
 
         result["items"] = field.items;

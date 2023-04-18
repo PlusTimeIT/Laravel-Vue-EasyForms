@@ -149,6 +149,7 @@ export default {
   },
   watch: {
     formLoaded: function(val) {
+      console.log("FORM EVENT - Main form loaded triggered");
       this.$emit("loaded", val);
       if (val) {
         this.formLoading = false;
@@ -187,16 +188,19 @@ export default {
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function(event) {
+      console.log("FORM EVENT - Main form loading triggered");
       this.$emit("loading", event);
       this.formLoading = event;
     },
     formIsReset: function() {
+      console.log("FORM EVENT - Main form reset triggered");
       this.$emit("reset_form", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
     formIsCancelled: function() {
-      this.$emit("cancelled", true);  
+      console.log("FORM EVENT - Main form cancelled triggered");
+      this.$emit("cancelled", true);
       this.triggerAlerts("cancelled");
     },
     formIsProcessing: function() {
