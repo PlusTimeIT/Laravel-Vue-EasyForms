@@ -96,7 +96,7 @@ export default {
   },
   asyncComputed: {
     async asyncFilteredFieldList() {
-      const fields = {};
+      const fields = [];
       const _this = this;
 
       const fieldKeys = Object.keys(this.fieldList);
@@ -145,11 +145,11 @@ export default {
       this.loadedFormName = this.form.name;
       this.formLoaded = true;
       this.loadedFormData = this.form;
-      console.log('this.loadedFormData.fields', this.loadedFormData.fields);
-      this.fieldList = this.loadedFormData.fields;
+      this.fieldList = JSON.parse(JSON.stringify(this.loadedFormData.fields));
       this.originalFormData = { ...this.loadedFormData };
       this.formLoading = false;
     }
+    console.log('this.loadedFormData.fields', this.loadedFormData.fields, 'this.fieldList', this.fieldList);
   },
   methods: {
     async loadField(field) {

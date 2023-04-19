@@ -31267,12 +31267,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=4e9bdb41&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=0089aceb&
 
 
 
 
-var InputFormvue_type_template_id_4e9bdb41_render = function render() {
+var InputFormvue_type_template_id_0089aceb_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31324,7 +31324,7 @@ var InputFormvue_type_template_id_4e9bdb41_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_4e9bdb41_staticRenderFns = [];
+var InputFormvue_type_template_id_0089aceb_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -41492,7 +41492,7 @@ var LvefButton = __webpack_require__(5323);
   },
   asyncComputed: {
     async asyncFilteredFieldList() {
-      const fields = {};
+      const fields = [];
       const _this = this;
       const fieldKeys = Object.keys(this.fieldList);
       for (const field of fieldKeys) {
@@ -41534,13 +41534,13 @@ var LvefButton = __webpack_require__(5323);
       this.loadedFormName = this.form.name;
       this.formLoaded = true;
       this.loadedFormData = this.form;
-      console.log('this.loadedFormData.fields', this.loadedFormData.fields);
-      this.fieldList = this.loadedFormData.fields;
+      this.fieldList = JSON.parse(JSON.stringify(this.loadedFormData.fields));
       this.originalFormData = {
         ...this.loadedFormData
       };
       this.formLoading = false;
     }
+    console.log('this.loadedFormData.fields', this.loadedFormData.fields, 'this.fieldList', this.fieldList);
   },
   methods: {
     async loadField(field) {
@@ -41671,8 +41671,8 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_4e9bdb41_render,
-  InputFormvue_type_template_id_4e9bdb41_staticRenderFns,
+  InputFormvue_type_template_id_0089aceb_render,
+  InputFormvue_type_template_id_0089aceb_staticRenderFns,
   false,
   null,
   null,
