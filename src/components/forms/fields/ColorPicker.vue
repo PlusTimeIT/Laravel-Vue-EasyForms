@@ -31,6 +31,7 @@ import { FormMixin } from "../mixins/FormMixins";
 
 export default {
   mixins: [FormMixin],
+  name: "ColorPicker",
   props: {
     value: {
       default: () => []

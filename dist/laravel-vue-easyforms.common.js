@@ -132,7 +132,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "4a61f6cc"
+  "0fb9d564"
   
 )
 
@@ -259,7 +259,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "1f46d261"
+  "4c0f8015"
   
 )
 
@@ -267,17 +267,17 @@ var component = (0,componentNormalizer/* default */.Z)(
 
 /***/ }),
 
-/***/ 6755:
+/***/ 5712:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=bca70770&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=03386844&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=bca70770&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=03386844&prod&lang=css&
 
 
 /***/ }),
@@ -22605,8 +22605,8 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VBtn/VBtn.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
-var VSheet = __webpack_require__(9805);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+var VSheet = __webpack_require__(9744);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js + 1 modules
 var VProgressCircular = __webpack_require__(7935);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/index.js
@@ -22628,8 +22628,8 @@ var routable = __webpack_require__(9367);
 var sizeable = __webpack_require__(2412);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
 var mixins = __webpack_require__(5530);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
-var console = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 20 modules
+var console = __webpack_require__(4389);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js
 // Styles
  // Extensions
@@ -23257,17 +23257,15 @@ var helpers = __webpack_require__(8131);
 
 /***/ }),
 
-/***/ 9805:
+/***/ 4494:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ components_VSheet)
+  "Z": () => (/* binding */ VSheet)
 });
-
-// UNUSED EXPORTS: VSheet
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSheet/VSheet.sass
 // extracted by mini-css-extract-plugin
@@ -23378,10 +23376,20 @@ var mixins = __webpack_require__(5530);
 
 }));
 //# sourceMappingURL=VSheet.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+
+/***/ }),
+
+/***/ 9744:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VSheet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4494);
 
 
-/* harmony default export */ const components_VSheet = (VSheet);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_VSheet__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -23411,8 +23419,8 @@ var dependent = __webpack_require__(4665);
 var menuable = __webpack_require__(7008);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/helpers.js
 var helpers = __webpack_require__(8131);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
-var console = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 20 modules
+var console = __webpack_require__(4389);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
 var mixins = __webpack_require__(5530);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js
@@ -23576,7 +23584,7 @@ var mixins = __webpack_require__(5530);
       }
 
       listeners.keydown = e => {
-        if (e.keyCode === helpers/* keyCodes.esc */.Do.esc) {
+        if (e.keyCode === helpers.keyCodes.esc) {
           this.getActivator(e);
           this.runDelay('close');
         }
@@ -23931,7 +23939,7 @@ function rippleCancelShow(e) {
 let keyboardRipple = false;
 
 function keyboardRippleShow(e) {
-  if (!keyboardRipple && (e.keyCode === helpers/* keyCodes.enter */.Do.enter || e.keyCode === helpers/* keyCodes.space */.Do.space)) {
+  if (!keyboardRipple && (e.keyCode === helpers.keyCodes.enter || e.keyCode === helpers.keyCodes.space)) {
     keyboardRipple = true;
     rippleShow(e);
   }
@@ -24053,7 +24061,7 @@ const Ripple = {
 /* harmony import */ var _toggleable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4552);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5530);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8131);
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4389);
 // Mixins
 
  // Utilities
@@ -24314,7 +24322,7 @@ function makeWatcher(property) {
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1666);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4389);
 /* harmony import */ var _util_colorUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4771);
 
 
@@ -24711,8 +24719,8 @@ var helpers = __webpack_require__(8131);
 var positionable = __webpack_require__(8747);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/activatable/index.js
 var activatable = __webpack_require__(7561);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
-var console = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 20 modules
+var console = __webpack_require__(4389);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/bootable/index.js
 // Utilities
  // Types
@@ -25371,7 +25379,7 @@ let all = factory().extend({
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1666);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4389);
 
 
 
@@ -26036,18 +26044,82 @@ class Service {
 
 /***/ }),
 
+/***/ 753:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_": () => (/* binding */ fromXYZ),
+/* harmony export */   "e": () => (/* binding */ toXYZ)
+/* harmony export */ });
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8131);
+ // For converting XYZ to sRGB
+
+const srgbForwardMatrix = [[3.2406, -1.5372, -0.4986], [-0.9689, 1.8758, 0.0415], [0.0557, -0.2040, 1.0570]]; // Forward gamma adjust
+
+const srgbForwardTransform = C => C <= 0.0031308 ? C * 12.92 : 1.055 * C ** (1 / 2.4) - 0.055; // For converting sRGB to XYZ
+
+
+const srgbReverseMatrix = [[0.4124, 0.3576, 0.1805], [0.2126, 0.7152, 0.0722], [0.0193, 0.1192, 0.9505]]; // Reverse gamma adjust
+
+const srgbReverseTransform = C => C <= 0.04045 ? C / 12.92 : ((C + 0.055) / 1.055) ** 2.4;
+
+function fromXYZ(xyz) {
+  const rgb = Array(3);
+  const transform = srgbForwardTransform;
+  const matrix = srgbForwardMatrix; // Matrix transform, then gamma adjustment
+
+  for (let i = 0; i < 3; ++i) {
+    rgb[i] = Math.round((0,_util_helpers__WEBPACK_IMPORTED_MODULE_0__/* .clamp */ .uZ)(transform(matrix[i][0] * xyz[0] + matrix[i][1] * xyz[1] + matrix[i][2] * xyz[2])) * 255);
+  } // Rescale back to [0, 255]
+
+
+  return (rgb[0] << 16) + (rgb[1] << 8) + (rgb[2] << 0);
+}
+function toXYZ(rgb) {
+  const xyz = [0, 0, 0];
+  const transform = srgbReverseTransform;
+  const matrix = srgbReverseMatrix; // Rescale from [0, 255] to [0, 1] then adjust sRGB gamma to linear RGB
+
+  const r = transform((rgb >> 16 & 0xff) / 255);
+  const g = transform((rgb >> 8 & 0xff) / 255);
+  const b = transform((rgb >> 0 & 0xff) / 255); // Matrix color space transform
+
+  for (let i = 0; i < 3; ++i) {
+    xyz[i] = matrix[i][0] * r + matrix[i][1] * g + matrix[i][2] * b;
+  }
+
+  return xyz;
+}
+//# sourceMappingURL=transformSRGB.js.map
+
+/***/ }),
+
 /***/ 4771:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "I4": () => (/* binding */ intToHex),
+/* harmony export */   "KQ": () => (/* binding */ parseHex),
 /* harmony export */   "NA": () => (/* binding */ isCssColor),
+/* harmony export */   "UJ": () => (/* binding */ HSVAtoRGBA),
+/* harmony export */   "Yj": () => (/* binding */ RGBAtoCSS),
+/* harmony export */   "Yq": () => (/* binding */ RGBAtoHSVA),
 /* harmony export */   "hq": () => (/* binding */ colorToHex),
-/* harmony export */   "jx": () => (/* binding */ colorToInt)
+/* harmony export */   "iC": () => (/* binding */ RGBtoCSS),
+/* harmony export */   "jx": () => (/* binding */ colorToInt),
+/* harmony export */   "mM": () => (/* binding */ HSVAtoHSLA),
+/* harmony export */   "n0": () => (/* binding */ HSVAtoHex),
+/* harmony export */   "nk": () => (/* binding */ HSLAtoHSVA),
+/* harmony export */   "uN": () => (/* binding */ RGBAtoHex),
+/* harmony export */   "wo": () => (/* binding */ contrastRatio),
+/* harmony export */   "yt": () => (/* binding */ HexToHSVA)
 /* harmony export */ });
-/* unused harmony exports classToHex, HSVAtoRGBA, RGBAtoHSVA, HSVAtoHSLA, HSLAtoHSVA, RGBAtoCSS, RGBtoCSS, RGBAtoHex, HexToRGBA, HexToHSVA, HSVAtoHex, parseHex, parseGradient, RGBtoInt, contrastRatio */
-/* harmony import */ var _console__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* unused harmony exports classToHex, HexToRGBA, parseGradient, RGBtoInt */
+/* harmony import */ var _console__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4389);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8131);
+/* harmony import */ var _color_transformSRGB__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(753);
 // Utilities
 
 
@@ -26226,7 +26298,7 @@ function RGBAtoHex(rgba) {
   return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`;
 }
 function HexToRGBA(hex) {
-  const rgba = chunk(hex.slice(1), 2).map(c => parseInt(c, 16));
+  const rgba = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__/* .chunk */ .yo)(hex.slice(1), 2).map(c => parseInt(c, 16));
   return {
     r: rgba[0],
     g: rgba[1],
@@ -26253,9 +26325,9 @@ function parseHex(hex) {
   }
 
   if (hex.length === 6) {
-    hex = padEnd(hex, 8, 'F');
+    hex = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__/* .padEnd */ .qy)(hex, 8, 'F');
   } else {
-    hex = padEnd(padEnd(hex, 6), 8, 'F');
+    hex = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__/* .padEnd */ .qy)((0,_helpers__WEBPACK_IMPORTED_MODULE_1__/* .padEnd */ .qy)(hex, 6), 8, 'F');
   }
 
   return `#${hex}`.toUpperCase().substr(0, 9);
@@ -26278,15 +26350,15 @@ function RGBtoInt(rgba) {
  */
 
 function contrastRatio(c1, c2) {
-  const [, y1] = toXYZ(RGBtoInt(c1));
-  const [, y2] = toXYZ(RGBtoInt(c2));
+  const [, y1] = (0,_color_transformSRGB__WEBPACK_IMPORTED_MODULE_2__/* .toXYZ */ .e)(RGBtoInt(c1));
+  const [, y2] = (0,_color_transformSRGB__WEBPACK_IMPORTED_MODULE_2__/* .toXYZ */ .e)(RGBtoInt(c2));
   return (Math.max(y1, y2) + 0.05) / (Math.min(y1, y2) + 0.05);
 }
 //# sourceMappingURL=colorUtils.js.map
 
 /***/ }),
 
-/***/ 5:
+/***/ 4389:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27062,46 +27134,8 @@ Lang.property = 'lang';
 //# sourceMappingURL=index.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/colorUtils.js
 var colorUtils = __webpack_require__(4771);
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/util/color/transformSRGB.js
- // For converting XYZ to sRGB
-
-const srgbForwardMatrix = [[3.2406, -1.5372, -0.4986], [-0.9689, 1.8758, 0.0415], [0.0557, -0.2040, 1.0570]]; // Forward gamma adjust
-
-const srgbForwardTransform = C => C <= 0.0031308 ? C * 12.92 : 1.055 * C ** (1 / 2.4) - 0.055; // For converting sRGB to XYZ
-
-
-const srgbReverseMatrix = [[0.4124, 0.3576, 0.1805], [0.2126, 0.7152, 0.0722], [0.0193, 0.1192, 0.9505]]; // Reverse gamma adjust
-
-const srgbReverseTransform = C => C <= 0.04045 ? C / 12.92 : ((C + 0.055) / 1.055) ** 2.4;
-
-function fromXYZ(xyz) {
-  const rgb = Array(3);
-  const transform = srgbForwardTransform;
-  const matrix = srgbForwardMatrix; // Matrix transform, then gamma adjustment
-
-  for (let i = 0; i < 3; ++i) {
-    rgb[i] = Math.round((0,helpers/* clamp */.uZ)(transform(matrix[i][0] * xyz[0] + matrix[i][1] * xyz[1] + matrix[i][2] * xyz[2])) * 255);
-  } // Rescale back to [0, 255]
-
-
-  return (rgb[0] << 16) + (rgb[1] << 8) + (rgb[2] << 0);
-}
-function toXYZ(rgb) {
-  const xyz = [0, 0, 0];
-  const transform = srgbReverseTransform;
-  const matrix = srgbReverseMatrix; // Rescale from [0, 255] to [0, 1] then adjust sRGB gamma to linear RGB
-
-  const r = transform((rgb >> 16 & 0xff) / 255);
-  const g = transform((rgb >> 8 & 0xff) / 255);
-  const b = transform((rgb >> 0 & 0xff) / 255); // Matrix color space transform
-
-  for (let i = 0; i < 3; ++i) {
-    xyz[i] = matrix[i][0] * r + matrix[i][1] * g + matrix[i][2] * b;
-  }
-
-  return xyz;
-}
-//# sourceMappingURL=transformSRGB.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/color/transformSRGB.js
+var transformSRGB = __webpack_require__(753);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/util/color/transformCIELAB.js
 const delta = 0.20689655172413793; // 6÷29
 
@@ -27109,12 +27143,12 @@ const cielabForwardTransform = t => t > delta ** 3 ? Math.cbrt(t) : t / (3 * del
 
 const cielabReverseTransform = t => t > delta ? t ** 3 : 3 * delta ** 2 * (t - 4 / 29);
 
-function transformCIELAB_fromXYZ(xyz) {
+function fromXYZ(xyz) {
   const transform = cielabForwardTransform;
   const transformedY = transform(xyz[1]);
   return [116 * transformedY - 16, 500 * (transform(xyz[0] / 0.95047) - transformedY), 200 * (transformedY - transform(xyz[2] / 1.08883))];
 }
-function transformCIELAB_toXYZ(lab) {
+function toXYZ(lab) {
   const transform = cielabReverseTransform;
   const Ln = (lab[0] + 16) / 116;
   return [transform(Ln + lab[1] / 500) * 0.95047, transform(Ln), transform(Ln - lab[2] / 200) * 1.08883];
@@ -27248,14 +27282,14 @@ function genVariations(name, value) {
   return values;
 }
 function lighten(value, amount) {
-  const lab = transformCIELAB_fromXYZ(toXYZ(value));
+  const lab = fromXYZ(transformSRGB/* toXYZ */.e(value));
   lab[0] = lab[0] + amount * 10;
-  return fromXYZ(transformCIELAB_toXYZ(lab));
+  return transformSRGB/* fromXYZ */._(toXYZ(lab));
 }
 function darken(value, amount) {
-  const lab = transformCIELAB_fromXYZ(toXYZ(value));
+  const lab = fromXYZ(transformSRGB/* toXYZ */.e(value));
   lab[0] = lab[0] - amount * 10;
-  return fromXYZ(transformCIELAB_toXYZ(lab));
+  return transformSRGB/* fromXYZ */._(toXYZ(lab));
 }
 //# sourceMappingURL=utils.js.map
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/services/theme/index.js
@@ -27680,7 +27714,6 @@ function generateComponentTrace(vm) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Do": () => (/* binding */ keyCodes),
 /* harmony export */   "Ee": () => (/* binding */ mergeDeep),
 /* harmony export */   "GL": () => (/* binding */ kebabCase),
 /* harmony export */   "Ji": () => (/* binding */ createSimpleFunctional),
@@ -27691,17 +27724,22 @@ function generateComponentTrace(vm) {
 /* harmony export */   "TI": () => (/* binding */ wrapInArray),
 /* harmony export */   "XP": () => (/* binding */ keys),
 /* harmony export */   "_A": () => (/* binding */ camelize),
+/* harmony export */   "e$": () => (/* binding */ passiveSupported),
 /* harmony export */   "jC": () => (/* binding */ upperFirst),
 /* harmony export */   "ji": () => (/* binding */ filterObjectOnKeys),
 /* harmony export */   "kb": () => (/* binding */ convertToUnit),
+/* harmony export */   "keyCodes": () => (/* binding */ keyCodes),
+/* harmony export */   "qh": () => (/* binding */ addOnceEventListener),
 /* harmony export */   "qw": () => (/* binding */ getNestedValue),
+/* harmony export */   "qy": () => (/* binding */ padEnd),
 /* harmony export */   "sp": () => (/* binding */ getSlotType),
 /* harmony export */   "uZ": () => (/* binding */ clamp),
 /* harmony export */   "vO": () => (/* binding */ getObjectValueByPath),
 /* harmony export */   "vZ": () => (/* binding */ deepEqual),
+/* harmony export */   "yo": () => (/* binding */ chunk),
 /* harmony export */   "z9": () => (/* binding */ getSlot)
 /* harmony export */ });
-/* unused harmony exports directiveConfig, addOnceEventListener, passiveSupported, addPassiveEventListener, getPropertyFromItem, isObject, arrayDiff, groupItems, sortItems, defaultFilter, searchItems, debounce, getPrefixedScopedSlots, padEnd, chunk, humanReadableFileSize, camelizeObjectKeys, fillArray, composedPath */
+/* unused harmony exports directiveConfig, addPassiveEventListener, getPropertyFromItem, isObject, arrayDiff, groupItems, sortItems, defaultFilter, searchItems, debounce, getPrefixedScopedSlots, humanReadableFileSize, camelizeObjectKeys, fillArray, composedPath */
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1666);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -28299,8 +28337,8 @@ if (typeof window !== 'undefined') {
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VAlert/VAlert.sass
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js + 3 modules
-var VSheet = __webpack_require__(9805);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/index.js
+var VSheet = __webpack_require__(9744);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VBtn/VBtn.js + 2 modules
 var VBtn = __webpack_require__(4741);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VBtn/index.js
@@ -28335,8 +28373,8 @@ var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
 //# sourceMappingURL=index.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mixins.js
 var mixins = __webpack_require__(5530);
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 21 modules
-var util_console = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/console.js + 20 modules
+var util_console = __webpack_require__(4389);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VAlert/VAlert.js
 // Styles
  // Extensions
@@ -29020,7 +29058,7 @@ const VRow_cache = new Map();
 
 }));
 //# sourceMappingURL=VRow.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=8f8106b0&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=4c08679d&
 
 
 
@@ -31267,12 +31305,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=0089aceb&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=68b3b3e5&
 
 
 
 
-var InputFormvue_type_template_id_0089aceb_render = function render() {
+var InputFormvue_type_template_id_68b3b3e5_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31324,7 +31362,7 @@ var InputFormvue_type_template_id_0089aceb_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_0089aceb_staticRenderFns = [];
+var InputFormvue_type_template_id_68b3b3e5_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -32460,14 +32498,14 @@ const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, 
 //# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4213);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=bca70770&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=03386844&
 
 
 
 
 
 
-var LvefInputvue_type_template_id_bca70770_render = function render() {
+var LvefInputvue_type_template_id_03386844_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.displayCol() ? _c(VCol, {
@@ -32547,8 +32585,8 @@ var LvefInputvue_type_template_id_bca70770_render = function render() {
           directives: [{
             name: "mask",
             rawName: "v-mask",
-            value: _vm.getMasking,
-            expression: "getMasking"
+            value: _vm.fieldData.masking,
+            expression: "fieldData.masking"
           }],
           tag: "component",
           scopedSlots: _vm._u([!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter ? {
@@ -32604,10 +32642,10 @@ var LvefInputvue_type_template_id_bca70770_render = function render() {
           }], null, false, 500127703)
         }, [_c('span', [_vm._v(_vm._s(_vm.fieldData.help) + " ")])]) : _vm._e()], 1)]];
       }
-    }], null, false, 2737616434)
+    }], null, false, 2170083346)
   })], 1) : _vm._e();
 };
-var LvefInputvue_type_template_id_bca70770_staticRenderFns = [];
+var LvefInputvue_type_template_id_03386844_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
 /**
@@ -38137,18 +38175,18 @@ const VMenu_baseMixins = (0,mixins/* default */.Z)(dependent/* default */.Z, del
 
       if (!this.isActive || !this.hasClickableTiles) {
         return;
-      } else if (e.keyCode === helpers/* keyCodes.tab */.Do.tab) {
+      } else if (e.keyCode === helpers.keyCodes.tab) {
         this.isActive = false;
         return;
-      } else if (e.keyCode === helpers/* keyCodes.down */.Do.down) {
+      } else if (e.keyCode === helpers.keyCodes.down) {
         this.nextTile();
-      } else if (e.keyCode === helpers/* keyCodes.up */.Do.up) {
+      } else if (e.keyCode === helpers.keyCodes.up) {
         this.prevTile();
-      } else if (e.keyCode === helpers/* keyCodes.end */.Do.end) {
+      } else if (e.keyCode === helpers.keyCodes.end) {
         this.lastTile();
-      } else if (e.keyCode === helpers/* keyCodes.home */.Do.home) {
+      } else if (e.keyCode === helpers.keyCodes.home) {
         this.firstTile();
-      } else if (e.keyCode === helpers/* keyCodes.enter */.Do.enter && this.listIndex !== -1) {
+      } else if (e.keyCode === helpers.keyCodes.enter && this.listIndex !== -1) {
         this.tiles[this.listIndex].click();
       } else {
         return;
@@ -38329,14 +38367,14 @@ const VMenu_baseMixins = (0,mixins/* default */.Z)(dependent/* default */.Z, del
     },
 
     onKeyDown(e) {
-      if (e.keyCode === helpers/* keyCodes.esc */.Do.esc) {
+      if (e.keyCode === helpers.keyCodes.esc) {
         // Wait for dependent elements to close first
         setTimeout(() => {
           this.isActive = false;
         });
         const activator = this.getActivator();
         this.$nextTick(() => activator && activator.focus());
-      } else if (!this.isActive && [helpers/* keyCodes.up */.Do.up, helpers/* keyCodes.down */.Do.down].includes(e.keyCode)) {
+      } else if (!this.isActive && [helpers.keyCodes.up, helpers.keyCodes.down].includes(e.keyCode)) {
         this.isActive = true;
       } // Allow for isActive watcher to generate tile list
 
@@ -39519,7 +39557,7 @@ const dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', '
     },
 
     onKeyDown(e) {
-      if (e.keyCode === helpers/* keyCodes.enter */.Do.enter && this.lazyValue !== this.initialValue) {
+      if (e.keyCode === helpers.keyCodes.enter && this.lazyValue !== this.initialValue) {
         this.initialValue = this.lazyValue;
         this.$emit('change', this.initialValue);
       }
@@ -39777,7 +39815,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "a0dfff8e"
+  "6637de26"
   
 )
 
@@ -40625,11 +40663,1877 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "0ba94898"
+  "28fd594c"
   
 )
 
 /* harmony default export */ const TimePicker = (TimePicker_component.exports);
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VColorPicker/VColorPicker.sass
+// extracted by mini-css-extract-plugin
+
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VSheet/VSheet.js + 2 modules
+var VSheet_VSheet = __webpack_require__(4494);
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VColorPicker/VColorPickerPreview.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSlider/VSlider.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSlider/VSlider.js
+ // Components
+
+
+ // Mixins
+
+
+ // Directives
+
+ // Helpers
+
+
+
+/* harmony default export */ const VSlider = ((0,mixins/* default */.Z)(components_VInput, loadable
+/* @vue/component */
+).extend({
+  name: 'v-slider',
+  directives: {
+    ClickOutside: click_outside
+  },
+  mixins: [loadable],
+  props: {
+    disabled: Boolean,
+    inverseLabel: Boolean,
+    max: {
+      type: [Number, String],
+      default: 100
+    },
+    min: {
+      type: [Number, String],
+      default: 0
+    },
+    step: {
+      type: [Number, String],
+      default: 1
+    },
+    thumbColor: String,
+    thumbLabel: {
+      type: [Boolean, String],
+      default: undefined,
+      validator: v => typeof v === 'boolean' || v === 'always'
+    },
+    thumbSize: {
+      type: [Number, String],
+      default: 32
+    },
+    tickLabels: {
+      type: Array,
+      default: () => []
+    },
+    ticks: {
+      type: [Boolean, String],
+      default: false,
+      validator: v => typeof v === 'boolean' || v === 'always'
+    },
+    tickSize: {
+      type: [Number, String],
+      default: 2
+    },
+    trackColor: String,
+    trackFillColor: String,
+    value: [Number, String],
+    vertical: Boolean
+  },
+  data: () => ({
+    app: null,
+    oldValue: null,
+    thumbPressed: false,
+    mouseTimeout: -1,
+    isFocused: false,
+    isActive: false,
+    noClick: false,
+    startOffset: 0
+  }),
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input__slider': true,
+        'v-input__slider--vertical': this.vertical,
+        'v-input__slider--inverse-label': this.inverseLabel
+      };
+    },
+
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+
+      set(val) {
+        val = isNaN(val) ? this.minValue : val; // Round value to ensure the
+        // entire slider range can
+        // be selected with step
+
+        const value = this.roundValue(Math.min(Math.max(val, this.minValue), this.maxValue));
+        if (value === this.lazyValue) return;
+        this.lazyValue = value;
+        this.$emit('input', value);
+      }
+
+    },
+
+    trackTransition() {
+      return this.thumbPressed ? this.showTicks || this.stepNumeric ? '0.1s cubic-bezier(0.25, 0.8, 0.5, 1)' : 'none' : '';
+    },
+
+    minValue() {
+      return parseFloat(this.min);
+    },
+
+    maxValue() {
+      return parseFloat(this.max);
+    },
+
+    stepNumeric() {
+      return this.step > 0 ? parseFloat(this.step) : 0;
+    },
+
+    inputWidth() {
+      const inputWidth = (this.roundValue(this.internalValue) - this.minValue) / (this.maxValue - this.minValue) * 100;
+      return isNaN(inputWidth) ? 0 : inputWidth;
+    },
+
+    trackFillStyles() {
+      const startDir = this.vertical ? 'bottom' : 'left';
+      const endDir = this.vertical ? 'top' : 'right';
+      const valueDir = this.vertical ? 'height' : 'width';
+      const start = this.$vuetify.rtl ? 'auto' : '0';
+      const end = this.$vuetify.rtl ? '0' : 'auto';
+      const value = this.isDisabled ? `calc(${this.inputWidth}% - 10px)` : `${this.inputWidth}%`;
+      return {
+        transition: this.trackTransition,
+        [startDir]: start,
+        [endDir]: end,
+        [valueDir]: value
+      };
+    },
+
+    trackStyles() {
+      const startDir = this.vertical ? this.$vuetify.rtl ? 'bottom' : 'top' : this.$vuetify.rtl ? 'left' : 'right';
+      const endDir = this.vertical ? 'height' : 'width';
+      const start = '0px';
+      const end = this.isDisabled ? `calc(${100 - this.inputWidth}% - 10px)` : `calc(${100 - this.inputWidth}%)`;
+      return {
+        transition: this.trackTransition,
+        [startDir]: start,
+        [endDir]: end
+      };
+    },
+
+    showTicks() {
+      return this.tickLabels.length > 0 || !!(!this.isDisabled && this.stepNumeric && this.ticks);
+    },
+
+    numTicks() {
+      return Math.ceil((this.maxValue - this.minValue) / this.stepNumeric);
+    },
+
+    showThumbLabel() {
+      return !this.isDisabled && !!(this.thumbLabel || this.$scopedSlots['thumb-label']);
+    },
+
+    computedTrackColor() {
+      if (this.isDisabled) return undefined;
+      if (this.trackColor) return this.trackColor;
+      if (this.isDark) return this.validationState;
+      return this.validationState || 'primary lighten-3';
+    },
+
+    computedTrackFillColor() {
+      if (this.isDisabled) return undefined;
+      if (this.trackFillColor) return this.trackFillColor;
+      return this.validationState || this.computedColor;
+    },
+
+    computedThumbColor() {
+      if (this.thumbColor) return this.thumbColor;
+      return this.validationState || this.computedColor;
+    }
+
+  },
+  watch: {
+    min(val) {
+      const parsed = parseFloat(val);
+      parsed > this.internalValue && this.$emit('input', parsed);
+    },
+
+    max(val) {
+      const parsed = parseFloat(val);
+      parsed < this.internalValue && this.$emit('input', parsed);
+    },
+
+    value: {
+      handler(v) {
+        this.internalValue = v;
+      },
+
+      immediate: true
+    }
+  },
+
+  mounted() {
+    // Without a v-app, iOS does not work with body selectors
+    this.app = document.querySelector('[data-app]') || (0,util_console/* consoleWarn */.Kd)('Missing v-app or a non-body wrapping element with the [data-app] attribute', this);
+  },
+
+  methods: {
+    genDefaultSlot() {
+      const children = [this.genLabel()];
+      const slider = this.genSlider();
+      this.inverseLabel ? children.unshift(slider) : children.push(slider);
+      children.push(this.genProgress());
+      return children;
+    },
+
+    genSlider() {
+      return this.$createElement('div', {
+        class: {
+          'v-slider': true,
+          'v-slider--horizontal': !this.vertical,
+          'v-slider--vertical': this.vertical,
+          'v-slider--focused': this.isFocused,
+          'v-slider--active': this.isActive,
+          'v-slider--disabled': this.isDisabled,
+          'v-slider--readonly': this.isReadonly,
+          ...this.themeClasses
+        },
+        directives: [{
+          name: 'click-outside',
+          value: this.onBlur
+        }],
+        on: {
+          click: this.onSliderClick,
+          mousedown: this.onSliderMouseDown,
+          touchstart: this.onSliderMouseDown
+        }
+      }, this.genChildren());
+    },
+
+    genChildren() {
+      return [this.genInput(), this.genTrackContainer(), this.genSteps(), this.genThumbContainer(this.internalValue, this.inputWidth, this.isActive, this.isFocused, this.onFocus, this.onBlur)];
+    },
+
+    genInput() {
+      return this.$createElement('input', {
+        attrs: {
+          value: this.internalValue,
+          id: this.computedId,
+          disabled: true,
+          readonly: true,
+          tabindex: -1,
+          ...this.$attrs
+        } // on: this.genListeners(), // TODO: do we need to attach the listeners to input?
+
+      });
+    },
+
+    genTrackContainer() {
+      const children = [this.$createElement('div', this.setBackgroundColor(this.computedTrackColor, {
+        staticClass: 'v-slider__track-background',
+        style: this.trackStyles
+      })), this.$createElement('div', this.setBackgroundColor(this.computedTrackFillColor, {
+        staticClass: 'v-slider__track-fill',
+        style: this.trackFillStyles
+      }))];
+      return this.$createElement('div', {
+        staticClass: 'v-slider__track-container',
+        ref: 'track'
+      }, children);
+    },
+
+    genSteps() {
+      if (!this.step || !this.showTicks) return null;
+      const tickSize = parseFloat(this.tickSize);
+      const range = (0,helpers/* createRange */.MT)(this.numTicks + 1);
+      const direction = this.vertical ? 'bottom' : this.$vuetify.rtl ? 'right' : 'left';
+      const offsetDirection = this.vertical ? this.$vuetify.rtl ? 'left' : 'right' : 'top';
+      if (this.vertical) range.reverse();
+      const ticks = range.map(index => {
+        const children = [];
+
+        if (this.tickLabels[index]) {
+          children.push(this.$createElement('div', {
+            staticClass: 'v-slider__tick-label'
+          }, this.tickLabels[index]));
+        }
+
+        const width = index * (100 / this.numTicks);
+        const filled = this.$vuetify.rtl ? 100 - this.inputWidth < width : width < this.inputWidth;
+        return this.$createElement('span', {
+          key: index,
+          staticClass: 'v-slider__tick',
+          class: {
+            'v-slider__tick--filled': filled
+          },
+          style: {
+            width: `${tickSize}px`,
+            height: `${tickSize}px`,
+            [direction]: `calc(${width}% - ${tickSize / 2}px)`,
+            [offsetDirection]: `calc(50% - ${tickSize / 2}px)`
+          }
+        }, children);
+      });
+      return this.$createElement('div', {
+        staticClass: 'v-slider__ticks-container',
+        class: {
+          'v-slider__ticks-container--always-show': this.ticks === 'always' || this.tickLabels.length > 0
+        }
+      }, ticks);
+    },
+
+    genThumbContainer(value, valueWidth, isActive, isFocused, onFocus, onBlur, ref = 'thumb') {
+      const children = [this.genThumb()];
+      const thumbLabelContent = this.genThumbLabelContent(value);
+      this.showThumbLabel && children.push(this.genThumbLabel(thumbLabelContent));
+      return this.$createElement('div', this.setTextColor(this.computedThumbColor, {
+        ref,
+        key: ref,
+        staticClass: 'v-slider__thumb-container',
+        class: {
+          'v-slider__thumb-container--active': isActive,
+          'v-slider__thumb-container--focused': isFocused,
+          'v-slider__thumb-container--show-label': this.showThumbLabel
+        },
+        style: this.getThumbContainerStyles(valueWidth),
+        attrs: {
+          role: 'slider',
+          tabindex: this.isDisabled ? -1 : this.$attrs.tabindex ? this.$attrs.tabindex : 0,
+          'aria-label': this.$attrs['aria-label'] || this.label,
+          'aria-valuemin': this.min,
+          'aria-valuemax': this.max,
+          'aria-valuenow': this.internalValue,
+          'aria-readonly': String(this.isReadonly),
+          'aria-orientation': this.vertical ? 'vertical' : 'horizontal'
+        },
+        on: {
+          focus: onFocus,
+          blur: onBlur,
+          keydown: this.onKeyDown
+        }
+      }), children);
+    },
+
+    genThumbLabelContent(value) {
+      return this.$scopedSlots['thumb-label'] ? this.$scopedSlots['thumb-label']({
+        value
+      }) : [this.$createElement('span', [String(value)])];
+    },
+
+    genThumbLabel(content) {
+      const size = (0,helpers/* convertToUnit */.kb)(this.thumbSize);
+      const transform = this.vertical ? `translateY(20%) translateY(${Number(this.thumbSize) / 3 - 1}px) translateX(55%) rotate(135deg)` : `translateY(-20%) translateY(-12px) translateX(-50%) rotate(45deg)`;
+      return this.$createElement(VScaleTransition, {
+        props: {
+          origin: 'bottom center'
+        }
+      }, [this.$createElement('div', {
+        staticClass: 'v-slider__thumb-label-container',
+        directives: [{
+          name: 'show',
+          value: this.isFocused || this.isActive || this.thumbLabel === 'always'
+        }]
+      }, [this.$createElement('div', this.setBackgroundColor(this.computedThumbColor, {
+        staticClass: 'v-slider__thumb-label',
+        style: {
+          height: size,
+          width: size,
+          transform
+        }
+      }), [this.$createElement('div', content)])])]);
+    },
+
+    genThumb() {
+      return this.$createElement('div', this.setBackgroundColor(this.computedThumbColor, {
+        staticClass: 'v-slider__thumb'
+      }));
+    },
+
+    getThumbContainerStyles(width) {
+      const direction = this.vertical ? 'top' : 'left';
+      let value = this.$vuetify.rtl ? 100 - width : width;
+      value = this.vertical ? 100 - value : value;
+      return {
+        transition: this.trackTransition,
+        [direction]: `${value}%`
+      };
+    },
+
+    onSliderMouseDown(e) {
+      var _a;
+
+      e.preventDefault();
+      this.oldValue = this.internalValue;
+      this.isActive = true;
+
+      if ((_a = e.target) === null || _a === void 0 ? void 0 : _a.matches('.v-slider__thumb-container, .v-slider__thumb-container *')) {
+        this.thumbPressed = true;
+        const domRect = e.target.getBoundingClientRect();
+        const touch = 'touches' in e ? e.touches[0] : e;
+        this.startOffset = this.vertical ? touch.clientY - (domRect.top + domRect.height / 2) : touch.clientX - (domRect.left + domRect.width / 2);
+      } else {
+        this.startOffset = 0;
+        window.clearTimeout(this.mouseTimeout);
+        this.mouseTimeout = window.setTimeout(() => {
+          this.thumbPressed = true;
+        }, 300);
+      }
+
+      const mouseUpOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true,
+        capture: true
+      } : true;
+      const mouseMoveOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true
+      } : false;
+      const isTouchEvent = ('touches' in e);
+      this.onMouseMove(e);
+      this.app.addEventListener(isTouchEvent ? 'touchmove' : 'mousemove', this.onMouseMove, mouseMoveOptions);
+      (0,helpers/* addOnceEventListener */.qh)(this.app, isTouchEvent ? 'touchend' : 'mouseup', this.onSliderMouseUp, mouseUpOptions);
+      this.$emit('start', this.internalValue);
+    },
+
+    onSliderMouseUp(e) {
+      e.stopPropagation();
+      window.clearTimeout(this.mouseTimeout);
+      this.thumbPressed = false;
+      const mouseMoveOptions = helpers/* passiveSupported */.e$ ? {
+        passive: true
+      } : false;
+      this.app.removeEventListener('touchmove', this.onMouseMove, mouseMoveOptions);
+      this.app.removeEventListener('mousemove', this.onMouseMove, mouseMoveOptions);
+      this.$emit('mouseup', e);
+      this.$emit('end', this.internalValue);
+
+      if (!(0,helpers/* deepEqual */.vZ)(this.oldValue, this.internalValue)) {
+        this.$emit('change', this.internalValue);
+        this.noClick = true;
+      }
+
+      this.isActive = false;
+    },
+
+    onMouseMove(e) {
+      if (e.type === 'mousemove') {
+        this.thumbPressed = true;
+      }
+
+      this.internalValue = this.parseMouseMove(e);
+    },
+
+    onKeyDown(e) {
+      if (!this.isInteractive) return;
+      const value = this.parseKeyDown(e, this.internalValue);
+      if (value == null || value < this.minValue || value > this.maxValue) return;
+      this.internalValue = value;
+      this.$emit('change', value);
+    },
+
+    onSliderClick(e) {
+      if (this.noClick) {
+        this.noClick = false;
+        return;
+      }
+
+      const thumb = this.$refs.thumb;
+      thumb.focus();
+      this.onMouseMove(e);
+      this.$emit('change', this.internalValue);
+    },
+
+    onBlur(e) {
+      this.isFocused = false;
+      this.$emit('blur', e);
+    },
+
+    onFocus(e) {
+      this.isFocused = true;
+      this.$emit('focus', e);
+    },
+
+    parseMouseMove(e) {
+      const start = this.vertical ? 'top' : 'left';
+      const length = this.vertical ? 'height' : 'width';
+      const click = this.vertical ? 'clientY' : 'clientX';
+      const {
+        [start]: trackStart,
+        [length]: trackLength
+      } = this.$refs.track.getBoundingClientRect();
+      const clickOffset = 'touches' in e ? e.touches[0][click] : e[click]; // It is possible for left to be NaN, force to number
+
+      let clickPos = Math.min(Math.max((clickOffset - trackStart - this.startOffset) / trackLength, 0), 1) || 0;
+      if (this.vertical) clickPos = 1 - clickPos;
+      if (this.$vuetify.rtl) clickPos = 1 - clickPos;
+      return parseFloat(this.min) + clickPos * (this.maxValue - this.minValue);
+    },
+
+    parseKeyDown(e, value) {
+      if (!this.isInteractive) return;
+      const {
+        pageup,
+        pagedown,
+        end,
+        home,
+        left,
+        right,
+        down,
+        up
+      } = helpers.keyCodes;
+      if (![pageup, pagedown, end, home, left, right, down, up].includes(e.keyCode)) return;
+      e.preventDefault();
+      const step = this.stepNumeric || 1;
+      const steps = (this.maxValue - this.minValue) / step;
+
+      if ([left, right, down, up].includes(e.keyCode)) {
+        const increase = this.$vuetify.rtl ? [left, up] : [right, up];
+        const direction = increase.includes(e.keyCode) ? 1 : -1;
+        const multiplier = e.shiftKey ? 3 : e.ctrlKey ? 2 : 1;
+        value = value + direction * step * multiplier;
+      } else if (e.keyCode === home) {
+        value = this.minValue;
+      } else if (e.keyCode === end) {
+        value = this.maxValue;
+      } else {
+        const direction = e.keyCode === pagedown ? 1 : -1;
+        value = value - direction * step * (steps > 100 ? steps / 10 : 10);
+      }
+
+      return value;
+    },
+
+    roundValue(value) {
+      if (!this.stepNumeric) return value; // Format input value using the same number
+      // of decimals places as in the step prop
+
+      const trimmedStep = this.step.toString().trim();
+      const decimals = trimmedStep.indexOf('.') > -1 ? trimmedStep.length - trimmedStep.indexOf('.') - 1 : 0;
+      const offset = this.minValue % this.stepNumeric;
+      const newValue = Math.round((value - offset) / this.stepNumeric) * this.stepNumeric + offset;
+      return parseFloat(Math.min(newValue, this.maxValue).toFixed(decimals));
+    }
+
+  }
+}));
+//# sourceMappingURL=VSlider.js.map
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/colorUtils.js
+var colorUtils = __webpack_require__(4771);
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/util/index.js
+// Utilities
+
+function fromHSVA(hsva) {
+  hsva = { ...hsva
+  };
+  const hexa = (0,colorUtils/* HSVAtoHex */.n0)(hsva);
+  const hsla = (0,colorUtils/* HSVAtoHSLA */.mM)(hsva);
+  const rgba = (0,colorUtils/* HSVAtoRGBA */.UJ)(hsva);
+  return {
+    alpha: hsva.a,
+    hex: hexa.substr(0, 7),
+    hexa,
+    hsla,
+    hsva,
+    hue: hsva.h,
+    rgba
+  };
+}
+function fromHSLA(hsla) {
+  const hsva = (0,colorUtils/* HSLAtoHSVA */.nk)(hsla);
+  const hexa = (0,colorUtils/* HSVAtoHex */.n0)(hsva);
+  const rgba = (0,colorUtils/* HSVAtoRGBA */.UJ)(hsva);
+  return {
+    alpha: hsva.a,
+    hex: hexa.substr(0, 7),
+    hexa,
+    hsla,
+    hsva,
+    hue: hsva.h,
+    rgba
+  };
+}
+function fromRGBA(rgba) {
+  const hsva = (0,colorUtils/* RGBAtoHSVA */.Yq)(rgba);
+  const hexa = (0,colorUtils/* RGBAtoHex */.uN)(rgba);
+  const hsla = (0,colorUtils/* HSVAtoHSLA */.mM)(hsva);
+  return {
+    alpha: hsva.a,
+    hex: hexa.substr(0, 7),
+    hexa,
+    hsla,
+    hsva,
+    hue: hsva.h,
+    rgba
+  };
+}
+function fromHexa(hexa) {
+  const hsva = (0,colorUtils/* HexToHSVA */.yt)(hexa);
+  const hsla = (0,colorUtils/* HSVAtoHSLA */.mM)(hsva);
+  const rgba = (0,colorUtils/* HSVAtoRGBA */.UJ)(hsva);
+  return {
+    alpha: hsva.a,
+    hex: hexa.substr(0, 7),
+    hexa,
+    hsla,
+    hsva,
+    hue: hsva.h,
+    rgba
+  };
+}
+function fromHex(hex) {
+  return fromHexa((0,colorUtils/* parseHex */.KQ)(hex));
+}
+
+function has(obj, key) {
+  return key.every(k => obj.hasOwnProperty(k));
+}
+
+function parseColor(color, oldColor) {
+  if (!color) return fromRGBA({
+    r: 255,
+    g: 0,
+    b: 0,
+    a: 1
+  });
+
+  if (typeof color === 'string') {
+    if (color === 'transparent') return fromHexa('#00000000');
+    const hex = (0,colorUtils/* parseHex */.KQ)(color);
+    if (oldColor && hex === oldColor.hexa) return oldColor;else return fromHexa(hex);
+  }
+
+  if (typeof color === 'object') {
+    if (color.hasOwnProperty('alpha')) return color;
+    const a = color.hasOwnProperty('a') ? parseFloat(color.a) : 1;
+
+    if (has(color, ['r', 'g', 'b'])) {
+      if (oldColor && color === oldColor.rgba) return oldColor;else return fromRGBA({ ...color,
+        a
+      });
+    } else if (has(color, ['h', 's', 'l'])) {
+      if (oldColor && color === oldColor.hsla) return oldColor;else return fromHSLA({ ...color,
+        a
+      });
+    } else if (has(color, ['h', 's', 'v'])) {
+      if (oldColor && color === oldColor.hsva) return oldColor;else return fromHSVA({ ...color,
+        a
+      });
+    }
+  }
+
+  return fromRGBA({
+    r: 255,
+    g: 0,
+    b: 0,
+    a: 1
+  });
+}
+
+function stripAlpha(color, stripAlpha) {
+  if (stripAlpha) {
+    const {
+      a,
+      ...rest
+    } = color;
+    return rest;
+  }
+
+  return color;
+}
+
+function extractColor(color, input) {
+  if (input == null) return color;
+
+  if (typeof input === 'string') {
+    return input.length === 7 ? color.hex : color.hexa;
+  }
+
+  if (typeof input === 'object') {
+    const shouldStrip = typeof input.a === 'number' && input.a === 0 ? !!input.a : !input.a;
+    if (has(input, ['r', 'g', 'b'])) return stripAlpha(color.rgba, shouldStrip);else if (has(input, ['h', 's', 'l'])) return stripAlpha(color.hsla, shouldStrip);else if (has(input, ['h', 's', 'v'])) return stripAlpha(color.hsva, shouldStrip);
+  }
+
+  return color;
+}
+function hasAlpha(color) {
+  if (!color) return false;
+
+  if (typeof color === 'string') {
+    return color.length > 7;
+  }
+
+  if (typeof color === 'object') {
+    return has(color, ['a']) || has(color, ['alpha']);
+  }
+
+  return false;
+}
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/VColorPickerPreview.js
+// Styles
+ // Components
+
+ // Utilities
+
+ // Types
+
+
+
+/* harmony default export */ const VColorPickerPreview = (external_vue_default().extend({
+  name: 'v-color-picker-preview',
+  props: {
+    color: Object,
+    disabled: Boolean,
+    hideAlpha: Boolean
+  },
+  methods: {
+    genAlpha() {
+      return this.genTrack({
+        staticClass: 'v-color-picker__alpha',
+        props: {
+          thumbColor: 'grey lighten-2',
+          hideDetails: true,
+          value: this.color.alpha,
+          step: 0,
+          min: 0,
+          max: 1
+        },
+        style: {
+          backgroundImage: this.disabled ? undefined : `linear-gradient(to ${this.$vuetify.rtl ? 'left' : 'right'}, transparent, ${(0,colorUtils/* RGBtoCSS */.iC)(this.color.rgba)})`
+        },
+        on: {
+          input: val => this.color.alpha !== val && this.$emit('update:color', fromHSVA({ ...this.color.hsva,
+            a: val
+          }))
+        }
+      });
+    },
+
+    genSliders() {
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__sliders'
+      }, [this.genHue(), !this.hideAlpha && this.genAlpha()]);
+    },
+
+    genDot() {
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__dot'
+      }, [this.$createElement('div', {
+        style: {
+          background: (0,colorUtils/* RGBAtoCSS */.Yj)(this.color.rgba)
+        }
+      })]);
+    },
+
+    genHue() {
+      return this.genTrack({
+        staticClass: 'v-color-picker__hue',
+        props: {
+          thumbColor: 'grey lighten-2',
+          hideDetails: true,
+          value: this.color.hue,
+          step: 0,
+          min: 0,
+          max: 360
+        },
+        on: {
+          input: val => this.color.hue !== val && this.$emit('update:color', fromHSVA({ ...this.color.hsva,
+            h: val
+          }))
+        }
+      });
+    },
+
+    genTrack(options) {
+      return this.$createElement(VSlider, {
+        class: 'v-color-picker__track',
+        ...options,
+        props: {
+          disabled: this.disabled,
+          ...options.props
+        }
+      });
+    }
+
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-color-picker__preview',
+      class: {
+        'v-color-picker__preview--hide-alpha': this.hideAlpha
+      }
+    }, [this.genDot(), this.genSliders()]);
+  }
+
+}));
+//# sourceMappingURL=VColorPickerPreview.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VColorPicker/VColorPickerCanvas.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/VColorPickerCanvas.js
+// Styles
+ // Helpers
+
+
+ // Types
+
+
+/* harmony default export */ const VColorPickerCanvas = (external_vue_default().extend({
+  name: 'v-color-picker-canvas',
+  props: {
+    color: {
+      type: Object,
+      default: () => fromRGBA({
+        r: 255,
+        g: 0,
+        b: 0,
+        a: 1
+      })
+    },
+    disabled: Boolean,
+    dotSize: {
+      type: [Number, String],
+      default: 10
+    },
+    height: {
+      type: [Number, String],
+      default: 150
+    },
+    width: {
+      type: [Number, String],
+      default: 300
+    }
+  },
+
+  data() {
+    return {
+      boundingRect: {
+        width: 0,
+        height: 0,
+        left: 0,
+        top: 0
+      }
+    };
+  },
+
+  computed: {
+    dot() {
+      if (!this.color) return {
+        x: 0,
+        y: 0
+      };
+      return {
+        x: this.color.hsva.s * parseInt(this.width, 10),
+        y: (1 - this.color.hsva.v) * parseInt(this.height, 10)
+      };
+    }
+
+  },
+  watch: {
+    'color.hue': 'updateCanvas'
+  },
+
+  mounted() {
+    this.updateCanvas();
+  },
+
+  methods: {
+    emitColor(x, y) {
+      const {
+        left,
+        top,
+        width,
+        height
+      } = this.boundingRect;
+      this.$emit('update:color', fromHSVA({
+        h: this.color.hue,
+        s: (0,helpers/* clamp */.uZ)(x - left, 0, width) / width,
+        v: 1 - (0,helpers/* clamp */.uZ)(y - top, 0, height) / height,
+        a: this.color.alpha
+      }));
+    },
+
+    updateCanvas() {
+      if (!this.color) return;
+      const canvas = this.$refs.canvas;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      const saturationGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+      saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)'); // white
+
+      saturationGradient.addColorStop(1, `hsla(${this.color.hue}, 100%, 50%, 1)`);
+      ctx.fillStyle = saturationGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const valueGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      valueGradient.addColorStop(0, 'hsla(0, 0%, 100%, 0)'); // transparent
+
+      valueGradient.addColorStop(1, 'hsla(0, 0%, 0%, 1)'); // black
+
+      ctx.fillStyle = valueGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    },
+
+    handleClick(e) {
+      if (this.disabled) return;
+      this.boundingRect = this.$el.getBoundingClientRect();
+      this.emitColor(e.clientX, e.clientY);
+    },
+
+    handleMouseDown(e) {
+      // To prevent selection while moving cursor
+      e.preventDefault();
+      if (this.disabled) return;
+      this.boundingRect = this.$el.getBoundingClientRect();
+      window.addEventListener('mousemove', this.handleMouseMove);
+      window.addEventListener('mouseup', this.handleMouseUp);
+    },
+
+    handleMouseMove(e) {
+      if (this.disabled) return;
+      this.emitColor(e.clientX, e.clientY);
+    },
+
+    handleMouseUp() {
+      window.removeEventListener('mousemove', this.handleMouseMove);
+      window.removeEventListener('mouseup', this.handleMouseUp);
+    },
+
+    genCanvas() {
+      return this.$createElement('canvas', {
+        ref: 'canvas',
+        attrs: {
+          width: this.width,
+          height: this.height
+        }
+      });
+    },
+
+    genDot() {
+      const radius = parseInt(this.dotSize, 10) / 2;
+      const x = (0,helpers/* convertToUnit */.kb)(this.dot.x - radius);
+      const y = (0,helpers/* convertToUnit */.kb)(this.dot.y - radius);
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__canvas-dot',
+        class: {
+          'v-color-picker__canvas-dot--disabled': this.disabled
+        },
+        style: {
+          width: (0,helpers/* convertToUnit */.kb)(this.dotSize),
+          height: (0,helpers/* convertToUnit */.kb)(this.dotSize),
+          transform: `translate(${x}, ${y})`
+        }
+      });
+    }
+
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-color-picker__canvas',
+      style: {
+        width: (0,helpers/* convertToUnit */.kb)(this.width),
+        height: (0,helpers/* convertToUnit */.kb)(this.height)
+      },
+      on: {
+        click: this.handleClick,
+        mousedown: this.handleMouseDown
+      }
+    }, [this.genCanvas(), this.genDot()]);
+  }
+
+}));
+//# sourceMappingURL=VColorPickerCanvas.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VColorPicker/VColorPickerEdit.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/VColorPickerEdit.js
+// Styles
+ // Components
+
+
+ // Helpers
+
+ // Types
+
+
+
+const VColorPickerEdit_modes = {
+  rgba: {
+    inputs: [['r', 255, 'int'], ['g', 255, 'int'], ['b', 255, 'int'], ['a', 1, 'float']],
+    from: fromRGBA
+  },
+  hsla: {
+    inputs: [['h', 360, 'int'], ['s', 1, 'float'], ['l', 1, 'float'], ['a', 1, 'float']],
+    from: fromHSLA
+  },
+  hexa: {
+    from: fromHexa
+  }
+};
+/* harmony default export */ const VColorPickerEdit = (external_vue_default().extend({
+  name: 'v-color-picker-edit',
+  props: {
+    color: Object,
+    disabled: Boolean,
+    hideAlpha: Boolean,
+    hideModeSwitch: Boolean,
+    mode: {
+      type: String,
+      default: 'rgba',
+      validator: v => Object.keys(VColorPickerEdit_modes).includes(v)
+    }
+  },
+
+  data() {
+    return {
+      modes: VColorPickerEdit_modes,
+      internalMode: this.mode
+    };
+  },
+
+  computed: {
+    currentMode() {
+      return this.modes[this.internalMode];
+    }
+
+  },
+  watch: {
+    mode(mode) {
+      this.internalMode = mode;
+    }
+
+  },
+
+  created() {
+    this.internalMode = this.mode;
+  },
+
+  methods: {
+    getValue(v, type) {
+      if (type === 'float') return Math.round(v * 100) / 100;else if (type === 'int') return Math.round(v);else return 0;
+    },
+
+    parseValue(v, type) {
+      if (type === 'float') return parseFloat(v);else if (type === 'int') return parseInt(v, 10) || 0;else return 0;
+    },
+
+    changeMode() {
+      const modes = Object.keys(this.modes);
+      const index = modes.indexOf(this.internalMode);
+      const newMode = modes[(index + 1) % modes.length];
+      this.internalMode = newMode;
+      this.$emit('update:mode', newMode);
+    },
+
+    genInput(target, attrs, value, on) {
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__input'
+      }, [this.$createElement('input', {
+        key: target,
+        attrs,
+        domProps: {
+          value
+        },
+        on
+      }), this.$createElement('span', target.toUpperCase())]);
+    },
+
+    genInputs() {
+      if (this.internalMode === 'hexa') {
+        const hex = this.color.hexa;
+        const value = this.hideAlpha && hex.endsWith('FF') ? hex.substr(0, 7) : hex;
+        return this.genInput('hex', {
+          maxlength: this.hideAlpha ? 7 : 9,
+          disabled: this.disabled
+        }, value, {
+          change: e => {
+            const el = e.target;
+            this.$emit('update:color', this.currentMode.from((0,colorUtils/* parseHex */.KQ)(el.value)));
+          }
+        });
+      } else {
+        const inputs = this.hideAlpha ? this.currentMode.inputs.slice(0, -1) : this.currentMode.inputs;
+        return inputs.map(([target, max, type]) => {
+          const value = this.color[this.internalMode];
+          return this.genInput(target, {
+            type: 'number',
+            min: 0,
+            max,
+            step: type === 'float' ? '0.01' : type === 'int' ? '1' : undefined,
+            disabled: this.disabled
+          }, this.getValue(value[target], type), {
+            input: e => {
+              const el = e.target;
+              const newVal = this.parseValue(el.value || '0', type);
+              this.$emit('update:color', this.currentMode.from(Object.assign({}, value, {
+                [target]: newVal
+              }), this.color.alpha));
+            }
+          });
+        });
+      }
+    },
+
+    genSwitch() {
+      return this.$createElement(components_VBtn, {
+        props: {
+          small: true,
+          icon: true,
+          disabled: this.disabled
+        },
+        on: {
+          click: this.changeMode
+        }
+      }, [this.$createElement(components_VIcon, '$unfold')]);
+    }
+
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-color-picker__edit'
+    }, [this.genInputs(), !this.hideModeSwitch && this.genSwitch()]);
+  }
+
+}));
+//# sourceMappingURL=VColorPickerEdit.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VColorPicker/VColorPickerSwatches.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/util/colors.js
+const red = Object.freeze({
+  base: '#f44336',
+  lighten5: '#ffebee',
+  lighten4: '#ffcdd2',
+  lighten3: '#ef9a9a',
+  lighten2: '#e57373',
+  lighten1: '#ef5350',
+  darken1: '#e53935',
+  darken2: '#d32f2f',
+  darken3: '#c62828',
+  darken4: '#b71c1c',
+  accent1: '#ff8a80',
+  accent2: '#ff5252',
+  accent3: '#ff1744',
+  accent4: '#d50000'
+});
+const pink = Object.freeze({
+  base: '#e91e63',
+  lighten5: '#fce4ec',
+  lighten4: '#f8bbd0',
+  lighten3: '#f48fb1',
+  lighten2: '#f06292',
+  lighten1: '#ec407a',
+  darken1: '#d81b60',
+  darken2: '#c2185b',
+  darken3: '#ad1457',
+  darken4: '#880e4f',
+  accent1: '#ff80ab',
+  accent2: '#ff4081',
+  accent3: '#f50057',
+  accent4: '#c51162'
+});
+const purple = Object.freeze({
+  base: '#9c27b0',
+  lighten5: '#f3e5f5',
+  lighten4: '#e1bee7',
+  lighten3: '#ce93d8',
+  lighten2: '#ba68c8',
+  lighten1: '#ab47bc',
+  darken1: '#8e24aa',
+  darken2: '#7b1fa2',
+  darken3: '#6a1b9a',
+  darken4: '#4a148c',
+  accent1: '#ea80fc',
+  accent2: '#e040fb',
+  accent3: '#d500f9',
+  accent4: '#aa00ff'
+});
+const deepPurple = Object.freeze({
+  base: '#673ab7',
+  lighten5: '#ede7f6',
+  lighten4: '#d1c4e9',
+  lighten3: '#b39ddb',
+  lighten2: '#9575cd',
+  lighten1: '#7e57c2',
+  darken1: '#5e35b1',
+  darken2: '#512da8',
+  darken3: '#4527a0',
+  darken4: '#311b92',
+  accent1: '#b388ff',
+  accent2: '#7c4dff',
+  accent3: '#651fff',
+  accent4: '#6200ea'
+});
+const indigo = Object.freeze({
+  base: '#3f51b5',
+  lighten5: '#e8eaf6',
+  lighten4: '#c5cae9',
+  lighten3: '#9fa8da',
+  lighten2: '#7986cb',
+  lighten1: '#5c6bc0',
+  darken1: '#3949ab',
+  darken2: '#303f9f',
+  darken3: '#283593',
+  darken4: '#1a237e',
+  accent1: '#8c9eff',
+  accent2: '#536dfe',
+  accent3: '#3d5afe',
+  accent4: '#304ffe'
+});
+const blue = Object.freeze({
+  base: '#2196f3',
+  lighten5: '#e3f2fd',
+  lighten4: '#bbdefb',
+  lighten3: '#90caf9',
+  lighten2: '#64b5f6',
+  lighten1: '#42a5f5',
+  darken1: '#1e88e5',
+  darken2: '#1976d2',
+  darken3: '#1565c0',
+  darken4: '#0d47a1',
+  accent1: '#82b1ff',
+  accent2: '#448aff',
+  accent3: '#2979ff',
+  accent4: '#2962ff'
+});
+const lightBlue = Object.freeze({
+  base: '#03a9f4',
+  lighten5: '#e1f5fe',
+  lighten4: '#b3e5fc',
+  lighten3: '#81d4fa',
+  lighten2: '#4fc3f7',
+  lighten1: '#29b6f6',
+  darken1: '#039be5',
+  darken2: '#0288d1',
+  darken3: '#0277bd',
+  darken4: '#01579b',
+  accent1: '#80d8ff',
+  accent2: '#40c4ff',
+  accent3: '#00b0ff',
+  accent4: '#0091ea'
+});
+const cyan = Object.freeze({
+  base: '#00bcd4',
+  lighten5: '#e0f7fa',
+  lighten4: '#b2ebf2',
+  lighten3: '#80deea',
+  lighten2: '#4dd0e1',
+  lighten1: '#26c6da',
+  darken1: '#00acc1',
+  darken2: '#0097a7',
+  darken3: '#00838f',
+  darken4: '#006064',
+  accent1: '#84ffff',
+  accent2: '#18ffff',
+  accent3: '#00e5ff',
+  accent4: '#00b8d4'
+});
+const teal = Object.freeze({
+  base: '#009688',
+  lighten5: '#e0f2f1',
+  lighten4: '#b2dfdb',
+  lighten3: '#80cbc4',
+  lighten2: '#4db6ac',
+  lighten1: '#26a69a',
+  darken1: '#00897b',
+  darken2: '#00796b',
+  darken3: '#00695c',
+  darken4: '#004d40',
+  accent1: '#a7ffeb',
+  accent2: '#64ffda',
+  accent3: '#1de9b6',
+  accent4: '#00bfa5'
+});
+const green = Object.freeze({
+  base: '#4caf50',
+  lighten5: '#e8f5e9',
+  lighten4: '#c8e6c9',
+  lighten3: '#a5d6a7',
+  lighten2: '#81c784',
+  lighten1: '#66bb6a',
+  darken1: '#43a047',
+  darken2: '#388e3c',
+  darken3: '#2e7d32',
+  darken4: '#1b5e20',
+  accent1: '#b9f6ca',
+  accent2: '#69f0ae',
+  accent3: '#00e676',
+  accent4: '#00c853'
+});
+const lightGreen = Object.freeze({
+  base: '#8bc34a',
+  lighten5: '#f1f8e9',
+  lighten4: '#dcedc8',
+  lighten3: '#c5e1a5',
+  lighten2: '#aed581',
+  lighten1: '#9ccc65',
+  darken1: '#7cb342',
+  darken2: '#689f38',
+  darken3: '#558b2f',
+  darken4: '#33691e',
+  accent1: '#ccff90',
+  accent2: '#b2ff59',
+  accent3: '#76ff03',
+  accent4: '#64dd17'
+});
+const lime = Object.freeze({
+  base: '#cddc39',
+  lighten5: '#f9fbe7',
+  lighten4: '#f0f4c3',
+  lighten3: '#e6ee9c',
+  lighten2: '#dce775',
+  lighten1: '#d4e157',
+  darken1: '#c0ca33',
+  darken2: '#afb42b',
+  darken3: '#9e9d24',
+  darken4: '#827717',
+  accent1: '#f4ff81',
+  accent2: '#eeff41',
+  accent3: '#c6ff00',
+  accent4: '#aeea00'
+});
+const yellow = Object.freeze({
+  base: '#ffeb3b',
+  lighten5: '#fffde7',
+  lighten4: '#fff9c4',
+  lighten3: '#fff59d',
+  lighten2: '#fff176',
+  lighten1: '#ffee58',
+  darken1: '#fdd835',
+  darken2: '#fbc02d',
+  darken3: '#f9a825',
+  darken4: '#f57f17',
+  accent1: '#ffff8d',
+  accent2: '#ffff00',
+  accent3: '#ffea00',
+  accent4: '#ffd600'
+});
+const amber = Object.freeze({
+  base: '#ffc107',
+  lighten5: '#fff8e1',
+  lighten4: '#ffecb3',
+  lighten3: '#ffe082',
+  lighten2: '#ffd54f',
+  lighten1: '#ffca28',
+  darken1: '#ffb300',
+  darken2: '#ffa000',
+  darken3: '#ff8f00',
+  darken4: '#ff6f00',
+  accent1: '#ffe57f',
+  accent2: '#ffd740',
+  accent3: '#ffc400',
+  accent4: '#ffab00'
+});
+const orange = Object.freeze({
+  base: '#ff9800',
+  lighten5: '#fff3e0',
+  lighten4: '#ffe0b2',
+  lighten3: '#ffcc80',
+  lighten2: '#ffb74d',
+  lighten1: '#ffa726',
+  darken1: '#fb8c00',
+  darken2: '#f57c00',
+  darken3: '#ef6c00',
+  darken4: '#e65100',
+  accent1: '#ffd180',
+  accent2: '#ffab40',
+  accent3: '#ff9100',
+  accent4: '#ff6d00'
+});
+const deepOrange = Object.freeze({
+  base: '#ff5722',
+  lighten5: '#fbe9e7',
+  lighten4: '#ffccbc',
+  lighten3: '#ffab91',
+  lighten2: '#ff8a65',
+  lighten1: '#ff7043',
+  darken1: '#f4511e',
+  darken2: '#e64a19',
+  darken3: '#d84315',
+  darken4: '#bf360c',
+  accent1: '#ff9e80',
+  accent2: '#ff6e40',
+  accent3: '#ff3d00',
+  accent4: '#dd2c00'
+});
+const brown = Object.freeze({
+  base: '#795548',
+  lighten5: '#efebe9',
+  lighten4: '#d7ccc8',
+  lighten3: '#bcaaa4',
+  lighten2: '#a1887f',
+  lighten1: '#8d6e63',
+  darken1: '#6d4c41',
+  darken2: '#5d4037',
+  darken3: '#4e342e',
+  darken4: '#3e2723'
+});
+const blueGrey = Object.freeze({
+  base: '#607d8b',
+  lighten5: '#eceff1',
+  lighten4: '#cfd8dc',
+  lighten3: '#b0bec5',
+  lighten2: '#90a4ae',
+  lighten1: '#78909c',
+  darken1: '#546e7a',
+  darken2: '#455a64',
+  darken3: '#37474f',
+  darken4: '#263238'
+});
+const grey = Object.freeze({
+  base: '#9e9e9e',
+  lighten5: '#fafafa',
+  lighten4: '#f5f5f5',
+  lighten3: '#eeeeee',
+  lighten2: '#e0e0e0',
+  lighten1: '#bdbdbd',
+  darken1: '#757575',
+  darken2: '#616161',
+  darken3: '#424242',
+  darken4: '#212121'
+});
+const shades = Object.freeze({
+  black: '#000000',
+  white: '#ffffff',
+  transparent: 'transparent'
+});
+/* harmony default export */ const colors = (Object.freeze({
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange,
+  brown,
+  blueGrey,
+  grey,
+  shades
+}));
+//# sourceMappingURL=colors.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/VColorPickerSwatches.js
+// Styles
+ // Components
+
+ // Helpers
+
+
+
+
+
+
+
+
+function parseDefaultColors(colors) {
+  return Object.keys(colors).map(key => {
+    const color = colors[key];
+    return color.base ? [color.base, color.darken4, color.darken3, color.darken2, color.darken1, color.lighten1, color.lighten2, color.lighten3, color.lighten4, color.lighten5] : [color.black, color.white, color.transparent];
+  });
+}
+
+const white = fromHex('#FFFFFF').rgba;
+const black = fromHex('#000000').rgba;
+/* harmony default export */ const VColorPickerSwatches = ((0,mixins/* default */.Z)(themeable/* default */.Z).extend({
+  name: 'v-color-picker-swatches',
+  props: {
+    swatches: {
+      type: Array,
+      default: () => parseDefaultColors(colors)
+    },
+    disabled: Boolean,
+    color: Object,
+    maxWidth: [Number, String],
+    maxHeight: [Number, String]
+  },
+  methods: {
+    genColor(color) {
+      const content = this.$createElement('div', {
+        style: {
+          background: color
+        }
+      }, [(0,helpers/* deepEqual */.vZ)(this.color, parseColor(color, null)) && this.$createElement(components_VIcon, {
+        props: {
+          small: true,
+          dark: (0,colorUtils/* contrastRatio */.wo)(this.color.rgba, white) > 2 && this.color.alpha > 0.5,
+          light: (0,colorUtils/* contrastRatio */.wo)(this.color.rgba, black) > 2 && this.color.alpha > 0.5
+        }
+      }, '$success')]);
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__color',
+        on: {
+          // TODO: Less hacky way of catching transparent
+          click: () => this.disabled || this.$emit('update:color', fromHex(color === 'transparent' ? '#00000000' : color))
+        }
+      }, [content]);
+    },
+
+    genSwatches() {
+      return this.swatches.map(swatch => {
+        const colors = swatch.map(this.genColor);
+        return this.$createElement('div', {
+          staticClass: 'v-color-picker__swatch'
+        }, colors);
+      });
+    }
+
+  },
+
+  render(h) {
+    return h('div', {
+      staticClass: 'v-color-picker__swatches',
+      style: {
+        maxWidth: (0,helpers/* convertToUnit */.kb)(this.maxWidth),
+        maxHeight: (0,helpers/* convertToUnit */.kb)(this.maxHeight)
+      }
+    }, [this.$createElement('div', this.genSwatches())]);
+  }
+
+}));
+//# sourceMappingURL=VColorPickerSwatches.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VColorPicker/VColorPicker.js
+// Styles
+ // Components
+
+
+
+
+
+ // Helpers
+
+
+
+ // Mixins
+
+
+
+/* harmony default export */ const VColorPicker = ((0,mixins/* default */.Z)(elevatable/* default */.Z, themeable/* default */.Z).extend({
+  name: 'v-color-picker',
+  props: {
+    canvasHeight: {
+      type: [String, Number],
+      default: 150
+    },
+    disabled: Boolean,
+    dotSize: {
+      type: [Number, String],
+      default: 10
+    },
+    flat: Boolean,
+    hideCanvas: Boolean,
+    hideSliders: Boolean,
+    hideInputs: Boolean,
+    hideModeSwitch: Boolean,
+    mode: {
+      type: String,
+      default: 'rgba',
+      validator: v => Object.keys(VColorPickerEdit_modes).includes(v)
+    },
+    showSwatches: Boolean,
+    swatches: Array,
+    swatchesMaxHeight: {
+      type: [Number, String],
+      default: 150
+    },
+    value: {
+      type: [Object, String]
+    },
+    width: {
+      type: [Number, String],
+      default: 300
+    }
+  },
+  data: () => ({
+    internalValue: fromRGBA({
+      r: 255,
+      g: 0,
+      b: 0,
+      a: 1
+    })
+  }),
+  computed: {
+    hideAlpha() {
+      if (!this.value) return false;
+      return !hasAlpha(this.value);
+    }
+
+  },
+  watch: {
+    value: {
+      handler(color) {
+        this.updateColor(parseColor(color, this.internalValue));
+      },
+
+      immediate: true
+    }
+  },
+  methods: {
+    updateColor(color) {
+      this.internalValue = color;
+      const value = extractColor(this.internalValue, this.value);
+
+      if (!(0,helpers/* deepEqual */.vZ)(value, this.value)) {
+        this.$emit('input', value);
+        this.$emit('update:color', this.internalValue);
+      }
+    },
+
+    genCanvas() {
+      return this.$createElement(VColorPickerCanvas, {
+        props: {
+          color: this.internalValue,
+          disabled: this.disabled,
+          dotSize: this.dotSize,
+          width: this.width,
+          height: this.canvasHeight
+        },
+        on: {
+          'update:color': this.updateColor
+        }
+      });
+    },
+
+    genControls() {
+      return this.$createElement('div', {
+        staticClass: 'v-color-picker__controls'
+      }, [!this.hideSliders && this.genPreview(), !this.hideInputs && this.genEdit()]);
+    },
+
+    genEdit() {
+      return this.$createElement(VColorPickerEdit, {
+        props: {
+          color: this.internalValue,
+          disabled: this.disabled,
+          hideAlpha: this.hideAlpha,
+          hideModeSwitch: this.hideModeSwitch,
+          mode: this.mode
+        },
+        on: {
+          'update:color': this.updateColor,
+          'update:mode': v => this.$emit('update:mode', v)
+        }
+      });
+    },
+
+    genPreview() {
+      return this.$createElement(VColorPickerPreview, {
+        props: {
+          color: this.internalValue,
+          disabled: this.disabled,
+          hideAlpha: this.hideAlpha
+        },
+        on: {
+          'update:color': this.updateColor
+        }
+      });
+    },
+
+    genSwatches() {
+      return this.$createElement(VColorPickerSwatches, {
+        props: {
+          dark: this.dark,
+          light: this.light,
+          disabled: this.disabled,
+          swatches: this.swatches,
+          color: this.internalValue,
+          maxHeight: this.swatchesMaxHeight
+        },
+        on: {
+          'update:color': this.updateColor
+        }
+      });
+    }
+
+  },
+
+  render(h) {
+    return h(VSheet_VSheet/* default */.Z, {
+      staticClass: 'v-color-picker',
+      class: {
+        'v-color-picker--flat': this.flat,
+        ...this.themeClasses,
+        ...this.elevationClasses
+      },
+      props: {
+        maxWidth: this.width
+      }
+    }, [!this.hideCanvas && this.genCanvas(), (!this.hideSliders || !this.hideInputs) && this.genControls(), this.showSwatches && this.genSwatches()]);
+  }
+
+}));
+//# sourceMappingURL=VColorPicker.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/ColorPicker.vue?vue&type=template&id=10f55630&
+
+
+
+
+var ColorPickervue_type_template_id_10f55630_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c(VMenu, {
+    ref: "menu",
+    attrs: {
+      "close-on-content-click": _vm.closeOnContentClick,
+      "transition": "scale-transition",
+      "offset-y": "",
+      "max-width": "290px",
+      "min-width": "290px"
+    },
+    scopedSlots: _vm._u([{
+      key: "activator",
+      fn: function ({
+        on
+      }) {
+        return [_c(VTextField, _vm._g({
+          attrs: {
+            "persistent-hint": "",
+            "readonly": "",
+            "error-messages": _vm.loadedErrorMessages,
+            "outlined": "",
+            "dense": "",
+            "label": _vm.label
+          },
+          model: {
+            value: _vm.selectedColor,
+            callback: function ($$v) {
+              _vm.selectedColor = $$v;
+            },
+            expression: "selectedColor"
+          }
+        }, on))];
+      }
+    }]),
+    model: {
+      value: _vm.menu,
+      callback: function ($$v) {
+        _vm.menu = $$v;
+      },
+      expression: "menu"
+    }
+  }, [_c(VColorPicker, {
+    attrs: {
+      "range": _vm.multiple,
+      "no-title": "",
+      "scrollable": "",
+      "dark": ""
+    },
+    model: {
+      value: _vm.dates,
+      callback: function ($$v) {
+        _vm.dates = $$v;
+      },
+      expression: "dates"
+    }
+  })], 1);
+};
+var ColorPickervue_type_template_id_10f55630_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/ColorPicker.vue?vue&type=script&lang=js&
+
+
+/* harmony default export */ const ColorPickervue_type_script_lang_js_ = ({
+  mixins: [FormMixins/* FormMixin */.T],
+  name: "ColorPicker",
+  props: {
+    value: {
+      default: () => []
+    },
+    label: {
+      type: String,
+      default: ""
+    },
+    errorMessages: {
+      type: Array,
+      default: () => []
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    closeOnContentClick: {
+      type: Boolean,
+      default: false
+    },
+    controls: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data: () => ({
+    selectedColor: "",
+    datesFormatted: "",
+    menu: false
+  }),
+  mounted() {
+    this.selectedColor = this.value;
+  },
+  computed: {
+    loadedErrorMessages() {
+      return this.errorMessages;
+    }
+  },
+  watch: {
+    selectedColor() {
+      this.$emit("input", this.selectedColor);
+    }
+  },
+  methods: {
+    formatPickerDate(date, locale = "en-au") {
+      if (!this.isArray(date)) {
+        const today = moment_timezone_default()(date);
+        today.locale(locale);
+        return today.format("L");
+      }
+      const addedDates = [];
+      if (date.length == 0) {
+        return [];
+      }
+      date.forEach(dates => {
+        const newDate = moment_timezone_default()(dates);
+        newDate.locale(locale);
+        addedDates.push(newDate.format("L"));
+      });
+      return addedDates;
+    }
+  }
+});
+;// CONCATENATED MODULE: ./src/components/forms/fields/ColorPicker.vue?vue&type=script&lang=js&
+ /* harmony default export */ const fields_ColorPickervue_type_script_lang_js_ = (ColorPickervue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./src/components/forms/fields/ColorPicker.vue
+
+
+
+
+
+/* normalize component */
+;
+var ColorPicker_component = (0,componentNormalizer/* default */.Z)(
+  fields_ColorPickervue_type_script_lang_js_,
+  ColorPickervue_type_template_id_10f55630_render,
+  ColorPickervue_type_template_id_10f55630_staticRenderFns,
+  false,
+  null,
+  null,
+  "0d5686e0"
+  
+)
+
+/* harmony default export */ const ColorPicker = (ColorPicker_component.exports);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/mixins/routable/index.js
 var routable = __webpack_require__(9367);
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VCard/VCard.js
@@ -40965,7 +42869,7 @@ const VCardTitle = (0,helpers/* createSimpleFunctional */.Ji)('v-card__title');
     },
 
     onKeydown(e) {
-      if (e.keyCode === helpers/* keyCodes.left */.Do.left && this.isActive || e.keyCode === helpers/* keyCodes.right */.Do.right && !this.isActive) this.onChange();
+      if (e.keyCode === helpers.keyCodes.left && this.isActive || e.keyCode === helpers.keyCodes.right && !this.isActive) this.onChange();
     }
 
   }
@@ -41136,7 +43040,7 @@ var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "6d6e3978"
+  "3ad33fe0"
   
 )
 
@@ -41144,6 +43048,7 @@ var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
 ;// CONCATENATED MODULE: external "vuetify/lib"
 const lib_namespaceObject = require("vuetify/lib");
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=script&lang=js&
+
 
 
 
@@ -41159,6 +43064,7 @@ const lib_namespaceObject = require("vuetify/lib");
     ValidationProvider: vee_validate_full_esm_ValidationProvider,
     DatePicker: DatePicker,
     TimePicker: TimePicker,
+    ColorPicker: ColorPicker,
     VAutoComplete: lib_namespaceObject.VAutoComplete,
     VCheckbox: lib_namespaceObject.VCheckbox,
     VCombobox: lib_namespaceObject.VCombobox,
@@ -41171,7 +43077,8 @@ const lib_namespaceObject = require("vuetify/lib");
     VSelect: lib_namespaceObject.VSelect,
     VSwitch: lib_namespaceObject.VSwitch,
     VTextarea: lib_namespaceObject.VTextarea,
-    VTextField: lib_namespaceObject.VTextField
+    VTextField: lib_namespaceObject.VTextField,
+    VColorPicker: lib_namespaceObject.VColorPicker
   },
   props: {
     cols: {
@@ -41415,7 +43322,7 @@ const lib_namespaceObject = require("vuetify/lib");
 
 function injectStyles (context) {
   
-  var style0 = __webpack_require__(6755)
+  var style0 = __webpack_require__(5712)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -41424,12 +43331,12 @@ if (style0.__inject__) style0.__inject__(context)
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_bca70770_render,
-  LvefInputvue_type_template_id_bca70770_staticRenderFns,
+  LvefInputvue_type_template_id_03386844_render,
+  LvefInputvue_type_template_id_03386844_staticRenderFns,
   false,
   injectStyles,
   null,
-  "f65b70dc"
+  "1dc15f44"
   
 )
 
@@ -41494,15 +43401,17 @@ var LvefButton = __webpack_require__(5323);
     async asyncFilteredFieldList() {
       const fields = [];
       const _this = this;
-      const fieldKeys = Object.keys(this.fieldList);
+      const fieldKeys = Object.keys(_this.fieldList);
       for (const field of fieldKeys) {
-        const thisField = _this.fieldList[field];
-        let isParentLoaded = await _this.parentLoaded(thisField);
+        const thisField = this.fieldList[field];
+        // console.log('this is the filed',thisField);
+        let isParentLoaded = await this.parentLoaded(thisField);
         if (isParentLoaded) {
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
       }
+      // console.log('asycomputed fields returs',fields);
       return fields;
     }
   },
@@ -41540,7 +43449,6 @@ var LvefButton = __webpack_require__(5323);
       };
       this.formLoading = false;
     }
-    console.log('this.loadedFormData.fields', this.loadedFormData.fields, 'this.fieldList', this.fieldList);
   },
   methods: {
     async loadField(field) {
@@ -41558,11 +43466,11 @@ var LvefButton = __webpack_require__(5323);
       });
     },
     getField: function (fieldName) {
-      console.log('FIELD LIST', this.fieldList);
-      const fieldIndex = this.fieldList.findIndex(element => element.name == fieldName);
+      const fieldArrayList = Object.values(this.fieldList);
+      const fieldIndex = fieldArrayList.findIndex(element => element.name == fieldName);
       return this.fieldList[fieldIndex];
     },
-    parentLoadingData: function (field) {
+    parentLoadingData: async function (field) {
       if (field.dependsOn === null) {
         return {
           dependsOn: null
@@ -41671,12 +43579,12 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_0089aceb_render,
-  InputFormvue_type_template_id_0089aceb_staticRenderFns,
+  InputFormvue_type_template_id_68b3b3e5_render,
+  InputFormvue_type_template_id_68b3b3e5_staticRenderFns,
   false,
   null,
   null,
-  "63ed3495"
+  "de943b6e"
   
 )
 
@@ -41743,7 +43651,7 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "1e968e43"
+  "ea38d1e2"
   
 )
 
@@ -41846,7 +43754,6 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
   },
   watch: {
     formLoaded: function (val) {
-      console.log("FORM EVENT - Main form loaded triggered");
       this.$emit("loaded", val);
       if (val) {
         this.formLoading = false;
@@ -41887,18 +43794,18 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function (event) {
-      console.log("FORM EVENT - Main form loading triggered");
+      // console.log("FORM EVENT - Main form loading triggered");
       this.$emit("loading", event);
       this.formLoading = event;
     },
     formIsReset: function () {
-      console.log("FORM EVENT - Main form reset triggered");
+      // console.log("FORM EVENT - Main form reset triggered");
       this.$emit("reset_form", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
     formIsCancelled: function () {
-      console.log("FORM EVENT - Main form cancelled triggered");
+      // console.log("FORM EVENT - Main form cancelled triggered");
       this.$emit("cancelled", true);
       this.triggerAlerts("cancelled");
     },
@@ -41949,18 +43856,301 @@ var FormLoader_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "263f3880"
+  "1ff46b68"
   
 )
 
 /* harmony default export */ const FormLoader = (FormLoader_component.exports);
+;// CONCATENATED MODULE: ./node_modules/vue-async-computed/dist/vue-async-computed.esm.js
+function setAsyncState(vm, stateObject, state) {
+  vm.$set(vm.$data._asyncComputed[stateObject], 'state', state);
+  vm.$set(vm.$data._asyncComputed[stateObject], 'updating', state === 'updating');
+  vm.$set(vm.$data._asyncComputed[stateObject], 'error', state === 'error');
+  vm.$set(vm.$data._asyncComputed[stateObject], 'success', state === 'success');
+}
+
+function getterOnly(fn) {
+  if (typeof fn === 'function') return fn;
+
+  return fn.get;
+}
+
+function vue_async_computed_esm_hasOwnProperty(object, property) {
+  return Object.prototype.hasOwnProperty.call(object, property);
+}
+
+function isComputedLazy(item) {
+  return vue_async_computed_esm_hasOwnProperty(item, 'lazy') && item.lazy;
+}
+
+function isLazyActive(vm, key) {
+  return vm[lazyActivePrefix + key];
+}
+
+var lazyActivePrefix = 'async_computed$lazy_active$',
+    lazyDataPrefix = 'async_computed$lazy_data$';
+
+function initLazy(data, key, value) {
+  data[lazyActivePrefix + key] = false;
+  data[lazyDataPrefix + key] = value;
+}
+
+function makeLazyComputed(key) {
+  return {
+    get: function get() {
+      this[lazyActivePrefix + key] = true;
+      return this[lazyDataPrefix + key];
+    },
+    set: function set(value) {
+      this[lazyDataPrefix + key] = value;
+    }
+  };
+}
+
+function silentSetLazy(vm, key, value) {
+  vm[lazyDataPrefix + key] = value;
+}
+function silentGetLazy(vm, key) {
+  return vm[lazyDataPrefix + key];
+}
+
+var getGetterWatchedByArray = function getGetterWatchedByArray(computedAsyncProperty) {
+  return function getter() {
+    var _this = this;
+
+    computedAsyncProperty.watch.forEach(function (key) {
+      // Check if nested key is watched.
+      var splittedByDot = key.split('.');
+      if (splittedByDot.length === 1) {
+        // If not, just access it.
+        // eslint-disable-next-line no-unused-expressions
+        _this[key];
+      } else {
+        // Access the nested propety.
+        try {
+          var start = _this;
+          splittedByDot.forEach(function (part) {
+            start = start[part];
+          });
+        } catch (error) {
+          console.error('AsyncComputed: bad path: ', key);
+          throw error;
+        }
+      }
+    });
+    return computedAsyncProperty.get.call(this);
+  };
+};
+
+var getGetterWatchedByFunction = function getGetterWatchedByFunction(computedAsyncProperty) {
+  return function getter() {
+    computedAsyncProperty.watch.call(this);
+    return computedAsyncProperty.get.call(this);
+  };
+};
+
+function getWatchedGetter(computedAsyncProperty) {
+  if (typeof computedAsyncProperty.watch === 'function') {
+    return getGetterWatchedByFunction(computedAsyncProperty);
+  } else if (Array.isArray(computedAsyncProperty.watch)) {
+    computedAsyncProperty.watch.forEach(function (key) {
+      if (typeof key !== 'string') {
+        throw new Error('AsyncComputed: watch elemnts must be strings');
+      }
+    });
+    return getGetterWatchedByArray(computedAsyncProperty);
+  } else {
+    throw Error('AsyncComputed: watch should be function or an array');
+  }
+}
+
+var DidNotUpdate = typeof Symbol === 'function' ? Symbol('did-not-update') : {};
+
+var getGetterWithShouldUpdate = function getGetterWithShouldUpdate(asyncProprety, currentGetter) {
+  return function getter() {
+    return asyncProprety.shouldUpdate.call(this) ? currentGetter.call(this) : DidNotUpdate;
+  };
+};
+
+var shouldNotUpdate = function shouldNotUpdate(value) {
+  return DidNotUpdate === value;
+};
+
+var prefix = '_async_computed$';
+
+var AsyncComputed = {
+  install: function install(Vue, pluginOptions) {
+    pluginOptions = pluginOptions || {};
+
+    Vue.config.optionMergeStrategies.asyncComputed = Vue.config.optionMergeStrategies.computed;
+
+    Vue.mixin({
+      data: function data() {
+        return {
+          _asyncComputed: {}
+        };
+      },
+
+      computed: {
+        $asyncComputed: function $asyncComputed() {
+          return this.$data._asyncComputed;
+        }
+      },
+      beforeCreate: function beforeCreate() {
+        var asyncComputed = this.$options.asyncComputed || {};
+
+        if (!Object.keys(asyncComputed).length) return;
+
+        for (var key in asyncComputed) {
+          var getter = getterFn(key, asyncComputed[key]);
+          this.$options.computed[prefix + key] = getter;
+        }
+
+        this.$options.data = initDataWithAsyncComputed(this.$options, pluginOptions);
+      },
+      created: function created() {
+        for (var key in this.$options.asyncComputed || {}) {
+          var item = this.$options.asyncComputed[key],
+              value = generateDefault.call(this, item, pluginOptions);
+          if (isComputedLazy(item)) {
+            silentSetLazy(this, key, value);
+          } else {
+            this[key] = value;
+          }
+        }
+
+        for (var _key in this.$options.asyncComputed || {}) {
+          handleAsyncComputedPropetyChanges(this, _key, pluginOptions, Vue);
+        }
+      }
+    });
+  }
+};
+
+function handleAsyncComputedPropetyChanges(vm, key, pluginOptions, Vue) {
+  var promiseId = 0;
+  var watcher = function watcher(newPromise) {
+    var thisPromise = ++promiseId;
+
+    if (shouldNotUpdate(newPromise)) return;
+
+    if (!newPromise || !newPromise.then) {
+      newPromise = Promise.resolve(newPromise);
+    }
+    setAsyncState(vm, key, 'updating');
+
+    newPromise.then(function (value) {
+      if (thisPromise !== promiseId) return;
+      setAsyncState(vm, key, 'success');
+      vm[key] = value;
+    }).catch(function (err) {
+      if (thisPromise !== promiseId) return;
+
+      setAsyncState(vm, key, 'error');
+      Vue.set(vm.$data._asyncComputed[key], 'exception', err);
+      if (pluginOptions.errorHandler === false) return;
+
+      var handler = pluginOptions.errorHandler === undefined ? console.error.bind(console, 'Error evaluating async computed property:') : pluginOptions.errorHandler;
+
+      if (pluginOptions.useRawError) {
+        handler(err, vm, err.stack);
+      } else {
+        handler(err.stack);
+      }
+    });
+  };
+  Vue.set(vm.$data._asyncComputed, key, {
+    exception: null,
+    update: function update() {
+      if (!vm._isDestroyed) {
+        watcher(getterOnly(vm.$options.asyncComputed[key]).apply(vm));
+      }
+    }
+  });
+  setAsyncState(vm, key, 'updating');
+  vm.$watch(prefix + key, watcher, { immediate: true });
+}
+
+function initDataWithAsyncComputed(options, pluginOptions) {
+  var optionData = options.data;
+  var asyncComputed = options.asyncComputed || {};
+
+  return function vueAsyncComputedInjectedDataFn(vm) {
+    var data = (typeof optionData === 'function' ? optionData.call(this, vm) : optionData) || {};
+    for (var key in asyncComputed) {
+      var item = this.$options.asyncComputed[key];
+
+      var value = generateDefault.call(this, item, pluginOptions);
+      if (isComputedLazy(item)) {
+        initLazy(data, key, value);
+        this.$options.computed[key] = makeLazyComputed(key);
+      } else {
+        data[key] = value;
+      }
+    }
+    return data;
+  };
+}
+
+function getterFn(key, fn) {
+  if (typeof fn === 'function') return fn;
+
+  var getter = fn.get;
+
+  if (vue_async_computed_esm_hasOwnProperty(fn, 'watch')) {
+    getter = getWatchedGetter(fn);
+  }
+
+  if (vue_async_computed_esm_hasOwnProperty(fn, 'shouldUpdate')) {
+    getter = getGetterWithShouldUpdate(fn, getter);
+  }
+
+  if (isComputedLazy(fn)) {
+    var nonLazy = getter;
+    getter = function lazyGetter() {
+      if (isLazyActive(this, key)) {
+        return nonLazy.call(this);
+      } else {
+        return silentGetLazy(this, key);
+      }
+    };
+  }
+  return getter;
+}
+
+function generateDefault(fn, pluginOptions) {
+  var defaultValue = null;
+
+  if ('default' in fn) {
+    defaultValue = fn.default;
+  } else if ('default' in pluginOptions) {
+    defaultValue = pluginOptions.default;
+  }
+
+  if (typeof defaultValue === 'function') {
+    return defaultValue.call(this);
+  } else {
+    return defaultValue;
+  }
+}
+
+/* istanbul ignore if */
+if (typeof window !== 'undefined' && window.Vue) {
+  // Auto install in dist mode
+  window.Vue.use(AsyncComputed);
+}
+
+/* harmony default export */ const vue_async_computed_esm = (AsyncComputed);
+
 ;// CONCATENATED MODULE: ./src/main.js
+
 
 /* harmony default export */ const main = ({
   install(Vue, args = {
     axiosPrefix: "axios",
     axios: null
   }) {
+    Vue.use(vue_async_computed_esm);
     Vue.prototype.$axiosPrefix = args.axiosPrefix;
     Vue.prototype.$axios = args.axios;
     Vue.component("form-loader", FormLoader);

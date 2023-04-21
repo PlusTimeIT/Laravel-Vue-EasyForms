@@ -49,7 +49,7 @@
         <component
           :is="fieldData.component"
           v-model="fieldData.value"
-          v-mask="getMasking"
+          v-mask="fieldData.masking"
           v-bind="prepareProps(errors)"
         >
           <div v-if="fieldData.component == 'v-radio-group'">
@@ -92,6 +92,7 @@ import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
 import { FormMixin } from "/src/components/forms/mixins/FormMixins";
 import DatePicker from "/src/components/forms/fields/DatePicker.vue";
 import TimePicker from "/src/components/forms/fields/TimePicker.vue";
+import ColorPicker from "/src/components/forms/fields/ColorPicker.vue";
 import LvefCheckboxGroup from "./LvefCheckboxGroup.vue";
 
 import {
@@ -107,7 +108,8 @@ import {
   VSelect,
   VSwitch,
   VTextarea,
-  VTextField
+  VTextField,
+  VColorPicker
 } from "vuetify/lib";
 
 export default {
@@ -119,6 +121,7 @@ export default {
     ValidationProvider,
     DatePicker,
     TimePicker,
+    ColorPicker,
     VAutoComplete,
     VCheckbox,
     VCombobox,
@@ -131,7 +134,8 @@ export default {
     VSelect,
     VSwitch,
     VTextarea,
-    VTextField
+    VTextField,
+    VColorPicker
   },
   props: {
     cols: {
@@ -202,6 +206,7 @@ export default {
       ) {
         return this.fieldData.masking;
       }
+
       return null;
     },
     fieldValueLength: function(value) {

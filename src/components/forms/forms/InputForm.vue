@@ -98,18 +98,17 @@ export default {
     async asyncFilteredFieldList() {
       const fields = [];
       const _this = this;
-
-      const fieldKeys = Object.keys(this.fieldList);
-
+      const fieldKeys = Object.keys(_this.fieldList);
       for (const field of fieldKeys) {
-        const thisField = _this.fieldList[field];
-        let isParentLoaded = await _this.parentLoaded(thisField);
+        const thisField = this.fieldList[field];
+        // console.log('this is the filed',thisField);
+        let isParentLoaded = await this.parentLoaded(thisField);
         if (isParentLoaded) {
           // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
       }
-
+      // console.log('asycomputed fields returs',fields);
       return fields;
     }
   },
@@ -149,7 +148,6 @@ export default {
       this.originalFormData = { ...this.loadedFormData };
       this.formLoading = false;
     }
-    console.log('this.loadedFormData.fields', this.loadedFormData.fields, 'this.fieldList', this.fieldList);
   },
   methods: {
     async loadField(field) {
@@ -174,13 +172,13 @@ export default {
       });
     },
     getField: function(fieldName) {
-      console.log('FIELD LIST', this.fieldList);
-      const fieldIndex = this.fieldList.findIndex(
+      const fieldArrayList=Object.values(this.fieldList);
+      const fieldIndex = fieldArrayList.findIndex(
         element => element.name == fieldName
       );
       return this.fieldList[fieldIndex];
     },
-    parentLoadingData: function(field) {
+    parentLoadingData: async function(field) {
       if (field.dependsOn === null) {
         return { dependsOn: null };
       }
