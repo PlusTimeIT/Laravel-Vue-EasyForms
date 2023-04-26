@@ -31305,12 +31305,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=68b3b3e5&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=b460da80&
 
 
 
 
-var InputFormvue_type_template_id_68b3b3e5_render = function render() {
+var InputFormvue_type_template_id_b460da80_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31362,7 +31362,7 @@ var InputFormvue_type_template_id_68b3b3e5_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_68b3b3e5_staticRenderFns = [];
+var InputFormvue_type_template_id_b460da80_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -43403,15 +43403,12 @@ var LvefButton = __webpack_require__(5323);
       const _this = this;
       const fieldKeys = Object.keys(_this.fieldList);
       for (const field of fieldKeys) {
-        const thisField = this.fieldList[field];
-        // console.log('this is the filed',thisField);
+        const thisField = _this.fieldList[field];
         let isParentLoaded = await this.parentLoaded(thisField);
         if (isParentLoaded) {
-          // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
       }
-      // console.log('asycomputed fields returs',fields);
       return fields;
     }
   },
@@ -43477,6 +43474,7 @@ var LvefButton = __webpack_require__(5323);
         };
       }
       let parentField = this.getField(field.dependsOn);
+      // console.log('Depending upon parent',parentField);
       return {
         dependsOn: parentField.value
       };
@@ -43501,11 +43499,12 @@ var LvefButton = __webpack_require__(5323);
     },
     async updateField(event) {
       let _this = this;
-      const fieldIndex = this.fieldList.findIndex(element => element.name == event.name);
+      const fieldArrayList = Object.values(this.fieldList);
+      const fieldIndex = fieldArrayList.findIndex(element => element.name == event.name);
       this.fieldList[fieldIndex] = event;
 
       // if parent to fields
-      let childFieldIndexs = this.fieldList.reduce((a, field, index) => {
+      let childFieldIndexs = fieldArrayList.reduce((a, field, index) => {
         if (!_this.isUndefined(field.dependsOn) && field.dependsOn == event.name) a.push(index);
         return a;
       }, []);
@@ -43579,8 +43578,8 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_68b3b3e5_render,
-  InputFormvue_type_template_id_68b3b3e5_staticRenderFns,
+  InputFormvue_type_template_id_b460da80_render,
+  InputFormvue_type_template_id_b460da80_staticRenderFns,
   false,
   null,
   null,
@@ -43861,296 +43860,13 @@ var FormLoader_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const FormLoader = (FormLoader_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vue-async-computed/dist/vue-async-computed.esm.js
-function setAsyncState(vm, stateObject, state) {
-  vm.$set(vm.$data._asyncComputed[stateObject], 'state', state);
-  vm.$set(vm.$data._asyncComputed[stateObject], 'updating', state === 'updating');
-  vm.$set(vm.$data._asyncComputed[stateObject], 'error', state === 'error');
-  vm.$set(vm.$data._asyncComputed[stateObject], 'success', state === 'success');
-}
-
-function getterOnly(fn) {
-  if (typeof fn === 'function') return fn;
-
-  return fn.get;
-}
-
-function vue_async_computed_esm_hasOwnProperty(object, property) {
-  return Object.prototype.hasOwnProperty.call(object, property);
-}
-
-function isComputedLazy(item) {
-  return vue_async_computed_esm_hasOwnProperty(item, 'lazy') && item.lazy;
-}
-
-function isLazyActive(vm, key) {
-  return vm[lazyActivePrefix + key];
-}
-
-var lazyActivePrefix = 'async_computed$lazy_active$',
-    lazyDataPrefix = 'async_computed$lazy_data$';
-
-function initLazy(data, key, value) {
-  data[lazyActivePrefix + key] = false;
-  data[lazyDataPrefix + key] = value;
-}
-
-function makeLazyComputed(key) {
-  return {
-    get: function get() {
-      this[lazyActivePrefix + key] = true;
-      return this[lazyDataPrefix + key];
-    },
-    set: function set(value) {
-      this[lazyDataPrefix + key] = value;
-    }
-  };
-}
-
-function silentSetLazy(vm, key, value) {
-  vm[lazyDataPrefix + key] = value;
-}
-function silentGetLazy(vm, key) {
-  return vm[lazyDataPrefix + key];
-}
-
-var getGetterWatchedByArray = function getGetterWatchedByArray(computedAsyncProperty) {
-  return function getter() {
-    var _this = this;
-
-    computedAsyncProperty.watch.forEach(function (key) {
-      // Check if nested key is watched.
-      var splittedByDot = key.split('.');
-      if (splittedByDot.length === 1) {
-        // If not, just access it.
-        // eslint-disable-next-line no-unused-expressions
-        _this[key];
-      } else {
-        // Access the nested propety.
-        try {
-          var start = _this;
-          splittedByDot.forEach(function (part) {
-            start = start[part];
-          });
-        } catch (error) {
-          console.error('AsyncComputed: bad path: ', key);
-          throw error;
-        }
-      }
-    });
-    return computedAsyncProperty.get.call(this);
-  };
-};
-
-var getGetterWatchedByFunction = function getGetterWatchedByFunction(computedAsyncProperty) {
-  return function getter() {
-    computedAsyncProperty.watch.call(this);
-    return computedAsyncProperty.get.call(this);
-  };
-};
-
-function getWatchedGetter(computedAsyncProperty) {
-  if (typeof computedAsyncProperty.watch === 'function') {
-    return getGetterWatchedByFunction(computedAsyncProperty);
-  } else if (Array.isArray(computedAsyncProperty.watch)) {
-    computedAsyncProperty.watch.forEach(function (key) {
-      if (typeof key !== 'string') {
-        throw new Error('AsyncComputed: watch elemnts must be strings');
-      }
-    });
-    return getGetterWatchedByArray(computedAsyncProperty);
-  } else {
-    throw Error('AsyncComputed: watch should be function or an array');
-  }
-}
-
-var DidNotUpdate = typeof Symbol === 'function' ? Symbol('did-not-update') : {};
-
-var getGetterWithShouldUpdate = function getGetterWithShouldUpdate(asyncProprety, currentGetter) {
-  return function getter() {
-    return asyncProprety.shouldUpdate.call(this) ? currentGetter.call(this) : DidNotUpdate;
-  };
-};
-
-var shouldNotUpdate = function shouldNotUpdate(value) {
-  return DidNotUpdate === value;
-};
-
-var prefix = '_async_computed$';
-
-var AsyncComputed = {
-  install: function install(Vue, pluginOptions) {
-    pluginOptions = pluginOptions || {};
-
-    Vue.config.optionMergeStrategies.asyncComputed = Vue.config.optionMergeStrategies.computed;
-
-    Vue.mixin({
-      data: function data() {
-        return {
-          _asyncComputed: {}
-        };
-      },
-
-      computed: {
-        $asyncComputed: function $asyncComputed() {
-          return this.$data._asyncComputed;
-        }
-      },
-      beforeCreate: function beforeCreate() {
-        var asyncComputed = this.$options.asyncComputed || {};
-
-        if (!Object.keys(asyncComputed).length) return;
-
-        for (var key in asyncComputed) {
-          var getter = getterFn(key, asyncComputed[key]);
-          this.$options.computed[prefix + key] = getter;
-        }
-
-        this.$options.data = initDataWithAsyncComputed(this.$options, pluginOptions);
-      },
-      created: function created() {
-        for (var key in this.$options.asyncComputed || {}) {
-          var item = this.$options.asyncComputed[key],
-              value = generateDefault.call(this, item, pluginOptions);
-          if (isComputedLazy(item)) {
-            silentSetLazy(this, key, value);
-          } else {
-            this[key] = value;
-          }
-        }
-
-        for (var _key in this.$options.asyncComputed || {}) {
-          handleAsyncComputedPropetyChanges(this, _key, pluginOptions, Vue);
-        }
-      }
-    });
-  }
-};
-
-function handleAsyncComputedPropetyChanges(vm, key, pluginOptions, Vue) {
-  var promiseId = 0;
-  var watcher = function watcher(newPromise) {
-    var thisPromise = ++promiseId;
-
-    if (shouldNotUpdate(newPromise)) return;
-
-    if (!newPromise || !newPromise.then) {
-      newPromise = Promise.resolve(newPromise);
-    }
-    setAsyncState(vm, key, 'updating');
-
-    newPromise.then(function (value) {
-      if (thisPromise !== promiseId) return;
-      setAsyncState(vm, key, 'success');
-      vm[key] = value;
-    }).catch(function (err) {
-      if (thisPromise !== promiseId) return;
-
-      setAsyncState(vm, key, 'error');
-      Vue.set(vm.$data._asyncComputed[key], 'exception', err);
-      if (pluginOptions.errorHandler === false) return;
-
-      var handler = pluginOptions.errorHandler === undefined ? console.error.bind(console, 'Error evaluating async computed property:') : pluginOptions.errorHandler;
-
-      if (pluginOptions.useRawError) {
-        handler(err, vm, err.stack);
-      } else {
-        handler(err.stack);
-      }
-    });
-  };
-  Vue.set(vm.$data._asyncComputed, key, {
-    exception: null,
-    update: function update() {
-      if (!vm._isDestroyed) {
-        watcher(getterOnly(vm.$options.asyncComputed[key]).apply(vm));
-      }
-    }
-  });
-  setAsyncState(vm, key, 'updating');
-  vm.$watch(prefix + key, watcher, { immediate: true });
-}
-
-function initDataWithAsyncComputed(options, pluginOptions) {
-  var optionData = options.data;
-  var asyncComputed = options.asyncComputed || {};
-
-  return function vueAsyncComputedInjectedDataFn(vm) {
-    var data = (typeof optionData === 'function' ? optionData.call(this, vm) : optionData) || {};
-    for (var key in asyncComputed) {
-      var item = this.$options.asyncComputed[key];
-
-      var value = generateDefault.call(this, item, pluginOptions);
-      if (isComputedLazy(item)) {
-        initLazy(data, key, value);
-        this.$options.computed[key] = makeLazyComputed(key);
-      } else {
-        data[key] = value;
-      }
-    }
-    return data;
-  };
-}
-
-function getterFn(key, fn) {
-  if (typeof fn === 'function') return fn;
-
-  var getter = fn.get;
-
-  if (vue_async_computed_esm_hasOwnProperty(fn, 'watch')) {
-    getter = getWatchedGetter(fn);
-  }
-
-  if (vue_async_computed_esm_hasOwnProperty(fn, 'shouldUpdate')) {
-    getter = getGetterWithShouldUpdate(fn, getter);
-  }
-
-  if (isComputedLazy(fn)) {
-    var nonLazy = getter;
-    getter = function lazyGetter() {
-      if (isLazyActive(this, key)) {
-        return nonLazy.call(this);
-      } else {
-        return silentGetLazy(this, key);
-      }
-    };
-  }
-  return getter;
-}
-
-function generateDefault(fn, pluginOptions) {
-  var defaultValue = null;
-
-  if ('default' in fn) {
-    defaultValue = fn.default;
-  } else if ('default' in pluginOptions) {
-    defaultValue = pluginOptions.default;
-  }
-
-  if (typeof defaultValue === 'function') {
-    return defaultValue.call(this);
-  } else {
-    return defaultValue;
-  }
-}
-
-/* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
-  // Auto install in dist mode
-  window.Vue.use(AsyncComputed);
-}
-
-/* harmony default export */ const vue_async_computed_esm = (AsyncComputed);
-
 ;// CONCATENATED MODULE: ./src/main.js
-
 
 /* harmony default export */ const main = ({
   install(Vue, args = {
     axiosPrefix: "axios",
     axios: null
   }) {
-    Vue.use(vue_async_computed_esm);
     Vue.prototype.$axiosPrefix = args.axiosPrefix;
     Vue.prototype.$axios = args.axios;
     Vue.component("form-loader", FormLoader);

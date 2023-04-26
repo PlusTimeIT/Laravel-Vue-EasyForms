@@ -100,15 +100,12 @@ export default {
       const _this = this;
       const fieldKeys = Object.keys(_this.fieldList);
       for (const field of fieldKeys) {
-        const thisField = this.fieldList[field];
-        // console.log('this is the filed',thisField);
+        const thisField = _this.fieldList[field];
         let isParentLoaded = await this.parentLoaded(thisField);
         if (isParentLoaded) {
-          // parent null or is loaded so add to fieldList
           fields[field] = thisField;
         }
       }
-      // console.log('asycomputed fields returs',fields);
       return fields;
     }
   },
@@ -172,7 +169,7 @@ export default {
       });
     },
     getField: function(fieldName) {
-      const fieldArrayList=Object.values(this.fieldList);
+      const fieldArrayList = Object.values(this.fieldList);
       const fieldIndex = fieldArrayList.findIndex(
         element => element.name == fieldName
       );
@@ -205,13 +202,14 @@ export default {
     },
     async updateField(event) {
       let _this = this;
-      const fieldIndex = this.fieldList.findIndex(
+      const fieldArrayList = Object.values(this.fieldList);
+      const fieldIndex = fieldArrayList.findIndex(
         element => element.name == event.name
       );
       this.fieldList[fieldIndex] = event;
 
       // if parent to fields
-      let childFieldIndexs = this.fieldList.reduce((a, field, index) => {
+      let childFieldIndexs = fieldArrayList.reduce((a, field, index) => {
         if (
           !_this.isUndefined(field.dependsOn) &&
           field.dependsOn == event.name
@@ -219,6 +217,8 @@ export default {
           a.push(index);
         return a;
       }, []);
+
+      console.log(childFieldIndexs);
 
       for (const index of childFieldIndexs) {
         let tmp_field = this.fieldList[index];
@@ -260,6 +260,7 @@ export default {
       return result;
     },
     getInputCols: function(field) {
+    
       return this.isUndefined(field.cols) ? 12 : field.cols;
     },
     async buttonAction(button) {
