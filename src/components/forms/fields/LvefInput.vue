@@ -96,7 +96,7 @@ import ColorPicker from "/src/components/forms/fields/ColorPicker.vue";
 import LvefCheckboxGroup from "./LvefCheckboxGroup.vue";
 
 import {
-  VAutoComplete,
+  VAutocomplete ,
   VCheckbox,
   VCombobox,
   VFileInput,
@@ -104,6 +104,7 @@ import {
   VOtpInput,
   VOverflowBtn,
   VRadio,
+  VRadioGroup,
   VSlider,
   VSelect,
   VSwitch,
@@ -122,7 +123,7 @@ export default {
     DatePicker,
     TimePicker,
     ColorPicker,
-    VAutoComplete,
+    VAutocomplete ,
     VCheckbox,
     VCombobox,
     VFileInput,
@@ -130,6 +131,7 @@ export default {
     VOtpInput,
     VOverflowBtn,
     VRadio,
+    VRadioGroup,
     VSlider,
     VSelect,
     VSwitch,
@@ -262,8 +264,8 @@ export default {
             selectItems.unshift(anyfield);
           }
         }
-        result["item_value"] = field.item_value;
-        result["item_text"] = field.item_text;
+        result["item-value"] = field.item_value;
+        result["item-text"] = field.item_text;
         result["items"] = selectItems;
         result["chips"] = field.chips;
         result["data-vv-name"] = "select";

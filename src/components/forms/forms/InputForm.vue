@@ -96,17 +96,8 @@ export default {
   },
   asyncComputed: {
     async asyncFilteredFieldList() {
-      const fields = [];
-      const _this = this;
-      const fieldKeys = Object.keys(_this.fieldList);
-      for (const field of fieldKeys) {
-        const thisField = _this.fieldList[field];
-        let isParentLoaded = await this.parentLoaded(thisField);
-        if (isParentLoaded) {
-          fields[field] = thisField;
-        }
-      }
-      return fields;
+      const _this = this
+      return this.fieldList.filter(field => _this.parentLoaded(field))
     }
   },
   computed: {
@@ -129,11 +120,17 @@ export default {
     fieldList: {
       handler: function() {
         this.$asyncComputed.asyncFilteredFieldList.update();
+        this.$emit('updated_fields', this.fieldList)
       },
       deep: true
     },
     formLoading: function(val) {
+      console.log('Form Loading changed', val)
       this.$emit("loading", val);
+    },
+    formLoaded: function(val) {
+      console.log('Form Loaded changed', val)
+      this.$emit("loaded", val);
     }
   },
   async created() {
@@ -182,7 +179,7 @@ export default {
       let parentField = this.getField(field.dependsOn);
       return { dependsOn: parentField.value };
     },
-    async parentLoaded(field) {
+    parentLoaded(field) {
       if (this.isUndefined(field.dependsOn)) {
         return true;
       }
@@ -207,7 +204,6 @@ export default {
         element => element.name == event.name
       );
       this.fieldList[fieldIndex] = event;
-
       // if parent to fields
       let childFieldIndexs = fieldArrayList.reduce((a, field, index) => {
         if (
@@ -240,12 +236,9 @@ export default {
       if (triggerAlerts) {
         this.$emit("reset", true);
       }
-
-      this.formLoading = false;
     },
     cancelForm() {
       this.$emit("cancelled", true);
-      this.formLoading = false;
     },
     formProps: function() {
       const result = {};
@@ -267,7 +260,7 @@ export default {
       this.formLoading = true;
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          this.processForm(
+          await this.processForm(
             this.loadedFormData,
             this.loadedFormData.fields,
             this.loadedIdentifier,
@@ -282,11 +275,8 @@ export default {
         if (button.type == "cancel") {
           this.cancelForm();
         }
-
-        this.formLoading = false;
-        return 0;
       }
-
+      this.formLoading = false;
       return 0;
     }
   }

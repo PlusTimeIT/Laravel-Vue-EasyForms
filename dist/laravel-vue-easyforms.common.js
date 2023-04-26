@@ -132,7 +132,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "0fb9d564"
+  "4a61f6cc"
   
 )
 
@@ -259,7 +259,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "4c0f8015"
+  "1f46d261"
   
 )
 
@@ -267,17 +267,17 @@ var component = (0,componentNormalizer/* default */.Z)(
 
 /***/ }),
 
-/***/ 5712:
+/***/ 7508:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=03386844&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=5d0fea84&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=03386844&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=5d0fea84&prod&lang=css&
 
 
 /***/ }),
@@ -472,6 +472,9 @@ const FormMixin = {
         if (key == "icon" && alert[key] !== null) {
           result[key] = alert[key].icon;
         }
+        if (key == "text_style" && alert[key] !== null) {
+          result['text'] = alert[key].icon;
+        }
       });
       return result;
     },
@@ -578,9 +581,9 @@ const FormMixin = {
         }
       });
       if (multiPart) {
-        formData.append("action", action);
+        formData.append("form_action", action);
       } else {
-        formData["action"] = action;
+        formData["form_action"] = action;
       }
       return formData;
     }
@@ -29058,7 +29061,7 @@ const VRow_cache = new Map();
 
 }));
 //# sourceMappingURL=VRow.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=4c08679d&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=1c5cff7e&
 
 
 
@@ -29095,19 +29098,12 @@ var render = function render() {
         "innerHTML": _vm._s(alert.contents)
       }
     })]);
-  }), 1)], 1), _c(VRow, {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.formLoading,
-      expression: "formLoading"
-    }]
-  }, [_c(VCol, [_c(VProgressCircular/* default */.Z, {
+  }), 1)], 1), _vm.formLoading ? _c(VRow, [_c(VCol, [_c(VProgressCircular/* default */.Z, {
     attrs: {
       "indeterminate": "",
       "color": "primary"
     }
-  })], 1)], 1), !_vm.formLoading ? _c(VRow, [_c(_vm.formComponent, {
+  })], 1)], 1) : _c(VRow, [_c(_vm.formComponent, {
     tag: "component",
     attrs: {
       "form": _vm.loadedFormData,
@@ -29121,9 +29117,10 @@ var render = function render() {
       "cancelled": _vm.formIsCancelled,
       "processing": _vm.formIsProcessing,
       "failed": _vm.formHasFailedProcessing,
-      "successful": _vm.formHasSuccessfulProcessing
+      "successful": _vm.formHasSuccessfulProcessing,
+      "updated_fields": _vm.formHasUpdatedFields
     }
-  })], 1) : _vm._e()], 1)], 1);
+  })], 1)], 1)], 1);
 };
 var staticRenderFns = [];
 
@@ -31305,12 +31302,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=b460da80&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=094e5dd8&
 
 
 
 
-var InputFormvue_type_template_id_b460da80_render = function render() {
+var InputFormvue_type_template_id_094e5dd8_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31362,7 +31359,7 @@ var InputFormvue_type_template_id_b460da80_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_b460da80_staticRenderFns = [];
+var InputFormvue_type_template_id_094e5dd8_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -32498,14 +32495,14 @@ const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, 
 //# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4213);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=03386844&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=5d0fea84&
 
 
 
 
 
 
-var LvefInputvue_type_template_id_03386844_render = function render() {
+var LvefInputvue_type_template_id_5d0fea84_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.displayCol() ? _c(VCol, {
@@ -32645,7 +32642,7 @@ var LvefInputvue_type_template_id_03386844_render = function render() {
     }], null, false, 2170083346)
   })], 1) : _vm._e();
 };
-var LvefInputvue_type_template_id_03386844_staticRenderFns = [];
+var LvefInputvue_type_template_id_5d0fea84_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
 /**
@@ -39815,7 +39812,7 @@ var component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "6637de26"
+  "a0dfff8e"
   
 )
 
@@ -40663,7 +40660,7 @@ var TimePicker_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "28fd594c"
+  "0ba94898"
   
 )
 
@@ -42529,7 +42526,7 @@ var ColorPicker_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "0d5686e0"
+  "6c26b6c4"
   
 )
 
@@ -43040,7 +43037,7 @@ var LvefCheckboxGroup_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "3ad33fe0"
+  "6d6e3978"
   
 )
 
@@ -43065,7 +43062,7 @@ const lib_namespaceObject = require("vuetify/lib");
     DatePicker: DatePicker,
     TimePicker: TimePicker,
     ColorPicker: ColorPicker,
-    VAutoComplete: lib_namespaceObject.VAutoComplete,
+    VAutocomplete: lib_namespaceObject.VAutocomplete,
     VCheckbox: lib_namespaceObject.VCheckbox,
     VCombobox: lib_namespaceObject.VCombobox,
     VFileInput: lib_namespaceObject.VFileInput,
@@ -43073,6 +43070,7 @@ const lib_namespaceObject = require("vuetify/lib");
     VOtpInput: lib_namespaceObject.VOtpInput,
     VOverflowBtn: lib_namespaceObject.VOverflowBtn,
     VRadio: lib_namespaceObject.VRadio,
+    VRadioGroup: lib_namespaceObject.VRadioGroup,
     VSlider: lib_namespaceObject.VSlider,
     VSelect: lib_namespaceObject.VSelect,
     VSwitch: lib_namespaceObject.VSwitch,
@@ -43186,8 +43184,8 @@ const lib_namespaceObject = require("vuetify/lib");
             selectItems.unshift(anyfield);
           }
         }
-        result["item_value"] = field.item_value;
-        result["item_text"] = field.item_text;
+        result["item-value"] = field.item_value;
+        result["item-text"] = field.item_text;
         result["items"] = selectItems;
         result["chips"] = field.chips;
         result["data-vv-name"] = "select";
@@ -43322,7 +43320,7 @@ const lib_namespaceObject = require("vuetify/lib");
 
 function injectStyles (context) {
   
-  var style0 = __webpack_require__(5712)
+  var style0 = __webpack_require__(7508)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -43331,12 +43329,12 @@ if (style0.__inject__) style0.__inject__(context)
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_03386844_render,
-  LvefInputvue_type_template_id_03386844_staticRenderFns,
+  LvefInputvue_type_template_id_5d0fea84_render,
+  LvefInputvue_type_template_id_5d0fea84_staticRenderFns,
   false,
   injectStyles,
   null,
-  "1dc15f44"
+  "f65b70dc"
   
 )
 
@@ -43399,17 +43397,8 @@ var LvefButton = __webpack_require__(5323);
   },
   asyncComputed: {
     async asyncFilteredFieldList() {
-      const fields = [];
       const _this = this;
-      const fieldKeys = Object.keys(_this.fieldList);
-      for (const field of fieldKeys) {
-        const thisField = _this.fieldList[field];
-        let isParentLoaded = await this.parentLoaded(thisField);
-        if (isParentLoaded) {
-          fields[field] = thisField;
-        }
-      }
-      return fields;
+      return this.fieldList.filter(field => _this.parentLoaded(field));
     }
   },
   computed: {
@@ -43428,11 +43417,17 @@ var LvefButton = __webpack_require__(5323);
     fieldList: {
       handler: function () {
         this.$asyncComputed.asyncFilteredFieldList.update();
+        this.$emit('updated_fields', this.fieldList);
       },
       deep: true
     },
     formLoading: function (val) {
+      console.log('Form Loading changed', val);
       this.$emit("loading", val);
+    },
+    formLoaded: function (val) {
+      console.log('Form Loaded changed', val);
+      this.$emit("loaded", val);
     }
   },
   async created() {
@@ -43474,12 +43469,11 @@ var LvefButton = __webpack_require__(5323);
         };
       }
       let parentField = this.getField(field.dependsOn);
-      // console.log('Depending upon parent',parentField);
       return {
         dependsOn: parentField.value
       };
     },
-    async parentLoaded(field) {
+    parentLoaded(field) {
       if (this.isUndefined(field.dependsOn)) {
         return true;
       }
@@ -43502,12 +43496,12 @@ var LvefButton = __webpack_require__(5323);
       const fieldArrayList = Object.values(this.fieldList);
       const fieldIndex = fieldArrayList.findIndex(element => element.name == event.name);
       this.fieldList[fieldIndex] = event;
-
       // if parent to fields
       let childFieldIndexs = fieldArrayList.reduce((a, field, index) => {
         if (!_this.isUndefined(field.dependsOn) && field.dependsOn == event.name) a.push(index);
         return a;
       }, []);
+      console.log(childFieldIndexs);
       for (const index of childFieldIndexs) {
         let tmp_field = this.fieldList[index];
         let fieldData = await this.loadField(tmp_field);
@@ -43530,11 +43524,9 @@ var LvefButton = __webpack_require__(5323);
       if (triggerAlerts) {
         this.$emit("reset", true);
       }
-      this.formLoading = false;
     },
     cancelForm() {
       this.$emit("cancelled", true);
-      this.formLoading = false;
     },
     formProps: function () {
       const result = {};
@@ -43551,7 +43543,7 @@ var LvefButton = __webpack_require__(5323);
       this.formLoading = true;
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          this.processForm(this.loadedFormData, this.loadedFormData.fields, this.loadedIdentifier, this.loadedAdditionalFormData);
+          await this.processForm(this.loadedFormData, this.loadedFormData.fields, this.loadedIdentifier, this.loadedAdditionalFormData);
         }
         if (button.type == "reset") {
           this.resetForm();
@@ -43559,9 +43551,8 @@ var LvefButton = __webpack_require__(5323);
         if (button.type == "cancel") {
           this.cancelForm();
         }
-        this.formLoading = false;
-        return 0;
       }
+      this.formLoading = false;
       return 0;
     }
   }
@@ -43578,12 +43569,12 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_b460da80_render,
-  InputFormvue_type_template_id_b460da80_staticRenderFns,
+  InputFormvue_type_template_id_094e5dd8_render,
+  InputFormvue_type_template_id_094e5dd8_staticRenderFns,
   false,
   null,
   null,
-  "de943b6e"
+  "63ed3495"
   
 )
 
@@ -43650,7 +43641,7 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "ea38d1e2"
+  "1e968e43"
   
 )
 
@@ -43754,6 +43745,7 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
   watch: {
     formLoaded: function (val) {
       this.$emit("loaded", val);
+      console.log('FORM LOADED WATCHER', val);
       if (val) {
         this.formLoading = false;
       }
@@ -43766,7 +43758,8 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
       this.loadedFormName = this.load_form.name;
       this.formLoaded = true;
       this.loadedFormData = this.load_form;
-      this.alerts = [...this.loadedFormData.alerts];
+      this.alerts = [...this.load_form.alerts];
+      console.log('ALERTS LOADED', this.load_form.alerts);
       this.alerts.forEach(function (alert, index) {
         alert.display = false;
         alert.old_contents = alert.contents;
@@ -43793,7 +43786,7 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function (event) {
-      // console.log("FORM EVENT - Main form loading triggered");
+      console.log("FORM EVENT - Main form loading triggered", event);
       this.$emit("loading", event);
       this.formLoading = event;
     },
@@ -43814,6 +43807,13 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
     formHasFailedProcessing: function (event) {
       this.triggerAlerts("failed_processing", event);
     },
+    formHasUpdatedFields: function (event) {
+      // check if fields are the same or not.
+      if (this.loadedFormData.fields != event) {
+        this.loadedFormData.fields = event;
+        this.$emit("updated", true);
+      }
+    },
     formHasSuccessfulProcessing: function (event) {
       this.triggerAlerts("successful_processing", event);
     },
@@ -43831,7 +43831,8 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
           return false;
         }
         _this.formLoaded = true;
-        _this.loadedFormData = axiosResponse.data;
+        console.log('axiosResponse.data', axiosResponse.data);
+        _this.loadedFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.triggerAlerts("after_load");
       });
@@ -43855,7 +43856,7 @@ var FormLoader_component = (0,componentNormalizer/* default */.Z)(
   false,
   null,
   null,
-  "1ff46b68"
+  "263f3880"
   
 )
 

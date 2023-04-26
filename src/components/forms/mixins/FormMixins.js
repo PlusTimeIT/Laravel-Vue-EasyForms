@@ -74,6 +74,9 @@ export const FormMixin = {
         if (key == "icon" && alert[key] !== null) {
           result[key] = alert[key].icon;
         }
+        if (key == "text_style" && alert[key] !== null) {
+          result['text'] = alert[key].icon;
+        }
       });
       return result;
     },
@@ -256,9 +259,9 @@ export const FormMixin = {
       });
 
       if (multiPart) {
-        formData.append("action", action);
+        formData.append("form_action", action);
       } else {
-        formData["action"] = action;
+        formData["form_action"] = action;
       }
 
       return formData;
