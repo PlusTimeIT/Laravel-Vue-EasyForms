@@ -482,6 +482,7 @@ const FormMixin = {
       const _this = this;
       console.log('triggerAlerts', alertTrigger);
       this.alerts.forEach(function (alert, index) {
+        console.log('triggerAlerts - ', alert.trigger, alertTrigger);
         if (alert.trigger == alertTrigger) {
           console.log('triggerAlerts - found');
           alert.display = true;
@@ -491,10 +492,11 @@ const FormMixin = {
               alert.display = false;
               _this.$set(_this.alerts, index, alert);
             }, alert.auto_close_timer);
+          } else {
+            console.log('triggerAlerts - set', alert, index);
+            _this.$set(_this.alerts, index, alert);
           }
         }
-        console.log('triggerAlerts - set', alert, index);
-        _this.$set(_this.alerts, index, alert);
       });
     },
     mergeAdditionalLoadFormData: function (formData, additionalData) {

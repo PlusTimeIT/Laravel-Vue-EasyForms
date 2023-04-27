@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.87-beta
+- TriggerAlerts better console logging - 
+- 
+## 0.2.86-beta
+- TriggerAlerts console logging - 
+
 ## 0.2.85-beta
 - Fixed 'unique' validation 
 - 
