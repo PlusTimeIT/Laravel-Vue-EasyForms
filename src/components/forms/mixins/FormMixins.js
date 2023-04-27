@@ -80,11 +80,12 @@ export const FormMixin = {
       });
       return result;
     },
-
     triggerAlerts(alertTrigger, text = null) {
       const _this = this;
+      console.log('triggerAlerts', alertTrigger)
       this.alerts.forEach(function(alert, index) {
         if (alert.trigger == alertTrigger) {
+          console.log('triggerAlerts - found')
           alert.display = true;
           alert.contents = alert.old_contents.replace(
             "<response-data>",
@@ -97,6 +98,7 @@ export const FormMixin = {
             }, alert.auto_close_timer);
           }
         }
+        console.log('triggerAlerts - set', alert, index)
         _this.$set(_this.alerts, index, alert);
       });
     },

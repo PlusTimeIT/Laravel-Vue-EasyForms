@@ -220,16 +220,13 @@ export default {
         }
       }
     },
-    resetForm(triggerAlerts = true) {
+    resetForm() {
       // clear data
       this.$refs.loadedForm.reset();
-
       // repopulate
       this.loadedFormData = { ...this.originalFormData };
       this.fieldList = [...this.originalFormData.fields];
-      if (triggerAlerts) {
-        this.$emit("reset", true);
-      }
+      this.$emit("reset", true);
       this.formLoading = false;
     },
     cancelForm() {
