@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.2.84-beta
+- Result return fix
+- Removed Console Logs
+
+## 0.2.83-beta
+- Fixed spinner when processing
+
 ## 0.2.57
 - Fixed bug in selectAll for checkbox group - idiot
 - 

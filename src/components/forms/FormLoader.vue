@@ -18,7 +18,7 @@
           </v-alert>
         </v-col>
       </v-row>
-      <v-row v-if="formLoading">
+      <v-row v-show="formLoading">
         <v-col>
           <v-progress-circular
             indeterminate
@@ -26,7 +26,7 @@
           ></v-progress-circular>
         </v-col>
       </v-row>
-      <v-row v-else>
+      <v-row v-show="!formLoading">
         <component
           :is="formComponent"
           :form="loadedFormData"
@@ -150,7 +150,6 @@ export default {
   watch: {
     formLoaded: function(val) {
       this.$emit("loaded", val);
-      console.log('FORM LOADED WATCHER', val)
       if (val) {
         this.formLoading = false;
       }
@@ -164,7 +163,6 @@ export default {
       this.formLoaded = true;
       this.loadedFormData = this.load_form;
       this.alerts = [...this.load_form.alerts];
-      console.log('ALERTS LOADED', this.load_form.alerts);
       this.alerts.forEach(function(alert, index) {
         alert.display = false;
         alert.old_contents = alert.contents;
@@ -184,23 +182,21 @@ export default {
   methods: {
     formHasResults: function(event) {
       this.results = event;
+      this.$emit("results", event);
     },
     formHasErrors: function(event) {
       this.$refs.observer.setErrors(event);
     },
     formIsLoading: function(event) {
-      console.log("FORM EVENT - Main form loading triggered", event);
       this.$emit("loading", event);
       this.formLoading = event;
     },
     formIsReset: function() {
-      // console.log("FORM EVENT - Main form reset triggered");
       this.$emit("reset_form", true);
       this.triggerAlerts("reset_form");
       this.$refs.observer.reset();
     },
     formIsCancelled: function() {
-      // console.log("FORM EVENT - Main form cancelled triggered");
       this.$emit("cancelled", true);
       this.triggerAlerts("cancelled");
     },
@@ -212,18 +208,17 @@ export default {
     },
     formHasUpdatedFields: function(event) {
       // check if fields are the same or not.
-      if(this.loadedFormData.fields != event){
-        this.loadedFormData.fields = event
+      if (this.loadedFormData.fields != event) {
+        this.loadedFormData.fields = event;
         this.$emit("updated", true);
       }
-      
     },
     formHasSuccessfulProcessing: function(event) {
       this.triggerAlerts("successful_processing", event);
     },
     async getFormDetails(id) {
       this.formLoaded = false;
-      const _this = this;
+      let _this = this;
       return this.request(
         "post",
         this.$axiosPrefix + "/forms/load",
@@ -242,7 +237,6 @@ export default {
           return false;
         }
         _this.formLoaded = true;
-        console.log('axiosResponse.data', axiosResponse.data)
         _this.loadedFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.triggerAlerts("after_load");

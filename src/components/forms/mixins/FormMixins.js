@@ -75,7 +75,7 @@ export const FormMixin = {
           result[key] = alert[key].icon;
         }
         if (key == "text_style" && alert[key] !== null) {
-          result['text'] = alert[key].icon;
+          result["text"] = alert[key].icon;
         }
       });
       return result;
@@ -116,9 +116,8 @@ export const FormMixin = {
     ) {
       const _this = this;
       this.$emit("processing");
-      this.formLoading = true;
       let formAxios = form.axios;
-      _this
+      return _this
         .request(
           "post",
           this.$axiosPrefix + "/forms/process",
@@ -131,7 +130,6 @@ export const FormMixin = {
           formAxios.headers
         )
         .then(axiosResponse => {
-          _this.formLoading = axiosResponse.loader;
           if (formAxios.expecting_results) {
             _this.$emit("results", axiosResponse);
           }
@@ -139,7 +137,7 @@ export const FormMixin = {
           if (!axiosResponse.result) {
             _this.$emit("errors", axiosResponse.data);
             _this.$emit("failed", axiosResponse.data);
-            return Promise.resolve(axiosResponse.data);
+            return Promise.resolve(axiosResponse);
           }
 
           _this.$emit("successful", axiosResponse.data);
@@ -167,7 +165,7 @@ export const FormMixin = {
             _this.resetForm(false);
           }
 
-          return Promise.resolve(axiosResponse.data);
+          return Promise.resolve(axiosResponse);
         });
     },
     formData: function(form, data, identifier) {

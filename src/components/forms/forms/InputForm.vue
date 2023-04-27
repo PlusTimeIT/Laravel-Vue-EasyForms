@@ -96,8 +96,8 @@ export default {
   },
   asyncComputed: {
     async asyncFilteredFieldList() {
-      const _this = this
-      return this.fieldList.filter(field => _this.parentLoaded(field))
+      const _this = this;
+      return this.fieldList.filter(field => _this.parentLoaded(field));
     }
   },
   computed: {
@@ -120,16 +120,14 @@ export default {
     fieldList: {
       handler: function() {
         this.$asyncComputed.asyncFilteredFieldList.update();
-        this.$emit('updated_fields', this.fieldList)
+        this.$emit("updated_fields", this.fieldList);
       },
       deep: true
     },
-    formLoading: function(val) {
-      console.log('Form Loading changed', val)
+    formLoading(val) {
       this.$emit("loading", val);
     },
     formLoaded: function(val) {
-      console.log('Form Loaded changed', val)
       this.$emit("loaded", val);
     }
   },
@@ -166,8 +164,7 @@ export default {
       });
     },
     getField: function(fieldName) {
-      const fieldArrayList = Object.values(this.fieldList);
-      const fieldIndex = fieldArrayList.findIndex(
+      const fieldIndex = this.fieldList.findIndex(
         element => element.name == fieldName
       );
       return this.fieldList[fieldIndex];
@@ -199,13 +196,12 @@ export default {
     },
     async updateField(event) {
       let _this = this;
-      const fieldArrayList = Object.values(this.fieldList);
-      const fieldIndex = fieldArrayList.findIndex(
+      const fieldIndex = this.fieldList.findIndex(
         element => element.name == event.name
       );
       this.fieldList[fieldIndex] = event;
       // if parent to fields
-      let childFieldIndexs = fieldArrayList.reduce((a, field, index) => {
+      let childFieldIndexs = this.fieldList.reduce((a, field, index) => {
         if (
           !_this.isUndefined(field.dependsOn) &&
           field.dependsOn == event.name
@@ -213,8 +209,6 @@ export default {
           a.push(index);
         return a;
       }, []);
-
-      console.log(childFieldIndexs);
 
       for (const index of childFieldIndexs) {
         let tmp_field = this.fieldList[index];
@@ -236,9 +230,11 @@ export default {
       if (triggerAlerts) {
         this.$emit("reset", true);
       }
+      this.formLoading = false;
     },
     cancelForm() {
       this.$emit("cancelled", true);
+      this.formLoading = false;
     },
     formProps: function() {
       const result = {};
@@ -253,30 +249,26 @@ export default {
       return result;
     },
     getInputCols: function(field) {
-    
       return this.isUndefined(field.cols) ? 12 : field.cols;
     },
     async buttonAction(button) {
       this.formLoading = true;
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          await this.processForm(
+          let results = await this.processForm(
             this.loadedFormData,
             this.loadedFormData.fields,
             this.loadedIdentifier,
             this.loadedAdditionalFormData
           );
-        }
-
-        if (button.type == "reset") {
+          this.formLoading = results.loader;
+        } else if (button.type == "reset") {
           this.resetForm();
-        }
-
-        if (button.type == "cancel") {
+        } else if (button.type == "cancel") {
           this.cancelForm();
         }
       }
-      this.formLoading = false;
+
       return 0;
     }
   }

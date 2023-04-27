@@ -96,7 +96,7 @@ import ColorPicker from "/src/components/forms/fields/ColorPicker.vue";
 import LvefCheckboxGroup from "./LvefCheckboxGroup.vue";
 
 import {
-  VAutocomplete ,
+  VAutocomplete,
   VCheckbox,
   VCombobox,
   VFileInput,
@@ -123,7 +123,7 @@ export default {
     DatePicker,
     TimePicker,
     ColorPicker,
-    VAutocomplete ,
+    VAutocomplete,
     VCheckbox,
     VCombobox,
     VFileInput,
