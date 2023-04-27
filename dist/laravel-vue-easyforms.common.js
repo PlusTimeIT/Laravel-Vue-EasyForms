@@ -29064,7 +29064,7 @@ const VRow_cache = new Map();
 
 }));
 //# sourceMappingURL=VRow.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=23cd572e&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/FormLoader.vue?vue&type=template&id=71c3a236&
 
 
 
@@ -43836,6 +43836,12 @@ var ActionForm_component = (0,componentNormalizer/* default */.Z)(
         _this.formLoaded = true;
         _this.loadedFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
+        _this.alerts = [..._this.loadedFormData.alerts];
+        _this.alerts.forEach(function (alert, index) {
+          alert.display = false;
+          alert.old_contents = alert.contents;
+          _this.$set(_this.alerts, index, alert);
+        });
         _this.triggerAlerts("after_load");
       });
     }

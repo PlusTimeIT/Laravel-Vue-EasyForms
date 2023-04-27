@@ -239,6 +239,12 @@ export default {
         _this.formLoaded = true;
         _this.loadedFormData = JSON.parse(JSON.stringify(axiosResponse.data));
         _this.originalFormData = JSON.parse(JSON.stringify(axiosResponse.data));
+        _this.alerts = [..._this.loadedFormData.alerts];
+        _this.alerts.forEach(function(alert, index) {
+          alert.display = false;
+          alert.old_contents = alert.contents;
+          _this.$set(_this.alerts, index, alert);
+        });
         _this.triggerAlerts("after_load");
       });
     }
