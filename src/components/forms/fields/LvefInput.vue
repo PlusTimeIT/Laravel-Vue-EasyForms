@@ -222,17 +222,17 @@ export default {
     },
     prepareRules() {
       // BUILD FIELD RULES
-      const rules = [];
-      this.fieldData.rules.forEach(function(rule) {
-        if (typeof rule.value === "boolean") {
-          if (rule.value) {
-            rules.push(rule.name);
+      const no_frontend_rules = ['unique']
+      return this.fieldData.rules
+        // filter out no frontend rules and rules that are booleans and set to false
+        .filter(rule => !no_frontend_rules.includes(rule.name) || (typeof rule.value === "boolean" && !rule.value))
+        .map(rule => {
+          if (rule.value === true) {
+            return rule.name
           }
-        } else {
-          rules.push(rule.name + ":" + rule.value);
-        }
-      });
-      return rules.join("|");
+          return rule.name + ":" + rule.value
+        })
+        .join("|")
     },
     prepareProps(errors) {
       let result = {};

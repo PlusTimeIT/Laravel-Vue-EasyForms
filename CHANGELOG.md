@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.2.85-beta
+- Fixed 'unique' validation 
+- 
 ## 0.2.84-beta
 - Result return fix
 - Removed Console Logs
