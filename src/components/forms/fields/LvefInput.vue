@@ -289,6 +289,10 @@ export default {
         result["close-on-content-click"] = field.close_on_content_click;
       }
 
+      if (!this.isUndefined(field.id)) {
+        result["id"] = field.id;
+      }
+
       if (!this.isUndefined(field.controls)) {
         result["controls"] = field.controls;
       }
