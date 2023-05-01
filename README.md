@@ -36,7 +36,7 @@ In your Vue files you can now use the form lader to load forms from your Laravel
 The bare minimum requires a form name to load the data.
 
 ```vue
-form-loader
+<form-loader
     load_form="Customer\Create"
 />
 ```
