@@ -222,7 +222,7 @@ export default {
     },
     prepareRules() {
       // BUILD FIELD RULES
-      const no_frontend_rules = ["unique"];
+      const no_frontend_rules = ["unique", "sometimes", "nullable"];
       return (
         this.fieldData.rules
           // filter out no frontend rules and rules that are booleans and set to false

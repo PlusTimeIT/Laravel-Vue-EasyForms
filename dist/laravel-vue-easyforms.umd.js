@@ -277,17 +277,17 @@ var component = (0,componentNormalizer/* default */.Z)(
 
 /***/ }),
 
-/***/ 6876:
+/***/ 2008:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=51c88b67&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=2aefd884&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=51c88b67&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=2aefd884&prod&lang=css&
 
 
 /***/ }),
@@ -32526,14 +32526,14 @@ const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, 
 //# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(7202);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=51c88b67&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=2aefd884&
 
 
 
 
 
 
-var LvefInputvue_type_template_id_51c88b67_render = function render() {
+var LvefInputvue_type_template_id_2aefd884_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.displayCol() ? _c(VCol, {
@@ -32673,7 +32673,7 @@ var LvefInputvue_type_template_id_51c88b67_render = function render() {
     }], null, false, 2170083346)
   })], 1) : _vm._e();
 };
-var LvefInputvue_type_template_id_51c88b67_staticRenderFns = [];
+var LvefInputvue_type_template_id_2aefd884_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
 /**
@@ -43179,7 +43179,7 @@ var lib_ = __webpack_require__(6537);
     },
     prepareRules() {
       // BUILD FIELD RULES
-      const no_frontend_rules = ["unique"];
+      const no_frontend_rules = ["unique", "sometimes", "nullable"];
       return this.fieldData.rules
       // filter out no frontend rules and rules that are booleans and set to false
       .filter(rule => !no_frontend_rules.includes(rule.name) || typeof rule.value === "boolean" && !rule.value).map(rule => {
@@ -43355,7 +43355,7 @@ var lib_ = __webpack_require__(6537);
 
 function injectStyles (context) {
   
-  var style0 = __webpack_require__(6876)
+  var style0 = __webpack_require__(2008)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -43364,8 +43364,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_51c88b67_render,
-  LvefInputvue_type_template_id_51c88b67_staticRenderFns,
+  LvefInputvue_type_template_id_2aefd884_render,
+  LvefInputvue_type_template_id_2aefd884_staticRenderFns,
   false,
   injectStyles,
   null,
