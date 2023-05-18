@@ -33,7 +33,9 @@
             <easy-button
               :button="button"
               :identifier="index"
-              :disabled="isButtonDisabled(button)"
+              :disabled="
+                button.type == 'process' ? processButtonDisabled : false
+              "
               @click="buttonAction(button)"
             ></easy-button>
           </v-col>
@@ -112,6 +114,12 @@ export default {
     loadedIdentifier: function() {
       return this.identifier;
     },
+    processButton: function() {
+      const fieldIndex = this.loadedFormData.buttons.findIndex(
+        button => button.type == "process"
+      );
+      return this.loadedFormData.buttons[fieldIndex];
+    },
     requireConfirmation: function() {
       return this.requireConfirmationCount > 0;
     },
@@ -137,6 +145,9 @@ export default {
         this.loadedFormData.buttons.length === 0
         ? false
         : true;
+    },
+    processButtonDisabled: function() {
+      return this.requireConfirmation ? !this.formValidated : false;
     }
   },
   watch: {
@@ -205,10 +216,10 @@ export default {
       const fieldIndex = this.fieldsValidated.findIndex(
         element => element.name == fieldName
       );
-      console.log('INVALIDATED', fieldName, fieldIndex);
+      console.log("INVALIDATED", fieldName, fieldIndex);
       if (fieldIndex >= 0) {
         this.fieldsValidated.splice(fieldIndex, 1);
-        console.log('INVALIDATED - splice', this.fieldsValidated)
+        console.log("INVALIDATED - splice", this.fieldsValidated);
       }
     },
     fieldValidated: function(fieldName) {
