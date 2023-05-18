@@ -13,6 +13,7 @@
         @click="buttonClick(identifier)"
         :rounded="loadedButton.rounded"
         :tile="loadedButton.tile"
+        :disabled="loadedDisabled"
       >
         {{ loadedButton.text }}
         <easy-icon v-if="displayButtonIcon()" :icon="loadedButton.icon">
@@ -38,6 +39,10 @@ export default {
       type: Object,
       default: () => ({})
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     identifier: {
       type: [String, Number],
       default: () => ""
@@ -47,6 +52,11 @@ export default {
     return {
       loadedButton: false
     };
+  },
+  computed: {
+    loadedDisabled() {
+      return this.disabled;
+    }
   },
   created() {
     this.loadedButton = this.button;

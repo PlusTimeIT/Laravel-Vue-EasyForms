@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 5323:
+/***/ 1547:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15,7 +15,7 @@ __webpack_require__.d(__webpack_exports__, {
 var VBtn = __webpack_require__(4741);
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4213);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefButton.vue?vue&type=template&id=45d47190&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefButton.vue?vue&type=template&id=b9af7b2c&
 
 
 
@@ -38,7 +38,8 @@ var render = function render() {
             "on": on,
             "color": _vm.loadedButton.color,
             "rounded": _vm.loadedButton.rounded,
-            "tile": _vm.loadedButton.tile
+            "tile": _vm.loadedButton.tile,
+            "disabled": _vm.loadedDisabled
           },
           on: {
             "click": function ($event) {
@@ -74,6 +75,10 @@ var LvefIcon = __webpack_require__(4981);
       type: Object,
       default: () => ({})
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     identifier: {
       type: [String, Number],
       default: () => ""
@@ -83,6 +88,11 @@ var LvefIcon = __webpack_require__(4981);
     return {
       loadedButton: false
     };
+  },
+  computed: {
+    loadedDisabled() {
+      return this.disabled;
+    }
   },
   created() {
     this.loadedButton = this.button;
@@ -22491,7 +22501,7 @@ webpackContext.id = 6700;
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixins_FormMixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4030);
-/* harmony import */ var _fields_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5323);
+/* harmony import */ var _fields_LvefButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1547);
 /* harmony import */ var _fields_LvefIcon_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4981);
 
 
@@ -31315,12 +31325,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=0277183b&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=1e90d6a0&
 
 
 
 
-var InputFormvue_type_template_id_0277183b_render = function render() {
+var InputFormvue_type_template_id_1e90d6a0_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31375,7 +31385,7 @@ var InputFormvue_type_template_id_0277183b_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_0277183b_staticRenderFns = [];
+var InputFormvue_type_template_id_1e90d6a0_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -43373,7 +43383,7 @@ var LvefInput_component = (0,componentNormalizer/* default */.Z)(
 
 /* harmony default export */ const LvefInput = (LvefInput_component.exports);
 // EXTERNAL MODULE: ./src/components/forms/fields/LvefButton.vue + 3 modules
-var LvefButton = __webpack_require__(5323);
+var LvefButton = __webpack_require__(1547);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=script&lang=js&
 
 
@@ -43620,7 +43630,7 @@ var LvefButton = __webpack_require__(5323);
     isButtonDisabled(button) {
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          return this.requireConfirmation ? this.formValidated : false;
+          return this.requireConfirmation ? !this.formValidated : false;
         } else if (button.type == "reset") {
           return false;
         } else if (button.type == "cancel") {
@@ -43642,8 +43652,8 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_0277183b_render,
-  InputFormvue_type_template_id_0277183b_staticRenderFns,
+  InputFormvue_type_template_id_1e90d6a0_render,
+  InputFormvue_type_template_id_1e90d6a0_staticRenderFns,
   false,
   null,
   null,

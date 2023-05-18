@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.3.5-beta",
+  "version": "0.3.6-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": {
     "name": "PlusTimeIT",

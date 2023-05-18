@@ -319,7 +319,7 @@ export default {
     isButtonDisabled(button) {
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          return this.requireConfirmation ? this.formValidated : false;
+          return this.requireConfirmation ? !this.formValidated : false;
         } else if (button.type == "reset") {
           return false;
         } else if (button.type == "cancel") {
