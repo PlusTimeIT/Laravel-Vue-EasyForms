@@ -31343,12 +31343,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=1e90d6a0&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=58d7bb4c&
 
 
 
 
-var InputFormvue_type_template_id_1e90d6a0_render = function render() {
+var InputFormvue_type_template_id_58d7bb4c_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31403,7 +31403,7 @@ var InputFormvue_type_template_id_1e90d6a0_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_1e90d6a0_staticRenderFns = [];
+var InputFormvue_type_template_id_58d7bb4c_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -43547,8 +43547,10 @@ var LvefButton = __webpack_require__(9764);
     },
     fieldInvalidated: function (fieldName) {
       const fieldIndex = this.fieldsValidated.findIndex(element => element.name == fieldName);
+      console.log('INVALIDATED', fieldName, fieldIndex);
       if (fieldIndex >= 0) {
         this.fieldsValidated.splice(fieldIndex, 1);
+        console.log('INVALIDATED - splice', this.fieldsValidated);
       }
     },
     fieldValidated: function (fieldName) {
@@ -43670,8 +43672,8 @@ var LvefButton = __webpack_require__(9764);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_1e90d6a0_render,
-  InputFormvue_type_template_id_1e90d6a0_staticRenderFns,
+  InputFormvue_type_template_id_58d7bb4c_render,
+  InputFormvue_type_template_id_58d7bb4c_staticRenderFns,
   false,
   null,
   null,
