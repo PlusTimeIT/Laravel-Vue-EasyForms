@@ -31315,12 +31315,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=3487dcb2&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=0277183b&
 
 
 
 
-var InputFormvue_type_template_id_3487dcb2_render = function render() {
+var InputFormvue_type_template_id_0277183b_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31375,7 +31375,7 @@ var InputFormvue_type_template_id_3487dcb2_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_3487dcb2_staticRenderFns = [];
+var InputFormvue_type_template_id_0277183b_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -43443,17 +43443,17 @@ var LvefButton = __webpack_require__(5323);
     loadedIdentifier: function () {
       return this.identifier;
     },
-    requiredConfirmation: function () {
-      return this.requiredConfirmationCount > 0;
+    requireConfirmation: function () {
+      return this.requireConfirmationCount > 0;
     },
-    requiredConfirmationCount: function () {
+    requireConfirmationCount: function () {
       const _this = this;
-      const hasRequireConfirmation = this.fieldList.filter(field => !_this.isUndefined(field.required_confirmation));
+      const hasRequireConfirmation = this.fieldList.filter(field => !_this.isUndefined(field.require_confirmation));
       return hasRequireConfirmation.length;
     },
-    requiredConfirmationArray: function () {
+    requireConfirmationArray: function () {
       const _this = this;
-      return this.fieldList.filter(field => !_this.isUndefined(field.required_confirmation)).map(field => {
+      return this.fieldList.filter(field => !_this.isUndefined(field.require_confirmation)).map(field => {
         return field.name;
       });
     },
@@ -43478,7 +43478,7 @@ var LvefButton = __webpack_require__(5323);
     },
     fieldsValidated: function (val) {
       let isValidated = true;
-      this.requiredConfirmationArray.forEach(required => {
+      this.requireConfirmationArray.forEach(required => {
         if (!val.includes(required)) {
           isValidated = false;
         }
@@ -43620,7 +43620,7 @@ var LvefButton = __webpack_require__(5323);
     isButtonDisabled(button) {
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          return this.requiredConfirmation ? this.formValidated : false;
+          return this.requireConfirmation ? this.formValidated : false;
         } else if (button.type == "reset") {
           return false;
         } else if (button.type == "cancel") {
@@ -43642,8 +43642,8 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_3487dcb2_render,
-  InputFormvue_type_template_id_3487dcb2_staticRenderFns,
+  InputFormvue_type_template_id_0277183b_render,
+  InputFormvue_type_template_id_0277183b_staticRenderFns,
   false,
   null,
   null,

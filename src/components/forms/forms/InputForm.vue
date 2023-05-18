@@ -112,20 +112,20 @@ export default {
     loadedIdentifier: function() {
       return this.identifier;
     },
-    requiredConfirmation: function() {
-      return this.requiredConfirmationCount > 0;
+    requireConfirmation: function() {
+      return this.requireConfirmationCount > 0;
     },
-    requiredConfirmationCount: function() {
+    requireConfirmationCount: function() {
       const _this = this;
       const hasRequireConfirmation = this.fieldList.filter(
-        field => !_this.isUndefined(field.required_confirmation)
+        field => !_this.isUndefined(field.require_confirmation)
       );
       return hasRequireConfirmation.length;
     },
-    requiredConfirmationArray: function() {
+    requireConfirmationArray: function() {
       const _this = this;
       return this.fieldList
-        .filter(field => !_this.isUndefined(field.required_confirmation))
+        .filter(field => !_this.isUndefined(field.require_confirmation))
         .map(field => {
           return field.name;
         });
@@ -155,7 +155,7 @@ export default {
     },
     fieldsValidated: function(val) {
       let isValidated = true;
-      this.requiredConfirmationArray.forEach(required => {
+      this.requireConfirmationArray.forEach(required => {
         if (!val.includes(required)) {
           isValidated = false;
         }
@@ -319,7 +319,7 @@ export default {
     isButtonDisabled(button) {
       if (!this.isUndefined(button.type)) {
         if (button.type == "process") {
-          return this.requiredConfirmation ? this.formValidated : false;
+          return this.requireConfirmation ? this.formValidated : false;
         } else if (button.type == "reset") {
           return false;
         } else if (button.type == "cancel") {
