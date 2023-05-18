@@ -222,17 +222,23 @@ export default {
     },
     prepareRules() {
       // BUILD FIELD RULES
-      const no_frontend_rules = ['unique']
-      return this.fieldData.rules
-        // filter out no frontend rules and rules that are booleans and set to false
-        .filter(rule => !no_frontend_rules.includes(rule.name) || (typeof rule.value === "boolean" && !rule.value))
-        .map(rule => {
-          if (rule.value === true) {
-            return rule.name
-          }
-          return rule.name + ":" + rule.value
-        })
-        .join("|")
+      const no_frontend_rules = ["unique"];
+      return (
+        this.fieldData.rules
+          // filter out no frontend rules and rules that are booleans and set to false
+          .filter(
+            rule =>
+              !no_frontend_rules.includes(rule.name) ||
+              (typeof rule.value === "boolean" && !rule.value)
+          )
+          .map(rule => {
+            if (rule.value === true) {
+              return rule.name;
+            }
+            return rule.name + ":" + rule.value;
+          })
+          .join("|")
+      );
     },
     prepareProps(errors) {
       let result = {};
@@ -322,6 +328,10 @@ export default {
 
       if (!this.isUndefined(field.readonly)) {
         result["readonly"] = field.readonly;
+      }
+
+      if (!this.isUndefined(field.required)) {
+        result["required"] = field.required;
       }
 
       if (!this.isUndefined(field.multiple)) {
