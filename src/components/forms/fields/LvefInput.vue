@@ -12,6 +12,8 @@
           v-model="fieldData.value"
           v-bind="prepareProps(errors)"
           @field_update="customFieldUpdate"
+          @validated="customFieldValidated"
+          @invalidated="customFieldInvalidated"
         >
           <div v-if="fieldData.component == 'v-radio-group'">
             <v-radio
@@ -51,6 +53,9 @@
           v-model="fieldData.value"
           v-mask="fieldData.masking"
           v-bind="prepareProps(errors)"
+          @field_update="customFieldUpdate"
+          @validated="customFieldValidated"
+          @invalidated="customFieldInvalidated"
         >
           <div v-if="fieldData.component == 'v-radio-group'">
             <v-radio
@@ -200,6 +205,12 @@ export default {
   methods: {
     customFieldUpdate: function(event) {
       this.fieldData.value = event;
+    },
+    customFieldValidated: function() {
+      this.$emit("validated", this.fieldData.name);
+    },
+    customFieldInvalidated: function() {
+      this.$emit("invalidated", this.fieldData.name);
     },
     getMasking: function() {
       if (

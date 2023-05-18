@@ -267,17 +267,17 @@ var component = (0,componentNormalizer/* default */.Z)(
 
 /***/ }),
 
-/***/ 1970:
+/***/ 7367:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=2aefd884&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=0459216d&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=2aefd884&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/forms/fields/LvefInput.vue?vue&type=style&index=0&id=0459216d&prod&lang=css&
 
 
 /***/ }),
@@ -31315,12 +31315,12 @@ var registrable = __webpack_require__(5463);
 
 }));
 //# sourceMappingURL=VForm.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=3f406f30&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/forms/InputForm.vue?vue&type=template&id=3487dcb2&
 
 
 
 
-var InputFormvue_type_template_id_3f406f30_render = function render() {
+var InputFormvue_type_template_id_3487dcb2_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c(VRow, [_vm.loadedFormData.type == 'input' ? _c(VForm, _vm._b({
@@ -31338,7 +31338,9 @@ var InputFormvue_type_template_id_3f406f30_render = function render() {
         "cols": _vm.getInputCols(field)
       },
       on: {
-        "field_update": _vm.updateField
+        "field_update": _vm.updateField,
+        "validated": _vm.fieldValidated,
+        "invalidated": _vm.fieldInvalidated
       },
       model: {
         value: _vm.asyncFilteredFieldList[index_f],
@@ -31362,7 +31364,8 @@ var InputFormvue_type_template_id_3f406f30_render = function render() {
     }, [_c('easy-button', {
       attrs: {
         "button": button,
-        "identifier": index
+        "identifier": index,
+        "disabled": _vm.isButtonDisabled(button)
       },
       on: {
         "click": function ($event) {
@@ -31372,7 +31375,7 @@ var InputFormvue_type_template_id_3f406f30_render = function render() {
     })], 1);
   }), 1) : _vm._e()], 1)], 1) : _vm._e()], 1);
 };
-var InputFormvue_type_template_id_3f406f30_staticRenderFns = [];
+var InputFormvue_type_template_id_3487dcb2_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
@@ -32508,14 +32511,14 @@ const VRadio_baseMixins = (0,mixins/* default */.Z)(binds_attrs/* default */.Z, 
 //# sourceMappingURL=VRadio.js.map
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VTooltip/VTooltip.js + 1 modules
 var VTooltip = __webpack_require__(4213);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=2aefd884&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/forms/fields/LvefInput.vue?vue&type=template&id=0459216d&
 
 
 
 
 
 
-var LvefInputvue_type_template_id_2aefd884_render = function render() {
+var LvefInputvue_type_template_id_0459216d_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.displayCol() ? _c(VCol, {
@@ -32538,7 +32541,9 @@ var LvefInputvue_type_template_id_2aefd884_render = function render() {
         return [_vm.getMasking() === null ? [_c(_vm.fieldData.component, _vm._b({
           tag: "component",
           on: {
-            "field_update": _vm.customFieldUpdate
+            "field_update": _vm.customFieldUpdate,
+            "validated": _vm.customFieldValidated,
+            "invalidated": _vm.customFieldInvalidated
           },
           scopedSlots: _vm._u([!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter ? {
             key: "counter",
@@ -32599,6 +32604,11 @@ var LvefInputvue_type_template_id_2aefd884_render = function render() {
             expression: "fieldData.masking"
           }],
           tag: "component",
+          on: {
+            "field_update": _vm.customFieldUpdate,
+            "validated": _vm.customFieldValidated,
+            "invalidated": _vm.customFieldInvalidated
+          },
           scopedSlots: _vm._u([!_vm.isUndefined(_vm.fieldData.counter) && _vm.fieldData.counter ? {
             key: "counter",
             fn: function ({
@@ -32652,10 +32662,10 @@ var LvefInputvue_type_template_id_2aefd884_render = function render() {
           }], null, false, 500127703)
         }, [_c('span', [_vm._v(_vm._s(_vm.fieldData.help) + " ")])]) : _vm._e()], 1)]];
       }
-    }], null, false, 2170083346)
+    }], null, false, 3016167701)
   })], 1) : _vm._e();
 };
-var LvefInputvue_type_template_id_2aefd884_staticRenderFns = [];
+var LvefInputvue_type_template_id_0459216d_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.full.esm.js
 /**
@@ -43144,6 +43154,12 @@ const lib_namespaceObject = require("vuetify/lib");
     customFieldUpdate: function (event) {
       this.fieldData.value = event;
     },
+    customFieldValidated: function () {
+      this.$emit("validated", this.fieldData.name);
+    },
+    customFieldInvalidated: function () {
+      this.$emit("invalidated", this.fieldData.name);
+    },
     getMasking: function () {
       if (!this.isUndefined(this.fieldData.masking) && this.fieldData.masking !== null) {
         return this.fieldData.masking;
@@ -43337,7 +43353,7 @@ const lib_namespaceObject = require("vuetify/lib");
 
 function injectStyles (context) {
   
-  var style0 = __webpack_require__(1970)
+  var style0 = __webpack_require__(7367)
 if (style0.__inject__) style0.__inject__(context)
 
 }
@@ -43346,8 +43362,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var LvefInput_component = (0,componentNormalizer/* default */.Z)(
   fields_LvefInputvue_type_script_lang_js_,
-  LvefInputvue_type_template_id_2aefd884_render,
-  LvefInputvue_type_template_id_2aefd884_staticRenderFns,
+  LvefInputvue_type_template_id_0459216d_render,
+  LvefInputvue_type_template_id_0459216d_staticRenderFns,
   false,
   injectStyles,
   null,
@@ -43406,6 +43422,8 @@ var LvefButton = __webpack_require__(5323);
       fieldList: [],
       formLoading: true,
       formLoaded: false,
+      formValidated: false,
+      fieldsValidated: [],
       loadedFormName: "",
       loadedFormData: false,
       originalFormData: false,
@@ -43425,6 +43443,20 @@ var LvefButton = __webpack_require__(5323);
     loadedIdentifier: function () {
       return this.identifier;
     },
+    requiredConfirmation: function () {
+      return this.requiredConfirmationCount > 0;
+    },
+    requiredConfirmationCount: function () {
+      const _this = this;
+      const hasRequireConfirmation = this.fieldList.filter(field => !_this.isUndefined(field.required_confirmation));
+      return hasRequireConfirmation.length;
+    },
+    requiredConfirmationArray: function () {
+      const _this = this;
+      return this.fieldList.filter(field => !_this.isUndefined(field.required_confirmation)).map(field => {
+        return field.name;
+      });
+    },
     displayButton: function () {
       if (!this.formLoaded || !this.loadedFormData) return false;
       return this.isUndefined(this.loadedFormData.buttons) || !this.isArray(this.loadedFormData.buttons) || this.loadedFormData.buttons.length === 0 ? false : true;
@@ -43443,6 +43475,15 @@ var LvefButton = __webpack_require__(5323);
     },
     formLoaded: function (val) {
       this.$emit("loaded", val);
+    },
+    fieldsValidated: function (val) {
+      let isValidated = true;
+      this.requiredConfirmationArray.forEach(required => {
+        if (!val.includes(required)) {
+          isValidated = false;
+        }
+      });
+      this.formValidated = isValidated;
     }
   },
   async created() {
@@ -43475,6 +43516,18 @@ var LvefButton = __webpack_require__(5323);
     getField: function (fieldName) {
       const fieldIndex = this.fieldList.findIndex(element => element.name == fieldName);
       return this.fieldList[fieldIndex];
+    },
+    fieldInvalidated: function (fieldName) {
+      const fieldIndex = this.fieldsValidated.findIndex(element => element.name == fieldName);
+      if (fieldIndex >= 0) {
+        this.fieldsValidated.splice(fieldIndex, 1);
+      }
+    },
+    fieldValidated: function (fieldName) {
+      const fieldIndex = this.fieldsValidated.findIndex(element => element.name == fieldName);
+      if (fieldIndex < 0) {
+        this.fieldsValidated.push(fieldName);
+      }
     },
     parentLoadingData: async function (field) {
       if (field.dependsOn === null) {
@@ -43563,6 +43616,17 @@ var LvefButton = __webpack_require__(5323);
         }
       }
       return 0;
+    },
+    isButtonDisabled(button) {
+      if (!this.isUndefined(button.type)) {
+        if (button.type == "process") {
+          return this.requiredConfirmation ? this.formValidated : false;
+        } else if (button.type == "reset") {
+          return false;
+        } else if (button.type == "cancel") {
+          return false;
+        }
+      }
     }
   }
 });
@@ -43578,8 +43642,8 @@ var LvefButton = __webpack_require__(5323);
 ;
 var InputForm_component = (0,componentNormalizer/* default */.Z)(
   forms_InputFormvue_type_script_lang_js_,
-  InputFormvue_type_template_id_3f406f30_render,
-  InputFormvue_type_template_id_3f406f30_staticRenderFns,
+  InputFormvue_type_template_id_3487dcb2_render,
+  InputFormvue_type_template_id_3487dcb2_staticRenderFns,
   false,
   null,
   null,

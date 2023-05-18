@@ -15,6 +15,8 @@
             v-model="asyncFilteredFieldList[index_f]"
             :cols="getInputCols(field)"
             @field_update="updateField"
+            @validated="fieldValidated"
+            @invalidated="fieldInvalidated"
           >
           </easy-input>
         </v-row>
@@ -31,6 +33,7 @@
             <easy-button
               :button="button"
               :identifier="index"
+              :disabled="isButtonDisabled(button)"
               @click="buttonAction(button)"
             ></easy-button>
           </v-col>
@@ -88,6 +91,8 @@ export default {
       fieldList: [],
       formLoading: true,
       formLoaded: false,
+      formValidated: false,
+      fieldsValidated: [],
       loadedFormName: "",
       loadedFormData: false,
       originalFormData: false,
@@ -106,6 +111,24 @@ export default {
     },
     loadedIdentifier: function() {
       return this.identifier;
+    },
+    requiredConfirmation: function() {
+      return this.requiredConfirmationCount > 0;
+    },
+    requiredConfirmationCount: function() {
+      const _this = this;
+      const hasRequireConfirmation = this.fieldList.filter(
+        field => !_this.isUndefined(field.required_confirmation)
+      );
+      return hasRequireConfirmation.length;
+    },
+    requiredConfirmationArray: function() {
+      const _this = this;
+      return this.fieldList
+        .filter(field => !_this.isUndefined(field.required_confirmation))
+        .map(field => {
+          return field.name;
+        });
     },
     displayButton: function() {
       if (!this.formLoaded || !this.loadedFormData) return false;
@@ -129,6 +152,15 @@ export default {
     },
     formLoaded: function(val) {
       this.$emit("loaded", val);
+    },
+    fieldsValidated: function(val) {
+      let isValidated = true;
+      this.requiredConfirmationArray.forEach(required => {
+        if (!val.includes(required)) {
+          isValidated = false;
+        }
+      });
+      this.formValidated = isValidated;
     }
   },
   async created() {
@@ -168,6 +200,22 @@ export default {
         element => element.name == fieldName
       );
       return this.fieldList[fieldIndex];
+    },
+    fieldInvalidated: function(fieldName) {
+      const fieldIndex = this.fieldsValidated.findIndex(
+        element => element.name == fieldName
+      );
+      if (fieldIndex >= 0) {
+        this.fieldsValidated.splice(fieldIndex, 1);
+      }
+    },
+    fieldValidated: function(fieldName) {
+      const fieldIndex = this.fieldsValidated.findIndex(
+        element => element.name == fieldName
+      );
+      if (fieldIndex < 0) {
+        this.fieldsValidated.push(fieldName);
+      }
     },
     parentLoadingData: async function(field) {
       if (field.dependsOn === null) {
@@ -267,6 +315,17 @@ export default {
       }
 
       return 0;
+    },
+    isButtonDisabled(button) {
+      if (!this.isUndefined(button.type)) {
+        if (button.type == "process") {
+          return this.requiredConfirmation ? this.formValidated : false;
+        } else if (button.type == "reset") {
+          return false;
+        } else if (button.type == "cancel") {
+          return false;
+        }
+      }
     }
   }
 };
