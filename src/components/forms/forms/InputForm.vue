@@ -214,17 +214,15 @@ export default {
     },
     fieldInvalidated: function(fieldName) {
       const fieldIndex = this.fieldsValidated.findIndex(
-        element => element.name == fieldName
+        element => element == fieldName
       );
-      console.log("INVALIDATED", fieldName, fieldIndex);
       if (fieldIndex >= 0) {
         this.fieldsValidated.splice(fieldIndex, 1);
-        console.log("INVALIDATED - splice", this.fieldsValidated);
       }
     },
     fieldValidated: function(fieldName) {
       const fieldIndex = this.fieldsValidated.findIndex(
-        element => element.name == fieldName
+        element => element == fieldName
       );
       if (fieldIndex < 0) {
         this.fieldsValidated.push(fieldName);
