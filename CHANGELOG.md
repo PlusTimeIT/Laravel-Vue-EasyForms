@@ -1,4 +1,6 @@
 # Change Log
+## 0.4.0-beta
+- Vite integration
 
 ## 0.2.87-beta
 - TriggerAlerts better console logging - 
