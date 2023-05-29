@@ -288,6 +288,8 @@ export default {
         result["data-vv-name"] = "select";
       }
 
+
+
       if (field.type == "checkbox-group") {
         if (!this.isUndefined(field.switch)) {
           result["switch"] = field.switch;
@@ -296,6 +298,13 @@ export default {
         result["items"] = field.items;
         result["item"] = field.item_value;
         result["data-vv-name"] = "checkbox";
+      }
+      //Implements chips on file-input when SetChips & SetMultipul is true. 
+      if(field.type == "file-input"){
+        if(field.multiple && !this.undefined(field.chips))
+        {
+          result['chips']=field.chips;
+        }
       }
 
       if (field.type == "hidden") {
