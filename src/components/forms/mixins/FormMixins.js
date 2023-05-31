@@ -172,42 +172,60 @@ export const FormMixin = {
       const _this = this;
       const inputs = {};
       const formData = new FormData();
-      const multiPart =
-        !this.isUndefined(form.axios.multiPart) && form.axios.multiPart
-          ? true
-          : false;
+      //Check whether axios Multipart is true or not
+      const multiPart =this.isMultipart(form);
       const identifierIsPresent =
         !this.isUndefined(identifier) && identifier !== 0 ? true : false;
-
+      //Removed no need for this because form data header is set if multipart
+        // _this.isObject(data[item].value) ||
+        // _this.isArray(data[item].value)
+        // ? JSON.stringify(data[item].value)
+        // : data[item].value
+    
       Object.keys(data).forEach(item => {
         if (multiPart) {
           if (formData.has(data[item].name)) {
-            formData.set(
-              data[item].name,
-              _this.isObject(data[item].value) ||
-                _this.isArray(data[item].value)
-                ? JSON.stringify(data[item].value)
-                : data[item].value
-            );
+            if(_this.isArray(data[item].value)){
+              let values=data[item].value;
+              values.forEach(element => {
+                  formData.set(data[item].name+'[]',element)
+              });
+            }else if(_this.isObject(data[item].value)){
+                formData.set(data[item].name+'[]',data[item].value)
+            }else{
+              formData.set(
+                data[item].name,
+                data[item].value
+              );
+            }
+
           } else {
-            formData.append(
-              data[item].name,
-              _this.isObject(data[item].value) ||
-                _this.isArray(data[item].value)
-                ? JSON.stringify(data[item].value)
-                : data[item].value
-            );
+            if(_this.isArray(data[item].value)){
+              let values=data[item].value;
+              values.forEach(element => {
+                  formData.append(data[item].name+'[]',element)
+              });
+            }else if(_this.isObject(data[item].value)){
+                formData.append(data[item].name+'[]',data[item].value)
+            }else{
+              formData.append(
+                data[item].name,
+                data[item].value
+              );
+            }
+           
           }
         } else {
           inputs[data[item].name] = data[item].value;
         }
       });
-
       let identifier_data =
         _this.isObject(identifier) || _this.isArray(identifier)
           ? JSON.stringify(identifier)
           : identifier;
       if (multiPart) {
+        //Setting header for multipart axios request.
+        form.axios.headers={ 'Content-Type': 'multipart/form-data' };
         formData.append("form_name", form.name);
         if (identifierIsPresent) {
           if (formData.has("id")) {
@@ -216,6 +234,7 @@ export const FormMixin = {
             formData.append("id", identifier_data);
           }
         }
+       
         return formData;
       }
       inputs["form_name"] = form.name;
@@ -225,12 +244,8 @@ export const FormMixin = {
       return inputs;
     },
     mergeAdditionData: function(form, formData, additionalData, action) {
-      const multiPart =
-        !this.isUndefined(form.axios) &&
-        !this.isUndefined(form.axios.multi_part) &&
-        form.axios.multiPart
-          ? true
-          : false;
+     
+      const multiPart=this.isMultipart(form);
       const _this = this;
       Object.keys(additionalData).forEach(function(key) {
         if (multiPart) {
@@ -257,12 +272,26 @@ export const FormMixin = {
       });
 
       if (multiPart) {
+        form.axios.headers={ 'Content-Type': 'multipart/form-data' };
         formData.append("form_action", action);
       } else {
         formData["form_action"] = action;
       }
 
       return formData;
+    },
+    isMultipart:function(form){
+      const _this = this;
+
+      if(!this.isUndefined(form.axios.multiPart) && form.axios.multiPart){
+        return true;
+      }
+
+      if(!this.isUndefined(form.axios.multi_part) && form.axios.multi_part){
+        return true;
+      }
+
+      return false;
     }
   }
 };

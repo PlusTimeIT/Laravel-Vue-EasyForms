@@ -254,6 +254,7 @@ export default {
     prepareProps(errors) {
       let result = {};
       const field = this.fieldData;
+      // console.log('filelds we are getting',field);
       result["error-messages"] = errors;
       result["label"] = this.displayLabel;
       result["outlined"] = field.outlined;
@@ -288,8 +289,6 @@ export default {
         result["data-vv-name"] = "select";
       }
 
-
-
       if (field.type == "checkbox-group") {
         if (!this.isUndefined(field.switch)) {
           result["switch"] = field.switch;
@@ -299,9 +298,9 @@ export default {
         result["item"] = field.item_value;
         result["data-vv-name"] = "checkbox";
       }
-      //Implements chips on file-input when SetChips & SetMultipul is true. 
+
       if(field.type == "file-input"){
-        if(field.multiple && !this.undefined(field.chips))
+        if(field.multiple)
         {
           result['chips']=field.chips;
         }

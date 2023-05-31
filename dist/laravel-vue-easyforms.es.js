@@ -1380,21 +1380,25 @@ const FormMixin = {
       ).then((A) => (c.expecting_results && o.$emit("results", A), A.result ? (o.$emit("successful", A.data), !o.isUndefined(A.redirect) && A.redirect !== null && (o.$emit("redirect", A.redirect), o.redirect(A.redirect)), !o.isUndefined(c.redirect) && c.redirect !== !1 && (o.$emit("redirect", c.redirect), o.redirect(c.redirect)), !o.isUndefined(c.form_reset) && c.form_reset !== !1 && o.resetForm(!1), Promise.resolve(A)) : (o.$emit("errors", A.data), o.$emit("failed", A.data), Promise.resolve(A))));
     },
     formData: function(M, z, b) {
-      const p = this, O = {}, o = new FormData(), c = !!(!this.isUndefined(M.axios.multiPart) && M.axios.multiPart), A = !this.isUndefined(b) && b !== 0;
+      const p = this, O = {}, o = new FormData(), c = this.isMultipart(M), A = !this.isUndefined(b) && b !== 0;
       Object.keys(z).forEach((e) => {
-        c ? o.has(z[e].name) ? o.set(
+        c ? o.has(z[e].name) ? p.isArray(z[e].value) ? z[e].value.forEach((t) => {
+          o.set(z[e].name + "[]", t);
+        }) : p.isObject(z[e].value) ? o.set(z[e].name + "[]", z[e].value) : o.set(
           z[e].name,
-          p.isObject(z[e].value) || p.isArray(z[e].value) ? JSON.stringify(z[e].value) : z[e].value
-        ) : o.append(
+          z[e].value
+        ) : p.isArray(z[e].value) ? z[e].value.forEach((t) => {
+          o.append(z[e].name + "[]", t);
+        }) : p.isObject(z[e].value) ? o.append(z[e].name + "[]", z[e].value) : o.append(
           z[e].name,
-          p.isObject(z[e].value) || p.isArray(z[e].value) ? JSON.stringify(z[e].value) : z[e].value
+          z[e].value
         ) : O[z[e].name] = z[e].value;
       });
       let q = p.isObject(b) || p.isArray(b) ? JSON.stringify(b) : b;
-      return c ? (o.append("form_name", M.name), A && (o.has("id") ? o.set("id", q) : o.append("id", q)), o) : (O.form_name = M.name, A && (O.id = b), O);
+      return c ? (M.axios.headers = { "Content-Type": "multipart/form-data" }, o.append("form_name", M.name), A && (o.has("id") ? o.set("id", q) : o.append("id", q)), o) : (O.form_name = M.name, A && (O.id = b), O);
     },
     mergeAdditionData: function(M, z, b, p) {
-      const O = !!(!this.isUndefined(M.axios) && !this.isUndefined(M.axios.multi_part) && M.axios.multiPart), o = this;
+      const O = this.isMultipart(M), o = this;
       return Object.keys(b).forEach(function(c) {
         O ? z.has(c) ? z.set(
           c,
@@ -1403,7 +1407,10 @@ const FormMixin = {
           c,
           o.isObject(b[c]) || o.isArray(b[c]) ? JSON.stringify(b[c]) : b[c]
         ) : z[c] = b[c];
-      }), O ? z.append("form_action", p) : z.form_action = p, z;
+      }), O ? (M.axios.headers = { "Content-Type": "multipart/form-data" }, z.append("form_action", p)) : z.form_action = p, z;
+    },
+    isMultipart: function(M) {
+      return !!(!this.isUndefined(M.axios.multiPart) && M.axios.multiPart || !this.isUndefined(M.axios.multi_part) && M.axios.multi_part);
     }
   }
 };
@@ -6051,7 +6058,7 @@ const moment$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProp
       for (typeof a == "string" && (a = [a]), i = 0; i < a.length; i++)
         r = a[i].split("|"), d = v(r[0]), s = v(r[1]), O[d] = s, c[d] = r[0], O[s] = d, c[s] = r[1];
     }
-    function J(a) {
+    function Z(a) {
       var i, r, d, s;
       if (!(!a || !a.length))
         for (i = 0; i < a.length; i++)
@@ -6060,11 +6067,11 @@ const moment$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProp
             d
           );
     }
-    function Z(a) {
+    function J(a) {
       return a = a.toUpperCase(), o[a] || null;
     }
     function M0(a, i) {
-      if (a = Z(a), !a)
+      if (a = J(a), !a)
         return null;
       var r = a.zones.sort();
       return i ? r.map(function(d) {
@@ -6076,7 +6083,7 @@ const moment$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProp
       }) : r;
     }
     function z0(a) {
-      $(a.zones), w(a.links), J(a.countries), l.dataVersion = a.version;
+      $(a.zones), w(a.links), Z(a.countries), l.dataVersion = a.version;
     }
     function S(a) {
       return S.didShowError || (S.didShowError = !0, g("moment.tz.zoneExists('" + a + "') has been deprecated in favor of !moment.tz.zone('" + a + "')")), !!m(a);
@@ -7453,7 +7460,7 @@ const LvefCheckboxGroup = __component__$6.exports, LvefInput_vue_vue_type_style_
         }
         z["item-value"] = b.item_value, z["item-text"] = b.item_text, z.items = p, z.chips = b.chips, z["data-vv-name"] = "select";
       }
-      return b.type == "checkbox-group" && (this.isUndefined(b.switch) || (z.switch = b.switch), z.items = b.items, z.item = b.item_value, z["data-vv-name"] = "checkbox"), b.type == "hidden" && (z.class = "hidden-input"), this.isUndefined(b.close_on_content_click) || (z["close-on-content-click"] = b.close_on_content_click), this.isUndefined(b.id) || (z.id = b.id), this.isUndefined(b.controls) || (z.controls = b.controls), this.isUndefined(b.step) || (z.step = b.step), !this.isUndefined(b.component_type) && b.component_type !== "" && (z.type = b.component_type), this.isUndefined(b.min) || (z.min = b.min), this.isUndefined(b.max) || (z.max = b.max), this.isUndefined(b.placeholder) || (z.placeholder = b.placeholder), this.isUndefined(b.readonly) || (z.readonly = b.readonly), this.isUndefined(b.required) || (z.required = b.required), this.isUndefined(b.multiple) || (z.multiple = b.multiple), this.isUndefined(b.clearable) || (z.clearable = b.clearable), this.isUndefined(b.counter) || (z.counter = b.counter), this.isUndefined(b.maxlength) || (z.maxlength = b.maxlength), this.isUndefined(b.appendIcon) || (z.appendIcon = b.appendIcon), this.isUndefined(b.backgroundColor) || (z.backgroundColor = b.backgroundColor), this.isUndefined(b.error) || (z.error = b.error), this.isUndefined(b.errorCount) || (z.errorCount = b.errorCount), this.isUndefined(b.errorMessages) || (z.errorMessages = b.errorMessages), this.isUndefined(b.falseValue) || (z.falseValue = b.falseValue), this.isUndefined(b.flat) || (z.flat = b.flat), this.isUndefined(b.hideDetails) || (z.hideDetails = b.hideDetails), this.isUndefined(b.hideSpinButtons) || (z.hideSpinButtons = b.hideSpinButtons), this.isUndefined(b.hint) || (z.hint = b.hint), this.isUndefined(b.inputValue) || (z.inputValue = b.inputValue), this.isUndefined(b.inset) || (z.inset = b.inset), this.isUndefined(b.dark) || (z.dark = b.dark), this.isUndefined(b.light) || (z.light = b.light), this.isUndefined(b.messages) || (z.messages = b.messages), this.isUndefined(b.persistentHint) || (z.persistentHint = b.persistentHint), this.isUndefined(b.prependIcon) || (z.prependIcon = b.prependIcon), this.isUndefined(b.success) || (z.success = b.success), this.isUndefined(b.successMessages) || (z.successMessages = b.successMessages), this.isUndefined(b.trueValue) || (z.trueValue = b.trueValue), this.isUndefined(b.validateOnBlur) || (z.validateOnBlur = b.validateOnBlur), this.isUndefined(b.display) || (z.display = b.display), b.component == "h2" && (z = { "v-html": b.value }), z;
+      return b.type == "checkbox-group" && (this.isUndefined(b.switch) || (z.switch = b.switch), z.items = b.items, z.item = b.item_value, z["data-vv-name"] = "checkbox"), b.type == "file-input" && b.multiple && (z.chips = b.chips), b.type == "hidden" && (z.class = "hidden-input"), this.isUndefined(b.close_on_content_click) || (z["close-on-content-click"] = b.close_on_content_click), this.isUndefined(b.id) || (z.id = b.id), this.isUndefined(b.controls) || (z.controls = b.controls), this.isUndefined(b.step) || (z.step = b.step), !this.isUndefined(b.component_type) && b.component_type !== "" && (z.type = b.component_type), this.isUndefined(b.min) || (z.min = b.min), this.isUndefined(b.max) || (z.max = b.max), this.isUndefined(b.placeholder) || (z.placeholder = b.placeholder), this.isUndefined(b.readonly) || (z.readonly = b.readonly), this.isUndefined(b.required) || (z.required = b.required), this.isUndefined(b.multiple) || (z.multiple = b.multiple), this.isUndefined(b.clearable) || (z.clearable = b.clearable), this.isUndefined(b.counter) || (z.counter = b.counter), this.isUndefined(b.maxlength) || (z.maxlength = b.maxlength), this.isUndefined(b.appendIcon) || (z.appendIcon = b.appendIcon), this.isUndefined(b.backgroundColor) || (z.backgroundColor = b.backgroundColor), this.isUndefined(b.error) || (z.error = b.error), this.isUndefined(b.errorCount) || (z.errorCount = b.errorCount), this.isUndefined(b.errorMessages) || (z.errorMessages = b.errorMessages), this.isUndefined(b.falseValue) || (z.falseValue = b.falseValue), this.isUndefined(b.flat) || (z.flat = b.flat), this.isUndefined(b.hideDetails) || (z.hideDetails = b.hideDetails), this.isUndefined(b.hideSpinButtons) || (z.hideSpinButtons = b.hideSpinButtons), this.isUndefined(b.hint) || (z.hint = b.hint), this.isUndefined(b.inputValue) || (z.inputValue = b.inputValue), this.isUndefined(b.inset) || (z.inset = b.inset), this.isUndefined(b.dark) || (z.dark = b.dark), this.isUndefined(b.light) || (z.light = b.light), this.isUndefined(b.messages) || (z.messages = b.messages), this.isUndefined(b.persistentHint) || (z.persistentHint = b.persistentHint), this.isUndefined(b.prependIcon) || (z.prependIcon = b.prependIcon), this.isUndefined(b.success) || (z.success = b.success), this.isUndefined(b.successMessages) || (z.successMessages = b.successMessages), this.isUndefined(b.trueValue) || (z.trueValue = b.trueValue), this.isUndefined(b.validateOnBlur) || (z.validateOnBlur = b.validateOnBlur), this.isUndefined(b.display) || (z.display = b.display), b.component == "h2" && (z = { "v-html": b.value }), z;
     }
   }
 };
