@@ -4,5 +4,6 @@ export default {
     Vue.prototype.$axiosPrefix = args.axiosPrefix;
     Vue.prototype.$axios = args.axios;
     Vue.component("form-loader", FormLoader);
+   
   }
 };

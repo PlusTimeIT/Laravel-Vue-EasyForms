@@ -1,0 +1,17 @@
+version: '3'
+services:
+  vue_easyforms:
+    build:
+      context: ./
+      dockerfile: docker/app.dockerfile
+    ports:
+      - "3358:3358"
+    container_name: vue_easyforms
+    networks:
+            - shared
+    volumes:
+       - .:/app
+networks:
+  shared: 
+    external:
+      name: plustime_backend

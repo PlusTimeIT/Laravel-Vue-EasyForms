@@ -302,6 +302,7 @@ export default {
       ) {
         result["enctype"] = "application/x-www-form-urlencoded";
       }
+
       return result;
     },
     getInputCols: function(field) {

@@ -254,6 +254,7 @@ export default {
     prepareProps(errors) {
       let result = {};
       const field = this.fieldData;
+      // console.log('filelds we are getting',field);
       result["error-messages"] = errors;
       result["label"] = this.displayLabel;
       result["outlined"] = field.outlined;
@@ -296,6 +297,13 @@ export default {
         result["items"] = field.items;
         result["item"] = field.item_value;
         result["data-vv-name"] = "checkbox";
+      }
+
+      if(field.type == "file-input"){
+        if(field.multiple)
+        {
+          result['chips']=field.chips;
+        }
       }
 
       if (field.type == "hidden") {

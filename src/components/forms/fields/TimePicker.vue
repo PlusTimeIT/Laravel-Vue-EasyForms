@@ -34,7 +34,7 @@
 export default {
   props: {
     value: {
-      default: ""
+      default: ''
     },
     errorMessages: {
       type: Array,
@@ -42,7 +42,7 @@ export default {
     },
     label: {
       type: String,
-      default: ""
+      default: ''
     },
     ampm_in_title: {
       type: Boolean,
@@ -54,14 +54,14 @@ export default {
     },
     populate: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   data: function() {
     return {
       menu1: false,
       menu: false,
-      time_input: ""
+      time_input: ''
     };
   },
   mounted() {
@@ -77,7 +77,7 @@ export default {
   },
   watch: {
     time_input: function(val) {
-      this.$emit("input", val);
+      this.$emit('input', val);
     }
   },
 
