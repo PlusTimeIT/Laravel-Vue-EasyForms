@@ -1,6 +1,53 @@
 {
     "cSpell.words": [
+        "autodocs",
+        "axios",
+        "composables",
+        "customisation",
+        "doesnt",
+        "Hexa",
+        "histoire",
+        "historie",
         "Lvef",
+        "maska",
+        "nocheck",
+        "nodenext",
+        "testbademail",
         "vuetify"
-    ]
+    ],
+    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "typescript.format.semicolons": "insert",
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.quoteStyle": "double",
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.tsdk": "",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.workspaceSymbols.scope": "currentProject",
+    "js/ts.implicitProjectConfig.target": "ESNext",
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "js/ts.implicitProjectConfig.checkJs": false,
+    "tsco.addPublicModifierIfMissing": false,
+    "tsimporter.preferRelative": false,
+    "eslint.format.enable": true,
+    "vs-code-prettier-eslint.prettierLast": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.configPath": ".prettierrc",
+    "prettier.trailingComma": "all",
+    "prettier.vueIndentScriptAndStyle": true,
+    "prettier.requireConfig": true,
+    "prettier.printWidth": 120
+
 }

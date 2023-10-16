@@ -1,0 +1,139 @@
+{
+  "stories": [
+    {
+      "id": "src-components-formloader-story-vue",
+      "title": "Form Loader",
+      "group": "forms",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "src-components-formloader-story-vue-0",
+          "title": "All Options"
+        },
+        {
+          "id": "src-components-formloader-story-vue-1",
+          "title": "Input Form"
+        }
+      ],
+      "relativePath": "src/components/FormLoader.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Form Loader"
+      ],
+      "virtual": false,
+      "markdownFile": null
+    },
+    {
+      "id": "src-histoire-introduction-story-js",
+      "title": "Introduction",
+      "group": "top",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "icon": "carbon:bookmark",
+      "docsOnly": true,
+      "variants": [],
+      "relativePath": "src/histoire/Introduction.story.js",
+      "supportPluginId": "vanilla",
+      "treePath": [
+        "Introduction"
+      ],
+      "virtual": true,
+      "markdownFile": {
+        "id": "src-histoire-introduction-story-md",
+        "relativePath": "src/histoire/Introduction.story.md",
+        "isRelatedToStory": false,
+        "frontmatter": {
+          "group": "top",
+          "icon": "carbon:bookmark"
+        }
+      }
+    },
+    {
+      "id": "vuetify",
+      "title": "Vuetify",
+      "group": "design-system",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "icon": "mdi:vuetify",
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "vuetify-0",
+          "title": "Material Colors",
+          "icon": "mdi:palette"
+        },
+        {
+          "id": "vuetify-1",
+          "title": "Text And Typography",
+          "icon": "mdi:format-font"
+        },
+        {
+          "id": "vuetify-2",
+          "title": "Border Radius",
+          "icon": "mdi:border-all"
+        },
+        {
+          "id": "vuetify-3",
+          "title": "Content",
+          "icon": "mdi:view-grid-plus"
+        },
+        {
+          "id": "vuetify-4",
+          "title": "Elevation",
+          "icon": "mdi:box-shadow"
+        },
+        {
+          "id": "vuetify-5",
+          "title": "Display",
+          "icon": "mdi:monitor-screenshot"
+        },
+        {
+          "id": "vuetify-6",
+          "title": "Float",
+          "icon": "mdi:format-float-left"
+        },
+        {
+          "id": "vuetify-7",
+          "title": "Overflow",
+          "icon": "mdi:format-text-wrapping-overflow"
+        },
+        {
+          "id": "vuetify-8",
+          "title": "Sizing",
+          "icon": "mdi:image-size-select-small"
+        },
+        {
+          "id": "vuetify-9",
+          "title": "Spacing",
+          "icon": "mdi:space-invaders"
+        }
+      ],
+      "relativePath": "/development/plustime/Laravel-Vue-EasyForms/node_modules/.histoire/plugins/vuetify-design-system/Vuetify.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Vuetify"
+      ],
+      "virtual": false,
+      "markdownFile": null
+    }
+  ],
+  "markdownFiles": [
+    {
+      "id": "src-histoire-introduction-story-md",
+      "relativePath": "src/histoire/Introduction.story.md",
+      "isRelatedToStory": false,
+      "frontmatter": {
+        "group": "top",
+        "icon": "carbon:bookmark"
+      }
+    }
+  ]
+}

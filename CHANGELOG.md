@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.4.1-beta
+- Updates to include usage with Vite and Vue3 / Vuetify 3 + Typescript
 ## 0.2.87-beta
 - TriggerAlerts better console logging - 
 - 
@@ -63,7 +65,6 @@
 - loadField updates
 - removed field updating from input to input form
 - check if parent loading data
-
 
 ## 0.0.55
 - Remove v-if on masking and add v-mask only to textfields 

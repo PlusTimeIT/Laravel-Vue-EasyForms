@@ -1,0 +1,45 @@
+import { AlertBorders } from "#/enums/AlertBorders";
+import { AlertTriggers } from "#/enums/AlertTriggers";
+import { Icon } from "./Icon";
+import { GotProps } from "#/abstracts/GotProps";
+import { DensityTypes } from "#/enums/DensityTypes";
+import { PositionTypes } from "#/enums/PositionTypes";
+import { AlertTypes } from "#/enums/AlertTypes";
+import { ButtonVariantTypes } from "#/enums/ButtonVariantTypes";
+export declare class Alert extends GotProps {
+    auto_close_timer: number;
+    border: AlertBorders | boolean;
+    border_color: string | undefined;
+    closable: boolean;
+    close_icon: Icon | string;
+    close_label: string;
+    cols: number;
+    color: string | undefined;
+    content_placeholder: string;
+    density: DensityTypes;
+    display: boolean;
+    elevation: number;
+    height: string | number | undefined;
+    icon: Icon | undefined;
+    max_height: string | number | undefined;
+    max_width: string | number | undefined;
+    min_height: string | number | undefined;
+    min_width: string | number | undefined;
+    original_text: string;
+    position: PositionTypes | undefined;
+    prominent: boolean;
+    rounded: string | number | boolean;
+    tag: string;
+    text: string | undefined;
+    trigger: AlertTriggers;
+    type: AlertTypes | string | undefined;
+    variant: ButtonVariantTypes;
+    constructor(init?: Partial<Alert>);
+    allowedProps(): string[];
+    autoClose(): Alert;
+    convertContents(text: string): Alert;
+    hide(): Alert;
+    reset(): Alert;
+    show(): Alert;
+}
+//# sourceMappingURL=Alert.d.ts.map

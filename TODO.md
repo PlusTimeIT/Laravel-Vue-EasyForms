@@ -1,0 +1,1 @@
+1. Remove type annotations from variables that are inferred

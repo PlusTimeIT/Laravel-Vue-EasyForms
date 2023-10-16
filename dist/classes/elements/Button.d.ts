@@ -1,0 +1,48 @@
+import { Tooltip, Icon } from "#/classes/elements";
+import { ButtonTypes } from "#/enums/ButtonTypes";
+import { DensityTypes } from "#/enums/DensityTypes";
+import { PositionTypes } from "#/enums/PositionTypes";
+import { ButtonVariantTypes } from "#/enums/ButtonVariantTypes";
+import { GotProps } from "#/abstracts/GotProps";
+export declare class Button extends GotProps {
+    active: boolean;
+    append_icon: Icon | undefined;
+    block: boolean;
+    border: string | number | boolean;
+    class: string;
+    color: string;
+    density: DensityTypes;
+    disabled: boolean;
+    elevation: string | number;
+    exact: boolean;
+    flat: boolean;
+    height: string | number | undefined;
+    href: string | undefined;
+    icon: Icon | undefined;
+    loading: boolean;
+    max_height: string | number | undefined;
+    max_width: string | number | undefined;
+    min_height: string | number | undefined;
+    min_width: string | number | undefined;
+    order: number;
+    position: PositionTypes | undefined;
+    prepend_icon: Icon | undefined;
+    replace: boolean;
+    rounded: string | number | boolean;
+    selected_class: string | undefined;
+    size: string | number;
+    stacked: boolean;
+    symbol: any;
+    tag: string;
+    text: string | undefined;
+    theme: string | undefined;
+    to: unknown | undefined;
+    tooltip: Tooltip | undefined;
+    type: ButtonTypes;
+    value: any | undefined;
+    variant: ButtonVariantTypes;
+    width: string | number | undefined;
+    constructor(init?: Partial<Button>);
+    allowedProps(): string[];
+}
+//# sourceMappingURL=Button.d.ts.map
