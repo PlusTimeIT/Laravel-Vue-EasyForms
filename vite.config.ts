@@ -5,11 +5,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  // server: {
-  //   host: true,
-  //   open: true,
-  // },
-  base: "./",
+  base: "https://boredlunatic.github.io/Laravel-Vue-EasyForms/",
   plugins: [vue(), vuetify({ autoImport: true })],
   resolve: {
     alias: [{ find: "#", replacement: resolve(__dirname, "src") }],
