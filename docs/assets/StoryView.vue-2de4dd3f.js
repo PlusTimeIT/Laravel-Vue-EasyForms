@@ -1,8 +1,8 @@
 import { a as useRoute, c as computed, d as defineComponent, u as useCssVars, g as unref, $ as toRefs, r as ref, o as openBlock, b as createElementBlock, e as createVNode, w as withCtx, I as Icon, n as normalizeClass, f as createBaseVNode, t as toDisplayString, i as defineStore, j as useStorage, a0 as unindent, x as resolveDirective, y as withDirectives, a1 as useRouter, a2 as useResizeObserver, l as resolveComponent, q as createBlock, a3 as nm, h as createCommentVNode, G as normalizeStyle, a4 as withModifiers, A as pushScopeId, B as popScopeId, k as watch, a5 as renderSlot, m as withKeys, z as createTextVNode, F as Fragment, p as renderList, J as onMounted, a6 as vModelText, a7 as onUnmounted, a8 as VTooltip, a9 as createStaticVNode, s as useEventListener, E as reactive, P as applyState, aa as toRaw, Z as mergeProps, ab as Dropdown, ac as clone, ad as omit, ae as useTimeoutFn, af as onClickOutside, v as isRef, ag as nextTick, ah as om, ai as Ug, aj as Yg, ak as Jg, _ as resolveDynamicComponent, Y as watchEffect, X as markRaw, al as shallowRef, am as getHighlighter, T as Transition, O as h, an as onBeforeUnmount } from "./vendor-b18d341b.js";
-import { u as useScrollOnActive, B as BaseListItemLink, _ as _export_sfc, a as useStoryStore, i as isMobile, c as BaseSplitPane, b as _sfc_main$y } from "./MobileOverlay.vue2-89671854.js";
-import { B as BaseEmpty } from "./BaseEmpty.vue-d6043863.js";
-import { g as getContrastColor, _ as _sfc_main$x, b as SANDBOX_READY, E as EVENT_SEND, S as STATE_SYNC, t as toRawDeep, P as PREVIEW_SETTINGS_SYNC } from "./state-8d89bc7d.js";
-import { d as clientSupportPlugins, e as base, h as histoireConfig, i as isDark, _ as __vitePreload } from "./GenericMountStory.vue2-ad315cd4.js";
+import { u as useScrollOnActive, B as BaseListItemLink, _ as _export_sfc, a as useStoryStore, i as isMobile, c as BaseSplitPane, b as _sfc_main$y } from "./MobileOverlay.vue2-901e62c9.js";
+import { B as BaseEmpty } from "./BaseEmpty.vue-d28cde54.js";
+import { g as getContrastColor, _ as _sfc_main$x, b as SANDBOX_READY, E as EVENT_SEND, S as STATE_SYNC, t as toRawDeep, P as PREVIEW_SETTINGS_SYNC } from "./state-14054c16.js";
+import { d as clientSupportPlugins, e as base, h as histoireConfig, i as isDark, _ as __vitePreload } from "./GenericMountStory.vue2-70575931.js";
 function useCurrentVariantRoute(variant) {
   const route = useRoute();
   const isActive = computed(() => route.query.variantId === variant.value.id);
@@ -1783,7 +1783,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const markdownFiles = reactive({ "src/histoire/FormBasics.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-formbasics-story-md-0a0a56a2.js"), true ? [] : void 0), "src/histoire/Installation.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-installation-story-md-ea6ae7ab.js"), true ? [] : void 0), "src/histoire/Introduction.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-introduction-story-md-8a9be2c1.js"), true ? [] : void 0) });
+const markdownFiles = reactive({ "src/histoire/FormBasics.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-formbasics-story-md-8875fd0c.js"), true ? [] : void 0), "src/histoire/Installation.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-installation-story-md-ea6ae7ab.js"), true ? [] : void 0), "src/histoire/Introduction.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-histoire-introduction-story-md-8a9be2c1.js"), true ? [] : void 0) });
 const _hoisted_1$9 = ["innerHTML"];
 function useStoryDoc(story) {
   const renderedDoc = ref("");

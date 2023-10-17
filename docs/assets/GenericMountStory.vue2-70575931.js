@@ -83,12 +83,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-3c3fe11d.js"), true ? ["assets/HomeView.vue-3c3fe11d.js","assets/vendor-b18d341b.js"] : void 0)
+      component: () => __vitePreload(() => import("./HomeView.vue-fe970a9a.js"), true ? ["assets/HomeView.vue-fe970a9a.js","assets/vendor-b18d341b.js"] : void 0)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-743eb566.js"), true ? ["assets/StoryView.vue-743eb566.js","assets/vendor-b18d341b.js","assets/MobileOverlay.vue2-89671854.js","assets/BaseEmpty.vue-d6043863.js","assets/state-8d89bc7d.js"] : void 0)
+      component: () => __vitePreload(() => import("./StoryView.vue-2de4dd3f.js"), true ? ["assets/StoryView.vue-2de4dd3f.js","assets/vendor-b18d341b.js","assets/MobileOverlay.vue2-901e62c9.js","assets/BaseEmpty.vue-d28cde54.js","assets/state-14054c16.js"] : void 0)
     }
   ]
 });
