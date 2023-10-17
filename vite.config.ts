@@ -9,6 +9,7 @@ export default defineConfig({
   //   host: true,
   //   open: true,
   // },
+  base: "./",
   plugins: [vue(), vuetify({ autoImport: true })],
   resolve: {
     alias: [{ find: "#", replacement: resolve(__dirname, "src") }],

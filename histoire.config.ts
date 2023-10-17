@@ -5,7 +5,7 @@ import { container } from "@mdit/plugin-container";
 import { vuetifyDesignSystem } from "histoire-vuetify-design-system/design";
 
 export default defineConfig({
-  outDir: resolve(__dirname, "./docs"),
+  outDir: resolve(__dirname, "docs"),
   setupFile: resolve(__dirname, "./src/histoire/histoire.setup.ts"),
   plugins: [
     HstVue(),
@@ -37,7 +37,7 @@ export default defineConfig({
       },
     ],
   },
-  storyIgnored: ["**/node_modules/**", "**/dist/**", "**/sandbox/**"],
+  storyIgnored: ["**/node_modules/**", "**/dist/**"],
   markdown: (md) => {
     md.use(container, {
       name: "stylesheet",

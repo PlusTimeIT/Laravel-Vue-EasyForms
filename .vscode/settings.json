@@ -49,6 +49,6 @@
     "prettier.vueIndentScriptAndStyle": true,
     "prettier.requireConfig": true,
     "prettier.printWidth": 120,
-    "livePreview.defaultPreviewPath": "/dist/.histoire/dist/index.html"
+    "livePreview.defaultPreviewPath": "/docs/index.html"
 
 }
