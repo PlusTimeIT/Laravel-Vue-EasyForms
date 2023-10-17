@@ -14,7 +14,7 @@ export default defineConfig({
     }),
   ],
   theme: {
-    title: "Documentation Easy Forms",
+    title: "Vue EasyForms Documentation",
     colors: {
       primary: {
         50: "#1391dd",
