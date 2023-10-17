@@ -67,7 +67,7 @@ const config = { "plugins": [{ "name": "builtin:tailwind-tokens" }, { "name": "b
 const logos = {};
 const histoireConfig = config;
 const customLogos = logos;
-const base = "https://boredlunatic.github.io/Laravel-Vue-EasyForms/";
+const base = "https://boredlunatic.github.io/Laravel-Vue-EasyForms";
 function createRouterHistory() {
   switch (histoireConfig.routerMode) {
     case "hash":
@@ -83,12 +83,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-deaf4a7b.js"), true ? ["assets/HomeView.vue-deaf4a7b.js","assets/vendor-b18d341b.js"] : void 0)
+      component: () => __vitePreload(() => import("./HomeView.vue-9f2dbb56.js"), true ? ["assets/HomeView.vue-9f2dbb56.js","assets/vendor-b18d341b.js"] : void 0)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-97b5519a.js"), true ? ["assets/StoryView.vue-97b5519a.js","assets/vendor-b18d341b.js","assets/MobileOverlay.vue2-eb906187.js","assets/BaseEmpty.vue-b051b8b0.js","assets/state-8a57e06a.js"] : void 0)
+      component: () => __vitePreload(() => import("./StoryView.vue-6179513c.js"), true ? ["assets/StoryView.vue-6179513c.js","assets/vendor-b18d341b.js","assets/MobileOverlay.vue2-bf1f0e0e.js","assets/BaseEmpty.vue-cf0ad971.js","assets/state-dfad1aea.js"] : void 0)
     }
   ]
 });
