@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 
 import App from "./App.vue";
-import vuetify from "./vuetify";
+import vuetify from "./plugins/vuetify";
 import FormLoaderPlugin from "../../dist";
 
 createApp(App)

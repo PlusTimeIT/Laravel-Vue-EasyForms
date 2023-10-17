@@ -5,10 +5,10 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  server: {
-    host: true,
-    open: true,
-  },
+  // server: {
+  //   host: true,
+  //   open: true,
+  // },
   plugins: [vue(), vuetify({ autoImport: true })],
   resolve: {
     alias: [{ find: "#", replacement: resolve(__dirname, "src") }],
@@ -23,12 +23,11 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["vuetify", "vue", "axios", "vuetify/lib"],
+      external: ["vue", "axios", "vuetify/lib"],
       output: {
         entryFileNames: "[name].js",
         globals: {
           vue: "Vue",
-          vuetify: "vuetify",
           axios: "axios",
         },
       },

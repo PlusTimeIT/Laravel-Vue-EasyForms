@@ -48,6 +48,7 @@
     "prettier.trailingComma": "all",
     "prettier.vueIndentScriptAndStyle": true,
     "prettier.requireConfig": true,
-    "prettier.printWidth": 120
+    "prettier.printWidth": 120,
+    "livePreview.defaultPreviewPath": "/dist/.histoire/dist/index.html"
 
 }

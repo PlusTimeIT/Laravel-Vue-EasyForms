@@ -3286,7 +3286,7 @@ function renderList$1(source, renderItem, cache2, index) {
   }
   return ret;
 }
-function renderSlot(slots, name, props = {}, fallback, noSlotted) {
+function renderSlot$1(slots, name, props = {}, fallback, noSlotted) {
   if (currentRenderingInstance$1.isCE || currentRenderingInstance$1.parent && isAsyncWrapper$1(currentRenderingInstance$1.parent) && currentRenderingInstance$1.parent.isCE) {
     if (name !== "default")
       props.name = name;
@@ -3303,7 +3303,7 @@ function renderSlot(slots, name, props = {}, fallback, noSlotted) {
     slot._d = false;
   }
   openBlock$1();
-  const validSlotContent = slot && ensureValidVNode(slot(props));
+  const validSlotContent = slot && ensureValidVNode$1(slot(props));
   const rendered = createBlock$1(
     Fragment$1,
     {
@@ -3322,13 +3322,13 @@ function renderSlot(slots, name, props = {}, fallback, noSlotted) {
   }
   return rendered;
 }
-function ensureValidVNode(vnodes) {
+function ensureValidVNode$1(vnodes) {
   return vnodes.some((child) => {
     if (!isVNode$1(child))
       return true;
     if (child.type === Comment$1)
       return false;
-    if (child.type === Fragment$1 && !ensureValidVNode(child.children))
+    if (child.type === Fragment$1 && !ensureValidVNode$1(child.children))
       return false;
     return true;
   }) ? vnodes : null;
@@ -11946,7 +11946,7 @@ function _sfc_render$3$1(_ctx, _cache, $props, $setup, $data, $options) {
       "v-popper--shown": _ctx.slotData.isShown
     }])
   }, [
-    renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps$1(_ctx.slotData)))
+    renderSlot$1(_ctx.$slots, "default", normalizeProps(guardReactiveProps$1(_ctx.slotData)))
   ], 2);
 }
 var Popper$1 = /* @__PURE__ */ _export_sfc$1(_sfc_main$6$1, [["render", _sfc_render$3$1]]);
@@ -12154,7 +12154,7 @@ function _sfc_render$2$1(_ctx, _cache, $props, $setup, $data, $options) {
       createBaseVNode$1("div", _hoisted_2$1$1, [
         _ctx.mounted ? (openBlock$1(), createElementBlock$1(Fragment$1, { key: 0 }, [
           createBaseVNode$1("div", null, [
-            renderSlot(_ctx.$slots, "default")
+            renderSlot$1(_ctx.$slots, "default")
           ]),
           _ctx.handleResize ? (openBlock$1(), createBlock$1(_component_ResizeObserver, {
             key: 0,
@@ -12243,7 +12243,7 @@ function _sfc_render$1$1(_ctx, _cache, $props, $setup, $data, $options) {
       classes,
       result
     }) => [
-      renderSlot(_ctx.$slots, "default", {
+      renderSlot$1(_ctx.$slots, "default", {
         shown: isShown,
         show,
         hide
@@ -12263,7 +12263,7 @@ function _sfc_render$1$1(_ctx, _cache, $props, $setup, $data, $options) {
         onResize
       }, {
         default: withCtx$1(() => [
-          renderSlot(_ctx.$slots, "popper", {
+          renderSlot$1(_ctx.$slots, "popper", {
             shown: isShown,
             hide
           })
@@ -12287,7 +12287,7 @@ const _sfc_main$1$1 = defineComponent$2(__spreadProps(__spreadValues$1({}, Priva
   name: "VTooltip",
   vPopperTheme: "tooltip"
 }));
-const _sfc_main$e = defineComponent$2({
+const _sfc_main$f = defineComponent$2({
   name: "VTooltipDirective",
   components: {
     Popper: PrivatePopper(),
@@ -12380,7 +12380,7 @@ const _sfc_main$e = defineComponent$2({
 });
 const _hoisted_1$3 = ["innerHTML"];
 const _hoisted_2$3 = ["textContent"];
-function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_PopperContent = resolveComponent$1("PopperContent");
   const _component_Popper = resolveComponent$1("Popper");
   return openBlock$1(), createBlock$1(_component_Popper, mergeProps$1({ ref: "popper" }, _ctx.$attrs, {
@@ -12433,7 +12433,7 @@ function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }, 16, ["theme", "popper-node", "onApplyShow", "onApplyHide"]);
 }
-var PrivateTooltipDirective = /* @__PURE__ */ _export_sfc$1(_sfc_main$e, [["render", _sfc_render$e]]);
+var PrivateTooltipDirective = /* @__PURE__ */ _export_sfc$1(_sfc_main$f, [["render", _sfc_render$f]]);
 const TARGET_CLASS = "v-popper--has-tooltip";
 function getPlacement(options2, modifiers) {
   let result = options2.placement;
@@ -16514,6 +16514,53 @@ function createSlots(slots, dynamicSlots) {
     }
   }
   return slots;
+}
+function renderSlot(slots, name, props = {}, fallback, noSlotted) {
+  if (currentRenderingInstance.isCE || currentRenderingInstance.parent && isAsyncWrapper(currentRenderingInstance.parent) && currentRenderingInstance.parent.isCE) {
+    if (name !== "default")
+      props.name = name;
+    return createVNode("slot", props, fallback && fallback());
+  }
+  let slot = slots[name];
+  if (slot && slot.length > 1) {
+    warn$2(
+      `SSR-optimized slot function detected in a non-SSR-optimized render function. You need to mark this component with $dynamic-slots in the parent template.`
+    );
+    slot = () => [];
+  }
+  if (slot && slot._c) {
+    slot._d = false;
+  }
+  openBlock();
+  const validSlotContent = slot && ensureValidVNode(slot(props));
+  const rendered = createBlock(
+    Fragment,
+    {
+      key: props.key || // slot content array of a dynamic conditional slot may have a branch
+      // key attached in the `createSlots` helper, respect that
+      validSlotContent && validSlotContent.key || `_${name}`
+    },
+    validSlotContent || (fallback ? fallback() : []),
+    validSlotContent && slots._ === 1 ? 64 : -2
+  );
+  if (!noSlotted && rendered.scopeId) {
+    rendered.slotScopeIds = [rendered.scopeId + "-s"];
+  }
+  if (slot && slot._c) {
+    slot._d = true;
+  }
+  return rendered;
+}
+function ensureValidVNode(vnodes) {
+  return vnodes.some((child) => {
+    if (!isVNode(child))
+      return true;
+    if (child.type === Comment)
+      return false;
+    if (child.type === Fragment && !ensureValidVNode(child.children))
+      return false;
+    return true;
+  }) ? vnodes : null;
 }
 const getPublicInstance = (i2) => {
   if (!i2)
@@ -34756,7 +34803,7 @@ const VRow = genericComponent()({
   }
 });
 const VSpacer = createSimpleFunctional("v-spacer", "div", "VSpacer");
-const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$e = /* @__PURE__ */ defineComponent$1({
   __name: "FormLoader",
   props: {
     form: {
@@ -34891,7 +34938,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VCol, {
     cols: $setup.container.cols,
     sm: $setup.container.sm,
@@ -34970,8 +35017,8 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   }, 8, ["cols", "sm", "md", "lg"]);
 }
-_sfc_main$d.__file = "src/components/FormLoader.vue";
-const FormLoader = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/FormLoader.vue"]]);
+_sfc_main$e.__file = "src/components/FormLoader.vue";
+const FormLoader = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/FormLoader.vue"]]);
 const _PluginOptions = class _PluginOptions {
   constructor(init) {
     /**
@@ -42348,7 +42395,7 @@ const VAutocomplete = genericComponent()({
     }, vTextFieldRef);
   }
 });
-const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
   __name: "Vuetify.story",
   setup(__props, { expose: __expose }) {
     __expose();
@@ -42490,7 +42537,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_VuetifyVariant = resolveComponent("VuetifyVariant");
   const _component_Variant = resolveComponent("Variant");
   const _component_Story = resolveComponent("Story");
@@ -42856,7 +42903,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-const Vuetify_story = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__file", "/development/plustime/Laravel-Vue-EasyForms/node_modules/.histoire/plugins/vuetify-design-system/Vuetify.story.vue"]]);
+const Vuetify_story = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__file", "/development/plustime/Laravel-Vue-EasyForms/node_modules/.histoire/plugins/vuetify-design-system/Vuetify.story.vue"]]);
 const Vuetify_story$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Vuetify_story
@@ -42877,7 +42924,7 @@ const ga = {
     return (e2, i2) => (openBlock$1(), createElementBlock$1("button", {
       class: normalizeClass$1(["histoire-button htw-cursor-pointer htw-rounded-sm", t2[e2.color ?? "default"]])
     }, [
-      renderSlot(e2.$slots, "default")
+      renderSlot$1(e2.$slots, "default")
     ], 2));
   }
 }), ma = { class: "htw-w-28 htw-whitespace-nowrap htw-text-ellipsis htw-overflow-hidden htw-shrink-0" }, wa = { class: "htw-grow htw-max-w-full htw-flex htw-items-center htw-gap-1" }, ya = { class: "htw-block htw-grow htw-max-w-full" }, ba = {
@@ -42902,9 +42949,9 @@ const ga = {
         ]),
         createBaseVNode$1("span", wa, [
           createBaseVNode$1("span", ya, [
-            renderSlot(t2.$slots, "default")
+            renderSlot$1(t2.$slots, "default")
           ]),
-          renderSlot(t2.$slots, "actions")
+          renderSlot$1(t2.$slots, "actions")
         ])
       ]),
       _: 3
@@ -42935,7 +42982,7 @@ const ga = {
       class: "histoire-button-group htw-flex-nowrap htw-items-center"
     }, {
       actions: withCtx$1(() => [
-        renderSlot(r2.$slots, "actions")
+        renderSlot$1(r2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("div", ka, [
@@ -43044,7 +43091,7 @@ const ga = {
       ]
     }, {
       actions: withCtx$1(() => [
-        renderSlot(r2.$slots, "actions")
+        renderSlot$1(r2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createVNode$1(Qo, { "model-value": s2.value }, null, 8, ["model-value"])
@@ -43074,7 +43121,7 @@ const ga = {
       style: normalizeStyle$1(r2.$attrs.style)
     }, {
       actions: withCtx$1(() => [
-        renderSlot(r2.$slots, "actions")
+        renderSlot$1(r2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("div", Da, [
@@ -43120,7 +43167,7 @@ const ga = {
       onClick: s2[1] || (s2[1] = (r2) => e2.value.focus())
     }, {
       actions: withCtx$1(() => [
-        renderSlot(i2.$slots, "actions")
+        renderSlot$1(i2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("input", mergeProps$1({
@@ -43183,7 +43230,7 @@ const ga = {
       onMousedown: a2
     }, {
       actions: withCtx$1(() => [
-        renderSlot(u2.$slots, "actions")
+        renderSlot$1(u2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         withDirectives$1(createBaseVNode$1("input", mergeProps$1({
@@ -43291,7 +43338,7 @@ const Fa = ["value"], za = {
       onClick: s2[1] || (s2[1] = (r2) => e2.value.focus())
     }, {
       actions: withCtx$1(() => [
-        renderSlot(i2.$slots, "actions")
+        renderSlot$1(i2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("textarea", mergeProps$1({
@@ -43341,7 +43388,7 @@ const Fa = ["value"], za = {
       default: withCtx$1(() => [
         createBaseVNode$1("div", ja, [
           createBaseVNode$1("div", Ka, [
-            renderSlot(o2.$slots, "default", { label: s2.value }, () => [
+            renderSlot$1(o2.$slots, "default", { label: s2.value }, () => [
               createTextVNode$1(toDisplayString$1(s2.value), 1)
             ])
           ]),
@@ -43372,7 +43419,7 @@ const Ja = {
       style: normalizeStyle$1(e2.$attrs.style)
     }, {
       actions: withCtx$1(() => [
-        renderSlot(e2.$slots, "actions")
+        renderSlot$1(e2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createVNode$1(Qa, {
@@ -43451,7 +43498,7 @@ const Ja = {
         onMouseenter: (a2) => r2.value = h2.key,
         onMouseleave: l[0] || (l[0] = (a2) => r2.value = null)
       }, [
-        renderSlot(o2.$slots, "default", {
+        renderSlot$1(o2.$slots, "default", {
           color: h2.color
         }, () => [
           createBaseVNode$1("div", {
@@ -43516,7 +43563,7 @@ const Ja = {
       onMouseenter: (l) => i2.value = o2.key,
       onMouseleave: r2[0] || (r2[0] = (l) => i2.value = null)
     }, [
-      renderSlot(s2.$slots, "default", { token: o2 }),
+      renderSlot$1(s2.$slots, "default", { token: o2 }),
       createBaseVNode$1("div", hc, [
         createBaseVNode$1("div", ac, [
           createBaseVNode$1("pre", cc, toDisplayString$1(o2.name), 1),
@@ -43570,7 +43617,7 @@ const Ja = {
         onMouseenter: (h2) => s2.value = l.key,
         onMouseleave: o2[0] || (o2[0] = (h2) => s2.value = null)
       }, [
-        renderSlot(r2.$slots, "default", { token: l }),
+        renderSlot$1(r2.$slots, "default", { token: l }),
         createBaseVNode$1("div", null, [
           createBaseVNode$1("div", mc, [
             withDirectives$1((openBlock$1(), createElementBlock$1("pre", wc, [
@@ -43624,7 +43671,7 @@ const vc = { class: "-htw-my-1" }, Sc = ["id", "name", "value", "checked", "onCh
       style: normalizeStyle$1(o2.$attrs.style)
     }, {
       actions: withCtx$1(() => [
-        renderSlot(o2.$slots, "actions")
+        renderSlot$1(o2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("div", vc, [
@@ -57698,7 +57745,7 @@ const Hg = {
         }, null, 512)), [
           [unref$1(VTooltip$2), "JSON error"]
         ]) : createCommentVNode$1("", true),
-        renderSlot(c2.$slots, "actions", {}, void 0, true)
+        renderSlot$1(c2.$slots, "actions", {}, void 0, true)
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("div", mergeProps$1({
@@ -57760,7 +57807,7 @@ const $g = (n2, t2) => {
       style: normalizeStyle$1(h2.$attrs.style)
     }, {
       actions: withCtx$1(() => [
-        renderSlot(h2.$slots, "actions")
+        renderSlot$1(h2.$slots, "actions")
       ]),
       default: withCtx$1(() => [
         createBaseVNode$1("div", zg, [
@@ -58218,7 +58265,7 @@ var main$1 = {
   });
 })(main$1);
 var mainExports = {};
-var main = {
+var main$2 = {
   get exports() {
     return mainExports;
   },
@@ -60303,7 +60350,7 @@ var main = {
       }(787);
     })();
   });
-})(main);
+})(main$2);
 const languages = [
   {
     id: "abap",
@@ -77116,7 +77163,7 @@ var TimePickerModeTypes = /* @__PURE__ */ ((TimePickerModeTypes2) => {
   TimePickerModeTypes2["Normal"] = "normal";
   return TimePickerModeTypes2;
 })(TimePickerModeTypes || {});
-const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
   __name: "EasyIcon",
   props: {
     icon: { type: null, required: true },
@@ -77139,7 +77186,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   var _a3, _b, _c2, _d2;
   return openBlock(), createBlock(VTooltip, mergeProps((_b = (_a3 = $setup.icon) == null ? void 0 : _a3.tooltip) == null ? void 0 : _b.props(), {
     disabled: ((_d2 = (_c2 = $setup.icon) == null ? void 0 : _c2.tooltip) == null ? void 0 : _d2.disabled) ?? true
@@ -77185,9 +77232,9 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   }, 16, ["disabled"]);
 }
-_sfc_main$b.__file = "src/components/elements/EasyIcon.vue";
-const EasyIcon = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/elements/EasyIcon.vue"]]);
-const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
+_sfc_main$c.__file = "src/components/elements/EasyIcon.vue";
+const EasyIcon = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/elements/EasyIcon.vue"]]);
+const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
   __name: "EasyInput",
   props: {
     field: { type: null, required: true },
@@ -77284,7 +77331,7 @@ const _hoisted_2$2 = {
   key: 1,
   class: "mb-3 mt-4"
 };
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   var _a3, _b;
   const _directive_maska = resolveDirective("maska");
   return $setup.showField ? withDirectives((openBlock(), createBlock(resolveDynamicComponent((_a3 = $setup.field) == null ? void 0 : _a3.component), mergeProps({
@@ -77406,12 +77453,12 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     [_directive_maska, [$setup.maskingOptions]]
   ]) : createCommentVNode("v-if", true);
 }
-_sfc_main$a.__file = "src/components/fields/EasyInput.vue";
-const EasyInput = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyInput.vue"]]);
+_sfc_main$b.__file = "src/components/fields/EasyInput.vue";
+const EasyInput = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyInput.vue"]]);
 const __default__$1 = {
   name: "EasyButton"
 };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
   ...__default__$1,
   props: {
     button: { type: Object, required: true },
@@ -77445,7 +77492,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   var _a3, _b, _c2, _d2;
   return openBlock(), createBlock(VTooltip, mergeProps((_b = (_a3 = $setup.button) == null ? void 0 : _a3.tooltip) == null ? void 0 : _b.props(), {
     disabled: ((_d2 = (_c2 = $setup.button) == null ? void 0 : _c2.tooltip) == null ? void 0 : _d2.disabled) ?? true
@@ -77490,9 +77537,9 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   }, 16, ["disabled"]);
 }
-_sfc_main$9.__file = "src/components/elements/EasyButton.vue";
-const EasyButton = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/elements/EasyButton.vue"]]);
-const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$a.__file = "src/components/elements/EasyButton.vue";
+const EasyButton = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/elements/EasyButton.vue"]]);
+const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
   __name: "InputForm",
   props: {
     form: {
@@ -77598,7 +77645,7 @@ const _hoisted_2$1 = /* @__PURE__ */ createBaseVNode(
   -1
   /* HOISTED */
 );
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VRow, null, {
     default: withCtx(() => {
       var _a3;
@@ -77712,9 +77759,9 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$8.__file = "src/components/forms/InputForm.vue";
-const InputForm = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/InputForm.vue"]]);
-const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$9.__file = "src/components/forms/InputForm.vue";
+const InputForm = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/InputForm.vue"]]);
+const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
   __name: "ActionForm",
   props: {
     form: { type: Object, required: true }
@@ -77776,7 +77823,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VRow, {
     justify: $setup.form.justify_row
   }, {
@@ -77817,12 +77864,12 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   }, 8, ["justify"]);
 }
-_sfc_main$7.__file = "src/components/forms/ActionForm.vue";
-const ActionForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/ActionForm.vue"]]);
+_sfc_main$8.__file = "src/components/forms/ActionForm.vue";
+const ActionForm = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/ActionForm.vue"]]);
 const __default__ = {
   name: "ErrorForm"
 };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
   ...__default__,
   props: {
     text: {
@@ -77838,7 +77885,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VCol, { cols: 12 }, {
     default: withCtx(() => [
       createVNode(VRow, null, {
@@ -77871,9 +77918,9 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$6.__file = "src/components/forms/ErrorForm.vue";
-const ErrorForm = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/ErrorForm.vue"]]);
-const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$7.__file = "src/components/forms/ErrorForm.vue";
+const ErrorForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/forms/ErrorForm.vue"]]);
+const _sfc_main$6 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyCheckboxGroup",
   props: {
     items: { type: Array, required: true },
@@ -77934,7 +77981,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VCard, { elevation: "0" }, {
     default: withCtx(() => [
       createVNode(VCardTitle, null, {
@@ -77997,9 +78044,9 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$5.__file = "src/components/fields/EasyCheckboxGroup.vue";
-const EasyCheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyCheckboxGroup.vue"]]);
-const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$6.__file = "src/components/fields/EasyCheckboxGroup.vue";
+const EasyCheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyCheckboxGroup.vue"]]);
+const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyColorPicker",
   props: {
     menu: { type: Object, required: true },
@@ -78050,7 +78097,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VRow, { "no-gutters": "" }, {
     default: withCtx(() => [
       createVNode(VMenu, mergeProps({
@@ -78106,8 +78153,8 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$4.__file = "src/components/fields/EasyColorPicker.vue";
-const EasyColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyColorPicker.vue"]]);
+_sfc_main$5.__file = "src/components/fields/EasyColorPicker.vue";
+const EasyColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyColorPicker.vue"]]);
 var momentTimezone$1 = { exports: {} };
 var momentTimezone = { exports: {} };
 //! moment.js
@@ -83398,7 +83445,7 @@ var moment = momentTimezone$1.exports = momentTimezoneExports$1;
 moment.tz.load(require$$1);
 var momentTimezoneExports = momentTimezone$1.exports;
 const moment$1 = /* @__PURE__ */ getDefaultExportFromCjs(momentTimezoneExports);
-const _sfc_main$3 = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyDatePicker",
   props: {
     menu: { type: Object, required: true },
@@ -83450,7 +83497,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_v_date_picker = resolveComponent("v-date-picker");
   return openBlock(), createBlock(VRow, { "no-gutters": "" }, {
     default: withCtx(() => {
@@ -83519,9 +83566,9 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$3.__file = "src/components/fields/EasyDatePicker.vue";
-const EasyDatePicker = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyDatePicker.vue"]]);
-const _sfc_main$2 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$4.__file = "src/components/fields/EasyDatePicker.vue";
+const EasyDatePicker = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyDatePicker.vue"]]);
+const _sfc_main$3 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyPassword",
   props: {
     modelValue: { type: null, required: true, default: "" },
@@ -83669,7 +83716,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VRow, null, {
     default: withCtx(() => [
       createVNode(VCol, { cols: 12 }, {
@@ -83720,9 +83767,9 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main$2.__file = "src/components/fields/EasyPassword.vue";
-const EasyPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyPassword.vue"]]);
-const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
+_sfc_main$3.__file = "src/components/fields/EasyPassword.vue";
+const EasyPassword = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyPassword.vue"]]);
+const _sfc_main$2 = /* @__PURE__ */ defineComponent$1({
   __name: "TempTimePicker",
   props: {
     modelValue: { type: null, required: true, default: "" },
@@ -83879,7 +83926,7 @@ const _hoisted_3 = /* @__PURE__ */ createBaseVNode(
   /* HOISTED */
 );
 const _hoisted_4 = { class: "v-picker__actions" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_v_picker_title = resolveComponent("v-picker-title");
   const _directive_maska = resolveDirective("maska");
   return withDirectives((openBlock(), createBlock(VSheet, {
@@ -84004,9 +84051,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     [ClickOutside, $setup.clickOutside]
   ]);
 }
-_sfc_main$1.__file = "src/components/fields/TempTimePicker.vue";
-const TempTimePicker = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/TempTimePicker.vue"]]);
-const _sfc_main = /* @__PURE__ */ defineComponent$1({
+_sfc_main$2.__file = "src/components/fields/TempTimePicker.vue";
+const TempTimePicker = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/TempTimePicker.vue"]]);
+const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyTimePicker",
   props: {
     menu: { type: Object, required: true },
@@ -84061,7 +84108,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent$1({
     return __returned__;
   }
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VRow, { "no-gutters": "" }, {
     default: withCtx(() => {
       var _a3;
@@ -84126,8 +84173,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main.__file = "src/components/fields/EasyTimePicker.vue";
-const EasyTimePicker = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyTimePicker.vue"]]);
+_sfc_main$1.__file = "src/components/fields/EasyTimePicker.vue";
+const EasyTimePicker = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/components/fields/EasyTimePicker.vue"]]);
 /*! maska v2.1.10 | (c) Alexander Shabunevich | Released under the MIT license */
 var W$1 = Object.defineProperty;
 var b = (n2, t2, s2) => t2 in n2 ? W$1(n2, t2, { enumerable: true, configurable: true, writable: true, value: s2 }) : n2[t2] = s2;
@@ -84731,7 +84778,46 @@ function inject(key) {
     return provides[key];
   }
 }
-const setupVue3 = defineSetupVue3(({ app }) => {
+const _sfc_main = {};
+function _sfc_render(_ctx, _cache) {
+  return openBlock(), createBlock(VContainer, null, {
+    default: withCtx(() => [
+      createVNode(VRow, null, {
+        default: withCtx(() => [
+          createVNode(VCol, null, {
+            default: withCtx(() => [
+              createTextVNode(" Wrapper Wrapper ")
+            ]),
+            _: 1
+            /* STABLE */
+          })
+        ]),
+        _: 1
+        /* STABLE */
+      }),
+      createVNode(VRow, null, {
+        default: withCtx(() => [
+          createVNode(VCol, null, {
+            default: withCtx(() => [
+              renderSlot(_ctx.$slots, "default")
+            ]),
+            _: 3
+            /* FORWARDED */
+          })
+        ]),
+        _: 3
+        /* FORWARDED */
+      })
+    ]),
+    _: 3
+    /* FORWARDED */
+  });
+}
+_sfc_main.__file = "src/histoire/HistoireWrapper.vue";
+const HistoireWrapper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/histoire/HistoireWrapper.vue"]]);
+const main = "";
+const materialdesignicons = "";
+const setupVue3 = defineSetupVue3(({ app, addWrapper }) => {
   app.use(
     createVuetify({
       components: {
@@ -84740,8 +84826,7 @@ const setupVue3 = defineSetupVue3(({ app }) => {
       },
       directives
     })
-  );
-  app.use(FormLoaderPlugin, {
+  ).use(FormLoaderPlugin, {
     backend_domain: "",
     axios_prefix: "",
     csrf_endpoint: "",
@@ -84749,8 +84834,8 @@ const setupVue3 = defineSetupVue3(({ app }) => {
     required_tags_only: false,
     tags_on_placeholder: true,
     tags_on_labels: false
-  });
-  app.use(ie);
+  }).use(ie);
+  addWrapper(HistoireWrapper);
 });
 const m$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -85676,7 +85761,7 @@ export {
   useResizeObserver$1 as a2,
   nm as a3,
   withModifiers$1 as a4,
-  renderSlot as a5,
+  renderSlot$1 as a5,
   vModelText$1 as a6,
   onUnmounted$1 as a7,
   VTooltip$2 as a8,

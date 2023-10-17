@@ -1,1 +1,1 @@
-(global as any).CSS = { supports: () => false };
+// (global as any).CSS = { supports: () => false };
