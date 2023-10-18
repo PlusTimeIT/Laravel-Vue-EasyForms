@@ -1,7 +1,7 @@
 ---
 group: 'top'
 icon: 'carbon:bookmark'
-title: 'Introduction'
+title: 'Intro'
 ---
 :::stylesheet ./src/histoire/styles/histoire.css :::
 

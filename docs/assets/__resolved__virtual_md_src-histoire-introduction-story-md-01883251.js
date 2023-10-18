@@ -77,7 +77,7 @@ const html = `<link href="/@fs/development/plustime/Laravel-Vue-EasyForms/src/hi
 </table>
 </div>
 `;
-const frontmatter = { "group": "top", "icon": "carbon:bookmark", "title": "Introduction" };
+const frontmatter = { "group": "top", "icon": "carbon:bookmark", "title": "Intro" };
 const relativePath = "src/histoire/Introduction.story.md";
 export {
   frontmatter,

@@ -85,7 +85,7 @@
     },
     {
       "id": "src-histoire-introduction-story-js",
-      "title": "Introduction",
+      "title": "Intro",
       "group": "top",
       "layout": {
         "type": "single",
@@ -97,7 +97,7 @@
       "relativePath": "src/histoire/Introduction.story.js",
       "supportPluginId": "vanilla",
       "treePath": [
-        "Introduction"
+        "Intro"
       ],
       "virtual": true,
       "markdownFile": {
@@ -107,7 +107,7 @@
         "frontmatter": {
           "group": "top",
           "icon": "carbon:bookmark",
-          "title": "Introduction"
+          "title": "Intro"
         }
       }
     },
@@ -210,7 +210,7 @@
       "frontmatter": {
         "group": "top",
         "icon": "carbon:bookmark",
-        "title": "Introduction"
+        "title": "Intro"
       }
     }
   ]
