@@ -4796,7 +4796,7 @@ body {
   align-items: center;
   letter-spacing: inherit;
   line-height: inherit;
-  max-width: 90%;
+  max-width: calc(100% - 2px);
 }
 .v-autocomplete__selection {
   margin-top: var(--v-input-chips-margin-top);
@@ -5936,14 +5936,10 @@ body {
   display: flex;
   align-items: center;
   grid-area: append;
-  overflow: hidden;
 }
 .v-list-item__append .v-list-item__spacer {
   order: -1;
   transition: 150ms width cubic-bezier(0.4, 0, 0.2, 1);
-}
-.v-navigation-drawer--rail:not(.v-navigation-drawer--expand-on-hover) .v-list-item__append .v-list-item__spacer, .v-navigation-drawer--rail.v-navigation-drawer--expand-on-hover:not(.v-navigation-drawer--is-hovering) .v-list-item__append .v-list-item__spacer {
-  width: 0;
 }
 .v-list-item__append > .v-badge ~ .v-list-item__spacer,
 .v-list-item__append > .v-icon ~ .v-list-item__spacer,
@@ -7160,12 +7156,6 @@ textarea.v-field__input::placeholder {
   cursor: pointer;
 }
 
-.v-data-table .v-table__wrapper > table > thead > tr > td,
-.v-data-table .v-table__wrapper > table > thead > tr th,
-.v-data-table .v-table__wrapper > table tbody > tr > td,
-.v-data-table .v-table__wrapper > table tbody > tr th {
-  background: rgb(var(--v-theme-surface));
-}
 .v-data-table .v-table__wrapper > table > thead > tr > td.v-data-table-column--align-end,
 .v-data-table .v-table__wrapper > table > thead > tr th.v-data-table-column--align-end,
 .v-data-table .v-table__wrapper > table tbody > tr > td.v-data-table-column--align-end,
@@ -7714,7 +7704,6 @@ textarea.v-field__input::placeholder {
 }
 .v-card--hover {
   cursor: pointer;
-  box-shadow: 0px 0px 0px 0px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
 }
 .v-card--hover::before, .v-card--hover::after {
   border-radius: inherit;
@@ -7743,6 +7732,9 @@ textarea.v-field__input::placeholder {
 }
 .v-card--hover:hover::before {
   opacity: 0;
+}
+.v-card--hover:hover {
+  box-shadow: 0px 5px 5px -3px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 8px 10px 1px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 3px 14px 2px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
 }
 .v-card--link {
   cursor: pointer;
@@ -8371,6 +8363,9 @@ textarea.v-field__input::placeholder {
   border-radius: 4px;
   overflow: hidden;
 }
+.v-stepper.v-sheet.v-stepper--flat {
+  box-shadow: 0px 0px 0px 0px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
+}
 
 .v-stepper-header {
   box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
@@ -8383,6 +8378,12 @@ textarea.v-field__input::placeholder {
 }
 .v-stepper-header .v-divider {
   margin: 0 -16px;
+}
+.v-stepper-header .v-divider:last-child {
+  margin-inline-end: 0;
+}
+.v-stepper-header .v-divider:first-child {
+  margin-inline-start: 0;
 }
 .v-stepper--alt-labels .v-stepper-header {
   height: auto;
@@ -10153,6 +10154,11 @@ textarea.v-field__input::placeholder {
   opacity: 0.2;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
+}
+
+.v-navigation-drawer__prepend,
+.v-navigation-drawer__append {
+  overflow: hidden;
 }.v-pagination__list {
   display: inline-flex;
   list-style-type: none;
@@ -27024,8 +27030,8 @@ html.overflow-y-hidden {
 }/* MaterialDesignIcons.com */
 @font-face {
   font-family: "Material Design Icons";
-  src: url("./materialdesignicons-webfont-5159a347.eot?v=7.3.67");
-  src: url("./materialdesignicons-webfont-5159a347.eot?#iefix&v=7.3.67") format("embedded-opentype"), url("./materialdesignicons-webfont-31010194.woff2?v=7.3.67") format("woff2"), url("./materialdesignicons-webfont-28c8f97f.woff?v=7.3.67") format("woff"), url("./materialdesignicons-webfont-be825c12.ttf?v=7.3.67") format("truetype");
+  src: url("/Laravel-Vue-EasyForms/assets/materialdesignicons-webfont-5159a347.eot?v=7.3.67");
+  src: url("/Laravel-Vue-EasyForms/assets/materialdesignicons-webfont-5159a347.eot?#iefix&v=7.3.67") format("embedded-opentype"), url("/Laravel-Vue-EasyForms/assets/materialdesignicons-webfont-31010194.woff2?v=7.3.67") format("woff2"), url("/Laravel-Vue-EasyForms/assets/materialdesignicons-webfont-28c8f97f.woff?v=7.3.67") format("woff"), url("/Laravel-Vue-EasyForms/assets/materialdesignicons-webfont-be825c12.ttf?v=7.3.67") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

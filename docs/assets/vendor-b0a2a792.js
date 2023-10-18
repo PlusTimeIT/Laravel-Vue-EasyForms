@@ -30663,6 +30663,10 @@ function only(obj, include) {
 const onRE = /^on[^a-z]/;
 const isOn = (key) => onRE.test(key);
 const bubblingEvents = ["onAfterscriptexecute", "onAnimationcancel", "onAnimationend", "onAnimationiteration", "onAnimationstart", "onAuxclick", "onBeforeinput", "onBeforescriptexecute", "onChange", "onClick", "onCompositionend", "onCompositionstart", "onCompositionupdate", "onContextmenu", "onCopy", "onCut", "onDblclick", "onFocusin", "onFocusout", "onFullscreenchange", "onFullscreenerror", "onGesturechange", "onGestureend", "onGesturestart", "onGotpointercapture", "onInput", "onKeydown", "onKeypress", "onKeyup", "onLostpointercapture", "onMousedown", "onMousemove", "onMouseout", "onMouseover", "onMouseup", "onMousewheel", "onPaste", "onPointercancel", "onPointerdown", "onPointerenter", "onPointerleave", "onPointermove", "onPointerout", "onPointerover", "onPointerup", "onReset", "onSelect", "onSubmit", "onTouchcancel", "onTouchend", "onTouchmove", "onTouchstart", "onTransitioncancel", "onTransitionend", "onTransitionrun", "onTransitionstart", "onWheel"];
+const compositionIgnoreKeys = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft", "Enter", "Escape", "Tab", " "];
+function isComposingIgnoreKey(e2) {
+  return e2.isComposing && compositionIgnoreKeys.includes(e2.key);
+}
 function filterInputAttrs(attrs) {
   const [events, props] = pick(attrs, [onRE]);
   const inputEvents = omit(events, bubblingEvents);
@@ -68821,20 +68825,46 @@ const VStepperActions = genericComponent()({
       emit2("click:next");
     }
     useRender(() => {
+      const prevSlotProps = {
+        onClick: onClickPrev
+      };
+      const nextSlotProps = {
+        onClick: onClickNext
+      };
       return createVNode("div", {
         "class": "v-stepper-actions"
-      }, [createVNode(VBtn, {
-        "disabled": ["prev", true].includes(props.disabled),
-        "text": t2(props.prevText),
-        "variant": "text",
-        "onClick": onClickPrev
-      }, null), createVNode(VBtn, {
-        "disabled": ["next", true].includes(props.disabled),
-        "color": props.color,
-        "text": t2(props.nextText),
-        "variant": "tonal",
-        "onClick": onClickNext
-      }, null)]);
+      }, [createVNode(VDefaultsProvider, {
+        "defaults": {
+          VBtn: {
+            disabled: ["prev", true].includes(props.disabled),
+            text: t2(props.prevText),
+            variant: "text"
+          }
+        }
+      }, {
+        default: () => {
+          var _a3;
+          return [((_a3 = slots.prev) == null ? void 0 : _a3.call(slots, {
+            props: prevSlotProps
+          })) ?? createVNode(VBtn, prevSlotProps, null)];
+        }
+      }), createVNode(VDefaultsProvider, {
+        "defaults": {
+          VBtn: {
+            color: props.color,
+            disabled: ["next", true].includes(props.disabled),
+            text: t2(props.nextText),
+            variant: "tonal"
+          }
+        }
+      }, {
+        default: () => {
+          var _a3;
+          return [((_a3 = slots.next) == null ? void 0 : _a3.call(slots, {
+            props: nextSlotProps
+          })) ?? createVNode(VBtn, nextSlotProps, null)];
+        }
+      })]);
     });
     return {};
   }
@@ -69531,7 +69561,7 @@ const VStepper = genericComponent()({
             "key": "stepper-actions",
             "onClick:prev": prev,
             "onClick:next": next
-          }, null))];
+          }, slots))];
         }
       });
     });
@@ -72626,7 +72656,7 @@ const VCombobox = genericComponent()({
     }
     function onKeydown(e2) {
       var _a4;
-      if (props.readonly || (form == null ? void 0 : form.isReadonly.value))
+      if (isComposingIgnoreKey(e2) || props.readonly || (form == null ? void 0 : form.isReadonly.value))
         return;
       const selectionStart = vTextFieldRef.value.selectionStart;
       const length = model.value.length;
@@ -84768,7 +84798,7 @@ function createVuetify() {
     date: date2
   };
 }
-const version = "3.3.21";
+const version = "3.3.22";
 createVuetify.version = version;
 function inject(key) {
   var _a3, _b;
