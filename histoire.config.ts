@@ -13,6 +13,7 @@ export default defineConfig({
       configFile: resolve(__dirname, "./sandbox/src/plugins/vuetify/options"),
     }),
   ],
+  routerMode: "hash",
   theme: {
     title: "Vue EasyForms Documentation",
     colors: {
