@@ -6,7 +6,7 @@ import { vuetifyDesignSystem } from "histoire-vuetify-design-system/design";
 
 export default defineConfig({
   outDir: resolve(__dirname, "docs"),
-  setupFile: resolve(__dirname, "./src/histoire/histoire.setup.ts"),
+  setupFile: "./src/histoire/histoire.setup.ts",
   plugins: [
     HstVue(),
     vuetifyDesignSystem({

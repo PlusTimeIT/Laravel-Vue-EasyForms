@@ -56,34 +56,6 @@
       }
     },
     {
-      "id": "src-histoire-introduction-story-js",
-      "title": "Introduction",
-      "group": "top",
-      "layout": {
-        "type": "single",
-        "iframe": true
-      },
-      "icon": "carbon:bookmark",
-      "docsOnly": true,
-      "variants": [],
-      "relativePath": "src/histoire/Introduction.story.js",
-      "supportPluginId": "vanilla",
-      "treePath": [
-        "Introduction"
-      ],
-      "virtual": true,
-      "markdownFile": {
-        "id": "src-histoire-introduction-story-md",
-        "relativePath": "src/histoire/Introduction.story.md",
-        "isRelatedToStory": false,
-        "frontmatter": {
-          "group": "top",
-          "icon": "carbon:bookmark",
-          "title": "Introduction"
-        }
-      }
-    },
-    {
       "id": "src-histoire-installation-story-js",
       "title": "Installation",
       "group": "getting-started",
@@ -108,6 +80,34 @@
           "group": "getting-started",
           "icon": "carbon:bookmark",
           "title": "Installation"
+        }
+      }
+    },
+    {
+      "id": "src-histoire-introduction-story-js",
+      "title": "Introduction",
+      "group": "top",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "icon": "carbon:bookmark",
+      "docsOnly": true,
+      "variants": [],
+      "relativePath": "src/histoire/Introduction.story.js",
+      "supportPluginId": "vanilla",
+      "treePath": [
+        "Introduction"
+      ],
+      "virtual": true,
+      "markdownFile": {
+        "id": "src-histoire-introduction-story-md",
+        "relativePath": "src/histoire/Introduction.story.md",
+        "isRelatedToStory": false,
+        "frontmatter": {
+          "group": "top",
+          "icon": "carbon:bookmark",
+          "title": "Introduction"
         }
       }
     },
@@ -194,16 +194,6 @@
       }
     },
     {
-      "id": "src-histoire-introduction-story-md",
-      "relativePath": "src/histoire/Introduction.story.md",
-      "isRelatedToStory": false,
-      "frontmatter": {
-        "group": "top",
-        "icon": "carbon:bookmark",
-        "title": "Introduction"
-      }
-    },
-    {
       "id": "src-histoire-installation-story-md",
       "relativePath": "src/histoire/Installation.story.md",
       "isRelatedToStory": false,
@@ -211,6 +201,16 @@
         "group": "getting-started",
         "icon": "carbon:bookmark",
         "title": "Installation"
+      }
+    },
+    {
+      "id": "src-histoire-introduction-story-md",
+      "relativePath": "src/histoire/Introduction.story.md",
+      "isRelatedToStory": false,
+      "frontmatter": {
+        "group": "top",
+        "icon": "carbon:bookmark",
+        "title": "Introduction"
       }
     }
   ]
