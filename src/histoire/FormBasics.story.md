@@ -3,7 +3,6 @@ group: 'forms'
 icon: 'carbon:bookmark'
 title: 'Form Basics'
 ---
-:::stylesheet ./src/histoire/styles/histoire.css :::
 
 # Form Basics
 

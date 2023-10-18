@@ -3,7 +3,6 @@ group: 'top'
 icon: 'carbon:bookmark'
 title: 'Intro'
 ---
-:::stylesheet ./src/histoire/styles/histoire.css :::
 
 # Introduction
 

@@ -84847,6 +84847,7 @@ _sfc_main.__file = "src/histoire/HistoireWrapper.vue";
 const HistoireWrapper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/development/plustime/Laravel-Vue-EasyForms/src/histoire/HistoireWrapper.vue"]]);
 const main = "";
 const materialdesignicons = "";
+const histoire = "";
 const setupVue3 = defineSetupVue3(({ app, addWrapper }) => {
   app.use(
     createVuetify({

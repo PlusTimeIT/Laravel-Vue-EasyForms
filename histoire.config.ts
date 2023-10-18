@@ -39,7 +39,8 @@ export default defineConfig({
     ],
   },
   vite: {
-    base: "/Laravel-Vue-EasyForms/",
+    base: "./",
+    publicDir: "/Laravel-Vue-EasyForms/",
   },
   storyIgnored: ["**/node_modules/**", "**/dist/**"],
   markdown: (md) => {

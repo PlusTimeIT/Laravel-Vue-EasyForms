@@ -3,7 +3,6 @@ group: 'getting-started'
 icon: 'carbon:bookmark'
 title: 'Installation'
 ---
-:::stylesheet ./src/histoire/styles/histoire.css :::
 
 # Installation
 
