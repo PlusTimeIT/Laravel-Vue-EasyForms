@@ -45,16 +45,6 @@ export default defineConfig({
   storyIgnored: ["**/node_modules/**", "**/dist/**"],
   markdown: (md) => {
     md.use(container, {
-      name: "stylesheet",
-      openRender: (tokens: any, index: any) => {
-        const stylesheet = tokens[index].info.split(" ")[1] ?? "style.css";
-        return `<link href="/@fs${resolve(__dirname, stylesheet)}" rel="stylesheet" />`;
-      },
-      closeRender: () => {
-        return `\n`;
-      },
-    });
-    md.use(container, {
       name: "alert",
       openRender: (tokens: any, index: any) => {
         return `<div class="${tokens[index].info || "alert"}"><div class="contents">`;
