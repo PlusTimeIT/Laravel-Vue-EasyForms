@@ -1,19 +1,19 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.4.3-beta",
+  "version": "0.4.4-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": "PlusTimeIT <kane@plustime.com.au> (https://plustime.com.au/)",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
     "build": "./.scripts/build.sh --non-interactive",
     "build:vite": "rimraf dist && vite build",
     "build:types": "vue-tsc --project tsconfig.build-types.json --declaration",
     "build:story": "histoire build",
     "type:check": "vue-tsc --project tsconfig.build-types.json",
     "test": "vitest --ui",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
     "bench": "vitest bench",
     "coverage": "vitest run --coverage",
     "preview": "vite preview --outDir ./coverage",
@@ -27,6 +27,46 @@
     "*": {
       "index": [
         "dist/index.d.ts"
+      ]
+    },
+    "*/enums": {
+      "index": [
+        "dist/enums/index.d.ts"
+      ]
+    },
+    "*/types": {
+      "index": [
+        "dist/types/index.d.ts"
+      ]
+    },
+    "*/forms": {
+      "index": [
+        "dist/classes/forms/index.d.ts"
+      ]
+    },
+    "*/fields": {
+      "index": [
+        "dist/classes/fields/index.d.ts"
+      ]
+    },
+    "*/actions": {
+      "index": [
+        "dist/classes/actions/index.d.ts"
+      ]
+    },
+    "*/elements": {
+      "index": [
+        "dist/classes/elements/index.d.ts"
+      ]
+    },
+    "*/properties": {
+      "index": [
+        "dist/classes/properties/index.d.ts"
+      ]
+    },
+    "*/server": {
+      "index": [
+        "dist/classes/server/index.d.ts"
       ]
     }
   },
