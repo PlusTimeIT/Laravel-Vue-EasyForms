@@ -1,4 +1,4 @@
-import { ActionForm } from "#/classes/forms";
+import { ActionForm } from "../../classes/forms";
 declare const _default: import("vue").DefineComponent<{
     form: {
         type: import("vue").PropType<ActionForm>;

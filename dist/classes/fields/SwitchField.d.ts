@@ -1,6 +1,6 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { DirectionType } from "#/enums";
-import { Icon } from "#/classes/elements";
+import { EasyField } from "../../abstracts/EasyField";
+import { DirectionType } from "../../enums";
+import { Icon } from "../../classes/elements";
 export declare class SwitchField extends EasyField {
     center_affix: boolean;
     component: string;

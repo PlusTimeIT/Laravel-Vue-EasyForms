@@ -6,8 +6,8 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import * as labs from "vuetify/labs/components";
-import { Icon, Tooltip } from "#/classes/elements";
-import EasyIcon from "#/components/elements/EasyIcon.vue";
+import { Icon, Tooltip } from "../../../classes/elements";
+import EasyIcon from "../../../components/elements/EasyIcon.vue";
 
 const vuetify = createVuetify({
   components: {

@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.4.4-beta",
+  "version": "0.4.5-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": "PlusTimeIT <kane@plustime.com.au> (https://plustime.com.au/)",
   "type": "module",
@@ -21,52 +21,20 @@
     "story:preview": "histoire preview"
   },
   "exports": {
-    ".": "./dist"
+    ".": "./dist/index",
+    "./enums": "./dist/enums/index",
+    "./types": "./dist/types/index",
+    "./forms": "./dist/classes/forms/index.d.ts",
+    "./fields": "./dist/classes/fields/index.d.ts",
+    "./actions": "./dist/classes/actions/index.d.ts",
+    "./elements": "./dist/classes/elements/index.d.ts",
+    "./properties": "./dist/classes/properties/index.d.ts",
+    "./server": "./dist/classes/server/index.d.ts"
   },
   "typesVersions": {
     "*": {
       "index": [
         "dist/index.d.ts"
-      ]
-    },
-    "*/enums": {
-      "index": [
-        "dist/enums/index.d.ts"
-      ]
-    },
-    "*/types": {
-      "index": [
-        "dist/types/index.d.ts"
-      ]
-    },
-    "*/forms": {
-      "index": [
-        "dist/classes/forms/index.d.ts"
-      ]
-    },
-    "*/fields": {
-      "index": [
-        "dist/classes/fields/index.d.ts"
-      ]
-    },
-    "*/actions": {
-      "index": [
-        "dist/classes/actions/index.d.ts"
-      ]
-    },
-    "*/elements": {
-      "index": [
-        "dist/classes/elements/index.d.ts"
-      ]
-    },
-    "*/properties": {
-      "index": [
-        "dist/classes/properties/index.d.ts"
-      ]
-    },
-    "*/server": {
-      "index": [
-        "dist/classes/server/index.d.ts"
       ]
     }
   },

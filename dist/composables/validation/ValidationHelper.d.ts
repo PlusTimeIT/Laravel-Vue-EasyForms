@@ -1,4 +1,4 @@
-import { ValidationRule } from "#/classes/properties";
+import { ValidationRule } from "../../classes/properties";
 export declare class ValidationHelper {
     static exists(rule: ValidationRule): boolean;
     static getFunction(rule: ValidationRule): Function;

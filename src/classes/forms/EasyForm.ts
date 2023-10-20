@@ -1,10 +1,10 @@
-import HasForm from "#/contracts/HasForm";
-import { isArray, isEmpty } from "#/composables/utils/Types";
-import { AlertTriggers } from "#/enums";
-import { AxiosCalls } from "#/enums";
-import { Alert } from "#/classes/elements";
-import { ServerCall, ServerResponse } from "#/classes/server";
-import { AdditionalData, AxiosOptions, DataItem } from "#/classes/properties";
+import HasForm from "../../contracts/HasForm";
+import { isArray, isEmpty } from "../../composables/utils/Types";
+import { AlertTriggers } from "../../enums";
+import { AxiosCalls } from "../../enums";
+import { Alert } from "../../classes/elements";
+import { ServerCall, ServerResponse } from "../../classes/server";
+import { AdditionalData, AxiosOptions, DataItem } from "../../classes/properties";
 /**
  * Basic Form Class
  */

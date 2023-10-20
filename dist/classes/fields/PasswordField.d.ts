@@ -1,4 +1,4 @@
-import { EasyField } from "#/abstracts/EasyField";
+import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
 export declare class PasswordField extends EasyField {
     component: string;

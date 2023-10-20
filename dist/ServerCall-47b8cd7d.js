@@ -5,6 +5,22 @@ import i from "axios";
 class o {
   constructor(s) {
     /**
+     * HTTP config object
+     */
+    e(this, "config", {});
+    /**
+     * Axios return data
+     */
+    e(this, "data", null);
+    /**
+     * HTTP headers object
+     */
+    e(this, "headers", {});
+    /**
+     * HTTP request object
+     */
+    e(this, "request", {});
+    /**
      * HTTP status code
      */
     e(this, "status");
@@ -12,32 +28,16 @@ class o {
      * HTTP Status Text
      */
     e(this, "statusText", "");
-    /**
-     * HTTP request object
-     */
-    e(this, "request", {});
-    /**
-     * HTTP headers object
-     */
-    e(this, "headers", {});
-    /**
-     * Axios return data
-     */
-    e(this, "data", null);
-    /**
-     * HTTP config object
-     */
-    e(this, "config", {});
     Object.assign(this, s);
   }
 }
 class m {
+  static mergeData(s, t) {
+    return Object.assign(s, t);
+  }
   static async request(s, t, r = null) {
     const c = await i[s](t, r);
     return new o(c);
-  }
-  static mergeData(s, t) {
-    return Object.assign(s, t);
   }
 }
 export {

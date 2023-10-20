@@ -1,4 +1,4 @@
-import type { FieldType } from "#/types";
+import type { FieldType } from "../../types";
 declare const _default: import("vue").DefineComponent<{
     field: {
         type: import("vue").PropType<FieldType>;

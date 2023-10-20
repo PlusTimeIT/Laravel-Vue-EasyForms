@@ -1,9 +1,9 @@
-import { GotProps } from "#/abstracts/GotProps";
+import { GotProps } from "../../abstracts/GotProps";
 export declare class FormContainer extends GotProps {
     cols: number;
-    sm: number;
-    md: number;
     lg: number;
+    md: number;
+    sm: number;
     constructor(init?: Partial<FormContainer>);
 }
 //# sourceMappingURL=FormContainer.d.ts.map

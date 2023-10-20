@@ -1,4 +1,4 @@
-import { StringHelper } from "#/classes/utils/StringHelper";
+import { StringHelper } from "../../classes/utils/StringHelper";
 /**
  * Prop Helper for checking and formatting properties
  */

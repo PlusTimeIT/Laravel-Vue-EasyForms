@@ -1,4 +1,4 @@
-import { TypeHelper } from "#/classes/utils";
+import { TypeHelper } from "../../classes/utils";
 
 const isArray = (o: any): boolean => TypeHelper.isArray(o);
 const isObject = (o: any): boolean => TypeHelper.isObject(o);

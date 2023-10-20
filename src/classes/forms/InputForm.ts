@@ -1,12 +1,12 @@
 import { EasyForm } from "./EasyForm";
-import { JustifyRow } from "#/enums";
-import { AlignRow } from "#/enums";
-import { Button } from "#/classes/elements";
-import { AxiosHeader } from "#/classes/properties/AxiosHeader";
-import { DataItem } from "#/classes/properties/DataItem";
-import { isArray, isObject, isEmpty } from "#/composables/utils/Types";
-import { ContentTypes } from "#/enums";
-import type { FieldType } from "#/types";
+import { JustifyRow } from "../../enums";
+import { AlignRow } from "../../enums";
+import { Button } from "../../classes/elements";
+import { AxiosHeader } from "../../classes/properties/AxiosHeader";
+import { DataItem } from "../../classes/properties/DataItem";
+import { isArray, isObject, isEmpty } from "../../composables/utils/Types";
+import { ContentTypes } from "../../enums";
+import type { FieldType } from "../../types";
 
 /**
  * Input form that uses input fields
@@ -26,20 +26,6 @@ export class InputForm extends EasyForm {
     if (init !== undefined && init.fields !== undefined) {
       this.original = init.fields.map((field) => new DataItem({ key: field.name, value: field.value })) ?? [];
     }
-  }
-
-  reset(): this {
-    super.reset();
-    // TODO: Custom components not resetting on value: DatePicker, TimePicker, ColorPicker, PasswordField
-    this.original.forEach((data) => {
-      const field: FieldType | undefined = this.fields.find((f) => f.name == data.key);
-      if (isEmpty(field)) {
-        // alert not found, nothing to trigger
-        return this;
-      }
-      field!.value = data.value;
-    });
-    return this;
   }
 
   data(): object {
@@ -99,5 +85,19 @@ export class InputForm extends EasyForm {
       result["enctype"] = ContentTypes.MultiPart;
     }
     return result;
+  }
+
+  reset(): this {
+    super.reset();
+    // TODO: Custom components not resetting on value: DatePicker, TimePicker, ColorPicker, PasswordField
+    this.original.forEach((data) => {
+      const field: FieldType | undefined = this.fields.find((f) => f.name == data.key);
+      if (isEmpty(field)) {
+        // alert not found, nothing to trigger
+        return this;
+      }
+      field!.value = data.value;
+    });
+    return this;
   }
 }

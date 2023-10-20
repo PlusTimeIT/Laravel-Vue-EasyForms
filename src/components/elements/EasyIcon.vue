@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
-import { isEmpty } from "#/composables/utils/Types";
-import { Icon } from "#/classes/elements";
+import { isEmpty } from "../../composables/utils/Types";
+import { Icon } from "../../classes/elements";
 
 interface Props {
   icon: Icon | undefined;

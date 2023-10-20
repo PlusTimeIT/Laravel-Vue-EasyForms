@@ -4,7 +4,7 @@ var e = (s, t, a) => (i(s, typeof t != "symbol" ? t + "" : t, a), a);
 import { B as l } from "./ButtonTypes-4a9e277c.js";
 import { B as r } from "./ButtonVariantTypes-6c8b0d38.js";
 import { D as d } from "./DensityTypes-eaa8882a.js";
-import { G as n } from "./Icon-29f81fc8.js";
+import { G as n } from "./Icon-67bf229a.js";
 class u extends n {
   constructor(a) {
     super(a);

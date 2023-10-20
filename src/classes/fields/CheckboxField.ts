@@ -1,6 +1,6 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { DirectionType } from "#/enums";
-import { Icon } from "#/classes/elements";
+import { EasyField } from "../../abstracts/EasyField";
+import { DirectionType } from "../../enums";
+import { Icon } from "../../classes/elements";
 
 export class CheckboxField extends EasyField {
   center_affix = true;

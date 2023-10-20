@@ -1,6 +1,6 @@
-import { LocationTypes } from "#/enums";
-import { ScrollStrategyTypes } from "#/enums";
-import { GotProps } from "#/abstracts/GotProps";
+import { LocationTypes } from "../../enums";
+import { ScrollStrategyTypes } from "../../enums";
+import { GotProps } from "../../abstracts/GotProps";
 export declare class Menu extends GotProps {
     activator: string | undefined;
     attach: string | boolean;

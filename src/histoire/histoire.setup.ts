@@ -2,7 +2,7 @@ import { defineSetupVue3 } from "@histoire/plugin-vue";
 import * as labs from "vuetify/labs/components";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
-import FormLoaderPlugin from "#/index";
+import FormLoaderPlugin from "../index";
 import HistoireVuetifyDS from "histoire-vuetify-design-system";
 import { createVuetify } from "vuetify";
 import HistoireWrapper from "./HistoireWrapper.vue";

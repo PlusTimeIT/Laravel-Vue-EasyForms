@@ -1,5 +1,5 @@
-import { EasyForm } from "#/classes/forms";
-import { AdditionalData } from "#/classes/properties";
+import { EasyForm } from "../classes/forms";
+import { AdditionalData } from "../classes/properties";
 declare const _default: import("vue").DefineComponent<{
     form: {
         type: (typeof EasyForm)[];
@@ -99,9 +99,9 @@ declare const _default: import("vue").DefineComponent<{
 }, {
     name: string;
     cols: number;
-    sm: number;
-    md: number;
     lg: number;
+    md: number;
+    sm: number;
     form: EasyForm;
     populate: boolean;
     additionalData: AdditionalData;

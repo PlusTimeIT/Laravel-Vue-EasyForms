@@ -52,8 +52,8 @@
 
 <script setup lang="ts">
 import { Ref, ref, onMounted, watch, ComputedRef, computed } from "vue";
-import { TimePickerModeTypes } from "#/enums";
-import { isEmpty } from "#/composables/utils/Types";
+import { TimePickerModeTypes } from "../../enums";
+import { isEmpty } from "../../composables/utils/Types";
 import { Masking } from "../../types/Masking";
 
 // Define the component's props interface

@@ -1,6 +1,6 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { PositionTypes } from "#/enums";
-import { TimePickerModeTypes } from "#/enums";
+import { EasyField } from "../../abstracts/EasyField";
+import { PositionTypes } from "../../enums";
+import { TimePickerModeTypes } from "../../enums";
 export declare class TimePicker extends EasyField {
     cancel_text: string;
     close_on_outside_click: boolean;

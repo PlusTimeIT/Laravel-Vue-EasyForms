@@ -1,8 +1,8 @@
-import FormLoader from "#/components/FormLoader.vue";
-import { InputForm, ActionForm, ErrorForm } from "#/components/forms";
-import { EasyDatePicker, EasyTimePicker, EasyColorPicker, EasyCheckboxGroup, EasyPassword } from "#/components/fields";
-import { PluginOptions } from "#/classes/PluginOptions";
-import { Csrf } from "#/classes/server/Csrf";
+import FormLoader from "./components/FormLoader.vue";
+import { InputForm, ActionForm, ErrorForm } from "./components/forms";
+import { EasyDatePicker, EasyTimePicker, EasyColorPicker, EasyCheckboxGroup, EasyPassword } from "./components/fields";
+import { PluginOptions } from "./classes/PluginOptions";
+import { Csrf } from "./classes/server/Csrf";
 import { vMaska } from "maska";
 import { App, Plugin } from "vue";
 

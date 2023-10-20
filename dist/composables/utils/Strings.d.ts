@@ -1,4 +1,4 @@
-import { MessageParameter } from "#/classes/properties";
+import { MessageParameter } from "../../classes/properties";
 declare const convertMessageHolders: (name: string, message: string, params?: MessageParameter[]) => string;
 declare const snakeToCamel: (o: string) => string;
 declare const capitalizeFirst: (o: string) => string;

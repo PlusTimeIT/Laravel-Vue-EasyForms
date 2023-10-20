@@ -1,7 +1,7 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { DirectionType } from "#/enums";
-import { Icon } from "#/classes/elements";
-import { RadioField } from "#/classes/fields";
+import { EasyField } from "../../abstracts/EasyField";
+import { DirectionType } from "../../enums";
+import { Icon } from "../../classes/elements";
+import { RadioField } from "../../classes/fields";
 
 export class RadioGroupField extends EasyField {
   component = "v-radio-group";

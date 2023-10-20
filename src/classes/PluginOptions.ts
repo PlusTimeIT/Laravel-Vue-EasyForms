@@ -1,4 +1,4 @@
-import { isEmpty } from "#/composables/utils/Types";
+import { isEmpty } from "../composables/utils/Types";
 
 /**
  * Plugin Options singleton, set on plugin initiation.
@@ -7,12 +7,6 @@ export class PluginOptions {
   private static instance: PluginOptions;
 
   /**
-   * Backend domain for making API calls.
-   * It should end without a forward slash.
-   * eg. https://domain.com
-   */
-  backend_domain = "";
-  /**
    * The prefix for making calls via API, this is append to the backend domain.
    * It should begin with a forward slash and end without a forward slash.
    * This should match laravel.
@@ -20,61 +14,59 @@ export class PluginOptions {
    */
   axios_prefix = "";
   /**
+   * Backend domain for making API calls.
+   * It should end without a forward slash.
+   * eg. https://domain.com
+   */
+  backend_domain = "";
+  /**
    * If CSRF checks are required then this should be the endpoint.
    * It should begin with a forward slash and end without a forward slash.
    * eg. /security/cookie
    */
   csrf_endpoint = "";
   /**
-   * Does your frontend application use vue router.
+   * Optional label text to append placeholder attribute
    */
-  uses_vue_router = false;
+  optional_label_text = " ( * Optional )";
   /**
-   * When initiated, if placeholder is present and empty,
-   * and text is present and not empty, placeholder should = text
+   * Optional placeholder text to append placeholder attribute
    */
-  text_to_placeholder = true;
+  optional_placeholder_text = " ( * Optional )";
+  /**
+   * Required label text to append placeholder attribute
+   */
+  required_label_text = " ( * Required )";
+  /**
+   * Required placeholder text to append placeholder attribute
+   */
+  required_placeholder_text = " ( * Required )";
   /**
    * Display required tags only, either tags_on_placeholder or tags_on_labels
    * must be set to true for this to take effect.
    */
   required_tags_only = true;
   /**
-   * Should the placeholder text display required and optional tags
-   */
-  tags_on_placeholder = true;
-  /**
    * Should the label text display required and optional tags
    */
   tags_on_labels = false;
   /**
-   * Optional placeholder text to append placeholder attribute
+   * Should the placeholder text display required and optional tags
    */
-  optional_placeholder_text = " ( * Optional )";
+  tags_on_placeholder = true;
   /**
-   * Optional label text to append placeholder attribute
+   * When initiated, if placeholder is present and empty,
+   * and text is present and not empty, placeholder should = text
    */
-  optional_label_text = " ( * Optional )";
+  text_to_placeholder = true;
   /**
-   * Required placeholder text to append placeholder attribute
+   * Does your frontend application use vue router.
    */
-  required_placeholder_text = " ( * Required )";
-  /**
-   * Required label text to append placeholder attribute
-   */
-  required_label_text = " ( * Required )";
+  uses_vue_router = false;
 
   constructor(init?: Partial<PluginOptions>) {
     Object.assign(this, init);
     PluginOptions.instance = this;
-  }
-
-  buildDomain(url = ""): string {
-    // if URL is present and not blank concat to prefix.
-    if (isEmpty(url)) {
-      return this.backend_domain.concat(this.axios_prefix);
-    }
-    return this.backend_domain.concat(this.axios_prefix.concat(url));
   }
 
   /**
@@ -89,5 +81,13 @@ export class PluginOptions {
     }
 
     return PluginOptions.instance;
+  }
+
+  buildDomain(url = ""): string {
+    // if URL is present and not blank concat to prefix.
+    if (isEmpty(url)) {
+      return this.backend_domain.concat(this.axios_prefix);
+    }
+    return this.backend_domain.concat(this.axios_prefix.concat(url));
   }
 }

@@ -1,4 +1,4 @@
-import HasKeyValue from "#/contracts/HasKeyValue";
+import HasKeyValue from "../../contracts/HasKeyValue";
 export declare class AxiosHeader implements HasKeyValue {
     key: string;
     value: any;

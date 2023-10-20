@@ -6,7 +6,7 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import * as labs from "vuetify/labs/components";
-import ErrorAlert from "#/components/elements/ErrorAlert.vue";
+import ErrorAlert from "../../../components/elements/ErrorAlert.vue";
 
 const vuetify = createVuetify({
   components: {

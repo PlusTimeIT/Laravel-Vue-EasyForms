@@ -7,9 +7,6 @@ import { resolve } from "path";
 export default defineConfig({
   base: "./",
   plugins: [vue(), vuetify({ autoImport: true })],
-  resolve: {
-    alias: [{ find: "#", replacement: resolve(__dirname, "src") }],
-  },
   // removed to make Histoire work - but currently required for Vitest.
   // define: {
   //   global: "globalThis",

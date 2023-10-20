@@ -1,4 +1,4 @@
-import { PropHelper } from "#/classes/utils";
+import { PropHelper } from "../../classes/utils";
 
 const formatKey = (o: string): string => PropHelper.formatKey(o);
 

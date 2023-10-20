@@ -1,4 +1,4 @@
-import { CheckboxField, SwitchField } from "#/classes/fields";
+import { CheckboxField, SwitchField } from "../../classes/fields";
 declare const _default: import("vue").DefineComponent<{
     class: {
         type: import("vue").PropType<string>;

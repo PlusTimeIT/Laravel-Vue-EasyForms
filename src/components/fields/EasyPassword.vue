@@ -26,28 +26,28 @@
 
 <script setup lang="ts">
 import { onMounted, computed, ComputedRef, Ref, ref, watch } from "vue";
-import { TextField } from "#/classes/fields";
-import type { FieldType } from "#/types";
+import { TextField } from "../../classes/fields";
+import type { FieldType } from "../../types";
 import EasyInput from "./EasyInput.vue";
 
 // Define the component's props interface
 interface Props {
-  modelValue: string | undefined;
-  textfield: TextField;
-  showStrengthBar?: boolean;
-  viewMode?: boolean;
-  strengthErrorColor?: string;
-  strengthWarningColor?: string;
-  strengthSuccessColor?: string;
-  strengthErrorText?: string;
-  strengthWarningText?: string;
-  strengthSuccessText?: string;
+  fields: FieldType[];
   hasLowerCase?: boolean;
-  hasUpperCase?: boolean;
+  hasMinLength?: boolean | number;
   hasNumbers?: boolean;
   hasSpecial?: boolean;
-  hasMinLength?: boolean | number;
-  fields: FieldType[];
+  hasUpperCase?: boolean;
+  modelValue: string | undefined;
+  showStrengthBar?: boolean;
+  strengthErrorColor?: string;
+  strengthErrorText?: string;
+  strengthSuccessColor?: string;
+  strengthSuccessText?: string;
+  strengthWarningColor?: string;
+  strengthWarningText?: string;
+  textfield: TextField;
+  viewMode?: boolean;
 }
 
 // Define props with default values

@@ -1,7 +1,7 @@
-import { EasyField } from "#/abstracts/EasyField";
+import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
-import { Menu, Icon } from "#/classes/elements";
-import { ColorPicker } from "#/classes/fields/ColorPicker";
+import { Menu, Icon } from "../../classes/elements";
+import { ColorPicker } from "../../classes/fields/ColorPicker";
 
 export class ColorPickerField extends EasyField {
   component = "easy-color-picker";

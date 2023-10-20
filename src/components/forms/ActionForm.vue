@@ -18,12 +18,12 @@
   </v-row>
 </template>
 <script setup lang="ts">
-import { isEmpty } from "#/composables/utils/Types";
-import { ActionIcon, ActionButton } from "#/classes/actions";
+import { isEmpty } from "../../composables/utils/Types";
+import { ActionIcon, ActionButton } from "../../classes/actions";
 import { Ref, ref, ComputedRef, computed, watchEffect } from "vue";
-import { ActionForm } from "#/classes/forms";
-import { DataItem } from "#/classes/properties/DataItem";
-import { EasyButton, EasyIcon } from "#/components/elements";
+import { ActionForm } from "../../classes/forms";
+import { DataItem } from "../../classes/properties/DataItem";
+import { EasyButton, EasyIcon } from "../../components/elements";
 
 const props = defineProps<{
   form: ActionForm;

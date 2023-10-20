@@ -1,5 +1,5 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { AutoCompleteField, CheckboxField, CheckboxGroupField, PasswordField, RadioGroupField, RadioField, ColorPickerField, DatePickerField, FileInputField, SwitchField, TextField, TimePickerField } from "#/classes/fields";
+import { EasyField } from "../abstracts/EasyField";
+import { AutoCompleteField, CheckboxField, CheckboxGroupField, PasswordField, RadioGroupField, RadioField, ColorPickerField, DatePickerField, FileInputField, SwitchField, TextField, TimePickerField } from "../classes/fields";
 type UnionKeys<T> = T extends T ? keyof T : never;
 type StrictUnionHelper<T, TAll> = T extends any ? T & Partial<Record<Exclude<UnionKeys<TAll>, keyof T>, undefined>> : never;
 type StrictUnion<T> = StrictUnionHelper<T, T>;

@@ -1,6 +1,6 @@
-import { isEmpty } from "#/composables/utils/Types";
-import { LocationTypes } from "#/enums";
-import { GotProps } from "#/abstracts/GotProps";
+import { isEmpty } from "../../composables/utils/Types";
+import { LocationTypes } from "../../enums";
+import { GotProps } from "../../abstracts/GotProps";
 
 export class Tooltip extends GotProps {
   activator: string | undefined;

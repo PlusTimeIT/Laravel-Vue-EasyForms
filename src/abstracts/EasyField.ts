@@ -1,19 +1,19 @@
-import HasField from "#/contracts/HasField";
+import HasField from "../contracts/HasField";
 
-import { ServerCall, ServerResponse } from "#/classes/server";
-import { ValidationRule } from "#/classes/properties";
-import { Icon, Tooltip } from "#/classes/elements";
-import { PluginOptions } from "#/classes/PluginOptions";
-import { AxiosCalls } from "#/enums";
-import { DensityTypes } from "#/enums";
-import { ValidationTriggers } from "#/enums";
-import { TextVariantTypes } from "#/enums";
+import { ServerCall, ServerResponse } from "../classes/server";
+import { ValidationRule } from "../classes/properties";
+import { Icon, Tooltip } from "../classes/elements";
+import { PluginOptions } from "../classes/PluginOptions";
+import { AxiosCalls } from "../enums";
+import { DensityTypes } from "../enums";
+import { ValidationTriggers } from "../enums";
+import { TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
-import type { FieldType } from "#/types";
-import { isEmpty } from "#/composables/utils/Types";
-import { ValidationHelper } from "#/composables/validation/ValidationHelper";
-import { ValidationHandler } from "#/composables/validation/ValidationHandler";
-import { FunctionBuilder } from "#/composables/validation/FunctionBuilder";
+import type { FieldType } from "../types";
+import { isEmpty } from "../composables/utils/Types";
+import { ValidationHelper } from "../composables/validation/ValidationHelper";
+import { ValidationHandler } from "../composables/validation/ValidationHandler";
+import { FunctionBuilder } from "../composables/validation/FunctionBuilder";
 
 /**
  * Abstract class representing an EasyField, which is a base class for form fields.

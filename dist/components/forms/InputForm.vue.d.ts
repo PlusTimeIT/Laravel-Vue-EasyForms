@@ -1,4 +1,4 @@
-import { InputForm } from "#/classes/forms";
+import { InputForm } from "../../classes/forms";
 declare const _default: import("vue").DefineComponent<{
     form: {
         type: typeof InputForm;

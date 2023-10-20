@@ -1,5 +1,5 @@
-import type { FieldType } from "#/types";
-import { ValidationRule } from "#/classes/properties";
+import type { FieldType } from "../../types";
+import { ValidationRule } from "../../classes/properties";
 export declare class FunctionBuilder {
     static expectingArray: string[];
     static expectingFieldMessage: string[];

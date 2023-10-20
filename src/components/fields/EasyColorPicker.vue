@@ -26,11 +26,11 @@
 
 <script setup lang="ts">
 import { ref, computed, ComputedRef, onMounted, watch, Ref } from "vue";
-import { TextField, ColorPicker } from "#/classes/fields";
-import { Menu } from "#/classes/elements";
+import { TextField, ColorPicker } from "../../classes/fields";
+import { Menu } from "../../classes/elements";
 import EasyInput from "./EasyInput.vue";
-import type { FieldType } from "#/types";
-import { isEmpty } from "#/composables/utils/Types";
+import type { FieldType } from "../../types";
+import { isEmpty } from "../../composables/utils/Types";
 
 // Define props and emit for the component
 interface Props {

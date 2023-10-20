@@ -3,6 +3,37 @@ var f = (e, t, s) => t in e ? p(e, t, { enumerable: !0, configurable: !0, writab
 var a = (e, t, s) => (f(e, typeof t != "symbol" ? t + "" : t, s), s);
 class c {
   /**
+   * Capitalizes the first letter of each word in a string.
+   *
+   * @param input The string to capitalize.
+   * @returns The string with the first letter of each word capitalized.
+   */
+  static capitalizeEach(t) {
+    return t.split(" ").map((s) => c.capitalizeFirst(s)).join(" ");
+  }
+  /**
+   * Capitalizes the first letter of a string.
+   *
+   * @param input The string to capitalize.
+   * @returns The string with the first letter capitalized.
+   */
+  static capitalizeFirst(t) {
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  /**
+   * Convert validation message placeholders in a string.
+   *
+   * @param name The attribute name associated with the validation message.
+   * @param message The validation message containing placeholders.
+   * @param params An array of objects containing key-value pairs to replace placeholders.
+   * @returns A string with placeholders replaced and kebab case conversion applied.
+   */
+  static convertMessageHolders(t, s, i = []) {
+    for (const r of i)
+      s = s.replace(r.key, r.replace_with);
+    return s.replace(":attribute", c.replaceUnderscoresAndHyphens(t));
+  }
+  /**
    * Generates a random string of the specified length using characters from the given character set.
    *
    * @param length The length of the random string to generate.
@@ -19,19 +50,6 @@ class c {
     return i.join("");
   }
   /**
-   * Convert validation message placeholders in a string.
-   *
-   * @param name The attribute name associated with the validation message.
-   * @param message The validation message containing placeholders.
-   * @param params An array of objects containing key-value pairs to replace placeholders.
-   * @returns A string with placeholders replaced and kebab case conversion applied.
-   */
-  static convertMessageHolders(t, s, i = []) {
-    for (const r of i)
-      s = s.replace(r.key, r.replace_with);
-    return s.replace(":attribute", c.replaceUnderscoresAndHyphens(t));
-  }
-  /**
    * Replaces underscores and hyphens with spaces in a string.
    *
    * @param input The input string containing underscores or hyphens.
@@ -39,15 +57,6 @@ class c {
    */
   static replaceUnderscoresAndHyphens(t) {
     return t.replace(/[_-]/g, " ");
-  }
-  /**
-   * Convert Snake case to Kebab case.
-   *
-   * @param input The string to convert.
-   * @returns Kebab case conversion of the string.
-   */
-  static snakeToKebab(t) {
-    return t.replaceAll("_", "-");
   }
   /**
    * Converts Snake case to Camel case.
@@ -59,22 +68,13 @@ class c {
     return t.toLowerCase().replace(/[-_][a-z0-9]/g, (s) => s.slice(-1).toUpperCase());
   }
   /**
-   * Capitalizes the first letter of a string.
+   * Convert Snake case to Kebab case.
    *
-   * @param input The string to capitalize.
-   * @returns The string with the first letter capitalized.
+   * @param input The string to convert.
+   * @returns Kebab case conversion of the string.
    */
-  static capitalizeFirst(t) {
-    return t.charAt(0).toUpperCase() + t.slice(1);
-  }
-  /**
-   * Capitalizes the first letter of each word in a string.
-   *
-   * @param input The string to capitalize.
-   * @returns The string with the first letter of each word capitalized.
-   */
-  static capitalizeEach(t) {
-    return t.split(" ").map((s) => c.capitalizeFirst(s)).join(" ");
+  static snakeToKebab(t) {
+    return t.replaceAll("_", "-");
   }
 }
 class y {

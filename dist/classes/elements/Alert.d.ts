@@ -1,11 +1,11 @@
-import { AlertBorders } from "#/enums";
-import { AlertTriggers } from "#/enums";
+import { AlertBorders } from "../../enums";
+import { AlertTriggers } from "../../enums";
 import { Icon } from "./Icon";
-import { GotProps } from "#/abstracts/GotProps";
-import { DensityTypes } from "#/enums";
-import { PositionTypes } from "#/enums";
-import { AlertTypes } from "#/enums";
-import { ButtonVariantTypes } from "#/enums";
+import { GotProps } from "../../abstracts/GotProps";
+import { DensityTypes } from "../../enums";
+import { PositionTypes } from "../../enums";
+import { AlertTypes } from "../../enums";
+import { ButtonVariantTypes } from "../../enums";
 export declare class Alert extends GotProps {
     auto_close_timer: number;
     border: AlertBorders | boolean;

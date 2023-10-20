@@ -1,11 +1,11 @@
-import HasField from "#/contracts/HasField";
-import { ValidationRule } from "#/classes/properties";
-import { Icon, Tooltip } from "#/classes/elements";
-import { DensityTypes } from "#/enums";
-import { ValidationTriggers } from "#/enums";
-import { TextVariantTypes } from "#/enums";
+import HasField from "../contracts/HasField";
+import { ValidationRule } from "../classes/properties";
+import { Icon, Tooltip } from "../classes/elements";
+import { DensityTypes } from "../enums";
+import { ValidationTriggers } from "../enums";
+import { TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
-import type { FieldType } from "#/types";
+import type { FieldType } from "../types";
 export declare abstract class EasyField extends GotProps implements HasField {
     active: boolean;
     append_icon: Icon | undefined;

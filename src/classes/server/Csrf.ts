@@ -1,26 +1,27 @@
-import { ServerCall } from "#/classes/server/ServerCall";
-import { ServerResponse } from "#/classes/server/ServerResponse";
-import { AxiosCalls } from "#/enums";
-import { minutesBetween } from "#/composables/utils/Dates";
+import { ServerCall } from "../../classes/server/ServerCall";
+import { ServerResponse } from "../../classes/server/ServerResponse";
+import { AxiosCalls } from "../../enums";
+import { minutesBetween } from "../../composables/utils/Dates";
 
 /**
  * Csrf Class for handling csrf token calls
  */
 export class Csrf {
-  // csrf endpoint
-  endpoint = "";
+  // Number of attempts allowed for csrf before wait time is imposed.
+  protected allowed_attempts = 5;
   // Number of attempts for csrf
   protected attempts = 0;
   // Last time Csrf was attempted.
   protected last_attempt: Date = new Date();
   // When a User was last updated
   protected loading = false;
-  // csrf token is set
-  protected token = false;
   // csrf retry wait time after attempts in minutes
   protected retry_wait = 5;
-  // Number of attempts allowed for csrf before wait time is imposed.
-  protected allowed_attempts = 5;
+  // csrf token is set
+  protected token = false;
+
+  // csrf endpoint
+  endpoint = "";
 
   constructor(init?: Partial<Csrf>) {
     Object.assign(this, init);
@@ -39,6 +40,13 @@ export class Csrf {
     }
     this.last_attempt = new Date();
     return true;
+  }
+
+  // failed attempts on csrf token call
+  failedAttempt(): Csrf {
+    this.loading = false;
+    this.token = false;
+    return this;
   }
 
   // Fetch new token
@@ -74,13 +82,6 @@ export class Csrf {
   // reset attempts on successful csrf token call
   resetAttempts(): Csrf {
     this.attempts = 0;
-    return this;
-  }
-
-  // failed attempts on csrf token call
-  failedAttempt(): Csrf {
-    this.loading = false;
-    this.token = false;
     return this;
   }
 

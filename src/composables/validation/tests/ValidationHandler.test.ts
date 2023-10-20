@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { describe, expect, test } from "vitest";
-import { TextField } from "#/classes/fields";
+import { TextField } from "../../classes/fields";
 import { ValidationHandler } from "../ValidationHandler";
-import { convertMessageHolders } from "#/composables/utils/Strings";
+import { convertMessageHolders } from "../../composables/utils/Strings";
 
 const textfield: TextField = new TextField({
   name: "test",

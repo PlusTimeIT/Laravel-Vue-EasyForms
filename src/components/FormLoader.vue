@@ -21,13 +21,13 @@
  *   - reset_form(value: boolean) - Emits when the form is reset.
  */
 import { ComputedRef, Ref, onMounted, ref, computed, watch } from "vue";
-import { ColumnRestriction } from "#/composables/validation/PropValidation";
-import { ActionForm, InputForm, EasyForm } from "#/classes/forms";
-import { AdditionalData } from "#/classes/properties";
-import { isEmpty } from "#/composables/utils/Types";
-import { FormContainer } from "#/classes/elements";
-import { LoaderEvents } from "#/enums";
-import { FormTypes } from "#/enums";
+import { ColumnRestriction } from "../composables/validation/PropValidation";
+import { ActionForm, InputForm, EasyForm } from "../classes/forms";
+import { AdditionalData } from "../classes/properties";
+import { isEmpty } from "../composables/utils/Types";
+import { FormContainer } from "../classes/elements";
+import { LoaderEvents } from "../enums";
+import { FormTypes } from "../enums";
 
 const emit = defineEmits<{
   (e: "loading", value: boolean): void;

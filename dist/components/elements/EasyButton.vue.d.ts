@@ -1,4 +1,4 @@
-import { Button } from "#/classes/elements";
+import { Button } from "../../classes/elements";
 declare const _default: import("vue").DefineComponent<{
     button: {
         type: import("vue").PropType<Button>;

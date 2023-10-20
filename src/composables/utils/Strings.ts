@@ -1,5 +1,5 @@
-import { StringHelper } from "#/classes/utils";
-import { MessageParameter } from "#/classes/properties";
+import { StringHelper } from "../../classes/utils";
+import { MessageParameter } from "../../classes/properties";
 
 const convertMessageHolders = (name: string, message: string, params?: MessageParameter[]): string =>
   StringHelper.convertMessageHolders(name, message, params);

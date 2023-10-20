@@ -2,7 +2,7 @@ var s = Object.defineProperty;
 var a = (n, o, t) => o in n ? s(n, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[o] = t;
 var e = (n, o, t) => (a(n, typeof o != "symbol" ? o + "" : o, t), t);
 import { L as c, S as i } from "./ScrollStrategyTypes-5e52e633.js";
-import { G as _ } from "./Icon-29f81fc8.js";
+import { G as _ } from "./Icon-67bf229a.js";
 class p extends _ {
   constructor(t) {
     super(t);

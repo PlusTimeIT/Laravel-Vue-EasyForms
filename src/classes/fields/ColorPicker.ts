@@ -1,6 +1,6 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { ColorPickerModeTypes } from "#/enums";
-import { PositionTypes } from "#/enums";
+import { EasyField } from "../../abstracts/EasyField";
+import { ColorPickerModeTypes } from "../../enums";
+import { PositionTypes } from "../../enums";
 
 interface HSVA {
   readonly a?: number;

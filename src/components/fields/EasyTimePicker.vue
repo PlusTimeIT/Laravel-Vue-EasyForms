@@ -26,11 +26,11 @@
 
 <script setup lang="ts">
 import { Ref, ref, onMounted, watch, computed, ComputedRef } from "vue";
-import { TextField, TimePicker } from "#/classes/fields";
-import { Menu } from "#/classes/elements";
+import { TextField, TimePicker } from "../../classes/fields";
+import { Menu } from "../../classes/elements";
 import TempTimePicker from "./TempTimePicker.vue";
 import EasyInput from "./EasyInput.vue";
-import type { FieldType } from "#/types";
+import type { FieldType } from "../../types";
 
 // Define the component's props interface
 interface Props {

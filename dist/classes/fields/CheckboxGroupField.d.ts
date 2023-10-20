@@ -1,7 +1,7 @@
-import { EasyField } from "#/abstracts/EasyField";
+import { EasyField } from "../../abstracts/EasyField";
 import { SwitchField } from "./SwitchField";
 import { CheckboxField } from "./CheckboxField";
-import { CheckboxGroupValue } from "#/classes/properties/CheckboxGroupValue";
+import { CheckboxGroupValue } from "../../classes/properties/CheckboxGroupValue";
 export declare class CheckboxGroupField extends EasyField {
     class: string;
     component: string;
@@ -11,9 +11,9 @@ export declare class CheckboxGroupField extends EasyField {
     constructor(init?: Partial<CheckboxGroupField>);
     addAllItems(): void;
     addItem(key: string, value: any): void;
+    allowedProps(): string[];
     clear(): void;
     find(checkbox: CheckboxField): CheckboxGroupValue | undefined;
     removeItem(checkboxValue: CheckboxGroupValue): void;
-    allowedProps(): string[];
 }
 //# sourceMappingURL=CheckboxGroupField.d.ts.map

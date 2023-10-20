@@ -1,5 +1,5 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { Icon } from "#/classes/elements";
+import { EasyField } from "../../abstracts/EasyField";
+import { Icon } from "../../classes/elements";
 import { TextField } from "./TextField";
 
 export class PasswordField extends EasyField {

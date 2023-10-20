@@ -1,9 +1,9 @@
-import { Tooltip, Icon } from "#/classes/elements";
-import { ButtonTypes } from "#/enums";
-import { DensityTypes } from "#/enums";
-import { PositionTypes } from "#/enums";
-import { ButtonVariantTypes } from "#/enums";
-import { GotProps } from "#/abstracts/GotProps";
+import { Tooltip, Icon } from "./";
+import { ButtonTypes } from "../../enums";
+import { DensityTypes } from "../../enums";
+import { PositionTypes } from "../../enums";
+import { ButtonVariantTypes } from "../../enums";
+import { GotProps } from "../../abstracts/GotProps";
 export declare class Button extends GotProps {
     active: boolean;
     append_icon: Icon | undefined;

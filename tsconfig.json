@@ -13,9 +13,6 @@
     "skipLibCheck": true,
     "types": ["node"],
     "lib": ["ESNext", "DOM"],
-    "paths": {
-      "#/*": ["./src/*"]
-    },
     "sourceMap": true,
     "noImplicitAny": false,
     "noImplicitThis": true,

@@ -1,8 +1,8 @@
 var r = Object.defineProperty;
 var n = (e, t, s) => t in e ? r(e, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[t] = s;
 var i = (e, t, s) => (n(e, typeof t != "symbol" ? t + "" : t, s), s);
-import { S as l } from "./ServerCall-8eff3f6f.js";
-import { a as k } from "./ServerCall-8eff3f6f.js";
+import { S as l } from "./ServerCall-47b8cd7d.js";
+import { a as k } from "./ServerCall-47b8cd7d.js";
 import { A as m } from "./AxiosCalls-a93e3e6c.js";
 import "axios";
 class o {
@@ -22,20 +22,20 @@ const h = function(e, t) {
 };
 class d {
   constructor(t) {
-    // csrf endpoint
-    i(this, "endpoint", "");
+    // Number of attempts allowed for csrf before wait time is imposed.
+    i(this, "allowed_attempts", 5);
     // Number of attempts for csrf
     i(this, "attempts", 0);
     // Last time Csrf was attempted.
     i(this, "last_attempt", /* @__PURE__ */ new Date());
     // When a User was last updated
     i(this, "loading", !1);
-    // csrf token is set
-    i(this, "token", !1);
     // csrf retry wait time after attempts in minutes
     i(this, "retry_wait", 5);
-    // Number of attempts allowed for csrf before wait time is imposed.
-    i(this, "allowed_attempts", 5);
+    // csrf token is set
+    i(this, "token", !1);
+    // csrf endpoint
+    i(this, "endpoint", "");
     Object.assign(this, t);
   }
   // Adds token attempt
@@ -46,6 +46,10 @@ class d {
       this.resetAttempts();
     }
     return this.last_attempt = /* @__PURE__ */ new Date(), !0;
+  }
+  // failed attempts on csrf token call
+  failedAttempt() {
+    return this.loading = !1, this.token = !1, this;
   }
   // Fetch new token
   async fetchNewToken() {
@@ -68,10 +72,6 @@ class d {
   // reset attempts on successful csrf token call
   resetAttempts() {
     return this.attempts = 0, this;
-  }
-  // failed attempts on csrf token call
-  failedAttempt() {
-    return this.loading = !1, this.token = !1, this;
   }
   // successful attempts on csrf token call
   successfulAttempt() {

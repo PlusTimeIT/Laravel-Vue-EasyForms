@@ -1,5 +1,5 @@
-import { TextField } from "#/classes/fields";
-import type { FieldType } from "#/types";
+import { TextField } from "../../classes/fields";
+import type { FieldType } from "../../types";
 declare const _default: import("vue").DefineComponent<{
     textfield: {
         type: import("vue").PropType<TextField>;
@@ -18,41 +18,13 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    showStrengthBar: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    strengthErrorColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthWarningColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthSuccessColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthErrorText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthWarningText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthSuccessText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
     hasLowerCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasUpperCase: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
+    hasMinLength: {
+        type: import("vue").PropType<number | boolean>;
+        default: number;
     };
     hasNumbers: {
         type: import("vue").PropType<boolean>;
@@ -62,9 +34,37 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasMinLength: {
-        type: import("vue").PropType<number | boolean>;
-        default: number;
+    hasUpperCase: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    showStrengthBar: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    strengthErrorColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthErrorText: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthSuccessColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthSuccessText: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthWarningColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthWarningText: {
+        type: import("vue").PropType<string>;
+        default: string;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     validated: (value: string) => void;
@@ -92,41 +92,13 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    showStrengthBar: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    strengthErrorColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthWarningColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthSuccessColor: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthErrorText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthWarningText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    strengthSuccessText: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
     hasLowerCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasUpperCase: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
+    hasMinLength: {
+        type: import("vue").PropType<number | boolean>;
+        default: number;
     };
     hasNumbers: {
         type: import("vue").PropType<boolean>;
@@ -136,9 +108,37 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasMinLength: {
-        type: import("vue").PropType<number | boolean>;
-        default: number;
+    hasUpperCase: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    showStrengthBar: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    strengthErrorColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthErrorText: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthSuccessColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthSuccessText: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthWarningColor: {
+        type: import("vue").PropType<string>;
+        default: string;
+    };
+    strengthWarningText: {
+        type: import("vue").PropType<string>;
+        default: string;
     };
 }>> & {
     "onUpdate:modelValue"?: (value: any) => any;
@@ -151,18 +151,18 @@ declare const _default: import("vue").DefineComponent<{
 }, {
     modelValue: string;
     viewMode: boolean;
-    showStrengthBar: boolean;
-    strengthErrorColor: string;
-    strengthWarningColor: string;
-    strengthSuccessColor: string;
-    strengthErrorText: string;
-    strengthWarningText: string;
-    strengthSuccessText: string;
     hasLowerCase: boolean;
-    hasUpperCase: boolean;
+    hasMinLength: number | boolean;
     hasNumbers: boolean;
     hasSpecial: boolean;
-    hasMinLength: number | boolean;
+    hasUpperCase: boolean;
+    showStrengthBar: boolean;
+    strengthErrorColor: string;
+    strengthErrorText: string;
+    strengthSuccessColor: string;
+    strengthSuccessText: string;
+    strengthWarningColor: string;
+    strengthWarningText: string;
 }, {}>;
 export default _default;
 //# sourceMappingURL=EasyPassword.vue.d.ts.map

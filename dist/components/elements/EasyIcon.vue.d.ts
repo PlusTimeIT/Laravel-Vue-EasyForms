@@ -1,4 +1,4 @@
-import { Icon } from "#/classes/elements";
+import { Icon } from "../../classes/elements";
 declare const _default: import("vue").DefineComponent<{
     icon: {
         type: import("vue").PropType<Icon>;

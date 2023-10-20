@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { describe, expect, test } from "vitest";
 import { EasyField } from "../EasyField";
-import { ValidationRule } from "#/classes/properties/ValidationRule";
+import { ValidationRule } from "../classes/properties/ValidationRule";
 
 describe("Easy field Abstract Tests", () => {
   test("test field generates correct validation rules", () => {

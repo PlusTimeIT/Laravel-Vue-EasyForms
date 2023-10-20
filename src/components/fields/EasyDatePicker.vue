@@ -31,11 +31,11 @@
 
 <script setup lang="ts">
 import { ref, computed, ComputedRef, onMounted, Ref } from "vue";
-import { TextField, DatePicker } from "#/classes/fields";
-import { Menu } from "#/classes/elements";
+import { TextField, DatePicker } from "../../classes/fields";
+import { Menu } from "../../classes/elements";
 import moment from "moment-timezone";
 import EasyInput from "./EasyInput.vue";
-import type { FieldType } from "#/types";
+import type { FieldType } from "../../types";
 
 // Define props and emit for the component
 interface Props {

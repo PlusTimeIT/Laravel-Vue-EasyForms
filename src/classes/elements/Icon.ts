@@ -1,6 +1,6 @@
-import { Tooltip } from "#/classes/elements";
-import { GotProps } from "#/abstracts/GotProps";
-import HasIcon from "#/contracts/HasIcon";
+import { Tooltip } from "../../classes/elements";
+import { GotProps } from "../../abstracts/GotProps";
+import HasIcon from "../../contracts/HasIcon";
 
 export class Icon extends GotProps implements HasIcon {
   class: string | undefined;

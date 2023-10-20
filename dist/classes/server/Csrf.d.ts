@@ -1,17 +1,17 @@
 export declare class Csrf {
-    endpoint: string;
+    protected allowed_attempts: number;
     protected attempts: number;
     protected last_attempt: Date;
     protected loading: boolean;
-    protected token: boolean;
     protected retry_wait: number;
-    protected allowed_attempts: number;
+    protected token: boolean;
+    endpoint: string;
     constructor(init?: Partial<Csrf>);
     attemptCheck(): boolean;
+    failedAttempt(): Csrf;
     fetchNewToken(): Promise<boolean>;
     isValidCsrfToken(): boolean;
     resetAttempts(): Csrf;
-    failedAttempt(): Csrf;
     successfulAttempt(): Csrf;
     tokenAttempt(): Csrf;
 }

@@ -1,6 +1,6 @@
-import { EasyField } from "#/abstracts/EasyField";
-import { Icon } from "#/classes/elements";
-import { DirectionType } from "#/enums";
+import { EasyField } from "../../abstracts/EasyField";
+import { Icon } from "../../classes/elements";
+import { DirectionType } from "../../enums";
 export declare class FileInputField extends EasyField {
     accept: string;
     append_inner_icon: Icon | undefined;

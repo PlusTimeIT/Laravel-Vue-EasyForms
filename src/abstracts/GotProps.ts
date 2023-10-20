@@ -1,8 +1,8 @@
-import { isEmpty } from "#/composables/utils/Types";
-import { formatKey } from "#/composables/utils/Properties";
-import { Icon } from "#/classes/elements";
-import HasProps from "#/contracts/HasProps";
-import HasIcon from "#/contracts/HasIcon";
+import { isEmpty } from "../composables/utils/Types";
+import { formatKey } from "../composables/utils/Properties";
+import { Icon } from "../classes/elements";
+import HasProps from "../contracts/HasProps";
+import HasIcon from "../contracts/HasIcon";
 
 /**
  *  Abstract class for elements, fields etc, that require props and prop checks.

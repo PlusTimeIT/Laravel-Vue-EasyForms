@@ -27461,20 +27461,22 @@ class DateHelper {
 }
 class StringHelper {
   /**
-   * Generates a random string of the specified length using characters from the given character set.
+   * Capitalizes the first letter of each word in a string.
    *
-   * @param length The length of the random string to generate.
-   * @param charSet The character set to use for generating the random string.
-   *                Defaults to 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.
-   * @returns A randomly generated string of the specified length.
+   * @param input The string to capitalize.
+   * @returns The string with the first letter of each word capitalized.
    */
-  static generate(length, charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") {
-    const randomChars = [];
-    for (let i2 = 0; i2 < length; i2++) {
-      const randomIndex = Math.floor(Math.random() * charSet.length);
-      randomChars.push(charSet[randomIndex]);
-    }
-    return randomChars.join("");
+  static capitalizeEach(input) {
+    return input.split(" ").map((word) => StringHelper.capitalizeFirst(word)).join(" ");
+  }
+  /**
+   * Capitalizes the first letter of a string.
+   *
+   * @param input The string to capitalize.
+   * @returns The string with the first letter capitalized.
+   */
+  static capitalizeFirst(input) {
+    return input.charAt(0).toUpperCase() + input.slice(1);
   }
   /**
    * Convert validation message placeholders in a string.
@@ -27491,6 +27493,22 @@ class StringHelper {
     return message.replace(":attribute", StringHelper.replaceUnderscoresAndHyphens(name));
   }
   /**
+   * Generates a random string of the specified length using characters from the given character set.
+   *
+   * @param length The length of the random string to generate.
+   * @param charSet The character set to use for generating the random string.
+   *                Defaults to 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.
+   * @returns A randomly generated string of the specified length.
+   */
+  static generate(length, charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") {
+    const randomChars = [];
+    for (let i2 = 0; i2 < length; i2++) {
+      const randomIndex = Math.floor(Math.random() * charSet.length);
+      randomChars.push(charSet[randomIndex]);
+    }
+    return randomChars.join("");
+  }
+  /**
    * Replaces underscores and hyphens with spaces in a string.
    *
    * @param input The input string containing underscores or hyphens.
@@ -27498,15 +27516,6 @@ class StringHelper {
    */
   static replaceUnderscoresAndHyphens(input) {
     return input.replace(/[_-]/g, " ");
-  }
-  /**
-   * Convert Snake case to Kebab case.
-   *
-   * @param input The string to convert.
-   * @returns Kebab case conversion of the string.
-   */
-  static snakeToKebab(input) {
-    return input.replaceAll("_", "-");
   }
   /**
    * Converts Snake case to Camel case.
@@ -27518,22 +27527,13 @@ class StringHelper {
     return input.toLowerCase().replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
   }
   /**
-   * Capitalizes the first letter of a string.
+   * Convert Snake case to Kebab case.
    *
-   * @param input The string to capitalize.
-   * @returns The string with the first letter capitalized.
+   * @param input The string to convert.
+   * @returns Kebab case conversion of the string.
    */
-  static capitalizeFirst(input) {
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  }
-  /**
-   * Capitalizes the first letter of each word in a string.
-   *
-   * @param input The string to capitalize.
-   * @returns The string with the first letter of each word capitalized.
-   */
-  static capitalizeEach(input) {
-    return input.split(" ").map((word) => StringHelper.capitalizeFirst(word)).join(" ");
+  static snakeToKebab(input) {
+    return input.replaceAll("_", "-");
   }
 }
 class PropHelper {
@@ -28122,14 +28122,30 @@ class FormContainer extends GotProps {
   constructor(init) {
     super(init);
     __publicField(this, "cols", 12);
-    __publicField(this, "sm", 12);
-    __publicField(this, "md", 12);
     __publicField(this, "lg", 12);
+    __publicField(this, "md", 12);
+    __publicField(this, "sm", 12);
     Object.assign(this, init);
   }
 }
 class ServerResponse {
   constructor(init) {
+    /**
+     * HTTP config object
+     */
+    __publicField(this, "config", {});
+    /**
+     * Axios return data
+     */
+    __publicField(this, "data", null);
+    /**
+     * HTTP headers object
+     */
+    __publicField(this, "headers", {});
+    /**
+     * HTTP request object
+     */
+    __publicField(this, "request", {});
     /**
      * HTTP status code
      */
@@ -28138,22 +28154,6 @@ class ServerResponse {
      * HTTP Status Text
      */
     __publicField(this, "statusText", "");
-    /**
-     * HTTP request object
-     */
-    __publicField(this, "request", {});
-    /**
-     * HTTP headers object
-     */
-    __publicField(this, "headers", {});
-    /**
-     * Axios return data
-     */
-    __publicField(this, "data", null);
-    /**
-     * HTTP config object
-     */
-    __publicField(this, "config", {});
     Object.assign(this, init);
   }
 }
@@ -30172,12 +30172,12 @@ axios.HttpStatusCode = HttpStatusCode$1;
 axios.default = axios;
 const axios$1 = axios;
 class ServerCall {
+  static mergeData(o1, o2) {
+    return Object.assign(o1, o2);
+  }
   static async request(type, endpoint, data = null) {
     const call = await axios$1[type](endpoint, data);
     return new ServerResponse(call);
-  }
-  static mergeData(o1, o2) {
-    return Object.assign(o1, o2);
   }
 }
 const minutesBetween = function(start, end) {
@@ -30185,20 +30185,20 @@ const minutesBetween = function(start, end) {
 };
 class Csrf {
   constructor(init) {
-    // csrf endpoint
-    __publicField(this, "endpoint", "");
+    // Number of attempts allowed for csrf before wait time is imposed.
+    __publicField(this, "allowed_attempts", 5);
     // Number of attempts for csrf
     __publicField(this, "attempts", 0);
     // Last time Csrf was attempted.
     __publicField(this, "last_attempt", /* @__PURE__ */ new Date());
     // When a User was last updated
     __publicField(this, "loading", false);
-    // csrf token is set
-    __publicField(this, "token", false);
     // csrf retry wait time after attempts in minutes
     __publicField(this, "retry_wait", 5);
-    // Number of attempts allowed for csrf before wait time is imposed.
-    __publicField(this, "allowed_attempts", 5);
+    // csrf token is set
+    __publicField(this, "token", false);
+    // csrf endpoint
+    __publicField(this, "endpoint", "");
     Object.assign(this, init);
   }
   // Adds token attempt
@@ -30212,6 +30212,12 @@ class Csrf {
     }
     this.last_attempt = /* @__PURE__ */ new Date();
     return true;
+  }
+  // failed attempts on csrf token call
+  failedAttempt() {
+    this.loading = false;
+    this.token = false;
+    return this;
   }
   // Fetch new token
   async fetchNewToken() {
@@ -30243,12 +30249,6 @@ class Csrf {
   // reset attempts on successful csrf token call
   resetAttempts() {
     this.attempts = 0;
-    return this;
-  }
-  // failed attempts on csrf token call
-  failedAttempt() {
-    this.loading = false;
-    this.token = false;
     return this;
   }
   // successful attempts on csrf token call
@@ -30423,10 +30423,16 @@ let ActionForm$1 = class ActionForm2 extends EasyForm {
     super(init);
     __publicField(this, "actions", []);
     __publicField(this, "callback", "");
-    __publicField(this, "justify_row", JustifyRow.Center);
     __publicField(this, "inline", false);
+    __publicField(this, "justify_row", JustifyRow.Center);
     __publicField(this, "type", "action");
     Object.assign(this, init);
+  }
+  data(action_identifier) {
+    const data = new FormData();
+    data.set("form_name", this.name);
+    data.set("action", action_identifier);
+    return data;
   }
   async process(action_identifier) {
     var _a3, _b;
@@ -30451,12 +30457,6 @@ let ActionForm$1 = class ActionForm2 extends EasyForm {
     }
     return false;
   }
-  data(action_identifier) {
-    const data = new FormData();
-    data.set("form_name", this.name);
-    data.set("action", action_identifier);
-    return data;
-  }
   props() {
     return {};
   }
@@ -30473,17 +30473,6 @@ let InputForm$1 = class InputForm2 extends EasyForm {
     if (init !== void 0 && init.fields !== void 0) {
       this.original = init.fields.map((field) => new DataItem({ key: field.name, value: field.value })) ?? [];
     }
-  }
-  reset() {
-    super.reset();
-    this.original.forEach((data) => {
-      const field = this.fields.find((f2) => f2.name == data.key);
-      if (isEmpty$1(field)) {
-        return this;
-      }
-      field.value = data.value;
-    });
-    return this;
   }
   data() {
     const identifier = this.additional_data.data.find((data2) => data2.key == "identifier" || data2.key == "id");
@@ -30534,6 +30523,17 @@ let InputForm$1 = class InputForm2 extends EasyForm {
       result["enctype"] = ContentTypes.MultiPart;
     }
     return result;
+  }
+  reset() {
+    super.reset();
+    this.original.forEach((data) => {
+      const field = this.fields.find((f2) => f2.name == data.key);
+      if (isEmpty$1(field)) {
+        return this;
+      }
+      field.value = data.value;
+    });
+    return this;
   }
 };
 const _export_sfc = (sfc, props) => {
@@ -35103,12 +35103,6 @@ const FormLoader = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_ren
 const _PluginOptions = class _PluginOptions {
   constructor(init) {
     /**
-     * Backend domain for making API calls.
-     * It should end without a forward slash.
-     * eg. https://domain.com
-     */
-    __publicField(this, "backend_domain", "");
-    /**
      * The prefix for making calls via API, this is append to the backend domain.
      * It should begin with a forward slash and end without a forward slash.
      * This should match laravel.
@@ -35116,57 +35110,57 @@ const _PluginOptions = class _PluginOptions {
      */
     __publicField(this, "axios_prefix", "");
     /**
+     * Backend domain for making API calls.
+     * It should end without a forward slash.
+     * eg. https://domain.com
+     */
+    __publicField(this, "backend_domain", "");
+    /**
      * If CSRF checks are required then this should be the endpoint.
      * It should begin with a forward slash and end without a forward slash.
      * eg. /security/cookie
      */
     __publicField(this, "csrf_endpoint", "");
     /**
-     * Does your frontend application use vue router.
+     * Optional label text to append placeholder attribute
      */
-    __publicField(this, "uses_vue_router", false);
+    __publicField(this, "optional_label_text", " ( * Optional )");
     /**
-     * When initiated, if placeholder is present and empty,
-     * and text is present and not empty, placeholder should = text
+     * Optional placeholder text to append placeholder attribute
      */
-    __publicField(this, "text_to_placeholder", true);
+    __publicField(this, "optional_placeholder_text", " ( * Optional )");
+    /**
+     * Required label text to append placeholder attribute
+     */
+    __publicField(this, "required_label_text", " ( * Required )");
+    /**
+     * Required placeholder text to append placeholder attribute
+     */
+    __publicField(this, "required_placeholder_text", " ( * Required )");
     /**
      * Display required tags only, either tags_on_placeholder or tags_on_labels
      * must be set to true for this to take effect.
      */
     __publicField(this, "required_tags_only", true);
     /**
-     * Should the placeholder text display required and optional tags
-     */
-    __publicField(this, "tags_on_placeholder", true);
-    /**
      * Should the label text display required and optional tags
      */
     __publicField(this, "tags_on_labels", false);
     /**
-     * Optional placeholder text to append placeholder attribute
+     * Should the placeholder text display required and optional tags
      */
-    __publicField(this, "optional_placeholder_text", " ( * Optional )");
+    __publicField(this, "tags_on_placeholder", true);
     /**
-     * Optional label text to append placeholder attribute
+     * When initiated, if placeholder is present and empty,
+     * and text is present and not empty, placeholder should = text
      */
-    __publicField(this, "optional_label_text", " ( * Optional )");
+    __publicField(this, "text_to_placeholder", true);
     /**
-     * Required placeholder text to append placeholder attribute
+     * Does your frontend application use vue router.
      */
-    __publicField(this, "required_placeholder_text", " ( * Required )");
-    /**
-     * Required label text to append placeholder attribute
-     */
-    __publicField(this, "required_label_text", " ( * Required )");
+    __publicField(this, "uses_vue_router", false);
     Object.assign(this, init);
     _PluginOptions.instance = this;
-  }
-  buildDomain(url = "") {
-    if (isEmpty$1(url)) {
-      return this.backend_domain.concat(this.axios_prefix);
-    }
-    return this.backend_domain.concat(this.axios_prefix.concat(url));
   }
   /**
    * The static method that controls the access to the singleton instance.
@@ -35179,6 +35173,12 @@ const _PluginOptions = class _PluginOptions {
       _PluginOptions.instance = new _PluginOptions();
     }
     return _PluginOptions.instance;
+  }
+  buildDomain(url = "") {
+    if (isEmpty$1(url)) {
+      return this.backend_domain.concat(this.axios_prefix);
+    }
+    return this.backend_domain.concat(this.axios_prefix.concat(url));
   }
 };
 __publicField(_PluginOptions, "instance");
@@ -77067,6 +77067,18 @@ class CheckboxGroupField extends EasyField {
   addItem(key, value) {
     this.value.push(new CheckboxGroupValue({ key, value }));
   }
+  /**
+   * Returns an array of all allowed props that are present on V-Checkbox
+   * https://vuetifyjs.com/en/api/v-checkbox/
+   *
+   * Currently missing the following properties:
+   *
+   *
+   * @returns string[]
+   */
+  allowedProps() {
+    return ["class", "cols", "items", "label", "switch"];
+  }
   clear() {
     this.value = [];
     for (const checkboxValue of this.items) {
@@ -77079,18 +77091,6 @@ class CheckboxGroupField extends EasyField {
   removeItem(checkboxValue) {
     const index = this.value.indexOf(checkboxValue);
     this.value.splice(index, 1);
-  }
-  /**
-   * Returns an array of all allowed props that are present on V-Checkbox
-   * https://vuetifyjs.com/en/api/v-checkbox/
-   *
-   * Currently missing the following properties:
-   *
-   *
-   * @returns string[]
-   */
-  allowedProps() {
-    return ["class", "cols", "items", "label", "switch"];
   }
 }
 const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
@@ -77853,11 +77853,11 @@ const ErrorForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_rend
 const _sfc_main$6 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyCheckboxGroup",
   props: {
-    items: { type: Array, required: true },
+    class: { type: null, required: false, default: "ml-auto" },
     cols: { type: null, required: false, default: 12 },
+    items: { type: Array, required: true },
     label: { type: null, required: false, default: "" },
-    switch: { type: null, required: false, default: void 0 },
-    class: { type: null, required: false, default: "ml-auto" }
+    switch: { type: null, required: false, default: void 0 }
   },
   emits: ["validated", "invalidated", "update:modelValue"],
   setup(__props, { expose: __expose, emit: emit2 }) {
@@ -83501,22 +83501,22 @@ const EasyDatePicker = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc
 const _sfc_main$3 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyPassword",
   props: {
-    modelValue: { type: null, required: true, default: "" },
-    textfield: { type: Object, required: true },
-    showStrengthBar: { type: Boolean, required: false, default: false },
-    viewMode: { type: Boolean, required: false, default: false },
-    strengthErrorColor: { type: String, required: false, default: "error" },
-    strengthWarningColor: { type: String, required: false, default: "warning" },
-    strengthSuccessColor: { type: String, required: false, default: "success" },
-    strengthErrorText: { type: String, required: false, default: "weak" },
-    strengthWarningText: { type: String, required: false, default: "medium" },
-    strengthSuccessText: { type: String, required: false, default: "strong" },
+    fields: { type: Array, required: true },
     hasLowerCase: { type: Boolean, required: false, default: true },
-    hasUpperCase: { type: Boolean, required: false, default: true },
+    hasMinLength: { type: [Boolean, Number], required: false, default: 8 },
     hasNumbers: { type: Boolean, required: false, default: true },
     hasSpecial: { type: Boolean, required: false, default: true },
-    hasMinLength: { type: [Boolean, Number], required: false, default: 8 },
-    fields: { type: Array, required: true }
+    hasUpperCase: { type: Boolean, required: false, default: true },
+    modelValue: { type: null, required: true, default: "" },
+    showStrengthBar: { type: Boolean, required: false, default: false },
+    strengthErrorColor: { type: String, required: false, default: "error" },
+    strengthErrorText: { type: String, required: false, default: "weak" },
+    strengthSuccessColor: { type: String, required: false, default: "success" },
+    strengthSuccessText: { type: String, required: false, default: "strong" },
+    strengthWarningColor: { type: String, required: false, default: "warning" },
+    strengthWarningText: { type: String, required: false, default: "medium" },
+    textfield: { type: Object, required: true },
+    viewMode: { type: Boolean, required: false, default: false }
   },
   emits: ["validated", "invalidated", "update:modelValue", "click:prepend", "click:prependInner", "click:append", "click:appendInner"],
   setup(__props, { expose: __expose, emit: emit2 }) {

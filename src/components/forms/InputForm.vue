@@ -36,13 +36,13 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect } from "vue";
-import { ButtonTypes } from "#/enums"; // Import ButtonTypes here
-import { InputForm } from "#/classes/forms"; // Import InputForm here
-import { generate } from "#/composables/utils/Strings"; // Import generate from utils
-import { isEmpty } from "#/composables/utils/Types";
-import EasyInput from "#/components/fields/EasyInput.vue";
-import EasyButton from "#/components/elements/EasyButton.vue";
-import { InputFormType } from "#/composables/validation/PropValidation";
+import { ButtonTypes } from "../../enums"; // Import ButtonTypes here
+import { InputForm } from "../../classes/forms"; // Import InputForm here
+import { generate } from "../../composables/utils/Strings"; // Import generate from utils
+import { isEmpty } from "../../composables/utils/Types";
+import EasyInput from "../../components/fields/EasyInput.vue";
+import EasyButton from "../../components/elements/EasyButton.vue";
+import { InputFormType } from "../../composables/validation/PropValidation";
 import { Button } from "../../classes/elements/Button";
 import { FieldType } from "../../types/FieldType";
 

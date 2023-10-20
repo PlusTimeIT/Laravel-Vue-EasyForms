@@ -1,7 +1,7 @@
-import { EasyField } from "#/abstracts/EasyField";
+import { EasyField } from "../../abstracts/EasyField";
 import { SwitchField } from "./SwitchField";
 import { CheckboxField } from "./CheckboxField";
-import { CheckboxGroupValue } from "#/classes/properties/CheckboxGroupValue";
+import { CheckboxGroupValue } from "../../classes/properties/CheckboxGroupValue";
 
 export class CheckboxGroupField extends EasyField {
   class = "ml-auto";
@@ -28,6 +28,19 @@ export class CheckboxGroupField extends EasyField {
     this.value.push(new CheckboxGroupValue({ key: key, value: value }));
   }
 
+  /**
+   * Returns an array of all allowed props that are present on V-Checkbox
+   * https://vuetifyjs.com/en/api/v-checkbox/
+   *
+   * Currently missing the following properties:
+   *
+   *
+   * @returns string[]
+   */
+  allowedProps(): string[] {
+    return ["class", "cols", "items", "label", "switch"];
+  }
+
   clear(): void {
     this.value = [];
     for (const checkboxValue of this.items) {
@@ -42,18 +55,5 @@ export class CheckboxGroupField extends EasyField {
   removeItem(checkboxValue: CheckboxGroupValue): void {
     const index: number | undefined = this.value.indexOf(checkboxValue);
     this.value.splice(index, 1);
-  }
-
-  /**
-   * Returns an array of all allowed props that are present on V-Checkbox
-   * https://vuetifyjs.com/en/api/v-checkbox/
-   *
-   * Currently missing the following properties:
-   *
-   *
-   * @returns string[]
-   */
-  allowedProps(): string[] {
-    return ["class", "cols", "items", "label", "switch"];
   }
 }

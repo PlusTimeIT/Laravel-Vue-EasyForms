@@ -28,16 +28,16 @@
 
 <script setup lang="ts">
 import { Ref, ref, ComputedRef, computed } from "vue";
-import { isEmpty } from "#/composables/utils/Types";
-import { CheckboxGroupField, CheckboxField, SwitchField } from "#/classes/fields";
-import { CheckboxGroupValue } from "#/classes/properties/CheckboxGroupValue";
+import { isEmpty } from "../../composables/utils/Types";
+import { CheckboxGroupField, CheckboxField, SwitchField } from "../../classes/fields";
+import { CheckboxGroupValue } from "../../classes/properties/CheckboxGroupValue";
 
 interface Props {
-  items: CheckboxField[];
+  class?: string | undefined;
   cols?: string | number | undefined;
+  items: CheckboxField[];
   label?: string | undefined;
   switch?: SwitchField | undefined;
-  class?: string | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {

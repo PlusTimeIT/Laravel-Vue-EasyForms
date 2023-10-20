@@ -2,19 +2,13 @@ var M = Object.defineProperty;
 var N = (d, s, e) => s in d ? M(d, s, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[s] = e;
 var i = (d, s, e) => (N(d, typeof s != "symbol" ? s + "" : s, e), e);
 import { V as D, C as k } from "./ValidationRule-cec9d477.js";
-import { S as A } from "./ServerCall-8eff3f6f.js";
+import { S as A } from "./ServerCall-47b8cd7d.js";
 import { A as j } from "./AxiosCalls-a93e3e6c.js";
 import { D as P } from "./DensityTypes-eaa8882a.js";
 import { V as c, b as y, T as I, D as O } from "./ValidationUpdates-2bad4a1e.js";
-import { S as v, i as o, a as x, b as m, c as g, d as R, e as W, f as C, G as F, I as T } from "./Icon-29f81fc8.js";
+import { S as v, i as o, a as x, b as m, c as g, d as R, e as W, f as C, G as F, I as T } from "./Icon-67bf229a.js";
 const n = (d, s, e) => v.convertMessageHolders(d, s, e), K = (d, s) => v.generate(d, s), f = class f {
   constructor(s) {
-    /**
-     * Backend domain for making API calls.
-     * It should end without a forward slash.
-     * eg. https://domain.com
-     */
-    i(this, "backend_domain", "");
     /**
      * The prefix for making calls via API, this is append to the backend domain.
      * It should begin with a forward slash and end without a forward slash.
@@ -23,53 +17,56 @@ const n = (d, s, e) => v.convertMessageHolders(d, s, e), K = (d, s) => v.generat
      */
     i(this, "axios_prefix", "");
     /**
+     * Backend domain for making API calls.
+     * It should end without a forward slash.
+     * eg. https://domain.com
+     */
+    i(this, "backend_domain", "");
+    /**
      * If CSRF checks are required then this should be the endpoint.
      * It should begin with a forward slash and end without a forward slash.
      * eg. /security/cookie
      */
     i(this, "csrf_endpoint", "");
     /**
-     * Does your frontend application use vue router.
+     * Optional label text to append placeholder attribute
      */
-    i(this, "uses_vue_router", !1);
+    i(this, "optional_label_text", " ( * Optional )");
     /**
-     * When initiated, if placeholder is present and empty,
-     * and text is present and not empty, placeholder should = text
+     * Optional placeholder text to append placeholder attribute
      */
-    i(this, "text_to_placeholder", !0);
+    i(this, "optional_placeholder_text", " ( * Optional )");
+    /**
+     * Required label text to append placeholder attribute
+     */
+    i(this, "required_label_text", " ( * Required )");
+    /**
+     * Required placeholder text to append placeholder attribute
+     */
+    i(this, "required_placeholder_text", " ( * Required )");
     /**
      * Display required tags only, either tags_on_placeholder or tags_on_labels
      * must be set to true for this to take effect.
      */
     i(this, "required_tags_only", !0);
     /**
-     * Should the placeholder text display required and optional tags
-     */
-    i(this, "tags_on_placeholder", !0);
-    /**
      * Should the label text display required and optional tags
      */
     i(this, "tags_on_labels", !1);
     /**
-     * Optional placeholder text to append placeholder attribute
+     * Should the placeholder text display required and optional tags
      */
-    i(this, "optional_placeholder_text", " ( * Optional )");
+    i(this, "tags_on_placeholder", !0);
     /**
-     * Optional label text to append placeholder attribute
+     * When initiated, if placeholder is present and empty,
+     * and text is present and not empty, placeholder should = text
      */
-    i(this, "optional_label_text", " ( * Optional )");
+    i(this, "text_to_placeholder", !0);
     /**
-     * Required placeholder text to append placeholder attribute
+     * Does your frontend application use vue router.
      */
-    i(this, "required_placeholder_text", " ( * Required )");
-    /**
-     * Required label text to append placeholder attribute
-     */
-    i(this, "required_label_text", " ( * Required )");
+    i(this, "uses_vue_router", !1);
     Object.assign(this, s), f.instance = this;
-  }
-  buildDomain(s = "") {
-    return o(s) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(s));
   }
   /**
    * The static method that controls the access to the singleton instance.
@@ -79,6 +76,9 @@ const n = (d, s, e) => v.convertMessageHolders(d, s, e), K = (d, s) => v.generat
    */
   static getInstance() {
     return f.instance || (f.instance = new f()), f.instance;
+  }
+  buildDomain(s = "") {
+    return o(s) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(s));
   }
 };
 i(f, "instance");
@@ -401,18 +401,6 @@ class Q extends S {
   addItem(e, t) {
     this.value.push(new k({ key: e, value: t }));
   }
-  clear() {
-    this.value = [];
-    for (const e of this.items)
-      e.value = !1;
-  }
-  find(e) {
-    return this.value.find((t) => t.key == e.name);
-  }
-  removeItem(e) {
-    const t = this.value.indexOf(e);
-    this.value.splice(t, 1);
-  }
   /**
    * Returns an array of all allowed props that are present on V-Checkbox
    * https://vuetifyjs.com/en/api/v-checkbox/
@@ -424,6 +412,18 @@ class Q extends S {
    */
   allowedProps() {
     return ["class", "cols", "items", "label", "switch"];
+  }
+  clear() {
+    this.value = [];
+    for (const e of this.items)
+      e.value = !1;
+  }
+  find(e) {
+    return this.value.find((t) => t.key == e.name);
+  }
+  removeItem(e) {
+    const t = this.value.indexOf(e);
+    this.value.splice(t, 1);
   }
 }
 class X extends S {

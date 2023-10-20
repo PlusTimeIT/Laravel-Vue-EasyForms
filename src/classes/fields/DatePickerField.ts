@@ -1,7 +1,7 @@
-import { EasyField } from "#/abstracts/EasyField";
+import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
-import { Menu, Icon } from "#/classes/elements";
-import { DatePicker } from "#/classes/fields/DatePicker";
+import { Menu, Icon } from "../../classes/elements";
+import { DatePicker } from "../../classes/fields/DatePicker";
 
 export class DatePickerField extends EasyField {
   component = "easy-date-picker";

@@ -5,9 +5,9 @@ export default {
 </script>
 <script setup lang="ts">
 import { ComputedRef, computed, Ref, ref } from "vue";
-import { Button } from "#/classes/elements";
-import { isEmpty } from "#/composables/utils/Types";
-import { EasyIcon } from "#/components/elements";
+import { Button } from "../../classes/elements";
+import { isEmpty } from "../../composables/utils/Types";
+import { EasyIcon } from "../../components/elements";
 
 const xProps = defineProps<{
   button: Button;

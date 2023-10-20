@@ -1,4 +1,4 @@
-import { InputForm } from "#/classes/forms";
+import { InputForm } from "../../classes/forms";
 
 export function ColumnRestriction(value: number): boolean {
   return value <= 12 && value >= 1;
