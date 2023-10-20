@@ -9,7 +9,7 @@ import { Button } from "#/classes/elements";
 import { isEmpty } from "#/composables/utils/Types";
 import { EasyIcon } from "#/components/elements";
 
-const props = defineProps<{
+const xProps = defineProps<{
   button: Button;
   disabled: boolean;
   identifier?: string | number;
@@ -19,18 +19,18 @@ const emit = defineEmits<{
   (e: "click", value: string | number | undefined): void;
 }>();
 
-const button: Ref<Button> = ref(props.button) as Ref<Button>;
+const button: Ref<Button> = ref(xProps.button) as Ref<Button>;
 
 const has_prepend_icon: ComputedRef<boolean> = computed(() => {
-  return !isEmpty(props.button.prepend_icon) && !isEmpty(props.button?.prepend_icon?.icon);
+  return !isEmpty(xProps.button.prepend_icon) && !isEmpty(xProps.button?.prepend_icon?.icon);
 });
 const has_append_icon: ComputedRef<boolean> = computed(() => {
-  return !isEmpty(props.button.append_icon) && !isEmpty(props.button?.append_icon?.icon);
+  return !isEmpty(xProps.button.append_icon) && !isEmpty(xProps.button?.append_icon?.icon);
 });
 
 function click() {
-  if (!isEmpty(props?.identifier)) {
-    emit("click", props?.identifier);
+  if (!isEmpty(xProps?.identifier)) {
+    emit("click", xProps?.identifier);
   } else {
     emit("click", "");
   }

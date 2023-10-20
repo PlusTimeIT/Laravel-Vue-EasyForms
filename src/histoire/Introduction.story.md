@@ -1,7 +1,7 @@
 ---
-group: 'top'
-icon: 'carbon:bookmark'
-title: 'Intro'
+group: "top"
+icon: "carbon:bookmark"
+title: "Intro"
 ---
 
 # Introduction
@@ -27,22 +27,22 @@ This plugin utilizes [Vuetify](https://vuetifyjs.com/) as a framework for displa
 ## Feature List
 
 :::div data-table
-| Name                    | Release Version |    Status     |
+| Name | Release Version | Status |
 | :---------------------- | :-------------: | :-----------: |
-| Field Masking           |      0.1.0      |     :100:     |
-| Field Validations       |      0.1.0      |     :100:     |
-| Prefill Fields          |      0.1.0      |     :100:     |
-| Additional Request Data |      0.1.0      |     :100:     |
-| Feat 1                  |      0.3.0      |      :x:      |
-| Feat 2                  |    0.2090.0     | :interrobang: |
+| Field Masking | 0.1.0 | :100: |
+| Field Validations | 0.1.0 | :100: |
+| Prefill Fields | 0.1.0 | :100: |
+| Additional Request Data | 0.1.0 | :100: |
+| Feat 1 | 0.3.0 | :x: |
+| Feat 2 | 0.2090.0 | :interrobang: |
 :::
 
 ### Legend
 
 :::div data-table
-| Status         |     Icon      |
+| Status | Icon |
 | :------------- | :-----------: |
-| Completed      |     :100:     |
-| Not Started    |      :x:      |
+| Completed | :100: |
+| Not Started | :x: |
 | It'll get done | :interrobang: |
 :::

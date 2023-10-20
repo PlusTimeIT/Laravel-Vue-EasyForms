@@ -42,7 +42,7 @@ interface Props {
 }
 
 // Define props with default values
-const props = withDefaults(defineProps<Props>(), {
+const xProps = withDefaults(defineProps<Props>(), {
   modelValue: "",
 });
 
@@ -54,14 +54,14 @@ const emit = defineEmits<{
 }>();
 
 // Create a reference to the TextField object
-const textfield: Ref<TextField> = ref(props.textfield) as Ref<TextField>;
+const textfield: Ref<TextField> = ref(xProps.textfield) as Ref<TextField>;
 
 // Create references for menu, picker, and show_menu
-const menu: Ref<Menu> = ref(props.menu) as Ref<Menu>;
-const picker: Ref<TimePicker> = ref(props.picker) as Ref<TimePicker>;
+const menu: Ref<Menu> = ref(xProps.menu) as Ref<Menu>;
+const picker: Ref<TimePicker> = ref(xProps.picker) as Ref<TimePicker>;
 const show_menu: Ref<boolean> = ref(false);
 const fields: ComputedRef<FieldType[]> = computed(() => {
-  return props.fields ?? [];
+  return xProps.fields ?? [];
 });
 // Update the model value when the input is updated
 function updated(event: any) {
@@ -105,7 +105,7 @@ watch(picker.value, (date) => {
 
 // Set the initial value and loading state of the textfield on mount
 onMounted(() => {
-  textfield.value!.value = props.modelValue;
+  textfield.value!.value = xProps.modelValue;
   textfield.value!.isLoading(false);
 });
 </script>

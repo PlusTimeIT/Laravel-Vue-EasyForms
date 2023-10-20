@@ -37,5 +37,6 @@
     ],
     "no-console": "off",
     "no-debugger": "off"
-  }
+  },
+  "ignorePatterns": ["**/node_modules/**", "**/docs/**", "**/dist/**"]
 }

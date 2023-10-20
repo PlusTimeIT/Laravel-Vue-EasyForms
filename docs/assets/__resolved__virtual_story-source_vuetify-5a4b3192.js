@@ -10,107 +10,7 @@ const __resolved__virtual_storySource_vuetify = `
   
 
   // default variables
-  const config = markRaw({
-  "blueprint": {
-    "defaults": {
-      "VAppBar": {
-        "flat": true
-      },
-      "VAutocomplete": {
-        "variant": "filled"
-      },
-      "VBanner": {
-        "color": "primary"
-      },
-      "VBottomSheet": {
-        "contentClass": "rounded-t-xl overflow-hidden"
-      },
-      "VBtn": {
-        "color": "primary",
-        "rounded": "xl"
-      },
-      "VBtnGroup": {
-        "rounded": "xl",
-        "VBtn": {
-          "rounded": null
-        }
-      },
-      "VCard": {
-        "rounded": "lg"
-      },
-      "VCheckbox": {
-        "color": "secondary",
-        "inset": true
-      },
-      "VChip": {
-        "rounded": "sm"
-      },
-      "VCombobox": {
-        "variant": "filled"
-      },
-      "VNavigationDrawer": {},
-      "VSelect": {
-        "variant": "filled"
-      },
-      "VSlider": {
-        "color": "primary"
-      },
-      "VTabs": {
-        "color": "primary"
-      },
-      "VTextarea": {
-        "variant": "filled"
-      },
-      "VTextField": {
-        "variant": "filled"
-      },
-      "VToolbar": {
-        "VBtn": {
-          "color": null
-        }
-      }
-    },
-    "icons": {
-      "defaultSet": "mdi",
-      "sets": {
-        "mdi": {}
-      }
-    },
-    "theme": {
-      "themes": {
-        "light": {
-          "colors": {
-            "primary": "#6750a4",
-            "secondary": "#b4b0bb",
-            "tertiary": "#7d5260",
-            "error": "#b3261e",
-            "surface": "#fffbfe"
-          }
-        }
-      }
-    }
-  },
-  "theme": {
-    "defaultTheme": "vuetifyTheme",
-    "themes": {
-      "vuetifyTheme": {
-        "dark": false,
-        "colors": {
-          "background": "#FFFFFF",
-          "surface": "#FFFFFF",
-          "primary": "#000000",
-          "primary-darken-1": "#3700B3",
-          "secondary": "#03DAC6",
-          "secondary-darken-1": "#018786",
-          "error": "#B00020",
-          "info": "#2196F3",
-          "success": "#4CAF50",
-          "warning": "#FB8C00"
-        }
-      }
-    }
-  }
-})
+  const config = markRaw({})
   
   const state = reactive({
     sample: 'This is some sample text.',
@@ -156,7 +56,7 @@ marginSize: 2
       const OverflowData = markRaw([{"title":"Overflow Auto","classes":"overflow-auto"},{"title":"Overflow Hidden","classes":"overflow-hidden"},{"title":"Overflow Visible","classes":"overflow-visible"},{"title":"Overflow X Auto","classes":"overflow-x-auto force-nowrap"},{"title":"Overflow X Hidden","classes":"overflow-x-hidden force-nowrap"},{"title":"Overflow X Visible","classes":"overflow-x-visible force-nowrap"},{"title":"Overflow Y Auto","classes":"overflow-y-auto"},{"title":"Overflow Y Hidden","classes":"overflow-y-hidden"},{"title":"Overflow Y Visible","classes":"overflow-y-visible"}])
       
 
-      const SizingData = markRaw([{"title":"Height Auto","classes":"h-auto"},{"title":"Height Screen","classes":"h-screen"},{"title":"Height 0","classes":"h-0"},{"title":"Height 25","classes":"h-25"},{"title":"Height 50","classes":"h-50"},{"title":"Height 75","classes":"h-75"},{"title":"Height 100","classes":"h-100"},{"title":"Width Auto","classes":"w-auto"},{"title":"Width 0","classes":"w-0"},{"title":"Width 25","classes":"w-25"},{"title":"Width 50","classes":"w-50"},{"title":"Width 75","classes":"w-75"},{"title":"Width 100","classes":"w-100"}])
+      const SizingData = markRaw([{"title":"Width Auto","classes":"w-auto"},{"title":"Width 0","classes":"w-0"},{"title":"Width 25","classes":"w-25"},{"title":"Width 50","classes":"w-50"},{"title":"Width 75","classes":"w-75"},{"title":"Width 100","classes":"w-100"},{"title":"Height Auto","classes":"h-auto"},{"title":"Height 0","classes":"h-0"},{"title":"Height 25","classes":"h-25"},{"title":"Height 50","classes":"h-50"},{"title":"Height 75","classes":"h-75"},{"title":"Height 100","classes":"h-100"},{"title":"Height Screen","classes":"h-screen"}])
       
 
       const SpacingData = markRaw([{"title":"Container","component":"div","states":["margin","marginSize"],"classes":"bg-orange-lighten-3 pa-0 ma-4 overflow-auto","children":[{"title":"Parent","component":"div","states":["margin","marginSize"],"builder":{"args":["direction","size"],"body":"return \`m\${direction}-\${size}\`"},"classes":"elevation-4","children":[{"title":"Child","component":"div","states":["padding","paddingSize"],"builder":{"args":["direction","size"],"body":"return \`p\${direction}-\${size}\`"},"classes":"bg-light-green-lighten-3 elevation-4","children":[{"title":"Content","component":"div","classes":"bg-white text-center py-6","content":"Use the controls on the right to try out the different spacing helpers."}]}]}]}])
@@ -433,7 +333,7 @@ marginSize: 2
       :inline="true"
       :description='{"classes":"my-4 htw-text-gray-900 dark:htw-text-gray-100","divider":{"show":true,"classes":"my-4"},"text":"Sizing utility classes are used to modify the dimensions of an element.","link":{"url":"https://vuetifyjs.com/en/styles/sizing/","text":"More information","blank":true,"classes":"my-4 htw-text-gray-900 dark:htw-text-gray-100 font-weight-bold"}}'
       :controls='[{"component":"v-autocomplete","model":"sizing","label":"Sizing","itemsTitle":"title","itemsValue":"classes","playground":{"type":"class","sample":"sample","classes":"bg-grey-darken-4 pa-4 rounded-lg display-square "}}]'
-      :variants='[{"title":"Height Auto","classes":"h-auto"},{"title":"Height Screen","classes":"h-screen"},{"title":"Height 0","classes":"h-0"},{"title":"Height 25","classes":"h-25"},{"title":"Height 50","classes":"h-50"},{"title":"Height 75","classes":"h-75"},{"title":"Height 100","classes":"h-100"},{"title":"Width Auto","classes":"w-auto"},{"title":"Width 0","classes":"w-0"},{"title":"Width 25","classes":"w-25"},{"title":"Width 50","classes":"w-50"},{"title":"Width 75","classes":"w-75"},{"title":"Width 100","classes":"w-100"}]'
+      :variants='[{"title":"Width Auto","classes":"w-auto"},{"title":"Width 0","classes":"w-0"},{"title":"Width 25","classes":"w-25"},{"title":"Width 50","classes":"w-50"},{"title":"Width 75","classes":"w-75"},{"title":"Width 100","classes":"w-100"},{"title":"Height Auto","classes":"h-auto"},{"title":"Height 0","classes":"h-0"},{"title":"Height 25","classes":"h-25"},{"title":"Height 50","classes":"h-50"},{"title":"Height 75","classes":"h-75"},{"title":"Height 100","classes":"h-100"},{"title":"Height Screen","classes":"h-screen"}]'
       :playground='{"title":"Playground","classes":"mb-2 text-h4 htw-text-gray-900 dark:htw-text-gray-100","divider":{"show":true,"classes":"ma-4"}}'
       :state="state"
       :containerized="false"

@@ -28,34 +28,6 @@
       "markdownFile": null
     },
     {
-      "id": "src-histoire-installation-story-js",
-      "title": "Installation",
-      "group": "getting-started",
-      "layout": {
-        "type": "single",
-        "iframe": true
-      },
-      "icon": "carbon:bookmark",
-      "docsOnly": true,
-      "variants": [],
-      "relativePath": "src/histoire/Installation.story.js",
-      "supportPluginId": "vanilla",
-      "treePath": [
-        "Installation"
-      ],
-      "virtual": true,
-      "markdownFile": {
-        "id": "src-histoire-installation-story-md",
-        "relativePath": "src/histoire/Installation.story.md",
-        "isRelatedToStory": false,
-        "frontmatter": {
-          "group": "getting-started",
-          "icon": "carbon:bookmark",
-          "title": "Installation"
-        }
-      }
-    },
-    {
       "id": "src-histoire-formbasics-story-js",
       "title": "Form Basics",
       "group": "forms",
@@ -80,6 +52,34 @@
           "group": "forms",
           "icon": "carbon:bookmark",
           "title": "Form Basics"
+        }
+      }
+    },
+    {
+      "id": "src-histoire-installation-story-js",
+      "title": "Installation",
+      "group": "getting-started",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "icon": "carbon:bookmark",
+      "docsOnly": true,
+      "variants": [],
+      "relativePath": "src/histoire/Installation.story.js",
+      "supportPluginId": "vanilla",
+      "treePath": [
+        "Installation"
+      ],
+      "virtual": true,
+      "markdownFile": {
+        "id": "src-histoire-installation-story-md",
+        "relativePath": "src/histoire/Installation.story.md",
+        "isRelatedToStory": false,
+        "frontmatter": {
+          "group": "getting-started",
+          "icon": "carbon:bookmark",
+          "title": "Installation"
         }
       }
     },
@@ -184,16 +184,6 @@
   ],
   "markdownFiles": [
     {
-      "id": "src-histoire-installation-story-md",
-      "relativePath": "src/histoire/Installation.story.md",
-      "isRelatedToStory": false,
-      "frontmatter": {
-        "group": "getting-started",
-        "icon": "carbon:bookmark",
-        "title": "Installation"
-      }
-    },
-    {
       "id": "src-histoire-formbasics-story-md",
       "relativePath": "src/histoire/FormBasics.story.md",
       "isRelatedToStory": false,
@@ -201,6 +191,16 @@
         "group": "forms",
         "icon": "carbon:bookmark",
         "title": "Form Basics"
+      }
+    },
+    {
+      "id": "src-histoire-installation-story-md",
+      "relativePath": "src/histoire/Installation.story.md",
+      "isRelatedToStory": false,
+      "frontmatter": {
+        "group": "getting-started",
+        "icon": "carbon:bookmark",
+        "title": "Installation"
       }
     },
     {

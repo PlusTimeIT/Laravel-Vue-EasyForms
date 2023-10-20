@@ -46,7 +46,7 @@ interface Props {
   fields: FieldType[];
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const xProps = withDefaults(defineProps<Props>(), {
   modelValue: "",
 });
 
@@ -57,12 +57,12 @@ const emit = defineEmits<{
 }>();
 
 // Create refs for component properties
-const textfield: Ref<TextField> = ref(props.textfield) as Ref<TextField>;
-const menu: Ref<Menu> = ref(props.menu) as Ref<Menu>;
-const picker: Ref<DatePicker> = ref(props.picker) as Ref<DatePicker>;
+const textfield: Ref<TextField> = ref(xProps.textfield) as Ref<TextField>;
+const menu: Ref<Menu> = ref(xProps.menu) as Ref<Menu>;
+const picker: Ref<DatePicker> = ref(xProps.picker) as Ref<DatePicker>;
 const show_menu: Ref<boolean> = ref(false);
 const fields: ComputedRef<FieldType[]> = computed(() => {
-  return props.fields ?? [];
+  return xProps.fields ?? [];
 });
 // Function to handle input update
 function handleInputUpdate(event: any) {

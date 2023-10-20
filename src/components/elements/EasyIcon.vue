@@ -7,7 +7,7 @@ interface Props {
   icon: Icon | undefined;
   identifier?: string | number;
 }
-const props = withDefaults(defineProps<Props>(), {
+const xProps = withDefaults(defineProps<Props>(), {
   identifier: "",
 });
 
@@ -15,11 +15,11 @@ const emit = defineEmits<{
   (e: "click", value: string | number | undefined): void;
 }>();
 
-const icon: Ref<Icon> = ref(props.icon) as Ref<Icon>;
+const icon: Ref<Icon> = ref(xProps.icon) as Ref<Icon>;
 
 function click() {
-  if (!isEmpty(props?.identifier)) {
-    emit("click", props?.identifier);
+  if (!isEmpty(xProps?.identifier)) {
+    emit("click", xProps?.identifier);
   } else {
     emit("click", "");
   }

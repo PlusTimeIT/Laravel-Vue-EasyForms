@@ -26225,13 +26225,13 @@ var i$2 = function(e2, i2) {
     }
     null != m2 && m2 === document.body && n$1(m2) && !n$1(document.documentElement) || null != m2 && n$1(m2, u2) && p2.push(m2);
   }
-  for (var w2 = o2.visualViewport ? o2.visualViewport.width : innerWidth, v2 = o2.visualViewport ? o2.visualViewport.height : innerHeight, W2 = window.scrollX || pageXOffset, H3 = window.scrollY || pageYOffset, b3 = e2.getBoundingClientRect(), y2 = b3.height, E2 = b3.width, M2 = b3.top, V2 = b3.right, x2 = b3.bottom, I2 = b3.left, C2 = "start" === d2 || "nearest" === d2 ? M2 : "end" === d2 ? x2 : M2 + y2 / 2, R2 = "center" === f2 ? I2 + E2 / 2 : "end" === f2 ? V2 : I2, T3 = [], k2 = 0; k2 < p2.length; k2++) {
+  for (var w2 = o2.visualViewport ? o2.visualViewport.width : innerWidth, v2 = o2.visualViewport ? o2.visualViewport.height : innerHeight, W2 = window.scrollX || pageXOffset, H2 = window.scrollY || pageYOffset, b3 = e2.getBoundingClientRect(), y2 = b3.height, E2 = b3.width, M2 = b3.top, V2 = b3.right, x2 = b3.bottom, I2 = b3.left, C2 = "start" === d2 || "nearest" === d2 ? M2 : "end" === d2 ? x2 : M2 + y2 / 2, R2 = "center" === f2 ? I2 + E2 / 2 : "end" === f2 ? V2 : I2, T3 = [], k2 = 0; k2 < p2.length; k2++) {
     var B = p2[k2], D2 = B.getBoundingClientRect(), O2 = D2.height, X2 = D2.width, Y2 = D2.top, L3 = D2.right, S2 = D2.bottom, j2 = D2.left;
     if ("if-needed" === l && M2 >= 0 && I2 >= 0 && x2 <= v2 && V2 <= w2 && M2 >= Y2 && x2 <= S2 && I2 >= j2 && V2 <= L3)
       return T3;
     var N3 = getComputedStyle(B), q2 = parseInt(N3.borderLeftWidth, 10), z2 = parseInt(N3.borderTopWidth, 10), A3 = parseInt(N3.borderRightWidth, 10), F2 = parseInt(N3.borderBottomWidth, 10), G3 = 0, J3 = 0, K2 = "offsetWidth" in B ? B.offsetWidth - B.clientWidth - q2 - A3 : 0, P3 = "offsetHeight" in B ? B.offsetHeight - B.clientHeight - z2 - F2 : 0, Q3 = "offsetWidth" in B ? 0 === B.offsetWidth ? 0 : X2 / B.offsetWidth : 0, U2 = "offsetHeight" in B ? 0 === B.offsetHeight ? 0 : O2 / B.offsetHeight : 0;
     if (g === B)
-      G3 = "start" === d2 ? C2 : "end" === d2 ? C2 - v2 : "nearest" === d2 ? r$1(H3, H3 + v2, v2, z2, F2, H3 + C2, H3 + C2 + y2, y2) : C2 - v2 / 2, J3 = "start" === f2 ? R2 : "center" === f2 ? R2 - w2 / 2 : "end" === f2 ? R2 - w2 : r$1(W2, W2 + w2, w2, q2, A3, W2 + R2, W2 + R2 + E2, E2), G3 = Math.max(0, G3 + H3), J3 = Math.max(0, J3 + W2);
+      G3 = "start" === d2 ? C2 : "end" === d2 ? C2 - v2 : "nearest" === d2 ? r$1(H2, H2 + v2, v2, z2, F2, H2 + C2, H2 + C2 + y2, y2) : C2 - v2 / 2, J3 = "start" === f2 ? R2 : "center" === f2 ? R2 - w2 / 2 : "end" === f2 ? R2 - w2 : r$1(W2, W2 + w2, w2, q2, A3, W2 + R2, W2 + R2 + E2, E2), G3 = Math.max(0, G3 + H2), J3 = Math.max(0, J3 + W2);
     else {
       G3 = "start" === d2 ? C2 - Y2 - z2 : "end" === d2 ? C2 - S2 + F2 + P3 : "nearest" === d2 ? r$1(Y2, S2, O2, z2, F2 + P3, C2, C2 + y2, y2) : C2 - (Y2 + O2 / 2) + P3 / 2, J3 = "start" === f2 ? R2 - j2 - q2 : "center" === f2 ? R2 - (j2 + X2 / 2) + K2 / 2 : "end" === f2 ? R2 - L3 + A3 + K2 : r$1(j2, L3, X2, q2, A3 + K2, R2, R2 + E2, E2);
       var Z3 = B.scrollLeft, $2 = B.scrollTop;
@@ -42403,107 +42403,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
   __name: "Vuetify.story",
   setup(__props, { expose: __expose }) {
     __expose();
-    const config2 = markRaw({
-      "blueprint": {
-        "defaults": {
-          "VAppBar": {
-            "flat": true
-          },
-          "VAutocomplete": {
-            "variant": "filled"
-          },
-          "VBanner": {
-            "color": "primary"
-          },
-          "VBottomSheet": {
-            "contentClass": "rounded-t-xl overflow-hidden"
-          },
-          "VBtn": {
-            "color": "primary",
-            "rounded": "xl"
-          },
-          "VBtnGroup": {
-            "rounded": "xl",
-            "VBtn": {
-              "rounded": null
-            }
-          },
-          "VCard": {
-            "rounded": "lg"
-          },
-          "VCheckbox": {
-            "color": "secondary",
-            "inset": true
-          },
-          "VChip": {
-            "rounded": "sm"
-          },
-          "VCombobox": {
-            "variant": "filled"
-          },
-          "VNavigationDrawer": {},
-          "VSelect": {
-            "variant": "filled"
-          },
-          "VSlider": {
-            "color": "primary"
-          },
-          "VTabs": {
-            "color": "primary"
-          },
-          "VTextarea": {
-            "variant": "filled"
-          },
-          "VTextField": {
-            "variant": "filled"
-          },
-          "VToolbar": {
-            "VBtn": {
-              "color": null
-            }
-          }
-        },
-        "icons": {
-          "defaultSet": "mdi",
-          "sets": {
-            "mdi": {}
-          }
-        },
-        "theme": {
-          "themes": {
-            "light": {
-              "colors": {
-                "primary": "#6750a4",
-                "secondary": "#b4b0bb",
-                "tertiary": "#7d5260",
-                "error": "#b3261e",
-                "surface": "#fffbfe"
-              }
-            }
-          }
-        }
-      },
-      "theme": {
-        "defaultTheme": "vuetifyTheme",
-        "themes": {
-          "vuetifyTheme": {
-            "dark": false,
-            "colors": {
-              "background": "#FFFFFF",
-              "surface": "#FFFFFF",
-              "primary": "#000000",
-              "primary-darken-1": "#3700B3",
-              "secondary": "#03DAC6",
-              "secondary-darken-1": "#018786",
-              "error": "#B00020",
-              "info": "#2196F3",
-              "success": "#4CAF50",
-              "warning": "#FB8C00"
-            }
-          }
-        }
-      }
-    });
+    const config2 = markRaw({});
     const state = reactive({
       sample: "This is some sample text.",
       materialColors: "red",
@@ -42529,7 +42429,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
     const DisplayData = markRaw([{ "title": "Display Inline Block", "classes": "d-inline-block", "duplicate": 3 }, { "title": "Display Inline", "classes": "d-inline" }, { "title": "Display Block", "classes": "d-block" }, { "title": "Display Block Breakpoint SM", "classes": "d-block d-sm-inline-block" }, { "title": "Display Block Breakpoint MD", "classes": "d-block d-md-inline-block" }, { "title": "Display Block Breakpoint LG", "classes": "d-block d-lg-inline-block" }, { "title": "Display Block Breakpoint XL", "classes": "d-block d-xl-inline-block" }, { "title": "Display Block Breakpoint XXL", "classes": "d-block d-xxl-inline-block" }, { "title": "Hidden On All", "classes": "d-none" }, { "title": "Hidden Only On XS", "classes": "d-none d-sm-block" }, { "title": "Hidden Only On SM", "classes": "d-none d-md-block" }, { "title": "Hidden Only On MD", "classes": "d-none d-lg-block" }, { "title": "Hidden Only On LG", "classes": "d-none d-xl-block" }, { "title": "Hidden Only On XL", "classes": "d-none d-xxl-block" }, { "title": "Hidden Only On XXL", "classes": "d-none" }, { "title": "Visible On All", "classes": "d-block" }, { "title": "Visible Only On XS", "classes": "d-block d-sm-none" }, { "title": "Visible Only On SM", "classes": "d-none d-sm-block d-md-none" }, { "title": "Visible Only On MD", "classes": "d-none d-md-block d-lg-none" }, { "title": "Visible Only On LG", "classes": "d-none d-lg-block d-xl-none" }, { "title": "Visible Only On XL", "classes": "d-none d-xl-block d-xxl-none" }, { "title": "Visible Only On XXL", "classes": "d-none d-xxl-block" }]);
     const FloatData = markRaw([{ "title": "Float Left", "classes": "float-left" }, { "title": "Float Right", "classes": "float-right" }, { "title": "Float Start", "classes": "float-start" }, { "title": "Float End", "classes": "float-end" }, { "title": "Float None", "classes": "float-none" }, { "title": "Float SM Left", "classes": "float-sm-left" }, { "title": "Float SM Right", "classes": "float-sm-right" }, { "title": "Float SM Start", "classes": "float-sm-start" }, { "title": "Float SM End", "classes": "float-sm-end" }, { "title": "Float SM None", "classes": "float-sm-none" }, { "title": "Float MD Left", "classes": "float-md-left" }, { "title": "Float MD Right", "classes": "float-md-right" }, { "title": "Float MD Start", "classes": "float-md-start" }, { "title": "Float MD End", "classes": "float-md-end" }, { "title": "Float MD None", "classes": "float-md-none" }, { "title": "Float LG Left", "classes": "float-lg-left" }, { "title": "Float LG Right", "classes": "float-lg-right" }, { "title": "Float LG Start", "classes": "float-lg-start" }, { "title": "Float LG End", "classes": "float-lg-end" }, { "title": "Float LG None", "classes": "float-lg-none" }, { "title": "Float XL Left", "classes": "float-xl-left" }, { "title": "Float XL Right", "classes": "float-xl-right" }, { "title": "Float XL Start", "classes": "float-xl-start" }, { "title": "Float XL End", "classes": "float-xl-end" }, { "title": "Float XL None", "classes": "float-xl-none" }]);
     const OverflowData = markRaw([{ "title": "Overflow Auto", "classes": "overflow-auto" }, { "title": "Overflow Hidden", "classes": "overflow-hidden" }, { "title": "Overflow Visible", "classes": "overflow-visible" }, { "title": "Overflow X Auto", "classes": "overflow-x-auto force-nowrap" }, { "title": "Overflow X Hidden", "classes": "overflow-x-hidden force-nowrap" }, { "title": "Overflow X Visible", "classes": "overflow-x-visible force-nowrap" }, { "title": "Overflow Y Auto", "classes": "overflow-y-auto" }, { "title": "Overflow Y Hidden", "classes": "overflow-y-hidden" }, { "title": "Overflow Y Visible", "classes": "overflow-y-visible" }]);
-    const SizingData = markRaw([{ "title": "Height Auto", "classes": "h-auto" }, { "title": "Height Screen", "classes": "h-screen" }, { "title": "Height 0", "classes": "h-0" }, { "title": "Height 25", "classes": "h-25" }, { "title": "Height 50", "classes": "h-50" }, { "title": "Height 75", "classes": "h-75" }, { "title": "Height 100", "classes": "h-100" }, { "title": "Width Auto", "classes": "w-auto" }, { "title": "Width 0", "classes": "w-0" }, { "title": "Width 25", "classes": "w-25" }, { "title": "Width 50", "classes": "w-50" }, { "title": "Width 75", "classes": "w-75" }, { "title": "Width 100", "classes": "w-100" }]);
+    const SizingData = markRaw([{ "title": "Width Auto", "classes": "w-auto" }, { "title": "Width 0", "classes": "w-0" }, { "title": "Width 25", "classes": "w-25" }, { "title": "Width 50", "classes": "w-50" }, { "title": "Width 75", "classes": "w-75" }, { "title": "Width 100", "classes": "w-100" }, { "title": "Height Auto", "classes": "h-auto" }, { "title": "Height 0", "classes": "h-0" }, { "title": "Height 25", "classes": "h-25" }, { "title": "Height 50", "classes": "h-50" }, { "title": "Height 75", "classes": "h-75" }, { "title": "Height 100", "classes": "h-100" }, { "title": "Height Screen", "classes": "h-screen" }]);
     const SpacingData = markRaw([{ "title": "Container", "component": "div", "states": ["margin", "marginSize"], "classes": "bg-orange-lighten-3 pa-0 ma-4 overflow-auto", "children": [{ "title": "Parent", "component": "div", "states": ["margin", "marginSize"], "builder": { "args": ["direction", "size"], "body": "return `m${direction}-${size}`" }, "classes": "elevation-4", "children": [{ "title": "Child", "component": "div", "states": ["padding", "paddingSize"], "builder": { "args": ["direction", "size"], "body": "return `p${direction}-${size}`" }, "classes": "bg-light-green-lighten-3 elevation-4", "children": [{ "title": "Content", "component": "div", "classes": "bg-white text-center py-6", "content": "Use the controls on the right to try out the different spacing helpers." }] }] }] }]);
     const spacingDirections = ["t", "b", "l", "r", "s", "e", "x", "y", "a"];
     const spacingAmounts = Array.from({ length: 17 }, (val, i2) => `${i2}`);
@@ -42836,7 +42736,7 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
             inline: true,
             description: { "classes": "my-4 htw-text-gray-900 dark:htw-text-gray-100", "divider": { "show": true, "classes": "my-4" }, "text": "Sizing utility classes are used to modify the dimensions of an element.", "link": { "url": "https://vuetifyjs.com/en/styles/sizing/", "text": "More information", "blank": true, "classes": "my-4 htw-text-gray-900 dark:htw-text-gray-100 font-weight-bold" } },
             controls: [{ "component": "v-autocomplete", "model": "sizing", "label": "Sizing", "itemsTitle": "title", "itemsValue": "classes", "playground": { "type": "class", "sample": "sample", "classes": "bg-grey-darken-4 pa-4 rounded-lg display-square " } }],
-            variants: [{ "title": "Height Auto", "classes": "h-auto" }, { "title": "Height Screen", "classes": "h-screen" }, { "title": "Height 0", "classes": "h-0" }, { "title": "Height 25", "classes": "h-25" }, { "title": "Height 50", "classes": "h-50" }, { "title": "Height 75", "classes": "h-75" }, { "title": "Height 100", "classes": "h-100" }, { "title": "Width Auto", "classes": "w-auto" }, { "title": "Width 0", "classes": "w-0" }, { "title": "Width 25", "classes": "w-25" }, { "title": "Width 50", "classes": "w-50" }, { "title": "Width 75", "classes": "w-75" }, { "title": "Width 100", "classes": "w-100" }],
+            variants: [{ "title": "Width Auto", "classes": "w-auto" }, { "title": "Width 0", "classes": "w-0" }, { "title": "Width 25", "classes": "w-25" }, { "title": "Width 50", "classes": "w-50" }, { "title": "Width 75", "classes": "w-75" }, { "title": "Width 100", "classes": "w-100" }, { "title": "Height Auto", "classes": "h-auto" }, { "title": "Height 0", "classes": "h-0" }, { "title": "Height 25", "classes": "h-25" }, { "title": "Height 50", "classes": "h-50" }, { "title": "Height 75", "classes": "h-75" }, { "title": "Height 100", "classes": "h-100" }, { "title": "Height Screen", "classes": "h-screen" }],
             playground: { "title": "Playground", "classes": "mb-2 text-h4 htw-text-gray-900 dark:htw-text-gray-100", "divider": { "show": true, "classes": "ma-4" } },
             state: $setup.state,
             containerized: false
@@ -45857,7 +45757,7 @@ class qn {
     return { mapped: i2.length ? new qn(s2, r2, i2, l) : null, pos: o2 };
   }
 }
-let H$1 = class H2 {
+class H {
   constructor(t2, e2, i2, s2) {
     this.chunkPos = t2, this.chunk = e2, this.nextLayer = i2, this.maxPoint = s2;
   }
@@ -45865,7 +45765,7 @@ let H$1 = class H2 {
   @internal
   */
   static create(t2, e2, i2, s2) {
-    return new H2(t2, e2, i2, s2);
+    return new H(t2, e2, i2, s2);
   }
   /**
   @internal
@@ -45905,7 +45805,7 @@ let H$1 = class H2 {
     if (e2.length == 0 && !o2)
       return this;
     if (i2 && (e2 = e2.slice().sort(cn)), this.isEmpty)
-      return e2.length ? H2.of(e2) : this;
+      return e2.length ? H.of(e2) : this;
     let l = new pl(this, null, -1).goto(0), h2 = 0, a2 = [], c2 = new De();
     for (; l.value || h2 < e2.length; )
       if (h2 < e2.length && (l.from - e2[h2].from || l.startSide - e2[h2].value.startSide) >= 0) {
@@ -45913,7 +45813,7 @@ let H$1 = class H2 {
         c2.addInner(f2.from, f2.to, f2.value) || a2.push(f2);
       } else
         l.rangeIndex == 1 && l.chunkIndex < this.chunk.length && (h2 == e2.length || this.chunkEnd(l.chunkIndex) < e2[h2].from) && (!o2 || s2 > this.chunkEnd(l.chunkIndex) || r2 < this.chunkPos[l.chunkIndex]) && c2.addChunk(this.chunkPos[l.chunkIndex], this.chunk[l.chunkIndex]) ? l.nextChunk() : ((!o2 || s2 > l.to || r2 < l.from || o2(l.from, l.to, l.value)) && (c2.addInner(l.from, l.to, l.value) || a2.push(an.create(l.from, l.to, l.value))), l.next());
-    return c2.finishInner(this.nextLayer.isEmpty && !a2.length ? H2.empty : this.nextLayer.update({ add: a2, filter: o2, filterFrom: s2, filterTo: r2 }));
+    return c2.finishInner(this.nextLayer.isEmpty && !a2.length ? H.empty : this.nextLayer.update({ add: a2, filter: o2, filterFrom: s2, filterTo: r2 }));
   }
   /**
   Map this range set through a set of changes, return the new set.
@@ -45932,7 +45832,7 @@ let H$1 = class H2 {
       }
     }
     let r2 = this.nextLayer.map(t2);
-    return e2.length == 0 ? r2 : new H2(i2, e2, r2 || H2.empty, s2);
+    return e2.length == 0 ? r2 : new H(i2, e2, r2 || H.empty, s2);
   }
   /**
   Iterate over the ranges that touch the region `from` to `to`,
@@ -46032,8 +45932,8 @@ let H$1 = class H2 {
       i2.add(s2.from, s2.to, s2.value);
     return i2.finish();
   }
-};
-H$1.empty = /* @__PURE__ */ new H$1([], [], null, -1);
+}
+H.empty = /* @__PURE__ */ new H([], [], null, -1);
 function zc(n2) {
   if (n2.length > 1)
     for (let t2 = n2[0], e2 = 1; e2 < n2.length; e2++) {
@@ -46044,7 +45944,7 @@ function zc(n2) {
     }
   return n2;
 }
-H$1.empty.nextLayer = H$1.empty;
+H.empty.nextLayer = H.empty;
 class De {
   finishChunk(t2) {
     this.chunks.push(new qn(this.from, this.to, this.value, this.maxPoint)), this.chunkPos.push(this.chunkStart), this.chunkStart = -1, this.setMaxPoint = Math.max(this.setMaxPoint, this.maxPoint), this.maxPoint = -1, t2 && (this.from = [], this.to = [], this.value = []);
@@ -46086,7 +45986,7 @@ class De {
   used anymore after this has been called.
   */
   finish() {
-    return this.finishInner(H$1.empty);
+    return this.finishInner(H.empty);
   }
   /**
   @internal
@@ -46094,7 +45994,7 @@ class De {
   finishInner(t2) {
     if (this.from.length && this.finishChunk(false), this.chunks.length == 0)
       return t2;
-    let e2 = H$1.create(this.chunkPos, this.chunks, this.nextLayer ? this.nextLayer.finishInner(t2) : t2, this.setMaxPoint);
+    let e2 = H.create(this.chunkPos, this.chunks, this.nextLayer ? this.nextLayer.finishInner(t2) : t2, this.setMaxPoint);
     return this.from = null, e2;
   }
 }
@@ -47106,7 +47006,7 @@ class Kt extends $ {
     return sf(this.dom, t2, e2);
   }
 }
-let ie$1 = class ie2 extends $ {
+class ie extends $ {
   constructor(t2, e2 = [], i2 = 0) {
     super(), this.mark = t2, this.children = e2, this.length = i2;
     for (let s2 of e2)
@@ -47128,7 +47028,7 @@ let ie$1 = class ie2 extends $ {
     this.dom ? this.flags & 4 && this.setAttrs(this.dom) : this.setDOM(this.setAttrs(document.createElement(this.mark.tagName))), super.sync(t2, e2);
   }
   merge(t2, e2, i2, s2, r2, o2) {
-    return i2 && (!(i2 instanceof ie2 && i2.mark.eq(this.mark)) || t2 && r2 <= 0 || e2 < this.length && o2 <= 0) ? false : (kl(this, t2, e2, i2 ? i2.children : [], r2 - 1, o2 - 1), this.markDirty(), true);
+    return i2 && (!(i2 instanceof ie && i2.mark.eq(this.mark)) || t2 && r2 <= 0 || e2 < this.length && o2 <= 0) ? false : (kl(this, t2, e2, i2 ? i2.children : [], r2 - 1, o2 - 1), this.markDirty(), true);
   }
   split(t2) {
     let e2 = [], i2 = 0, s2 = -1, r2 = 0;
@@ -47137,7 +47037,7 @@ let ie$1 = class ie2 extends $ {
       h2 > t2 && e2.push(i2 < t2 ? l.split(t2 - i2) : l), s2 < 0 && i2 >= t2 && (s2 = r2), i2 = h2, r2++;
     }
     let o2 = this.length - t2;
-    return this.length = t2, s2 > -1 && (this.children.length = s2, this.markDirty()), new ie2(this.mark, e2, o2);
+    return this.length = t2, s2 > -1 && (this.children.length = s2, this.markDirty()), new ie(this.mark, e2, o2);
   }
   domAtPos(t2) {
     return Cl(this, t2);
@@ -47145,7 +47045,7 @@ let ie$1 = class ie2 extends $ {
   coordsAt(t2, e2) {
     return Ol(this, t2, e2);
   }
-};
+}
 function sf(n2, t2, e2) {
   let i2 = n2.nodeValue.length;
   t2 > i2 && (t2 = i2);
@@ -47297,7 +47197,7 @@ function Cl(n2, t2) {
 }
 function Al(n2, t2, e2) {
   let i2, { children: s2 } = n2;
-  e2 > 0 && t2 instanceof ie$1 && s2.length && (i2 = s2[s2.length - 1]) instanceof ie$1 && i2.mark.eq(t2.mark) ? Al(i2, t2.children[0], e2 - 1) : (s2.push(t2), t2.setParent(n2)), n2.length += t2.length;
+  e2 > 0 && t2 instanceof ie && s2.length && (i2 = s2[s2.length - 1]) instanceof ie && i2.mark.eq(t2.mark) ? Al(i2, t2.children[0], e2 - 1) : (s2.push(t2), t2.setParent(n2)), n2.length += t2.length;
 }
 function Ol(n2, t2, e2) {
   let i2 = null, s2 = -1, r2 = null, o2 = -1;
@@ -47492,7 +47392,7 @@ class E extends Ge {
   pass `true` for `sort` to make the library sort them for you.
   */
   static set(t2, e2 = false) {
-    return H$1.of(t2, e2);
+    return H.of(t2, e2);
   }
   /**
   @internal
@@ -47501,7 +47401,7 @@ class E extends Ge {
     return this.widget ? this.widget.estimatedHeight > -1 : false;
   }
 }
-E.none = H$1.empty;
+E.none = H.empty;
 class bi extends E {
   constructor(t2) {
     let { start: e2, end: i2 } = Ml(t2);
@@ -47616,7 +47516,7 @@ class ct extends $ {
     var i2;
     this.dom ? this.flags & 4 && (ml(this.dom), this.dom.className = "cm-line", this.prevAttrs = this.attrs ? null : void 0) : (this.setDOM(document.createElement("div")), this.dom.className = "cm-line", this.prevAttrs = this.attrs ? null : void 0), this.prevAttrs !== void 0 && (bn(this.dom, this.prevAttrs, this.attrs), this.dom.classList.add("cm-line"), this.prevAttrs = void 0), super.sync(t2, e2);
     let s2 = this.dom.lastChild;
-    for (; s2 && $.get(s2) instanceof ie$1; )
+    for (; s2 && $.get(s2) instanceof ie; )
       s2 = s2.lastChild;
     if (!s2 || !this.length || s2.nodeName != "BR" && ((i2 = $.get(s2)) === null || i2 === void 0 ? void 0 : i2.isEditable) == false && (!v$3.ios || !this.children.some((r2) => r2 instanceof Kt))) {
       let r2 = document.createElement("BR");
@@ -47790,12 +47690,12 @@ class fi {
   }
   static build(t2, e2, i2, s2, r2) {
     let o2 = new fi(t2, e2, i2, r2);
-    return o2.openEnd = H$1.spans(s2, e2, i2, o2), o2.openStart < 0 && (o2.openStart = o2.openEnd), o2.finish(o2.openEnd), o2;
+    return o2.openEnd = H.spans(s2, e2, i2, o2), o2.openStart < 0 && (o2.openStart = o2.openEnd), o2.finish(o2.openEnd), o2;
   }
 }
 function Oi(n2, t2) {
   for (let e2 of t2)
-    n2 = new ie$1(e2, [n2], n2.length);
+    n2 = new ie(e2, [n2], n2.length);
   return n2;
 }
 class Lr extends Le {
@@ -48246,7 +48146,7 @@ class Nr extends $ {
     let e2 = new Kt(t2.text.nodeValue);
     e2.flags |= 8;
     for (let { deco: s2 } of t2.marks)
-      e2 = new ie$1(s2, [e2], e2.length);
+      e2 = new ie(s2, [e2], e2.length);
     let i2 = new ct();
     return i2.append(e2, 0), i2;
   }
@@ -48540,7 +48440,7 @@ function wf(n2, t2) {
   let c2 = [], f2 = new Ct(i2, s2, o2, l);
   for (let u2 = r2.parentNode; ; u2 = u2.parentNode) {
     let d2 = $.get(u2);
-    if (d2 instanceof ie$1)
+    if (d2 instanceof ie)
       c2.push({ node: u2, deco: d2.mark });
     else {
       if (d2 instanceof ct || u2.nodeName == "DIV" && u2.parentNode == n2.contentDOM)
@@ -48593,7 +48493,7 @@ class bf {
 }
 function kf(n2, t2, e2) {
   let i2 = new bf();
-  return H$1.compare(n2, t2, e2, i2), i2.changes;
+  return H.compare(n2, t2, e2, i2), i2.changes;
 }
 function xf(n2, t2) {
   for (let e2 = n2; e2 && e2 != t2; e2 = e2.assignedSlot || e2.parentNode)
@@ -49727,12 +49627,12 @@ class Xn {
   // to each other.
   static build(t2, e2, i2, s2) {
     let r2 = new Xn(i2, t2);
-    return H$1.spans(e2, i2, s2, r2, 0), r2.finish(i2);
+    return H.spans(e2, i2, s2, r2, 0), r2.finish(i2);
   }
 }
 function Qf(n2, t2, e2) {
   let i2 = new Jf();
-  return H$1.compare(n2, t2, e2, i2, 0), i2.changes;
+  return H.compare(n2, t2, e2, i2, 0), i2.changes;
 }
 class Jf {
   constructor() {
@@ -49984,7 +49884,7 @@ class Xr {
     let t2 = this.stateDeco;
     this.lineGaps.length && (t2 = t2.concat(this.lineGapDeco));
     let e2 = [];
-    H$1.spans(t2, this.viewport.from, this.viewport.to, {
+    H.spans(t2, this.viewport.from, this.viewport.to, {
       span(s2, r2) {
         e2.push({ from: s2, to: r2 });
       },
@@ -50021,7 +49921,7 @@ class Ti {
 }
 function tu(n2, t2, e2) {
   let i2 = [], s2 = n2, r2 = 0;
-  return H$1.spans(e2, n2, t2, {
+  return H.spans(e2, n2, t2, {
     span() {
     },
     point(o2, l) {
@@ -52197,7 +52097,7 @@ const Qi = /* @__PURE__ */ A$3.define(), Ku = {
   class: "",
   renderEmptyElements: false,
   elementStyle: "",
-  markers: () => H$1.empty,
+  markers: () => H.empty,
   lineMarker: () => null,
   widgetMarker: () => null,
   lineMarkerChange: null,
@@ -52234,7 +52134,7 @@ const Uu = /* @__PURE__ */ vt.fromClass(class {
   syncGutters(n2) {
     let t2 = this.dom.nextSibling;
     n2 && this.dom.remove();
-    let e2 = H$1.iter(this.view.state.facet(Qi), this.view.viewport.from), i2 = [], s2 = this.gutters.map((r2) => new Qu(r2, this.view.viewport, -this.view.documentPadding.top));
+    let e2 = H.iter(this.view.state.facet(Qi), this.view.viewport.from), i2 = [], s2 = this.gutters.map((r2) => new Qu(r2, this.view.viewport, -this.view.documentPadding.top));
     for (let r2 of this.view.viewportLineBlocks)
       if (i2.length && (i2 = []), Array.isArray(r2.type)) {
         let o2 = true;
@@ -52257,7 +52157,7 @@ const Uu = /* @__PURE__ */ vt.fromClass(class {
     n2 && this.view.scrollDOM.insertBefore(this.dom, t2);
   }
   updateGutters(n2) {
-    let t2 = n2.startState.facet(Ji), e2 = n2.state.facet(Ji), i2 = n2.docChanged || n2.heightChanged || n2.viewportChanged || !H$1.eq(n2.startState.facet(Qi), n2.state.facet(Qi), n2.view.viewport.from, n2.view.viewport.to);
+    let t2 = n2.startState.facet(Ji), e2 = n2.state.facet(Ji), i2 = n2.docChanged || n2.heightChanged || n2.viewportChanged || !H.eq(n2.startState.facet(Qi), n2.state.facet(Qi), n2.view.viewport.from, n2.view.viewport.to);
     if (t2 == e2)
       for (let s2 of this.gutters)
         s2.update(n2) && (i2 = true);
@@ -52296,7 +52196,7 @@ function Ln(n2, t2, e2) {
 }
 class Qu {
   constructor(t2, e2, i2) {
-    this.gutter = t2, this.height = i2, this.i = 0, this.cursor = H$1.iter(t2.markers, e2.from);
+    this.gutter = t2, this.height = i2, this.i = 0, this.cursor = H.iter(t2.markers, e2.from);
   }
   addElement(t2, e2, i2) {
     let { gutter: s2 } = this, r2 = e2.top - this.height;
@@ -52352,7 +52252,7 @@ class fo {
       s2 != this.spacer.markers[0] && this.spacer.update(t2.view, 0, 0, [s2]);
     }
     let i2 = t2.view.viewport;
-    return !H$1.eq(this.markers, e2, i2.from, i2.to) || (this.config.lineMarkerChange ? this.config.lineMarkerChange(t2) : false);
+    return !H.eq(this.markers, e2, i2.from, i2.to) || (this.config.lineMarkerChange ? this.config.lineMarkerChange(t2) : false);
   }
   destroy() {
     for (let t2 of this.elements)
@@ -52416,7 +52316,7 @@ const Yu = /* @__PURE__ */ new class extends me {
     let s2 = n2.doc.lineAt(i2.head).from;
     s2 > e2 && (e2 = s2, t2.push(Yu.range(s2)));
   }
-  return H$1.of(t2);
+  return H.of(t2);
 });
 function Zu() {
   return Xu;
@@ -52603,7 +52503,7 @@ let Q$2 = class Q2 {
   /// Get a [syntax node](#common.SyntaxNode) object for the top of the
   /// tree.
   get topNode() {
-    return new te$2(this, 0, 0, null);
+    return new te$1(this, 0, 0, null);
   }
   /// Get the [syntax node](#common.SyntaxNode) at the given position.
   /// If `side` is -1, this will move into nodes that end at the
@@ -52774,7 +52674,7 @@ function fh(n2, t2) {
 }
 function Qe(n2, t2, e2, i2) {
   for (var s2; n2.from == n2.to || (e2 < 1 ? n2.from >= t2 : n2.from > t2) || (e2 > -1 ? n2.to <= t2 : n2.to < t2); ) {
-    let o2 = !i2 && n2 instanceof te$2 && n2.index < 0 ? null : n2.parent;
+    let o2 = !i2 && n2 instanceof te$1 && n2.index < 0 ? null : n2.parent;
     if (!o2)
       return n2;
     n2 = o2;
@@ -52782,7 +52682,7 @@ function Qe(n2, t2, e2, i2) {
   let r2 = i2 ? 0 : tt.IgnoreOverlays;
   if (i2)
     for (let o2 = n2, l = o2.parent; l; o2 = l, l = o2.parent)
-      o2 instanceof te$2 && o2.index < 0 && ((s2 = l.enter(t2, e2, r2)) === null || s2 === void 0 ? void 0 : s2.from) != o2.from && (n2 = l);
+      o2 instanceof te$1 && o2.index < 0 && ((s2 = l.enter(t2, e2, r2)) === null || s2 === void 0 ? void 0 : s2.from) != o2.from && (n2 = l);
   for (; ; ) {
     let o2 = n2.enter(t2, e2, r2);
     if (!o2)
@@ -52790,7 +52690,7 @@ function Qe(n2, t2, e2, i2) {
     n2 = o2;
   }
 }
-let te$2 = class te2 {
+let te$1 = class te2 {
   constructor(t2, e2, i2, s2) {
     this._tree = t2, this.from = e2, this.index = i2, this._parent = s2;
   }
@@ -52813,7 +52713,7 @@ let te$2 = class te2 {
               continue;
             let u2 = c2.findChild(0, c2.buffer.length, e2, i2 - f2, s2);
             if (u2 > -1)
-              return new ae$1(new id(o2, c2, t2, f2), null, u2);
+              return new ae(new id(o2, c2, t2, f2), null, u2);
           } else if (r2 & tt.IncludeAnonymous || !c2.type.isAnonymous || ir(c2)) {
             let u2;
             if (!(r2 & tt.IgnoreMounts) && c2.props && (u2 = c2.prop(P$1.mounted)) && !u2.overlay)
@@ -52969,7 +52869,7 @@ class id {
     this.parent = t2, this.buffer = e2, this.index = i2, this.start = s2;
   }
 }
-let ae$1 = class ae2 {
+class ae {
   get name() {
     return this.type.name;
   }
@@ -52984,7 +52884,7 @@ let ae$1 = class ae2 {
   }
   child(t2, e2, i2) {
     let { buffer: s2 } = this.context, r2 = s2.findChild(this.index + 4, s2.buffer[this.index + 3], t2, e2 - this.context.start, i2);
-    return r2 < 0 ? null : new ae2(this.context, this, r2);
+    return r2 < 0 ? null : new ae(this.context, this, r2);
   }
   get firstChild() {
     return this.child(
@@ -53022,7 +52922,7 @@ let ae$1 = class ae2 {
     if (i2 & tt.ExcludeBuffers)
       return null;
     let { buffer: s2 } = this.context, r2 = s2.findChild(this.index + 4, s2.buffer[this.index + 3], e2 > 0 ? 1 : -1, t2 - this.context.start, e2);
-    return r2 < 0 ? null : new ae2(this.context, this, r2);
+    return r2 < 0 ? null : new ae(this.context, this, r2);
   }
   get parent() {
     return this._parent || this.context.parent.nextSignificantParent();
@@ -53038,11 +52938,11 @@ let ae$1 = class ae2 {
   }
   get nextSibling() {
     let { buffer: t2 } = this.context, e2 = t2.buffer[this.index + 3];
-    return e2 < (this._parent ? t2.buffer[this._parent.index + 3] : t2.buffer.length) ? new ae2(this.context, this._parent, e2) : this.externalSibling(1);
+    return e2 < (this._parent ? t2.buffer[this._parent.index + 3] : t2.buffer.length) ? new ae(this.context, this._parent, e2) : this.externalSibling(1);
   }
   get prevSibling() {
     let { buffer: t2 } = this.context, e2 = this._parent ? this._parent.index + 4 : 0;
-    return this.index == e2 ? this.externalSibling(-1) : new ae2(this.context, this._parent, t2.findChild(
+    return this.index == e2 ? this.externalSibling(-1) : new ae(this.context, this._parent, t2.findChild(
       e2,
       this.index,
       -1,
@@ -53091,7 +52991,7 @@ let ae$1 = class ae2 {
   matchContext(t2) {
     return fs(this, t2);
   }
-};
+}
 class us {
   /// Shorthand for `.type.name`.
   get name() {
@@ -53099,7 +52999,7 @@ class us {
   }
   /// @internal
   constructor(t2, e2 = 0) {
-    if (this.mode = e2, this.buffer = null, this.stack = [], this.index = 0, this.bufferNode = null, t2 instanceof te$2)
+    if (this.mode = e2, this.buffer = null, this.stack = [], this.index = 0, this.bufferNode = null, t2 instanceof te$1)
       this.yieldNode(t2);
     else {
       this._tree = t2.context.parent, this.buffer = t2.context;
@@ -53117,7 +53017,7 @@ class us {
     return this.type = e2 || s2.set.types[s2.buffer[t2]], this.from = i2 + s2.buffer[t2 + 1], this.to = i2 + s2.buffer[t2 + 2], true;
   }
   yield(t2) {
-    return t2 ? t2 instanceof te$2 ? (this.buffer = null, this.yieldNode(t2)) : (this.buffer = t2.context, this.yieldBuf(t2.index, t2.type)) : false;
+    return t2 ? t2 instanceof te$1 ? (this.buffer = null, this.yieldNode(t2)) : (this.buffer = t2.context, this.yieldBuf(t2.index, t2.type)) : false;
   }
   /// @internal
   toString() {
@@ -53296,8 +53196,8 @@ class us {
           s2 = this.stack[--r2];
         }
     for (let s2 = i2; s2 < this.stack.length; s2++)
-      e2 = new ae$1(this.buffer, e2, this.stack[s2]);
-    return this.bufferNode = new ae$1(this.buffer, e2, this.index);
+      e2 = new ae(this.buffer, e2, this.stack[s2]);
+    return this.bufferNode = new ae(this.buffer, e2, this.index);
   }
   /// Get the [tree](#common.Tree) that represents the current node, if
   /// any. Will return null when the node is in a [tree
@@ -53356,8 +53256,8 @@ function sd(n2) {
     let { id: V2, start: R2, end: K2, size: pt } = l, Dt = c2;
     for (; pt < 0; )
       if (l.next(), pt == -1) {
-        let ne = r2[V2];
-        C2.push(ne), I2.push(R2 - x2);
+        let ne2 = r2[V2];
+        C2.push(ne2), I2.push(R2 - x2);
         return;
       } else if (pt == -3) {
         a2 = V2;
@@ -53369,16 +53269,16 @@ function sd(n2) {
         throw new RangeError(`Unrecognized record size: ${pt}`);
     let Ne = h2[V2], se2, Gt, fr = R2 - x2;
     if (K2 - R2 <= s2 && (Gt = w2(l.pos - M2, st))) {
-      let ne = new Uint16Array(Gt.size - Gt.skip), Tt = l.pos - Gt.size, Ut = ne.length;
+      let ne2 = new Uint16Array(Gt.size - Gt.skip), Tt = l.pos - Gt.size, Ut = ne2.length;
       for (; l.pos > Tt; )
-        Ut = g(Gt.start, ne, Ut);
-      se2 = new Ee(ne, K2 - Gt.start, i2), fr = Gt.start - x2;
+        Ut = g(Gt.start, ne2, Ut);
+      se2 = new Ee(ne2, K2 - Gt.start, i2), fr = Gt.start - x2;
     } else {
-      let ne = l.pos - pt;
+      let ne2 = l.pos - pt;
       l.next();
       let Tt = [], Ut = [], be = V2 >= o2 ? V2 : -1, Ie = 0, Si = K2;
-      for (; l.pos > ne; )
-        be >= 0 && l.id == be && l.size >= 0 ? (l.end <= Si - s2 && (d2(Tt, Ut, R2, Ie, l.end, Si, be, Dt), Ie = Tt.length, Si = l.end), l.next()) : f2(R2, ne, Tt, Ut, be);
+      for (; l.pos > ne2; )
+        be >= 0 && l.id == be && l.size >= 0 ? (l.end <= Si - s2 && (d2(Tt, Ut, R2, Ie, l.end, Si, be, Dt), Ie = Tt.length, Si = l.end), l.next()) : f2(R2, ne2, Tt, Ut, be);
       if (be >= 0 && Ie > 0 && Ie < Tt.length && d2(Tt, Ut, R2, Ie, R2, Si, be, Dt), Tt.reverse(), Ut.reverse(), be > -1 && Ie > 0) {
         let ur = u2(Ne);
         se2 = sr(Ne, Tt, Ut, 0, Tt.length, 0, K2 - R2, ur, ur);
@@ -55090,7 +54990,7 @@ function $d(n2 = {}) {
       class: "cm-foldGutter",
       markers(o2) {
         var l;
-        return ((l = o2.plugin(s2)) === null || l === void 0 ? void 0 : l.markers) || H$1.empty;
+        return ((l = o2.plugin(s2)) === null || l === void 0 ? void 0 : l.markers) || H.empty;
       },
       initialSpacer() {
         return new Qs(t2, false);
@@ -58117,7 +58017,7 @@ var main$1 = {
           var n5 = new WebAssembly.RuntimeError(t5);
           throw e2(n5), n5;
         }
-        var B, H3, F2 = "data:application/octet-stream;base64,";
+        var B, H2, F2 = "data:application/octet-stream;base64,";
         function V2(t5) {
           return t5.startsWith(F2);
         }
@@ -58197,7 +58097,7 @@ var main$1 = {
           }
           return false;
         }
-        V2(B = "onig.wasm") || (B = l(B)), H3 = "undefined" != typeof dateNow ? dateNow : () => performance.now();
+        V2(B = "onig.wasm") || (B = l(B)), H2 = "undefined" != typeof dateNow ? dateNow : () => performance.now();
         var X2 = [null, [], []];
         function Z3(t5, n5) {
           var e3 = X2[t5];
@@ -58213,7 +58113,7 @@ var main$1 = {
           }
           return S2[r3 >> 2] = i3, 0;
         }
-        var tt2, nt2 = { emscripten_get_now: H3, emscripten_memcpy_big: J3, emscripten_resize_heap: Q3, fd_write: $2 };
+        var tt2, nt2 = { emscripten_get_now: H2, emscripten_memcpy_big: J3, emscripten_resize_heap: Q3, fd_write: $2 };
         function et(t5) {
           function e3() {
             tt2 || (tt2 = true, r2.calledRun = true, _3 || (T3(), n4(r2), r2.onRuntimeInitialized && r2.onRuntimeInitialized(), E2()));
@@ -62916,8 +62816,8 @@ flexsearch_bundle.exports;
                   r2 = true;
                 }
                 if (d2 && (h2[y2] = (A3 = h2[y2]) ? ++A3 : A3 = 1, A3 < e2)) {
-                  const H3 = d2[A3 - 2] || (d2[A3 - 2] = []);
-                  H3[H3.length] = y2;
+                  const H2 = d2[A3 - 2] || (d2[A3 - 2] = []);
+                  H2[H2.length] = y2;
                 }
               } else
                 q2[y2] = 1;
@@ -63502,12 +63402,12 @@ flexsearch_bundle.exports;
           B = p2 && p2.length;
           if (m2 && B) {
             const y2 = [];
-            let H3 = 0;
+            let H2 = 0;
             n2 && (y2[0] = [p2]);
             for (let X2 = 0, pa, R2; X2 < m2.length; X2++)
               if (pa = m2[X2], B = (R2 = this.l[pa]) && R2.length)
-                H3++, y2[y2.length] = n2 ? [R2] : R2;
-            H3 && (p2 = n2 ? ma(y2, b3 || 100, w2 || 0) : na(p2, y2), B = p2.length);
+                H2++, y2[y2.length] = n2 ? [R2] : R2;
+            H2 && (p2 = n2 ? ma(y2, b3 || 100, w2 || 0) : na(p2, y2), B = p2.length);
           }
           if (B)
             f2[q2] = z2, e2[q2++] = p2;
@@ -77202,16 +77102,16 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
   emits: ["click"],
   setup(__props, { expose: __expose, emit: emit2 }) {
     __expose();
-    const props = __props;
-    const icon = ref(props.icon);
+    const xProps = __props;
+    const icon = ref(xProps.icon);
     function click2() {
-      if (!isEmpty$1(props == null ? void 0 : props.identifier)) {
-        emit2("click", props == null ? void 0 : props.identifier);
+      if (!isEmpty$1(xProps == null ? void 0 : xProps.identifier)) {
+        emit2("click", xProps == null ? void 0 : xProps.identifier);
       } else {
         emit2("click", "");
       }
     }
-    const __returned__ = { props, emit: emit2, icon, click: click2 };
+    const __returned__ = { xProps, emit: emit2, icon, click: click2 };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -77498,24 +77398,24 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
   emits: ["click"],
   setup(__props, { expose: __expose, emit: emit2 }) {
     __expose();
-    const props = __props;
-    const button = ref(props.button);
+    const xProps = __props;
+    const button = ref(xProps.button);
     const has_prepend_icon = computed(() => {
       var _a3, _b;
-      return !isEmpty$1(props.button.prepend_icon) && !isEmpty$1((_b = (_a3 = props.button) == null ? void 0 : _a3.prepend_icon) == null ? void 0 : _b.icon);
+      return !isEmpty$1(xProps.button.prepend_icon) && !isEmpty$1((_b = (_a3 = xProps.button) == null ? void 0 : _a3.prepend_icon) == null ? void 0 : _b.icon);
     });
     const has_append_icon = computed(() => {
       var _a3, _b;
-      return !isEmpty$1(props.button.append_icon) && !isEmpty$1((_b = (_a3 = props.button) == null ? void 0 : _a3.append_icon) == null ? void 0 : _b.icon);
+      return !isEmpty$1(xProps.button.append_icon) && !isEmpty$1((_b = (_a3 = xProps.button) == null ? void 0 : _a3.append_icon) == null ? void 0 : _b.icon);
     });
     function click2() {
-      if (!isEmpty$1(props == null ? void 0 : props.identifier)) {
-        emit2("click", props == null ? void 0 : props.identifier);
+      if (!isEmpty$1(xProps == null ? void 0 : xProps.identifier)) {
+        emit2("click", xProps == null ? void 0 : xProps.identifier);
       } else {
         emit2("click", "");
       }
     }
-    const __returned__ = { props, emit: emit2, button, has_prepend_icon, has_append_icon, click: click2, get EasyIcon() {
+    const __returned__ = { xProps, emit: emit2, button, has_prepend_icon, has_append_icon, click: click2, get EasyIcon() {
       return EasyIcon;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -83487,13 +83387,13 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
   emits: ["validated", "invalidated", "update:modelValue"],
   setup(__props, { expose: __expose, emit: emit2 }) {
     __expose();
-    const props = __props;
-    const textfield = ref(props.textfield);
-    const menu = ref(props.menu);
-    const picker = ref(props.picker);
+    const xProps = __props;
+    const textfield = ref(xProps.textfield);
+    const menu = ref(xProps.menu);
+    const picker = ref(xProps.picker);
     const show_menu = ref(false);
     const fields = computed(() => {
-      return props.fields ?? [];
+      return xProps.fields ?? [];
     });
     function handleInputUpdate(event) {
       textfield.value.value = event;
@@ -83522,7 +83422,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
       var _a3;
       (_a3 = textfield.value) == null ? void 0 : _a3.isLoading(false);
     });
-    const __returned__ = { props, emit: emit2, textfield, menu, picker, show_menu, fields, handleInputUpdate, validateField, invalidateField, toggleMenu, cancelDatePicker, saveDatePicker, EasyInput };
+    const __returned__ = { xProps, emit: emit2, textfield, menu, picker, show_menu, fields, handleInputUpdate, validateField, invalidateField, toggleMenu, cancelDatePicker, saveDatePicker, EasyInput };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -84095,13 +83995,13 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
   emits: ["validated", "invalidated", "update:modelValue"],
   setup(__props, { expose: __expose, emit: emit2 }) {
     __expose();
-    const props = __props;
-    const textfield = ref(props.textfield);
-    const menu = ref(props.menu);
-    const picker = ref(props.picker);
+    const xProps = __props;
+    const textfield = ref(xProps.textfield);
+    const menu = ref(xProps.menu);
+    const picker = ref(xProps.picker);
     const show_menu = ref(false);
     const fields = computed(() => {
-      return props.fields ?? [];
+      return xProps.fields ?? [];
     });
     function updated2(event) {
       textfield.value.value = event;
@@ -84130,10 +84030,10 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       updated2(date2.value);
     });
     onMounted(() => {
-      textfield.value.value = props.modelValue;
+      textfield.value.value = xProps.modelValue;
       textfield.value.isLoading(false);
     });
-    const __returned__ = { props, emit: emit2, textfield, menu, picker, show_menu, fields, updated: updated2, validate, invalidate, toggleMenu, cancel, save, TempTimePicker, EasyInput };
+    const __returned__ = { xProps, emit: emit2, textfield, menu, picker, show_menu, fields, updated: updated2, validate, invalidate, toggleMenu, cancel, save, TempTimePicker, EasyInput };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -84403,7 +84303,7 @@ const FormLoaderPlugin = {
   }
 };
 const s = (e2) => e2 && e2[0].toUpperCase() + e2.slice(1);
-const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
+const T = { class: "mt-2 info" }, U$1 = /* @__PURE__ */ defineComponent$1({
   __name: "VariantControlPlayground",
   props: {
     type: {},
@@ -84411,8 +84311,8 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     sample: {},
     classes: {}
   },
-  setup(i2) {
-    const e2 = i2, l = computed(() => {
+  setup(c2) {
+    const e2 = c2, l = computed(() => {
       let s2 = {};
       return typeof e2.classes == "string" && (s2[e2.classes] = true), e2.type === "class" && typeof e2.model == "string" && (s2[e2.model] = true), s2;
     });
@@ -84420,10 +84320,10 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
       createBaseVNode("div", {
         class: normalizeClass(l.value)
       }, toDisplayString(e2.sample), 3),
-      createBaseVNode("div", H, toDisplayString(unref(s)(e2.type)) + ": " + toDisplayString(e2.model), 1)
+      createBaseVNode("div", T, toDisplayString(unref(s)(e2.type)) + ": " + toDisplayString(e2.model), 1)
     ], 64));
   }
-}), U$1 = { class: "mt-2 info" }, q = /* @__PURE__ */ defineComponent$1({
+}), q = { class: "mt-2 info" }, A$2 = /* @__PURE__ */ defineComponent$1({
   __name: "ClassVariantLoader",
   props: {
     variants: {},
@@ -84432,22 +84332,24 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     inline: { type: Boolean },
     state: {}
   },
-  setup(i2) {
-    const e2 = i2, l = ref(e2.state ?? {});
-    return watchEffect(() => l.value = e2.state ?? {}), (s2, r2) => (openBlock(true), createElementBlock(Fragment, null, renderList(s2.variants, (a2) => (openBlock(), createElementBlock("div", {
+  setup(c2) {
+    const e2 = c2, l = ref(e2.state ?? {});
+    return watchEffect(() => l.value = e2.state ?? {}), (s2, r2) => (openBlock(true), createElementBlock(Fragment, null, renderList(s2.variants, (a2, y2) => (openBlock(), createElementBlock("div", {
+      key: y2,
       class: normalizeClass(["ma-4 pa-4", s2.inline ? "d-inline-block" : ""])
     }, [
-      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.duplicate ?? 1, (u2) => (openBlock(), createElementBlock("div", {
+      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.duplicate ?? 1, (i2) => (openBlock(), createElementBlock("div", {
+        key: i2,
         class: normalizeClass(["ma-4", s2.inline ? "d-inline-block" : ""])
       }, [
         createBaseVNode("div", {
           class: normalizeClass(a2.classes + " " + s2.classes)
         }, toDisplayString(a2[s2.text] ?? l.value[s2.text]), 3),
-        createBaseVNode("div", U$1, " Class: " + toDisplayString(a2.classes), 1)
-      ], 2))), 256))
-    ], 2))), 256));
+        createBaseVNode("div", q, "Class: " + toDisplayString(a2.classes), 1)
+      ], 2))), 128))
+    ], 2))), 128));
   }
-}), A$2 = { class: "pa-4 w-50 d-inline-block" }, G = /* @__PURE__ */ createBaseVNode("div", { class: "text-caption" }, "Base Color", -1), I = { class: "font-italic" }, J = /* @__PURE__ */ defineComponent$1({
+}), G = /* @__PURE__ */ createBaseVNode("div", { class: "text-caption" }, "Base Color", -1), I = { class: "font-italic" }, J = /* @__PURE__ */ defineComponent$1({
   __name: "ColorVariantLoader",
   props: {
     variants: {},
@@ -84455,25 +84357,31 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     classes: {},
     state: {}
   },
-  setup(i2) {
-    const e2 = i2, l = ref(e2.state ?? {});
-    return watchEffect(() => l.value = e2.state ?? {}), (s2, r2) => (openBlock(true), createElementBlock(Fragment, null, renderList(s2.variants, (a2) => (openBlock(), createElementBlock("div", A$2, [
+  setup(c2) {
+    const e2 = c2, l = ref(e2.state ?? {});
+    return watchEffect(() => l.value = e2.state ?? {}), (s2, r2) => (openBlock(true), createElementBlock(Fragment, null, renderList(s2.variants, (a2, y2) => (openBlock(), createElementBlock("div", {
+      key: y2,
+      class: "pa-4 w-50 d-inline-block"
+    }, [
       createBaseVNode("div", {
         class: normalizeClass(s2.classes + " bg-" + a2.name)
       }, [
         G,
         createBaseVNode("div", I, toDisplayString(a2[s2.text]), 1)
       ], 2),
-      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.lighten === false ? 0 : a2.lighten, (u2) => (openBlock(), createElementBlock("div", {
-        class: normalizeClass(["${variant.classes ? `${variant.classes}` : ``}", s2.classes + " bg-" + a2.name + "-lighten-" + u2.toString()])
-      }, toDisplayString(a2.name + "-lighten-" + u2.toString()), 3))), 256)),
-      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.darken === false ? 0 : a2.darken, (u2) => (openBlock(), createElementBlock("div", {
-        class: normalizeClass(s2.classes + " bg-" + a2.name + "-darken-" + u2.toString())
-      }, toDisplayString(a2.name + "-darken-" + u2.toString()), 3))), 256)),
-      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.accent === false ? 0 : a2.accent, (u2) => (openBlock(), createElementBlock("div", {
-        class: normalizeClass(s2.classes + " bg-" + a2.name + "-accent-" + u2.toString())
-      }, toDisplayString(a2.name + "-accent-" + u2.toString()), 3))), 256))
-    ]))), 256));
+      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.lighten === false ? 0 : a2.lighten, (i2) => (openBlock(), createElementBlock("div", {
+        key: "l" + i2,
+        class: normalizeClass(["${variant.classes ? `${variant.classes}` : ``}", s2.classes + " bg-" + a2.name + "-lighten-" + i2.toString()])
+      }, toDisplayString(a2.name + "-lighten-" + i2.toString()), 3))), 128)),
+      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.darken === false ? 0 : a2.darken, (i2) => (openBlock(), createElementBlock("div", {
+        key: "d" + i2,
+        class: normalizeClass(s2.classes + " bg-" + a2.name + "-darken-" + i2.toString())
+      }, toDisplayString(a2.name + "-darken-" + i2.toString()), 3))), 128)),
+      (openBlock(true), createElementBlock(Fragment, null, renderList(a2.accent === false ? 0 : a2.accent, (i2) => (openBlock(), createElementBlock("div", {
+        key: "a" + i2,
+        class: normalizeClass(s2.classes + " bg-" + a2.name + "-accent-" + i2.toString())
+      }, toDisplayString(a2.name + "-accent-" + i2.toString()), 3))), 128))
+    ]))), 128));
   }
 }), K = ["target", "href"], D = /* @__PURE__ */ defineComponent$1({
   __name: "VariantLink",
@@ -84483,24 +84391,25 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     url: {},
     classes: {}
   },
-  setup(i2) {
-    const e2 = i2, l = computed(() => e2.blank ? "_blank" : "");
+  setup(c2) {
+    const e2 = c2, l = computed(() => e2.blank ? "_blank" : "");
     return (s2, r2) => (openBlock(), createElementBlock("a", {
       class: normalizeClass(e2.classes),
       target: l.value,
       href: e2.url
     }, toDisplayString(e2.text), 11, K));
   }
-}), M$1 = { class: "mt-2 info" }, Q$1 = /* @__PURE__ */ defineComponent$1({
+}), M$1 = /* @__PURE__ */ defineComponent$1({
   __name: "DisplayVariantLoader",
   props: {
     variants: {},
     classes: {},
     link: {}
   },
-  setup(i2) {
-    return (e2, l) => (openBlock(), createElementBlock("div", {
-      class: normalizeClass(e2.classes)
+  setup(c2) {
+    const e2 = c2;
+    return (l, s2) => (openBlock(), createElementBlock("div", {
+      class: normalizeClass(l.classes)
     }, [
       e2.link !== void 0 ? (openBlock(), createBlock(D, {
         key: 0,
@@ -84509,10 +84418,13 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
         blank: e2.link.blank ?? false,
         classes: e2.link.classes ?? ""
       }, null, 8, ["text", "url", "blank", "classes"])) : createCommentVNode("", true),
-      (openBlock(true), createElementBlock(Fragment, null, renderList(e2.variants, (s2) => (openBlock(), createElementBlock("div", M$1, toDisplayString(s2), 1))), 256))
+      (openBlock(true), createElementBlock(Fragment, null, renderList(e2.variants, (r2, a2) => (openBlock(), createElementBlock("div", {
+        key: a2,
+        class: "mt-2 info"
+      }, toDisplayString(r2), 1))), 128))
     ], 2));
   }
-}), R$1 = /* @__PURE__ */ defineComponent$1({
+}), Q$1 = /* @__PURE__ */ defineComponent$1({
   __name: "ContainerizedLoader",
   props: {
     component: {},
@@ -84520,25 +84432,26 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     state: {},
     builder: {}
   },
-  setup(i2) {
-    const e2 = i2, l = ref(e2.state ?? {}), s2 = ref(e2.component);
+  setup(c2) {
+    const e2 = c2, l = ref(e2.state ?? {}), s2 = ref(e2.component);
     watchEffect(() => l.value = e2.state ?? {});
-    const r2 = computed(() => e2.states.map((p2) => l.value[p2])), a2 = computed(() => e2.builder === void 0 ? null : new Function(...e2.builder.args, e2.builder.body)(...r2.value)), u2 = computed(() => {
-      let p2 = {};
-      return a2.value !== null && (p2[a2.value] = true), s2.value.classes !== void 0 && s2.value.classes !== "" && (p2[s2.value.classes ?? ""] = true), p2;
+    const r2 = computed(() => e2.states.map((i2) => l.value[i2])), a2 = computed(() => e2.builder === void 0 ? null : new Function(...e2.builder.args, e2.builder.body)(...r2.value)), y2 = computed(() => {
+      let i2 = {};
+      return a2.value !== null && (i2[a2.value] = true), s2.value.classes !== void 0 && s2.value.classes !== "" && (i2[s2.value.classes ?? ""] = true), i2;
     });
-    return (p2, C2) => {
-      const x2 = resolveComponent("containerized-loader", true);
+    return (i2, V2) => {
+      const C2 = resolveComponent("containerized-loader", true);
       return openBlock(), createBlock(resolveDynamicComponent(s2.value.component), {
-        class: normalizeClass(u2.value)
+        class: normalizeClass(y2.value)
       }, {
         default: withCtx(() => [
-          s2.value.children && s2.value.children.length > 0 ? (openBlock(true), createElementBlock(Fragment, { key: 0 }, renderList(s2.value.children, (h2) => (openBlock(), createBlock(x2, {
-            component: h2,
-            states: h2.states ?? [],
-            builder: h2.builder,
+          s2.value.children && s2.value.children.length > 0 ? (openBlock(true), createElementBlock(Fragment, { key: 0 }, renderList(s2.value.children, (g, d2) => (openBlock(), createBlock(C2, {
+            key: d2,
+            component: g,
+            states: g.states ?? [],
+            builder: g.builder,
             state: l.value
-          }, null, 8, ["component", "states", "builder", "state"]))), 256)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+          }, null, 8, ["component", "states", "builder", "state"]))), 128)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
             createTextVNode(toDisplayString(s2.value.content ?? ""), 1)
           ], 64))
         ]),
@@ -84546,7 +84459,7 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
       }, 8, ["class"]);
     };
   }
-}), W = { class: "ma-4 pa-4" }, X = { class: "mt-2 info" }, Y = /* @__PURE__ */ defineComponent$1({
+}), R$1 = { class: "mt-2 info" }, W = /* @__PURE__ */ defineComponent$1({
   __name: "ComponentVariantLoader",
   props: {
     variants: {},
@@ -84556,16 +84469,19 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     containerized: { type: Boolean },
     state: {}
   },
-  setup(i2) {
-    const e2 = i2, l = ref(e2.state ?? {});
+  setup(c2) {
+    const e2 = c2, l = ref(e2.state ?? {});
     return watchEffect(() => l.value = e2.state ?? {}), (s2, r2) => (openBlock(), createElementBlock("div", null, [
-      s2.containerized ? (openBlock(), createBlock(R$1, {
+      s2.containerized ? (openBlock(), createBlock(Q$1, {
         key: 0,
         component: s2.variants[0],
         states: s2.variants[0].states ?? [],
         builder: s2.variants[0].builder,
         state: l.value
-      }, null, 8, ["component", "states", "builder", "state"])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(s2.variants, (a2) => (openBlock(), createElementBlock("div", W, [
+      }, null, 8, ["component", "states", "builder", "state"])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(s2.variants, (a2, y2) => (openBlock(), createElementBlock("div", {
+        key: y2,
+        class: "ma-4 pa-4"
+      }, [
         createBaseVNode("div", {
           class: normalizeClass(s2.classes)
         }, [
@@ -84578,11 +84494,11 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
             _: 2
           }, 1032, ["class"]))
         ], 2),
-        createBaseVNode("div", X, " Component: " + toDisplayString(a2.title), 1)
-      ]))), 256))
+        createBaseVNode("div", R$1, "Component: " + toDisplayString(a2.title), 1)
+      ]))), 128))
     ]));
   }
-}), Z = { key: 0 }, ee = /* @__PURE__ */ defineComponent$1({
+}), X = { key: 0 }, Y = /* @__PURE__ */ defineComponent$1({
   __name: "VariantDescription",
   props: {
     text: {},
@@ -84590,11 +84506,11 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     divider: {},
     link: {}
   },
-  setup(i2) {
-    const e2 = i2;
+  setup(c2) {
+    const e2 = c2;
     return (l, s2) => {
       const r2 = resolveComponent("v-divider");
-      return e2.text !== "" || e2.link !== void 0 ? (openBlock(), createElementBlock("div", Z, [
+      return e2.text !== "" || e2.link !== void 0 ? (openBlock(), createElementBlock("div", X, [
         e2.text ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: normalizeClass(e2.classes)
@@ -84612,10 +84528,10 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
       ])) : createCommentVNode("", true);
     };
   }
-}), se = {
+}), Z = {
   key: 0,
   class: "ma-4 pa-4"
-}, te$1 = { class: "ma-4 pa-4" }, ae = /* @__PURE__ */ defineComponent$1({
+}, ee = { class: "ma-4 pa-4" }, se = /* @__PURE__ */ defineComponent$1({
   __name: "VuetifyVariant",
   props: {
     discriminator: {},
@@ -84630,24 +84546,27 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
     variants: {},
     containerized: { type: Boolean }
   },
-  setup(i2) {
-    const e2 = i2, l = ref(e2.state ?? {});
+  setup(c2) {
+    const e2 = c2, l = ref(e2.state ?? {});
     watchEffect(() => l.value = e2.state ?? {});
-    const s2 = computed(() => {
-      var r2, a2;
-      return (((a2 = (r2 = e2.controls) == null ? void 0 : r2.filter((u2) => u2.playground !== void 0)) == null ? void 0 : a2.length) ?? 0) > 0;
-    });
+    const s2 = computed(
+      () => {
+        var r2, a2;
+        return (((a2 = (r2 = e2.controls) == null ? void 0 : r2.filter((y2) => y2.playground !== void 0)) == null ? void 0 : a2.length) ?? 0) > 0;
+      }
+    );
     return (r2, a2) => {
-      var p2, C2, x2, h2;
-      const u2 = resolveComponent("v-divider");
+      var i2, V2, C2, g;
+      const y2 = resolveComponent("v-divider");
       return openBlock(), createElementBlock(Fragment, null, [
-        s2.value ? (openBlock(), createElementBlock("div", se, [
+        s2.value ? (openBlock(), createElementBlock("div", Z, [
           createBaseVNode("div", {
             class: normalizeClass(e2.playground.classes)
           }, toDisplayString(e2.playground.title), 3),
-          (openBlock(true), createElementBlock(Fragment, null, renderList(r2.controls, (d2) => {
+          (openBlock(true), createElementBlock(Fragment, null, renderList(r2.controls, (d2, O2) => {
             var S2, z2, B;
-            return withDirectives((openBlock(), createBlock(T, {
+            return withDirectives((openBlock(), createBlock(U$1, {
+              key: O2,
               type: ((S2 = d2 == null ? void 0 : d2.playground) == null ? void 0 : S2.type) ?? "",
               sample: l.value[((z2 = d2 == null ? void 0 : d2.playground) == null ? void 0 : z2.sample) ?? "sample"],
               classes: (B = d2 == null ? void 0 : d2.playground) == null ? void 0 : B.classes,
@@ -84655,22 +84574,22 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
             }, null, 8, ["type", "sample", "classes", "model"])), [
               [vShow, d2.playground ?? false]
             ]);
-          }), 256))
+          }), 128))
         ])) : createCommentVNode("", true),
-        s2.value && e2.playground.divider.show ? (openBlock(), createBlock(u2, {
+        s2.value && e2.playground.divider.show ? (openBlock(), createBlock(y2, {
           key: 1,
           class: normalizeClass(e2.playground.divider.classes)
         }, null, 8, ["class"])) : createCommentVNode("", true),
-        createBaseVNode("div", te$1, [
+        createBaseVNode("div", ee, [
           createBaseVNode("div", {
             class: normalizeClass(e2.title.classes)
           }, toDisplayString(e2.title.text), 3),
-          e2.description !== void 0 ? (openBlock(), createBlock(ee, {
+          e2.description !== void 0 ? (openBlock(), createBlock(Y, {
             key: 0,
-            link: ((p2 = e2.description) == null ? void 0 : p2.link) ?? void 0,
-            text: ((C2 = e2.description) == null ? void 0 : C2.text) ?? "",
-            classes: ((x2 = e2.description) == null ? void 0 : x2.classes) ?? "",
-            divider: ((h2 = e2.description) == null ? void 0 : h2.divider) ?? { show: false }
+            link: ((i2 = e2.description) == null ? void 0 : i2.link) ?? void 0,
+            text: ((V2 = e2.description) == null ? void 0 : V2.text) ?? "",
+            classes: ((C2 = e2.description) == null ? void 0 : C2.classes) ?? "",
+            divider: ((g = e2.description) == null ? void 0 : g.divider) ?? { show: false }
           }, null, 8, ["link", "text", "classes", "divider"])) : createCommentVNode("", true),
           r2.discriminator === "color" ? (openBlock(), createBlock(J, {
             key: 1,
@@ -84680,7 +84599,7 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
             inline: (e2 == null ? void 0 : e2.inline) ?? false,
             state: l.value
           }, null, 8, ["text", "variants", "classes", "inline", "state"])) : createCommentVNode("", true),
-          r2.discriminator === "class" ? (openBlock(), createBlock(q, {
+          r2.discriminator === "class" ? (openBlock(), createBlock(A$2, {
             key: 2,
             variants: (e2 == null ? void 0 : e2.variants) ?? [],
             text: (e2 == null ? void 0 : e2.text) ?? "title",
@@ -84688,7 +84607,7 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
             inline: (e2 == null ? void 0 : e2.inline) ?? false,
             state: l.value
           }, null, 8, ["variants", "text", "classes", "inline", "state"])) : createCommentVNode("", true),
-          r2.discriminator === "display" ? (openBlock(), createBlock(Q$1, {
+          r2.discriminator === "display" ? (openBlock(), createBlock(M$1, {
             key: 3,
             variants: (e2 == null ? void 0 : e2.variants) ?? [],
             text: (e2 == null ? void 0 : e2.text) ?? "title",
@@ -84696,7 +84615,7 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
             inline: (e2 == null ? void 0 : e2.inline) ?? false,
             state: l.value
           }, null, 8, ["variants", "text", "classes", "inline", "state"])) : createCommentVNode("", true),
-          r2.discriminator === "component" ? (openBlock(), createBlock(Y, {
+          r2.discriminator === "component" ? (openBlock(), createBlock(W, {
             key: 4,
             variants: (e2 == null ? void 0 : e2.variants) ?? [],
             text: (e2 == null ? void 0 : e2.text) ?? "title",
@@ -84709,9 +84628,9 @@ const H = { class: "mt-2 info" }, T = /* @__PURE__ */ defineComponent$1({
       ], 64);
     };
   }
-}), ie = {
-  install(i2) {
-    i2.component("VuetifyVariant", ae);
+}), ne = {
+  install(c2) {
+    c2.component("VuetifyVariant", se);
   }
 };
 function createVuetify() {
@@ -84865,7 +84784,7 @@ const setupVue3 = defineSetupVue3(({ app, addWrapper }) => {
     required_tags_only: false,
     tags_on_placeholder: true,
     tags_on_labels: false
-  }).use(ie);
+  }).use(ne);
   addWrapper(HistoireWrapper);
 });
 const m$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
