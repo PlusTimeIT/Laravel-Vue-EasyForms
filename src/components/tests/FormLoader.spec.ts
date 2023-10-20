@@ -11,8 +11,8 @@ import { Button, Icon, Tooltip } from "#/classes/elements";
 import { TextField } from "#/classes/fields";
 import { ActionForm, InputForm } from "#/classes/forms";
 import { ActionIcon, ActionButton } from "#/classes/actions";
-import { LocationTypes } from "#/enums/LocationTypes";
-import { ButtonTypes } from "#/enums/ButtonTypes";
+import { LocationTypes } from "#/enums";
+import { ButtonTypes } from "#/enums";
 
 const vuetify = createVuetify({
   components: {

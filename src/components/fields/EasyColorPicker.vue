@@ -29,7 +29,7 @@ import { ref, computed, ComputedRef, onMounted, watch, Ref } from "vue";
 import { TextField, ColorPicker } from "#/classes/fields";
 import { Menu } from "#/classes/elements";
 import EasyInput from "./EasyInput.vue";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import { isEmpty } from "#/composables/utils/Types";
 
 // Define props and emit for the component

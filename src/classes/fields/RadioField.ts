@@ -1,5 +1,5 @@
 import { EasyField } from "#/abstracts/EasyField";
-import { DirectionType } from "#/enums/DirectionType";
+import { DirectionType } from "#/enums";
 import { Icon } from "#/classes/elements";
 
 export class RadioField extends EasyField {

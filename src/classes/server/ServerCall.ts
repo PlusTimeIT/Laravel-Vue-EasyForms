@@ -1,5 +1,5 @@
 import { ServerResponse } from "./ServerResponse";
-import { AxiosCalls } from "#/enums/AxiosCalls";
+import { AxiosCalls } from "#/enums";
 import axios from "axios";
 
 /**

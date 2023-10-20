@@ -1,11 +1,11 @@
-import { AlertBorders } from "#/enums/AlertBorders";
-import { AlertTriggers } from "#/enums/AlertTriggers";
+import { AlertBorders } from "#/enums";
+import { AlertTriggers } from "#/enums";
 import { Icon } from "./Icon";
 import { GotProps } from "#/abstracts/GotProps";
-import { DensityTypes } from "#/enums/DensityTypes";
-import { PositionTypes } from "#/enums/PositionTypes";
-import { AlertTypes } from "#/enums/AlertTypes";
-import { ButtonVariantTypes } from "#/enums/ButtonVariantTypes";
+import { DensityTypes } from "#/enums";
+import { PositionTypes } from "#/enums";
+import { AlertTypes } from "#/enums";
+import { ButtonVariantTypes } from "#/enums";
 import { isEmpty } from "#/composables/utils/Types";
 
 export class Alert extends GotProps {
@@ -15,8 +15,8 @@ export class Alert extends GotProps {
   closable = false;
   close_icon: Icon | string = "$close";
   close_label = "$vuetify.close";
-  cols = 12;
   color: string | undefined;
+  cols = 12;
   content_placeholder = "<response-data>";
   density: DensityTypes = DensityTypes.Default;
   display = false;

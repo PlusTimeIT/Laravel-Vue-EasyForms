@@ -1,4 +1,4 @@
-import { TimePickerModeTypes } from "#/enums/TimePickerModeTypes";
+import { TimePickerModeTypes } from "#/enums";
 declare const _default: import("vue").DefineComponent<{
     width: {
         type: import("vue").PropType<string | number>;

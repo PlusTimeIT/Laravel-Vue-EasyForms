@@ -26,8 +26,8 @@ import { ActionForm, InputForm, EasyForm } from "#/classes/forms";
 import { AdditionalData } from "#/classes/properties";
 import { isEmpty } from "#/composables/utils/Types";
 import { FormContainer } from "#/classes/elements";
-import { LoaderEvents } from "#/enums/LoaderEvents";
-import { FormTypes } from "#/enums/FormTypes";
+import { LoaderEvents } from "#/enums";
+import { FormTypes } from "#/enums";
 
 const emit = defineEmits<{
   (e: "loading", value: boolean): void;

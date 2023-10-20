@@ -1,4 +1,4 @@
-import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-451a7dff.js";
+import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-97b96211.js";
 const scriptRel = "modulepreload";
 const assetsURL = function(dep, importerUrl) {
   return new URL(dep, importerUrl).href;
@@ -53,10 +53,10 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
 const Comp1 = { "title": "Form Basics", "icon": "carbon:bookmark", "group": "forms", "docsOnly": true, "variants": [] };
 const Comp2 = { "title": "Installation", "icon": "carbon:bookmark", "group": "getting-started", "docsOnly": true, "variants": [] };
 const Comp3 = { "title": "Intro", "icon": "carbon:bookmark", "group": "top", "docsOnly": true, "variants": [] };
-const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./FormLoader.story-0d4c7b27.js"), true ? ["./FormLoader.story-0d4c7b27.js","./vendor-451a7dff.js"] : void 0, import.meta.url));
-const Comp4 = defineAsyncComponent(() => __vitePreload(() => import("./vendor-451a7dff.js").then((n) => n.aG), true ? [] : void 0, import.meta.url));
+const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./FormLoader.story-61fb8de3.js"), true ? ["./FormLoader.story-61fb8de3.js","./vendor-97b96211.js"] : void 0, import.meta.url));
+const Comp4 = defineAsyncComponent(() => __vitePreload(() => import("./vendor-97b96211.js").then((n) => n.aG), true ? [] : void 0, import.meta.url));
 let files = [
-  { "id": "src-components-formloader-story-vue", "path": ["Form Loader"], "filePath": "src/components/FormLoader.story.vue", "story": { "id": "src-components-formloader-story-vue", "title": "Form Loader", "group": "forms", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "src-components-formloader-story-vue-0", "title": "All Options" }, { "id": "src-components-formloader-story-vue-1", "title": "Input Form" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-components-formloader-story-vue-d06ce121.js"), true ? [] : void 0, import.meta.url) },
+  { "id": "src-components-formloader-story-vue", "path": ["Form Loader"], "filePath": "src/components/FormLoader.story.vue", "story": { "id": "src-components-formloader-story-vue", "title": "Form Loader", "group": "forms", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "src-components-formloader-story-vue-0", "title": "All Options" }, { "id": "src-components-formloader-story-vue-1", "title": "Input Form" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-components-formloader-story-vue-0a341fdd.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-formbasics-story-js", "path": ["Form Basics"], "filePath": "src/histoire/FormBasics.story.js", "story": { "id": "src-histoire-formbasics-story-js", "title": "Form Basics", "group": "forms", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/FormBasics.story.md", "index": 1, component: Comp1, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-formbasics-story-js-96308474.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-installation-story-js", "path": ["Installation"], "filePath": "src/histoire/Installation.story.js", "story": { "id": "src-histoire-installation-story-js", "title": "Installation", "group": "getting-started", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/Installation.story.md", "index": 2, component: Comp2, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-installation-story-js-5b1c3bbb.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-introduction-story-js", "path": ["Intro"], "filePath": "src/histoire/Introduction.story.js", "story": { "id": "src-histoire-introduction-story-js", "title": "Intro", "group": "top", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/Introduction.story.md", "index": 3, component: Comp3, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-introduction-story-js-e73342db.js"), true ? [] : void 0, import.meta.url) },
@@ -83,12 +83,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-a9f69a77.js"), true ? ["./HomeView.vue-a9f69a77.js","./vendor-451a7dff.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./HomeView.vue-8896ff2f.js"), true ? ["./HomeView.vue-8896ff2f.js","./vendor-97b96211.js"] : void 0, import.meta.url)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-9bc2ff32.js"), true ? ["./StoryView.vue-9bc2ff32.js","./vendor-451a7dff.js","./MobileOverlay.vue2-d19ec643.js","./BaseEmpty.vue-b5831882.js","./state-953b1259.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./StoryView.vue-3c488d9d.js"), true ? ["./StoryView.vue-3c488d9d.js","./vendor-97b96211.js","./MobileOverlay.vue2-fcf9b26c.js","./BaseEmpty.vue-c52f5fe4.js","./state-5273d735.js"] : void 0, import.meta.url)
     }
   ]
 });
@@ -178,8 +178,8 @@ function mapVariant(variant, existingVariant) {
   return result;
 }
 const clientSupportPlugins = {
-  "vanilla": () => __vitePreload(() => import("./vendor-451a7dff.js").then((n) => n.aH), true ? [] : void 0, import.meta.url),
-  "vue3": () => __vitePreload(() => import("./vendor-451a7dff.js").then((n) => n.aI), true ? [] : void 0, import.meta.url)
+  "vanilla": () => __vitePreload(() => import("./vendor-97b96211.js").then((n) => n.aH), true ? [] : void 0, import.meta.url),
+  "vue3": () => __vitePreload(() => import("./vendor-97b96211.js").then((n) => n.aI), true ? [] : void 0, import.meta.url)
 };
 const __default__ = {
   inheritAttrs: false

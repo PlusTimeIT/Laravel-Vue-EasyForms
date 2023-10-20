@@ -1,4 +1,4 @@
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 declare const _default: import("vue").DefineComponent<{
     field: {
         type: import("vue").PropType<FieldType>;
@@ -12,8 +12,8 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<number>;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    validated: (...args: any[]) => void;
     updated: (...args: any[]) => void;
+    validated: (...args: any[]) => void;
     invalidated: (...args: any[]) => void;
     "click:clear": (...args: any[]) => void;
     "click:prepend": (...args: any[]) => void;

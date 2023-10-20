@@ -1,5 +1,5 @@
 import HasForm from "#/contracts/HasForm";
-import { AlertTriggers } from "#/enums/AlertTriggers";
+import { AlertTriggers } from "#/enums";
 import { Alert } from "#/classes/elements";
 import { AdditionalData, AxiosOptions, DataItem } from "#/classes/properties";
 export declare class EasyForm implements HasForm {

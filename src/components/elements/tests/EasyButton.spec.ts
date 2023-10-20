@@ -8,7 +8,7 @@ import * as directives from "vuetify/directives";
 import * as labs from "vuetify/labs/components";
 import { Button, Icon, Tooltip } from "#/classes/elements";
 import { EasyButton } from "#/components/elements";
-import { ButtonTypes } from "#/enums/ButtonTypes";
+import { ButtonTypes } from "#/enums";
 
 const vuetify = createVuetify({
   components: {

@@ -1,8 +1,8 @@
 import { Tooltip, Icon } from "#/classes/elements";
-import { ButtonTypes } from "#/enums/ButtonTypes";
-import { DensityTypes } from "#/enums/DensityTypes";
-import { PositionTypes } from "#/enums/PositionTypes";
-import { ButtonVariantTypes } from "#/enums/ButtonVariantTypes";
+import { ButtonTypes } from "#/enums";
+import { DensityTypes } from "#/enums";
+import { PositionTypes } from "#/enums";
+import { ButtonVariantTypes } from "#/enums";
 import { GotProps } from "#/abstracts/GotProps";
 
 export class Button extends GotProps {

@@ -1,6 +1,6 @@
 import { EasyField } from "#/abstracts/EasyField";
 import { Icon } from "#/classes/elements";
-import { DirectionType } from "#/enums/DirectionType";
+import { DirectionType } from "#/enums";
 
 export class TextField extends EasyField {
   append_inner_icon: Icon | undefined;

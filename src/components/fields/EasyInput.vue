@@ -61,9 +61,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, Ref, watchEffect } from "vue"; // Import necessary Vue Composition API functions
 import { isEmpty } from "#/composables/utils/Types";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import { TextField } from "#/classes/fields"; // Import TextField here
-import { Masking } from "#/types/Masking";
+import type { Masking } from "#/types";
 import EasyIcon from "#/components/elements/EasyIcon.vue";
 // Default masking options
 const MASKING_DEFAULTS: Masking = {

@@ -1,6 +1,6 @@
 import { TextField, DatePicker } from "#/classes/fields";
 import { Menu } from "#/classes/elements";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 declare const _default: import("vue").DefineComponent<{
     menu: {
         type: import("vue").PropType<Menu>;

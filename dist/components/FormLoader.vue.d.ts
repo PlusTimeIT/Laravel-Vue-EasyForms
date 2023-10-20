@@ -92,8 +92,8 @@ declare const _default: import("vue").DefineComponent<{
 }>> & {
     onCancelled?: (value: boolean) => any;
     onLoading?: (value: boolean) => any;
-    onResults?: (value: any) => any;
     onLoaded?: (value: boolean) => any;
+    onResults?: (value: any) => any;
     onReset_form?: (value: boolean) => any;
     onUpdated?: (value: any) => any;
 }, {

@@ -35,7 +35,7 @@ import { TextField, DatePicker } from "#/classes/fields";
 import { Menu } from "#/classes/elements";
 import moment from "moment-timezone";
 import EasyInput from "./EasyInput.vue";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 
 // Define props and emit for the component
 interface Props {

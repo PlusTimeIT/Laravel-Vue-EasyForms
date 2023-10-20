@@ -10,9 +10,9 @@ import FormLoader from "#/components/FormLoader.vue";
 import { Button, Icon, Tooltip } from "#/classes/elements";
 import { ActionForm, InputForm } from "#/classes/forms";
 import { TextField } from "#/classes/fields";
-import { ButtonTypes } from "#/enums/ButtonTypes";
+import { ButtonTypes } from "#/enums";
 import { ActionIcon, ActionButton } from "#/classes/actions";
-import { LocationTypes } from "#/enums/LocationTypes";
+import { LocationTypes } from "#/enums";
 
 const vuetify = createVuetify({
   components: {

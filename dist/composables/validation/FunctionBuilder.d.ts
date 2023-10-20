@@ -1,4 +1,4 @@
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import { ValidationRule } from "#/classes/properties";
 export declare class FunctionBuilder {
     static expectingArray: string[];

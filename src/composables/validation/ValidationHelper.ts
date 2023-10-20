@@ -1,6 +1,6 @@
 import { ValidationRule } from "#/classes/properties";
 import { ValidationHandler } from "./ValidationHandler";
-import { ValidationUpdates } from "#/enums/ValidationUpdates";
+import { ValidationUpdates } from "#/enums";
 /**
  * Validation Helper for converting backend validations to frontend
  */

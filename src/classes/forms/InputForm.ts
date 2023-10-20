@@ -1,12 +1,12 @@
 import { EasyForm } from "./EasyForm";
-import { JustifyRow } from "#/enums/JustifyRow";
-import { AlignRow } from "#/enums/AlignRow";
+import { JustifyRow } from "#/enums";
+import { AlignRow } from "#/enums";
 import { Button } from "#/classes/elements";
 import { AxiosHeader } from "#/classes/properties/AxiosHeader";
 import { DataItem } from "#/classes/properties/DataItem";
 import { isArray, isObject, isEmpty } from "#/composables/utils/Types";
-import { ContentTypes } from "#/enums/ContentTypes";
-import { FieldType } from "#/types/FieldType";
+import { ContentTypes } from "#/enums";
+import type { FieldType } from "#/types";
 
 /**
  * Input form that uses input fields

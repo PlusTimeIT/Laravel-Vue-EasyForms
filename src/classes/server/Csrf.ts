@@ -1,6 +1,6 @@
 import { ServerCall } from "#/classes/server/ServerCall";
 import { ServerResponse } from "#/classes/server/ServerResponse";
-import { AxiosCalls } from "#/enums/AxiosCalls";
+import { AxiosCalls } from "#/enums";
 import { minutesBetween } from "#/composables/utils/Dates";
 
 /**

@@ -1,4 +1,4 @@
-import { LocationTypes } from "#/enums/LocationTypes";
+import { LocationTypes } from "#/enums";
 import { GotProps } from "#/abstracts/GotProps";
 export declare class Tooltip extends GotProps {
     activator: string | undefined;

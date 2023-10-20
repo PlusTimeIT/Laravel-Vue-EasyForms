@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect } from "vue";
-import { ButtonTypes } from "#/enums/ButtonTypes"; // Import ButtonTypes here
+import { ButtonTypes } from "#/enums"; // Import ButtonTypes here
 import { InputForm } from "#/classes/forms"; // Import InputForm here
 import { generate } from "#/composables/utils/Strings"; // Import generate from utils
 import { isEmpty } from "#/composables/utils/Types";

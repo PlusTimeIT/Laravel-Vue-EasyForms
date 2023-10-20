@@ -1,6 +1,6 @@
 import { EasyField } from "#/abstracts/EasyField";
-import { DirectionType } from "#/enums/DirectionType";
-import { FilterModeTypes } from "#/enums/FilterModeTypes";
+import { DirectionType } from "#/enums";
+import { FilterModeTypes } from "#/enums";
 import { Icon } from "#/classes/elements";
 export declare class AutoCompleteField extends EasyField {
     auto_select_first: boolean | "exact";

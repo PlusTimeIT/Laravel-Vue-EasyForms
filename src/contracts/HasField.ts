@@ -1,8 +1,8 @@
 import { Tooltip, Icon } from "#/classes/elements";
 import { ValidationRule } from "#/classes/properties/ValidationRule";
-import { DensityTypes } from "#/enums/DensityTypes";
-import { ValidationTriggers } from "#/enums/ValidationTriggers";
-import { TextVariantTypes } from "#/enums/TextVariantTypes";
+import { DensityTypes } from "#/enums";
+import { ValidationTriggers } from "#/enums";
+import { TextVariantTypes } from "#/enums";
 
 export default interface HasField {
   active: boolean;

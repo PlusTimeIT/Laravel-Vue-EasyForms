@@ -1,4 +1,4 @@
-import { ValidationFunction } from "#/types/ValidationFunction";
+import type { ValidationFunction } from "#/types";
 export declare class ValidationHandler {
     protected static accepted_booleans: Array<string | number | boolean>;
     protected static accepted_values: Array<string | number | boolean>;

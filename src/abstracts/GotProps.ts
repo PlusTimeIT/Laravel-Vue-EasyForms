@@ -12,6 +12,12 @@ export abstract class GotProps implements HasProps {
     Object.assign(this, init);
   }
 
+  // this should be overwritten on parent class to return allowed props.
+  // If nothing is supplied in this array, then no props are passed to components.
+  allowedProps(): string[] {
+    return [];
+  }
+
   instanceOfA(object: any): object is HasIcon {
     return "icon" in object;
   }
@@ -39,11 +45,5 @@ export abstract class GotProps implements HasProps {
       }
     }
     return result;
-  }
-
-  // this should be overwritten on parent class to return allowed props.
-  // If nothing is supplied in this array, then no props are passed to components.
-  allowedProps(): string[] {
-    return [];
   }
 }

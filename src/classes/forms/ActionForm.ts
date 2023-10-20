@@ -1,7 +1,7 @@
 import { EasyForm } from "./EasyForm";
 import { ActionIcon, ActionButton } from "#/classes/actions";
-import { JustifyRow } from "#/enums/JustifyRow";
-import { AxiosCalls } from "#/enums/AxiosCalls";
+import { JustifyRow } from "#/enums";
+import { AxiosCalls } from "#/enums";
 import { ServerCall } from "#/classes/server/ServerCall";
 import { ServerResponse } from "#/classes/server/ServerResponse";
 

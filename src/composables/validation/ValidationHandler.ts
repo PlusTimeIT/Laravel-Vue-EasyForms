@@ -1,8 +1,8 @@
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import { isEmpty, isArray, isNumber, isString, isNull, isFile, isNumeric } from "#/composables/utils/Types";
 import { convertMessageHolders } from "#/composables/utils/Strings";
-import { ValidationMessages } from "#/enums/ValidationMessages";
-import { ValidationFunction } from "#/types/ValidationFunction";
+import { ValidationMessages } from "#/enums";
+import type { ValidationFunction } from "#/types";
 
 /**
  * Validation handler for converting backend validations to frontend

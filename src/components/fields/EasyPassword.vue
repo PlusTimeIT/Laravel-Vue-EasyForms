@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { onMounted, computed, ComputedRef, Ref, ref, watch } from "vue";
 import { TextField } from "#/classes/fields";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import EasyInput from "./EasyInput.vue";
 
 // Define the component's props interface

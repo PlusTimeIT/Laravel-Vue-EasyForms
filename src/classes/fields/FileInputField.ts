@@ -1,6 +1,6 @@
 import { EasyField } from "#/abstracts/EasyField";
 import { Icon } from "#/classes/elements";
-import { DirectionType } from "#/enums/DirectionType";
+import { DirectionType } from "#/enums";
 
 export class FileInputField extends EasyField {
   accept = "image/png, image/jpeg";

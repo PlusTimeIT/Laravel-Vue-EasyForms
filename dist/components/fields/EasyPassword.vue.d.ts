@@ -1,5 +1,5 @@
 import { TextField } from "#/classes/fields";
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 declare const _default: import("vue").DefineComponent<{
     textfield: {
         type: import("vue").PropType<TextField>;

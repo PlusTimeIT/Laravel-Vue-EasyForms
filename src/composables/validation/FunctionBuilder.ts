@@ -1,4 +1,4 @@
-import { FieldType } from "#/types/FieldType";
+import type { FieldType } from "#/types";
 import { ValidationRule } from "#/classes/properties";
 import { isEmpty } from "#/composables/utils/Types";
 

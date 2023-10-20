@@ -1,6 +1,6 @@
 import { EasyForm } from "./EasyForm";
 import { ActionIcon, ActionButton } from "#/classes/actions";
-import { JustifyRow } from "#/enums/JustifyRow";
+import { JustifyRow } from "#/enums";
 export declare class ActionForm extends EasyForm {
     actions: Array<ActionIcon | ActionButton>;
     callback: string;

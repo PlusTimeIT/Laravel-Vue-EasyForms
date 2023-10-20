@@ -1,4 +1,4 @@
-export declare enum AlertBorders {
+export enum AlertBorders {
   Top = "top",
   End = "end",
   Bottom = "bottom",
