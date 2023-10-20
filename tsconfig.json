@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "resolveJsonModule": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "lib": ["ESNext", "DOM"],
+    "paths": {
+      "#/*": ["./src/*"]
+    },
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "*.d.ts"],
+  "exclude": ["node_modules", "dist", "sandbox", ".histoire", "src/**/*.spec.ts", "*.build-dts.json", "*.config.ts"]
+}

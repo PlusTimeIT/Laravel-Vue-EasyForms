@@ -1,0 +1,41 @@
+{
+  "root": true,
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "extends": [
+    "plugin:vue/strongly-recommended",
+    "plugin:vuetify/base",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "prettier"
+  ],
+  "plugins": ["vue", "@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    // not needed for vue 3
+    "vue/no-multiple-template-root": "off",
+    "vue/no-unused-vars": "error",
+    "vue/valid-v-slot": "error",
+    "vue/no-reserved-component-names": "error",
+    "vue/no-v-model-argument": "off",
+    "vue/valid-v-model": "off",
+    "vue/no-reserved-props": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-this-alias": "error",
+    "@typescript-eslint/no-empty-function": "error",
+    "@typescript-eslint/no-inferrable-types": "error",
+    "vue/script-indent": [
+      "error",
+      2,
+      {
+        "baseIndent": 0,
+        "switchCase": 1
+      }
+    ],
+    "no-console": "off",
+    "no-debugger": "off"
+  }
+}

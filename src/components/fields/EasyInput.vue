@@ -1,0 +1,153 @@
+<template>
+  <component
+    v-if="showField"
+    :is="field?.component"
+    v-model="field.value"
+    v-bind="field?.props()"
+    v-maska="[maskingOptions]"
+    :rules="rules"
+    :fields="props.fields ?? []"
+    @field_update="updated"
+    @validated="validate"
+    @invalidated="invalidate"
+    @click:clear="emit('click:clear', $event)"
+    @click:prepend="emit('click:prepend', $event)"
+    @click:prependInner="emit('click:prependInner', $event)"
+    @click:append="emit('click:append', $event)"
+    @click:appendInner="emit('click:appendInner', $event)"
+  >
+    <!-- Clear Icon Slot -->
+    <template #clear v-if="hasClearIcon">
+      <!-- Render an easy-icon with the clear_icon if available, and emit 'click:clear' event on click -->
+      <easy-icon :icon="props?.field?.clear_icon" @click="emit('click:clear', $event)" />
+    </template>
+
+    <!-- Append Icon Slot -->
+    <template #append v-if="hasAppendIcon">
+      <!-- Render an easy-icon with the append_icon if available, and emit 'click:append' event on click -->
+      <easy-icon :icon="props?.field?.append_icon" @click="emit('click:append', $event)" />
+    </template>
+
+    <!-- Append Inner Icon Slot -->
+    <template #append-inner v-if="hasAppendInnerIcon">
+      <!-- Render an easy-icon with the append_inner_icon if available, and emit 'click:appendInner' event on click -->
+      <easy-icon :icon="props?.field?.append_inner_icon" @click="emit('click:appendInner', $event)" />
+    </template>
+
+    <!-- Prepend Icon Slot -->
+    <template #prepend v-if="hasPrependIcon">
+      <!-- Render an easy-icon with the prepend_icon if available, and emit 'click:prepend' event on click -->
+      <easy-icon :icon="props?.field?.prepend_icon" @click="emit('click:prepend', $event)" />
+    </template>
+
+    <!-- Prepend Inner Icon Slot -->
+    <template #prepend-inner v-if="hasPrependInnerIcon">
+      <!-- Render an easy-icon with the prepend_inner_icon if available, and emit 'click:prependInner' event on click -->
+      <easy-icon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
+    </template>
+
+    <!-- Render field value as a paragraph if the component is 'h2' -->
+    <p class="mb-3 mt-4" v-if="field.component == 'v-radio-group'">
+      <v-radio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />
+    </p>
+
+    <!-- Render field value as a paragraph if the component is 'h2' -->
+    <p class="mb-3 mt-4" v-if="field.component == 'h2'">
+      {{ field.value }}
+    </p>
+  </component>
+</template>
+
+<script setup lang="ts">
+import { ref, computed, onMounted, Ref, watchEffect } from "vue"; // Import necessary Vue Composition API functions
+import { isEmpty } from "#/composables/utils/Types";
+import { FieldType } from "#/types/FieldType";
+import { TextField } from "#/classes/fields"; // Import TextField here
+import { Masking } from "#/types/Masking";
+import EasyIcon from "#/components/elements/EasyIcon.vue";
+// Default masking options
+const MASKING_DEFAULTS: Masking = {
+  mask: "",
+  eager: true,
+};
+
+// Access component props using defineProps
+const props = defineProps<{
+  field: FieldType;
+  fields: FieldType[];
+  cols?: number;
+}>();
+
+// Define emitted events using defineEmits
+const emit = defineEmits([
+  "updated",
+  "validated",
+  "invalidated",
+  "click:clear",
+  "click:prepend",
+  "click:prependInner",
+  "click:append",
+  "click:appendInner",
+]);
+
+// Create a ref for the field
+const field: Ref<FieldType> = ref(props.field) as Ref<FieldType>;
+watchEffect(() => (field.value = props.field));
+// Create a ref for masking options, including default mask if it's a TextField
+const maskingOptions = ref({
+  ...MASKING_DEFAULTS,
+  mask: props?.field instanceof TextField ? props.field?.masking : "",
+});
+
+// Compute validation rules for the field
+const rules = computed(() => field?.value?.validationRules());
+
+// Compute whether the field has a prepend icon
+const hasPrependIcon = computed(() => !isEmpty(props.field?.prepend_icon) && !isEmpty(props.field?.prepend_icon?.icon));
+
+// Compute whether the field has an append icon
+const hasAppendIcon = computed(() => !isEmpty(props.field?.append_icon) && !isEmpty(props.field?.append_icon?.icon));
+
+// Compute whether the field has a clear icon
+const hasClearIcon = computed(() => !isEmpty(props.field?.clear_icon) && !isEmpty(props.field?.clear_icon?.icon));
+
+// Compute whether the field has a prepend inner icon
+const hasPrependInnerIcon = computed(
+  () => !isEmpty(props.field?.prepend_inner_icon) && !isEmpty(props.field?.prepend_inner_icon?.icon),
+);
+
+// Compute whether the field has an append inner icon
+const hasAppendInnerIcon = computed(
+  () => !isEmpty(props.field?.append_inner_icon) && !isEmpty(props.field?.append_inner_icon?.icon),
+);
+
+// Compute whether to show the field based on its type and loading status
+const showField = computed(() => {
+  if (isEmpty(props?.field?.component)) return false;
+  if (props?.field?.type === "hidden") return false;
+  if (props?.field?.loading) return false;
+  return true;
+});
+
+// Function to emit 'updated' event and update the field value
+function updated() {
+  emit("updated", field.value);
+}
+
+// Function to validate the field and emit 'validated' event
+function validate() {
+  field.value.validate();
+  emit("validated", field.value.name);
+}
+
+// Function to invalidate the field and emit 'invalidated' event
+function invalidate() {
+  field.value.invalidate();
+  emit("invalidated", field.value.name);
+}
+
+// On mounted, set field loading status to false
+onMounted(() => {
+  field?.value?.isLoading(false);
+});
+</script>

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "types": ["node", "vuetify", "vitest"],
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "preserveWatchOutput": true,
+    "removeComments": true,
+    "noEmit": true,
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["../../src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["dist/**/*"]
+}
