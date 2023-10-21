@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.4.7-beta",
+  "version": "0.4.8-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": "PlusTimeIT <kane@plustime.com.au> (https://plustime.com.au/)",
   "type": "module",
@@ -25,6 +25,35 @@
       "index": [
         "dist/index.d.ts"
       ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./actions": {
+      "import": "./dist/classes/actions/index"
+    },
+    "./elements": {
+      "import": "./dist/classes/elements/index"
+    },
+    "./fields": {
+      "import": "./dist/classes/fields/index"
+    },
+    "./forms": {
+      "import": "./dist/classes/forms/index"
+    },
+    "./properties": {
+      "import": "./dist/classes/properties/index"
+    },
+    "./server": {
+      "import": "./dist/classes/server/index"
+    },
+    "./enums": {
+      "import": "./dist/enums/index"
+    },
+    "./types": {
+      "import": "./dist/types/index"
     }
   },
   "keywords": [

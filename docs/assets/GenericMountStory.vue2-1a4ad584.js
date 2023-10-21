@@ -56,7 +56,7 @@ const Comp3 = { "title": "Intro", "icon": "carbon:bookmark", "group": "top", "do
 const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./FormLoader.story-8414f992.js"), true ? ["./FormLoader.story-8414f992.js","./vendor-ce602fc0.js"] : void 0, import.meta.url));
 const Comp4 = defineAsyncComponent(() => __vitePreload(() => import("./vendor-ce602fc0.js").then((n) => n.aG), true ? [] : void 0, import.meta.url));
 let files = [
-  { "id": "src-components-formloader-story-vue", "path": ["Form Loader"], "filePath": "src/components/FormLoader.story.vue", "story": { "id": "src-components-formloader-story-vue", "title": "Form Loader", "group": "forms", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "src-components-formloader-story-vue-0", "title": "All Options" }, { "id": "src-components-formloader-story-vue-1", "title": "Input Form" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-components-formloader-story-vue-9a3d36de.js"), true ? [] : void 0, import.meta.url) },
+  { "id": "src-components-formloader-story-vue", "path": ["Form Loader"], "filePath": "src/components/FormLoader.story.vue", "story": { "id": "src-components-formloader-story-vue", "title": "Form Loader", "group": "forms", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "src-components-formloader-story-vue-0", "title": "All Options" }, { "id": "src-components-formloader-story-vue-1", "title": "Input Form" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-components-formloader-story-vue-0f9538c7.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-formbasics-story-js", "path": ["Form Basics"], "filePath": "src/histoire/FormBasics.story.js", "story": { "id": "src-histoire-formbasics-story-js", "title": "Form Basics", "group": "forms", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/FormBasics.story.md", "index": 1, component: Comp1, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-formbasics-story-js-96308474.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-installation-story-js", "path": ["Installation"], "filePath": "src/histoire/Installation.story.js", "story": { "id": "src-histoire-installation-story-js", "title": "Installation", "group": "getting-started", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/Installation.story.md", "index": 2, component: Comp2, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-installation-story-js-5b1c3bbb.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-introduction-story-js", "path": ["Intro"], "filePath": "src/histoire/Introduction.story.js", "story": { "id": "src-histoire-introduction-story-js", "title": "Intro", "group": "top", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/Introduction.story.md", "index": 3, component: Comp3, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-introduction-story-js-e73342db.js"), true ? [] : void 0, import.meta.url) },
@@ -83,12 +83,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-72e38518.js"), true ? ["./HomeView.vue-72e38518.js","./vendor-ce602fc0.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./HomeView.vue-a1e379e2.js"), true ? ["./HomeView.vue-a1e379e2.js","./vendor-ce602fc0.js"] : void 0, import.meta.url)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-33d255da.js"), true ? ["./StoryView.vue-33d255da.js","./vendor-ce602fc0.js","./MobileOverlay.vue2-319ffae0.js","./BaseEmpty.vue-57e3c9d5.js","./state-0bda0da3.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./StoryView.vue-362b7b14.js"), true ? ["./StoryView.vue-362b7b14.js","./vendor-ce602fc0.js","./MobileOverlay.vue2-f07d12c6.js","./BaseEmpty.vue-64835125.js","./state-7ec5c6ce.js"] : void 0, import.meta.url)
     }
   ]
 });

@@ -13,7 +13,16 @@ export default defineConfig({
   // },
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: [
+        resolve(__dirname, "src/index.ts"),
+        resolve(__dirname, "src/actions.ts"),
+        resolve(__dirname, "src/elements.ts"),
+        resolve(__dirname, "src/enums.ts"),
+        resolve(__dirname, "src/fields.ts"),
+        resolve(__dirname, "src/properties.ts"),
+        resolve(__dirname, "src/server.ts"),
+        resolve(__dirname, "src/types.ts"),
+      ],
       formats: ["es"],
     },
     rollupOptions: {
