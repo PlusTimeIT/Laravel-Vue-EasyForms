@@ -5,6 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "removeComments": true,
@@ -21,6 +22,6 @@
     "strictFunctionTypes": true,
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/env.d.ts"],
   "exclude": ["node_modules", "dist", "sandbox", ".histoire", "src/**/*.spec.ts", "*.build-dts.json", "*.config.ts"]
 }

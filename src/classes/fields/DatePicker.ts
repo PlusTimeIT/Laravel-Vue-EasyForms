@@ -1,6 +1,6 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { PositionTypes } from "../../enums";
-import { Icon } from "../../classes/elements";
+import { Icon } from "../elements";
 import { InputModeTypes } from "../../enums";
 import { ViewModeTypes } from "../../enums";
 

@@ -1,7 +1,7 @@
 import { EasyForm } from "./EasyForm";
 import { JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
-import { Button } from "../../classes/elements";
+import { Button } from "../elements";
 import type { FieldType } from "../../types";
 export declare class InputForm extends EasyForm {
     button_align_row: AlignRow;

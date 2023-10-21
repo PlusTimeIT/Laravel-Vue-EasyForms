@@ -35,3 +35,4 @@ function click() {
     <span>{{ icon?.tooltip?.text }}</span>
   </v-tooltip>
 </template>
+../../classes/elements/elements ../../classes/elements/elements

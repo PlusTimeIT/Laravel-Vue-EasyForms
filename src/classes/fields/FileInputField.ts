@@ -1,5 +1,5 @@
 import { EasyField } from "../../abstracts/EasyField";
-import { Icon } from "../../classes/elements";
+import { Icon } from "../elements";
 import { DirectionType } from "../../enums";
 
 export class FileInputField extends EasyField {

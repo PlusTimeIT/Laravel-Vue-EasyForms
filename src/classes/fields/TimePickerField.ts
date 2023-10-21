@@ -1,7 +1,7 @@
 import HasField from "../../contracts/HasField";
 import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
-import { Menu, Icon } from "../../classes/elements";
+import { Menu, Icon } from "../elements";
 import { TimePicker } from "../../classes/fields";
 
 export class TimePickerField extends EasyField implements HasField {

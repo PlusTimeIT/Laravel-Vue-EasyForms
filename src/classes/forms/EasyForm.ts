@@ -2,7 +2,7 @@ import HasForm from "../../contracts/HasForm";
 import { isArray, isEmpty } from "../../composables/utils/Types";
 import { AlertTriggers } from "../../enums";
 import { AxiosCalls } from "../../enums";
-import { Alert } from "../../classes/elements";
+import { Alert } from "../elements";
 import { ServerCall, ServerResponse } from "../../classes/server";
 import { AdditionalData, AxiosOptions, DataItem } from "../../classes/properties";
 /**

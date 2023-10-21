@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { InputForm } from "../../dist/types/classes/forms";
-import { TextField } from "../../dist/types/classes/fields";
-import { Button, Icon } from "../../dist/types/classes/elements";
-import { ButtonTypes } from "../../dist/types/enums/ButtonTypes";
+import { InputForm } from "../..//dist";
+import { TextField } from "../../dist";
+import { Button, Icon } from "../../dist";
+import { ButtonTypes } from "../../dist";
 
 const inputForm = new InputForm({
   name: "TestInputForm",

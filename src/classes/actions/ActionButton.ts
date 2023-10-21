@@ -1,4 +1,4 @@
-import { Button } from "../../classes/elements";
+import { Button } from "../elements";
 import { ConditionItem } from "./ConditionItem";
 
 export class ActionButton {

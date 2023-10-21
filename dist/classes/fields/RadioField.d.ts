@@ -1,6 +1,6 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { DirectionType } from "../../enums";
-import { Icon } from "../../classes/elements";
+import { Icon } from "../elements";
 export declare class RadioField extends EasyField {
     component: string;
     defaults_target: string | undefined;

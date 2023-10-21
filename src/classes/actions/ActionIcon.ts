@@ -1,4 +1,4 @@
-import { Icon } from "../../classes/elements";
+import { Icon } from "../elements";
 import { ConditionItem } from "./ConditionItem";
 
 export class ActionIcon {

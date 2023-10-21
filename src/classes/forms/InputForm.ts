@@ -1,7 +1,7 @@
 import { EasyForm } from "./EasyForm";
 import { JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
-import { Button } from "../../classes/elements";
+import { Button } from "../elements";
 import { AxiosHeader } from "../../classes/properties/AxiosHeader";
 import { DataItem } from "../../classes/properties/DataItem";
 import { isArray, isObject, isEmpty } from "../../composables/utils/Types";
