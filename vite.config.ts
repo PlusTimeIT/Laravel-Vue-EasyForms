@@ -19,6 +19,7 @@ export default defineConfig({
         resolve(__dirname, "src/elements.ts"),
         resolve(__dirname, "src/enums.ts"),
         resolve(__dirname, "src/fields.ts"),
+        resolve(__dirname, "src/forms.ts"),
         resolve(__dirname, "src/properties.ts"),
         resolve(__dirname, "src/server.ts"),
         resolve(__dirname, "src/types.ts"),

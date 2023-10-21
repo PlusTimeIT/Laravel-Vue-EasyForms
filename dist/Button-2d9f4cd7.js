@@ -1,10 +1,11 @@
 var o = Object.defineProperty;
 var i = (s, t, a) => t in s ? o(s, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : s[t] = a;
 var e = (s, t, a) => (i(s, typeof t != "symbol" ? t + "" : t, a), a);
-import { B as l, a as r } from "./ButtonVariantTypes-50d88936.js";
+import { B as l } from "./ButtonTypes-4a9e277c.js";
+import { B as r } from "./ButtonVariantTypes-6c8b0d38.js";
 import { D as d } from "./DensityTypes-eaa8882a.js";
 import { G as n } from "./Icon-67bf229a.js";
-class m extends n {
+class u extends n {
   constructor(a) {
     super(a);
     e(this, "active", !1);
@@ -97,5 +98,5 @@ class m extends n {
   }
 }
 export {
-  m as B
+  u as B
 };

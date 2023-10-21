@@ -1,11 +1,11 @@
-var a = Object.defineProperty;
-var l = (s, i, e) => i in s ? a(s, i, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[i] = e;
-var t = (s, i, e) => (l(s, typeof i != "symbol" ? i + "" : i, e), e);
+var n = Object.defineProperty;
+var a = (s, i, e) => i in s ? n(s, i, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[i] = e;
+var t = (s, i, e) => (a(s, typeof i != "symbol" ? i + "" : i, e), e);
 import { A as r } from "./AlertTriggers-367c8134.js";
-import { a as c } from "./ButtonVariantTypes-50d88936.js";
-import { D as d } from "./DensityTypes-eaa8882a.js";
-import { G as n, i as o, I as h } from "./Icon-67bf229a.js";
-class u extends n {
+import { B as l } from "./ButtonVariantTypes-6c8b0d38.js";
+import { D as c } from "./DensityTypes-eaa8882a.js";
+import { G as d, i as o, I as h } from "./Icon-67bf229a.js";
+class u extends d {
   constructor(e) {
     super(e);
     t(this, "auto_close_timer", 0);
@@ -17,7 +17,7 @@ class u extends n {
     t(this, "color");
     t(this, "cols", 12);
     t(this, "content_placeholder", "<response-data>");
-    t(this, "density", d.Default);
+    t(this, "density", c.Default);
     t(this, "display", !1);
     t(this, "elevation", 0);
     t(this, "height");
@@ -34,7 +34,7 @@ class u extends n {
     t(this, "text");
     t(this, "trigger", r.SuccessProcessing);
     t(this, "type");
-    t(this, "variant", c.Flat);
+    t(this, "variant", l.Flat);
     Object.assign(this, e), (o(this.text) || o(this.type)) && (this.trigger === r.Cancelled && (this.icon = this.icon ?? (o(this.text) && o(this.type)) ? new h({ icon: "mdi-alert-decagram" }) : void 0, this.text = this.text ?? "This form has been cancelled.", this.type = this.type ?? "warning"), this.trigger === r.FormReset && (this.icon = this.icon ?? (o(this.text) && o(this.type)) ? new h({ icon: "mdi-recycle" }) : void 0, this.text = this.text ?? "This form has been reset.", this.type = this.type ?? "info")), this.original_text = this.text ?? "";
   }
   /**
@@ -107,17 +107,6 @@ class u extends n {
     return this.display = !0, this;
   }
 }
-class y extends n {
-  constructor(e) {
-    super(e);
-    t(this, "cols", 12);
-    t(this, "lg", 12);
-    t(this, "md", 12);
-    t(this, "sm", 12);
-    Object.assign(this, e);
-  }
-}
 export {
-  u as A,
-  y as F
+  u as A
 };
