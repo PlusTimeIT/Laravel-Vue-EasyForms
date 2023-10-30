@@ -4,6 +4,7 @@ import { DensityTypes } from "../../enums";
 import { PositionTypes } from "../../enums";
 import { ButtonVariantTypes } from "../../enums";
 import { GotProps } from "../../abstracts/GotProps";
+import { isEmpty } from "../../composables/utils";
 
 export class Button extends GotProps {
   active = false;
@@ -46,6 +47,27 @@ export class Button extends GotProps {
 
   constructor(init?: Partial<Button>) {
     super(init);
+
+    // Set clearable Icon if not set but clearable is true
+    if (!isEmpty(init.append_icon)) {
+      this.append_icon = new Icon(init?.append_icon);
+      delete init?.append_icon;
+    }
+
+    if (!isEmpty(init.prepend_icon)) {
+      this.prepend_icon = new Icon(init?.prepend_icon);
+      delete init?.prepend_icon;
+    }
+
+    if (!isEmpty(init.icon)) {
+      this.icon = new Icon(init?.icon);
+      delete init?.icon;
+    }
+
+    if (!isEmpty(init?.tooltip)) {
+      this.tooltip = new Tooltip(init?.tooltip);
+      delete init?.tooltip;
+    }
     Object.assign(this, init);
   }
 

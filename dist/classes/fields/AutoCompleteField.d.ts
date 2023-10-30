@@ -10,6 +10,7 @@ export declare class AutoCompleteField extends EasyField {
     component: string;
     counter: string | number | boolean;
     direction: DirectionType;
+    discriminator: "AutoCompleteField";
     filter_keys: string | string[];
     filter_mode: FilterModeTypes;
     hide_no_data: boolean;
@@ -32,6 +33,7 @@ export declare class AutoCompleteField extends EasyField {
     transition: string | boolean;
     type: string;
     constructor(init?: Partial<AutoCompleteField>);
+    loadItems(items: any): this;
     allowedProps(): string[];
 }
 //# sourceMappingURL=AutoCompleteField.d.ts.map

@@ -6,7 +6,7 @@ import { DensityTypes } from "../../enums";
 import { PositionTypes } from "../../enums";
 import { AlertTypes } from "../../enums";
 import { ButtonVariantTypes } from "../../enums";
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 
 export class Alert extends GotProps {
   auto_close_timer = 0;
@@ -39,8 +39,12 @@ export class Alert extends GotProps {
 
   constructor(init?: Partial<Alert>) {
     super(init);
-    Object.assign(this, init);
 
+    Object.assign(this, init);
+    if (!isEmpty(init.icon)) {
+      this.icon = new Icon(init?.icon);
+      delete init?.icon;
+    }
     if (isEmpty(this.text) || isEmpty(this.type)) {
       if (this.trigger === AlertTriggers.Cancelled) {
         this.icon =

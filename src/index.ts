@@ -5,25 +5,26 @@ import { PluginOptions } from "./classes/PluginOptions";
 import { Csrf } from "./classes/server";
 import { vMaska } from "maska";
 import { App, Plugin } from "vue";
+import { store } from "./composables/utils";
 
 const FormLoaderPlugin: Plugin = {
   install(app: App, options: PluginOptions) {
-    const defaults = new PluginOptions(options);
+    const finalOptions = new PluginOptions(options);
     app
-      .provide("PluginOptions", options)
       .directive("maska", vMaska)
       .component("FormLoader", FormLoader)
-      .component("InputForm", InputForm)
-      .component("ActionForm", ActionForm)
+      .component("InputFormLoader", InputForm)
+      .component("ActionFormLoader", ActionForm)
       .component("EasyDatePicker", EasyDatePicker)
       .component("EasyTimePicker", EasyTimePicker)
       .component("EasyColorPicker", EasyColorPicker)
       .component("EasyCheckboxGroup", EasyCheckboxGroup)
       .component("EasyPassword", EasyPassword)
-      .component("ErrorForm", ErrorForm);
+      .component("ErrorFormLoader", ErrorForm);
 
-    app.config.globalProperties.$csrf = new Csrf({
-      endpoint: defaults.buildDomain(defaults.csrf_endpoint),
+    store.options = finalOptions;
+    store.csrf = new Csrf({
+      endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint),
     });
   },
 };

@@ -16,6 +16,8 @@ export default interface HasField {
   color: string | undefined;
   cols: number;
   component: string;
+  component_type: string | undefined;
+  discriminator: string;
   density: DensityTypes;
   depends_on: string;
   disabled: boolean;

@@ -1,21 +1,32 @@
-var o = Object.defineProperty;
-var r = (e, a, s) => a in e ? o(e, a, { enumerable: !0, configurable: !0, writable: !0, value: s }) : e[a] = s;
-var t = (e, a, s) => (r(e, typeof a != "symbol" ? a + "" : a, s), s);
-import { A as x, a as n, b as d, D as m } from "./DataItem-7afd96c5.js";
-import { C as A, V as b } from "./ValidationRule-cec9d477.js";
-class c {
-  constructor(a) {
-    t(this, "key", "");
-    t(this, "replace_with");
-    Object.assign(this, a);
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { A } from "./AdditionalData-dc6ae75c.js";
+import { A as A2, a } from "./AxiosOptions-15ae3169.js";
+import { C, V } from "./ValidationRule-73a2fa9e.js";
+class DataItem {
+  constructor(init) {
+    __publicField(this, "key", "");
+    __publicField(this, "value", "");
+    Object.assign(this, init);
+  }
+}
+class MessageParameter {
+  constructor(init) {
+    __publicField(this, "key", "");
+    __publicField(this, "replace_with");
+    Object.assign(this, init);
   }
 }
 export {
-  x as AdditionalData,
-  n as AxiosHeader,
-  d as AxiosOptions,
-  A as CheckboxGroupValue,
-  m as DataItem,
-  c as MessageParameter,
-  b as ValidationRule
+  A as AdditionalData,
+  A2 as AxiosHeader,
+  a as AxiosOptions,
+  C as CheckboxGroupValue,
+  DataItem,
+  MessageParameter,
+  V as ValidationRule
 };

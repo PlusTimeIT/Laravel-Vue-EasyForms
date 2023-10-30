@@ -1,12 +1,7 @@
-<script lang="ts">
-export default {
-  name: "EasyButton",
-};
-</script>
 <script setup lang="ts">
-import { ComputedRef, computed, Ref, ref } from "vue";
+import { computed, ref } from "vue";
 import { Button } from "../../classes/elements";
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 import { EasyIcon } from "../../components/elements";
 
 const xProps = defineProps<{
@@ -19,12 +14,12 @@ const emit = defineEmits<{
   (e: "click", value: string | number | undefined): void;
 }>();
 
-const button: Ref<Button> = ref(xProps.button) as Ref<Button>;
+const button = ref<Button>(xProps.button);
 
-const has_prepend_icon: ComputedRef<boolean> = computed(() => {
+const has_prepend_icon = computed<boolean>(() => {
   return !isEmpty(xProps.button.prepend_icon) && !isEmpty(xProps.button?.prepend_icon?.icon);
 });
-const has_append_icon: ComputedRef<boolean> = computed(() => {
+const has_append_icon = computed<boolean>(() => {
   return !isEmpty(xProps.button.append_icon) && !isEmpty(xProps.button?.append_icon?.icon);
 });
 
@@ -49,4 +44,3 @@ function click() {
     <span>{{ button?.tooltip?.text }}</span>
   </v-tooltip>
 </template>
-../../classes/elements/elements ../../classes/elements/elements

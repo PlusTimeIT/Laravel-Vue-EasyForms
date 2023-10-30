@@ -1,5 +1,6 @@
 import { Tooltip } from ".";
 import { GotProps } from "../../abstracts/GotProps";
+import { isEmpty } from "../../composables/utils";
 import HasIcon from "../../contracts/HasIcon";
 
 export class Icon extends GotProps implements HasIcon {
@@ -11,6 +12,11 @@ export class Icon extends GotProps implements HasIcon {
 
   constructor(init?: Partial<Icon>) {
     super(init);
+
+    if (!isEmpty(init?.tooltip)) {
+      this.tooltip = new Tooltip(init?.tooltip);
+      delete init?.tooltip;
+    }
     Object.assign(this, init);
   }
 

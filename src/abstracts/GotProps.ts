@@ -1,8 +1,7 @@
-import { isEmpty } from "../composables/utils/Types";
-import { formatKey } from "../composables/utils/Properties";
+import { isEmpty } from "../composables/utils";
+import { formatKey } from "../composables/utils";
 import { Icon } from "../classes/elements";
 import HasProps from "../contracts/HasProps";
-import HasIcon from "../contracts/HasIcon";
 
 /**
  *  Abstract class for elements, fields etc, that require props and prop checks.
@@ -16,10 +15,6 @@ export abstract class GotProps implements HasProps {
   // If nothing is supplied in this array, then no props are passed to components.
   allowedProps(): string[] {
     return [];
-  }
-
-  instanceOfA(object: any): object is HasIcon {
-    return "icon" in object;
   }
 
   props(): object {

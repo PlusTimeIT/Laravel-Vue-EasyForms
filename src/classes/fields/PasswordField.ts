@@ -1,14 +1,15 @@
 import { EasyField } from "../../abstracts/EasyField";
+import { isEmpty } from "../../utils";
 import { Icon } from "../elements";
 import { TextField } from "./TextField";
 
 export class PasswordField extends EasyField {
   component = "easy-password";
-  has_lower_case = true;
-  has_min_length: number | boolean = 8;
-  has_numbers = true;
-  has_special = true;
-  has_upper_case = true;
+  lower_case = true;
+  min_length: number | boolean = 8;
+  numbers = true;
+  special = true;
+  upper_case = true;
   show_strength_bar = false;
   strength_error_color = "error";
   strength_error_text = "Weak";
@@ -29,7 +30,18 @@ export class PasswordField extends EasyField {
 
   constructor(init?: Partial<PasswordField>) {
     super(init);
+
     Object.assign(this, init);
+
+    if (!isEmpty(this.textfield)) {
+      this.textfield = new TextField(init?.textfield);
+      delete init?.textfield;
+    } else {
+      this.textfield = new TextField(init as object);
+      this.textfield.component = "v-text-field";
+      this.textfield.discriminator = "TextField";
+    }
+    this.textfield.type = "password";
   }
 
   /**
@@ -39,11 +51,11 @@ export class PasswordField extends EasyField {
    */
   allowedProps(): string[] {
     return [
-      "has_lower_case",
-      "has_upper_case",
-      "has_numbers",
-      "has_special",
-      "has_min_length",
+      "lower_case",
+      "upper_case",
+      "numbers",
+      "special",
+      "min_length",
       "show_strength_bar",
       "strength_error_color",
       "strength_error_text",
@@ -53,6 +65,7 @@ export class PasswordField extends EasyField {
       "strength_success_text",
       "textfield",
       "view_mode",
+      "component_type",
     ];
   }
 }

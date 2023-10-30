@@ -6,6 +6,7 @@ import { ValidationTriggers } from "../enums";
 import { TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
 import type { FieldType } from "../types";
+import { ActionForm, InputForm } from "../forms";
 export declare abstract class EasyField extends GotProps implements HasField {
     active: boolean;
     append_icon: Icon | undefined;
@@ -18,8 +19,10 @@ export declare abstract class EasyField extends GotProps implements HasField {
     color: string | undefined;
     cols: number;
     component: string;
+    component_type: string | undefined;
     density: DensityTypes;
     depends_on: string;
+    discriminator: string;
     disabled: boolean;
     eager: boolean;
     error: boolean;
@@ -66,9 +69,11 @@ export declare abstract class EasyField extends GotProps implements HasField {
     variant: TextVariantTypes;
     constructor(init?: Partial<EasyField>);
     invalidate(): this;
+    addErrorMessage(message: string): this;
+    clearErrorMessages(): this;
     isLoading(loading: boolean): this;
     isParentLoaded(parent_field: EasyField | undefined): boolean;
-    load(form_name: string, parent: EasyField): Promise<object | boolean>;
+    load(form: InputForm | ActionForm, parent: EasyField): Promise<object | boolean>;
     update(parent_field: this): boolean;
     validate(): this;
     validationRules(fields?: FieldType[]): Array<any>;

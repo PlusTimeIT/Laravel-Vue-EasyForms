@@ -1,6 +1,6 @@
 import type { FieldType } from "../../types";
 import { ValidationRule } from "../../classes/properties";
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 
 export class FunctionBuilder {
   static expectingArray: string[] = [

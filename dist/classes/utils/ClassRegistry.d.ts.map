@@ -1,0 +1,1 @@
+{"version":3,"file":"ClassRegistry.d.ts","sourceRoot":"","sources":["../../../src/classes/utils/ClassRegistry.ts"],"names":[],"mappings":"AAgBA,KAAK,gBAAgB,CAAC,CAAC,IAAI,UAAU,CAAC,CAAC;AAuEvC,wBAAgB,aAAa,CAAC,CAAC,EAAE,SAAS,EAAE,MAAM,EAAE,gBAAgB,EAAE,gBAAgB,CAAC,CAAC,CAAC,QAExF;AAED,wBAAgB,mBAAmB,CAAC,CAAC,EAAE,SAAS,EAAE,MAAM,GAAG,gBAAgB,CAAC,CAAC,CAAC,GAAG,SAAS,CAEzF"}

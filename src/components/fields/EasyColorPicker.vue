@@ -1,36 +1,10 @@
-<template>
-  <v-row no-gutters>
-    <v-menu v-model="show_menu" v-bind="menu.props()">
-      <template #activator="{ props }">
-        <!-- Use EasyInput component with v-model -->
-        <easy-input
-          v-model:field="textfield"
-          v-bind="{ ...props, ...textfield?.props() }"
-          :fields="fields"
-          @updated="handleInputUpdate"
-          @validated="validateField"
-          @invalidated="invalidateField"
-          @click:prependInner="toggleMenu"
-          @click:appendInner="toggleMenu"
-        />
-      </template>
-      <v-card width="300">
-        <v-card-text class="pa-0">
-          <!-- Use v-color-picker component for color selection -->
-          <v-color-picker v-model="picker.value" v-model:mode="picker.mode" v-bind="picker?.props()" />
-        </v-card-text>
-      </v-card>
-    </v-menu>
-  </v-row>
-</template>
-
 <script setup lang="ts">
-import { ref, computed, ComputedRef, onMounted, watch, Ref } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { TextField, ColorPicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import EasyInput from "./EasyInput.vue";
 import type { FieldType } from "../../types";
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 
 // Define props and emit for the component
 interface Props {
@@ -53,12 +27,12 @@ const emit = defineEmits<{
 }>();
 
 // Create a reference to the TextField object
-const textfield: Ref<TextField> = ref(cProps.textfield) as Ref<TextField>;
+const textfield = ref<TextField>(cProps.textfield);
+const menu = ref<Menu>(cProps.menu);
+const picker = ref<ColorPicker>(cProps.picker);
+const show_menu = ref<boolean>(false);
 
-const menu: Ref<Menu> = ref(cProps.menu) as Ref<Menu>;
-const picker: Ref<ColorPicker> = ref(cProps.picker) as Ref<ColorPicker>;
-const show_menu: Ref<boolean> = ref(false);
-const fields: ComputedRef<FieldType[]> = computed(() => {
+const fields = computed<FieldType[]>(() => {
   return cProps.fields ?? [];
 });
 // Function to handle input update
@@ -99,4 +73,29 @@ onMounted(() => {
   }
 });
 </script>
-../../classes/elements/elements ../../classes/elements/elements
+
+<template>
+  <v-row no-gutters>
+    <v-menu v-model="show_menu" v-bind="menu.props()">
+      <template #activator="{ props }">
+        <!-- Use EasyInput component with v-model -->
+        <easy-input
+          v-model:field="textfield"
+          v-bind="{ ...props, ...textfield?.props() }"
+          :fields="fields"
+          @updated="handleInputUpdate"
+          @validated="validateField"
+          @invalidated="invalidateField"
+          @click:prependInner="toggleMenu"
+          @click:appendInner="toggleMenu"
+        />
+      </template>
+      <v-card width="300">
+        <v-card-text class="pa-0">
+          <!-- Use v-color-picker component for color selection -->
+          <v-color-picker v-model="picker.value" v-model:mode="picker.mode" v-bind="picker?.props()" />
+        </v-card-text>
+      </v-card>
+    </v-menu>
+  </v-row>
+</template>

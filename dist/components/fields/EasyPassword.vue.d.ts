@@ -5,6 +5,14 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<TextField>;
         required: true;
     };
+    numbers: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    special: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
     fields: {
         type: import("vue").PropType<FieldType[]>;
         required: true;
@@ -14,27 +22,23 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
         default: string;
     };
+    errorMessages: {
+        type: import("vue").PropType<string[]>;
+        default: () => any[];
+    };
     viewMode: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasLowerCase: {
+    lowerCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasMinLength: {
+    minLength: {
         type: import("vue").PropType<number | boolean>;
         default: number;
     };
-    hasNumbers: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    hasSpecial: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    hasUpperCase: {
+    upperCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
@@ -79,6 +83,14 @@ declare const _default: import("vue").DefineComponent<{
         type: import("vue").PropType<TextField>;
         required: true;
     };
+    numbers: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
+    special: {
+        type: import("vue").PropType<boolean>;
+        default: boolean;
+    };
     fields: {
         type: import("vue").PropType<FieldType[]>;
         required: true;
@@ -88,27 +100,23 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
         default: string;
     };
+    errorMessages: {
+        type: import("vue").PropType<string[]>;
+        default: () => any[];
+    };
     viewMode: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasLowerCase: {
+    lowerCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
-    hasMinLength: {
+    minLength: {
         type: import("vue").PropType<number | boolean>;
         default: number;
     };
-    hasNumbers: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    hasSpecial: {
-        type: import("vue").PropType<boolean>;
-        default: boolean;
-    };
-    hasUpperCase: {
+    upperCase: {
         type: import("vue").PropType<boolean>;
         default: boolean;
     };
@@ -149,13 +157,14 @@ declare const _default: import("vue").DefineComponent<{
     "onClick:prependInner"?: (value: any) => any;
     "onClick:appendInner"?: (value: any) => any;
 }, {
+    numbers: boolean;
+    special: boolean;
     modelValue: string;
+    errorMessages: string[];
     viewMode: boolean;
-    hasLowerCase: boolean;
-    hasMinLength: number | boolean;
-    hasNumbers: boolean;
-    hasSpecial: boolean;
-    hasUpperCase: boolean;
+    lowerCase: boolean;
+    minLength: number | boolean;
+    upperCase: boolean;
     showStrengthBar: boolean;
     strengthErrorColor: string;
     strengthErrorText: string;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Ref, ref } from "vue";
-import { isEmpty } from "../../composables/utils/Types";
+import { ref } from "vue";
+import { isEmpty } from "../../composables/utils";
 import { Icon } from "../../classes/elements";
 
 interface Props {
@@ -15,7 +15,7 @@ const emit = defineEmits<{
   (e: "click", value: string | number | undefined): void;
 }>();
 
-const icon: Ref<Icon> = ref(xProps.icon) as Ref<Icon>;
+const icon = ref<Icon>(xProps.icon);
 
 function click() {
   if (!isEmpty(xProps?.identifier)) {
@@ -35,4 +35,3 @@ function click() {
     <span>{{ icon?.tooltip?.text }}</span>
   </v-tooltip>
 </template>
-../../classes/elements/elements ../../classes/elements/elements

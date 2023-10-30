@@ -1,31 +1,5 @@
-<template>
-  <v-row no-gutters>
-    <v-menu v-model="show_menu" v-bind="menu?.props()">
-      <template #activator="{ props }">
-        <!-- Render EasyInput component with provided props -->
-        <easy-input
-          :field="textfield"
-          v-bind="{ ...props, ...textfield?.props() }"
-          :fields="fields"
-          @updated="updated"
-          @validated="validate"
-          @invalidated="invalidate"
-          @click:prependInner="toggleMenu"
-          @click:appendInner="toggleMenu"
-        />
-      </template>
-      <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
-        <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
-          <!-- Render TempTimePicker component with provided props -->
-          <temp-time-picker v-model="picker.value" v-bind="picker?.props()" @click:save="save" @click:cancel="cancel" />
-        </v-card-text>
-      </v-card>
-    </v-menu>
-  </v-row>
-</template>
-
 <script setup lang="ts">
-import { Ref, ref, onMounted, watch, computed, ComputedRef } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { TextField, TimePicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import TempTimePicker from "./TempTimePicker.vue";
@@ -53,14 +27,12 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: any | undefined): void;
 }>();
 
-// Create a reference to the TextField object
-const textfield: Ref<TextField> = ref(xProps.textfield) as Ref<TextField>;
+const textfield = ref<TextField>(xProps.textfield);
+const menu = ref<Menu>(xProps.menu);
+const picker = ref<TimePicker>(xProps.picker);
+const show_menu = ref<boolean>(false);
 
-// Create references for menu, picker, and show_menu
-const menu: Ref<Menu> = ref(xProps.menu) as Ref<Menu>;
-const picker: Ref<TimePicker> = ref(xProps.picker) as Ref<TimePicker>;
-const show_menu: Ref<boolean> = ref(false);
-const fields: ComputedRef<FieldType[]> = computed(() => {
+const fields = computed<FieldType[]>(() => {
   return xProps.fields ?? [];
 });
 // Update the model value when the input is updated
@@ -109,4 +81,29 @@ onMounted(() => {
   textfield.value!.isLoading(false);
 });
 </script>
-../../classes/elements/elements ../../classes/elements/elements
+
+<template>
+  <v-row no-gutters>
+    <v-menu v-model="show_menu" v-bind="menu?.props()">
+      <template #activator="{ props }">
+        <!-- Render EasyInput component with provided props -->
+        <easy-input
+          :field="textfield"
+          v-bind="{ ...props, ...textfield?.props() }"
+          :fields="fields"
+          @updated="updated"
+          @validated="validate"
+          @invalidated="invalidate"
+          @click:prependInner="toggleMenu"
+          @click:appendInner="toggleMenu"
+        />
+      </template>
+      <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
+        <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
+          <!-- Render TempTimePicker component with provided props -->
+          <temp-time-picker v-model="picker.value" v-bind="picker?.props()" @click:save="save" @click:cancel="cancel" />
+        </v-card-text>
+      </v-card>
+    </v-menu>
+  </v-row>
+</template>

@@ -1,59 +1,7 @@
-<template>
-  <v-sheet v-click-outside="clickOutside" class="v-picker v-picker--with-actions" :width="props.width">
-    <v-picker-title>
-      {{ props.title }}
-    </v-picker-title>
-    <div class="v-picker__header"></div>
-    <div class="v-picker__body">
-      <v-row justify="center">
-        <v-col cols="3">
-          <!-- Hour input field -->
-          <v-text-field
-            v-model="hours"
-            type="number"
-            :min="hour_min"
-            :max="hour_max"
-            v-maska:[masking_options]
-          ></v-text-field>
-        </v-col>
-        <v-col cols="1">
-          <span class="text-h3">:</span>
-        </v-col>
-        <v-col cols="3">
-          <!-- Minute input field -->
-          <v-text-field
-            v-model="minutes"
-            type="number"
-            :min="minute_min"
-            :max="minute_max"
-            v-maska:[masking_options]
-          ></v-text-field>
-        </v-col>
-        <v-col v-if="show_am_pm" cols="4">
-          <!-- AM/PM selection dropdown -->
-          <v-select v-model="am_or_pm" :items="time_items"></v-select>
-        </v-col>
-      </v-row>
-    </div>
-    <div class="v-picker__actions">
-      <div>
-        <!-- Cancel button -->
-        <v-btn :elevation="0" variant="flat" @click="cancel">
-          {{ props.cancelText }}
-        </v-btn>
-        <!-- Save button -->
-        <v-btn :elevation="0" variant="flat" @click="save">
-          {{ props.okText }}
-        </v-btn>
-      </div>
-    </div>
-  </v-sheet>
-</template>
-
 <script setup lang="ts">
-import { Ref, ref, onMounted, watch, ComputedRef, computed } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { TimePickerModeTypes } from "../../enums";
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 import { Masking } from "../../types/Masking";
 
 // Define the component's props interface
@@ -92,38 +40,38 @@ const emit = defineEmits<{
 }>();
 
 // Define masking options for input fields
-const masking_options: Ref<Masking> = ref({
+const masking_options = ref<Masking>({
   mask: "##",
   eager: true,
-}) as Ref<Masking>;
+});
 
 // Create references for hours, minutes, and AM/PM selection
-const hours: Ref<string | number> = ref("10");
-const minutes: Ref<string | number> = ref("00");
-const am_or_pm: Ref<string> = ref("AM");
+const hours = ref<string | number>("10");
+const minutes = ref<string | number>("00");
+const am_or_pm = ref<string>("AM");
 
 // Compute whether to show the AM/PM selection dropdown
-const show_am_pm: ComputedRef<boolean> = computed(() => {
+const show_am_pm = computed<boolean>(() => {
   return props.mode == TimePickerModeTypes.Normal;
 });
 
 // Computed min and max values for hour and minute input fields
-const hour_min: ComputedRef<number> = computed(() => {
+const hour_min = computed<number>(() => {
   return props.rollingNumbers ? -1 : 0;
 });
 
-const hour_max: ComputedRef<number> = computed(() => {
+const hour_max = computed<number>(() => {
   if (props.rollingNumbers) {
     return props.mode == TimePickerModeTypes.Normal ? 13 : 24;
   }
   return props.mode == TimePickerModeTypes.Normal ? 12 : 23;
 });
 
-const minute_min: ComputedRef<number> = computed(() => {
+const minute_min = computed<number>(() => {
   return props.rollingNumbers ? -1 : 0;
 });
 
-const minute_max: ComputedRef<number> = computed(() => {
+const minute_max = computed<number>(() => {
   if (props.rollingNumbers) {
     return 60;
   }
@@ -131,7 +79,7 @@ const minute_max: ComputedRef<number> = computed(() => {
 });
 
 // Computed time value to display
-const time: ComputedRef<string> = computed(() => {
+const time = computed<string>(() => {
   return show_am_pm.value
     ? hours.value + ":" + minutes.value + " " + am_or_pm.value
     : hours.value + ":" + minutes.value;
@@ -248,3 +196,55 @@ onMounted(() => {
   }
 });
 </script>
+
+<template>
+  <v-sheet v-click-outside="clickOutside" class="v-picker v-picker--with-actions" :width="props.width">
+    <v-picker-title>
+      {{ props.title }}
+    </v-picker-title>
+    <div class="v-picker__header"></div>
+    <div class="v-picker__body">
+      <v-row justify="center">
+        <v-col cols="3">
+          <!-- Hour input field -->
+          <v-text-field
+            v-model="hours"
+            type="number"
+            :min="hour_min"
+            :max="hour_max"
+            v-maska:[masking_options]
+          ></v-text-field>
+        </v-col>
+        <v-col cols="1">
+          <span class="text-h3">:</span>
+        </v-col>
+        <v-col cols="3">
+          <!-- Minute input field -->
+          <v-text-field
+            v-model="minutes"
+            type="number"
+            :min="minute_min"
+            :max="minute_max"
+            v-maska:[masking_options]
+          ></v-text-field>
+        </v-col>
+        <v-col v-if="show_am_pm" cols="4">
+          <!-- AM/PM selection dropdown -->
+          <v-select v-model="am_or_pm" :items="time_items"></v-select>
+        </v-col>
+      </v-row>
+    </div>
+    <div class="v-picker__actions">
+      <div>
+        <!-- Cancel button -->
+        <v-btn :elevation="0" variant="flat" @click="cancel">
+          {{ props.cancelText }}
+        </v-btn>
+        <!-- Save button -->
+        <v-btn :elevation="0" variant="flat" @click="save">
+          {{ props.okText }}
+        </v-btn>
+      </div>
+    </div>
+  </v-sheet>
+</template>

@@ -1,7 +1,7 @@
 import { ServerCall } from "../../classes/server/ServerCall";
 import { ServerResponse } from "../../classes/server/ServerResponse";
 import { AxiosCalls } from "../../enums";
-import { minutesBetween } from "../../composables/utils/Dates";
+import { minutesBetween } from "../../composables/utils";
 
 /**
  * Csrf Class for handling csrf token calls

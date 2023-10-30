@@ -12,6 +12,12 @@ export default defineConfig({
   //   global: "globalThis",
   // },
   build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        keep_fnames: /^.*/, // Use a regular expression to match all function names
+      },
+    },
     lib: {
       entry: [
         resolve(__dirname, "src/index.ts"),

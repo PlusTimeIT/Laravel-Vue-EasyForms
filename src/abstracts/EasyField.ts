@@ -10,10 +10,11 @@ import { ValidationTriggers } from "../enums";
 import { TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
 import type { FieldType } from "../types";
-import { isEmpty } from "../composables/utils/Types";
+import { isArray, isEmpty, store } from "../composables/utils";
 import { ValidationHelper } from "../composables/validation/ValidationHelper";
 import { ValidationHandler } from "../composables/validation/ValidationHandler";
 import { FunctionBuilder } from "../composables/validation/FunctionBuilder";
+import { ActionForm, InputForm } from "../forms";
 
 /**
  * Abstract class representing an EasyField, which is a base class for form fields.
@@ -34,8 +35,10 @@ export abstract class EasyField extends GotProps implements HasField {
   color: string | undefined;
   cols = 12;
   component = "";
+  component_type: string | undefined;
   density: DensityTypes = DensityTypes.Default;
   depends_on = "";
+  discriminator = "";
   disabled = false;
   eager = false;
   error = false;
@@ -87,9 +90,18 @@ export abstract class EasyField extends GotProps implements HasField {
    */
   constructor(init?: Partial<EasyField>) {
     super(init);
-    Object.assign(this, init);
 
     // Initialize properties and apply default values
+    if (!isEmpty(init?.clear_icon)) {
+      this.clear_icon = new Icon(init?.clear_icon);
+      delete init?.clear_icon;
+    }
+
+    if (!isEmpty(init?.tooltip)) {
+      this.tooltip = new Tooltip(init?.tooltip);
+      delete init?.tooltip;
+    }
+    Object.assign(this, init);
 
     // If required is set to false, check if rules contain required and set it to true.
     if (!this.required) {
@@ -142,6 +154,23 @@ export abstract class EasyField extends GotProps implements HasField {
     return this;
   }
 
+  addErrorMessage(message: string): this {
+    this.validated = false;
+    if (isArray(this.error_messages)) {
+      const found = (this.error_messages as string[]).find((msg) => msg == message);
+      if (!found) {
+        (this.error_messages as string[]).push(message);
+      }
+    }
+
+    return this;
+  }
+
+  clearErrorMessages(): this {
+    this.error_messages = [];
+    return this;
+  }
+
   /**
    * Set the loading state of the field.
    * @param {boolean} loading - Whether the field is in a loading state.
@@ -171,7 +200,7 @@ export abstract class EasyField extends GotProps implements HasField {
    * @param {EasyField} parent - The parent field for additional data.
    * @returns {Promise<object|boolean>} A Promise that resolves to the loaded data or false if loading fails.
    */
-  async load(form_name: string, parent: EasyField): Promise<object | boolean> {
+  async load(form: InputForm | ActionForm, parent: EasyField): Promise<object | boolean> {
     let response: ServerResponse;
     this.isLoading(true);
     try {
@@ -185,8 +214,9 @@ export abstract class EasyField extends GotProps implements HasField {
       }
       response = await ServerCall.request(
         AxiosCalls.Post,
-        "/forms/fields/load",
-        ServerCall.mergeData({ form_name: form_name, field_name: this.name }, additional_load_data),
+        store.options.buildDomain("/forms/fields/load"),
+        ServerCall.mergeData({ form_name: form.name, field_name: this.name }, additional_load_data),
+        form.axios,
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);
@@ -194,15 +224,13 @@ export abstract class EasyField extends GotProps implements HasField {
         if (!response?.data?.result) {
           return false;
         }
-        // Load data into a temporary EasyForm class first -> load returns
-        Object.assign(this, JSON.parse(JSON.stringify(response.data)));
         // Save original form data.
-        const tempForm = JSON.parse(JSON.stringify(response.data));
-        if (isEmpty(tempForm.type)) {
-          // Form not loaded
+        const tempData = JSON.parse(JSON.stringify(response?.data?.data));
+        if (isEmpty(tempData)) {
+          // Field not loaded
           return false;
         }
-        return tempForm;
+        return tempData;
       }
     } catch (error) {
       return false;

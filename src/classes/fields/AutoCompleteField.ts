@@ -11,6 +11,7 @@ export class AutoCompleteField extends EasyField {
   component = "v-autocomplete";
   counter: string | number | boolean = false;
   direction: DirectionType = DirectionType.Horizontal;
+  declare discriminator: "AutoCompleteField";
   filter_keys: string | string[] = ["title"];
   filter_mode: FilterModeTypes = FilterModeTypes.Intersection;
   hide_no_data = false;
@@ -36,6 +37,11 @@ export class AutoCompleteField extends EasyField {
   constructor(init?: Partial<AutoCompleteField>) {
     super(init);
     Object.assign(this, init);
+  }
+
+  loadItems(items: any): this {
+    this.items = items;
+    return this;
   }
 
   /**

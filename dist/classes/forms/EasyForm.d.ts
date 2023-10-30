@@ -1,7 +1,8 @@
 import HasForm from "../../contracts/HasForm";
 import { AlertTriggers } from "../../enums";
 import { Alert } from "../elements";
-import { AdditionalData, AxiosOptions, DataItem } from "../../classes/properties";
+import { AdditionalData, AxiosOptions } from "../../classes/properties";
+import { FieldType } from "../../types";
 export declare class EasyForm implements HasForm {
     additional_data: AdditionalData;
     additional_load_data: AdditionalData;
@@ -9,22 +10,25 @@ export declare class EasyForm implements HasForm {
     axios: AxiosOptions;
     loading: boolean;
     name: string;
-    original: DataItem[];
+    original: Array<FieldType>;
     results: any;
     text: string;
     title: string;
     type: string;
     constructor(init?: Partial<EasyForm>);
     cancelled(): this;
-    failed(text: string): this;
+    failed(text?: any): this;
+    failedValidation(text?: any): this;
     hasResults(results: any): this;
     isLoading(loading: boolean): this;
     load(): Promise<object | boolean>;
     processing(): this;
+    processed(): this;
     props(): object;
+    hideAllAlerts(): this;
     reset(): this;
     resetAlerts(triggers?: AlertTriggers[]): this;
-    success(text: string): this;
+    success(text?: any): this;
     triggerAlert(trigger: AlertTriggers, text?: string): this;
 }
 //# sourceMappingURL=EasyForm.d.ts.map

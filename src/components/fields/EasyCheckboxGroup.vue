@@ -1,34 +1,6 @@
-<template>
-  <v-card elevation="0">
-    <v-card-title>
-      <!-- Display the label of the checkbox group -->
-      {{ group.label }}
-      <v-switch
-        v-if="has_switch"
-        v-model="group!.switch!.value"
-        v-bind="group!.switch!.props()"
-        @update:modelValue="updatedSwitch"
-      />
-    </v-card-title>
-    <v-card-text>
-      <v-row>
-        <!-- Loop through each checkbox item in the group -->
-        <v-col v-for="(item, index) in group.items" :key="index" :cols="12" :md="item.cols">
-          <!-- Display a checkbox for each item -->
-          <v-checkbox
-            v-model="group.items[index].value"
-            v-bind="item.props()"
-            @update:modelValue="updatedCheckbox($event, item)"
-          ></v-checkbox>
-        </v-col>
-      </v-row>
-    </v-card-text>
-  </v-card>
-</template>
-
 <script setup lang="ts">
-import { Ref, ref, ComputedRef, computed } from "vue";
-import { isEmpty } from "../../composables/utils/Types";
+import { ref, computed } from "vue";
+import { isEmpty } from "../../composables/utils";
 import { CheckboxGroupField, CheckboxField, SwitchField } from "../../classes/fields";
 import { CheckboxGroupValue } from "../../classes/properties/CheckboxGroupValue";
 
@@ -54,17 +26,17 @@ const emit = defineEmits<{
 }>();
 
 // Create a reference to the CheckboxGroupField object
-const group: Ref<CheckboxGroupField> = ref(
+const group = ref<CheckboxGroupField>(
   new CheckboxGroupField({
     label: props.label,
     items: props.items,
     switch: props.switch,
     class: props.class,
   }),
-) as Ref<CheckboxGroupField>;
+);
 
 // Check if a switch is defined for the group
-const has_switch: ComputedRef<boolean> = computed(() => {
+const has_switch = computed<boolean>(() => {
   return !isEmpty(props.switch);
 });
 
@@ -115,3 +87,31 @@ function updatedCheckbox(value: any, checkbox: CheckboxField) {
   emit("update:modelValue", group.value.value);
 }
 </script>
+
+<template>
+  <v-card elevation="0">
+    <v-card-title>
+      <!-- Display the label of the checkbox group -->
+      {{ group.label }}
+      <v-switch
+        v-if="has_switch"
+        v-model="group!.switch!.value"
+        v-bind="group!.switch!.props()"
+        @update:modelValue="updatedSwitch"
+      />
+    </v-card-title>
+    <v-card-text>
+      <v-row>
+        <!-- Loop through each checkbox item in the group -->
+        <v-col v-for="(item, index) in group.items" :key="index" :cols="12" :md="item.cols">
+          <!-- Display a checkbox for each item -->
+          <v-checkbox
+            v-model="group.items[index].value"
+            v-bind="item.props()"
+            @update:modelValue="updatedCheckbox($event, item)"
+          ></v-checkbox>
+        </v-col>
+      </v-row>
+    </v-card-text>
+  </v-card>
+</template>

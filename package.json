@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-easyforms",
-  "version": "0.4.10-beta",
+  "version": "0.4.11-beta",
   "description": "Front end npm package for the Laravel EasyForms package",
   "author": "PlusTimeIT <kane@plustime.com.au> (https://plustime.com.au/)",
   "type": "module",
@@ -20,80 +20,6 @@
     "story:dev": "histoire dev",
     "story:preview": "histoire preview"
   },
-  "typesVersions": {
-    "*": {
-      "index": [
-        "dist/index.d.ts"
-      ],
-      "actions": [
-        "dist/actions.d.ts"
-      ],
-      "elements": [
-        "dist/elements.d.ts"
-      ],
-      "fields": [
-        "dist/fields.d.ts"
-      ],
-      "forms": [
-        "dist/forms.d.ts"
-      ],
-      "properties": [
-        "dist/properties.d.ts"
-      ],
-      "server": [
-        "dist/server.d.ts"
-      ],
-      "enums": [
-        "dist/enums.d.ts"
-      ],
-      "types": [
-        "dist/types.d.ts"
-      ]
-    }
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    },
-    "./actions": {
-      "import": "./dist/actions.js"
-    },
-    "./elements": {
-      "import": "./dist/elements.js"
-    },
-    "./fields": {
-      "import": "./dist/fields.js"
-    },
-    "./forms": {
-      "import": "./dist/forms.js"
-    },
-    "./properties": {
-      "import": "./dist/properties.js"
-    },
-    "./server": {
-      "import": "./dist/server.js"
-    },
-    "./enums": {
-      "import": "./dist/enums.js"
-    },
-    "./types": {
-      "import": "./dist/types.js"
-    }
-  },
-  "keywords": [
-    "laravel easy forms",
-    "laravel forms",
-    "laravel",
-    "laravel 10",
-    "vue",
-    "vue3",
-    "vuetify",
-    "PlusTime IT"
-  ],
-  "files": [
-    "dist/*",
-    "*.md"
-  ],
   "dependencies": {
     "axios": "^1.4.0",
     "cross-env": "^7.0",
@@ -160,5 +86,79 @@
     "type": "git",
     "url": "git+https://github.com/PlusTimeIT/Laravel-Vue-EasyForms.git"
   },
-  "homepage": "https://github.com/PlusTimeIT/Laravel-Vue-EasyForms#readme"
+  "homepage": "https://github.com/PlusTimeIT/Laravel-Vue-EasyForms#readme",
+  "keywords": [
+    "laravel easy forms",
+    "laravel forms",
+    "laravel",
+    "laravel 10",
+    "vue",
+    "vue3",
+    "vuetify",
+    "PlusTime IT"
+  ],
+  "files": [
+    "dist/*",
+    "*.md"
+  ],
+  "typesVersions": {
+    "*": {
+      "index": [
+        "dist/index.d.ts"
+      ],
+      "actions": [
+        "dist/actions.d.ts"
+      ],
+      "elements": [
+        "dist/elements.d.ts"
+      ],
+      "fields": [
+        "dist/fields.d.ts"
+      ],
+      "forms": [
+        "dist/forms.d.ts"
+      ],
+      "properties": [
+        "dist/properties.d.ts"
+      ],
+      "server": [
+        "dist/server.d.ts"
+      ],
+      "enums": [
+        "dist/enums.d.ts"
+      ],
+      "types": [
+        "dist/types.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./actions": {
+      "import": "./dist/actions.js"
+    },
+    "./elements": {
+      "import": "./dist/elements.js"
+    },
+    "./fields": {
+      "import": "./dist/fields.js"
+    },
+    "./forms": {
+      "import": "./dist/forms.js"
+    },
+    "./properties": {
+      "import": "./dist/properties.js"
+    },
+    "./server": {
+      "import": "./dist/server.js"
+    },
+    "./enums": {
+      "import": "./dist/enums.js"
+    },
+    "./types": {
+      "import": "./dist/types.js"
+    }
+  }
 }

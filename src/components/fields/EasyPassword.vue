@@ -1,31 +1,5 @@
-<template>
-  <v-row>
-    <v-col :cols="12">
-      <!-- Render EasyInput component with provided props -->
-      <easy-input
-        v-model:field="textfield"
-        v-bind="textfield?.props()"
-        :fields="props.fields ?? []"
-        @updated="updated"
-        @validated="validate"
-        @invalidated="invalidate"
-        @click:prependInner="innerClick($event, 'prepend')"
-        @click:appendInner="innerClick($event, 'append')"
-        @click:prepend="emit('click:prepend', $event)"
-        @click:append="emit('click:append', $event)"
-      />
-      <!-- Display password strength bar if showStrengthBar is true -->
-      <v-progress-linear v-if="props.showStrengthBar" v-model="password_strength" :color="strength_color" height="25">
-        <template #default>
-          <strong>{{ strength_text }}</strong>
-        </template>
-      </v-progress-linear>
-    </v-col>
-  </v-row>
-</template>
-
 <script setup lang="ts">
-import { onMounted, computed, ComputedRef, Ref, ref, watch } from "vue";
+import { onMounted, computed, ref, watch } from "vue";
 import { TextField } from "../../classes/fields";
 import type { FieldType } from "../../types";
 import EasyInput from "./EasyInput.vue";
@@ -33,11 +7,11 @@ import EasyInput from "./EasyInput.vue";
 // Define the component's props interface
 interface Props {
   fields: FieldType[];
-  hasLowerCase?: boolean;
-  hasMinLength?: boolean | number;
-  hasNumbers?: boolean;
-  hasSpecial?: boolean;
-  hasUpperCase?: boolean;
+  lowerCase?: boolean;
+  minLength?: boolean | number;
+  numbers?: boolean;
+  special?: boolean;
+  upperCase?: boolean;
   modelValue: string | undefined;
   showStrengthBar?: boolean;
   strengthErrorColor?: string;
@@ -46,6 +20,7 @@ interface Props {
   strengthSuccessText?: string;
   strengthWarningColor?: string;
   strengthWarningText?: string;
+  errorMessages?: string[] | undefined;
   textfield: TextField;
   viewMode?: boolean;
 }
@@ -61,11 +36,12 @@ const props = withDefaults(defineProps<Props>(), {
   strengthErrorText: "weak",
   strengthWarningText: "medium",
   strengthSuccessText: "strong",
-  hasLowerCase: true,
-  hasUpperCase: true,
-  hasNumbers: true,
-  hasSpecial: true,
-  hasMinLength: 8,
+  errorMessages: () => [],
+  lowerCase: true,
+  upperCase: true,
+  numbers: true,
+  special: true,
+  minLength: 8,
 });
 
 // Define the emit function for custom events
@@ -80,66 +56,68 @@ const emit = defineEmits<{
 }>();
 
 // Create a reference to the TextField object
-const textfield: Ref<TextField> = ref(props.textfield) as Ref<TextField>;
+const textfield = ref<TextField>(props.textfield);
+const modelValue = ref<string>(props.modelValue);
+const errorMessages = ref<string[]>(props.errorMessages);
 
 // Compute the percentage of passed password strength requirements
-const passed_percentage: ComputedRef<number> = computed(() => {
+const passed_percentage = computed<number>(() => {
   if (password_strength.value === 0 || requirement_ratio.value === 0) return 0;
   const total_passed = password_strength.value / requirement_ratio.value;
   return (total_passed / total_requirements.value) * 100;
 });
 
 // Compute the requirement ratio
-const requirement_ratio: ComputedRef<number> = computed(() => {
+const requirement_ratio = computed<number>(() => {
   return 100 / total_requirements.value;
 });
 
 // Compute the total number of active requirements
-const total_requirements: ComputedRef<number> = computed(() => {
+const total_requirements = computed<number>(() => {
   let total_active_requirements = 0;
-  if (props.hasLowerCase) {
+  if (props.lowerCase) {
     total_active_requirements++;
   }
-  if (props.hasUpperCase) {
+  if (props.upperCase) {
     total_active_requirements++;
   }
-  if (props.hasNumbers) {
+  if (props.numbers) {
     total_active_requirements++;
   }
-  if (props.hasSpecial) {
+  if (props.special) {
     total_active_requirements++;
   }
-  if (props.hasMinLength) {
+  if (props.minLength) {
     total_active_requirements++;
   }
   return total_active_requirements;
 });
 
 // Compute the password strength score
-const password_strength: ComputedRef<number> = computed(() => {
+const password_strength = computed<number>(() => {
   let strength = 0;
-  if (props.hasLowerCase) {
+  if (props.lowerCase) {
     if (textfield?.value?.value?.match(/[a-z]+/)) {
       strength += 1;
     }
   }
-  if (props.hasUpperCase) {
+  if (props.upperCase) {
     if (textfield?.value?.value?.match(/[A-Z]+/)) {
       strength += 1;
     }
   }
-  if (props.hasNumbers) {
+  if (props.numbers) {
     if (textfield?.value?.value?.match(/[0-9]+/)) {
       strength += 1;
     }
   }
-  if (props.hasSpecial) {
+  if (props.special) {
     if (textfield?.value?.value?.match(/[`!@#$%^&*()_\-+=[\]{};':"\\|,.<>/?~ ]+/)) {
       strength += 1;
     }
   }
-  if (props.hasMinLength) {
-    if (textfield?.value?.value?.length >= props.hasMinLength) {
+  if (props.minLength) {
+    if (textfield?.value?.value?.length >= props.minLength) {
       strength += 1;
     }
   }
@@ -149,7 +127,7 @@ const password_strength: ComputedRef<number> = computed(() => {
 });
 
 // Compute the color for the password strength bar
-const strength_color: ComputedRef<string> = computed(() => {
+const strength_color = computed<string>(() => {
   if (passed_percentage.value > 75) {
     return props.strengthSuccessColor;
   } else if (passed_percentage.value > 50) {
@@ -159,7 +137,7 @@ const strength_color: ComputedRef<string> = computed(() => {
 });
 
 // Compute the text for the password strength indicator
-const strength_text: ComputedRef<string> = computed(() => {
+const strength_text = computed<string>(() => {
   if (passed_percentage.value > 75) {
     return props.strengthSuccessText;
   } else if (passed_percentage.value > 50) {
@@ -170,6 +148,14 @@ const strength_text: ComputedRef<string> = computed(() => {
 // Watch for changes in the picker value
 watch(textfield.value, () => {
   updated();
+});
+// Watch for changes in the picker value
+watch(modelValue, (update) => {
+  textfield.value.value = update;
+});
+
+watch(errorMessages.value, (messages) => {
+  textfield.value.error_messages = messages;
 });
 
 // Update the model value when the input is updated
@@ -223,3 +209,29 @@ onMounted(() => {
   textfield.value?.isLoading(false);
 });
 </script>
+
+<template>
+  <v-row>
+    <v-col :cols="12">
+      <!-- Render EasyInput component with provided props -->
+      <easy-input
+        v-model:field="textfield"
+        v-bind="textfield?.props()"
+        :fields="props.fields ?? []"
+        @updated="updated"
+        @validated="validate"
+        @invalidated="invalidate"
+        @click:prependInner="innerClick($event, 'prepend')"
+        @click:appendInner="innerClick($event, 'append')"
+        @click:prepend="emit('click:prepend', $event)"
+        @click:append="emit('click:append', $event)"
+      />
+      <!-- Display password strength bar if showStrengthBar is true -->
+      <v-progress-linear v-if="props.showStrengthBar" v-model="password_strength" :color="strength_color" height="25">
+        <template #default>
+          <strong>{{ strength_text }}</strong>
+        </template>
+      </v-progress-linear>
+    </v-col>
+  </v-row>
+</template>

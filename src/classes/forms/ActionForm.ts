@@ -13,7 +13,7 @@ export class ActionForm extends EasyForm {
   callback = "";
   inline = false;
   justify_row: JustifyRow = JustifyRow.Center;
-  type = "action";
+  type = "action-form";
 
   constructor(init?: Partial<ActionForm>) {
     super(init);
@@ -36,6 +36,7 @@ export class ActionForm extends EasyForm {
         AxiosCalls.Post,
         "url",
         ServerCall.mergeData(this.data(action_identifier), this.additional_load_data.toObject()),
+        this.axios,
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);

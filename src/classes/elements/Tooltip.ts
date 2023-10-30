@@ -1,4 +1,4 @@
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 import { LocationTypes } from "../../enums";
 import { GotProps } from "../../abstracts/GotProps";
 

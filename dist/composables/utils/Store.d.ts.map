@@ -1,0 +1,1 @@
+{"version":3,"file":"Store.d.ts","sourceRoot":"","sources":["../../../src/composables/utils/Store.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,6BAA6B,CAAC;AAC5D,OAAO,EAAE,IAAI,EAAE,MAAM,cAAc,CAAC;AAEpC,UAAU,KAAK;IACb,IAAI,EAAE,IAAI,CAAC;IACX,OAAO,EAAE,aAAa,CAAC;CACxB;AAED,QAAA,MAAM,KAAK,EAAE,KAiBZ,CAAC;AAEF,OAAO,EAAE,KAAK,EAAE,CAAC"}

@@ -2,11 +2,11 @@ import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
 export declare class PasswordField extends EasyField {
     component: string;
-    has_lower_case: boolean;
-    has_min_length: number | boolean;
-    has_numbers: boolean;
-    has_special: boolean;
-    has_upper_case: boolean;
+    lower_case: boolean;
+    min_length: number | boolean;
+    numbers: boolean;
+    special: boolean;
+    upper_case: boolean;
     show_strength_bar: boolean;
     strength_error_color: string;
     strength_error_text: string;

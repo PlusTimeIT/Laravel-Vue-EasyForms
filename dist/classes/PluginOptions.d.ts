@@ -1,5 +1,7 @@
+import { Axios } from "axios";
 export declare class PluginOptions {
     private static instance;
+    axios: Axios;
     axios_prefix: string;
     backend_domain: string;
     csrf_endpoint: string;

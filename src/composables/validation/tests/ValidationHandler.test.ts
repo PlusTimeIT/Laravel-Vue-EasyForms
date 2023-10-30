@@ -3,7 +3,7 @@
 import { describe, expect, test } from "vitest";
 import { TextField } from "../../classes/fields";
 import { ValidationHandler } from "../ValidationHandler";
-import { convertMessageHolders } from "../../composables/utils/Strings";
+import { convertMessageHolders } from "../../composables/utils";
 
 const textfield: TextField = new TextField({
   name: "test",

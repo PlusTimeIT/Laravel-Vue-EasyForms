@@ -2,41 +2,30 @@
 /**
  * @component FormLoader
  * @description This is a Vue 3 component for loading and rendering forms.
- * @props
- *   - {ActionForm | InputForm} form - The form to be loaded.
- *   - {string} name - The name of the form to be loaded if `form` is not provided.
- *   - {number} cols - The number of columns for layout (default: 12).
- *   - {number} sm - The number of columns for small screens (default: 12).
- *   - {number} md - The number of columns for medium screens (default: 12).
- *   - {number} lg - The number of columns for large screens (default: 12).
- *   - {boolean} populate - Whether to populate the form with data (default: false).
- *   - {AdditionalData} additional_data - Additional data for form loading (default: new AdditionalData()).
- *   - {AdditionalData} additional_load_data - Additional data for form loading (default: new AdditionalData()).
- * @emits
- *   - loading(value: boolean) - Emits when loading state changes.
- *   - loaded(value: boolean) - Emits when the form is fully loaded.
- *   - results(value: any) - Emits when the form has results.
- *   - cancelled(value: boolean) - Emits when the form is cancelled.
- *   - updated(value: any) - Emits when the form is updated.
- *   - reset_form(value: boolean) - Emits when the form is reset.
  */
-import { ComputedRef, Ref, onMounted, ref, computed, watch } from "vue";
+import { onMounted, ref, computed, watch, onBeforeMount } from "vue";
 import { ColumnRestriction } from "../composables/validation/PropValidation";
 import { ActionForm, InputForm, EasyForm } from "../classes/forms";
 import { AdditionalData } from "../classes/properties";
-import { isEmpty } from "../composables/utils/Types";
-import { FormContainer } from "../classes/elements";
+import { isEmpty } from "../composables/utils";
+import { Alert, FormContainer } from "../classes/elements";
 import { LoaderEvents } from "../enums";
 import { FormTypes } from "../enums";
+import { store } from "../composables/utils";
+import { AlertTriggers } from "../enums/AlertTriggers";
 
-const emit = defineEmits<{
-  (e: "loading", value: boolean): void;
-  (e: "loaded", value: boolean): void;
-  (e: "results", value: any): void;
-  (e: "cancelled", value: boolean): void;
-  (e: "updated", value: any): void;
-  (e: "reset_form", value: boolean): void;
-}>();
+const emit = defineEmits([
+  "update:form",
+  LoaderEvents.Loading,
+  LoaderEvents.Loaded,
+  LoaderEvents.Results,
+  LoaderEvents.Cancelled,
+  LoaderEvents.Updated,
+  LoaderEvents.Reset,
+  LoaderEvents.Processing,
+  LoaderEvents.Failed,
+  LoaderEvents.Successful,
+]);
 
 const props = defineProps({
   form: {
@@ -81,13 +70,11 @@ const props = defineProps({
   },
 });
 
-const loading: Ref<boolean> = ref(true);
-const loaded: Ref<boolean> = ref(false);
+const loading = ref<boolean>(true);
+const loaded = ref<boolean>(false);
 // loaded as easy form incase name is passed or error on form
-const loadedForm: Ref<InputForm | ActionForm | EasyForm> = ref(new EasyForm()) as Ref<
-  InputForm | ActionForm | EasyForm
->;
-const container: ComputedRef<FormContainer> = computed(() => {
+const loaded_form = ref<InputForm | ActionForm | EasyForm>(new EasyForm());
+const container = computed<FormContainer>(() => {
   return new FormContainer({
     cols: props.cols,
     sm: props.sm,
@@ -95,113 +82,166 @@ const container: ComputedRef<FormContainer> = computed(() => {
     lg: props.lg,
   });
 });
+const display_alerts = computed<Alert[]>(() => loaded_form?.value?.alerts?.filter((alert) => alert.display));
+const has_alerts = computed<boolean>(() => (display_alerts.value.length ?? 0) > 0);
+const form_ready = computed<boolean>(() => {
+  return (
+    (loaded.value &&
+      !loaded_form.value.loading &&
+      loaded_form.value.type !== "" &&
+      loaded_form.value instanceof InputForm) ||
+    loaded_form.value instanceof ActionForm ||
+    loaded_form.value.type == "error-form"
+  );
+});
 
-const has_alerts: ComputedRef<boolean> = computed(() => (loadedForm?.value?.alerts?.length ?? 0) > 0);
-
-const form_component: ComputedRef<string | undefined> = computed(() => {
-  if (loaded.value || !loading.value || !isEmpty(loadedForm.value)) {
-    loadedForm.value!.text = "";
-    if (loadedForm.value instanceof InputForm) {
+const form_component = computed<string | undefined>(() => {
+  if (loaded.value || !loading.value || !isEmpty(loaded_form.value)) {
+    loaded_form.value!.text = "";
+    if (loaded_form.value instanceof InputForm) {
       return FormTypes.Input;
     }
 
-    if (loadedForm.value instanceof ActionForm) {
+    if (loaded_form.value instanceof ActionForm) {
       return FormTypes.Action;
     }
   }
-  loadedForm.value!.text = "Error Loading Form - Unknown Component";
+  loaded_form.value!.text = "Error Loading Form - Unknown Component";
   isLoading(false);
   return FormTypes.Error;
 });
 
 function reset() {
-  emit(LoaderEvents.ResetForm, true);
-  loadedForm.value?.reset();
+  emit(LoaderEvents.Reset, true);
+  loaded_form.value?.reset();
 }
 
 function cancel() {
   emit(LoaderEvents.Cancelled, true);
-  loadedForm.value?.cancelled();
+  loaded_form.value?.cancelled();
+}
+
+function processing(processing: boolean) {
+  emit(LoaderEvents.Processing, processing);
+}
+
+function failed() {
+  emit(LoaderEvents.Failed, true);
+}
+
+function updated(form: InputForm | ActionForm) {
+  emit(LoaderEvents.Updated, form);
+}
+
+function success() {
+  emit(LoaderEvents.Successful, true);
+}
+
+function results(data: any) {
+  loaded_form.value.hasResults(data);
+  emit(LoaderEvents.Results, data);
 }
 
 function isLoading(load: boolean) {
   emit(LoaderEvents.Loading, load);
   // if loading false
-  loadedForm.value.isLoading(load);
+  loaded_form.value.isLoading(load);
   loading.value = load;
-  loaded.value = !load;
+  if (!loaded.value) {
+    loaded.value = !load;
+  }
 }
 
 watch(loaded, (hasLoaded) => {
   emit(LoaderEvents.Loaded, hasLoaded);
 });
 
+onBeforeMount(async () => {
+  console.log("fetching token....");
+  store.csrf.fetchNewToken();
+});
+
 onMounted(async () => {
-  loadedForm.value.text = "";
+  loaded_form.value.text = "";
   isLoading(true);
   // check if form preloaded
-  if (!isEmpty(props.form)) {
+  if (!isEmpty(props.form) && isEmpty(props.name)) {
     // form is loaded...
     if (props.form instanceof InputForm || props.form instanceof ActionForm) {
-      loadedForm.value = props.form;
+      loaded_form.value = props.form;
       isLoading(false);
       return;
     }
   } else if (!isEmpty(props.name)) {
     // make API call to load form.
-    loadedForm.value = new EasyForm({
+    loaded_form.value = new EasyForm({
       name: props.name,
       additional_data: props.additionalData,
       additional_load_data: props.additionalLoadData,
     });
 
-    const results: any = await loadedForm.value.load();
+    const results: any = await loaded_form.value.load();
     if (!results) {
-      loadedForm.value.text = "Error Loading Form - Not Found";
+      loaded_form.value.text = "Error Loading Form - Not Found";
       isLoading(false);
       return;
     }
     if (results?.type == FormTypes.Input) {
-      loadedForm.value = new InputForm(results as object);
+      loaded_form.value = new InputForm(results);
+      loaded_form.value.triggerAlert(AlertTriggers.AfterLoad);
       isLoading(false);
       return;
     } else if (results.type == FormTypes.Action) {
-      loadedForm.value = new ActionForm(results as object);
+      loaded_form.value = new ActionForm(results);
       isLoading(false);
       return;
     }
   }
 
-  loadedForm.value.text = "Error Loading Form - Unknown Component";
+  loaded_form.value.text = "Error Loading Form - Unknown Component";
   isLoading(false);
 });
 </script>
 <template>
   <v-col :cols="container.cols" :sm="container.sm" :md="container.md" :lg="container.lg">
     <v-row v-if="has_alerts">
-      <v-col v-for="(alert, index) in form?.alerts" :key="index" :cols="alert.cols">
+      <v-col v-for="(alert, index) in display_alerts" :key="index" :cols="alert.cols">
         <v-alert v-model="alert.display" v-bind="alert.props()" />
       </v-col>
     </v-row>
-    <v-row v-if="!loaded && !form.loading">
+    <v-row v-show="!form_ready">
       <v-col class="mx-auto text-center">
         <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </v-col>
     </v-row>
-    <v-row v-else>
-      <component
-        :is="form_component ?? ''"
-        v-model:form="(form as InputForm)"
-        v-bind="form!.props()"
-        @results="form?.hasResults"
+    <v-row v-show="form_ready">
+      <input-form-loader
+        v-if="form_component == FormTypes.Input"
+        v-model:form="loaded_form"
+        v-bind="loaded_form!.props()"
+        @results="results"
         @loading="isLoading"
         @reset="reset"
+        @updated="updated"
         @cancelled="cancel"
-        @processing="form?.processing"
-        @failed="form?.failed"
-        @successful="form?.success"
+        @processing="processing"
+        @failed="failed"
+        @successful="success"
       />
+      <action-form-loader
+        v-else-if="form_component == FormTypes.Action"
+        v-model:form="loaded_form"
+        v-bind="loaded_form!.props()"
+        @results="results"
+        @loading="isLoading"
+        @reset="reset"
+        @updated="updated"
+        @cancelled="cancel"
+        @processing="processing"
+        @failed="failed"
+        @successful="success"
+      />
+      <error-form-loader v-else-if="form_component == FormTypes.Error" :text="loaded_form.text" />
     </v-row>
   </v-col>
 </template>
-../classes/elements/elements ../classes/elements/elements

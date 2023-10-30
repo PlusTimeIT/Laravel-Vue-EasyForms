@@ -2,6 +2,7 @@ import { EasyField } from "../../abstracts/EasyField";
 import { DirectionType } from "../../enums";
 import { Icon } from "../elements";
 import { RadioField } from "../../classes/fields";
+import { isArray, isEmpty } from "../../utils";
 
 export class RadioGroupField extends EasyField {
   component = "v-radio-group";
@@ -17,6 +18,13 @@ export class RadioGroupField extends EasyField {
 
   constructor(init?: Partial<RadioGroupField>) {
     super(init);
+
+    if (!isEmpty(init?.items) && isArray(init?.items)) {
+      for (const radio of init?.items ?? []) {
+        this.items.push(new RadioField(radio));
+      }
+      delete init?.items;
+    }
     Object.assign(this, init);
   }
 

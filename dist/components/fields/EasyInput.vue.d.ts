@@ -13,8 +13,10 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     updated: (...args: any[]) => void;
+    blur: (...args: any[]) => void;
     validated: (...args: any[]) => void;
     invalidated: (...args: any[]) => void;
+    focus: (...args: any[]) => void;
     "click:clear": (...args: any[]) => void;
     "click:prepend": (...args: any[]) => void;
     "click:prependInner": (...args: any[]) => void;
@@ -34,6 +36,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onUpdated?: (...args: any[]) => any;
+    onFocus?: (...args: any[]) => any;
+    onBlur?: (...args: any[]) => any;
     onValidated?: (...args: any[]) => any;
     onInvalidated?: (...args: any[]) => any;
     "onClick:prepend"?: (...args: any[]) => any;

@@ -1,36 +1,5 @@
-<template>
-  <v-row no-gutters>
-    <v-menu v-model="show_menu" v-bind="menu?.props()">
-      <template #activator="{ props }">
-        <!-- Use EasyInput component with v-model -->
-        <easy-input
-          v-model:field="textfield"
-          v-bind="{ ...props, ...textfield?.props() }"
-          :fields="fields"
-          @updated="handleInputUpdate"
-          @validated="validateField"
-          @invalidated="invalidateField"
-          @click:prependInner="toggleMenu"
-          @click:appendInner="toggleMenu"
-        />
-      </template>
-      <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
-        <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
-          <!-- Use v-date-picker component for date selection -->
-          <v-date-picker
-            v-model="picker.value"
-            v-bind="picker?.props()"
-            @click:save="saveDatePicker"
-            @click:cancel="cancelDatePicker"
-          />
-        </v-card-text>
-      </v-card>
-    </v-menu>
-  </v-row>
-</template>
-
 <script setup lang="ts">
-import { ref, computed, ComputedRef, onMounted, Ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { TextField, DatePicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import moment from "moment-timezone";
@@ -57,11 +26,11 @@ const emit = defineEmits<{
 }>();
 
 // Create refs for component properties
-const textfield: Ref<TextField> = ref(xProps.textfield) as Ref<TextField>;
-const menu: Ref<Menu> = ref(xProps.menu) as Ref<Menu>;
-const picker: Ref<DatePicker> = ref(xProps.picker) as Ref<DatePicker>;
-const show_menu: Ref<boolean> = ref(false);
-const fields: ComputedRef<FieldType[]> = computed(() => {
+const textfield = ref<TextField>(xProps.textfield);
+const menu = ref<Menu>(xProps.menu);
+const picker = ref<DatePicker>(xProps.picker);
+const show_menu = ref<boolean>(false);
+const fields = computed<FieldType[]>(() => {
   return xProps.fields ?? [];
 });
 // Function to handle input update
@@ -104,4 +73,34 @@ onMounted(() => {
   textfield.value?.isLoading(false);
 });
 </script>
-../../classes/elements/elements ../../classes/elements/elements
+
+<template>
+  <v-row no-gutters>
+    <v-menu v-model="show_menu" v-bind="menu?.props()">
+      <template #activator="{ props }">
+        <!-- Use EasyInput component with v-model -->
+        <easy-input
+          v-model:field="textfield"
+          v-bind="{ ...props, ...textfield?.props() }"
+          :fields="fields"
+          @updated="handleInputUpdate"
+          @validated="validateField"
+          @invalidated="invalidateField"
+          @click:prependInner="toggleMenu"
+          @click:appendInner="toggleMenu"
+        />
+      </template>
+      <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
+        <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
+          <!-- Use v-date-picker component for date selection -->
+          <v-date-picker
+            v-model="picker.value"
+            v-bind="picker?.props()"
+            @click:save="saveDatePicker"
+            @click:cancel="cancelDatePicker"
+          />
+        </v-card-text>
+      </v-card>
+    </v-menu>
+  </v-row>
+</template>

@@ -1,10 +1,13 @@
 import HasForm from "../../contracts/HasForm";
-import { isArray, isEmpty } from "../../composables/utils/Types";
+import { isArray, isEmpty } from "../../composables/utils";
 import { AlertTriggers } from "../../enums";
 import { AxiosCalls } from "../../enums";
 import { Alert } from "../elements";
 import { ServerCall, ServerResponse } from "../../classes/server";
-import { AdditionalData, AxiosOptions, DataItem } from "../../classes/properties";
+import { AdditionalData, AxiosOptions } from "../../classes/properties";
+import { FieldType } from "../../types";
+import { store } from "../../composables/utils";
+
 /**
  * Basic Form Class
  */
@@ -15,7 +18,7 @@ export class EasyForm implements HasForm {
   axios: AxiosOptions = new AxiosOptions();
   loading = true;
   name = "";
-  original: DataItem[] = [];
+  original: Array<FieldType> = [];
   results: any = null;
   text = "";
   title = "";
@@ -30,6 +33,11 @@ export class EasyForm implements HasForm {
       delete init?.alerts;
     }
 
+    if (!isEmpty(init?.axios) && isArray(init?.axios)) {
+      this.axios = new AxiosOptions(init?.axios);
+      delete init?.axios;
+    }
+
     Object.assign(this, init);
   }
 
@@ -38,14 +46,18 @@ export class EasyForm implements HasForm {
     return this;
   }
 
-  failed(text: string): this {
+  failed(text?: any): this {
     this.triggerAlert(AlertTriggers.FailedProcessing, text);
+    return this;
+  }
+
+  failedValidation(text?: any): this {
+    this.triggerAlert(AlertTriggers.FailedValidation, text);
     return this;
   }
 
   hasResults(results: any): this {
     this.results = results;
-    // this.emit(LoaderEvents.Results, results);
     return this;
   }
 
@@ -56,43 +68,49 @@ export class EasyForm implements HasForm {
 
   async load(): Promise<object | boolean> {
     let response: ServerResponse;
+    this.triggerAlert(AlertTriggers.BeforeLoad);
     this.isLoading(true);
+
     try {
       response = await ServerCall.request(
         AxiosCalls.Post,
-        "url",
+        store.options.buildDomain("/forms/load"),
         ServerCall.mergeData({ form_name: this.name }, this.additional_load_data.toObject()),
+        this.axios,
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);
 
         if (!response?.data?.result) {
+          this.triggerAlert(AlertTriggers.FailedLoad);
           return false;
         }
         // how can you trigger an alert when data hasn't loaded yet?
         // load data into temp EasyForm class first -> load returns
-        Object.assign(this, JSON.parse(JSON.stringify(response.data)));
-        // save original fom data.
-        const tempForm = JSON.parse(JSON.stringify(response.data));
+        const tempForm = JSON.parse(JSON.stringify(response?.data?.data));
         if (isEmpty(tempForm.type)) {
           // form not loaded
           this.triggerAlert(AlertTriggers.FailedLoad);
           return false;
         }
 
-        this.triggerAlert(AlertTriggers.AfterLoad);
-
         return tempForm;
       }
     } catch (error) {
+      this.triggerAlert(AlertTriggers.FailedLoad);
       return false;
     }
+    this.triggerAlert(AlertTriggers.FailedLoad);
     return false;
   }
 
   processing(): this {
-    console.log("PROCESSING TRIGGERED");
     this.triggerAlert(AlertTriggers.BeforeProcessing);
+    return this;
+  }
+
+  processed(): this {
+    this.triggerAlert(AlertTriggers.AfterProcessing);
     return this;
   }
 
@@ -102,7 +120,13 @@ export class EasyForm implements HasForm {
     };
   }
 
+  hideAllAlerts(): this {
+    this.alerts.forEach((alert) => alert.hide());
+    return this;
+  }
+
   reset(): this {
+    this.hideAllAlerts();
     this.triggerAlert(AlertTriggers.FormReset);
     return this;
   }
@@ -121,7 +145,7 @@ export class EasyForm implements HasForm {
     return this;
   }
 
-  success(text: string): this {
+  success(text?: any): this {
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
   }

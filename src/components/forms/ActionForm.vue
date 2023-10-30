@@ -18,16 +18,30 @@
   </v-row>
 </template>
 <script setup lang="ts">
-import { isEmpty } from "../../composables/utils/Types";
+import { isEmpty } from "../../composables/utils";
 import { ActionIcon, ActionButton } from "../../classes/actions";
-import { Ref, ref, ComputedRef, computed, watchEffect } from "vue";
+import { ref, computed, watchEffect } from "vue";
 import { ActionForm } from "../../classes/forms";
 import { DataItem } from "../../classes/properties/DataItem";
 import { EasyButton, EasyIcon } from "../../components/elements";
+import { ActionInputFormType } from "../../composables/validation/PropValidation";
 
-const props = defineProps<{
+/**
+ * ActionFormProps represents the props for the InputForm component.
+ *
+ * @interface ActionFormProps
+ */
+interface ActionFormProps {
   form: ActionForm;
-}>();
+}
+
+const props: ActionFormProps = defineProps({
+  form: {
+    type: ActionForm,
+    required: true,
+    validator: (value: ActionForm) => ActionInputFormType(value),
+  },
+});
 
 //  TODO: Action form events
 // const emit = defineEmits<{
@@ -40,12 +54,12 @@ const props = defineProps<{
 //   (e: "reset_form", value: boolean): void;
 // }>();
 
-const form: Ref<ActionForm> = ref(props.form) as Ref<ActionForm>;
+const form = ref<ActionForm>(props.form);
 watchEffect(() => (form.value = props.form));
 
 // const key: Ref<string> = ref(generate(10));
 
-const filtered_actions: ComputedRef<Array<ActionIcon | ActionButton>> = computed(() => {
+const filtered_actions = computed<Array<ActionIcon | ActionButton>>(() => {
   return (form.value?.actions ?? []).filter((action: any) => {
     return checkConditionals(action);
   });

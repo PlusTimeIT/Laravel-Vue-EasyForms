@@ -6,6 +6,7 @@ export class TextField extends EasyField {
   append_inner_icon: Icon | undefined;
   component = "v-text-field";
   counter: string | number | boolean = false;
+  declare discriminator: "TextField";
   direction: DirectionType = DirectionType.Horizontal;
   dirty = false;
   masking: string | undefined;
@@ -41,6 +42,7 @@ export class TextField extends EasyField {
       "bg_color",
       "center_affix",
       "clearable",
+      "component_type",
       "clear_icon",
       "color",
       "cols",

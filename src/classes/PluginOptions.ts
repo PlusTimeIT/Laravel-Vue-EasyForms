@@ -1,11 +1,15 @@
-import { isEmpty } from "../composables/utils/Types";
+import { Axios } from "axios";
+import { isEmpty } from "../composables/utils";
 
 /**
  * Plugin Options singleton, set on plugin initiation.
  */
 export class PluginOptions {
   private static instance: PluginOptions;
-
+  /**
+   * Pass the axios instance to use for the form loader
+   */
+  axios: Axios;
   /**
    * The prefix for making calls via API, this is append to the backend domain.
    * It should begin with a forward slash and end without a forward slash.
