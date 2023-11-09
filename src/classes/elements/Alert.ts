@@ -10,6 +10,7 @@ import { isEmpty } from "../../composables/utils";
 
 export class Alert extends GotProps {
   auto_close_timer = 0;
+  append_icon: Icon | undefined;
   border: AlertBorders | boolean = false;
   border_color: string | undefined;
   closable = false;
@@ -23,6 +24,7 @@ export class Alert extends GotProps {
   elevation = 0;
   height: string | number | undefined;
   icon: Icon | undefined;
+  prepend_icon: Icon | undefined;
   max_height: string | number | undefined;
   max_width: string | number | undefined;
   min_height: string | number | undefined;
@@ -40,31 +42,103 @@ export class Alert extends GotProps {
   constructor(init?: Partial<Alert>) {
     super(init);
 
-    Object.assign(this, init);
-    if (!isEmpty(init.icon)) {
-      this.icon = new Icon(init?.icon);
+    if (!isEmpty(init?.icon)) {
+      this.prepend_icon = new Icon(init?.icon);
       delete init?.icon;
     }
-    if (isEmpty(this.text) || isEmpty(this.type)) {
-      if (this.trigger === AlertTriggers.Cancelled) {
-        this.icon =
-          this.icon ?? (isEmpty(this.text) && isEmpty(this.type))
-            ? new Icon({ icon: "mdi-alert-decagram" })
-            : undefined;
-        this.text = this.text ?? "This form has been cancelled.";
-        this.type = this.type ?? "warning";
-      }
-      if (this.trigger === AlertTriggers.FormReset) {
-        this.icon =
-          this.icon ?? (isEmpty(this.text) && isEmpty(this.type)) ? new Icon({ icon: "mdi-recycle" }) : undefined;
-        this.text = this.text ?? "This form has been reset.";
-        this.type = this.type ?? "info";
-      }
-    }
+    Object.assign(this, init);
+
+    this.setDefaults();
 
     this.original_text = this.text ?? "";
   }
 
+  setDefaults(): void {
+    console.log("setting defaults", this.trigger);
+    switch (this.trigger) {
+      case AlertTriggers.AfterLoad: {
+        this.iconCheck(new Icon({ icon: "mdi-alert-octagon-outline", color: "rgb(var(--v-theme-on-info))" }));
+        this.text = this.text ?? "This form has been loaded.";
+        this.type = this.type ?? "info";
+        break;
+      }
+      case AlertTriggers.AfterProcessing: {
+        this.iconCheck(new Icon({ icon: "mdi-alert-outline", color: "rgb(var(--v-theme-on-info))" }));
+        this.text = this.text ?? "This form has been proccessed.";
+        this.type = this.type ?? "info";
+        break;
+      }
+      case AlertTriggers.BeforeLoad: {
+        this.iconCheck(new Icon({ icon: "mdi-reload-alert", color: "rgb(var(--v-theme-on-info))" }));
+        this.text = this.text ?? "This form is about to load.";
+        this.type = this.type ?? "info";
+        break;
+      }
+      case AlertTriggers.BeforeProcessing: {
+        this.iconCheck(new Icon({ icon: "mdi-shield-alert-outline", color: "rgb(var(--v-theme-on-info))" }));
+        this.text = this.text ?? "This form is about to be processed.";
+        this.type = this.type ?? "info";
+        break;
+      }
+      case AlertTriggers.Cancelled: {
+        this.iconCheck(new Icon({ icon: "mdi-cancel", color: "rgb(var(--v-theme-on-error))" }));
+        this.text = this.text ?? "This form has been cancelled.";
+        this.type = this.type ?? "error";
+        break;
+      }
+      case AlertTriggers.FailedLoad: {
+        this.iconCheck(new Icon({ icon: "mdi-close-octagon-outline", color: "rgb(var(--v-theme-on-error))" }));
+        this.text = this.text ?? "This form has failed to load.";
+        this.type = this.type ?? "error";
+        break;
+      }
+      case AlertTriggers.FailedProcessing: {
+        this.iconCheck(new Icon({ icon: "mdi-emoticon-sad-outline", color: "rgb(var(--v-theme-on-error))" }));
+        this.text = this.text ?? "This form has failed to process.";
+        this.type = this.type ?? "error";
+        break;
+      }
+      case AlertTriggers.FailedValidation: {
+        this.iconCheck(new Icon({ icon: "mdi-alert-decagram", color: "rgb(var(--v-theme-on-error))" }));
+        this.text = this.text ?? "This form has validation errors.";
+        this.type = this.type ?? "error";
+        break;
+      }
+      case AlertTriggers.FormReset: {
+        this.iconCheck(new Icon({ icon: "mdi-recycle", color: "rgb(var(--v-theme-on-warning))" }));
+        this.text = this.text ?? "This form has been reset.";
+        this.type = this.type ?? "warning";
+        break;
+      }
+      case AlertTriggers.SuccessProcessing: {
+        this.iconCheck(new Icon({ icon: "mdi-emoticon-happy-outline", color: "rgb(var(--v-theme-on-success))" }));
+        this.text = this.text ?? "This form has successfully processed.";
+        this.type = this.type ?? "success";
+        break;
+      }
+      default: {
+        this.iconCheck(new Icon({ icon: "mdi-alert-outline", color: "rgb(var(--v-theme-on-info))" }));
+        this.text = this.text ?? "";
+        this.type = this.type ?? "info";
+        break;
+      }
+    }
+  }
+
+  iconCheck(icon: Icon): void {
+    if (!this.append_icon) {
+      this.prepend_icon = this.prepend_icon ?? icon;
+      // set defaults if not set
+      this.prepend_icon.size = this.prepend_icon.size ?? "large";
+      this.prepend_icon.color = this.prepend_icon.color ?? icon.color;
+      this.prepend_icon.icon = this.prepend_icon.icon ?? icon.icon;
+    } else {
+      // set defaults if not set
+      this.append_icon.size = this.append_icon.size ?? "large";
+      this.append_icon.color = this.append_icon.color ?? icon.color;
+      this.append_icon.icon = this.append_icon.icon ?? icon.icon;
+    }
+  }
   /**
    * Returns an array of all allowed props that are present on V-Alert
    * https://vuetifyjs.com/en/api/v-alert/
@@ -84,7 +158,7 @@ export class Alert extends GotProps {
       "density",
       "elevation",
       "height",
-      "icon",
+      // "icon",
       "max_height",
       "max_width",
       "min_height",
@@ -93,7 +167,6 @@ export class Alert extends GotProps {
       "prominent",
       "rounded",
       "tag",
-      "text",
       "trigger",
       "type",
       "variant",
@@ -106,7 +179,7 @@ export class Alert extends GotProps {
    */
   autoClose(): Alert {
     if (this.auto_close_timer !== 0) {
-      setTimeout(() => this.show(), this.auto_close_timer);
+      setTimeout(() => this.hide(), this.auto_close_timer);
     }
     return this;
   }

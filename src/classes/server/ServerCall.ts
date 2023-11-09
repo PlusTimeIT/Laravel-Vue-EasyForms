@@ -18,7 +18,9 @@ export class ServerCall {
     data: any = null,
     axiosOptions: AxiosOptions = new AxiosOptions(),
   ): Promise<ServerResponse> {
-    const call = await store.options.axios[type](endpoint, data, { headers: ServerCall.buildHeaders(axiosOptions) });
+    const call = await store.options.axios[type](endpoint, data, {
+      headers: ServerCall.buildHeaders(axiosOptions),
+    });
     return new ServerResponse(call);
   }
 
@@ -26,7 +28,7 @@ export class ServerCall {
     const content_header: AxiosHeader | undefined = axiosOptions.headers.find(
       (header: AxiosHeader) => header.key == "Content-Type",
     );
-    let content_type: ContentTypes = ContentTypes.Application;
+    let content_type: ContentTypes = ContentTypes.JSON;
     if (axiosOptions.multi_part) {
       content_type = ContentTypes.MultiPart;
     }

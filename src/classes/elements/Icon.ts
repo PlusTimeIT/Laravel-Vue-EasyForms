@@ -17,7 +17,12 @@ export class Icon extends GotProps implements HasIcon {
       this.tooltip = new Tooltip(init?.tooltip);
       delete init?.tooltip;
     }
+
     Object.assign(this, init);
+
+    if (isEmpty(this.tooltip)) {
+      this.tooltip = new Tooltip({ disabled: true });
+    }
   }
 
   /**

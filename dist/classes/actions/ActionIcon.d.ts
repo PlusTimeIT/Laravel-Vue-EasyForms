@@ -8,6 +8,7 @@ export declare class ActionIcon {
     identifier: string;
     name: string;
     order: number;
+    discriminator: string;
     constructor(init?: Partial<ActionIcon>);
 }
 //# sourceMappingURL=ActionIcon.d.ts.map

@@ -1,25 +1,30 @@
 import { ServerCall } from "../../classes/server/ServerCall";
 import { ServerResponse } from "../../classes/server/ServerResponse";
 import { AxiosCalls } from "../../enums";
-import { minutesBetween } from "../../composables/utils";
+import { isEmpty, minutesBetween } from "../../composables/utils";
 
 /**
  * Csrf Class for handling csrf token calls
  */
 export class Csrf {
   // Number of attempts allowed for csrf before wait time is imposed.
-  protected allowed_attempts = 5;
+  allowed_attempts = 5;
+  // Wait time between requests in milliseconds
+  default_wait_time = 1500;
   // Number of attempts for csrf
-  protected attempts = 0;
+  attempts = 0;
   // Last time Csrf was attempted.
-  protected last_attempt: Date = new Date();
+  last_attempt: Date = new Date();
   // When a User was last updated
   protected loading = false;
   // csrf retry wait time after attempts in minutes
-  protected retry_wait = 5;
+  retry_wait = 5;
   // csrf token is set
   protected token = false;
-
+  // Substr of begining of token.
+  protected prefix = null;
+  // Error message to display on Token failure.
+  error_message = "Error loading form. Please try refreshing the page.";
   // csrf endpoint
   endpoint = "";
 
@@ -29,72 +34,88 @@ export class Csrf {
 
   // Adds token attempt
   attemptCheck(): boolean {
+    this.last_attempt = new Date();
     if (this.attempts >= this.allowed_attempts) {
       // failed attempts greater than allowed amount.
       const waited_time: number = minutesBetween(this.last_attempt, new Date());
       if (waited_time <= this.retry_wait) {
+        this.failedAttempt();
         return false;
       }
       // retry wait time has passed
       this.resetAttempts();
     }
-    this.last_attempt = new Date();
+
     return true;
   }
 
   // failed attempts on csrf token call
-  failedAttempt(): Csrf {
+  failedAttempt() {
     this.loading = false;
     this.token = false;
-    return this;
+  }
+
+  async delay(milliseconds) {
+    return new Promise((resolve) => {
+      setTimeout(resolve as any, milliseconds);
+    });
   }
 
   // Fetch new token
   async fetchNewToken(): Promise<boolean> {
+    if (this.loading) {
+      return false;
+    }
     this.loading = true;
-    if (!this.attemptCheck()) {
-      this.failedAttempt();
-      return false;
-    }
-    this.tokenAttempt();
-    let response: ServerResponse;
-    try {
-      response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
-      if (response.status === 200 || response.status === 204) {
-        this.successfulAttempt();
-        this.resetAttempts();
-        return true;
+    // loop csrf request.
+    while (this.attemptCheck() && !this.isValidCsrfToken()) {
+      const attempt = await this.tokenAttempt();
+      if (!attempt) {
+        this.failedAttempt();
       }
-    } catch (error) {
-      this.failedAttempt();
-      return false;
+      await this.delay(this.default_wait_time);
     }
-
-    this.failedAttempt();
-    return false;
+    this.loading = false;
+    return this.isValidCsrfToken();
   }
 
   // Is CSRF Token valid
   isValidCsrfToken(): boolean {
-    return this.token;
+    return this.token && !isEmpty(this.prefix);
   }
 
   // reset attempts on successful csrf token call
-  resetAttempts(): Csrf {
+  resetAttempts() {
     this.attempts = 0;
-    return this;
+  }
+
+  // returns boolean if csrf is making a request.
+  isLoading() {
+    return this.loading;
   }
 
   // successful attempts on csrf token call
-  successfulAttempt(): Csrf {
+  async successfulAttempt(prefix: string): Promise<boolean> {
+    this.prefix = prefix;
     this.loading = false;
     this.token = true;
-    return this;
+    this.resetAttempts();
+    return true;
   }
 
   // Adds token attempt
-  tokenAttempt(): Csrf {
+  async tokenAttempt() {
     this.attempts++;
-    return this;
+    let response: ServerResponse;
+    try {
+      response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
+      if (response.status === 200 || response.status === 204) {
+        await this.successfulAttempt(response.config["headers"]["X-XSRF-TOKEN"].substr(0, 5));
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
+    return false;
   }
 }

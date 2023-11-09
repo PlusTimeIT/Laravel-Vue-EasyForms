@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref, watch } from "vue";
+import { onMounted, computed, ref, watch, onBeforeUnmount } from "vue";
 import { TextField } from "../../classes/fields";
 import type { FieldType } from "../../types";
 import EasyInput from "./EasyInput.vue";
@@ -146,16 +146,22 @@ const strength_text = computed<string>(() => {
   return props.strengthErrorText;
 });
 // Watch for changes in the picker value
-watch(textfield.value, () => {
+const textfieldWatcher = watch(textfield.value, () => {
   updated();
 });
 // Watch for changes in the picker value
-watch(modelValue, (update) => {
+const modelValueWatcher = watch(modelValue, (update) => {
   textfield.value.value = update;
 });
 
-watch(errorMessages.value, (messages) => {
+const errorMessagesWatcher = watch(errorMessages.value, (messages) => {
   textfield.value.error_messages = messages;
+});
+
+onBeforeUnmount(() => {
+  textfieldWatcher();
+  modelValueWatcher();
+  errorMessagesWatcher();
 });
 
 // Update the model value when the input is updated

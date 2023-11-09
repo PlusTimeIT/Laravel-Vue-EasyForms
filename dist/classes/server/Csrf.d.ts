@@ -1,18 +1,23 @@
 export declare class Csrf {
-    protected allowed_attempts: number;
-    protected attempts: number;
-    protected last_attempt: Date;
+    allowed_attempts: number;
+    default_wait_time: number;
+    attempts: number;
+    last_attempt: Date;
     protected loading: boolean;
-    protected retry_wait: number;
+    retry_wait: number;
     protected token: boolean;
+    protected prefix: any;
+    error_message: string;
     endpoint: string;
     constructor(init?: Partial<Csrf>);
     attemptCheck(): boolean;
-    failedAttempt(): Csrf;
+    failedAttempt(): void;
+    delay(milliseconds: any): Promise<unknown>;
     fetchNewToken(): Promise<boolean>;
     isValidCsrfToken(): boolean;
-    resetAttempts(): Csrf;
-    successfulAttempt(): Csrf;
-    tokenAttempt(): Csrf;
+    resetAttempts(): void;
+    isLoading(): boolean;
+    successfulAttempt(prefix: string): Promise<boolean>;
+    tokenAttempt(): Promise<boolean>;
 }
 //# sourceMappingURL=Csrf.d.ts.map

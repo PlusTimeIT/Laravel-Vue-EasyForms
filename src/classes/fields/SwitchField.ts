@@ -23,6 +23,8 @@ export class SwitchField extends EasyField {
   constructor(init?: Partial<SwitchField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "SwitchField";
   }
 
   /**

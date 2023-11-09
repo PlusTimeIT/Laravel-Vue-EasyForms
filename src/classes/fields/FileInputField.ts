@@ -21,6 +21,8 @@ export class FileInputField extends EasyField {
   constructor(init?: Partial<FileInputField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "FileInputField";
   }
 
   /**
@@ -77,7 +79,7 @@ export class FileInputField extends EasyField {
       "placeholder",
       "prefix",
       // displayed as easy-icon with tooltip.
-      // 'prepend_icon',
+      // "prepend_icon",
       // displayed as easy-icon with tooltip.
       // 'prepend_inner_icon',
       "readonly",

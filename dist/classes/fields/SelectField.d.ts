@@ -10,7 +10,6 @@ export declare class SelectField extends EasyField {
     component: string;
     counter: string | number | boolean;
     direction: DirectionType;
-    discriminator: "SelectField";
     filter_keys: string | string[];
     filter_mode: FilterModeTypes;
     hide_no_data: boolean;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from "vue";
+import { ref, onMounted, watch, computed, onBeforeUnmount } from "vue";
 import { TimePickerModeTypes } from "../../enums";
 import { isEmpty } from "../../composables/utils";
 import { Masking } from "../../types/Masking";
@@ -109,12 +109,12 @@ function clickOutside() {
 }
 
 // Watch for changes in AM/PM selection
-watch(am_or_pm, () => {
+const typeWatcher = watch(am_or_pm, () => {
   updated();
 });
 
 // Watch for changes in hours
-watch(hours, (value) => {
+const hourWatcher = watch(hours, (value) => {
   if (props.mode == TimePickerModeTypes.Normal) {
     if (props.rollingNumbers) {
       if ((value as number) <= 0) {
@@ -154,7 +154,7 @@ watch(hours, (value) => {
 });
 
 // Watch for changes in minutes
-watch(minutes, (value) => {
+const minuteWatcher = watch(minutes, (value) => {
   if (props.rollingNumbers) {
     if ((value as number) < 0) {
       minutes.value = 59;
@@ -170,6 +170,12 @@ watch(minutes, (value) => {
   }
 
   updated();
+});
+
+onBeforeUnmount(() => {
+  typeWatcher();
+  hourWatcher();
+  minuteWatcher();
 });
 
 // Initialize values on mount based on the modelValue

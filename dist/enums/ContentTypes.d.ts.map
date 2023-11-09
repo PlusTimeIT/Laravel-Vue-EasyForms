@@ -1,1 +1,1 @@
-{"version":3,"file":"ContentTypes.d.ts","sourceRoot":"","sources":["../../src/enums/ContentTypes.ts"],"names":[],"mappings":"AAAA,oBAAY,YAAY;IACtB,SAAS,wBAAwB;IACjC,WAAW,sCAAsC;CAClD"}
+{"version":3,"file":"ContentTypes.d.ts","sourceRoot":"","sources":["../../src/enums/ContentTypes.ts"],"names":[],"mappings":"AAAA,oBAAY,YAAY;IACtB,SAAS,wBAAwB;IACjC,WAAW,sCAAsC;IACjD,IAAI,qBAAqB;CAC1B"}

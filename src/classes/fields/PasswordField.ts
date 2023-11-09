@@ -1,6 +1,5 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { isEmpty } from "../../utils";
-import { Icon } from "../elements";
 import { TextField } from "./TextField";
 
 export class PasswordField extends EasyField {
@@ -17,31 +16,27 @@ export class PasswordField extends EasyField {
   strength_success_text = "Strong";
   strength_warning_color = "warning";
   strength_warning_text = "Medium";
-  textfield: TextField = new TextField({
-    name: "password_value",
-    label: "Password Field",
-    type: "password",
-    prepend_inner_icon: new Icon({
-      icon: "mdi-eye",
-      size: "large",
-    }),
-  });
+  textfield: TextField;
   view_mode = false;
 
   constructor(init?: Partial<PasswordField>) {
     super(init);
 
-    Object.assign(this, init);
-
-    if (!isEmpty(this.textfield)) {
+    if (!isEmpty(init.textfield)) {
       this.textfield = new TextField(init?.textfield);
       delete init?.textfield;
-    } else {
-      this.textfield = new TextField(init as object);
-      this.textfield.component = "v-text-field";
-      this.textfield.discriminator = "TextField";
     }
+    Object.assign(this, init);
+
+    if (isEmpty(this.textfield)) {
+      this.textfield = new TextField(init as object);
+    }
+
     this.textfield.type = "password";
+    this.textfield.component = "v-text-field";
+    this.textfield.discriminator = "TextField";
+
+    this.discriminator = "PasswordField";
   }
 
   /**
@@ -51,6 +46,7 @@ export class PasswordField extends EasyField {
    */
   allowedProps(): string[] {
     return [
+      "label",
       "lower_case",
       "upper_case",
       "numbers",

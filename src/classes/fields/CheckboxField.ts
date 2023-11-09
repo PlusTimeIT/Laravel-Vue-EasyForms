@@ -22,6 +22,8 @@ export class CheckboxField extends EasyField {
   constructor(init?: Partial<CheckboxField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "CheckboxField";
   }
 
   /**

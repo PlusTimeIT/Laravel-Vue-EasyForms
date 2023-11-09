@@ -14,8 +14,8 @@ describe("Easy field Abstract Tests", () => {
         }),
       ],
     });
-    console.log(EasyFieldTest.rules);
-    console.log(EasyFieldTest.validation_rules());
-    expect(true).toBeTruthy();
+
+    $validation = EasyFieldTest.findValidation("required");
+    expect($validation.value).toBeTruthy();
   });
 });

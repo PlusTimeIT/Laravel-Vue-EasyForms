@@ -13,6 +13,8 @@ export class CheckboxGroupField extends EasyField {
   constructor(init?: Partial<CheckboxGroupField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "CheckboxGroupField";
   }
 
   addAllItems(): void {

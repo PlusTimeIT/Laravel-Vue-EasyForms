@@ -49,17 +49,17 @@ export class Button extends GotProps {
     super(init);
 
     // Set clearable Icon if not set but clearable is true
-    if (!isEmpty(init.append_icon)) {
+    if (!isEmpty(init?.append_icon)) {
       this.append_icon = new Icon(init?.append_icon);
       delete init?.append_icon;
     }
 
-    if (!isEmpty(init.prepend_icon)) {
+    if (!isEmpty(init?.prepend_icon)) {
       this.prepend_icon = new Icon(init?.prepend_icon);
       delete init?.prepend_icon;
     }
 
-    if (!isEmpty(init.icon)) {
+    if (!isEmpty(init?.icon)) {
       this.icon = new Icon(init?.icon);
       delete init?.icon;
     }

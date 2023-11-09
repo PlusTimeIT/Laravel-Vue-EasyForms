@@ -18,6 +18,8 @@ export class RadioField extends EasyField {
   constructor(init?: Partial<RadioField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "RadioField";
   }
 
   /**

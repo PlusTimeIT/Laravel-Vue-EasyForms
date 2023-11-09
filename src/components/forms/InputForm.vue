@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watchEffect, watch } from "vue";
+import { ref, computed, watchEffect, watch, onBeforeUnmount } from "vue";
 import { ButtonTypes } from "../../enums";
 import { InputForm } from "../../classes/forms";
 import { isEmpty } from "../../composables/utils";
@@ -32,11 +32,11 @@ const emit = defineEmits([
 ]);
 
 const form = ref(props.form);
-watchEffect(() => {
+const formEffectWatcher = watchEffect(() => {
   form.value = props.form;
 });
 
-watch(form.value, (updated) => {
+const formWatcher = watch(form.value, (updated) => {
   emit(LoaderEvents.Updated, updated);
 });
 
@@ -163,7 +163,6 @@ function isLoading(loading: boolean) {
 }
 
 function resetForm() {
-  form.value = form.value?.reset();
   formReference.value.resetValidation();
   isLoading(false);
   emit(LoaderEvents.Reset, true);
@@ -172,39 +171,42 @@ function resetForm() {
 function cancelForm() {
   emit(LoaderEvents.Cancelled, true);
 }
+
+onBeforeUnmount(() => {
+  formWatcher();
+  formEffectWatcher();
+});
 </script>
 
 <template>
-  <v-row>
-    <v-form v-bind="form?.props() ?? {}" ref="formReference" class="mx-auto w-100">
-      <v-col cols="12">
-        <v-row>
-          <v-col
-            v-for="(field, index_f) in filteredFields"
-            :cols="field.cols?.toString() ?? '12'"
-            :offset="field.offset"
-            :key="index_f"
-          >
-            <easy-input
-              v-model:field="(filteredFields[index_f] as FieldType)"
-              :fields="(formFields as FieldType[])"
-              @updated="updated(field as FieldType)"
-              @validated="field.validate"
-              @invalidated="field.invalidate"
-            />
-          </v-col>
-        </v-row>
-        <v-row v-if="hasButtons" :align="form.button_align_row" :justify="form.button_justify_row">
-          <v-col cols="auto" v-for="(button, index) in form?.buttons" :key="index">
-            <easy-button
-              :button="button"
-              :identifier="index"
-              :disabled="isButtonDisabled(button)"
-              @click="handleButtonClick(button)"
-            ></easy-button>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-form>
-  </v-row>
+  <v-form v-bind="form?.props() ?? {}" ref="formReference" class="mx-auto w-100">
+    <v-col cols="12">
+      <v-row>
+        <v-col
+          v-for="(field, index_f) in filteredFields"
+          :cols="field.cols?.toString() ?? '12'"
+          :offset="field.offset"
+          :key="index_f"
+        >
+          <easy-input
+            v-model:field="(filteredFields[index_f] as FieldType)"
+            :fields="(formFields as FieldType[])"
+            @updated="updated(field as FieldType)"
+            @validated="field.validate"
+            @invalidated="field.invalidate"
+          />
+        </v-col>
+      </v-row>
+      <v-row v-if="hasButtons" :align="form.button_align_row" :justify="form.button_justify_row">
+        <v-col cols="auto" v-for="(button, index) in form?.buttons" :key="index">
+          <easy-button
+            :button="button"
+            :identifier="index"
+            :disabled="isButtonDisabled(button)"
+            @click="handleButtonClick(button)"
+          ></easy-button>
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-form>
 </template>

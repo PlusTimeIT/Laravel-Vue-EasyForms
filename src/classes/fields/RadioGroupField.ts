@@ -26,6 +26,8 @@ export class RadioGroupField extends EasyField {
       delete init?.items;
     }
     Object.assign(this, init);
+
+    this.discriminator = "RadioGroupField";
   }
 
   /**

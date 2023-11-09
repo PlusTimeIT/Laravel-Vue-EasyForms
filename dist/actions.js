@@ -4,14 +4,21 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import "./Types-9f7b5c2f.js";
-import { B as Button } from "./Button-f88aa9d7.js";
-import { I as Icon } from "./Tooltip-ee47020d.js";
+import { i as isEmpty } from "./Types-dbac3a4a.js";
+import { B as Button } from "./Button-58652d5c.js";
+import { I as Icon } from "./Tooltip-f8329e53.js";
 import "axios";
-import "./ContentTypes-f35a51f5.js";
-import "./AxiosOptions-15ae3169.js";
 import "./ButtonVariantTypes-e4c42916.js";
 import "./LocationTypes-8f3d7f01.js";
+import "./GotProps-440b6309.js";
+class ConditionItem {
+  constructor(init) {
+    __publicField(this, "against", "");
+    __publicField(this, "check", "");
+    __publicField(this, "operator", "");
+    Object.assign(this, init);
+  }
+}
 class ActionButton {
   constructor(init) {
     __publicField(this, "button", new Button());
@@ -21,6 +28,17 @@ class ActionButton {
     __publicField(this, "identifier", "");
     __publicField(this, "name", "");
     __publicField(this, "order", 0);
+    __publicField(this, "discriminator", "ActionButton");
+    if (!isEmpty(init == null ? void 0 : init.button)) {
+      this.button = new Button(init == null ? void 0 : init.button);
+      init == null ? true : delete init.button;
+    }
+    if (!isEmpty(init == null ? void 0 : init.conditions)) {
+      for (const condition of init.conditions) {
+        this.conditions.push(new ConditionItem(condition));
+      }
+      init == null ? true : delete init.conditions;
+    }
     Object.assign(this, init);
   }
 }
@@ -33,14 +51,17 @@ class ActionIcon {
     __publicField(this, "identifier", "");
     __publicField(this, "name", "");
     __publicField(this, "order", 0);
-    Object.assign(this, init);
-  }
-}
-class ConditionItem {
-  constructor(init) {
-    __publicField(this, "against", "");
-    __publicField(this, "check", "");
-    __publicField(this, "operator", "");
+    __publicField(this, "discriminator", "ActionIcon");
+    if (!isEmpty(init == null ? void 0 : init.icon)) {
+      this.icon = new Icon(init == null ? void 0 : init.icon);
+      init == null ? true : delete init.icon;
+    }
+    if (!isEmpty(init == null ? void 0 : init.conditions)) {
+      for (const condition of init.conditions) {
+        this.conditions.push(new ConditionItem(condition));
+      }
+      init == null ? true : delete init.conditions;
+    }
     Object.assign(this, init);
   }
 }

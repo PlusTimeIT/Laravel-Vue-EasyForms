@@ -22,6 +22,8 @@ export class TimePickerField extends EasyField implements HasField {
   constructor(init?: Partial<TimePickerField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "TimePickerField";
   }
 
   /**

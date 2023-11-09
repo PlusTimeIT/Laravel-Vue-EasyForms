@@ -36,9 +36,12 @@ function click() {
   <v-tooltip v-bind="button?.tooltip?.props()" :disabled="button?.tooltip?.disabled ?? true">
     <template #activator="{ props }">
       <v-btn v-bind="{ ...props, ...button.props() }" :disabled="button.disabled" @click="click">
-        <easy-icon v-if="has_prepend_icon" :icon="button.prepend_icon" />
-        {{ button.text }}
-        <easy-icon v-if="has_append_icon" :icon="button.append_icon" />
+        <template #prepend v-if="has_prepend_icon">
+          <easy-icon :icon="button.prepend_icon" />
+        </template>
+        <template #append v-if="has_append_icon">
+          <easy-icon :icon="button.append_icon" />
+        </template>
       </v-btn>
     </template>
     <span>{{ button?.tooltip?.text }}</span>

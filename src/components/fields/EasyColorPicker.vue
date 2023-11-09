@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, watch, onBeforeUnmount } from "vue";
 import { TextField, ColorPicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import EasyInput from "./EasyInput.vue";
@@ -61,10 +61,13 @@ function toggleMenu() {
 }
 
 // Watch for changes in the picker value
-watch(picker.value, (color) => {
+const pickerWatcher = watch(picker.value, (color) => {
   handleInputUpdate(color.value);
 });
 
+onBeforeUnmount(() => {
+  pickerWatcher();
+});
 // On mounted, set field loading status to false and update inner icon color
 onMounted(() => {
   textfield.value?.isLoading(false);
@@ -92,7 +95,6 @@ onMounted(() => {
       </template>
       <v-card width="300">
         <v-card-text class="pa-0">
-          <!-- Use v-color-picker component for color selection -->
           <v-color-picker v-model="picker.value" v-model:mode="picker.mode" v-bind="picker?.props()" />
         </v-card-text>
       </v-card>

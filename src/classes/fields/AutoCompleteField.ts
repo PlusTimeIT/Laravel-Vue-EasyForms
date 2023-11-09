@@ -11,7 +11,6 @@ export class AutoCompleteField extends EasyField {
   component = "v-autocomplete";
   counter: string | number | boolean = false;
   direction: DirectionType = DirectionType.Horizontal;
-  declare discriminator: "AutoCompleteField";
   filter_keys: string | string[] = ["title"];
   filter_mode: FilterModeTypes = FilterModeTypes.Intersection;
   hide_no_data = false;
@@ -37,11 +36,7 @@ export class AutoCompleteField extends EasyField {
   constructor(init?: Partial<AutoCompleteField>) {
     super(init);
     Object.assign(this, init);
-  }
-
-  loadItems(items: any): this {
-    this.items = items;
-    return this;
+    this.discriminator = "AutoCompleteField";
   }
 
   /**
@@ -56,8 +51,7 @@ export class AutoCompleteField extends EasyField {
   allowedProps(): string[] {
     return [
       "active",
-      // displayed as easy-icon with tooltip.
-      // 'append_icon',
+      "append_icon",
       "autofocus",
       "auto_select_first",
       "base_color",
@@ -109,10 +103,8 @@ export class AutoCompleteField extends EasyField {
       "persistent_placeholder",
       "placeholder",
       "prefix",
-      // displayed as easy-icon with tooltip.
-      // 'prepend_icon',
-      // displayed as easy-icon with tooltip.
-      // 'prepend_inner_icon',
+      "prepend_icon",
+      "prepend_inner_icon",
       "readonly",
       "return_object",
       "reverse",
@@ -129,5 +121,10 @@ export class AutoCompleteField extends EasyField {
       "validate_on",
       "variant",
     ];
+  }
+
+  loadItems(items: any): this {
+    this.items = items;
+    return this;
   }
 }

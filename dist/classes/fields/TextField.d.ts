@@ -5,7 +5,6 @@ export declare class TextField extends EasyField {
     append_inner_icon: Icon | undefined;
     component: string;
     counter: string | number | boolean;
-    discriminator: "TextField";
     direction: DirectionType;
     dirty: boolean;
     masking: string | undefined;

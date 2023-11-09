@@ -1,3 +1,4 @@
+import { ActionButton, ActionIcon } from "../actions";
 import {
   AutoCompleteField,
   CheckboxField,
@@ -11,6 +12,8 @@ import {
   SwitchField,
   TextField,
   TimePickerField,
+  ColorPicker,
+  DatePicker,
 } from "../fields";
 import { SelectField } from "../fields/SelectField";
 
@@ -19,8 +22,8 @@ type ClassConstructor<T> = new () => T;
 const classRegistry: Record<string, ClassConstructor<any>> = {};
 
 interface ClassFields {
-  name: string;
   field: ClassConstructor<any>;
+  name: string;
 }
 
 function registerDefaults(): void {
@@ -50,8 +53,16 @@ function registerDefaults(): void {
       field: RadioField,
     },
     {
+      name: "ColorPicker",
+      field: ColorPicker,
+    },
+    {
       name: "ColorPickerField",
       field: ColorPickerField,
+    },
+    {
+      name: "DatePicker",
+      field: DatePicker,
     },
     {
       name: "DatePickerField",
@@ -76,6 +87,14 @@ function registerDefaults(): void {
     {
       name: "SelectField",
       field: SelectField,
+    },
+    {
+      name: "ActionIcon",
+      field: ActionIcon,
+    },
+    {
+      name: "ActionButton",
+      field: ActionButton,
     },
   ];
   for (const fieldDefault of defaults) {

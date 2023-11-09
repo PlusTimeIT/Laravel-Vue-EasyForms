@@ -1,23 +1,29 @@
 var _a;
-import { Fragment, reactive, computed, watchEffect, toRefs, capitalize, warn as warn$1, ref, unref, provide, inject, shallowRef, defineComponent as defineComponent$1, camelize, h, getCurrentInstance as getCurrentInstance$1, isRef, createVNode, toRef, watch, onScopeDispose, effectScope, toRaw, onBeforeUnmount, onMounted, mergeProps, Text, readonly, Transition, resolveDynamicComponent, nextTick, withDirectives, resolveDirective, onBeforeMount, resolveComponent, openBlock, createBlock, withCtx, createElementBlock, renderList, createCommentVNode, vShow, Teleport, createTextVNode, toDisplayString, createElementVNode, createSlots, TransitionGroup, cloneVNode } from "vue";
+import { Fragment, reactive, computed, watchEffect, toRefs, capitalize, isVNode, Comment, warn as warn$1, ref, unref, provide, inject, shallowRef, defineComponent as defineComponent$1, camelize, h, getCurrentInstance as getCurrentInstance$1, isRef, createVNode, toRef, watch, onScopeDispose, effectScope, toRaw, onBeforeUnmount, onMounted, mergeProps, Text, readonly, Transition, resolveDynamicComponent, nextTick, withDirectives, resolveDirective, Teleport, vShow, openBlock, createBlock, withCtx, createSlots, createElementVNode, toDisplayString, createTextVNode, createElementBlock, renderList, onBeforeMount, resolveComponent, createCommentVNode, normalizeClass, normalizeProps, TransitionGroup, cloneVNode } from "vue";
 import { ActionForm, InputForm, EasyForm } from "./forms.js";
-import { A as AdditionalData } from "./AdditionalData-dc6ae75c.js";
-import { i as isEmpty, s as store, P as PluginOptions, C as Csrf } from "./Types-9f7b5c2f.js";
+import { i as isEmpty, s as store, P as PluginOptions } from "./Types-dbac3a4a.js";
+import { A as AdditionalData } from "./FormLoader-f8643b8d.js";
 import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
 import { L as LoaderEvents, F as FormTypes } from "./LoaderEvents-f7c1c159.js";
+import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
 import { FormContainer } from "./elements.js";
+import { P as ProgressCircular } from "./ProgressLinear-fca54ab2.js";
 import { a as ButtonTypes } from "./ButtonVariantTypes-e4c42916.js";
 import "axios";
-import { T as TextField, C as CheckboxGroupField } from "./fields-7323b549.js";
+import { T as TextField, C as CheckboxGroupField } from "./fields-72b757da.js";
+import { Csrf } from "./server.js";
 import { a as TimePickerModeTypes } from "./ViewModeTypes-6930220b.js";
-import "./ContentTypes-f35a51f5.js";
-import "./Alert-263e9c8e.js";
+import "./ContentTypes-783ab8ea.js";
+import "./Alert-be54e160.js";
 import "./LocationTypes-8f3d7f01.js";
-import "./Tooltip-ee47020d.js";
+import "./Tooltip-f8329e53.js";
+import "./GotProps-440b6309.js";
+import "./ServerCall-3921df14.js";
 import "./AxiosOptions-15ae3169.js";
 import "./JustifyRow-8255fd21.js";
-import "./Button-f88aa9d7.js";
-import "./Menu-b5b194f8.js";
+import "./actions.js";
+import "./Button-58652d5c.js";
+import "./Menu-8cd78ff9.js";
 import "./ScrollStrategyTypes-c3dd8b07.js";
 import "./ValidationRule-73a2fa9e.js";
 function ColumnRestriction(value) {
@@ -29,7 +35,9 @@ function InputFormType(value) {
 function ActionInputFormType(value) {
   return value.type === "action-form";
 }
-const VAlert$1 = "";
+const VBtn$1 = "";
+const VBtnToggle = "";
+const VBtnGroup$1 = "";
 const IN_BROWSER = typeof window !== "undefined";
 const SUPPORTS_INTERSECTION = IN_BROWSER && "IntersectionObserver" in window;
 function getNestedValue(obj, path, fallback) {
@@ -361,6 +369,15 @@ function matchesSelector(el, selector) {
     return null;
   }
 }
+function ensureValidVNode(vnodes) {
+  return vnodes.some((child) => {
+    if (!isVNode(child))
+      return true;
+    if (child.type === Comment)
+      return false;
+    return child.type !== Fragment || ensureValidVNode(child.children);
+  }) ? vnodes : null;
+}
 const block = ["top", "bottom"];
 const inline = ["start", "end", "left", "right"];
 function parseAnchor(anchor, isRtl) {
@@ -630,6 +647,9 @@ function toXYZ(_ref) {
 }
 function isCssColor(color) {
   return !!color && /^(#|var\(--|(rgb|hsl)a?\()/.test(color);
+}
+function isParsableColor(color) {
+  return isCssColor(color) && !/^((rgb|hsl)a?\()?var\(--/.test(color);
 }
 const cssColorRe = /^(?<fn>(?:rgb|hsl)a?)\((?<values>.+)\)/;
 const mappers = {
@@ -1166,10 +1186,6 @@ function useRender(render) {
   const vm = getCurrentInstance("useRender");
   vm.render = render;
 }
-const VAlertTitle = createSimpleFunctional("v-alert-title");
-const VBtn$1 = "";
-const VBtnToggle = "";
-const VBtnGroup$1 = "";
 const makeBorderProps = propsFactory({
   border: [Boolean, Number, String]
 }, "border");
@@ -1292,7 +1308,7 @@ function useColor(colors2) {
     if (colors2.value.background) {
       if (isCssColor(colors2.value.background)) {
         styles.backgroundColor = colors2.value.background;
-        if (!colors2.value.text) {
+        if (!colors2.value.text && isParsableColor(colors2.value.background)) {
           const backgroundColor = parseColor(colors2.value.background);
           if (backgroundColor.a == null || backgroundColor.a === 1) {
             const textColor = getForeground(backgroundColor);
@@ -3060,689 +3076,6 @@ const VBtn = genericComponent()({
     return {};
   }
 });
-const allowedTypes = ["success", "info", "warning", "error"];
-const makeVAlertProps = propsFactory({
-  border: {
-    type: [Boolean, String],
-    validator: (val) => {
-      return typeof val === "boolean" || ["top", "end", "bottom", "start"].includes(val);
-    }
-  },
-  borderColor: String,
-  closable: Boolean,
-  closeIcon: {
-    type: IconValue,
-    default: "$close"
-  },
-  closeLabel: {
-    type: String,
-    default: "$vuetify.close"
-  },
-  icon: {
-    type: [Boolean, String, Function, Object],
-    default: null
-  },
-  modelValue: {
-    type: Boolean,
-    default: true
-  },
-  prominent: Boolean,
-  title: String,
-  text: String,
-  type: {
-    type: String,
-    validator: (val) => allowedTypes.includes(val)
-  },
-  ...makeComponentProps(),
-  ...makeDensityProps(),
-  ...makeDimensionProps(),
-  ...makeElevationProps(),
-  ...makeLocationProps(),
-  ...makePositionProps(),
-  ...makeRoundedProps(),
-  ...makeTagProps(),
-  ...makeThemeProps(),
-  ...makeVariantProps({
-    variant: "flat"
-  })
-}, "VAlert");
-const VAlert = genericComponent()({
-  name: "VAlert",
-  props: makeVAlertProps(),
-  emits: {
-    "click:close": (e) => true,
-    "update:modelValue": (value) => true
-  },
-  setup(props, _ref) {
-    let {
-      emit,
-      slots
-    } = _ref;
-    const isActive = useProxiedModel(props, "modelValue");
-    const icon = computed(() => {
-      if (props.icon === false)
-        return void 0;
-      if (!props.type)
-        return props.icon;
-      return props.icon ?? `$${props.type}`;
-    });
-    const variantProps = computed(() => ({
-      color: props.color ?? props.type,
-      variant: props.variant
-    }));
-    const {
-      themeClasses
-    } = provideTheme(props);
-    const {
-      colorClasses,
-      colorStyles,
-      variantClasses
-    } = useVariant(variantProps);
-    const {
-      densityClasses
-    } = useDensity(props);
-    const {
-      dimensionStyles
-    } = useDimension(props);
-    const {
-      elevationClasses
-    } = useElevation(props);
-    const {
-      locationStyles
-    } = useLocation(props);
-    const {
-      positionClasses
-    } = usePosition(props);
-    const {
-      roundedClasses
-    } = useRounded(props);
-    const {
-      textColorClasses,
-      textColorStyles
-    } = useTextColor(toRef(props, "borderColor"));
-    const {
-      t
-    } = useLocale();
-    const closeProps = computed(() => ({
-      "aria-label": t(props.closeLabel),
-      onClick(e) {
-        isActive.value = false;
-        emit("click:close", e);
-      }
-    }));
-    return () => {
-      const hasPrepend = !!(slots.prepend || icon.value);
-      const hasTitle = !!(slots.title || props.title);
-      const hasClose = !!(slots.close || props.closable);
-      return isActive.value && createVNode(props.tag, {
-        "class": ["v-alert", props.border && {
-          "v-alert--border": !!props.border,
-          [`v-alert--border-${props.border === true ? "start" : props.border}`]: true
-        }, {
-          "v-alert--prominent": props.prominent
-        }, themeClasses.value, colorClasses.value, densityClasses.value, elevationClasses.value, positionClasses.value, roundedClasses.value, variantClasses.value, props.class],
-        "style": [colorStyles.value, dimensionStyles.value, locationStyles.value, props.style],
-        "role": "alert"
-      }, {
-        default: () => {
-          var _a2, _b;
-          return [genOverlays(false, "v-alert"), props.border && createVNode("div", {
-            "key": "border",
-            "class": ["v-alert__border", textColorClasses.value],
-            "style": textColorStyles.value
-          }, null), hasPrepend && createVNode("div", {
-            "key": "prepend",
-            "class": "v-alert__prepend"
-          }, [!slots.prepend ? createVNode(VIcon, {
-            "key": "prepend-icon",
-            "density": props.density,
-            "icon": icon.value,
-            "size": props.prominent ? 44 : 28
-          }, null) : createVNode(VDefaultsProvider, {
-            "key": "prepend-defaults",
-            "disabled": !icon.value,
-            "defaults": {
-              VIcon: {
-                density: props.density,
-                icon: icon.value,
-                size: props.prominent ? 44 : 28
-              }
-            }
-          }, slots.prepend)]), createVNode("div", {
-            "class": "v-alert__content"
-          }, [hasTitle && createVNode(VAlertTitle, {
-            "key": "title"
-          }, {
-            default: () => {
-              var _a3;
-              return [((_a3 = slots.title) == null ? void 0 : _a3.call(slots)) ?? props.title];
-            }
-          }), ((_a2 = slots.text) == null ? void 0 : _a2.call(slots)) ?? props.text, (_b = slots.default) == null ? void 0 : _b.call(slots)]), slots.append && createVNode("div", {
-            "key": "append",
-            "class": "v-alert__append"
-          }, [slots.append()]), hasClose && createVNode("div", {
-            "key": "close",
-            "class": "v-alert__close"
-          }, [!slots.close ? createVNode(VBtn, mergeProps({
-            "key": "close-btn",
-            "icon": props.closeIcon,
-            "size": "x-small",
-            "variant": "text"
-          }, closeProps.value), null) : createVNode(VDefaultsProvider, {
-            "key": "close-defaults",
-            "defaults": {
-              VBtn: {
-                icon: props.closeIcon,
-                size: "x-small",
-                variant: "text"
-              }
-            }
-          }, {
-            default: () => {
-              var _a3;
-              return [(_a3 = slots.close) == null ? void 0 : _a3.call(slots, {
-                props: closeProps.value
-              })];
-            }
-          })])];
-        }
-      });
-    };
-  }
-});
-const VGrid = "";
-const breakpoints = ["sm", "md", "lg", "xl", "xxl"];
-const DisplaySymbol = Symbol.for("vuetify:display");
-function useDisplay() {
-  const display = inject(DisplaySymbol);
-  if (!display)
-    throw new Error("Could not find Vuetify display injection");
-  return display;
-}
-const breakpointProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    props[val] = {
-      type: [Boolean, String, Number],
-      default: false
-    };
-    return props;
-  }, {});
-})();
-const offsetProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    const offsetKey = "offset" + capitalize(val);
-    props[offsetKey] = {
-      type: [String, Number],
-      default: null
-    };
-    return props;
-  }, {});
-})();
-const orderProps = (() => {
-  return breakpoints.reduce((props, val) => {
-    const orderKey = "order" + capitalize(val);
-    props[orderKey] = {
-      type: [String, Number],
-      default: null
-    };
-    return props;
-  }, {});
-})();
-const propMap$1 = {
-  col: Object.keys(breakpointProps),
-  offset: Object.keys(offsetProps),
-  order: Object.keys(orderProps)
-};
-function breakpointClass$1(type, prop, val) {
-  let className = type;
-  if (val == null || val === false) {
-    return void 0;
-  }
-  if (prop) {
-    const breakpoint = prop.replace(type, "");
-    className += `-${breakpoint}`;
-  }
-  if (type === "col") {
-    className = "v-" + className;
-  }
-  if (type === "col" && (val === "" || val === true)) {
-    return className.toLowerCase();
-  }
-  className += `-${val}`;
-  return className.toLowerCase();
-}
-const ALIGN_SELF_VALUES = ["auto", "start", "end", "center", "baseline", "stretch"];
-const makeVColProps = propsFactory({
-  cols: {
-    type: [Boolean, String, Number],
-    default: false
-  },
-  ...breakpointProps,
-  offset: {
-    type: [String, Number],
-    default: null
-  },
-  ...offsetProps,
-  order: {
-    type: [String, Number],
-    default: null
-  },
-  ...orderProps,
-  alignSelf: {
-    type: String,
-    default: null,
-    validator: (str) => ALIGN_SELF_VALUES.includes(str)
-  },
-  ...makeComponentProps(),
-  ...makeTagProps()
-}, "VCol");
-const VCol = genericComponent()({
-  name: "VCol",
-  props: makeVColProps(),
-  setup(props, _ref) {
-    let {
-      slots
-    } = _ref;
-    const classes = computed(() => {
-      const classList = [];
-      let type;
-      for (type in propMap$1) {
-        propMap$1[type].forEach((prop) => {
-          const value = props[prop];
-          const className = breakpointClass$1(type, prop, value);
-          if (className)
-            classList.push(className);
-        });
-      }
-      const hasColClasses = classList.some((className) => className.startsWith("v-col-"));
-      classList.push({
-        // Default to .v-col if no other col-{bp}-* classes generated nor `cols` specified.
-        "v-col": !hasColClasses || !props.cols,
-        [`v-col-${props.cols}`]: props.cols,
-        [`offset-${props.offset}`]: props.offset,
-        [`order-${props.order}`]: props.order,
-        [`align-self-${props.alignSelf}`]: props.alignSelf
-      });
-      return classList;
-    });
-    return () => {
-      var _a2;
-      return h(props.tag, {
-        class: [classes.value, props.class],
-        style: props.style
-      }, (_a2 = slots.default) == null ? void 0 : _a2.call(slots));
-    };
-  }
-});
-const ALIGNMENT = ["start", "end", "center"];
-const SPACE = ["space-between", "space-around", "space-evenly"];
-function makeRowProps(prefix, def) {
-  return breakpoints.reduce((props, val) => {
-    const prefixKey = prefix + capitalize(val);
-    props[prefixKey] = def();
-    return props;
-  }, {});
-}
-const ALIGN_VALUES = [...ALIGNMENT, "baseline", "stretch"];
-const alignValidator = (str) => ALIGN_VALUES.includes(str);
-const alignProps = makeRowProps("align", () => ({
-  type: String,
-  default: null,
-  validator: alignValidator
-}));
-const JUSTIFY_VALUES = [...ALIGNMENT, ...SPACE];
-const justifyValidator = (str) => JUSTIFY_VALUES.includes(str);
-const justifyProps = makeRowProps("justify", () => ({
-  type: String,
-  default: null,
-  validator: justifyValidator
-}));
-const ALIGN_CONTENT_VALUES = [...ALIGNMENT, ...SPACE, "stretch"];
-const alignContentValidator = (str) => ALIGN_CONTENT_VALUES.includes(str);
-const alignContentProps = makeRowProps("alignContent", () => ({
-  type: String,
-  default: null,
-  validator: alignContentValidator
-}));
-const propMap = {
-  align: Object.keys(alignProps),
-  justify: Object.keys(justifyProps),
-  alignContent: Object.keys(alignContentProps)
-};
-const classMap = {
-  align: "align",
-  justify: "justify",
-  alignContent: "align-content"
-};
-function breakpointClass(type, prop, val) {
-  let className = classMap[type];
-  if (val == null) {
-    return void 0;
-  }
-  if (prop) {
-    const breakpoint = prop.replace(type, "");
-    className += `-${breakpoint}`;
-  }
-  className += `-${val}`;
-  return className.toLowerCase();
-}
-const makeVRowProps = propsFactory({
-  dense: Boolean,
-  noGutters: Boolean,
-  align: {
-    type: String,
-    default: null,
-    validator: alignValidator
-  },
-  ...alignProps,
-  justify: {
-    type: String,
-    default: null,
-    validator: justifyValidator
-  },
-  ...justifyProps,
-  alignContent: {
-    type: String,
-    default: null,
-    validator: alignContentValidator
-  },
-  ...alignContentProps,
-  ...makeComponentProps(),
-  ...makeTagProps()
-}, "VRow");
-const VRow = genericComponent()({
-  name: "VRow",
-  props: makeVRowProps(),
-  setup(props, _ref) {
-    let {
-      slots
-    } = _ref;
-    const classes = computed(() => {
-      const classList = [];
-      let type;
-      for (type in propMap) {
-        propMap[type].forEach((prop) => {
-          const value = props[prop];
-          const className = breakpointClass(type, prop, value);
-          if (className)
-            classList.push(className);
-        });
-      }
-      classList.push({
-        "v-row--no-gutters": props.noGutters,
-        "v-row--dense": props.dense,
-        [`align-${props.align}`]: props.align,
-        [`justify-${props.justify}`]: props.justify,
-        [`align-content-${props.alignContent}`]: props.alignContent
-      });
-      return classList;
-    });
-    return () => {
-      var _a2;
-      return h(props.tag, {
-        class: ["v-row", classes.value, props.class],
-        style: props.style
-      }, (_a2 = slots.default) == null ? void 0 : _a2.call(slots));
-    };
-  }
-});
-const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
-  __name: "FormLoader",
-  props: {
-    form: {
-      type: [ActionForm, InputForm, EasyForm],
-      default: new EasyForm()
-    },
-    name: {
-      type: String,
-      default: ""
-    },
-    cols: {
-      type: Number,
-      default: 12,
-      validator: (value) => ColumnRestriction(value)
-    },
-    sm: {
-      type: Number,
-      default: 12,
-      validator: (value) => ColumnRestriction(value)
-    },
-    md: {
-      type: Number,
-      default: 12,
-      validator: (value) => ColumnRestriction(value)
-    },
-    lg: {
-      type: Number,
-      default: 12,
-      validator: (value) => ColumnRestriction(value)
-    },
-    populate: {
-      type: Boolean,
-      default: false
-    },
-    additionalData: {
-      type: AdditionalData,
-      default: new AdditionalData()
-    },
-    additionalLoadData: {
-      type: AdditionalData,
-      default: new AdditionalData()
-    }
-  },
-  emits: [
-    "update:form",
-    LoaderEvents.Loading,
-    LoaderEvents.Loaded,
-    LoaderEvents.Results,
-    LoaderEvents.Cancelled,
-    LoaderEvents.Updated,
-    LoaderEvents.Reset,
-    LoaderEvents.Processing,
-    LoaderEvents.Failed,
-    LoaderEvents.Successful
-  ],
-  setup(__props, { emit: __emit }) {
-    const emit = __emit;
-    const props = __props;
-    const loading = ref(true);
-    const loaded = ref(false);
-    const loaded_form = ref(new EasyForm());
-    const container = computed(() => {
-      return new FormContainer({
-        cols: props.cols,
-        sm: props.sm,
-        md: props.md,
-        lg: props.lg
-      });
-    });
-    const display_alerts = computed(() => {
-      var _a2, _b;
-      return (_b = (_a2 = loaded_form == null ? void 0 : loaded_form.value) == null ? void 0 : _a2.alerts) == null ? void 0 : _b.filter((alert) => alert.display);
-    });
-    const has_alerts = computed(() => (display_alerts.value.length ?? 0) > 0);
-    const form_ready = computed(() => {
-      return loaded.value && !loaded_form.value.loading && loaded_form.value.type !== "" && loaded_form.value instanceof InputForm || loaded_form.value instanceof ActionForm || loaded_form.value.type == "error-form";
-    });
-    const form_component = computed(() => {
-      if (loaded.value || !loading.value || !isEmpty(loaded_form.value)) {
-        loaded_form.value.text = "";
-        if (loaded_form.value instanceof InputForm) {
-          return FormTypes.Input;
-        }
-        if (loaded_form.value instanceof ActionForm) {
-          return FormTypes.Action;
-        }
-      }
-      loaded_form.value.text = "Error Loading Form - Unknown Component";
-      isLoading(false);
-      return FormTypes.Error;
-    });
-    function reset() {
-      var _a2;
-      emit(LoaderEvents.Reset, true);
-      (_a2 = loaded_form.value) == null ? void 0 : _a2.reset();
-    }
-    function cancel() {
-      var _a2;
-      emit(LoaderEvents.Cancelled, true);
-      (_a2 = loaded_form.value) == null ? void 0 : _a2.cancelled();
-    }
-    function processing(processing2) {
-      emit(LoaderEvents.Processing, processing2);
-    }
-    function failed() {
-      emit(LoaderEvents.Failed, true);
-    }
-    function updated2(form) {
-      emit(LoaderEvents.Updated, form);
-    }
-    function success() {
-      emit(LoaderEvents.Successful, true);
-    }
-    function results(data) {
-      loaded_form.value.hasResults(data);
-      emit(LoaderEvents.Results, data);
-    }
-    function isLoading(load) {
-      emit(LoaderEvents.Loading, load);
-      loaded_form.value.isLoading(load);
-      loading.value = load;
-      if (!loaded.value) {
-        loaded.value = !load;
-      }
-    }
-    watch(loaded, (hasLoaded) => {
-      emit(LoaderEvents.Loaded, hasLoaded);
-    });
-    onBeforeMount(async () => {
-      console.log("fetching token....");
-      store.csrf.fetchNewToken();
-    });
-    onMounted(async () => {
-      loaded_form.value.text = "";
-      isLoading(true);
-      if (!isEmpty(props.form) && isEmpty(props.name)) {
-        if (props.form instanceof InputForm || props.form instanceof ActionForm) {
-          loaded_form.value = props.form;
-          isLoading(false);
-          return;
-        }
-      } else if (!isEmpty(props.name)) {
-        loaded_form.value = new EasyForm({
-          name: props.name,
-          additional_data: props.additionalData,
-          additional_load_data: props.additionalLoadData
-        });
-        const results2 = await loaded_form.value.load();
-        if (!results2) {
-          loaded_form.value.text = "Error Loading Form - Not Found";
-          isLoading(false);
-          return;
-        }
-        if ((results2 == null ? void 0 : results2.type) == FormTypes.Input) {
-          loaded_form.value = new InputForm(results2);
-          loaded_form.value.triggerAlert(AlertTriggers.AfterLoad);
-          isLoading(false);
-          return;
-        } else if (results2.type == FormTypes.Action) {
-          loaded_form.value = new ActionForm(results2);
-          isLoading(false);
-          return;
-        }
-      }
-      loaded_form.value.text = "Error Loading Form - Unknown Component";
-      isLoading(false);
-    });
-    return (_ctx, _cache) => {
-      const _component_input_form_loader = resolveComponent("input-form-loader");
-      const _component_action_form_loader = resolveComponent("action-form-loader");
-      const _component_error_form_loader = resolveComponent("error-form-loader");
-      return openBlock(), createBlock(VCol, {
-        cols: container.value.cols,
-        sm: container.value.sm,
-        md: container.value.md,
-        lg: container.value.lg
-      }, {
-        default: withCtx(() => [
-          has_alerts.value ? (openBlock(), createBlock(VRow, { key: 0 }, {
-            default: withCtx(() => [
-              (openBlock(true), createElementBlock(Fragment, null, renderList(display_alerts.value, (alert, index) => {
-                return openBlock(), createBlock(VCol, {
-                  key: index,
-                  cols: alert.cols
-                }, {
-                  default: withCtx(() => [
-                    createVNode(VAlert, mergeProps({
-                      modelValue: alert.display,
-                      "onUpdate:modelValue": ($event) => alert.display = $event
-                    }, alert.props()), null, 16, ["modelValue", "onUpdate:modelValue"])
-                  ]),
-                  _: 2
-                }, 1032, ["cols"]);
-              }), 128))
-            ]),
-            _: 1
-          })) : createCommentVNode("", true),
-          withDirectives(createVNode(VRow, null, {
-            default: withCtx(() => [
-              createVNode(VCol, { class: "mx-auto text-center" }, {
-                default: withCtx(() => [
-                  createVNode(VProgressCircular, {
-                    indeterminate: "",
-                    color: "primary"
-                  })
-                ]),
-                _: 1
-              })
-            ]),
-            _: 1
-          }, 512), [
-            [vShow, !form_ready.value]
-          ]),
-          withDirectives(createVNode(VRow, null, {
-            default: withCtx(() => [
-              form_component.value == unref(FormTypes).Input ? (openBlock(), createBlock(_component_input_form_loader, mergeProps({
-                key: 0,
-                form: loaded_form.value,
-                "onUpdate:form": _cache[0] || (_cache[0] = ($event) => loaded_form.value = $event)
-              }, loaded_form.value.props(), {
-                onResults: results,
-                onLoading: isLoading,
-                onReset: reset,
-                onUpdated: updated2,
-                onCancelled: cancel,
-                onProcessing: processing,
-                onFailed: failed,
-                onSuccessful: success
-              }), null, 16, ["form"])) : form_component.value == unref(FormTypes).Action ? (openBlock(), createBlock(_component_action_form_loader, mergeProps({
-                key: 1,
-                form: loaded_form.value,
-                "onUpdate:form": _cache[1] || (_cache[1] = ($event) => loaded_form.value = $event)
-              }, loaded_form.value.props(), {
-                onResults: results,
-                onLoading: isLoading,
-                onReset: reset,
-                onUpdated: updated2,
-                onCancelled: cancel,
-                onProcessing: processing,
-                onFailed: failed,
-                onSuccessful: success
-              }), null, 16, ["form"])) : form_component.value == unref(FormTypes).Error ? (openBlock(), createBlock(_component_error_form_loader, {
-                key: 2,
-                text: loaded_form.value.text
-              }, null, 8, ["text"])) : createCommentVNode("", true)
-            ]),
-            _: 1
-          }, 512), [
-            [vShow, form_ready.value]
-          ])
-        ]),
-        _: 1
-      }, 8, ["cols", "sm", "md", "lg"]);
-    };
-  }
-});
 const VTooltip$1 = "";
 const VOverlay$1 = "";
 function elementToViewport(point, offset2) {
@@ -4554,6 +3887,14 @@ function _useActivator(props, vm, _ref2) {
     return activatorEl.value;
   }
 }
+const breakpoints = ["sm", "md", "lg", "xl", "xxl"];
+const DisplaySymbol = Symbol.for("vuetify:display");
+function useDisplay() {
+  const display = inject(DisplaySymbol);
+  if (!display)
+    throw new Error("Could not find Vuetify display injection");
+  return display;
+}
 function useHydration() {
   if (!IN_BROWSER)
     return shallowRef(false);
@@ -5196,7 +4537,75 @@ const VTooltip = genericComponent()({
     return forwardRefs({}, overlay);
   }
 });
-const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
+  __name: "EasyButton",
+  props: {
+    button: {},
+    disabled: { type: Boolean },
+    identifier: {}
+  },
+  emits: ["click"],
+  setup(__props, { emit: __emit }) {
+    const xProps = __props;
+    const emit = __emit;
+    const button = ref(xProps.button);
+    const has_prepend_icon = computed(() => {
+      var _a2, _b;
+      return !isEmpty(xProps.button.prepend_icon) && !isEmpty((_b = (_a2 = xProps.button) == null ? void 0 : _a2.prepend_icon) == null ? void 0 : _b.icon);
+    });
+    const has_append_icon = computed(() => {
+      var _a2, _b;
+      return !isEmpty(xProps.button.append_icon) && !isEmpty((_b = (_a2 = xProps.button) == null ? void 0 : _a2.append_icon) == null ? void 0 : _b.icon);
+    });
+    function click() {
+      if (!isEmpty(xProps == null ? void 0 : xProps.identifier)) {
+        emit("click", xProps == null ? void 0 : xProps.identifier);
+      } else {
+        emit("click", "");
+      }
+    }
+    return (_ctx, _cache) => {
+      var _a2, _b, _c, _d;
+      return openBlock(), createBlock(VTooltip, mergeProps((_b = (_a2 = button.value) == null ? void 0 : _a2.tooltip) == null ? void 0 : _b.props(), {
+        disabled: ((_d = (_c = button.value) == null ? void 0 : _c.tooltip) == null ? void 0 : _d.disabled) ?? true
+      }), {
+        activator: withCtx(({ props }) => [
+          createVNode(VBtn, mergeProps({ ...props, ...button.value.props() }, {
+            disabled: button.value.disabled,
+            onClick: click
+          }), createSlots({ _: 2 }, [
+            has_prepend_icon.value ? {
+              name: "prepend",
+              fn: withCtx(() => [
+                createVNode(unref(_sfc_main$c), {
+                  icon: button.value.prepend_icon
+                }, null, 8, ["icon"])
+              ]),
+              key: "0"
+            } : void 0,
+            has_append_icon.value ? {
+              name: "append",
+              fn: withCtx(() => [
+                createVNode(unref(_sfc_main$c), {
+                  icon: button.value.append_icon
+                }, null, 8, ["icon"])
+              ]),
+              key: "1"
+            } : void 0
+          ]), 1040, ["disabled"])
+        ]),
+        default: withCtx(() => {
+          var _a3, _b2;
+          return [
+            createElementVNode("span", null, toDisplayString((_b2 = (_a3 = button.value) == null ? void 0 : _a3.tooltip) == null ? void 0 : _b2.text), 1)
+          ];
+        }),
+        _: 1
+      }, 16, ["disabled"]);
+    };
+  }
+});
+const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
   __name: "EasyIcon",
   props: {
     icon: {},
@@ -5241,6 +4650,764 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
         }),
         _: 1
       }, 16, ["disabled"]);
+    };
+  }
+});
+const VAlert$1 = "";
+const VAlertTitle = createSimpleFunctional("v-alert-title");
+const allowedTypes = ["success", "info", "warning", "error"];
+const makeVAlertProps = propsFactory({
+  border: {
+    type: [Boolean, String],
+    validator: (val) => {
+      return typeof val === "boolean" || ["top", "end", "bottom", "start"].includes(val);
+    }
+  },
+  borderColor: String,
+  closable: Boolean,
+  closeIcon: {
+    type: IconValue,
+    default: "$close"
+  },
+  closeLabel: {
+    type: String,
+    default: "$vuetify.close"
+  },
+  icon: {
+    type: [Boolean, String, Function, Object],
+    default: null
+  },
+  modelValue: {
+    type: Boolean,
+    default: true
+  },
+  prominent: Boolean,
+  title: String,
+  text: String,
+  type: {
+    type: String,
+    validator: (val) => allowedTypes.includes(val)
+  },
+  ...makeComponentProps(),
+  ...makeDensityProps(),
+  ...makeDimensionProps(),
+  ...makeElevationProps(),
+  ...makeLocationProps(),
+  ...makePositionProps(),
+  ...makeRoundedProps(),
+  ...makeTagProps(),
+  ...makeThemeProps(),
+  ...makeVariantProps({
+    variant: "flat"
+  })
+}, "VAlert");
+const VAlert = genericComponent()({
+  name: "VAlert",
+  props: makeVAlertProps(),
+  emits: {
+    "click:close": (e) => true,
+    "update:modelValue": (value) => true
+  },
+  setup(props, _ref) {
+    let {
+      emit,
+      slots
+    } = _ref;
+    const isActive = useProxiedModel(props, "modelValue");
+    const icon = computed(() => {
+      if (props.icon === false)
+        return void 0;
+      if (!props.type)
+        return props.icon;
+      return props.icon ?? `$${props.type}`;
+    });
+    const variantProps = computed(() => ({
+      color: props.color ?? props.type,
+      variant: props.variant
+    }));
+    const {
+      themeClasses
+    } = provideTheme(props);
+    const {
+      colorClasses,
+      colorStyles,
+      variantClasses
+    } = useVariant(variantProps);
+    const {
+      densityClasses
+    } = useDensity(props);
+    const {
+      dimensionStyles
+    } = useDimension(props);
+    const {
+      elevationClasses
+    } = useElevation(props);
+    const {
+      locationStyles
+    } = useLocation(props);
+    const {
+      positionClasses
+    } = usePosition(props);
+    const {
+      roundedClasses
+    } = useRounded(props);
+    const {
+      textColorClasses,
+      textColorStyles
+    } = useTextColor(toRef(props, "borderColor"));
+    const {
+      t
+    } = useLocale();
+    const closeProps = computed(() => ({
+      "aria-label": t(props.closeLabel),
+      onClick(e) {
+        isActive.value = false;
+        emit("click:close", e);
+      }
+    }));
+    return () => {
+      const hasPrepend = !!(slots.prepend || icon.value);
+      const hasTitle = !!(slots.title || props.title);
+      const hasClose = !!(slots.close || props.closable);
+      return isActive.value && createVNode(props.tag, {
+        "class": ["v-alert", props.border && {
+          "v-alert--border": !!props.border,
+          [`v-alert--border-${props.border === true ? "start" : props.border}`]: true
+        }, {
+          "v-alert--prominent": props.prominent
+        }, themeClasses.value, colorClasses.value, densityClasses.value, elevationClasses.value, positionClasses.value, roundedClasses.value, variantClasses.value, props.class],
+        "style": [colorStyles.value, dimensionStyles.value, locationStyles.value, props.style],
+        "role": "alert"
+      }, {
+        default: () => {
+          var _a2, _b;
+          return [genOverlays(false, "v-alert"), props.border && createVNode("div", {
+            "key": "border",
+            "class": ["v-alert__border", textColorClasses.value],
+            "style": textColorStyles.value
+          }, null), hasPrepend && createVNode("div", {
+            "key": "prepend",
+            "class": "v-alert__prepend"
+          }, [!slots.prepend ? createVNode(VIcon, {
+            "key": "prepend-icon",
+            "density": props.density,
+            "icon": icon.value,
+            "size": props.prominent ? 44 : 28
+          }, null) : createVNode(VDefaultsProvider, {
+            "key": "prepend-defaults",
+            "disabled": !icon.value,
+            "defaults": {
+              VIcon: {
+                density: props.density,
+                icon: icon.value,
+                size: props.prominent ? 44 : 28
+              }
+            }
+          }, slots.prepend)]), createVNode("div", {
+            "class": "v-alert__content"
+          }, [hasTitle && createVNode(VAlertTitle, {
+            "key": "title"
+          }, {
+            default: () => {
+              var _a3;
+              return [((_a3 = slots.title) == null ? void 0 : _a3.call(slots)) ?? props.title];
+            }
+          }), ((_a2 = slots.text) == null ? void 0 : _a2.call(slots)) ?? props.text, (_b = slots.default) == null ? void 0 : _b.call(slots)]), slots.append && createVNode("div", {
+            "key": "append",
+            "class": "v-alert__append"
+          }, [slots.append()]), hasClose && createVNode("div", {
+            "key": "close",
+            "class": "v-alert__close"
+          }, [!slots.close ? createVNode(VBtn, mergeProps({
+            "key": "close-btn",
+            "icon": props.closeIcon,
+            "size": "x-small",
+            "variant": "text"
+          }, closeProps.value), null) : createVNode(VDefaultsProvider, {
+            "key": "close-defaults",
+            "defaults": {
+              VBtn: {
+                icon: props.closeIcon,
+                size: "x-small",
+                variant: "text"
+              }
+            }
+          }, {
+            default: () => {
+              var _a3;
+              return [(_a3 = slots.close) == null ? void 0 : _a3.call(slots, {
+                props: closeProps.value
+              })];
+            }
+          })])];
+        }
+      });
+    };
+  }
+});
+const VGrid = "";
+const breakpointProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    props[val] = {
+      type: [Boolean, String, Number],
+      default: false
+    };
+    return props;
+  }, {});
+})();
+const offsetProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    const offsetKey = "offset" + capitalize(val);
+    props[offsetKey] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+const orderProps = (() => {
+  return breakpoints.reduce((props, val) => {
+    const orderKey = "order" + capitalize(val);
+    props[orderKey] = {
+      type: [String, Number],
+      default: null
+    };
+    return props;
+  }, {});
+})();
+const propMap$1 = {
+  col: Object.keys(breakpointProps),
+  offset: Object.keys(offsetProps),
+  order: Object.keys(orderProps)
+};
+function breakpointClass$1(type, prop, val) {
+  let className = type;
+  if (val == null || val === false) {
+    return void 0;
+  }
+  if (prop) {
+    const breakpoint = prop.replace(type, "");
+    className += `-${breakpoint}`;
+  }
+  if (type === "col") {
+    className = "v-" + className;
+  }
+  if (type === "col" && (val === "" || val === true)) {
+    return className.toLowerCase();
+  }
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+const ALIGN_SELF_VALUES = ["auto", "start", "end", "center", "baseline", "stretch"];
+const makeVColProps = propsFactory({
+  cols: {
+    type: [Boolean, String, Number],
+    default: false
+  },
+  ...breakpointProps,
+  offset: {
+    type: [String, Number],
+    default: null
+  },
+  ...offsetProps,
+  order: {
+    type: [String, Number],
+    default: null
+  },
+  ...orderProps,
+  alignSelf: {
+    type: String,
+    default: null,
+    validator: (str) => ALIGN_SELF_VALUES.includes(str)
+  },
+  ...makeComponentProps(),
+  ...makeTagProps()
+}, "VCol");
+const VCol = genericComponent()({
+  name: "VCol",
+  props: makeVColProps(),
+  setup(props, _ref) {
+    let {
+      slots
+    } = _ref;
+    const classes = computed(() => {
+      const classList = [];
+      let type;
+      for (type in propMap$1) {
+        propMap$1[type].forEach((prop) => {
+          const value = props[prop];
+          const className = breakpointClass$1(type, prop, value);
+          if (className)
+            classList.push(className);
+        });
+      }
+      const hasColClasses = classList.some((className) => className.startsWith("v-col-"));
+      classList.push({
+        // Default to .v-col if no other col-{bp}-* classes generated nor `cols` specified.
+        "v-col": !hasColClasses || !props.cols,
+        [`v-col-${props.cols}`]: props.cols,
+        [`offset-${props.offset}`]: props.offset,
+        [`order-${props.order}`]: props.order,
+        [`align-self-${props.alignSelf}`]: props.alignSelf
+      });
+      return classList;
+    });
+    return () => {
+      var _a2;
+      return h(props.tag, {
+        class: [classes.value, props.class],
+        style: props.style
+      }, (_a2 = slots.default) == null ? void 0 : _a2.call(slots));
+    };
+  }
+});
+const ALIGNMENT = ["start", "end", "center"];
+const SPACE = ["space-between", "space-around", "space-evenly"];
+function makeRowProps(prefix, def) {
+  return breakpoints.reduce((props, val) => {
+    const prefixKey = prefix + capitalize(val);
+    props[prefixKey] = def();
+    return props;
+  }, {});
+}
+const ALIGN_VALUES = [...ALIGNMENT, "baseline", "stretch"];
+const alignValidator = (str) => ALIGN_VALUES.includes(str);
+const alignProps = makeRowProps("align", () => ({
+  type: String,
+  default: null,
+  validator: alignValidator
+}));
+const JUSTIFY_VALUES = [...ALIGNMENT, ...SPACE];
+const justifyValidator = (str) => JUSTIFY_VALUES.includes(str);
+const justifyProps = makeRowProps("justify", () => ({
+  type: String,
+  default: null,
+  validator: justifyValidator
+}));
+const ALIGN_CONTENT_VALUES = [...ALIGNMENT, ...SPACE, "stretch"];
+const alignContentValidator = (str) => ALIGN_CONTENT_VALUES.includes(str);
+const alignContentProps = makeRowProps("alignContent", () => ({
+  type: String,
+  default: null,
+  validator: alignContentValidator
+}));
+const propMap = {
+  align: Object.keys(alignProps),
+  justify: Object.keys(justifyProps),
+  alignContent: Object.keys(alignContentProps)
+};
+const classMap = {
+  align: "align",
+  justify: "justify",
+  alignContent: "align-content"
+};
+function breakpointClass(type, prop, val) {
+  let className = classMap[type];
+  if (val == null) {
+    return void 0;
+  }
+  if (prop) {
+    const breakpoint = prop.replace(type, "");
+    className += `-${breakpoint}`;
+  }
+  className += `-${val}`;
+  return className.toLowerCase();
+}
+const makeVRowProps = propsFactory({
+  dense: Boolean,
+  noGutters: Boolean,
+  align: {
+    type: String,
+    default: null,
+    validator: alignValidator
+  },
+  ...alignProps,
+  justify: {
+    type: String,
+    default: null,
+    validator: justifyValidator
+  },
+  ...justifyProps,
+  alignContent: {
+    type: String,
+    default: null,
+    validator: alignContentValidator
+  },
+  ...alignContentProps,
+  ...makeComponentProps(),
+  ...makeTagProps()
+}, "VRow");
+const VRow = genericComponent()({
+  name: "VRow",
+  props: makeVRowProps(),
+  setup(props, _ref) {
+    let {
+      slots
+    } = _ref;
+    const classes = computed(() => {
+      const classList = [];
+      let type;
+      for (type in propMap) {
+        propMap[type].forEach((prop) => {
+          const value = props[prop];
+          const className = breakpointClass(type, prop, value);
+          if (className)
+            classList.push(className);
+        });
+      }
+      classList.push({
+        "v-row--no-gutters": props.noGutters,
+        "v-row--dense": props.dense,
+        [`align-${props.align}`]: props.align,
+        [`justify-${props.justify}`]: props.justify,
+        [`align-content-${props.alignContent}`]: props.alignContent
+      });
+      return classList;
+    });
+    return () => {
+      var _a2;
+      return h(props.tag, {
+        class: ["v-row", classes.value, props.class],
+        style: props.style
+      }, (_a2 = slots.default) == null ? void 0 : _a2.call(slots));
+    };
+  }
+});
+const _hoisted_1$2 = ["innerHTML"];
+const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
+  __name: "EasyAlerts",
+  props: {
+    alerts: {}
+  },
+  setup(__props) {
+    const xProps = __props;
+    const alerts = ref(xProps.alerts);
+    computed(() => {
+      var _a2;
+      return (_a2 = alerts == null ? void 0 : alerts.value) == null ? void 0 : _a2.filter((alert) => alert.display);
+    });
+    function has_append_icon(alert) {
+      var _a2;
+      return !isEmpty(alert == null ? void 0 : alert.append_icon) && !isEmpty((_a2 = alert == null ? void 0 : alert.append_icon) == null ? void 0 : _a2.icon);
+    }
+    function has_prepend_icon(alert) {
+      var _a2;
+      return !isEmpty(alert == null ? void 0 : alert.prepend_icon) && !isEmpty((_a2 = alert == null ? void 0 : alert.prepend_icon) == null ? void 0 : _a2.icon);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(true), createElementBlock(Fragment, null, renderList(alerts.value, (alert, index) => {
+        return withDirectives((openBlock(), createBlock(VCol, {
+          key: index,
+          cols: alert.cols
+        }, {
+          default: withCtx(() => [
+            createVNode(VAlert, mergeProps({
+              modelValue: alert.display,
+              "onUpdate:modelValue": ($event) => alert.display = $event
+            }, alert.props()), createSlots({
+              default: withCtx(() => [
+                createElementVNode("div", {
+                  innerHTML: alert.text
+                }, null, 8, _hoisted_1$2)
+              ]),
+              _: 2
+            }, [
+              has_prepend_icon(alert) ? {
+                name: "prepend",
+                fn: withCtx(() => [
+                  createVNode(unref(_sfc_main$c), {
+                    icon: alert == null ? void 0 : alert.prepend_icon
+                  }, null, 8, ["icon"])
+                ]),
+                key: "0"
+              } : void 0,
+              has_append_icon(alert) ? {
+                name: "append",
+                fn: withCtx(() => [
+                  createVNode(unref(_sfc_main$c), {
+                    icon: alert == null ? void 0 : alert.append_icon
+                  }, null, 8, ["icon"])
+                ]),
+                key: "1"
+              } : void 0
+            ]), 1040, ["modelValue", "onUpdate:modelValue"])
+          ]),
+          _: 2
+        }, 1032, ["cols"])), [
+          [vShow, alert.display]
+        ]);
+      }), 128);
+    };
+  }
+});
+const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
+  __name: "FormLoader",
+  props: {
+    form: {
+      type: [ActionForm, InputForm, EasyForm],
+      default: new EasyForm()
+    },
+    name: {
+      type: String,
+      default: ""
+    },
+    cols: {
+      type: Number,
+      default: 12,
+      validator: (value) => ColumnRestriction(value)
+    },
+    sm: {
+      type: Number,
+      default: 12,
+      validator: (value) => ColumnRestriction(value)
+    },
+    md: {
+      type: Number,
+      default: 12,
+      validator: (value) => ColumnRestriction(value)
+    },
+    lg: {
+      type: Number,
+      default: 12,
+      validator: (value) => ColumnRestriction(value)
+    },
+    populate: {
+      type: Boolean,
+      default: false
+    },
+    additionalData: {
+      type: AdditionalData,
+      default: new AdditionalData()
+    },
+    additionalLoadData: {
+      type: AdditionalData,
+      default: new AdditionalData()
+    }
+  },
+  emits: [
+    "update:form",
+    LoaderEvents.Loading,
+    LoaderEvents.Loaded,
+    LoaderEvents.Results,
+    LoaderEvents.Cancelled,
+    LoaderEvents.Updated,
+    LoaderEvents.Reset,
+    LoaderEvents.Processing,
+    LoaderEvents.Failed,
+    LoaderEvents.Successful
+  ],
+  setup(__props, { emit: __emit }) {
+    const emit = __emit;
+    const props = __props;
+    const requires_api = ref(false);
+    const csrf = ref(store.csrf);
+    const loading = ref(true);
+    const loaded_form = ref(
+      new EasyForm({
+        loader: {
+          type: FormLoaderTypes.Circular,
+          progress: new ProgressCircular({ indeterminate: true, color: "primary" })
+        }
+      })
+    );
+    const container = computed(() => {
+      return new FormContainer({
+        cols: props.cols,
+        sm: props.sm,
+        md: props.md,
+        lg: props.lg
+      });
+    });
+    const has_error = computed(() => !isEmpty(loaded_form.value.text));
+    const has_valid_csrf_token = computed(() => csrf.value.isValidCsrfToken());
+    const is_csrf_token_loading = computed(() => csrf.value.isLoading());
+    const has_alerts = computed(
+      () => {
+        var _a2, _b;
+        return (((_b = (_a2 = loaded_form == null ? void 0 : loaded_form.value) == null ? void 0 : _a2.alerts) == null ? void 0 : _b.filter((alert) => alert.display).length) ?? 0) > 0;
+      }
+    );
+    const form_ready = computed(() => {
+      var _a2;
+      return !loaded_form.value.loading && (loaded_form.value instanceof InputForm || loaded_form.value instanceof ActionForm || !isEmpty((_a2 = loaded_form.value) == null ? void 0 : _a2.text));
+    });
+    const form_component = computed(() => {
+      if (!loading.value || !isEmpty(loaded_form.value.name)) {
+        if (loaded_form.value instanceof InputForm) {
+          return FormTypes.Input;
+        }
+        if (loaded_form.value instanceof ActionForm) {
+          return FormTypes.Action;
+        }
+      }
+      return FormTypes.Error;
+    });
+    function reset() {
+      var _a2;
+      emit(LoaderEvents.Reset, true);
+      (_a2 = loaded_form.value) == null ? void 0 : _a2.reset();
+    }
+    function cancel() {
+      var _a2;
+      emit(LoaderEvents.Cancelled, true);
+      (_a2 = loaded_form.value) == null ? void 0 : _a2.cancelled();
+    }
+    function processing(processing2) {
+      emit(LoaderEvents.Processing, processing2);
+    }
+    function failed() {
+      emit(LoaderEvents.Failed, true);
+    }
+    function updated2(form) {
+      emit(LoaderEvents.Updated, form);
+    }
+    function success() {
+      emit(LoaderEvents.Successful, true);
+    }
+    function results(data) {
+      loaded_form.value.hasResults(data);
+      emit(LoaderEvents.Results, data);
+    }
+    function isLoading(load2) {
+      emit(LoaderEvents.Loading, load2);
+      loaded_form.value.isLoading(load2);
+      loading.value = load2;
+    }
+    const validCsrfWatcher = watch(has_valid_csrf_token, async (validToken) => {
+      if (requires_api.value && validToken) {
+        await load();
+      }
+    });
+    onBeforeUnmount(() => {
+      validCsrfWatcher();
+    });
+    onBeforeMount(async () => {
+      isLoading(true);
+      if (!isEmpty(props.form) && isEmpty(props.name)) {
+        requires_api.value = false;
+        loaded_form.value = props.form;
+        isLoading(false);
+      } else if (!isEmpty(props.name)) {
+        requires_api.value = true;
+        if (has_valid_csrf_token.value) {
+          await load();
+        } else if (!is_csrf_token_loading.value) {
+          const tokenCheck = await csrf.value.fetchNewToken();
+          if (!tokenCheck) {
+            loaded_form.value.text = csrf.value.error_message;
+            isLoading(false);
+          }
+        }
+      }
+    });
+    async function load() {
+      loaded_form.value = new EasyForm({
+        name: props.name,
+        additional_data: props.additionalData,
+        additional_load_data: props.additionalLoadData
+      });
+      const results2 = await loaded_form.value.load();
+      if (!results2) {
+        loaded_form.value.text = "Error Loading Form - Not Found";
+        emit(LoaderEvents.Loaded, false);
+      } else if ((results2 == null ? void 0 : results2.type) == FormTypes.Input) {
+        loaded_form.value = new InputForm(results2);
+        loaded_form.value.triggerAlert(AlertTriggers.AfterLoad);
+        emit(LoaderEvents.Loaded, true);
+      } else if (results2.type == FormTypes.Action) {
+        loaded_form.value = new ActionForm(results2);
+        emit(LoaderEvents.Loaded, true);
+      }
+      isLoading(false);
+    }
+    return (_ctx, _cache) => {
+      const _component_input_form_loader = resolveComponent("input-form-loader");
+      const _component_action_form_loader = resolveComponent("action-form-loader");
+      const _component_error_form_loader = resolveComponent("error-form-loader");
+      return openBlock(), createBlock(VCol, {
+        cols: container.value.cols,
+        sm: container.value.sm,
+        md: container.value.md,
+        lg: container.value.lg
+      }, {
+        default: withCtx(() => [
+          has_alerts.value ? (openBlock(), createBlock(VRow, { key: 0 }, {
+            default: withCtx(() => {
+              var _a2;
+              return [
+                createVNode(_sfc_main$b, {
+                  alerts: (_a2 = loaded_form.value) == null ? void 0 : _a2.alerts
+                }, null, 8, ["alerts"])
+              ];
+            }),
+            _: 1
+          })) : createCommentVNode("", true),
+          withDirectives(createVNode(VRow, {
+            justify: "center",
+            class: "form-loader"
+          }, {
+            default: withCtx(() => {
+              var _a2, _b;
+              return [
+                createVNode(VCol, {
+                  cols: "auto",
+                  class: normalizeClass(((_b = (_a2 = loaded_form.value.loader) == null ? void 0 : _a2.progress) == null ? void 0 : _b.class) ?? "")
+                }, {
+                  default: withCtx(() => {
+                    var _a3, _b2, _c, _d;
+                    return [
+                      ((_a3 = loaded_form.value.loader) == null ? void 0 : _a3.type) === unref(FormLoaderTypes).Circular ? (openBlock(), createBlock(VProgressCircular, normalizeProps(mergeProps({ key: 0 }, (_b2 = loaded_form.value.loader) == null ? void 0 : _b2.progress.props())), null, 16)) : createCommentVNode("", true),
+                      ((_c = loaded_form.value.loader) == null ? void 0 : _c.type) === unref(FormLoaderTypes).Linear ? (openBlock(), createBlock(VProgressLinear, normalizeProps(mergeProps({ key: 1 }, (_d = loaded_form.value.loader) == null ? void 0 : _d.progress.props())), null, 16)) : createCommentVNode("", true)
+                    ];
+                  }),
+                  _: 1
+                }, 8, ["class"])
+              ];
+            }),
+            _: 1
+          }, 512), [
+            [vShow, !form_ready.value]
+          ]),
+          withDirectives(createVNode(VRow, null, {
+            default: withCtx(() => [
+              form_component.value == unref(FormTypes).Input && !has_error.value ? (openBlock(), createBlock(_component_input_form_loader, mergeProps({
+                key: 0,
+                form: loaded_form.value,
+                "onUpdate:form": _cache[0] || (_cache[0] = ($event) => loaded_form.value = $event)
+              }, loaded_form.value.props(), {
+                onResults: results,
+                onLoading: isLoading,
+                onReset: reset,
+                onUpdated: updated2,
+                onCancelled: cancel,
+                onProcessing: processing,
+                onFailed: failed,
+                onSuccessful: success
+              }), null, 16, ["form"])) : form_component.value == unref(FormTypes).Action && !has_error.value ? (openBlock(), createBlock(_component_action_form_loader, mergeProps({
+                key: 1,
+                form: loaded_form.value,
+                "onUpdate:form": _cache[1] || (_cache[1] = ($event) => loaded_form.value = $event)
+              }, loaded_form.value.props(), {
+                onResults: results,
+                onLoading: isLoading,
+                onReset: reset,
+                onUpdated: updated2,
+                onCancelled: cancel,
+                onProcessing: processing,
+                onFailed: failed,
+                onSuccessful: success
+              }), null, 16, ["form"])) : form_component.value == unref(FormTypes).Error || has_error.value ? (openBlock(), createBlock(_component_error_form_loader, {
+                key: 2,
+                text: loaded_form.value.text
+              }, null, 8, ["text"])) : createCommentVNode("", true)
+            ]),
+            _: 1
+          }, 512), [
+            [vShow, form_ready.value]
+          ])
+        ]),
+        _: 1
+      }, 8, ["cols", "sm", "md", "lg"]);
     };
   }
 });
@@ -5584,7 +5751,7 @@ const _hoisted_2$1 = {
   key: 1,
   class: "mb-3 mt-4"
 };
-const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
+const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
   __name: "EasyInput",
   props: {
     field: {},
@@ -5612,8 +5779,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
     const props = __props;
     const emit = __emit;
     const field = ref(props.field);
-    watchEffect(() => field.value = props.field);
-    const maskingOptions = ref({
+    const fieldWatcher = watchEffect(() => field.value = props.field);
+    const maskingOptions = reactive({
       ...MASKING_DEFAULTS,
       mask: (props == null ? void 0 : props.field) instanceof TextField ? (_a2 = props.field) == null ? void 0 : _a2.masking : ""
     });
@@ -5666,6 +5833,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
       field.value.invalidate();
       emit("invalidated", field.value.name);
     }
+    onBeforeUnmount(() => {
+      fieldWatcher();
+    });
     onMounted(() => {
       var _a3;
       (_a3 = field == null ? void 0 : field.value) == null ? void 0 : _a3.isLoading(false);
@@ -5704,7 +5874,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           fn: withCtx(() => {
             var _a4;
             return [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 icon: (_a4 = props == null ? void 0 : props.field) == null ? void 0 : _a4.clear_icon,
                 onClick: _cache[0] || (_cache[0] = ($event) => emit("click:clear", $event))
               }, null, 8, ["icon"])
@@ -5717,7 +5887,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           fn: withCtx(() => {
             var _a4;
             return [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 icon: (_a4 = props == null ? void 0 : props.field) == null ? void 0 : _a4.append_icon,
                 onClick: _cache[1] || (_cache[1] = ($event) => emit("click:append", $event))
               }, null, 8, ["icon"])
@@ -5730,7 +5900,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           fn: withCtx(() => {
             var _a4;
             return [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 icon: (_a4 = props == null ? void 0 : props.field) == null ? void 0 : _a4.append_inner_icon,
                 onClick: _cache[2] || (_cache[2] = ($event) => emit("click:appendInner", $event))
               }, null, 8, ["icon"])
@@ -5743,7 +5913,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           fn: withCtx(() => {
             var _a4;
             return [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 icon: (_a4 = props == null ? void 0 : props.field) == null ? void 0 : _a4.prepend_icon,
                 onClick: _cache[3] || (_cache[3] = ($event) => emit("click:prepend", $event))
               }, null, 8, ["icon"])
@@ -5756,7 +5926,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           fn: withCtx(() => {
             var _a4;
             return [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 icon: (_a4 = props == null ? void 0 : props.field) == null ? void 0 : _a4.prepend_inner_icon,
                 onClick: _cache[4] || (_cache[4] = ($event) => emit("click:prependInner", $event))
               }, null, 8, ["icon"])
@@ -5765,70 +5935,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
           key: "4"
         } : void 0
       ]), 1040, ["modelValue", "rules", "fields"])), [
-        [_directive_maska, [maskingOptions.value]]
+        [_directive_maska, void 0, maskingOptions]
       ]) : createCommentVNode("", true);
-    };
-  }
-});
-const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
-  __name: "EasyButton",
-  props: {
-    button: {},
-    disabled: { type: Boolean },
-    identifier: {}
-  },
-  emits: ["click"],
-  setup(__props, { emit: __emit }) {
-    const xProps = __props;
-    const emit = __emit;
-    const button = ref(xProps.button);
-    const has_prepend_icon = computed(() => {
-      var _a2, _b;
-      return !isEmpty(xProps.button.prepend_icon) && !isEmpty((_b = (_a2 = xProps.button) == null ? void 0 : _a2.prepend_icon) == null ? void 0 : _b.icon);
-    });
-    const has_append_icon = computed(() => {
-      var _a2, _b;
-      return !isEmpty(xProps.button.append_icon) && !isEmpty((_b = (_a2 = xProps.button) == null ? void 0 : _a2.append_icon) == null ? void 0 : _b.icon);
-    });
-    function click() {
-      if (!isEmpty(xProps == null ? void 0 : xProps.identifier)) {
-        emit("click", xProps == null ? void 0 : xProps.identifier);
-      } else {
-        emit("click", "");
-      }
-    }
-    return (_ctx, _cache) => {
-      var _a2, _b, _c, _d;
-      return openBlock(), createBlock(VTooltip, mergeProps((_b = (_a2 = button.value) == null ? void 0 : _a2.tooltip) == null ? void 0 : _b.props(), {
-        disabled: ((_d = (_c = button.value) == null ? void 0 : _c.tooltip) == null ? void 0 : _d.disabled) ?? true
-      }), {
-        activator: withCtx(({ props }) => [
-          createVNode(VBtn, mergeProps({ ...props, ...button.value.props() }, {
-            disabled: button.value.disabled,
-            onClick: click
-          }), {
-            default: withCtx(() => [
-              has_prepend_icon.value ? (openBlock(), createBlock(unref(_sfc_main$b), {
-                key: 0,
-                icon: button.value.prepend_icon
-              }, null, 8, ["icon"])) : createCommentVNode("", true),
-              createTextVNode(" " + toDisplayString(button.value.text) + " ", 1),
-              has_append_icon.value ? (openBlock(), createBlock(unref(_sfc_main$b), {
-                key: 1,
-                icon: button.value.append_icon
-              }, null, 8, ["icon"])) : createCommentVNode("", true)
-            ]),
-            _: 2
-          }, 1040, ["disabled"])
-        ]),
-        default: withCtx(() => {
-          var _a3, _b2;
-          return [
-            createElementVNode("span", null, toDisplayString((_b2 = (_a3 = button.value) == null ? void 0 : _a3.tooltip) == null ? void 0 : _b2.text), 1)
-          ];
-        }),
-        _: 1
-      }, 16, ["disabled"]);
     };
   }
 });
@@ -6037,10 +6145,10 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
     const props = __props;
     const emit = __emit;
     const form = ref(props.form);
-    watchEffect(() => {
+    const formEffectWatcher = watchEffect(() => {
       form.value = props.form;
     });
-    watch(form.value, (updated22) => {
+    const formWatcher = watch(form.value, (updated22) => {
       emit(LoaderEvents.Updated, updated22);
     });
     const formReference = ref(null);
@@ -6150,8 +6258,6 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
       emit(LoaderEvents.Loading, loading);
     }
     function resetForm() {
-      var _a2;
-      form.value = (_a2 = form.value) == null ? void 0 : _a2.reset();
       formReference.value.resetValidation();
       isLoading(false);
       emit(LoaderEvents.Reset, true);
@@ -6159,82 +6265,79 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
     function cancelForm() {
       emit(LoaderEvents.Cancelled, true);
     }
+    onBeforeUnmount(() => {
+      formWatcher();
+      formEffectWatcher();
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(VRow, null, {
-        default: withCtx(() => {
-          var _a2;
-          return [
-            createVNode(VForm, mergeProps(((_a2 = form.value) == null ? void 0 : _a2.props()) ?? {}, {
-              ref_key: "formReference",
-              ref: formReference,
-              class: "mx-auto w-100"
-            }), {
-              default: withCtx(() => [
-                createVNode(VCol, { cols: "12" }, {
-                  default: withCtx(() => [
-                    createVNode(VRow, null, {
-                      default: withCtx(() => [
-                        (openBlock(true), createElementBlock(Fragment, null, renderList(filteredFields.value, (field, index_f) => {
-                          var _a3;
-                          return openBlock(), createBlock(VCol, {
-                            cols: ((_a3 = field.cols) == null ? void 0 : _a3.toString()) ?? "12",
-                            offset: field.offset,
-                            key: index_f
-                          }, {
-                            default: withCtx(() => [
-                              createVNode(_sfc_main$a, {
-                                field: filteredFields.value[index_f],
-                                "onUpdate:field": ($event) => filteredFields.value[index_f] = $event,
-                                fields: formFields.value,
-                                onUpdated: ($event) => updated2(field),
-                                onValidated: field.validate,
-                                onInvalidated: field.invalidate
-                              }, null, 8, ["field", "onUpdate:field", "fields", "onUpdated", "onValidated", "onInvalidated"])
-                            ]),
-                            _: 2
-                          }, 1032, ["cols", "offset"]);
-                        }), 128))
-                      ]),
-                      _: 1
-                    }),
-                    hasButtons.value ? (openBlock(), createBlock(VRow, {
-                      key: 0,
-                      align: form.value.button_align_row,
-                      justify: form.value.button_justify_row
+      var _a2;
+      return openBlock(), createBlock(VForm, mergeProps(((_a2 = form.value) == null ? void 0 : _a2.props()) ?? {}, {
+        ref_key: "formReference",
+        ref: formReference,
+        class: "mx-auto w-100"
+      }), {
+        default: withCtx(() => [
+          createVNode(VCol, { cols: "12" }, {
+            default: withCtx(() => [
+              createVNode(VRow, null, {
+                default: withCtx(() => [
+                  (openBlock(true), createElementBlock(Fragment, null, renderList(filteredFields.value, (field, index_f) => {
+                    var _a3;
+                    return openBlock(), createBlock(VCol, {
+                      cols: ((_a3 = field.cols) == null ? void 0 : _a3.toString()) ?? "12",
+                      offset: field.offset,
+                      key: index_f
                     }, {
-                      default: withCtx(() => {
-                        var _a3;
-                        return [
-                          (openBlock(true), createElementBlock(Fragment, null, renderList((_a3 = form.value) == null ? void 0 : _a3.buttons, (button, index) => {
-                            return openBlock(), createBlock(VCol, {
-                              cols: "auto",
-                              key: index
-                            }, {
-                              default: withCtx(() => [
-                                createVNode(_sfc_main$9, {
-                                  button,
-                                  identifier: index,
-                                  disabled: isButtonDisabled(button),
-                                  onClick: ($event) => handleButtonClick(button)
-                                }, null, 8, ["button", "identifier", "disabled", "onClick"])
-                              ]),
-                              _: 2
-                            }, 1024);
-                          }), 128))
-                        ];
-                      }),
-                      _: 1
-                    }, 8, ["align", "justify"])) : createCommentVNode("", true)
-                  ]),
-                  _: 1
-                })
-              ]),
-              _: 1
-            }, 16)
-          ];
-        }),
+                      default: withCtx(() => [
+                        createVNode(_sfc_main$9, {
+                          field: filteredFields.value[index_f],
+                          "onUpdate:field": ($event) => filteredFields.value[index_f] = $event,
+                          fields: formFields.value,
+                          onUpdated: ($event) => updated2(field),
+                          onValidated: field.validate,
+                          onInvalidated: field.invalidate
+                        }, null, 8, ["field", "onUpdate:field", "fields", "onUpdated", "onValidated", "onInvalidated"])
+                      ]),
+                      _: 2
+                    }, 1032, ["cols", "offset"]);
+                  }), 128))
+                ]),
+                _: 1
+              }),
+              hasButtons.value ? (openBlock(), createBlock(VRow, {
+                key: 0,
+                align: form.value.button_align_row,
+                justify: form.value.button_justify_row
+              }, {
+                default: withCtx(() => {
+                  var _a3;
+                  return [
+                    (openBlock(true), createElementBlock(Fragment, null, renderList((_a3 = form.value) == null ? void 0 : _a3.buttons, (button, index) => {
+                      return openBlock(), createBlock(VCol, {
+                        cols: "auto",
+                        key: index
+                      }, {
+                        default: withCtx(() => [
+                          createVNode(_sfc_main$d, {
+                            button,
+                            identifier: index,
+                            disabled: isButtonDisabled(button),
+                            onClick: ($event) => handleButtonClick(button)
+                          }, null, 8, ["button", "identifier", "disabled", "onClick"])
+                        ]),
+                        _: 2
+                      }, 1024);
+                    }), 128))
+                  ];
+                }),
+                _: 1
+              }, 8, ["align", "justify"])) : createCommentVNode("", true)
+            ]),
+            _: 1
+          })
+        ]),
         _: 1
-      });
+      }, 16);
     };
   }
 });
@@ -6247,10 +6350,23 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
       validator: (value) => ActionInputFormType(value)
     }
   },
-  setup(__props) {
+  emits: [
+    "update:form",
+    LoaderEvents.Loading,
+    LoaderEvents.Loaded,
+    LoaderEvents.Results,
+    LoaderEvents.Cancelled,
+    LoaderEvents.Updated,
+    LoaderEvents.Reset,
+    LoaderEvents.Processing,
+    LoaderEvents.Failed,
+    LoaderEvents.Successful
+  ],
+  setup(__props, { emit: __emit }) {
     const props = __props;
+    const emit = __emit;
     const form = ref(props.form);
-    watchEffect(() => form.value = props.form);
+    const formWatcher = watchEffect(() => form.value = props.form);
     const filtered_actions = computed(() => {
       var _a2;
       return (((_a2 = form.value) == null ? void 0 : _a2.actions) ?? []).filter((action) => {
@@ -6289,9 +6405,27 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
         }
       });
     }
-    async function runAction(action_identifier) {
-      console.log("RUN ACTION", action_identifier);
+    function isLoading(loading) {
+      form.value.isLoading(loading);
+      emit(LoaderEvents.Loading, loading);
     }
+    async function runAction(action_identifier) {
+      emit(LoaderEvents.Processing, true);
+      isLoading(true);
+      const results = await form.value.process(action_identifier);
+      if (!results) {
+        emit(LoaderEvents.Failed, true);
+        isLoading(false);
+        return;
+      }
+      emit(LoaderEvents.Successful, true);
+      if (form.value.axios.expecting_results) {
+        emit(LoaderEvents.Results, results);
+      }
+    }
+    onBeforeUnmount(() => {
+      formWatcher();
+    });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(VRow, {
         justify: form.value.justify_row
@@ -6304,13 +6438,13 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
               class: "py-0 px-2"
             }, {
               default: withCtx(() => [
-                !unref(isEmpty)(action.icon) ? (openBlock(), createBlock(unref(_sfc_main$b), {
+                !unref(isEmpty)(action.icon) ? (openBlock(), createBlock(unref(_sfc_main$c), {
                   key: 0,
                   icon: action.icon,
                   identifier: action.identifier,
                   onClick: ($event) => runAction(action.identifier)
                 }, null, 8, ["icon", "identifier", "onClick"])) : createCommentVNode("", true),
-                !unref(isEmpty)(action.button) ? (openBlock(), createBlock(unref(_sfc_main$9), {
+                !unref(isEmpty)(action.button) ? (openBlock(), createBlock(unref(_sfc_main$d), {
                   key: 1,
                   button: action.button,
                   identifier: action.identifier,
@@ -10099,8 +10233,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
     function toggleMenu() {
       show_menu.value = !show_menu.value;
     }
-    watch(picker.value, (color) => {
+    const pickerWatcher = watch(picker.value, (color) => {
       handleInputUpdate(color.value);
+    });
+    onBeforeUnmount(() => {
+      pickerWatcher();
     });
     onMounted(() => {
       var _a2;
@@ -10119,7 +10256,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
             activator: withCtx(({ props }) => {
               var _a2;
               return [
-                createVNode(_sfc_main$a, mergeProps({
+                createVNode(_sfc_main$9, mergeProps({
                   field: textfield.value,
                   "onUpdate:field": _cache[0] || (_cache[0] = ($event) => textfield.value = $event)
                 }, { ...props, ...(_a2 = textfield.value) == null ? void 0 : _a2.props() }, {
@@ -15541,7 +15678,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent$1({
               activator: withCtx(({ props }) => {
                 var _a3;
                 return [
-                  createVNode(_sfc_main$a, mergeProps({
+                  createVNode(_sfc_main$9, mergeProps({
                     field: textfield.value,
                     "onUpdate:field": _cache[0] || (_cache[0] = ($event) => textfield.value = $event)
                   }, { ...props, ...(_a3 = textfield.value) == null ? void 0 : _a3.props() }, {
@@ -15695,14 +15832,19 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent$1({
       }
       return props.strengthErrorText;
     });
-    watch(textfield.value, () => {
+    const textfieldWatcher = watch(textfield.value, () => {
       updated2();
     });
-    watch(modelValue, (update) => {
+    const modelValueWatcher = watch(modelValue, (update) => {
       textfield.value.value = update;
     });
-    watch(errorMessages.value, (messages) => {
+    const errorMessagesWatcher = watch(errorMessages.value, (messages) => {
       textfield.value.error_messages = messages;
+    });
+    onBeforeUnmount(() => {
+      textfieldWatcher();
+      modelValueWatcher();
+      errorMessagesWatcher();
     });
     function updated2() {
       emit("update:modelValue", textfield.value.value);
@@ -15752,7 +15894,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent$1({
             default: withCtx(() => {
               var _a2;
               return [
-                createVNode(_sfc_main$a, mergeProps({
+                createVNode(_sfc_main$9, mergeProps({
                   field: textfield.value,
                   "onUpdate:field": _cache[0] || (_cache[0] = ($event) => textfield.value = $event)
                 }, (_a2 = textfield.value) == null ? void 0 : _a2.props(), {
@@ -18559,7 +18701,6 @@ const VSelect = genericComponent()({
             }
           })]
         }), model.value.map((item, index) => {
-          var _a2;
           function onChipClose(e) {
             e.stopPropagation();
             e.preventDefault();
@@ -18574,6 +18715,17 @@ const VSelect = genericComponent()({
             modelValue: true,
             "onUpdate:modelValue": void 0
           };
+          const hasSlot = hasChips ? !!slots.chip : !!slots.selection;
+          const slotContent = hasSlot ? ensureValidVNode(hasChips ? slots.chip({
+            item,
+            index,
+            props: slotProps
+          }) : slots.selection({
+            item,
+            index
+          })) : void 0;
+          if (hasSlot && !slotContent)
+            return void 0;
           return createVNode("div", {
             "key": item.value,
             "class": "v-select__selection"
@@ -18593,18 +18745,8 @@ const VSelect = genericComponent()({
               }
             }
           }, {
-            default: () => {
-              var _a3;
-              return [(_a3 = slots.chip) == null ? void 0 : _a3.call(slots, {
-                item,
-                index,
-                props: slotProps
-              })];
-            }
-          }) : ((_a2 = slots.selection) == null ? void 0 : _a2.call(slots, {
-            item,
-            index
-          })) ?? createVNode("span", {
+            default: () => [slotContent]
+          }) : slotContent ?? createVNode("span", {
             "class": "v-select__selection-text"
           }, [item.title, props.multiple && index < model.value.length - 1 && createVNode("span", {
             "class": "v-select__selection-comma"
@@ -18697,10 +18839,10 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
         cancel();
       }
     }
-    watch(am_or_pm, () => {
+    const typeWatcher = watch(am_or_pm, () => {
       updated2();
     });
-    watch(hours2, (value) => {
+    const hourWatcher = watch(hours2, (value) => {
       if (props.mode == TimePickerModeTypes.Normal) {
         if (props.rollingNumbers) {
           if (value <= 0) {
@@ -18736,7 +18878,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       }
       updated2();
     });
-    watch(minutes2, (value) => {
+    const minuteWatcher = watch(minutes2, (value) => {
       if (props.rollingNumbers) {
         if (value < 0) {
           minutes2.value = 59;
@@ -18749,6 +18891,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
         minutes2.value = minutes2.value.toString().padStart(2, "0");
       }
       updated2();
+    });
+    onBeforeUnmount(() => {
+      typeWatcher();
+      hourWatcher();
+      minuteWatcher();
     });
     onMounted(() => {
       if (!isEmpty(props.modelValue)) {
@@ -18903,7 +19050,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent$1({
       emit("invalidated", textfield.value.name);
     }
     function toggleMenu() {
-      console.log("toggleMenu");
       show_menu.value = !show_menu.value;
     }
     function cancel() {
@@ -18913,8 +19059,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent$1({
       show_menu.value = false;
       updated2(event);
     }
-    watch(picker.value, (date) => {
+    const pickerWatcher = watch(picker.value, (date) => {
       updated2(date.value);
+    });
+    onBeforeUnmount(() => {
+      pickerWatcher();
     });
     onMounted(() => {
       textfield.value.value = xProps.modelValue;
@@ -18932,7 +19081,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent$1({
               activator: withCtx(({ props }) => {
                 var _a3;
                 return [
-                  createVNode(_sfc_main$a, mergeProps({ field: textfield.value }, { ...props, ...(_a3 = textfield.value) == null ? void 0 : _a3.props() }, {
+                  createVNode(_sfc_main$9, mergeProps({ field: textfield.value }, { ...props, ...(_a3 = textfield.value) == null ? void 0 : _a3.props() }, {
                     fields: fields.value,
                     onUpdated: updated2,
                     onValidated: validate,
@@ -19172,7 +19321,7 @@ const v = /* @__PURE__ */ new WeakMap(), N = (n) => {
 const FormLoaderPlugin = {
   install(app, options) {
     const finalOptions = new PluginOptions(options);
-    app.directive("maska", U).component("FormLoader", _sfc_main$c).component("InputFormLoader", _sfc_main$8).component("ActionFormLoader", _sfc_main$7).component("EasyDatePicker", _sfc_main$3).component("EasyTimePicker", _sfc_main).component("EasyColorPicker", _sfc_main$4).component("EasyCheckboxGroup", _sfc_main$5).component("EasyPassword", _sfc_main$2).component("ErrorFormLoader", _sfc_main$6);
+    app.directive("maska", U).component("FormLoader", _sfc_main$a).component("InputFormLoader", _sfc_main$8).component("ActionFormLoader", _sfc_main$7).component("EasyDatePicker", _sfc_main$3).component("EasyTimePicker", _sfc_main).component("EasyColorPicker", _sfc_main$4).component("EasyCheckboxGroup", _sfc_main$5).component("EasyPassword", _sfc_main$2).component("ErrorFormLoader", _sfc_main$6);
     store.options = finalOptions;
     store.csrf = new Csrf({
       endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint)

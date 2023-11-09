@@ -11,7 +11,6 @@ export class SelectField extends EasyField {
   component = "v-select";
   counter: string | number | boolean = false;
   direction: DirectionType = DirectionType.Horizontal;
-  declare discriminator: "SelectField";
   filter_keys: string | string[] = ["title"];
   filter_mode: FilterModeTypes = FilterModeTypes.Intersection;
   hide_no_data = false;
@@ -38,6 +37,8 @@ export class SelectField extends EasyField {
   constructor(init?: Partial<SelectField>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "SelectField";
   }
 
   loadItems(items: any): this {

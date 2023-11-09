@@ -8,6 +8,7 @@ import { AlertTypes } from "../../enums";
 import { ButtonVariantTypes } from "../../enums";
 export declare class Alert extends GotProps {
     auto_close_timer: number;
+    append_icon: Icon | undefined;
     border: AlertBorders | boolean;
     border_color: string | undefined;
     closable: boolean;
@@ -21,6 +22,7 @@ export declare class Alert extends GotProps {
     elevation: number;
     height: string | number | undefined;
     icon: Icon | undefined;
+    prepend_icon: Icon | undefined;
     max_height: string | number | undefined;
     max_width: string | number | undefined;
     min_height: string | number | undefined;
@@ -35,6 +37,8 @@ export declare class Alert extends GotProps {
     type: AlertTypes | string | undefined;
     variant: ButtonVariantTypes;
     constructor(init?: Partial<Alert>);
+    setDefaults(): void;
+    iconCheck(icon: Icon): void;
     allowedProps(): string[];
     autoClose(): Alert;
     convertContents(text: string): Alert;

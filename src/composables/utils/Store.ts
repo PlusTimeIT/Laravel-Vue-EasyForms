@@ -3,7 +3,7 @@ import { PluginOptions } from "../../classes/PluginOptions";
 import { Csrf } from "../../server";
 
 interface Store {
-  csrf: Csrf;
+  csrf?: Csrf | undefined;
   options: PluginOptions;
 }
 
@@ -23,7 +23,6 @@ const store: Store = {
     uses_vue_router: false,
     axios: axios,
   }),
-  csrf: new Csrf(),
 };
 
 export { store };

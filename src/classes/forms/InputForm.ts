@@ -46,7 +46,6 @@ export class InputForm extends EasyForm {
 
   constructor(init?: Partial<InputForm>) {
     super(init);
-
     if (!isEmpty(init?.fields) && isArray(init?.fields)) {
       for (const field of init?.fields ?? []) {
         if (!isEmpty(field.discriminator)) {
@@ -190,7 +189,7 @@ export class InputForm extends EasyForm {
    */
   props(): object {
     const result: any = {};
-    result["enctype"] = ContentTypes.Application;
+    result["enctype"] = ContentTypes.JSON;
     if (this.axios.multi_part) {
       result["enctype"] = ContentTypes.MultiPart;
     }

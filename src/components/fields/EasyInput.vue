@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, Ref, watchEffect } from "vue"; // Import necessary Vue Composition API functions
+import { ref, computed, onMounted, Ref, watchEffect, reactive, onBeforeUnmount } from "vue"; // Import necessary Vue Composition API functions
 import { isEmpty } from "../../composables/utils";
 import type { FieldType } from "../../types";
 import { TextField } from "../../classes/fields"; // Import TextField here
@@ -34,9 +34,9 @@ const emit = defineEmits([
 
 // Create a ref for the field
 const field: Ref<FieldType> = ref(props.field) as Ref<FieldType>;
-watchEffect(() => (field.value = props.field));
+const fieldWatcher = watchEffect(() => (field.value = props.field));
 // Create a ref for masking options, including default mask if it's a TextField
-const maskingOptions = ref({
+const maskingOptions = reactive({
   ...MASKING_DEFAULTS,
   mask: props?.field instanceof TextField ? props.field?.masking : "",
 });
@@ -89,6 +89,10 @@ function invalidate() {
   emit("invalidated", field.value.name);
 }
 
+onBeforeUnmount(() => {
+  fieldWatcher();
+});
+
 // On mounted, set field loading status to false
 onMounted(() => {
   field?.value?.isLoading(false);
@@ -101,7 +105,7 @@ onMounted(() => {
     :is="field?.component"
     v-model="field.value"
     v-bind="field?.props()"
-    v-maska="[maskingOptions]"
+    v-maska:[maskingOptions]
     :rules="rules"
     :fields="props.fields ?? []"
     @update:modelValue="updated"
@@ -113,42 +117,24 @@ onMounted(() => {
     @click:append="emit('click:append', $event)"
     @click:appendInner="emit('click:appendInner', $event)"
   >
-    <!-- Clear Icon Slot -->
     <template #clear v-if="hasClearIcon">
-      <!-- Render an easy-icon with the clear_icon if available, and emit 'click:clear' event on click -->
       <easy-icon :icon="props?.field?.clear_icon" @click="emit('click:clear', $event)" />
     </template>
-
-    <!-- Append Icon Slot -->
     <template #append v-if="hasAppendIcon">
-      <!-- Render an easy-icon with the append_icon if available, and emit 'click:append' event on click -->
       <easy-icon :icon="props?.field?.append_icon" @click="emit('click:append', $event)" />
     </template>
-
-    <!-- Append Inner Icon Slot -->
     <template #append-inner v-if="hasAppendInnerIcon">
-      <!-- Render an easy-icon with the append_inner_icon if available, and emit 'click:appendInner' event on click -->
       <easy-icon :icon="props?.field?.append_inner_icon" @click="emit('click:appendInner', $event)" />
     </template>
-
-    <!-- Prepend Icon Slot -->
     <template #prepend v-if="hasPrependIcon">
-      <!-- Render an easy-icon with the prepend_icon if available, and emit 'click:prepend' event on click -->
       <easy-icon :icon="props?.field?.prepend_icon" @click="emit('click:prepend', $event)" />
     </template>
-
-    <!-- Prepend Inner Icon Slot -->
     <template #prepend-inner v-if="hasPrependInnerIcon">
-      <!-- Render an easy-icon with the prepend_inner_icon if available, and emit 'click:prependInner' event on click -->
       <easy-icon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
     </template>
-
-    <!-- Render field value as a paragraph if the component is 'h2' -->
     <p class="mb-3 mt-4" v-if="field.component == 'v-radio-group'">
       <v-radio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />
     </p>
-
-    <!-- Render field value as a paragraph if the component is 'h2' -->
     <p class="mb-3 mt-4" v-if="field.component == 'h2'">
       {{ field.value }}
     </p>

@@ -38,8 +38,8 @@ export abstract class EasyField extends GotProps implements HasField {
   component_type: string | undefined;
   density: DensityTypes = DensityTypes.Default;
   depends_on = "";
-  discriminator = "";
   disabled = false;
+  discriminator = "";
   eager = false;
   error = false;
   error_messages: string | string[] = [];
@@ -97,6 +97,21 @@ export abstract class EasyField extends GotProps implements HasField {
       delete init?.clear_icon;
     }
 
+    if (!isEmpty(init?.append_icon)) {
+      this.append_icon = new Icon(init?.append_icon);
+      delete init?.append_icon;
+    }
+
+    if (!isEmpty(init?.prepend_icon)) {
+      this.prepend_icon = new Icon(init?.prepend_icon);
+      delete init?.prepend_icon;
+    }
+
+    if (!isEmpty(init?.prepend_icon)) {
+      this.prepend_icon = new Icon(init?.prepend_icon);
+      delete init?.prepend_icon;
+    }
+
     if (!isEmpty(init?.tooltip)) {
       this.tooltip = new Tooltip(init?.tooltip);
       delete init?.tooltip;
@@ -145,15 +160,6 @@ export abstract class EasyField extends GotProps implements HasField {
     }
   }
 
-  /**
-   * Invalidate the field's validation state.
-   * @returns {this} The EasyField instance for method chaining.
-   */
-  invalidate(): this {
-    this.validated = false;
-    return this;
-  }
-
   addErrorMessage(message: string): this {
     this.validated = false;
     if (isArray(this.error_messages)) {
@@ -168,6 +174,15 @@ export abstract class EasyField extends GotProps implements HasField {
 
   clearErrorMessages(): this {
     this.error_messages = [];
+    return this;
+  }
+
+  /**
+   * Invalidate the field's validation state.
+   * @returns {this} The EasyField instance for method chaining.
+   */
+  invalidate(): this {
+    this.validated = false;
     return this;
   }
 
@@ -258,6 +273,14 @@ export abstract class EasyField extends GotProps implements HasField {
   validate(): this {
     this.validated = true;
     return this;
+  }
+
+  /**
+   * Validate the field.
+   * @returns {this} The EasyField instance for method chaining.
+   */
+  findValidation(name: string): ValidationRule | null {
+    return this.rules.find((rule) => rule.name === name);
   }
 
   /**

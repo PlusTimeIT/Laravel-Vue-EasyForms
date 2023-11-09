@@ -1,55 +1,22 @@
 import { TextField, ColorPicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import type { FieldType } from "../../types";
-declare const _default: import("vue").DefineComponent<{
-    menu: {
-        type: import("vue").PropType<Menu>;
-        required: true;
-    };
-    picker: {
-        type: import("vue").PropType<ColorPicker>;
-        required: true;
-    };
-    textfield: {
-        type: import("vue").PropType<TextField>;
-        required: true;
-    };
-    fields: {
-        type: import("vue").PropType<FieldType[]>;
-        required: true;
-    };
-    modelValue: {
-        type: import("vue").PropType<string>;
-        required: true;
-        default: string;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+interface Props {
+    menu: Menu;
+    modelValue: string | undefined;
+    picker: ColorPicker;
+    textfield: TextField;
+    fields: FieldType[];
+}
+declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    modelValue: string;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     validated: (value: string) => void;
     invalidated: (value: string) => void;
     "update:modelValue": (value: any) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    menu: {
-        type: import("vue").PropType<Menu>;
-        required: true;
-    };
-    picker: {
-        type: import("vue").PropType<ColorPicker>;
-        required: true;
-    };
-    textfield: {
-        type: import("vue").PropType<TextField>;
-        required: true;
-    };
-    fields: {
-        type: import("vue").PropType<FieldType[]>;
-        required: true;
-    };
-    modelValue: {
-        type: import("vue").PropType<string>;
-        required: true;
-        default: string;
-    };
-}>> & {
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    modelValue: string;
+}>>> & {
     "onUpdate:modelValue"?: (value: any) => any;
     onValidated?: (value: string) => any;
     onInvalidated?: (value: string) => any;
@@ -57,4 +24,21 @@ declare const _default: import("vue").DefineComponent<{
     modelValue: string;
 }, {}>;
 export default _default;
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToRuntimeProps<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
+    };
+};
+type __VLS_WithDefaults<P, D> = {
+    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
+        default: D[K];
+    }> : P[K];
+};
+type __VLS_Prettify<T> = {
+    [K in keyof T]: T[K];
+} & {};
 //# sourceMappingURL=EasyColorPicker.vue.d.ts.map

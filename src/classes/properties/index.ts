@@ -5,3 +5,4 @@ export * from "./CheckboxGroupValue";
 export * from "./DataItem";
 export * from "./ValidationRule";
 export * from "./MessageParameter";
+export * from "./FormLoader";

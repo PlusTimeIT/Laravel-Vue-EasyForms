@@ -4,22 +4,27 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { i as isEmpty, a as isArray, S as ServerCall, s as store, g as isObject } from "./Types-9f7b5c2f.js";
+import { i as isEmpty, a as isArray, s as store, g as isObject } from "./Types-dbac3a4a.js";
 import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
-import { A as AxiosCalls, C as ContentTypes } from "./ContentTypes-f35a51f5.js";
-import { A as Alert } from "./Alert-263e9c8e.js";
-import { A as AdditionalData } from "./AdditionalData-dc6ae75c.js";
+import { A as AxiosCalls, C as ContentTypes } from "./ContentTypes-783ab8ea.js";
+import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
+import { A as Alert } from "./Alert-be54e160.js";
+import { P as ProgressCircular } from "./ProgressLinear-fca54ab2.js";
+import { S as ServerCall } from "./ServerCall-3921df14.js";
+import { A as AdditionalData, F as FormLoader } from "./FormLoader-f8643b8d.js";
 import { a as AxiosOptions } from "./AxiosOptions-15ae3169.js";
 import { J as JustifyRow, A as AlignRow } from "./JustifyRow-8255fd21.js";
-import { B as Button } from "./Button-f88aa9d7.js";
-import { E as EasyField, A as AutoCompleteField, a as CheckboxField, C as CheckboxGroupField, P as PasswordField, R as RadioGroupField, b as RadioField, c as ColorPickerField, D as DatePickerField, F as FileInputField, S as SwitchField, T as TextField, d as TimePickerField } from "./fields-7323b549.js";
+import { ActionIcon, ActionButton } from "./actions.js";
+import { E as EasyField, A as AutoCompleteField, a as CheckboxField, C as CheckboxGroupField, P as PasswordField, R as RadioGroupField, b as RadioField, c as ColorPicker, d as ColorPickerField, D as DatePicker, e as DatePickerField, F as FileInputField, S as SwitchField, T as TextField, f as TimePickerField } from "./fields-72b757da.js";
 import "axios";
 import { D as DirectionType, F as FilterModeTypes } from "./ViewModeTypes-6930220b.js";
+import { B as Button } from "./Button-58652d5c.js";
 import "./ButtonVariantTypes-e4c42916.js";
 import "./LocationTypes-8f3d7f01.js";
-import "./Tooltip-ee47020d.js";
+import "./Tooltip-f8329e53.js";
+import "./GotProps-440b6309.js";
 import "./ValidationRule-73a2fa9e.js";
-import "./Menu-b5b194f8.js";
+import "./Menu-8cd78ff9.js";
 import "./ScrollStrategyTypes-c3dd8b07.js";
 class EasyForm {
   constructor(init) {
@@ -27,6 +32,7 @@ class EasyForm {
     __publicField(this, "additional_load_data", new AdditionalData());
     __publicField(this, "alerts", []);
     __publicField(this, "axios", new AxiosOptions());
+    __publicField(this, "loader");
     __publicField(this, "loading", true);
     __publicField(this, "name", "");
     __publicField(this, "original", []);
@@ -40,11 +46,21 @@ class EasyForm {
       }
       init == null ? true : delete init.alerts;
     }
-    if (!isEmpty(init == null ? void 0 : init.axios) && isArray(init == null ? void 0 : init.axios)) {
+    if (!isEmpty(init == null ? void 0 : init.axios)) {
       this.axios = new AxiosOptions(init == null ? void 0 : init.axios);
       init == null ? true : delete init.axios;
     }
+    if (!isEmpty(init == null ? void 0 : init.loader)) {
+      this.loader = new FormLoader(init == null ? void 0 : init.loader);
+      init == null ? true : delete init.loader;
+    }
     Object.assign(this, init);
+    if (isEmpty(this.loader)) {
+      this.loader = new FormLoader({
+        type: FormLoaderTypes.Circular,
+        progress: new ProgressCircular({ indeterminate: true, color: "primary" })
+      });
+    }
   }
   cancelled() {
     this.triggerAlert(AlertTriggers.Cancelled);
@@ -137,56 +153,13 @@ class EasyForm {
     return this;
   }
   triggerAlert(trigger, text = "") {
+    console.log("Alert Triggered", trigger);
     const alert = this.alerts.find((a) => a.trigger == trigger);
     if (isEmpty(alert)) {
       return this;
     }
     alert == null ? void 0 : alert.convertContents(text).show().autoClose();
     return this;
-  }
-}
-class ActionForm extends EasyForm {
-  constructor(init) {
-    super(init);
-    __publicField(this, "actions", []);
-    __publicField(this, "callback", "");
-    __publicField(this, "inline", false);
-    __publicField(this, "justify_row", JustifyRow.Center);
-    __publicField(this, "type", "action-form");
-    Object.assign(this, init);
-  }
-  data(action_identifier) {
-    const data = new FormData();
-    data.set("form_name", this.name);
-    data.set("action", action_identifier);
-    return data;
-  }
-  async process(action_identifier) {
-    var _a, _b;
-    let response;
-    this.isLoading(true);
-    try {
-      response = await ServerCall.request(
-        AxiosCalls.Post,
-        "url",
-        ServerCall.mergeData(this.data(action_identifier), this.additional_load_data.toObject()),
-        this.axios
-      );
-      if (response.status === 200 || response.status === 204) {
-        this.isLoading(((_a = response == null ? void 0 : response.data) == null ? void 0 : _a.loader) ?? false);
-        if (!((_b = response == null ? void 0 : response.data) == null ? void 0 : _b.result)) {
-          return false;
-        }
-        const results = JSON.parse(JSON.stringify(response.data));
-        return results;
-      }
-    } catch (error) {
-      return false;
-    }
-    return false;
-  }
-  props() {
-    return {};
   }
 }
 class SelectField extends EasyField {
@@ -222,6 +195,7 @@ class SelectField extends EasyField {
     __publicField(this, "transition", false);
     __publicField(this, "type", "text");
     Object.assign(this, init);
+    this.discriminator = "SelectField";
   }
   loadItems(items) {
     this.items = items;
@@ -342,8 +316,16 @@ function registerDefaults() {
       field: RadioField
     },
     {
+      name: "ColorPicker",
+      field: ColorPicker
+    },
+    {
       name: "ColorPickerField",
       field: ColorPickerField
+    },
+    {
+      name: "DatePicker",
+      field: DatePicker
     },
     {
       name: "DatePickerField",
@@ -368,6 +350,14 @@ function registerDefaults() {
     {
       name: "SelectField",
       field: SelectField
+    },
+    {
+      name: "ActionIcon",
+      field: ActionIcon
+    },
+    {
+      name: "ActionButton",
+      field: ActionButton
     }
   ];
   for (const fieldDefault of defaults) {
@@ -380,6 +370,68 @@ function registerClass(className, classConstructor) {
 }
 function getClassConstructor(className) {
   return classRegistry[className];
+}
+class ActionForm extends EasyForm {
+  constructor(init) {
+    super(init);
+    __publicField(this, "actions", []);
+    __publicField(this, "callback", "");
+    __publicField(this, "inline", false);
+    __publicField(this, "justify_row", JustifyRow.Center);
+    __publicField(this, "type", "action-form");
+    if (!isEmpty(init == null ? void 0 : init.actions) && isArray(init == null ? void 0 : init.actions)) {
+      for (const actions of (init == null ? void 0 : init.actions) ?? []) {
+        if (!isEmpty(actions.discriminator)) {
+          const className = actions.discriminator;
+          this.instantiateAction(className, actions);
+        }
+      }
+      init == null ? true : delete init.actions;
+    }
+    Object.assign(this, init);
+  }
+  instantiateAction(className, data) {
+    const classConstructor = getClassConstructor(className);
+    if (classConstructor) {
+      const instance = new classConstructor(data);
+      this.actions.push(instance);
+    } else {
+      console.error(`Class "${className}" not found in the registry.`);
+    }
+  }
+  data(action_identifier) {
+    const data = new FormData();
+    data.set("form_name", this.name);
+    data.set("form_action", action_identifier);
+    return data;
+  }
+  async process(action_identifier) {
+    var _a, _b;
+    let response;
+    this.isLoading(true);
+    try {
+      response = await ServerCall.request(
+        AxiosCalls.Post,
+        store.options.buildDomain("/forms/process"),
+        ServerCall.mergeData(this.data(action_identifier), this.additional_data.toObject()),
+        this.axios
+      );
+      if (response.status === 200 || response.status === 204) {
+        this.isLoading(((_a = response == null ? void 0 : response.data) == null ? void 0 : _a.loader) ?? false);
+        if (!((_b = response == null ? void 0 : response.data) == null ? void 0 : _b.result)) {
+          return false;
+        }
+        const results = JSON.parse(JSON.stringify(response.data));
+        return results;
+      }
+    } catch (error) {
+      return false;
+    }
+    return false;
+  }
+  props() {
+    return {};
+  }
 }
 class InputForm extends EasyForm {
   constructor(init) {
@@ -508,7 +560,7 @@ class InputForm extends EasyForm {
    */
   props() {
     const result = {};
-    result["enctype"] = ContentTypes.Application;
+    result["enctype"] = ContentTypes.JSON;
     if (this.axios.multi_part) {
       result["enctype"] = ContentTypes.MultiPart;
     }

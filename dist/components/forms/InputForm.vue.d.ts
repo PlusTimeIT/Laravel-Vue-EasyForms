@@ -23,11 +23,11 @@ declare const _default: import("vue").DefineComponent<{
         validator: (value: InputForm) => boolean;
     };
 }>> & {
+    onReset?: (...args: any[]) => any;
     "onUpdate:form"?: (...args: any[]) => any;
     onLoading?: (...args: any[]) => any;
     onLoaded?: (...args: any[]) => any;
     onResults?: (...args: any[]) => any;
-    onReset?: (...args: any[]) => any;
     onCancelled?: (...args: any[]) => any;
     onProcessing?: (...args: any[]) => any;
     onFailed?: (...args: any[]) => any;

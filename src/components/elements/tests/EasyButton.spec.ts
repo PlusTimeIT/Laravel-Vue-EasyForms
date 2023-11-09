@@ -123,10 +123,6 @@ describe("configured easy button", () => {
 
     // await tooltip.trigger("mouseover")
 
-    // console.log('Overlay Exists -', describedBy, describedId)
-    // console.log(wrapper.find(describedId).exists())
-    // console.log(tooltip.html())
-
     // check if we can find the overlay.
   });
 

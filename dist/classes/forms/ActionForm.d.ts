@@ -8,6 +8,7 @@ export declare class ActionForm extends EasyForm {
     justify_row: JustifyRow;
     type: string;
     constructor(init?: Partial<ActionForm>);
+    instantiateAction(className: string, data: any): void;
     data(action_identifier: string): FormData;
     process(action_identifier: string): Promise<object | boolean>;
     props(): object;

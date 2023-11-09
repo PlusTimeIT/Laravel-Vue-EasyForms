@@ -51,6 +51,8 @@ export class ColorPicker extends EasyField {
   constructor(init?: Partial<ColorPicker>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "ColorPicker";
   }
 
   /**

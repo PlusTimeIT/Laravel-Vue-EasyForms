@@ -3,11 +3,13 @@ import { AlertTriggers } from "../../enums";
 import { Alert } from "../elements";
 import { AdditionalData, AxiosOptions } from "../../classes/properties";
 import { FieldType } from "../../types";
+import { FormLoader } from "../properties/FormLoader";
 export declare class EasyForm implements HasForm {
     additional_data: AdditionalData;
     additional_load_data: AdditionalData;
     alerts: Alert[];
     axios: AxiosOptions;
+    loader: FormLoader;
     loading: boolean;
     name: string;
     original: Array<FieldType>;

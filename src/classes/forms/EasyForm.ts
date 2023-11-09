@@ -1,12 +1,13 @@
 import HasForm from "../../contracts/HasForm";
 import { isArray, isEmpty } from "../../composables/utils";
-import { AlertTriggers } from "../../enums";
+import { AlertTriggers, FormLoaderTypes } from "../../enums";
 import { AxiosCalls } from "../../enums";
-import { Alert } from "../elements";
+import { Alert, ProgressCircular } from "../elements";
 import { ServerCall, ServerResponse } from "../../classes/server";
 import { AdditionalData, AxiosOptions } from "../../classes/properties";
 import { FieldType } from "../../types";
 import { store } from "../../composables/utils";
+import { FormLoader } from "../properties/FormLoader";
 
 /**
  * Basic Form Class
@@ -16,6 +17,7 @@ export class EasyForm implements HasForm {
   additional_load_data: AdditionalData = new AdditionalData();
   alerts: Alert[] = [];
   axios: AxiosOptions = new AxiosOptions();
+  loader: FormLoader;
   loading = true;
   name = "";
   original: Array<FieldType> = [];
@@ -33,12 +35,24 @@ export class EasyForm implements HasForm {
       delete init?.alerts;
     }
 
-    if (!isEmpty(init?.axios) && isArray(init?.axios)) {
+    if (!isEmpty(init?.axios)) {
       this.axios = new AxiosOptions(init?.axios);
       delete init?.axios;
     }
 
+    if (!isEmpty(init?.loader)) {
+      this.loader = new FormLoader(init?.loader);
+      delete init?.loader;
+    }
+
     Object.assign(this, init);
+
+    if (isEmpty(this.loader)) {
+      this.loader = new FormLoader({
+        type: FormLoaderTypes.Circular,
+        progress: new ProgressCircular({ indeterminate: true, color: "primary" }),
+      });
+    }
   }
 
   cancelled(): this {
@@ -151,6 +165,7 @@ export class EasyForm implements HasForm {
   }
 
   triggerAlert(trigger: AlertTriggers, text = ""): this {
+    console.log("Alert Triggered", trigger);
     const alert: Alert | undefined = this.alerts.find((a) => a.trigger == trigger);
     if (isEmpty(alert)) {
       // alert not found, nothing to trigger

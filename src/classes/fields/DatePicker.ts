@@ -46,6 +46,8 @@ export class DatePicker extends EasyField {
   constructor(init?: Partial<DatePicker>) {
     super(init);
     Object.assign(this, init);
+
+    this.discriminator = "DatePicker";
   }
 
   /**

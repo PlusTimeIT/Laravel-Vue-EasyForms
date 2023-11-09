@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from "vue";
+import { ref, onMounted, watch, computed, onBeforeUnmount } from "vue";
 import { TextField, TimePicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
 import TempTimePicker from "./TempTimePicker.vue";
@@ -55,7 +55,6 @@ function invalidate() {
 
 // Handle inner icon clicks (toggle the menu)
 function toggleMenu() {
-  console.log("toggleMenu");
   show_menu.value = !show_menu.value;
 }
 
@@ -71,8 +70,12 @@ function save(event: any) {
 }
 
 // Watch for changes in the picker value and update the textfield value
-watch(picker.value, (date) => {
+const pickerWatcher = watch(picker.value, (date) => {
   updated(date.value);
+});
+
+onBeforeUnmount(() => {
+  pickerWatcher();
 });
 
 // Set the initial value and loading state of the textfield on mount

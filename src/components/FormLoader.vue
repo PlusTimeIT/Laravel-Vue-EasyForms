@@ -3,16 +3,18 @@
  * @component FormLoader
  * @description This is a Vue 3 component for loading and rendering forms.
  */
-import { onMounted, ref, computed, watch, onBeforeMount } from "vue";
+import { ref, computed, watch, onBeforeMount, onBeforeUnmount } from "vue";
 import { ColumnRestriction } from "../composables/validation/PropValidation";
 import { ActionForm, InputForm, EasyForm } from "../classes/forms";
+import EasyAlerts from "../components/elements/EasyAlerts.vue";
 import { AdditionalData } from "../classes/properties";
 import { isEmpty } from "../composables/utils";
-import { Alert, FormContainer } from "../classes/elements";
-import { LoaderEvents } from "../enums";
+import { FormContainer, ProgressCircular } from "../classes/elements";
+import { FormLoaderTypes, LoaderEvents } from "../enums";
 import { FormTypes } from "../enums";
 import { store } from "../composables/utils";
 import { AlertTriggers } from "../enums/AlertTriggers";
+import { Csrf } from "../server";
 
 const emit = defineEmits([
   "update:form",
@@ -70,10 +72,18 @@ const props = defineProps({
   },
 });
 
+const requires_api = ref<boolean>(false);
+const csrf = ref<Csrf>(store.csrf);
 const loading = ref<boolean>(true);
-const loaded = ref<boolean>(false);
 // loaded as easy form incase name is passed or error on form
-const loaded_form = ref<InputForm | ActionForm | EasyForm>(new EasyForm());
+const loaded_form = ref<InputForm | ActionForm | EasyForm>(
+  new EasyForm({
+    loader: {
+      type: FormLoaderTypes.Circular,
+      progress: new ProgressCircular({ indeterminate: true, color: "primary" }),
+    },
+  }),
+);
 const container = computed<FormContainer>(() => {
   return new FormContainer({
     cols: props.cols,
@@ -82,22 +92,23 @@ const container = computed<FormContainer>(() => {
     lg: props.lg,
   });
 });
-const display_alerts = computed<Alert[]>(() => loaded_form?.value?.alerts?.filter((alert) => alert.display));
-const has_alerts = computed<boolean>(() => (display_alerts.value.length ?? 0) > 0);
+const has_error = computed<boolean>(() => !isEmpty(loaded_form.value!.text));
+const has_valid_csrf_token = computed<boolean>(() => csrf.value.isValidCsrfToken());
+const is_csrf_token_loading = computed<boolean>(() => csrf.value.isLoading());
+const has_alerts = computed<boolean>(
+  () => (loaded_form?.value?.alerts?.filter((alert) => alert.display).length ?? 0) > 0,
+);
 const form_ready = computed<boolean>(() => {
   return (
-    (loaded.value &&
-      !loaded_form.value.loading &&
-      loaded_form.value.type !== "" &&
-      loaded_form.value instanceof InputForm) ||
-    loaded_form.value instanceof ActionForm ||
-    loaded_form.value.type == "error-form"
+    !loaded_form.value.loading &&
+    (loaded_form.value instanceof InputForm ||
+      loaded_form.value instanceof ActionForm ||
+      !isEmpty(loaded_form.value?.text))
   );
 });
 
 const form_component = computed<string | undefined>(() => {
-  if (loaded.value || !loading.value || !isEmpty(loaded_form.value)) {
-    loaded_form.value!.text = "";
+  if (!loading.value || !isEmpty(loaded_form.value.name)) {
     if (loaded_form.value instanceof InputForm) {
       return FormTypes.Input;
     }
@@ -106,8 +117,6 @@ const form_component = computed<string | undefined>(() => {
       return FormTypes.Action;
     }
   }
-  loaded_form.value!.text = "Error Loading Form - Unknown Component";
-  isLoading(false);
   return FormTypes.Error;
 });
 
@@ -147,76 +156,84 @@ function isLoading(load: boolean) {
   // if loading false
   loaded_form.value.isLoading(load);
   loading.value = load;
-  if (!loaded.value) {
-    loaded.value = !load;
-  }
 }
 
-watch(loaded, (hasLoaded) => {
-  emit(LoaderEvents.Loaded, hasLoaded);
+const validCsrfWatcher = watch(has_valid_csrf_token, async (validToken) => {
+  if (requires_api.value && validToken) {
+    // Requires API and call is ready to be made.
+    // load Form.
+    await load();
+  }
+});
+
+onBeforeUnmount(() => {
+  validCsrfWatcher();
 });
 
 onBeforeMount(async () => {
-  console.log("fetching token....");
-  store.csrf.fetchNewToken();
-});
-
-onMounted(async () => {
-  loaded_form.value.text = "";
   isLoading(true);
-  // check if form preloaded
   if (!isEmpty(props.form) && isEmpty(props.name)) {
-    // form is loaded...
-    if (props.form instanceof InputForm || props.form instanceof ActionForm) {
-      loaded_form.value = props.form;
-      isLoading(false);
-      return;
-    }
+    requires_api.value = false;
+    loaded_form.value = props.form;
+    isLoading(false);
   } else if (!isEmpty(props.name)) {
-    // make API call to load form.
-    loaded_form.value = new EasyForm({
-      name: props.name,
-      additional_data: props.additionalData,
-      additional_load_data: props.additionalLoadData,
-    });
-
-    const results: any = await loaded_form.value.load();
-    if (!results) {
-      loaded_form.value.text = "Error Loading Form - Not Found";
-      isLoading(false);
-      return;
-    }
-    if (results?.type == FormTypes.Input) {
-      loaded_form.value = new InputForm(results);
-      loaded_form.value.triggerAlert(AlertTriggers.AfterLoad);
-      isLoading(false);
-      return;
-    } else if (results.type == FormTypes.Action) {
-      loaded_form.value = new ActionForm(results);
-      isLoading(false);
-      return;
+    requires_api.value = true;
+    if (has_valid_csrf_token.value) {
+      await load();
+    } else if (!is_csrf_token_loading.value) {
+      const tokenCheck = await csrf.value.fetchNewToken();
+      if (!tokenCheck) {
+        // display error.
+        loaded_form.value.text = csrf.value.error_message;
+        isLoading(false);
+      }
     }
   }
-
-  loaded_form.value.text = "Error Loading Form - Unknown Component";
-  isLoading(false);
 });
+
+async function load() {
+  loaded_form.value = new EasyForm({
+    name: props.name,
+    additional_data: props.additionalData,
+    additional_load_data: props.additionalLoadData,
+  });
+
+  const results: any = await loaded_form.value.load();
+  if (!results) {
+    loaded_form.value.text = "Error Loading Form - Not Found";
+    emit(LoaderEvents.Loaded, false);
+  } else if (results?.type == FormTypes.Input) {
+    loaded_form.value = new InputForm(results);
+    loaded_form.value.triggerAlert(AlertTriggers.AfterLoad);
+    emit(LoaderEvents.Loaded, true);
+  } else if (results.type == FormTypes.Action) {
+    loaded_form.value = new ActionForm(results);
+    emit(LoaderEvents.Loaded, true);
+  }
+  isLoading(false);
+}
 </script>
+
 <template>
   <v-col :cols="container.cols" :sm="container.sm" :md="container.md" :lg="container.lg">
     <v-row v-if="has_alerts">
-      <v-col v-for="(alert, index) in display_alerts" :key="index" :cols="alert.cols">
-        <v-alert v-model="alert.display" v-bind="alert.props()" />
-      </v-col>
+      <easy-alerts :alerts="loaded_form?.alerts"></easy-alerts>
     </v-row>
-    <v-row v-show="!form_ready">
-      <v-col class="mx-auto text-center">
-        <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    <v-row v-show="!form_ready" justify="center" class="form-loader">
+      <v-col cols="auto" :class="loaded_form.loader?.progress?.class ?? ''">
+        <v-progress-circular
+          v-if="loaded_form.loader?.type === FormLoaderTypes.Circular"
+          v-bind="loaded_form.loader?.progress.props()"
+        ></v-progress-circular>
+        <v-progress-linear
+          v-if="loaded_form.loader?.type === FormLoaderTypes.Linear"
+          v-bind="loaded_form.loader?.progress.props()"
+        ></v-progress-linear>
       </v-col>
     </v-row>
     <v-row v-show="form_ready">
       <input-form-loader
-        v-if="form_component == FormTypes.Input"
+        v-if="form_component == FormTypes.Input && !has_error"
         v-model:form="loaded_form"
         v-bind="loaded_form!.props()"
         @results="results"
@@ -229,7 +246,7 @@ onMounted(async () => {
         @successful="success"
       />
       <action-form-loader
-        v-else-if="form_component == FormTypes.Action"
+        v-else-if="form_component == FormTypes.Action && !has_error"
         v-model:form="loaded_form"
         v-bind="loaded_form!.props()"
         @results="results"
@@ -241,7 +258,7 @@ onMounted(async () => {
         @failed="failed"
         @successful="success"
       />
-      <error-form-loader v-else-if="form_component == FormTypes.Error" :text="loaded_form.text" />
+      <error-form-loader v-else-if="form_component == FormTypes.Error || has_error" :text="loaded_form.text" />
     </v-row>
   </v-col>
 </template>

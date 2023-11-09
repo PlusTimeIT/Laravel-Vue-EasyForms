@@ -1,7 +1,7 @@
 import { PluginOptions } from "../../classes/PluginOptions";
 import { Csrf } from "../../server";
 interface Store {
-    csrf: Csrf;
+    csrf?: Csrf | undefined;
     options: PluginOptions;
 }
 declare const store: Store;

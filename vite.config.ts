@@ -12,6 +12,7 @@ export default defineConfig({
   //   global: "globalThis",
   // },
   build: {
+    cssCodeSplit: false,
     minify: "terser",
     terserOptions: {
       compress: {

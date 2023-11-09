@@ -1,51 +1,26 @@
 import { CheckboxField, SwitchField } from "../../classes/fields";
-declare const _default: import("vue").DefineComponent<{
-    class: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    cols: {
-        type: import("vue").PropType<string | number>;
-        default: number;
-    };
-    label: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    items: {
-        type: import("vue").PropType<CheckboxField[]>;
-        required: true;
-    };
-    switch: {
-        type: import("vue").PropType<SwitchField>;
-        default: any;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+interface Props {
+    class?: string | undefined;
+    cols?: string | number | undefined;
+    items: CheckboxField[];
+    label?: string | undefined;
+    switch?: SwitchField | undefined;
+}
+declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    cols: number;
+    class: string;
+    label: string;
+    switch: any;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     validated: (value: string) => void;
     invalidated: (value: string) => void;
     "update:modelValue": (value: any) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    class: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    cols: {
-        type: import("vue").PropType<string | number>;
-        default: number;
-    };
-    label: {
-        type: import("vue").PropType<string>;
-        default: string;
-    };
-    items: {
-        type: import("vue").PropType<CheckboxField[]>;
-        required: true;
-    };
-    switch: {
-        type: import("vue").PropType<SwitchField>;
-        default: any;
-    };
-}>> & {
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+    cols: number;
+    class: string;
+    label: string;
+    switch: any;
+}>>> & {
     "onUpdate:modelValue"?: (value: any) => any;
     onValidated?: (value: string) => any;
     onInvalidated?: (value: string) => any;
@@ -56,4 +31,21 @@ declare const _default: import("vue").DefineComponent<{
     switch: SwitchField;
 }, {}>;
 export default _default;
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToRuntimeProps<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
+    };
+};
+type __VLS_WithDefaults<P, D> = {
+    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
+        default: D[K];
+    }> : P[K];
+};
+type __VLS_Prettify<T> = {
+    [K in keyof T]: T[K];
+} & {};
 //# sourceMappingURL=EasyCheckboxGroup.vue.d.ts.map

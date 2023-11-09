@@ -22,8 +22,8 @@ export declare abstract class EasyField extends GotProps implements HasField {
     component_type: string | undefined;
     density: DensityTypes;
     depends_on: string;
-    discriminator: string;
     disabled: boolean;
+    discriminator: string;
     eager: boolean;
     error: boolean;
     error_messages: string | string[];
@@ -68,14 +68,15 @@ export declare abstract class EasyField extends GotProps implements HasField {
     value: any;
     variant: TextVariantTypes;
     constructor(init?: Partial<EasyField>);
-    invalidate(): this;
     addErrorMessage(message: string): this;
     clearErrorMessages(): this;
+    invalidate(): this;
     isLoading(loading: boolean): this;
     isParentLoaded(parent_field: EasyField | undefined): boolean;
     load(form: InputForm | ActionForm, parent: EasyField): Promise<object | boolean>;
     update(parent_field: this): boolean;
     validate(): this;
+    findValidation(name: string): ValidationRule | null;
     validationRules(fields?: FieldType[]): Array<any>;
 }
 //# sourceMappingURL=EasyField.d.ts.map
