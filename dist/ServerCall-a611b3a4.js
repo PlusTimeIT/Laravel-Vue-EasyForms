@@ -6,7 +6,7 @@ var __publicField = (obj, key, value) => {
 };
 import { C as ContentTypes } from "./ContentTypes-783ab8ea.js";
 import { s as store, i as isEmpty } from "./Types-dbac3a4a.js";
-import { a as AxiosOptions, A as AxiosHeader } from "./AxiosOptions-15ae3169.js";
+import { A as AxiosOptions, a as AxiosHeader } from "./AxiosOptions-a3506c4f.js";
 import { AxiosHeaders } from "axios";
 class ServerResponse {
   constructor(init) {

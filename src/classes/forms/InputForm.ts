@@ -74,7 +74,7 @@ export class InputForm extends EasyForm {
 
   data(): object {
     // check for additional data with key identifier
-    const identifier = this.additional_data.data.find((data: DataItem) => data.key == "identifier" || data.key == "id");
+    const identifier = this.additional_data.find((data: DataItem) => data.key == "identifier" || data.key == "id");
 
     const data: FormData = new FormData();
     data.set("form_name", this.name);
@@ -129,7 +129,7 @@ export class InputForm extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(), this.additional_data),
         this.axios,
       );
       this.processed();

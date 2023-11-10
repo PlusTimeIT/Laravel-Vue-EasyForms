@@ -13,4 +13,5 @@ export * from "./SwitchField";
 export * from "./TextField";
 export * from "./TimePickerField";
 export * from "./TimePicker";
+export * from "./TextareaField";
 //# sourceMappingURL=index.d.ts.map

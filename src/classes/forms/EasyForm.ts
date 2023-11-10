@@ -13,8 +13,8 @@ import { FormLoader } from "../properties/FormLoader";
  * Basic Form Class
  */
 export class EasyForm implements HasForm {
-  additional_data: AdditionalData = new AdditionalData();
-  additional_load_data: AdditionalData = new AdditionalData();
+  additional_data: AdditionalData[] = [];
+  additional_load_data: AdditionalData[] = [];
   alerts: Alert[] = [];
   axios: AxiosOptions = new AxiosOptions();
   loader: FormLoader;
@@ -89,7 +89,7 @@ export class EasyForm implements HasForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data.toObject()),
+        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data),
         this.axios,
       );
       if (response.status === 200 || response.status === 204) {
@@ -160,12 +160,12 @@ export class EasyForm implements HasForm {
   }
 
   success(text?: any): this {
+    console.log("success alert");
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
   }
 
   triggerAlert(trigger: AlertTriggers, text = ""): this {
-    console.log("Alert Triggered", trigger);
     const alert: Alert | undefined = this.alerts.find((a) => a.trigger == trigger);
     if (isEmpty(alert)) {
       // alert not found, nothing to trigger

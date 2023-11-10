@@ -66,7 +66,7 @@ export class ActionForm extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(action_identifier), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(action_identifier), this.additional_data),
         this.axios,
       );
       if (response.status === 200 || response.status === 204) {

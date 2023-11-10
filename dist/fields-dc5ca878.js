@@ -4,15 +4,15 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { S as ServerCall } from "./ServerCall-3921df14.js";
+import { S as ServerCall } from "./ServerCall-a611b3a4.js";
 import { A as AxiosCalls } from "./ContentTypes-783ab8ea.js";
-import { D as DensityTypes } from "./LocationTypes-8f3d7f01.js";
+import { D as DensityTypes } from "./ScrollStrategyTypes-b9c8a739.js";
 import { V as ValidationMessages, b as ValidationUpdates, T as TextVariantTypes, D as DirectionType, F as FilterModeTypes, C as ColorPickerModeTypes, I as InputModeTypes, c as ViewModeTypes, a as TimePickerModeTypes } from "./ViewModeTypes-6930220b.js";
 import { a as isArray, b as isNumber, c as isString, i as isEmpty, d as isNull, e as isFile, f as isNumeric, P as PluginOptions, s as store } from "./Types-dbac3a4a.js";
 import { V as ValidationRule, C as CheckboxGroupValue } from "./ValidationRule-73a2fa9e.js";
-import { I as Icon, T as Tooltip } from "./Tooltip-f8329e53.js";
+import { I as Icon, T as Tooltip } from "./Tooltip-dd8eaf56.js";
 import { S as StringHelper, G as GotProps } from "./GotProps-440b6309.js";
-import { M as Menu } from "./Menu-8cd78ff9.js";
+import { M as Menu } from "./Menu-ed550df2.js";
 const convertMessageHolders = (name, message, params) => StringHelper.convertMessageHolders(name, message, params);
 const _ValidationHandler = class _ValidationHandler {
 };
@@ -1523,6 +1523,99 @@ class TimePicker extends EasyField {
     ];
   }
 }
+class TextareaField extends EasyField {
+  constructor(init) {
+    super(init);
+    __publicField(this, "append_inner_icon");
+    __publicField(this, "auto_grow");
+    __publicField(this, "component", "v-textarea");
+    __publicField(this, "counter", false);
+    __publicField(this, "direction", DirectionType.Horizontal);
+    __publicField(this, "dirty", false);
+    __publicField(this, "masking");
+    __publicField(this, "max_rows");
+    __publicField(this, "no_resize", false);
+    __publicField(this, "prepend_inner_icon");
+    __publicField(this, "rows", 5);
+    __publicField(this, "reverse", false);
+    if (!isEmpty(init == null ? void 0 : init.append_inner_icon)) {
+      this.append_inner_icon = new Icon(init == null ? void 0 : init.append_inner_icon);
+      init == null ? true : delete init.append_inner_icon;
+    }
+    if (!isEmpty(init == null ? void 0 : init.prepend_inner_icon)) {
+      this.prepend_inner_icon = new Icon(init == null ? void 0 : init.prepend_inner_icon);
+      init == null ? true : delete init.prepend_inner_icon;
+    }
+    Object.assign(this, init);
+    this.discriminator = "TextareaField";
+  }
+  /**
+   * Returns an array of all allowed props that are present on V-Text-Field
+   * https://vuetifyjs.com/en/api/v-text-field/
+   *
+   * Currently missing the following properties:
+   * counter-value
+   * model-modifiers
+   * model-value
+   * validation-value
+   *
+   * @returns string[]
+   */
+  allowedProps() {
+    return [
+      "active",
+      // "append_icon",
+      // "append_inner_icon",
+      "autofocus",
+      "attach",
+      "base_color",
+      "bg_color",
+      "center_affix",
+      "clearable",
+      "component_type",
+      "clear_icon",
+      "color",
+      "cols",
+      "counter",
+      "density",
+      "direction",
+      "dirty",
+      "disabled",
+      "error",
+      "error_messages",
+      "flat",
+      "focused",
+      "hide_details",
+      "hint",
+      "id",
+      "label",
+      "loading",
+      "masking",
+      "max_errors",
+      "messages",
+      "name",
+      "persistent_clear",
+      "persistent_counter",
+      "persistent_hint",
+      "persistent_placeholder",
+      "placeholder",
+      "prefix",
+      // "prepend_icon",
+      // "prepend_inner_icon",
+      "readonly",
+      "reverse",
+      "role",
+      "rounded",
+      // 'rules',
+      "single_line",
+      "suffix",
+      "theme",
+      "type",
+      "validate_on",
+      "variant"
+    ];
+  }
+}
 export {
   AutoCompleteField as A,
   CheckboxGroupField as C,
@@ -1539,5 +1632,6 @@ export {
   ColorPickerField as d,
   DatePickerField as e,
   TimePickerField as f,
-  TimePicker as g
+  TextareaField as g,
+  TimePicker as h
 };

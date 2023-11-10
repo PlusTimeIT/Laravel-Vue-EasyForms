@@ -6,9 +6,12 @@ import HasIcon from "../../contracts/HasIcon";
 export class Icon extends GotProps implements HasIcon {
   class: string | undefined;
   color = "primary";
+  end = false;
   icon = "";
   size: string | undefined;
+  start = false;
   tooltip: Tooltip | undefined;
+  tag = "i";
 
   constructor(init?: Partial<Icon>) {
     super(init);

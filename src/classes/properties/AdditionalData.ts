@@ -2,7 +2,8 @@ import { DataItem } from "./DataItem";
 
 export class AdditionalData {
   data: DataItem[] = [];
-
+  key = "";
+  value: any = "";
   constructor(init?: Partial<AdditionalData>) {
     Object.assign(this, init);
   }

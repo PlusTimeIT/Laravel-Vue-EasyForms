@@ -63,12 +63,12 @@ const props = defineProps({
     default: false,
   },
   additionalData: {
-    type: AdditionalData,
-    default: new AdditionalData(),
+    type: Array<AdditionalData>,
+    default: [],
   },
   additionalLoadData: {
-    type: AdditionalData,
-    default: new AdditionalData(),
+    type: Array<AdditionalData>,
+    default: [],
   },
 });
 

@@ -14,6 +14,7 @@ import {
   TimePickerField,
   ColorPicker,
   DatePicker,
+  TextareaField,
 } from "../fields";
 import { SelectField } from "../fields/SelectField";
 
@@ -95,6 +96,10 @@ function registerDefaults(): void {
     {
       name: "ActionButton",
       field: ActionButton,
+    },
+    {
+      name: "TextareaField",
+      field: TextareaField,
     },
   ];
   for (const fieldDefault of defaults) {

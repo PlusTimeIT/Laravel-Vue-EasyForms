@@ -11,7 +11,15 @@ var LocationTypes = /* @__PURE__ */ ((LocationTypes2) => {
   LocationTypes2["Bottom"] = "bottom";
   return LocationTypes2;
 })(LocationTypes || {});
+var ScrollStrategyTypes = /* @__PURE__ */ ((ScrollStrategyTypes2) => {
+  ScrollStrategyTypes2["Close"] = "close";
+  ScrollStrategyTypes2["Block"] = "block";
+  ScrollStrategyTypes2["None"] = "none";
+  ScrollStrategyTypes2["Reposition"] = "reposition";
+  return ScrollStrategyTypes2;
+})(ScrollStrategyTypes || {});
 export {
   DensityTypes as D,
-  LocationTypes as L
+  LocationTypes as L,
+  ScrollStrategyTypes as S
 };

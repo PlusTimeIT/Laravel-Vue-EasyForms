@@ -34,12 +34,38 @@ declare const _default: import("vue").DefineComponent<{
         default: boolean;
     };
     additionalData: {
-        type: typeof AdditionalData;
-        default: AdditionalData;
+        type: {
+            (arrayLength: number): AdditionalData[];
+            (...items: AdditionalData[]): AdditionalData[];
+            new (arrayLength: number): AdditionalData[];
+            new (...items: AdditionalData[]): AdditionalData[];
+            isArray(arg: any): arg is any[];
+            readonly prototype: any[];
+            from<T>(arrayLike: ArrayLike<T>): T[];
+            from<T_1, U>(arrayLike: ArrayLike<T_1>, mapfn: (v: T_1, k: number) => U, thisArg?: any): U[];
+            from<T_2>(iterable: Iterable<T_2> | ArrayLike<T_2>): T_2[];
+            from<T_3, U_1>(iterable: Iterable<T_3> | ArrayLike<T_3>, mapfn: (v: T_3, k: number) => U_1, thisArg?: any): U_1[];
+            of<T_4>(...items: T_4[]): T_4[];
+            readonly [Symbol.species]: ArrayConstructor;
+        };
+        default: any[];
     };
     additionalLoadData: {
-        type: typeof AdditionalData;
-        default: AdditionalData;
+        type: {
+            (arrayLength: number): AdditionalData[];
+            (...items: AdditionalData[]): AdditionalData[];
+            new (arrayLength: number): AdditionalData[];
+            new (...items: AdditionalData[]): AdditionalData[];
+            isArray(arg: any): arg is any[];
+            readonly prototype: any[];
+            from<T>(arrayLike: ArrayLike<T>): T[];
+            from<T_1, U>(arrayLike: ArrayLike<T_1>, mapfn: (v: T_1, k: number) => U, thisArg?: any): U[];
+            from<T_2>(iterable: Iterable<T_2> | ArrayLike<T_2>): T_2[];
+            from<T_3, U_1>(iterable: Iterable<T_3> | ArrayLike<T_3>, mapfn: (v: T_3, k: number) => U_1, thisArg?: any): U_1[];
+            of<T_4>(...items: T_4[]): T_4[];
+            readonly [Symbol.species]: ArrayConstructor;
+        };
+        default: any[];
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:form": (...args: any[]) => void;
@@ -86,12 +112,38 @@ declare const _default: import("vue").DefineComponent<{
         default: boolean;
     };
     additionalData: {
-        type: typeof AdditionalData;
-        default: AdditionalData;
+        type: {
+            (arrayLength: number): AdditionalData[];
+            (...items: AdditionalData[]): AdditionalData[];
+            new (arrayLength: number): AdditionalData[];
+            new (...items: AdditionalData[]): AdditionalData[];
+            isArray(arg: any): arg is any[];
+            readonly prototype: any[];
+            from<T>(arrayLike: ArrayLike<T>): T[];
+            from<T_1, U>(arrayLike: ArrayLike<T_1>, mapfn: (v: T_1, k: number) => U, thisArg?: any): U[];
+            from<T_2>(iterable: Iterable<T_2> | ArrayLike<T_2>): T_2[];
+            from<T_3, U_1>(iterable: Iterable<T_3> | ArrayLike<T_3>, mapfn: (v: T_3, k: number) => U_1, thisArg?: any): U_1[];
+            of<T_4>(...items: T_4[]): T_4[];
+            readonly [Symbol.species]: ArrayConstructor;
+        };
+        default: any[];
     };
     additionalLoadData: {
-        type: typeof AdditionalData;
-        default: AdditionalData;
+        type: {
+            (arrayLength: number): AdditionalData[];
+            (...items: AdditionalData[]): AdditionalData[];
+            new (arrayLength: number): AdditionalData[];
+            new (...items: AdditionalData[]): AdditionalData[];
+            isArray(arg: any): arg is any[];
+            readonly prototype: any[];
+            from<T>(arrayLike: ArrayLike<T>): T[];
+            from<T_1, U>(arrayLike: ArrayLike<T_1>, mapfn: (v: T_1, k: number) => U, thisArg?: any): U[];
+            from<T_2>(iterable: Iterable<T_2> | ArrayLike<T_2>): T_2[];
+            from<T_3, U_1>(iterable: Iterable<T_3> | ArrayLike<T_3>, mapfn: (v: T_3, k: number) => U_1, thisArg?: any): U_1[];
+            of<T_4>(...items: T_4[]): T_4[];
+            readonly [Symbol.species]: ArrayConstructor;
+        };
+        default: any[];
     };
 }>> & {
     onReset?: (...args: any[]) => any;
@@ -112,8 +164,8 @@ declare const _default: import("vue").DefineComponent<{
     sm: number;
     form: EasyForm;
     populate: boolean;
-    additionalData: AdditionalData;
-    additionalLoadData: AdditionalData;
+    additionalData: AdditionalData[];
+    additionalLoadData: AdditionalData[];
 }, {}>;
 export default _default;
 //# sourceMappingURL=FormLoader.vue.d.ts.map

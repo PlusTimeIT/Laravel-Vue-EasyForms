@@ -1,5 +1,5 @@
-import { i as defineStore, r as ref, c as computed } from "./vendor-3d7bd4d3.js";
-import { r as router } from "./GenericMountStory.vue2-b4ce15b8.js";
+import { i as defineStore, r as ref, c as computed } from "./vendor-7ff72412.js";
+import { r as router } from "./GenericMountStory.vue2-e5d11188.js";
 const useStoryStore = defineStore("story", () => {
   const stories = ref([]);
   function setStories(value) {

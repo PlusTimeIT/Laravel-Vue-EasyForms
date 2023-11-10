@@ -2,7 +2,6 @@ var _a;
 import { Fragment, reactive, computed, watchEffect, toRefs, capitalize, isVNode, Comment, warn as warn$1, ref, unref, provide, inject, shallowRef, defineComponent as defineComponent$1, camelize, h, getCurrentInstance as getCurrentInstance$1, isRef, createVNode, toRef, watch, onScopeDispose, effectScope, toRaw, onBeforeUnmount, onMounted, mergeProps, Text, readonly, Transition, resolveDynamicComponent, nextTick, withDirectives, resolveDirective, Teleport, vShow, openBlock, createBlock, withCtx, createSlots, createElementVNode, toDisplayString, createTextVNode, createElementBlock, renderList, onBeforeMount, resolveComponent, createCommentVNode, normalizeClass, normalizeProps, TransitionGroup, cloneVNode } from "vue";
 import { ActionForm, InputForm, EasyForm } from "./forms.js";
 import { i as isEmpty, s as store, P as PluginOptions } from "./Types-dbac3a4a.js";
-import { A as AdditionalData } from "./FormLoader-f8643b8d.js";
 import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
 import { L as LoaderEvents, F as FormTypes } from "./LoaderEvents-f7c1c159.js";
 import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
@@ -10,21 +9,21 @@ import { FormContainer } from "./elements.js";
 import { P as ProgressCircular } from "./ProgressLinear-fca54ab2.js";
 import { a as ButtonTypes } from "./ButtonVariantTypes-e4c42916.js";
 import "axios";
-import { T as TextField, C as CheckboxGroupField } from "./fields-72b757da.js";
+import { T as TextField, C as CheckboxGroupField } from "./fields-dc5ca878.js";
 import { Csrf } from "./server.js";
 import { a as TimePickerModeTypes } from "./ViewModeTypes-6930220b.js";
 import "./ContentTypes-783ab8ea.js";
-import "./Alert-be54e160.js";
-import "./LocationTypes-8f3d7f01.js";
-import "./Tooltip-f8329e53.js";
+import "./Alert-35287b0e.js";
+import "./ScrollStrategyTypes-b9c8a739.js";
+import "./Tooltip-dd8eaf56.js";
 import "./GotProps-440b6309.js";
-import "./ServerCall-3921df14.js";
-import "./AxiosOptions-15ae3169.js";
+import "./ServerCall-a611b3a4.js";
+import "./AxiosOptions-a3506c4f.js";
+import "./FormLoader-c385b8c2.js";
 import "./JustifyRow-8255fd21.js";
 import "./actions.js";
-import "./Button-58652d5c.js";
-import "./Menu-8cd78ff9.js";
-import "./ScrollStrategyTypes-c3dd8b07.js";
+import "./Button-8e7e37c9.js";
+import "./Menu-ed550df2.js";
 import "./ValidationRule-73a2fa9e.js";
 function ColumnRestriction(value) {
   return value <= 12 && value >= 1;
@@ -5082,10 +5081,6 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent$1({
   setup(__props) {
     const xProps = __props;
     const alerts = ref(xProps.alerts);
-    computed(() => {
-      var _a2;
-      return (_a2 = alerts == null ? void 0 : alerts.value) == null ? void 0 : _a2.filter((alert) => alert.display);
-    });
     function has_append_icon(alert) {
       var _a2;
       return !isEmpty(alert == null ? void 0 : alert.append_icon) && !isEmpty((_a2 = alert == null ? void 0 : alert.append_icon) == null ? void 0 : _a2.icon);
@@ -5176,12 +5171,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent$1({
       default: false
     },
     additionalData: {
-      type: AdditionalData,
-      default: new AdditionalData()
+      type: Array,
+      default: []
     },
     additionalLoadData: {
-      type: AdditionalData,
-      default: new AdditionalData()
+      type: Array,
+      default: []
     }
   },
   emits: [
@@ -6381,9 +6376,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent$1({
         return true;
       }
       return action.conditions.every((condition) => {
-        const data = form.value.additional_data.data.find(
-          (data2) => data2.key == condition.check
-        );
+        const data = form.value.additional_data.find((data2) => data2.key == condition.check);
         if (isEmpty(data)) {
           return false;
         }

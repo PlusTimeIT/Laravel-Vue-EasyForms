@@ -5,8 +5,8 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import { a as ButtonTypes, B as ButtonVariantTypes } from "./ButtonVariantTypes-e4c42916.js";
-import { D as DensityTypes } from "./LocationTypes-8f3d7f01.js";
-import { I as Icon, T as Tooltip } from "./Tooltip-f8329e53.js";
+import { D as DensityTypes } from "./ScrollStrategyTypes-b9c8a739.js";
+import { I as Icon, T as Tooltip } from "./Tooltip-dd8eaf56.js";
 import { G as GotProps } from "./GotProps-440b6309.js";
 import { i as isEmpty } from "./Types-dbac3a4a.js";
 class Button extends GotProps {

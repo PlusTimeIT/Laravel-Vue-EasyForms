@@ -8,28 +8,27 @@ import { i as isEmpty, a as isArray, s as store, g as isObject } from "./Types-d
 import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
 import { A as AxiosCalls, C as ContentTypes } from "./ContentTypes-783ab8ea.js";
 import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
-import { A as Alert } from "./Alert-be54e160.js";
+import { A as Alert } from "./Alert-35287b0e.js";
 import { P as ProgressCircular } from "./ProgressLinear-fca54ab2.js";
-import { S as ServerCall } from "./ServerCall-3921df14.js";
-import { A as AdditionalData, F as FormLoader } from "./FormLoader-f8643b8d.js";
-import { a as AxiosOptions } from "./AxiosOptions-15ae3169.js";
+import { S as ServerCall } from "./ServerCall-a611b3a4.js";
+import { A as AxiosOptions } from "./AxiosOptions-a3506c4f.js";
+import { F as FormLoader } from "./FormLoader-c385b8c2.js";
 import { J as JustifyRow, A as AlignRow } from "./JustifyRow-8255fd21.js";
 import { ActionIcon, ActionButton } from "./actions.js";
-import { E as EasyField, A as AutoCompleteField, a as CheckboxField, C as CheckboxGroupField, P as PasswordField, R as RadioGroupField, b as RadioField, c as ColorPicker, d as ColorPickerField, D as DatePicker, e as DatePickerField, F as FileInputField, S as SwitchField, T as TextField, f as TimePickerField } from "./fields-72b757da.js";
+import { E as EasyField, A as AutoCompleteField, a as CheckboxField, C as CheckboxGroupField, P as PasswordField, R as RadioGroupField, b as RadioField, c as ColorPicker, d as ColorPickerField, D as DatePicker, e as DatePickerField, F as FileInputField, S as SwitchField, T as TextField, f as TimePickerField, g as TextareaField } from "./fields-dc5ca878.js";
 import "axios";
 import { D as DirectionType, F as FilterModeTypes } from "./ViewModeTypes-6930220b.js";
-import { B as Button } from "./Button-58652d5c.js";
+import { B as Button } from "./Button-8e7e37c9.js";
 import "./ButtonVariantTypes-e4c42916.js";
-import "./LocationTypes-8f3d7f01.js";
-import "./Tooltip-f8329e53.js";
+import "./ScrollStrategyTypes-b9c8a739.js";
+import "./Tooltip-dd8eaf56.js";
 import "./GotProps-440b6309.js";
 import "./ValidationRule-73a2fa9e.js";
-import "./Menu-8cd78ff9.js";
-import "./ScrollStrategyTypes-c3dd8b07.js";
+import "./Menu-ed550df2.js";
 class EasyForm {
   constructor(init) {
-    __publicField(this, "additional_data", new AdditionalData());
-    __publicField(this, "additional_load_data", new AdditionalData());
+    __publicField(this, "additional_data", []);
+    __publicField(this, "additional_load_data", []);
     __publicField(this, "alerts", []);
     __publicField(this, "axios", new AxiosOptions());
     __publicField(this, "loader");
@@ -91,7 +90,7 @@ class EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data.toObject()),
+        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data),
         this.axios
       );
       if (response.status === 200 || response.status === 204) {
@@ -149,11 +148,11 @@ class EasyForm {
     return this;
   }
   success(text) {
+    console.log("success alert");
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
   }
   triggerAlert(trigger, text = "") {
-    console.log("Alert Triggered", trigger);
     const alert = this.alerts.find((a) => a.trigger == trigger);
     if (isEmpty(alert)) {
       return this;
@@ -358,6 +357,10 @@ function registerDefaults() {
     {
       name: "ActionButton",
       field: ActionButton
+    },
+    {
+      name: "TextareaField",
+      field: TextareaField
     }
   ];
   for (const fieldDefault of defaults) {
@@ -413,7 +416,7 @@ class ActionForm extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(action_identifier), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(action_identifier), this.additional_data),
         this.axios
       );
       if (response.status === 200 || response.status === 204) {
@@ -463,7 +466,7 @@ class InputForm extends EasyForm {
     this.buttons = this.buttons.sort((a, b) => a.order - b.order);
   }
   data() {
-    const identifier = this.additional_data.data.find((data2) => data2.key == "identifier" || data2.key == "id");
+    const identifier = this.additional_data.find((data2) => data2.key == "identifier" || data2.key == "id");
     const data = new FormData();
     data.set("form_name", this.name);
     if (!isEmpty(identifier)) {
@@ -504,7 +507,7 @@ class InputForm extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(), this.additional_data),
         this.axios
       );
       this.processed();

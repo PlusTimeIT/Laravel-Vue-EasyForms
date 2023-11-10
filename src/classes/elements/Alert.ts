@@ -25,16 +25,17 @@ export class Alert extends GotProps {
   height: string | number | undefined;
   icon: Icon | undefined;
   prepend_icon: Icon | undefined;
+  position: PositionTypes | undefined;
+  prominent = false;
   max_height: string | number | undefined;
   max_width: string | number | undefined;
   min_height: string | number | undefined;
   min_width: string | number | undefined = 0;
   original_text = "";
-  position: PositionTypes | undefined;
-  prominent = false;
   rounded: string | number | boolean = false;
   tag = "div";
   text: string | undefined;
+  title: string | undefined;
   trigger: AlertTriggers = AlertTriggers.SuccessProcessing;
   type: AlertTypes | string | undefined;
   variant: ButtonVariantTypes = ButtonVariantTypes.Flat;
@@ -54,7 +55,6 @@ export class Alert extends GotProps {
   }
 
   setDefaults(): void {
-    console.log("setting defaults", this.trigger);
     switch (this.trigger) {
       case AlertTriggers.AfterLoad: {
         this.iconCheck(new Icon({ icon: "mdi-alert-octagon-outline", color: "rgb(var(--v-theme-on-info))" }));
@@ -169,6 +169,7 @@ export class Alert extends GotProps {
       "tag",
       "trigger",
       "type",
+      "title",
       "variant",
     ];
   }

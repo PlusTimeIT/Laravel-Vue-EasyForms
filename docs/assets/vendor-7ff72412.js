@@ -30261,9 +30261,12 @@ class Icon extends GotProps {
     super(init);
     __publicField(this, "class");
     __publicField(this, "color", "primary");
+    __publicField(this, "end", false);
     __publicField(this, "icon", "");
     __publicField(this, "size");
+    __publicField(this, "start", false);
     __publicField(this, "tooltip");
+    __publicField(this, "tag", "i");
     if (!isEmpty$1(init == null ? void 0 : init.tooltip)) {
       this.tooltip = new Tooltip(init == null ? void 0 : init.tooltip);
       init == null ? true : delete init.tooltip;
@@ -30304,16 +30307,17 @@ class Alert extends GotProps {
     __publicField(this, "height");
     __publicField(this, "icon");
     __publicField(this, "prepend_icon");
+    __publicField(this, "position");
+    __publicField(this, "prominent", false);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
     __publicField(this, "original_text", "");
-    __publicField(this, "position");
-    __publicField(this, "prominent", false);
     __publicField(this, "rounded", false);
     __publicField(this, "tag", "div");
     __publicField(this, "text");
+    __publicField(this, "title");
     __publicField(this, "trigger", AlertTriggers.SuccessProcessing);
     __publicField(this, "type");
     __publicField(this, "variant", ButtonVariantTypes.Flat);
@@ -30326,7 +30330,6 @@ class Alert extends GotProps {
     this.original_text = this.text ?? "";
   }
   setDefaults() {
-    console.log("setting defaults", this.trigger);
     switch (this.trigger) {
       case AlertTriggers.AfterLoad: {
         this.iconCheck(new Icon({ icon: "mdi-alert-octagon-outline", color: "rgb(var(--v-theme-on-info))" }));
@@ -30438,6 +30441,7 @@ class Alert extends GotProps {
       "tag",
       "trigger",
       "type",
+      "title",
       "variant"
     ];
   }
@@ -30617,12 +30621,14 @@ class Menu extends GotProps {
     __publicField(this, "disabled", false);
     __publicField(this, "eager", false);
     __publicField(this, "height");
+    __publicField(this, "id");
     __publicField(this, "location", LocationTypes.Bottom);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
     __publicField(this, "no_click_animation", false);
+    __publicField(this, "offset", 1);
     __publicField(this, "open_delay", 1);
     __publicField(this, "open_on_click", true);
     __publicField(this, "open_on_focus", false);
@@ -30630,6 +30636,7 @@ class Menu extends GotProps {
     __publicField(this, "persistent", false);
     __publicField(this, "scrim", false);
     __publicField(this, "scroll_strategy", ScrollStrategyTypes.Reposition);
+    __publicField(this, "theme");
     __publicField(this, "width");
     __publicField(this, "z_index", 2e3);
     Object.assign(this, init);
@@ -30691,13 +30698,13 @@ class Tooltip extends GotProps {
     __publicField(this, "content_props");
     __publicField(this, "disabled", false);
     __publicField(this, "eager", true);
+    __publicField(this, "id");
     __publicField(this, "height");
     __publicField(this, "location", LocationTypes.Top);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
-    __publicField(this, "model_value", false);
     __publicField(this, "no_click_animation", false);
     __publicField(this, "offset", 10);
     __publicField(this, "open_delay");
@@ -30705,6 +30712,7 @@ class Tooltip extends GotProps {
     __publicField(this, "open_on_focus", false);
     __publicField(this, "open_on_hover", true);
     __publicField(this, "scrim", false);
+    __publicField(this, "scroll_strategy", ScrollStrategyTypes.Close);
     __publicField(this, "text");
     __publicField(this, "theme");
     __publicField(this, "transition", false);
@@ -30745,7 +30753,6 @@ class Tooltip extends GotProps {
       "max_width",
       "min_height",
       "min_width",
-      "model_value",
       "no_click_animation",
       "offset",
       "open_delay",
@@ -30865,19 +30872,6 @@ class ServerResponse {
      */
     __publicField(this, "statusText", "");
     Object.assign(this, init);
-  }
-}
-class AdditionalData {
-  constructor(init) {
-    __publicField(this, "data", []);
-    Object.assign(this, init);
-  }
-  toObject() {
-    const result = {};
-    for (const item of this.data) {
-      result[item.key] = item.value;
-    }
-    return result;
   }
 }
 class AxiosHeader {
@@ -31051,8 +31045,8 @@ class Csrf {
 }
 class EasyForm {
   constructor(init) {
-    __publicField(this, "additional_data", new AdditionalData());
-    __publicField(this, "additional_load_data", new AdditionalData());
+    __publicField(this, "additional_data", []);
+    __publicField(this, "additional_load_data", []);
     __publicField(this, "alerts", []);
     __publicField(this, "axios", new AxiosOptions());
     __publicField(this, "loader");
@@ -31114,7 +31108,7 @@ class EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data.toObject()),
+        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data),
         this.axios
       );
       if (response.status === 200 || response.status === 204) {
@@ -31172,11 +31166,11 @@ class EasyForm {
     return this;
   }
   success(text) {
+    console.log("success alert");
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
   }
   triggerAlert(trigger2, text = "") {
-    console.log("Alert Triggered", trigger2);
     const alert = this.alerts.find((a2) => a2.trigger == trigger2);
     if (isEmpty$1(alert)) {
       return this;
@@ -32748,6 +32742,99 @@ class TimePicker extends EasyField {
     ];
   }
 }
+class TextareaField extends EasyField {
+  constructor(init) {
+    super(init);
+    __publicField(this, "append_inner_icon");
+    __publicField(this, "auto_grow");
+    __publicField(this, "component", "v-textarea");
+    __publicField(this, "counter", false);
+    __publicField(this, "direction", DirectionType.Horizontal);
+    __publicField(this, "dirty", false);
+    __publicField(this, "masking");
+    __publicField(this, "max_rows");
+    __publicField(this, "no_resize", false);
+    __publicField(this, "prepend_inner_icon");
+    __publicField(this, "rows", 5);
+    __publicField(this, "reverse", false);
+    if (!isEmpty$1(init == null ? void 0 : init.append_inner_icon)) {
+      this.append_inner_icon = new Icon(init == null ? void 0 : init.append_inner_icon);
+      init == null ? true : delete init.append_inner_icon;
+    }
+    if (!isEmpty$1(init == null ? void 0 : init.prepend_inner_icon)) {
+      this.prepend_inner_icon = new Icon(init == null ? void 0 : init.prepend_inner_icon);
+      init == null ? true : delete init.prepend_inner_icon;
+    }
+    Object.assign(this, init);
+    this.discriminator = "TextareaField";
+  }
+  /**
+   * Returns an array of all allowed props that are present on V-Text-Field
+   * https://vuetifyjs.com/en/api/v-text-field/
+   *
+   * Currently missing the following properties:
+   * counter-value
+   * model-modifiers
+   * model-value
+   * validation-value
+   *
+   * @returns string[]
+   */
+  allowedProps() {
+    return [
+      "active",
+      // "append_icon",
+      // "append_inner_icon",
+      "autofocus",
+      "attach",
+      "base_color",
+      "bg_color",
+      "center_affix",
+      "clearable",
+      "component_type",
+      "clear_icon",
+      "color",
+      "cols",
+      "counter",
+      "density",
+      "direction",
+      "dirty",
+      "disabled",
+      "error",
+      "error_messages",
+      "flat",
+      "focused",
+      "hide_details",
+      "hint",
+      "id",
+      "label",
+      "loading",
+      "masking",
+      "max_errors",
+      "messages",
+      "name",
+      "persistent_clear",
+      "persistent_counter",
+      "persistent_hint",
+      "persistent_placeholder",
+      "placeholder",
+      "prefix",
+      // "prepend_icon",
+      // "prepend_inner_icon",
+      "readonly",
+      "reverse",
+      "role",
+      "rounded",
+      // 'rules',
+      "single_line",
+      "suffix",
+      "theme",
+      "type",
+      "validate_on",
+      "variant"
+    ];
+  }
+}
 class SelectField extends EasyField {
   constructor(init) {
     super(init);
@@ -32944,6 +33031,10 @@ function registerDefaults() {
     {
       name: "ActionButton",
       field: ActionButton
+    },
+    {
+      name: "TextareaField",
+      field: TextareaField
     }
   ];
   for (const fieldDefault of defaults2) {
@@ -32999,7 +33090,7 @@ let ActionForm$1 = class ActionForm2 extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(action_identifier), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(action_identifier), this.additional_data),
         this.axios
       );
       if (response.status === 200 || response.status === 204) {
@@ -33049,7 +33140,7 @@ let InputForm$1 = class InputForm2 extends EasyForm {
     this.buttons = this.buttons.sort((a2, b3) => a2.order - b3.order);
   }
   data() {
-    const identifier = this.additional_data.data.find((data2) => data2.key == "identifier" || data2.key == "id");
+    const identifier = this.additional_data.find((data2) => data2.key == "identifier" || data2.key == "id");
     const data = new FormData();
     data.set("form_name", this.name);
     if (!isEmpty$1(identifier)) {
@@ -33090,7 +33181,7 @@ let InputForm$1 = class InputForm2 extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(), this.additional_data.toObject()),
+        ServerCall.mergeData(this.data(), this.additional_data),
         this.axios
       );
       this.processed();
@@ -39144,10 +39235,6 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
     __expose();
     const xProps = __props;
     const alerts = ref(xProps.alerts);
-    const visible_alerts = computed(() => {
-      var _a3;
-      return (_a3 = alerts == null ? void 0 : alerts.value) == null ? void 0 : _a3.filter((alert) => alert.display);
-    });
     function has_append_icon(alert) {
       var _a3;
       return !isEmpty$1(alert == null ? void 0 : alert.append_icon) && !isEmpty$1((_a3 = alert == null ? void 0 : alert.append_icon) == null ? void 0 : _a3.icon);
@@ -39156,7 +39243,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent$1({
       var _a3;
       return !isEmpty$1(alert == null ? void 0 : alert.prepend_icon) && !isEmpty$1((_a3 = alert == null ? void 0 : alert.prepend_icon) == null ? void 0 : _a3.icon);
     }
-    const __returned__ = { xProps, alerts, visible_alerts, has_append_icon, has_prepend_icon, get EasyIcon() {
+    const __returned__ = { xProps, alerts, has_append_icon, has_prepend_icon, get EasyIcon() {
       return EasyIcon;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -39254,12 +39341,12 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent$1({
       default: false
     },
     additionalData: {
-      type: AdditionalData,
-      default: new AdditionalData()
+      type: Array,
+      default: []
     },
     additionalLoadData: {
-      type: AdditionalData,
-      default: new AdditionalData()
+      type: Array,
+      default: []
     }
   },
   emits: [
@@ -79906,9 +79993,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
         return true;
       }
       return action.conditions.every((condition) => {
-        const data = form.value.additional_data.data.find(
-          (data2) => data2.key == condition.check
-        );
+        const data = form.value.additional_data.find((data2) => data2.key == condition.check);
         if (isEmpty$1(data)) {
           return false;
         }

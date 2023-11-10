@@ -77,9 +77,7 @@ function checkConditionals(action: ActionButton | ActionIcon): boolean {
   }
 
   return action.conditions.every((condition) => {
-    const data: DataItem | undefined = form.value.additional_data.data.find(
-      (data: DataItem) => data.key == condition.check,
-    );
+    const data: DataItem | undefined = form.value.additional_data.find((data: DataItem) => data.key == condition.check);
 
     if (isEmpty(data)) {
       // Condition data not found - failed.

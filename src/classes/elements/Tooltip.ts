@@ -1,5 +1,5 @@
 import { isEmpty } from "../../composables/utils";
-import { LocationTypes } from "../../enums";
+import { LocationTypes, ScrollStrategyTypes } from "../../enums";
 import { GotProps } from "../../abstracts/GotProps";
 
 export class Tooltip extends GotProps {
@@ -13,13 +13,13 @@ export class Tooltip extends GotProps {
   content_props: any;
   disabled = false;
   eager = true;
+  id: string | undefined;
   height: string | number | undefined;
   location: LocationTypes = LocationTypes.Top;
   max_height: string | number | undefined;
   max_width: string | number | undefined;
   min_height: string | number | undefined;
   min_width: string | number | undefined = 0;
-  model_value = false;
   no_click_animation = false;
   offset: string | number | number[] = 10;
   open_delay: string | number | undefined;
@@ -27,6 +27,7 @@ export class Tooltip extends GotProps {
   open_on_focus = false;
   open_on_hover = true;
   scrim: string | boolean = false;
+  scroll_strategy: ScrollStrategyTypes = ScrollStrategyTypes.Close;
   text: string | undefined;
   theme: string | undefined;
   transition: string | boolean = false;
@@ -72,7 +73,6 @@ export class Tooltip extends GotProps {
       "max_width",
       "min_height",
       "min_width",
-      "model_value",
       "no_click_animation",
       "offset",
       "open_delay",

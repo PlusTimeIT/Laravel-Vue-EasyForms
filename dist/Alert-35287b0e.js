@@ -6,8 +6,8 @@ var __publicField = (obj, key, value) => {
 };
 import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
 import { B as ButtonVariantTypes } from "./ButtonVariantTypes-e4c42916.js";
-import { D as DensityTypes } from "./LocationTypes-8f3d7f01.js";
-import { I as Icon } from "./Tooltip-f8329e53.js";
+import { D as DensityTypes } from "./ScrollStrategyTypes-b9c8a739.js";
+import { I as Icon } from "./Tooltip-dd8eaf56.js";
 import { G as GotProps } from "./GotProps-440b6309.js";
 import { i as isEmpty } from "./Types-dbac3a4a.js";
 class Alert extends GotProps {
@@ -29,16 +29,17 @@ class Alert extends GotProps {
     __publicField(this, "height");
     __publicField(this, "icon");
     __publicField(this, "prepend_icon");
+    __publicField(this, "position");
+    __publicField(this, "prominent", false);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
     __publicField(this, "original_text", "");
-    __publicField(this, "position");
-    __publicField(this, "prominent", false);
     __publicField(this, "rounded", false);
     __publicField(this, "tag", "div");
     __publicField(this, "text");
+    __publicField(this, "title");
     __publicField(this, "trigger", AlertTriggers.SuccessProcessing);
     __publicField(this, "type");
     __publicField(this, "variant", ButtonVariantTypes.Flat);
@@ -51,7 +52,6 @@ class Alert extends GotProps {
     this.original_text = this.text ?? "";
   }
   setDefaults() {
-    console.log("setting defaults", this.trigger);
     switch (this.trigger) {
       case AlertTriggers.AfterLoad: {
         this.iconCheck(new Icon({ icon: "mdi-alert-octagon-outline", color: "rgb(var(--v-theme-on-info))" }));
@@ -163,6 +163,7 @@ class Alert extends GotProps {
       "tag",
       "trigger",
       "type",
+      "title",
       "variant"
     ];
   }

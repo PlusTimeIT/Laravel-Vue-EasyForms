@@ -14,12 +14,14 @@ export class Menu extends GotProps {
   disabled = false;
   eager = false;
   height: string | number | undefined;
+  id: string;
   location: LocationTypes = LocationTypes.Bottom;
   max_height: string | number | undefined;
   max_width: string | number | undefined;
   min_height: string | number | undefined;
   min_width: string | number | undefined = 0;
   no_click_animation = false;
+  offset: string | number | number[] = 1;
   open_delay: string | number = 1;
   open_on_click = true;
   open_on_focus = false;
@@ -27,6 +29,7 @@ export class Menu extends GotProps {
   persistent: string | boolean = false;
   scrim: string | boolean = false;
   scroll_strategy: ScrollStrategyTypes = ScrollStrategyTypes.Reposition;
+  theme: string;
   width: string | number | undefined;
   z_index: string | number | undefined = 2000;
 

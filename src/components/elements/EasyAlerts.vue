@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { Alert } from "../../classes/elements";
 import { EasyIcon } from ".";
 import { isEmpty } from "../../utils";
@@ -9,7 +9,6 @@ const xProps = defineProps<{
 }>();
 
 const alerts = ref<Alert[]>(xProps.alerts);
-const visible_alerts = computed<Alert[]>(() => alerts?.value?.filter((alert) => alert.display));
 
 function has_append_icon(alert: Alert) {
   return !isEmpty(alert?.append_icon) && !isEmpty(alert?.append_icon?.icon);

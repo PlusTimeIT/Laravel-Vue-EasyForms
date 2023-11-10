@@ -4,8 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { L as LocationTypes } from "./LocationTypes-8f3d7f01.js";
-import { S as ScrollStrategyTypes } from "./ScrollStrategyTypes-c3dd8b07.js";
+import { L as LocationTypes, S as ScrollStrategyTypes } from "./ScrollStrategyTypes-b9c8a739.js";
 import { G as GotProps } from "./GotProps-440b6309.js";
 class Menu extends GotProps {
   constructor(init) {
@@ -21,12 +20,14 @@ class Menu extends GotProps {
     __publicField(this, "disabled", false);
     __publicField(this, "eager", false);
     __publicField(this, "height");
+    __publicField(this, "id");
     __publicField(this, "location", LocationTypes.Bottom);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
     __publicField(this, "no_click_animation", false);
+    __publicField(this, "offset", 1);
     __publicField(this, "open_delay", 1);
     __publicField(this, "open_on_click", true);
     __publicField(this, "open_on_focus", false);
@@ -34,6 +35,7 @@ class Menu extends GotProps {
     __publicField(this, "persistent", false);
     __publicField(this, "scrim", false);
     __publicField(this, "scroll_strategy", ScrollStrategyTypes.Reposition);
+    __publicField(this, "theme");
     __publicField(this, "width");
     __publicField(this, "z_index", 2e3);
     Object.assign(this, init);

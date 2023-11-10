@@ -6,15 +6,18 @@ var __publicField = (obj, key, value) => {
 };
 import { G as GotProps } from "./GotProps-440b6309.js";
 import { i as isEmpty } from "./Types-dbac3a4a.js";
-import { L as LocationTypes } from "./LocationTypes-8f3d7f01.js";
+import { L as LocationTypes, S as ScrollStrategyTypes } from "./ScrollStrategyTypes-b9c8a739.js";
 class Icon extends GotProps {
   constructor(init) {
     super(init);
     __publicField(this, "class");
     __publicField(this, "color", "primary");
+    __publicField(this, "end", false);
     __publicField(this, "icon", "");
     __publicField(this, "size");
+    __publicField(this, "start", false);
     __publicField(this, "tooltip");
+    __publicField(this, "tag", "i");
     if (!isEmpty(init == null ? void 0 : init.tooltip)) {
       this.tooltip = new Tooltip(init == null ? void 0 : init.tooltip);
       init == null ? true : delete init.tooltip;
@@ -49,13 +52,13 @@ class Tooltip extends GotProps {
     __publicField(this, "content_props");
     __publicField(this, "disabled", false);
     __publicField(this, "eager", true);
+    __publicField(this, "id");
     __publicField(this, "height");
     __publicField(this, "location", LocationTypes.Top);
     __publicField(this, "max_height");
     __publicField(this, "max_width");
     __publicField(this, "min_height");
     __publicField(this, "min_width", 0);
-    __publicField(this, "model_value", false);
     __publicField(this, "no_click_animation", false);
     __publicField(this, "offset", 10);
     __publicField(this, "open_delay");
@@ -63,6 +66,7 @@ class Tooltip extends GotProps {
     __publicField(this, "open_on_focus", false);
     __publicField(this, "open_on_hover", true);
     __publicField(this, "scrim", false);
+    __publicField(this, "scroll_strategy", ScrollStrategyTypes.Close);
     __publicField(this, "text");
     __publicField(this, "theme");
     __publicField(this, "transition", false);
@@ -103,7 +107,6 @@ class Tooltip extends GotProps {
       "max_width",
       "min_height",
       "min_width",
-      "model_value",
       "no_click_animation",
       "offset",
       "open_delay",

@@ -20,6 +20,6 @@ class AxiosOptions {
   }
 }
 export {
-  AxiosHeader as A,
-  AxiosOptions as a
+  AxiosOptions as A,
+  AxiosHeader as a
 };

@@ -7,19 +7,6 @@ var __publicField = (obj, key, value) => {
 import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
 import "./Types-dbac3a4a.js";
 import { P as ProgressCircular, a as ProgressLinear } from "./ProgressLinear-fca54ab2.js";
-class AdditionalData {
-  constructor(init) {
-    __publicField(this, "data", []);
-    Object.assign(this, init);
-  }
-  toObject() {
-    const result = {};
-    for (const item of this.data) {
-      result[item.key] = item.value;
-    }
-    return result;
-  }
-}
 class FormLoader {
   constructor(init) {
     __publicField(this, "type");
@@ -33,6 +20,5 @@ class FormLoader {
   }
 }
 export {
-  AdditionalData as A,
   FormLoader as F
 };

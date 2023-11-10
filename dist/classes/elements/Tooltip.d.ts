@@ -1,4 +1,4 @@
-import { LocationTypes } from "../../enums";
+import { LocationTypes, ScrollStrategyTypes } from "../../enums";
 import { GotProps } from "../../abstracts/GotProps";
 export declare class Tooltip extends GotProps {
     activator: string | undefined;
@@ -11,13 +11,13 @@ export declare class Tooltip extends GotProps {
     content_props: any;
     disabled: boolean;
     eager: boolean;
+    id: string | undefined;
     height: string | number | undefined;
     location: LocationTypes;
     max_height: string | number | undefined;
     max_width: string | number | undefined;
     min_height: string | number | undefined;
     min_width: string | number | undefined;
-    model_value: boolean;
     no_click_animation: boolean;
     offset: string | number | number[];
     open_delay: string | number | undefined;
@@ -25,6 +25,7 @@ export declare class Tooltip extends GotProps {
     open_on_focus: boolean;
     open_on_hover: boolean;
     scrim: string | boolean;
+    scroll_strategy: ScrollStrategyTypes;
     text: string | undefined;
     theme: string | undefined;
     transition: string | boolean;
