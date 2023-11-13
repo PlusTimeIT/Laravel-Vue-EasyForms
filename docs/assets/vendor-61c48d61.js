@@ -79787,6 +79787,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
     }
     async function handleButtonClick(button) {
       if (button.type === ButtonTypes.Process) {
+        console.log("PROCESS BUTTON");
         await processForm();
       } else if (button.type === ButtonTypes.Reset) {
         resetForm();
@@ -79795,6 +79796,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
       }
     }
     async function processForm() {
+      console.log("PROCESSING FORM");
       emit2(LoaderEvents.Processing, true);
       isLoading(true);
       const validation = await checkValidation();

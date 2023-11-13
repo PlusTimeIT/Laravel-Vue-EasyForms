@@ -1,4 +1,4 @@
-import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-7ff72412.js";
+import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-61c48d61.js";
 const scriptRel = "modulepreload";
 const assetsURL = function(dep, importerUrl) {
   return new URL(dep, importerUrl).href;
@@ -53,8 +53,8 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
 const Comp1 = { "title": "Form Basics", "icon": "carbon:bookmark", "group": "forms", "docsOnly": true, "variants": [] };
 const Comp2 = { "title": "Installation", "icon": "carbon:bookmark", "group": "getting-started", "docsOnly": true, "variants": [] };
 const Comp3 = { "title": "Intro", "icon": "carbon:bookmark", "group": "top", "docsOnly": true, "variants": [] };
-const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./FormLoader.story-441a824f.js"), true ? ["./FormLoader.story-441a824f.js","./vendor-7ff72412.js"] : void 0, import.meta.url));
-const Comp4 = defineAsyncComponent(() => __vitePreload(() => import("./vendor-7ff72412.js").then((n) => n.aI), true ? [] : void 0, import.meta.url));
+const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./FormLoader.story-b589d7fc.js"), true ? ["./FormLoader.story-b589d7fc.js","./vendor-61c48d61.js"] : void 0, import.meta.url));
+const Comp4 = defineAsyncComponent(() => __vitePreload(() => import("./vendor-61c48d61.js").then((n) => n.aI), true ? [] : void 0, import.meta.url));
 let files = [
   { "id": "src-components-formloader-story-vue", "path": ["Form Loader"], "filePath": "src/components/FormLoader.story.vue", "story": { "id": "src-components-formloader-story-vue", "title": "Form Loader", "group": "forms", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "src-components-formloader-story-vue-0", "title": "All Options" }, { "id": "src-components-formloader-story-vue-1", "title": "Input Form" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-components-formloader-story-vue-0f9538c7.js"), true ? [] : void 0, import.meta.url) },
   { "id": "src-histoire-formbasics-story-js", "path": ["Form Basics"], "filePath": "src/histoire/FormBasics.story.js", "story": { "id": "src-histoire-formbasics-story-js", "title": "Form Basics", "group": "forms", "layout": { "type": "single", "iframe": true }, "icon": "carbon:bookmark", "docsOnly": true, "variants": [] }, "supportPluginId": "vanilla", "docsFilePath": "src/histoire/FormBasics.story.md", "index": 1, component: Comp1, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_src-histoire-formbasics-story-js-96308474.js"), true ? [] : void 0, import.meta.url) },
@@ -83,12 +83,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-dd478500.js"), true ? ["./HomeView.vue-dd478500.js","./story-334f528e.js","./vendor-7ff72412.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./HomeView.vue-96e26c27.js"), true ? ["./HomeView.vue-96e26c27.js","./story-8aad1dba.js","./vendor-61c48d61.js"] : void 0, import.meta.url)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-8f47d9be.js"), true ? ["./StoryView.vue-8f47d9be.js","./vendor-7ff72412.js","./story-334f528e.js","./MobileOverlay.vue2-8cd16bc6.js","./BaseEmpty.vue-52f6e7c6.js","./state-fde4c676.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./StoryView.vue-edc35f8e.js"), true ? ["./StoryView.vue-edc35f8e.js","./vendor-61c48d61.js","./story-8aad1dba.js","./MobileOverlay.vue2-7bc61783.js","./BaseEmpty.vue-6074f699.js","./state-9f2d251e.js"] : void 0, import.meta.url)
     }
   ]
 });
@@ -178,8 +178,8 @@ function mapVariant(variant, existingVariant) {
   return result;
 }
 const clientSupportPlugins = {
-  "vanilla": () => __vitePreload(() => import("./vendor-7ff72412.js").then((n) => n.aJ), true ? [] : void 0, import.meta.url),
-  "vue3": () => __vitePreload(() => import("./vendor-7ff72412.js").then((n) => n.aK), true ? [] : void 0, import.meta.url)
+  "vanilla": () => __vitePreload(() => import("./vendor-61c48d61.js").then((n) => n.aJ), true ? [] : void 0, import.meta.url),
+  "vue3": () => __vitePreload(() => import("./vendor-61c48d61.js").then((n) => n.aK), true ? [] : void 0, import.meta.url)
 };
 const __default__ = {
   inheritAttrs: false

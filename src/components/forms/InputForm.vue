@@ -109,6 +109,7 @@ function isButtonDisabled(button: Button) {
 
 async function handleButtonClick(button: Button) {
   if (button.type === ButtonTypes.Process) {
+    console.log("PROCESS BUTTON");
     await processForm();
   } else if (button.type === ButtonTypes.Reset) {
     resetForm();
@@ -118,6 +119,7 @@ async function handleButtonClick(button: Button) {
 }
 
 async function processForm() {
+  console.log("PROCESSING FORM");
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
