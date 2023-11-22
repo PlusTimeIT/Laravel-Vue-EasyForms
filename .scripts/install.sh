@@ -71,7 +71,7 @@ if [ "$clean" == "true" ]; then
   cleanInstall
 elif [ -d "node_modules" ] && npm list -g rimraf > /dev/null 2>&1; then
     echo "Rimraf and Node Modules folder detected."
-    read -r -p "Do you want to run a clean install (y/n): " choice
+    read -p "Do you want to run a clean install (y/n): " choice
     if [ "$choice" == "y" ]; then
         cleanInstall
     else
