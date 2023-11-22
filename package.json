@@ -145,5 +145,8 @@
     "./types": {
       "import": "./dist/types.js"
     }
+  },
+  "stackblitz": {
+    "startCommand": "npm run story:dev"
   }
 }
