@@ -2,7 +2,7 @@ import type { FieldType } from "../../types";
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<{
     field: FieldType;
     fields: FieldType[];
-    cols?: number;
+    cols?: number | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     updated: (...args: any[]) => void;
     blur: (...args: any[]) => void;
@@ -17,18 +17,18 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     field: FieldType;
     fields: FieldType[];
-    cols?: number;
+    cols?: number | undefined;
 }>>> & {
-    onFocus?: (...args: any[]) => any;
-    onBlur?: (...args: any[]) => any;
-    onUpdated?: (...args: any[]) => any;
-    onValidated?: (...args: any[]) => any;
-    onInvalidated?: (...args: any[]) => any;
-    "onClick:prepend"?: (...args: any[]) => any;
-    "onClick:append"?: (...args: any[]) => any;
-    "onClick:clear"?: (...args: any[]) => any;
-    "onClick:prependInner"?: (...args: any[]) => any;
-    "onClick:appendInner"?: (...args: any[]) => any;
+    onFocus?: ((...args: any[]) => any) | undefined;
+    onBlur?: ((...args: any[]) => any) | undefined;
+    onUpdated?: ((...args: any[]) => any) | undefined;
+    onValidated?: ((...args: any[]) => any) | undefined;
+    onInvalidated?: ((...args: any[]) => any) | undefined;
+    "onClick:prepend"?: ((...args: any[]) => any) | undefined;
+    "onClick:append"?: ((...args: any[]) => any) | undefined;
+    "onClick:clear"?: ((...args: any[]) => any) | undefined;
+    "onClick:prependInner"?: ((...args: any[]) => any) | undefined;
+    "onClick:appendInner"?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

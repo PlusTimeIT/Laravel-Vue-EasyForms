@@ -3,7 +3,7 @@ import { isEmpty } from "../../composables/utils";
 import { ActionIcon, ActionButton } from "../../classes/actions";
 import { ref, computed, watchEffect, onBeforeUnmount } from "vue";
 import { ActionForm } from "../../classes/forms";
-import { DataItem } from "../../classes/properties/DataItem";
+import { DataItem } from "../../classes/properties";
 import { EasyButton, EasyIcon } from "../../components/elements";
 import { ActionInputFormType } from "../../composables/validation/PropValidation";
 import { LoaderEvents } from "../../enums";
@@ -38,17 +38,19 @@ const emit = defineEmits([
   LoaderEvents.Successful,
 ]);
 
-const form = ref<ActionForm>(props.form);
-const formWatcher = watchEffect(() => (form.value = props.form));
+const loadedForm = ref<ActionForm>(props.form);
+const formWatcher = watchEffect(() => (loadedForm.value = props.form));
 
-const filtered_actions = computed<Array<ActionIcon | ActionButton>>(() => {
-  return (form.value?.actions ?? []).filter((action: any) => {
+const filteredActions = computed<Array<ActionIcon | ActionButton>>(() => {
+  return (loadedForm.value?.actions ?? []).filter((action: any) => {
     return checkConditionals(action);
   });
 });
 
+const isFormInline = computed<boolean>(() => loadedForm.value.inline);
+
 function getCols(action: ActionIcon | ActionButton) {
-  return form.value.inline ? "auto" : action.cols;
+  return isFormInline.value ? "auto" : action.cols;
 }
 
 /**
@@ -77,7 +79,9 @@ function checkConditionals(action: ActionButton | ActionIcon): boolean {
   }
 
   return action.conditions.every((condition) => {
-    const data: DataItem | undefined = form.value.additional_data.find((data: DataItem) => data.key == condition.check);
+    const data: DataItem | undefined = loadedForm.value.additional_data.find(
+      (data: DataItem) => data.key == condition.check,
+    );
 
     if (isEmpty(data)) {
       // Condition data not found - failed.
@@ -105,7 +109,7 @@ function checkConditionals(action: ActionButton | ActionIcon): boolean {
 }
 
 function isLoading(loading: boolean) {
-  form.value.isLoading(loading);
+  loadedForm.value.isLoading(loading);
   emit(LoaderEvents.Loading, loading);
 }
 
@@ -113,14 +117,14 @@ async function runAction(action_identifier: string) {
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
-  const results = await form.value.process(action_identifier);
+  const results = await loadedForm.value.process(action_identifier);
   if (!results) {
     emit(LoaderEvents.Failed, true);
     isLoading(false);
     return;
   }
   emit(LoaderEvents.Successful, true);
-  if (form.value.axios.expecting_results) {
+  if (loadedForm.value.axios.expecting_results) {
     emit(LoaderEvents.Results, results);
   }
 }
@@ -131,15 +135,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <v-row :justify="form.justify_row">
-    <v-col v-for="(action, index) in filtered_actions" :key="index" :cols="getCols(action)" class="py-0 px-2">
-      <easy-icon
+  <v-row :justify="loadedForm.justify_row">
+    <v-col v-for="(action, index) in filteredActions" :key="index" :cols="getCols(action)" class="py-0 px-2">
+      get cols: {{ getCols(action) }}
+      <EasyIcon
         v-if="!isEmpty((action as ActionIcon).icon)"
         :icon="(action as ActionIcon).icon"
         :identifier="action.identifier"
         @click="runAction(action.identifier)"
       />
-      <easy-button
+      <EasyButton
         v-if="!isEmpty((action as ActionButton).button)"
         :button="(action as ActionButton).button"
         :identifier="action.identifier"

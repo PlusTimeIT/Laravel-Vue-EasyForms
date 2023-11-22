@@ -11,17 +11,17 @@ interface Props {
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    validated: (value: string) => void;
-    invalidated: (value: string) => void;
-    "update:modelValue": (value: TextField) => void;
+    validated: (value: string | undefined) => void;
+    invalidated: (value: string | undefined) => void;
+    "update:modelValue": (value: TextField | undefined) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>>> & {
-    "onUpdate:modelValue"?: (value: TextField) => any;
-    onValidated?: (value: string) => any;
-    onInvalidated?: (value: string) => any;
+    "onUpdate:modelValue"?: ((value: TextField | undefined) => any) | undefined;
+    onValidated?: ((value: string | undefined) => any) | undefined;
+    onInvalidated?: ((value: string | undefined) => any) | undefined;
 }, {
-    modelValue: string;
+    modelValue: string | undefined;
 }, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

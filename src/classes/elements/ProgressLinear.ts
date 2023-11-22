@@ -3,7 +3,7 @@ import { GotProps } from "../../abstracts/GotProps";
 import { LocationTypes } from "../../enums";
 
 export class ProgressLinear extends GotProps {
-  class: string | undefined;
+  classes: string | undefined;
   absolute = false;
   active = false;
   bg_color: string | undefined = "primary";

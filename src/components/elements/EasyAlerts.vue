@@ -23,10 +23,10 @@ function has_prepend_icon(alert: Alert) {
   <v-col v-for="(alert, index) in alerts" :key="index" :cols="alert.cols" v-show="alert.display">
     <v-alert v-model="alert.display" v-bind="alert.props()">
       <template #prepend v-if="has_prepend_icon(alert)">
-        <easy-icon :icon="alert?.prepend_icon" />
+        <EasyIcon :icon="alert?.prepend_icon" />
       </template>
       <template #append v-if="has_append_icon(alert)">
-        <easy-icon :icon="alert?.append_icon" />
+        <EasyIcon :icon="alert?.append_icon" />
       </template>
       <div v-html="alert.text"></div>
     </v-alert>

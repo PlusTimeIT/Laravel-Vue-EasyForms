@@ -1,97 +1,80 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import { S as ServerCall } from "./ServerCall-a611b3a4.js";
-import { a } from "./ServerCall-a611b3a4.js";
-import { A as AxiosCalls } from "./ContentTypes-783ab8ea.js";
-import { i as isEmpty } from "./Types-dbac3a4a.js";
-import "./AxiosOptions-a3506c4f.js";
+var r = Object.defineProperty;
+var n = (i, t, s) => t in i ? r(i, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : i[t] = s;
+var e = (i, t, s) => (n(i, typeof t != "symbol" ? t + "" : t, s), s);
+import { S as o } from "./ServerCall-016fdee6.js";
+import { a as y } from "./ServerCall-016fdee6.js";
+import { A as l } from "./ContentTypes-f2427ff5.js";
+import { i as m } from "./Types-cc63165d.js";
+import "./AxiosOptions-6a3d3f30.js";
 import "axios";
-class DateHelper {
+class h {
   /**
    * Get minutes between 2 Date objects
    * @param start Date the start date with time included.
    * @param end Date the end date with time included.
    * @returns number
    */
-  static minutesBetween(start, end) {
-    let diff = (end.getTime() - start.getTime()) / 1e3;
-    diff /= 60;
-    return Math.abs(Math.round(diff));
+  static minutesBetween(t, s) {
+    let a = (s.getTime() - t.getTime()) / 1e3;
+    return a /= 60, Math.abs(Math.round(a));
   }
 }
-const minutesBetween = function(start, end) {
-  return DateHelper.minutesBetween(start, end);
+const f = function(i, t) {
+  return h.minutesBetween(i, t);
 };
-class Csrf {
-  constructor(init) {
+class _ {
+  constructor(t) {
     // Number of attempts allowed for csrf before wait time is imposed.
-    __publicField(this, "allowed_attempts", 5);
+    e(this, "allowed_attempts", 5);
     // Wait time between requests in milliseconds
-    __publicField(this, "default_wait_time", 1500);
+    e(this, "default_wait_time", 1500);
     // Number of attempts for csrf
-    __publicField(this, "attempts", 0);
+    e(this, "attempts", 0);
     // Last time Csrf was attempted.
-    __publicField(this, "last_attempt", /* @__PURE__ */ new Date());
+    e(this, "last_attempt", /* @__PURE__ */ new Date());
     // When a User was last updated
-    __publicField(this, "loading", false);
+    e(this, "loading", !1);
     // csrf retry wait time after attempts in minutes
-    __publicField(this, "retry_wait", 5);
+    e(this, "retry_wait", 5);
     // csrf token is set
-    __publicField(this, "token", false);
+    e(this, "token", !1);
     // Substr of begining of token.
-    __publicField(this, "prefix", null);
+    e(this, "prefix", null);
     // Error message to display on Token failure.
-    __publicField(this, "error_message", "Error loading form. Please try refreshing the page.");
+    e(this, "error_message", "Error loading form. Please try refreshing the page.");
     // csrf endpoint
-    __publicField(this, "endpoint", "");
-    Object.assign(this, init);
+    e(this, "endpoint", "");
+    Object.assign(this, t);
   }
   // Adds token attempt
   attemptCheck() {
-    this.last_attempt = /* @__PURE__ */ new Date();
-    if (this.attempts >= this.allowed_attempts) {
-      const waited_time = minutesBetween(this.last_attempt, /* @__PURE__ */ new Date());
-      if (waited_time <= this.retry_wait) {
-        this.failedAttempt();
-        return false;
-      }
+    if (this.last_attempt = /* @__PURE__ */ new Date(), this.attempts >= this.allowed_attempts) {
+      if (f(this.last_attempt, /* @__PURE__ */ new Date()) <= this.retry_wait)
+        return this.failedAttempt(), !1;
       this.resetAttempts();
     }
-    return true;
+    return !0;
   }
   // failed attempts on csrf token call
   failedAttempt() {
-    this.loading = false;
-    this.token = false;
+    this.loading = !1, this.token = !1;
   }
-  async delay(milliseconds) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, milliseconds);
+  async delay(t) {
+    return new Promise((s) => {
+      setTimeout(s, t);
     });
   }
   // Fetch new token
   async fetchNewToken() {
-    if (this.loading) {
-      return false;
-    }
-    this.loading = true;
-    while (this.attemptCheck() && !this.isValidCsrfToken()) {
-      const attempt = await this.tokenAttempt();
-      if (!attempt) {
-        this.failedAttempt();
-      }
-      await this.delay(this.default_wait_time);
-    }
-    this.loading = false;
-    return this.isValidCsrfToken();
+    if (this.loading)
+      return !1;
+    for (this.loading = !0; this.attemptCheck() && !this.isValidCsrfToken(); )
+      await this.tokenAttempt() || this.failedAttempt(), await this.delay(this.default_wait_time);
+    return this.loading = !1, this.isValidCsrfToken();
   }
   // Is CSRF Token valid
   isValidCsrfToken() {
-    return this.token && !isEmpty(this.prefix);
+    return this.token && !m(this.prefix);
   }
   // reset attempts on successful csrf token call
   resetAttempts() {
@@ -102,31 +85,24 @@ class Csrf {
     return this.loading;
   }
   // successful attempts on csrf token call
-  async successfulAttempt(prefix) {
-    this.prefix = prefix;
-    this.loading = false;
-    this.token = true;
-    this.resetAttempts();
-    return true;
+  async successfulAttempt(t) {
+    return this.prefix = t, this.loading = !1, this.token = !0, this.resetAttempts(), !0;
   }
   // Adds token attempt
   async tokenAttempt() {
     this.attempts++;
-    let response;
+    let t;
     try {
-      response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
-      if (response.status === 200 || response.status === 204) {
-        await this.successfulAttempt(response.config["headers"]["X-XSRF-TOKEN"].substr(0, 5));
-        return true;
-      }
-    } catch (error) {
-      return false;
+      if (t = await o.request(l.Get, this.endpoint), t.status === 200 || t.status === 204)
+        return await this.successfulAttempt(t.config.headers["X-XSRF-TOKEN"].substr(0, 5)), !0;
+    } catch {
+      return !1;
     }
-    return false;
+    return !1;
   }
 }
 export {
-  Csrf,
-  ServerCall,
-  a as ServerResponse
+  _ as Csrf,
+  o as ServerCall,
+  y as ServerResponse
 };

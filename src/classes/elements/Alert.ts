@@ -44,7 +44,12 @@ export class Alert extends GotProps {
     super(init);
 
     if (!isEmpty(init?.icon)) {
-      this.prepend_icon = new Icon(init?.icon);
+      if (init?.icon instanceof Icon) {
+        this.prepend_icon = init?.icon;
+      } else {
+        this.prepend_icon = new Icon(init?.icon);
+      }
+
       delete init?.icon;
     }
     Object.assign(this, init);

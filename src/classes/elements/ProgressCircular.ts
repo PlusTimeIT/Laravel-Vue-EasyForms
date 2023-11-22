@@ -2,7 +2,7 @@ import { GotProps } from "../../abstracts/GotProps";
 import { isEmpty } from "../../utils";
 
 export class ProgressCircular extends GotProps {
-  class: string | undefined;
+  classes: string | undefined;
   bg_color: string | undefined = "white";
   color: string | undefined;
   indeterminate: string | boolean = false;
@@ -17,8 +17,8 @@ export class ProgressCircular extends GotProps {
 
     Object.assign(this, init);
 
-    if (isEmpty(this.class)) {
-      this.class = "mx-auto my-auto text-center pa-10";
+    if (isEmpty(this.classes)) {
+      this.classes = "mx-auto my-auto text-center pa-10";
     }
   }
 

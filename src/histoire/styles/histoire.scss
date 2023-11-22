@@ -8,79 +8,89 @@ $grey: #787878;
 
 html {
   font-family: "Montserrat", sans-serif;
-}
 
-.alert {
-  width: 100%;
-  margin: 5px 5px;
-  background: none;
-  font-size: 1rem;
-  border-image-slice: 1;
-  border-width: 20px;
-  border-right: 0;
-  border-bottom: 0;
-  border-top: 0;
-
-  &.info {
-    border-image-source: linear-gradient(0.52turn, #00c3ff 0 70%, #84dcf7);
-  }
-  &.success {
-    border-image-source: linear-gradient(0.52turn, #00ff6a 0 70%, #83f6b3);
-  }
-  &.warning {
-    border-image-source: linear-gradient(0.52turn, #ffa200 0 70%, #f7cd84);
-  }
-  &.error {
-    border-image-source: linear-gradient(0.52turn, #ff1e00 0 70%, #fa9386);
-  }
-  .contents {
-    padding: 10px 15px;
-    background-color: darken($grey, 30%);
-    color: #fff;
-  }
-}
-
-.data-table {
-  table {
-    width: 800px;
-    border-collapse: collapse;
-    overflow: hidden;
-    box-shadow: 0 0 5px lighten($grey, 5%);
-  }
-
-  th,
-  td {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-  }
-
-  th {
-    text-align: left;
-  }
-
-  thead {
-    background: linear-gradient(45deg, $primary, darken($primary, 20%));
-  }
-
-  tbody {
-    tr {
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
+  &.htw-dark.dark {
+    h2 {
+      color: white;
     }
+  }
+
+  h2 {
+    color: black;
+  }
+
+  .alert {
+    width: 100%;
+    margin: 5px 5px;
+    background: none;
+    font-size: 1rem;
+    border-image-slice: 1;
+    border-width: 20px;
+    border-right: 0;
+    border-bottom: 0;
+    border-top: 0;
+
+    &.info {
+      border-image-source: linear-gradient(0.52turn, #00c3ff 0 70%, #84dcf7);
+    }
+    &.success {
+      border-image-source: linear-gradient(0.52turn, #00ff6a 0 70%, #83f6b3);
+    }
+    &.warning {
+      border-image-source: linear-gradient(0.52turn, #ffa200 0 70%, #f7cd84);
+    }
+    &.error {
+      border-image-source: linear-gradient(0.52turn, #ff1e00 0 70%, #fa9386);
+    }
+    .contents {
+      padding: 10px 15px;
+      background-color: darken($grey, 30%);
+      color: #fff;
+    }
+  }
+
+  .data-table {
+    table {
+      width: 800px;
+      border-collapse: collapse;
+      overflow: hidden;
+      box-shadow: 0 0 5px lighten($grey, 5%);
+    }
+
+    th,
     td {
-      position: relative;
-      &:hover {
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: -9999px;
-          bottom: -9999px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    thead {
+      background: linear-gradient(45deg, $primary, darken($primary, 20%));
+    }
+
+    tbody {
+      tr {
+        &:hover {
           background-color: rgba(255, 255, 255, 0.2);
-          z-index: -1;
+        }
+      }
+      td {
+        position: relative;
+        &:hover {
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+          }
         }
       }
     }

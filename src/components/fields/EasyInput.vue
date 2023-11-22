@@ -118,19 +118,19 @@ onMounted(() => {
     @click:appendInner="emit('click:appendInner', $event)"
   >
     <template #clear v-if="hasClearIcon">
-      <easy-icon :icon="props?.field?.clear_icon" @click="emit('click:clear', $event)" />
+      <EasyIcon :icon="props?.field?.clear_icon" @click="emit('click:clear', $event)" />
     </template>
     <template #append v-if="hasAppendIcon">
-      <easy-icon :icon="props?.field?.append_icon" @click="emit('click:append', $event)" />
+      <EasyIcon :icon="props?.field?.append_icon" @click="emit('click:append', $event)" />
     </template>
     <template #append-inner v-if="hasAppendInnerIcon">
-      <easy-icon :icon="props?.field?.append_inner_icon" @click="emit('click:appendInner', $event)" />
+      <EasyIcon :icon="props?.field?.append_inner_icon" @click="emit('click:appendInner', $event)" />
     </template>
     <template #prepend v-if="hasPrependIcon">
-      <easy-icon :icon="props?.field?.prepend_icon" @click="emit('click:prepend', $event)" />
+      <EasyIcon :icon="props?.field?.prepend_icon" @click="emit('click:prepend', $event)" />
     </template>
     <template #prepend-inner v-if="hasPrependInnerIcon">
-      <easy-icon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
+      <EasyIcon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
     </template>
     <p class="mb-3 mt-4" v-if="field.component == 'v-radio-group'">
       <v-radio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />

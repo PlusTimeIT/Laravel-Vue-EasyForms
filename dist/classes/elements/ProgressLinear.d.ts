@@ -2,7 +2,7 @@ import { Tooltip } from ".";
 import { GotProps } from "../../abstracts/GotProps";
 import { LocationTypes } from "../../enums";
 export declare class ProgressLinear extends GotProps {
-    class: string | undefined;
+    classes: string | undefined;
     absolute: boolean;
     active: boolean;
     bg_color: string | undefined;

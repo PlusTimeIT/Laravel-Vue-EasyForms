@@ -1,125 +1,92 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import { i as isEmpty, a as isArray, s as store, g as isObject } from "./Types-dbac3a4a.js";
-import { A as AlertTriggers } from "./AlertTriggers-8841b46d.js";
-import { A as AxiosCalls, C as ContentTypes } from "./ContentTypes-783ab8ea.js";
-import { F as FormLoaderTypes } from "./FormLoaderTypes-8047088c.js";
-import { A as Alert } from "./Alert-35287b0e.js";
-import { P as ProgressCircular } from "./ProgressLinear-fca54ab2.js";
-import { S as ServerCall } from "./ServerCall-a611b3a4.js";
-import { A as AxiosOptions } from "./AxiosOptions-a3506c4f.js";
-import { F as FormLoader } from "./FormLoader-c385b8c2.js";
-import { J as JustifyRow, A as AlignRow } from "./JustifyRow-8255fd21.js";
-import { ActionIcon, ActionButton } from "./actions.js";
-import { E as EasyField, A as AutoCompleteField, a as CheckboxField, C as CheckboxGroupField, P as PasswordField, R as RadioGroupField, b as RadioField, c as ColorPicker, d as ColorPickerField, D as DatePicker, e as DatePickerField, F as FileInputField, S as SwitchField, T as TextField, f as TimePickerField, g as TextareaField } from "./fields-dc5ca878.js";
+var T = Object.defineProperty;
+var j = (i, s, e) => s in i ? T(i, s, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[s] = e;
+var r = (i, s, e) => (j(i, typeof s != "symbol" ? s + "" : s, e), e);
+import { i as l, a as f, s as m, g as E } from "./Types-cc63165d.js";
+import { A as d } from "./AlertTriggers-18dccfa1.js";
+import { A as g, C as y } from "./ContentTypes-f2427ff5.js";
+import { F as L } from "./FormLoaderTypes-b32e44d6.js";
+import { A as J } from "./Alert-656cba8e.js";
+import { P as M } from "./ProgressLinear-fd659726.js";
+import { S as n } from "./ServerCall-016fdee6.js";
+import { A } from "./AxiosOptions-6a3d3f30.js";
+import { F as b } from "./FormLoader-7688a5bf.js";
+import { ActionIcon as x, ActionButton as C } from "./actions.js";
+import { J as v, F as w, A as I } from "./JustifyRow-eb5715b2.js";
+import { E as N, A as B, a as $, C as R, P as G, R as q, b as V, c as z, d as H, D as K, e as Q, F as U, S as W, T as X, f as Y, g as Z } from "./fields-7292d0a3.js";
 import "axios";
-import { D as DirectionType, F as FilterModeTypes } from "./ViewModeTypes-6930220b.js";
-import { B as Button } from "./Button-8e7e37c9.js";
-import "./ButtonVariantTypes-e4c42916.js";
-import "./ScrollStrategyTypes-b9c8a739.js";
-import "./Tooltip-dd8eaf56.js";
-import "./GotProps-440b6309.js";
-import "./ValidationRule-73a2fa9e.js";
-import "./Menu-ed550df2.js";
-class EasyForm {
-  constructor(init) {
-    __publicField(this, "additional_data", []);
-    __publicField(this, "additional_load_data", []);
-    __publicField(this, "alerts", []);
-    __publicField(this, "axios", new AxiosOptions());
-    __publicField(this, "loader");
-    __publicField(this, "loading", true);
-    __publicField(this, "name", "");
-    __publicField(this, "original", []);
-    __publicField(this, "results", null);
-    __publicField(this, "text", "");
-    __publicField(this, "title", "");
-    __publicField(this, "type", "");
-    if (!isEmpty(init == null ? void 0 : init.alerts) && isArray(init == null ? void 0 : init.alerts)) {
-      for (const alert of (init == null ? void 0 : init.alerts) ?? []) {
-        this.alerts.push(new Alert(alert));
-      }
-      init == null ? true : delete init.alerts;
+import { D as ee, F as se } from "./ViewModeTypes-25f1573e.js";
+import { B as te } from "./Button-c066a5e3.js";
+import "./ButtonVariantTypes-85a127bd.js";
+import "./ScrollStrategyTypes-749a6aaa.js";
+import "./Tooltip-ca2b6abb.js";
+import "./GotProps-c8fa699d.js";
+import "./ValidationRule-cec9d477.js";
+import "./Menu-54a49747.js";
+class P {
+  constructor(s) {
+    r(this, "additional_data", []);
+    r(this, "additional_load_data", []);
+    r(this, "alerts", []);
+    r(this, "axios", new A());
+    r(this, "loader");
+    r(this, "loading", !0);
+    r(this, "name", "");
+    r(this, "original", []);
+    r(this, "results", null);
+    r(this, "text", "");
+    r(this, "title", "");
+    r(this, "type", "");
+    if (!l(s == null ? void 0 : s.alerts) && f(s == null ? void 0 : s.alerts)) {
+      for (const e of (s == null ? void 0 : s.alerts) ?? [])
+        this.alerts.push(new J(e));
+      s == null || delete s.alerts;
     }
-    if (!isEmpty(init == null ? void 0 : init.axios)) {
-      this.axios = new AxiosOptions(init == null ? void 0 : init.axios);
-      init == null ? true : delete init.axios;
-    }
-    if (!isEmpty(init == null ? void 0 : init.loader)) {
-      this.loader = new FormLoader(init == null ? void 0 : init.loader);
-      init == null ? true : delete init.loader;
-    }
-    Object.assign(this, init);
-    if (isEmpty(this.loader)) {
-      this.loader = new FormLoader({
-        type: FormLoaderTypes.Circular,
-        progress: new ProgressCircular({ indeterminate: true, color: "primary" })
-      });
-    }
+    l(s == null ? void 0 : s.axios) || (this.axios = new A(s == null ? void 0 : s.axios), s == null || delete s.axios), l(s == null ? void 0 : s.loader) || (this.loader = new b(s == null ? void 0 : s.loader), s == null || delete s.loader), Object.assign(this, s), l(this.loader) && (this.loader = new b({
+      type: L.Circular,
+      progress: new M({ indeterminate: !0, color: "primary" })
+    }));
   }
   cancelled() {
-    this.triggerAlert(AlertTriggers.Cancelled);
-    return this;
+    return this.triggerAlert(d.Cancelled), this;
   }
-  failed(text) {
-    this.triggerAlert(AlertTriggers.FailedProcessing, text);
-    return this;
+  failed(s) {
+    return this.triggerAlert(d.FailedProcessing, s), this;
   }
-  failedValidation(text) {
-    this.triggerAlert(AlertTriggers.FailedValidation, text);
-    return this;
+  failedValidation(s) {
+    return this.triggerAlert(d.FailedValidation, s), this;
   }
-  hasResults(results) {
-    this.results = results;
-    return this;
+  hasResults(s) {
+    return this.results = s, this;
   }
-  isLoading(loading) {
-    this.loading = loading;
-    return this;
+  isLoading(s) {
+    return this.loading = s, this;
   }
   async load() {
-    var _a, _b, _c;
-    let response;
-    this.triggerAlert(AlertTriggers.BeforeLoad);
-    this.isLoading(true);
+    var e, t, a;
+    let s;
+    this.triggerAlert(d.BeforeLoad), this.isLoading(!0);
     try {
-      response = await ServerCall.request(
-        AxiosCalls.Post,
-        store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data),
+      if (s = await n.request(
+        g.Post,
+        m.options.buildDomain("/forms/load"),
+        n.mergeData({ form_name: this.name }, this.additional_load_data),
         this.axios
-      );
-      if (response.status === 200 || response.status === 204) {
-        this.isLoading(((_a = response == null ? void 0 : response.data) == null ? void 0 : _a.loader) ?? false);
-        if (!((_b = response == null ? void 0 : response.data) == null ? void 0 : _b.result)) {
-          this.triggerAlert(AlertTriggers.FailedLoad);
-          return false;
-        }
-        const tempForm = JSON.parse(JSON.stringify((_c = response == null ? void 0 : response.data) == null ? void 0 : _c.data));
-        if (isEmpty(tempForm.type)) {
-          this.triggerAlert(AlertTriggers.FailedLoad);
-          return false;
-        }
-        return tempForm;
+      ), s.status === 200 || s.status === 204) {
+        if (this.isLoading(((e = s == null ? void 0 : s.data) == null ? void 0 : e.loader) ?? !1), !((t = s == null ? void 0 : s.data) != null && t.result))
+          return this.triggerAlert(d.FailedLoad), !1;
+        const o = JSON.parse(JSON.stringify((a = s == null ? void 0 : s.data) == null ? void 0 : a.data));
+        return l(o.type) ? (this.triggerAlert(d.FailedLoad), !1) : o;
       }
-    } catch (error) {
-      this.triggerAlert(AlertTriggers.FailedLoad);
-      return false;
+    } catch {
+      return this.triggerAlert(d.FailedLoad), !1;
     }
-    this.triggerAlert(AlertTriggers.FailedLoad);
-    return false;
+    return this.triggerAlert(d.FailedLoad), !1;
   }
   processing() {
-    this.triggerAlert(AlertTriggers.BeforeProcessing);
-    return this;
+    return this.triggerAlert(d.BeforeProcessing), this;
   }
   processed() {
-    this.triggerAlert(AlertTriggers.AfterProcessing);
-    return this;
+    return this.triggerAlert(d.AfterProcessing), this;
   }
   props() {
     return {
@@ -127,78 +94,61 @@ class EasyForm {
     };
   }
   hideAllAlerts() {
-    this.alerts.forEach((alert) => alert.hide());
-    return this;
+    return this.alerts.forEach((s) => s.hide()), this;
   }
   reset() {
-    this.hideAllAlerts();
-    this.triggerAlert(AlertTriggers.FormReset);
+    return this.hideAllAlerts(), this.triggerAlert(d.FormReset), this;
+  }
+  resetAlerts(s = []) {
+    l(s.length) && (s = [d.SuccessProcessing, d.FailedProcessing]);
+    for (const e of this.alerts)
+      s.includes(e.trigger) && e.reset();
     return this;
   }
-  resetAlerts(triggers = []) {
-    if (isEmpty(triggers.length)) {
-      triggers = [AlertTriggers.SuccessProcessing, AlertTriggers.FailedProcessing];
-    }
-    for (const alert of this.alerts) {
-      if (!triggers.includes(alert.trigger)) {
-        continue;
-      }
-      alert.reset();
-    }
-    return this;
+  success(s) {
+    return console.log("success alert"), this.triggerAlert(d.SuccessProcessing, s), this;
   }
-  success(text) {
-    console.log("success alert");
-    this.triggerAlert(AlertTriggers.SuccessProcessing, text);
-    return this;
-  }
-  triggerAlert(trigger, text = "") {
-    const alert = this.alerts.find((a) => a.trigger == trigger);
-    if (isEmpty(alert)) {
-      return this;
-    }
-    alert == null ? void 0 : alert.convertContents(text).show().autoClose();
-    return this;
+  triggerAlert(s, e = "") {
+    const t = this.alerts.find((a) => a.trigger == s);
+    return l(t) ? this : (t == null || t.convertContents(e).show().autoClose(), this);
   }
 }
-class SelectField extends EasyField {
-  constructor(init) {
-    super(init);
-    __publicField(this, "auto_select_first", false);
-    __publicField(this, "chips", false);
-    __publicField(this, "closable_chips", false);
-    __publicField(this, "close_text", "$vuetify.close");
-    __publicField(this, "component", "v-select");
-    __publicField(this, "counter", false);
-    __publicField(this, "direction", DirectionType.Horizontal);
-    __publicField(this, "filter_keys", ["title"]);
-    __publicField(this, "filter_mode", FilterModeTypes.Intersection);
-    __publicField(this, "hide_no_data", false);
-    __publicField(this, "hide_selected", false);
-    __publicField(this, "item_children", false);
-    __publicField(this, "item_color");
-    __publicField(this, "item_props", "props");
-    __publicField(this, "item_title", "title");
-    __publicField(this, "item_value", "value");
-    __publicField(this, "items", []);
-    __publicField(this, "menu", false);
-    __publicField(this, "menu_icon", "$dropdown");
-    __publicField(this, "multiple", false);
-    __publicField(this, "no_data_text", "$vuetify.noDataText");
-    __publicField(this, "no_filter", false);
-    __publicField(this, "open_on_clear", false);
-    __publicField(this, "open_text", "$vuetify.open");
-    __publicField(this, "prepend_inner_icon");
-    __publicField(this, "return_object", false);
-    __publicField(this, "search", "");
-    __publicField(this, "transition", false);
-    __publicField(this, "type", "text");
-    Object.assign(this, init);
-    this.discriminator = "SelectField";
+class re extends N {
+  constructor(e) {
+    super(e);
+    r(this, "auto_select_first", !1);
+    r(this, "chips", !1);
+    r(this, "closable_chips", !1);
+    r(this, "close_text", "$vuetify.close");
+    r(this, "component", "v-select");
+    r(this, "counter", !1);
+    r(this, "direction", ee.Horizontal);
+    r(this, "filter_keys", ["title"]);
+    r(this, "filter_mode", se.Intersection);
+    r(this, "hide_no_data", !1);
+    r(this, "hide_selected", !1);
+    r(this, "item_children", !1);
+    r(this, "item_color");
+    r(this, "item_props", "props");
+    r(this, "item_title", "title");
+    r(this, "item_value", "value");
+    r(this, "items", []);
+    r(this, "menu", !1);
+    r(this, "menu_icon", "$dropdown");
+    r(this, "multiple", !1);
+    r(this, "no_data_text", "$vuetify.noDataText");
+    r(this, "no_filter", !1);
+    r(this, "open_on_clear", !1);
+    r(this, "open_text", "$vuetify.open");
+    r(this, "prepend_inner_icon");
+    r(this, "return_object", !1);
+    r(this, "search", "");
+    r(this, "transition", !1);
+    r(this, "type", "text");
+    Object.assign(this, e), this.discriminator = "SelectField";
   }
-  loadItems(items) {
-    this.items = items;
-    return this;
+  loadItems(e) {
+    return this.items = e, this;
   }
   /**
    * Returns an array of all allowed props that are present on V-Select
@@ -287,302 +237,253 @@ class SelectField extends EasyField {
     ];
   }
 }
-const classRegistry = {};
-function registerDefaults() {
-  const defaults = [
+const O = {};
+function ae() {
+  const i = [
     {
       name: "AutoCompleteField",
-      field: AutoCompleteField
+      field: B
     },
     {
       name: "CheckboxField",
-      field: CheckboxField
+      field: $
     },
     {
       name: "CheckboxGroupField",
-      field: CheckboxGroupField
+      field: R
     },
     {
       name: "PasswordField",
-      field: PasswordField
+      field: G
     },
     {
       name: "RadioGroupField",
-      field: RadioGroupField
+      field: q
     },
     {
       name: "RadioField",
-      field: RadioField
+      field: V
     },
     {
       name: "ColorPicker",
-      field: ColorPicker
+      field: z
     },
     {
       name: "ColorPickerField",
-      field: ColorPickerField
+      field: H
     },
     {
       name: "DatePicker",
-      field: DatePicker
+      field: K
     },
     {
       name: "DatePickerField",
-      field: DatePickerField
+      field: Q
     },
     {
       name: "FileInputField",
-      field: FileInputField
+      field: U
     },
     {
       name: "SwitchField",
-      field: SwitchField
+      field: W
     },
     {
       name: "TextField",
-      field: TextField
+      field: X
     },
     {
       name: "TimePickerField",
-      field: TimePickerField
+      field: Y
     },
     {
       name: "SelectField",
-      field: SelectField
+      field: re
     },
     {
       name: "ActionIcon",
-      field: ActionIcon
+      field: x
     },
     {
       name: "ActionButton",
-      field: ActionButton
+      field: C
     },
     {
       name: "TextareaField",
-      field: TextareaField
+      field: Z
     }
   ];
-  for (const fieldDefault of defaults) {
-    registerClass(fieldDefault.name, fieldDefault.field);
-  }
+  for (const s of i)
+    oe(s.name, s.field);
 }
-registerDefaults();
-function registerClass(className, classConstructor) {
-  classRegistry[className] = classConstructor;
+ae();
+function oe(i, s) {
+  O[i] = s;
 }
-function getClassConstructor(className) {
-  return classRegistry[className];
+function k(i) {
+  return O[i];
 }
-class ActionForm extends EasyForm {
-  constructor(init) {
-    super(init);
-    __publicField(this, "actions", []);
-    __publicField(this, "callback", "");
-    __publicField(this, "inline", false);
-    __publicField(this, "justify_row", JustifyRow.Center);
-    __publicField(this, "type", "action-form");
-    if (!isEmpty(init == null ? void 0 : init.actions) && isArray(init == null ? void 0 : init.actions)) {
-      for (const actions of (init == null ? void 0 : init.actions) ?? []) {
-        if (!isEmpty(actions.discriminator)) {
-          const className = actions.discriminator;
-          this.instantiateAction(className, actions);
+class ke extends P {
+  constructor(e) {
+    super(e);
+    // actions: Array<ActionIcon | ActionButton> = [];
+    r(this, "actions", []);
+    r(this, "callback", "");
+    r(this, "inline", !1);
+    r(this, "justify_row", v.Center);
+    r(this, "type", w.Action);
+    if (!l(e == null ? void 0 : e.actions) && f(e == null ? void 0 : e.actions)) {
+      for (const t of (e == null ? void 0 : e.actions) ?? [])
+        if (t instanceof x || t instanceof C)
+          this.actions.push(t);
+        else if (!l(t.discriminator)) {
+          const a = t.discriminator;
+          this.instantiateAction(a, t);
         }
-      }
-      init == null ? true : delete init.actions;
+      e == null || delete e.actions;
     }
-    Object.assign(this, init);
+    Object.assign(this, e), console.log("Form Actions", this.name, this.actions, this);
   }
-  instantiateAction(className, data) {
-    const classConstructor = getClassConstructor(className);
-    if (classConstructor) {
-      const instance = new classConstructor(data);
-      this.actions.push(instance);
-    } else {
-      console.error(`Class "${className}" not found in the registry.`);
-    }
+  instantiateAction(e, t) {
+    const a = k(e);
+    if (a) {
+      const o = new a(t);
+      this.actions.push(o);
+    } else
+      console.error(`Class "${e}" not found in the registry.`);
   }
-  data(action_identifier) {
-    const data = new FormData();
-    data.set("form_name", this.name);
-    data.set("form_action", action_identifier);
-    return data;
+  data(e) {
+    const t = new FormData();
+    return t.set("form_name", this.name), t.set("form_action", e), t;
   }
-  async process(action_identifier) {
-    var _a, _b;
-    let response;
-    this.isLoading(true);
+  async process(e) {
+    var a, o;
+    let t;
+    this.isLoading(!0);
     try {
-      response = await ServerCall.request(
-        AxiosCalls.Post,
-        store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(action_identifier), this.additional_data),
+      if (t = await n.request(
+        g.Post,
+        m.options.buildDomain("/forms/process"),
+        n.mergeData(this.data(e), this.additional_data),
         this.axios
-      );
-      if (response.status === 200 || response.status === 204) {
-        this.isLoading(((_a = response == null ? void 0 : response.data) == null ? void 0 : _a.loader) ?? false);
-        if (!((_b = response == null ? void 0 : response.data) == null ? void 0 : _b.result)) {
-          return false;
-        }
-        const results = JSON.parse(JSON.stringify(response.data));
-        return results;
-      }
-    } catch (error) {
-      return false;
+      ), t.status === 200 || t.status === 204)
+        return this.isLoading(((a = t == null ? void 0 : t.data) == null ? void 0 : a.loader) ?? !1), (o = t == null ? void 0 : t.data) != null && o.result ? JSON.parse(JSON.stringify(t.data)) : !1;
+    } catch {
+      return !1;
     }
-    return false;
+    return !1;
   }
   props() {
     return {};
   }
 }
-class InputForm extends EasyForm {
-  constructor(init) {
-    super(init);
-    __publicField(this, "button_align_row", AlignRow.Center);
-    __publicField(this, "button_justify_row", JustifyRow.Center);
-    __publicField(this, "buttons", []);
-    __publicField(this, "fields", []);
-    __publicField(this, "original", []);
-    __publicField(this, "type", "input-form");
-    if (!isEmpty(init == null ? void 0 : init.fields) && isArray(init == null ? void 0 : init.fields)) {
-      for (const field of (init == null ? void 0 : init.fields) ?? []) {
-        if (!isEmpty(field.discriminator)) {
-          const className = field.discriminator;
-          this.instantiateField(className, field);
+class De extends P {
+  constructor(e) {
+    super(e);
+    r(this, "button_align_row", I.Center);
+    r(this, "button_justify_row", v.Center);
+    r(this, "buttons", []);
+    r(this, "fields", []);
+    r(this, "original", []);
+    r(this, "type", w.Input);
+    if (!l(e == null ? void 0 : e.fields) && f(e == null ? void 0 : e.fields)) {
+      for (const t of (e == null ? void 0 : e.fields) ?? [])
+        if (!l(t.discriminator)) {
+          const a = t.discriminator;
+          this.instantiateField(a, t);
         }
-      }
-      init == null ? true : delete init.fields;
+      e == null || delete e.fields;
     }
-    if (!isEmpty(init == null ? void 0 : init.buttons) && isArray(init == null ? void 0 : init.buttons)) {
-      for (const button of (init == null ? void 0 : init.buttons) ?? []) {
-        this.buttons.push(new Button(button));
-      }
-      init == null ? true : delete init.buttons;
+    if (!l(e == null ? void 0 : e.buttons) && f(e == null ? void 0 : e.buttons)) {
+      for (const t of (e == null ? void 0 : e.buttons) ?? [])
+        this.buttons.push(new te(t));
+      e == null || delete e.buttons;
     }
-    Object.assign(this, init);
-    this.original = this.fields.map((x) => Object.assign({}, x));
-    this.fields = this.fields.sort((a, b) => a.order - b.order);
-    this.buttons = this.buttons.sort((a, b) => a.order - b.order);
+    Object.assign(this, e), this.original = this.fields.map((t) => Object.assign({}, t)), this.fields = this.fields.sort((t, a) => t.order - a.order), this.buttons = this.buttons.sort((t, a) => t.order - a.order);
   }
   data() {
-    const identifier = this.additional_data.find((data2) => data2.key == "identifier" || data2.key == "id");
-    const data = new FormData();
-    data.set("form_name", this.name);
-    if (!isEmpty(identifier)) {
-      data.set("id", identifier == null ? void 0 : identifier.value);
-    }
-    this.fields.forEach((field) => {
-      if (!isEmpty(field.value)) {
-        if (isArray(field.value)) {
-          field.value.forEach((value) => {
-            data.set(this.formatForArrayOrObject(field.name), value);
-          });
-        } else if (isObject(field.value)) {
-          data.set(this.formatForArrayOrObject(field.name), field.value);
-        } else {
-          data.set(field.name, field.value);
-        }
-      }
-    });
-    return data;
+    const e = this.additional_data.find((a) => a.key == "identifier" || a.key == "id"), t = new FormData();
+    return t.set("form_name", this.name), l(e) || t.set("id", e == null ? void 0 : e.value), this.fields.forEach((a) => {
+      l(a.value) || (f(a.value) ? a.value.forEach((o) => {
+        t.set(this.formatForArrayOrObject(a.name), o);
+      }) : E(a.value) ? t.set(this.formatForArrayOrObject(a.name), a.value) : t.set(a.name, a.value));
+    }), t;
   }
-  formatForArrayOrObject(name) {
-    return name + "[]";
+  formatForArrayOrObject(e) {
+    return e + "[]";
   }
-  instantiateField(className, fieldData) {
-    const classConstructor = getClassConstructor(className);
-    if (classConstructor) {
-      const instance = new classConstructor(fieldData);
-      this.fields.push(instance);
-    } else {
-      console.error(`Class "${className}" not found in the registry.`);
-    }
+  instantiateField(e, t) {
+    const a = k(e);
+    if (a) {
+      const o = new a(t);
+      this.fields.push(o);
+    } else
+      console.error(`Class "${e}" not found in the registry.`);
   }
   async process() {
-    var _a, _b, _c, _d, _e, _f;
+    var t, a, o, u, p, _;
     this.processing();
-    let response;
+    let e;
     try {
-      response = await ServerCall.request(
-        AxiosCalls.Post,
-        store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(), this.additional_data),
+      if (e = await n.request(
+        g.Post,
+        m.options.buildDomain("/forms/process"),
+        n.mergeData(this.data(), this.additional_data),
         this.axios
-      );
-      this.processed();
-      if (response.status === 200 || response.status === 204) {
-        this.isLoading(((_a = response == null ? void 0 : response.data) == null ? void 0 : _a.loader) ?? false);
-        const tempResult = JSON.parse(JSON.stringify((_b = response == null ? void 0 : response.data) == null ? void 0 : _b.data));
-        if ((_c = response == null ? void 0 : response.data) == null ? void 0 : _c.result) {
-          this.success((_d = response == null ? void 0 : response.data) == null ? void 0 : _d.data);
-          return (_e = response == null ? void 0 : response.data) == null ? void 0 : _e.data;
-        }
-        if (!isEmpty(tempResult == null ? void 0 : tempResult.validation_errors)) {
-          for (const fieldName in tempResult == null ? void 0 : tempResult.validation_errors) {
-            const field = this.fields.find((f) => f.name === fieldName);
-            const errors = tempResult == null ? void 0 : tempResult.validation_errors[fieldName];
-            for (const error of errors) {
-              field.addErrorMessage(error);
-            }
+      ), this.processed(), e.status === 200 || e.status === 204) {
+        this.isLoading(((t = e == null ? void 0 : e.data) == null ? void 0 : t.loader) ?? !1);
+        const c = JSON.parse(JSON.stringify((a = e == null ? void 0 : e.data) == null ? void 0 : a.data));
+        if ((o = e == null ? void 0 : e.data) != null && o.result)
+          return this.success((u = e == null ? void 0 : e.data) == null ? void 0 : u.data), (p = e == null ? void 0 : e.data) == null ? void 0 : p.data;
+        if (!l(c == null ? void 0 : c.validation_errors)) {
+          for (const F in c == null ? void 0 : c.validation_errors) {
+            const D = this.fields.find((h) => h.name === F), S = c == null ? void 0 : c.validation_errors[F];
+            for (const h of S)
+              D.addErrorMessage(h);
           }
-          this.failedValidation();
-          return false;
+          return this.failedValidation(), !1;
         }
-        this.failed((_f = response == null ? void 0 : response.data) == null ? void 0 : _f.data);
-        return false;
+        return this.failed((_ = e == null ? void 0 : e.data) == null ? void 0 : _.data), !1;
       }
-    } catch (error) {
-      return false;
+    } catch {
+      return !1;
     }
-    this.failed();
-    return false;
+    return this.failed(), !1;
   }
-  loadErrorMessages(errors) {
-    let validation;
-    for (validation of errors) {
-      const field = this.fields.find((f) => f.name === validation.id);
-      for (const error of validation.errorMessages) {
-        if (!this.hasErrorMessage(field, error)) {
-          field.addErrorMessage(error);
-        }
-      }
+  loadErrorMessages(e) {
+    let t;
+    for (t of e) {
+      const a = this.fields.find((o) => o.name === t.id);
+      for (const o of t.errorMessages)
+        this.hasErrorMessage(a, o) || a.addErrorMessage(o);
     }
     return this;
   }
-  hasErrorMessage(field, error) {
-    if (typeof field.error_messages === "string") {
-      return field.error_messages == error;
-    }
-    const message = field.error_messages.find((f) => f === error);
-    return !isEmpty(message);
+  hasErrorMessage(e, t) {
+    if (typeof e.error_messages == "string")
+      return e.error_messages == t;
+    const a = e.error_messages.find((o) => o === t);
+    return !l(a);
   }
   /**
    * Provides the props for VForm
    * @returns VForm
    */
   props() {
-    const result = {};
-    result["enctype"] = ContentTypes.JSON;
-    if (this.axios.multi_part) {
-      result["enctype"] = ContentTypes.MultiPart;
-    }
-    return result;
+    const e = {};
+    return e.enctype = y.JSON, this.axios.multi_part && (e.enctype = y.MultiPart), e;
   }
   reset() {
     super.reset();
-    const originals = this.original;
-    this.fields = this.fields.map((field) => {
-      var _a;
-      field.value = (_a = originals.find((f) => f.name === field.name)) == null ? void 0 : _a.value;
-      field.clearErrorMessages();
-      return field;
-    });
-    return this;
+    const e = this.original;
+    return this.fields = this.fields.map((t) => {
+      var a;
+      return t.value = (a = e.find((o) => o.name === t.name)) == null ? void 0 : a.value, t.clearErrorMessages(), t;
+    }), this;
   }
 }
 export {
-  ActionForm,
-  EasyForm,
-  InputForm
+  ke as ActionForm,
+  P as EasyForm,
+  De as InputForm
 };

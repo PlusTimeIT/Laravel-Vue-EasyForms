@@ -29,15 +29,15 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     strengthErrorText: string;
     strengthWarningText: string;
     strengthSuccessText: string;
-    errorMessages: () => any[];
+    errorMessages: () => never[];
     lowerCase: boolean;
     upperCase: boolean;
     numbers: boolean;
     special: boolean;
     minLength: number;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    validated: (value: string) => void;
-    invalidated: (value: string) => void;
+    validated: (value: string | undefined) => void;
+    invalidated: (value: string | undefined) => void;
     "update:modelValue": (value: any) => void;
     "click:prepend": (value: any) => void;
     "click:prependInner": (value: any) => void;
@@ -53,24 +53,24 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     strengthErrorText: string;
     strengthWarningText: string;
     strengthSuccessText: string;
-    errorMessages: () => any[];
+    errorMessages: () => never[];
     lowerCase: boolean;
     upperCase: boolean;
     numbers: boolean;
     special: boolean;
     minLength: number;
 }>>> & {
-    "onUpdate:modelValue"?: (value: any) => any;
-    onValidated?: (value: string) => any;
-    onInvalidated?: (value: string) => any;
-    "onClick:prepend"?: (value: any) => any;
-    "onClick:append"?: (value: any) => any;
-    "onClick:prependInner"?: (value: any) => any;
-    "onClick:appendInner"?: (value: any) => any;
+    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
+    onValidated?: ((value: string | undefined) => any) | undefined;
+    onInvalidated?: ((value: string | undefined) => any) | undefined;
+    "onClick:prepend"?: ((value: any) => any) | undefined;
+    "onClick:append"?: ((value: any) => any) | undefined;
+    "onClick:prependInner"?: ((value: any) => any) | undefined;
+    "onClick:appendInner"?: ((value: any) => any) | undefined;
 }, {
     numbers: boolean;
     special: boolean;
-    modelValue: string;
+    modelValue: string | undefined;
     errorMessages: string[];
     viewMode: boolean;
     lowerCase: boolean;

@@ -2,15 +2,15 @@ import { Button } from "../../classes/elements";
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<{
     button: Button;
     disabled: boolean;
-    identifier?: string | number;
+    identifier?: string | number | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    click: (value: string | number) => void;
+    click: (value: string | number | undefined) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     button: Button;
     disabled: boolean;
-    identifier?: string | number;
+    identifier?: string | number | undefined;
 }>>> & {
-    onClick?: (value: string | number) => any;
+    onClick?: ((value: string | number | undefined) => any) | undefined;
 }, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

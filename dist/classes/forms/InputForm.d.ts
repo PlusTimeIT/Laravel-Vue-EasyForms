@@ -1,5 +1,5 @@
 import { EasyForm } from "./EasyForm";
-import { JustifyRow } from "../../enums";
+import { FormTypes, JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
 import { Button } from "../elements";
 import type { FieldType } from "../../types";
@@ -13,7 +13,7 @@ export declare class InputForm extends EasyForm {
     buttons: Button[];
     fields: Array<FieldType>;
     original: Array<FieldType>;
-    type: string;
+    type: FormTypes;
     constructor(init?: Partial<InputForm>);
     data(): object;
     formatForArrayOrObject(name: string): string;

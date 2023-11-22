@@ -11,7 +11,7 @@ export class Button extends GotProps {
   append_icon: Icon | undefined;
   block = false;
   border: string | number | boolean = false;
-  class = "";
+  classes = "";
   color = "primary";
   density: DensityTypes = DensityTypes.Default;
   disabled = false;
@@ -87,7 +87,6 @@ export class Button extends GotProps {
       // 'append_icon',
       "block",
       "border",
-      "class",
       "color",
       "density",
       "disabled",

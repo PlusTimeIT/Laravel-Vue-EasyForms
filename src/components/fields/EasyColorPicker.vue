@@ -82,7 +82,7 @@ onMounted(() => {
     <v-menu v-model="show_menu" v-bind="menu.props()">
       <template #activator="{ props }">
         <!-- Use EasyInput component with v-model -->
-        <easy-input
+        <EasyInput
           v-model:field="textfield"
           v-bind="{ ...props, ...textfield?.props() }"
           :fields="fields"

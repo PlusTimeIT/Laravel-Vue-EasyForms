@@ -9,7 +9,6 @@ import HistoireWrapper from "./HistoireWrapper.vue";
 import "vuetify/styles";
 import "@mdi/font/css/materialdesignicons.css";
 import "./styles/histoire.css";
-
 export const setupVue3 = defineSetupVue3(({ app, addWrapper }) => {
   app
     .use(

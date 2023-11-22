@@ -1,4 +1,6 @@
 {
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["dist/**/*"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "ESNext",
@@ -29,7 +31,5 @@
     "paths": {
       "#/*": ["../../src/*"]
     }
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["dist/**/*"]
+  }
 }

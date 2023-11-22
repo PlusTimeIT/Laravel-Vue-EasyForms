@@ -48,7 +48,7 @@ declare const _default: import("vue").DefineComponent<{
             of<T_4>(...items: T_4[]): T_4[];
             readonly [Symbol.species]: ArrayConstructor;
         };
-        default: any[];
+        default: never[];
     };
     additionalLoadData: {
         type: {
@@ -65,7 +65,7 @@ declare const _default: import("vue").DefineComponent<{
             of<T_4>(...items: T_4[]): T_4[];
             readonly [Symbol.species]: ArrayConstructor;
         };
-        default: any[];
+        default: never[];
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:form": (...args: any[]) => void;
@@ -126,7 +126,7 @@ declare const _default: import("vue").DefineComponent<{
             of<T_4>(...items: T_4[]): T_4[];
             readonly [Symbol.species]: ArrayConstructor;
         };
-        default: any[];
+        default: never[];
     };
     additionalLoadData: {
         type: {
@@ -143,25 +143,25 @@ declare const _default: import("vue").DefineComponent<{
             of<T_4>(...items: T_4[]): T_4[];
             readonly [Symbol.species]: ArrayConstructor;
         };
-        default: any[];
+        default: never[];
     };
 }>> & {
-    onReset?: (...args: any[]) => any;
-    "onUpdate:form"?: (...args: any[]) => any;
-    onLoading?: (...args: any[]) => any;
-    onLoaded?: (...args: any[]) => any;
-    onResults?: (...args: any[]) => any;
-    onCancelled?: (...args: any[]) => any;
-    onProcessing?: (...args: any[]) => any;
-    onFailed?: (...args: any[]) => any;
-    onSuccessful?: (...args: any[]) => any;
-    onUpdated?: (...args: any[]) => any;
+    onReset?: ((...args: any[]) => any) | undefined;
+    "onUpdate:form"?: ((...args: any[]) => any) | undefined;
+    onLoading?: ((...args: any[]) => any) | undefined;
+    onLoaded?: ((...args: any[]) => any) | undefined;
+    onResults?: ((...args: any[]) => any) | undefined;
+    onCancelled?: ((...args: any[]) => any) | undefined;
+    onProcessing?: ((...args: any[]) => any) | undefined;
+    onFailed?: ((...args: any[]) => any) | undefined;
+    onSuccessful?: ((...args: any[]) => any) | undefined;
+    onUpdated?: ((...args: any[]) => any) | undefined;
 }, {
-    name: string;
     cols: number;
     lg: number;
     md: number;
     sm: number;
+    name: string;
     form: EasyForm;
     populate: boolean;
     additionalData: AdditionalData[];

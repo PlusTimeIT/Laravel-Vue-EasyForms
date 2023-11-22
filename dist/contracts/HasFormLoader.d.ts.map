@@ -1,0 +1,1 @@
+{"version":3,"file":"HasFormLoader.d.ts","sourceRoot":"","sources":["../../src/contracts/HasFormLoader.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,UAAU,CAAC;AAC3C,OAAO,EAAE,gBAAgB,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAEvE,MAAM,CAAC,OAAO,WAAW,aAAa;IACpC,IAAI,EAAE,eAAe,CAAC;IACtB,QAAQ,EAAE,cAAc,GAAG,gBAAgB,CAAC;CAC7C"}

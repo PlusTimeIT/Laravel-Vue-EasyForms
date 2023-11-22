@@ -3,8 +3,13 @@
 html {
   font-family: "Montserrat", sans-serif;
 }
-
-.alert {
+html.htw-dark.dark h2 {
+  color: white;
+}
+html h2 {
+  color: black;
+}
+html .alert {
   width: 100%;
   margin: 5px 5px;
   background: none;
@@ -15,49 +20,48 @@ html {
   border-bottom: 0;
   border-top: 0;
 }
-.alert.info {
+html .alert.info {
   border-image-source: linear-gradient(0.52turn, #00c3ff 0 70%, #84dcf7);
 }
-.alert.success {
+html .alert.success {
   border-image-source: linear-gradient(0.52turn, #00ff6a 0 70%, #83f6b3);
 }
-.alert.warning {
+html .alert.warning {
   border-image-source: linear-gradient(0.52turn, #ffa200 0 70%, #f7cd84);
 }
-.alert.error {
+html .alert.error {
   border-image-source: linear-gradient(0.52turn, #ff1e00 0 70%, #fa9386);
 }
-.alert .contents {
+html .alert .contents {
   padding: 10px 15px;
   background-color: #2c2c2c;
   color: #fff;
 }
-
-.data-table table {
+html .data-table table {
   width: 800px;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 5px #858585;
 }
-.data-table th,
-.data-table td {
+html .data-table th,
+html .data-table td {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.data-table th {
+html .data-table th {
   text-align: left;
 }
-.data-table thead {
+html .data-table thead {
   background: linear-gradient(45deg, #005eff, #003899);
 }
-.data-table tbody tr:hover {
+html .data-table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
-.data-table tbody td {
+html .data-table tbody td {
   position: relative;
 }
-.data-table tbody td:hover:before {
+html .data-table tbody td:hover:before {
   content: "";
   position: absolute;
   left: 0;
@@ -66,4 +70,6 @@ html {
   bottom: -9999px;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
-} /*# sourceMappingURL=histoire.css.map */
+}
+
+/*# sourceMappingURL=histoire.css.map */

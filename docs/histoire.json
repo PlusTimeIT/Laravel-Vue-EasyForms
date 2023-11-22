@@ -12,11 +12,23 @@
       "variants": [
         {
           "id": "src-components-formloader-story-vue-0",
-          "title": "All Options"
+          "title": "Input Form"
         },
         {
           "id": "src-components-formloader-story-vue-1",
-          "title": "Input Form"
+          "title": "Action Form - Buttons Vertical"
+        },
+        {
+          "id": "src-components-formloader-story-vue-2",
+          "title": "Action Form - Buttons Horizontal"
+        },
+        {
+          "id": "src-components-formloader-story-vue-3",
+          "title": "Action Form - Icons Vertical"
+        },
+        {
+          "id": "src-components-formloader-story-vue-4",
+          "title": "Action Form - Icons Horizontal"
         }
       ],
       "relativePath": "src/components/FormLoader.story.vue",
@@ -110,76 +122,6 @@
           "title": "Intro"
         }
       }
-    },
-    {
-      "id": "vuetify",
-      "title": "Vuetify",
-      "group": "design-system",
-      "layout": {
-        "type": "single",
-        "iframe": true
-      },
-      "icon": "mdi:vuetify",
-      "docsOnly": false,
-      "variants": [
-        {
-          "id": "vuetify-0",
-          "title": "Material Colors",
-          "icon": "mdi:palette"
-        },
-        {
-          "id": "vuetify-1",
-          "title": "Text And Typography",
-          "icon": "mdi:format-font"
-        },
-        {
-          "id": "vuetify-2",
-          "title": "Border Radius",
-          "icon": "mdi:border-all"
-        },
-        {
-          "id": "vuetify-3",
-          "title": "Content",
-          "icon": "mdi:view-grid-plus"
-        },
-        {
-          "id": "vuetify-4",
-          "title": "Elevation",
-          "icon": "mdi:box-shadow"
-        },
-        {
-          "id": "vuetify-5",
-          "title": "Display",
-          "icon": "mdi:monitor-screenshot"
-        },
-        {
-          "id": "vuetify-6",
-          "title": "Float",
-          "icon": "mdi:format-float-left"
-        },
-        {
-          "id": "vuetify-7",
-          "title": "Overflow",
-          "icon": "mdi:format-text-wrapping-overflow"
-        },
-        {
-          "id": "vuetify-8",
-          "title": "Sizing",
-          "icon": "mdi:image-size-select-small"
-        },
-        {
-          "id": "vuetify-9",
-          "title": "Spacing",
-          "icon": "mdi:space-invaders"
-        }
-      ],
-      "relativePath": "/development/plustime/Laravel-Vue-EasyForms/node_modules/.histoire/plugins/vuetify-design-system/Vuetify.story.vue",
-      "supportPluginId": "vue3",
-      "treePath": [
-        "Vuetify"
-      ],
-      "virtual": false,
-      "markdownFile": null
     }
   ],
   "markdownFiles": [

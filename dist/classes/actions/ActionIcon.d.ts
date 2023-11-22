@@ -1,6 +1,7 @@
 import { Icon } from "../elements";
 import { ConditionItem } from "./ConditionItem";
-export declare class ActionIcon {
+import HasActionIcon from "../../contracts/HasActionIcon";
+export declare class ActionIcon implements HasActionIcon {
     callback: string;
     cols: number;
     conditions: ConditionItem[];

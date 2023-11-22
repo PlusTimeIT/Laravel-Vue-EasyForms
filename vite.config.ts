@@ -7,18 +7,7 @@ import { resolve } from "path";
 export default defineConfig({
   base: "./",
   plugins: [vue(), vuetify({ autoImport: true })],
-  // removed to make Histoire work - but currently required for Vitest.
-  // define: {
-  //   global: "globalThis",
-  // },
   build: {
-    cssCodeSplit: false,
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        keep_fnames: /^.*/, // Use a regular expression to match all function names
-      },
-    },
     lib: {
       entry: [
         resolve(__dirname, "src/index.ts"),
@@ -37,11 +26,10 @@ export default defineConfig({
       external: ["vue", "axios", "vuetify/lib"],
       output: {
         entryFileNames: "[name].js",
-        globals: {
-          vue: "Vue",
-          axios: "axios",
-        },
       },
     },
+  },
+  resolve: {
+    dedupe: ["vue"],
   },
 });

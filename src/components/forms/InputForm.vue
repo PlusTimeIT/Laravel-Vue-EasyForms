@@ -6,8 +6,8 @@ import { isEmpty } from "../../composables/utils";
 import EasyInput from "../../components/fields/EasyInput.vue";
 import EasyButton from "../../components/elements/EasyButton.vue";
 import { InputFormType } from "../../composables/validation/PropValidation";
-import { Button } from "../../classes/elements/Button";
-import { FieldType } from "../../types/FieldType";
+import { Button } from "../../classes/elements";
+import { FieldType } from "../../types";
 import { LoaderEvents } from "../../enums";
 
 const props = defineProps({
@@ -31,12 +31,12 @@ const emit = defineEmits([
   LoaderEvents.Successful,
 ]);
 
-const form = ref(props.form);
+const loadedForm = ref(props.form);
 const formEffectWatcher = watchEffect(() => {
-  form.value = props.form;
+  loadedForm.value = props.form;
 });
 
-const formWatcher = watch(form.value, (updated) => {
+const formWatcher = watch(loadedForm.value, (updated) => {
   emit(LoaderEvents.Updated, updated);
 });
 
@@ -44,7 +44,7 @@ const formReference = ref(null);
 
 const filteredFields = computed<FieldType[]>({
   get: () =>
-    form.value?.fields?.filter((field) => {
+    loadedForm.value?.fields?.filter((field) => {
       return field.isParentLoaded(getFieldByName(field.depends_on ?? ""));
     }) as FieldType[],
   set: (newValue) => {
@@ -53,14 +53,14 @@ const filteredFields = computed<FieldType[]>({
 });
 
 const formFields = computed<FieldType[]>(() => {
-  if (Array.isArray(form.value?.fields)) {
-    return form.value?.fields as FieldType[];
+  if (Array.isArray(loadedForm.value?.fields)) {
+    return loadedForm.value?.fields as FieldType[];
   }
   return [];
 });
 
 const hasButtons = computed<boolean>(() => {
-  return form.value?.buttons?.length > 0;
+  return loadedForm.value?.buttons?.length > 0;
 });
 
 const processEnabled = computed<boolean>(() => {
@@ -86,7 +86,7 @@ const confirmationCount = computed<number>(() => {
 
 const fieldsConfirmation = computed<FieldType[]>(() => {
   return (
-    (form.value?.fields?.filter(
+    (loadedForm.value?.fields?.filter(
       (field) => !isEmpty(field.require_confirmation) && field.require_confirmation,
     ) as FieldType[]) || []
   );
@@ -97,7 +97,7 @@ const hasInvalidatedFields = computed<boolean>(() => {
 });
 
 function getFieldByName(name: string) {
-  return form.value?.fields.find((field) => field.name === name);
+  return loadedForm.value?.fields.find((field) => field.name === name);
 }
 
 function isButtonDisabled(button: Button) {
@@ -119,25 +119,24 @@ async function handleButtonClick(button: Button) {
 }
 
 async function processForm() {
-  console.log("PROCESSING FORM");
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
   const validation = await checkValidation();
   if (validation) {
     formReference.value.resetValidation();
-    const results = await form.value.process();
+    const results = await loadedForm.value.process();
     if (!results) {
       emit(LoaderEvents.Failed, true);
       isLoading(false);
       return;
     }
     emit(LoaderEvents.Successful, true);
-    if (form.value.axios.expecting_results) {
+    if (loadedForm.value.axios.expecting_results) {
       emit(LoaderEvents.Results, results);
     }
   } else {
-    form.value.failedValidation();
+    loadedForm.value.failedValidation();
     isLoading(false);
     emit(LoaderEvents.Failed, true);
   }
@@ -151,7 +150,7 @@ async function checkValidation(): Promise<boolean> {
 async function updated(field: FieldType) {
   const children: FieldType[] = formFields.value.filter((f) => f.depends_on == field.name) as FieldType[];
   children.forEach(async (child: FieldType) => {
-    const fieldData: any = await child.load(form.value as InputForm, field);
+    const fieldData: any = await child.load(loadedForm.value as InputForm, field);
     if (fieldData) {
       child.loadItems(fieldData);
     }
@@ -160,7 +159,7 @@ async function updated(field: FieldType) {
 }
 
 function isLoading(loading: boolean) {
-  form.value.isLoading(loading);
+  loadedForm.value.isLoading(loading);
   emit(LoaderEvents.Loading, loading);
 }
 
@@ -181,7 +180,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <v-form v-bind="form?.props() ?? {}" ref="formReference" class="mx-auto w-100">
+  <v-form v-bind="loadedForm?.props() ?? {}" ref="formReference" class="mx-auto w-100">
     <v-col cols="12">
       <v-row>
         <v-col
@@ -190,7 +189,7 @@ onBeforeUnmount(() => {
           :offset="field.offset"
           :key="index_f"
         >
-          <easy-input
+          <EasyInput
             v-model:field="(filteredFields[index_f] as FieldType)"
             :fields="(formFields as FieldType[])"
             @updated="updated(field as FieldType)"
@@ -199,14 +198,14 @@ onBeforeUnmount(() => {
           />
         </v-col>
       </v-row>
-      <v-row v-if="hasButtons" :align="form.button_align_row" :justify="form.button_justify_row">
-        <v-col cols="auto" v-for="(button, index) in form?.buttons" :key="index">
-          <easy-button
+      <v-row v-if="hasButtons" :align="loadedForm.button_align_row" :justify="loadedForm.button_justify_row">
+        <v-col cols="auto" v-for="(button, index) in loadedForm?.buttons" :key="index">
+          <EasyButton
             :button="button"
             :identifier="index"
             :disabled="isButtonDisabled(button)"
             @click="handleButtonClick(button)"
-          ></easy-button>
+          ></EasyButton>
         </v-col>
       </v-row>
     </v-col>

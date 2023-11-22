@@ -6,11 +6,11 @@ interface Props {
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     identifier: string;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    click: (value: string | number) => void;
+    click: (value: string | number | undefined) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     identifier: string;
 }>>> & {
-    onClick?: (value: string | number) => any;
+    onClick?: ((value: string | number | undefined) => any) | undefined;
 }, {
     identifier: string | number;
 }, {}>;

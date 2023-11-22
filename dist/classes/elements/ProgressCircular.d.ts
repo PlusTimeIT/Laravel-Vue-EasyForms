@@ -1,6 +1,6 @@
 import { GotProps } from "../../abstracts/GotProps";
 export declare class ProgressCircular extends GotProps {
-    class: string | undefined;
+    classes: string | undefined;
     bg_color: string | undefined;
     color: string | undefined;
     indeterminate: string | boolean;

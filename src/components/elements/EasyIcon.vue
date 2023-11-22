@@ -28,7 +28,7 @@ function click() {
 <template>
   <v-tooltip v-bind="icon?.tooltip?.props()" :disabled="icon?.tooltip?.disabled ?? true">
     <template #activator="{ props }">
-      <v-icon v-bind="{ ...props, ...icon?.props() }" @click="click">
+      <v-icon v-bind="{ ...props, ...icon?.props() }" @click="click" :class="icon.classes">
         {{ icon?.icon }}
       </v-icon>
     </template>

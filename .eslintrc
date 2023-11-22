@@ -15,7 +15,6 @@
   "plugins": ["vue", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    // not needed for vue 3
     "vue/no-multiple-template-root": "off",
     "vue/no-unused-vars": "error",
     "vue/valid-v-slot": "error",
@@ -36,7 +35,32 @@
       }
     ],
     "no-console": "off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "vue/component-name-in-template-casing": ["error", "PascalCase"],
+    "vue/prop-name-casing": ["error", "camelCase"],
+    "vue/order-in-components": ["error", {
+      "order": [
+        "el",
+        "name",
+        "key",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "data",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
+    }]
   },
   "ignorePatterns": ["**/node_modules/**", "**/docs/**", "**/dist/**"]
 }

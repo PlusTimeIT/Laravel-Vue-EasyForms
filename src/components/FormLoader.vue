@@ -9,12 +9,13 @@ import { ActionForm, InputForm, EasyForm } from "../classes/forms";
 import EasyAlerts from "../components/elements/EasyAlerts.vue";
 import { AdditionalData } from "../classes/properties";
 import { isEmpty } from "../composables/utils";
-import { FormContainer, ProgressCircular } from "../classes/elements";
+import { FormContainer } from "../classes/elements";
 import { FormLoaderTypes, LoaderEvents } from "../enums";
 import { FormTypes } from "../enums";
 import { store } from "../composables/utils";
-import { AlertTriggers } from "../enums/AlertTriggers";
+import { AlertTriggers } from "../enums";
 import { Csrf } from "../server";
+import { ActionIcon } from "../classes/actions";
 
 const emit = defineEmits([
   "update:form",
@@ -32,7 +33,7 @@ const emit = defineEmits([
 const props = defineProps({
   form: {
     type: [ActionForm, InputForm, EasyForm],
-    default: new EasyForm(),
+    default: new EasyForm({ name: "default" }),
   },
   name: {
     type: String,
@@ -75,15 +76,8 @@ const props = defineProps({
 const requires_api = ref<boolean>(false);
 const csrf = ref<Csrf>(store.csrf);
 const loading = ref<boolean>(true);
-// loaded as easy form incase name is passed or error on form
-const loaded_form = ref<InputForm | ActionForm | EasyForm>(
-  new EasyForm({
-    loader: {
-      type: FormLoaderTypes.Circular,
-      progress: new ProgressCircular({ indeterminate: true, color: "primary" }),
-    },
-  }),
-);
+
+const loaded_form = ref<InputForm | ActionForm | EasyForm>(props.form);
 const container = computed<FormContainer>(() => {
   return new FormContainer({
     cols: props.cols,
@@ -192,11 +186,10 @@ onBeforeMount(async () => {
 });
 
 async function load() {
-  loaded_form.value = new EasyForm({
-    name: props.name,
-    additional_data: props.additionalData,
-    additional_load_data: props.additionalLoadData,
-  });
+  console.log("LOADING FORM");
+  loaded_form.value.name = props.name;
+  loaded_form.value.additional_data = props.additionalData;
+  loaded_form.value.additional_load_data = props.additionalLoadData;
 
   const results: any = await loaded_form.value.load();
   if (!results) {
@@ -217,17 +210,17 @@ async function load() {
 <template>
   <v-col :cols="container.cols" :sm="container.sm" :md="container.md" :lg="container.lg">
     <v-row v-if="has_alerts">
-      <easy-alerts :alerts="loaded_form?.alerts"></easy-alerts>
+      <EasyAlerts :alerts="loaded_form?.alerts"></EasyAlerts>
     </v-row>
     <v-row v-show="!form_ready" justify="center" class="form-loader">
-      <v-col cols="auto" :class="loaded_form.loader?.progress?.class ?? ''">
+      <v-col cols="auto" :class="loaded_form.loader?.progress?.classes ?? ''">
         <v-progress-circular
           v-if="loaded_form.loader?.type === FormLoaderTypes.Circular"
-          v-bind="loaded_form.loader?.progress.props()"
+          v-bind="loaded_form.loader?.progress?.props()"
         ></v-progress-circular>
         <v-progress-linear
           v-if="loaded_form.loader?.type === FormLoaderTypes.Linear"
-          v-bind="loaded_form.loader?.progress.props()"
+          v-bind="loaded_form.loader?.progress?.props()"
         ></v-progress-linear>
       </v-col>
     </v-row>
@@ -259,6 +252,11 @@ async function load() {
         @successful="success"
       />
       <error-form-loader v-else-if="form_component == FormTypes.Error || has_error" :text="loaded_form.text" />
+    </v-row>
+    <v-row>
+      <v-col v-for="(action, i) in (loaded_form as ActionForm).actions" :key="i">
+        {{ action.name }}: {{ (action as ActionIcon).icon.color }}
+      </v-col>
     </v-row>
   </v-col>
 </template>

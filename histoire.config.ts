@@ -10,12 +10,17 @@ export default defineConfig({
   plugins: [
     HstVue(),
     vuetifyDesignSystem({
-      configFile: resolve(__dirname, "./sandbox/src/plugins/vuetify/options"),
+      configFile: __dirname + "./sandbox/src/plugins/vuetify/options.ts",
     }),
   ],
   routerMode: "hash",
   theme: {
     title: "Vue EasyForms Documentation",
+    logo: {
+      square: "./src/histoire/logos/square-logo-transparent-bg.png",
+      light: "./src/histoire/logos/lvef-logo-large-transparent-bg.png",
+      dark: "./src/histoire/logos/lvef-logo-large-transparent-bg.png",
+    },
     colors: {
       primary: {
         50: "#1391dd",
@@ -40,9 +45,14 @@ export default defineConfig({
   },
   vite: {
     base: "./",
-    publicDir: "/Laravel-Vue-EasyForms/",
+    optimizeDeps: {
+      include: ["vue", "vuetify"],
+    },
+    build: {
+      target: "esnext",
+    },
+    // publicDir: "/Laravel-Vue-EasyForms/",
   },
-  storyIgnored: ["**/node_modules/**", "**/dist/**"],
   markdown: (md) => {
     md.use(container, {
       name: "alert",

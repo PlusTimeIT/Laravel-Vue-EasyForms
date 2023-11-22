@@ -131,7 +131,7 @@ describe("configured easy icon additional checks", () => {
 
   test("test configured easy icon applies multiple classes", () => {
     const easyIcon = wrapper.findComponent({ name: "VIcon" });
-    const setClasses = icon.class.split(" ");
+    const setClasses = icon.classes.split(" ");
     expect(setClasses.filter((r) => easyIcon.classes().includes(r)).length).toEqual(setClasses.length);
   });
 });

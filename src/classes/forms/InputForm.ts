@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { EasyForm } from "./EasyForm";
-import { AxiosCalls, JustifyRow } from "../../enums";
+import { AxiosCalls, FormTypes, JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
 import { Button } from "../elements";
 import { DataItem } from "../../classes/properties/DataItem";
@@ -42,7 +42,7 @@ export class InputForm extends EasyForm {
   buttons: Button[] = [];
   fields: Array<FieldType> = [];
   original: Array<FieldType> = [];
-  type = "input-form";
+  type = FormTypes.Input;
 
   constructor(init?: Partial<InputForm>) {
     super(init);

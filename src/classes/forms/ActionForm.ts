@@ -1,36 +1,40 @@
 import { EasyForm } from "./EasyForm";
-import { ActionIcon, ActionButton } from "../../classes/actions";
-import { JustifyRow } from "../../enums";
+import { ActionIcon, ActionButton } from "../actions";
+import { FormTypes, JustifyRow } from "../../enums";
 import { AxiosCalls } from "../../enums";
-import { ServerCall } from "../../classes/server/ServerCall";
-import { ServerResponse } from "../../classes/server/ServerResponse";
+import { ServerCall } from "../server";
+import { ServerResponse } from "../server";
 import { isArray, isEmpty, store } from "../../utils";
 import { getClassConstructor } from "../utils/ClassRegistry";
+import HasActionForm from "../../contracts/HasActionForm";
 
 /**
  * Action form that uses action buttons and icons.
  */
-export class ActionForm extends EasyForm {
+export class ActionForm extends EasyForm implements HasActionForm {
+  // actions: Array<ActionIcon | ActionButton> = [];
   actions: Array<ActionIcon | ActionButton> = [];
   callback = "";
   inline = false;
   justify_row: JustifyRow = JustifyRow.Center;
-  type = "action-form";
+  type = FormTypes.Action;
 
   constructor(init?: Partial<ActionForm>) {
     super(init);
-
     if (!isEmpty(init?.actions) && isArray(init?.actions)) {
-      for (const actions of init?.actions ?? []) {
-        if (!isEmpty(actions.discriminator)) {
-          const className = actions.discriminator;
-          this.instantiateAction(className, actions);
+      for (const action of init?.actions ?? []) {
+        if (action instanceof ActionIcon || action instanceof ActionButton) {
+          this.actions.push(action);
+        } else if (!isEmpty(action["discriminator"])) {
+          const className = action["discriminator"];
+          this.instantiateAction(className, action);
         }
       }
       delete init?.actions;
     }
 
     Object.assign(this, init);
+    console.log("Form Actions", this.name, this.actions, this);
   }
 
   instantiateAction(className: string, data: any) {
@@ -75,10 +79,7 @@ export class ActionForm extends EasyForm {
         if (!response?.data?.result) {
           return false;
         }
-        // Load results into form.
-        // reset form?
-        const results = JSON.parse(JSON.stringify(response.data));
-        return results;
+        return JSON.parse(JSON.stringify(response.data));
       }
     } catch (error) {
       return false;

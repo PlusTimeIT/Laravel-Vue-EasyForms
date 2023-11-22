@@ -1,7 +1,8 @@
 import { FormLoaderTypes } from "../../enums";
 import { ProgressCircular, ProgressLinear } from "../elements";
+import HasFormLoader from "../../contracts/HasFormLoader";
 
-export class FormLoader {
+export class FormLoader implements HasFormLoader {
   type: FormLoaderTypes;
   progress: ProgressLinear | ProgressCircular;
 

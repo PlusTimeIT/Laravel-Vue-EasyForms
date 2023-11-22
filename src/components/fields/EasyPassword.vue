@@ -68,9 +68,7 @@ const passed_percentage = computed<number>(() => {
 });
 
 // Compute the requirement ratio
-const requirement_ratio = computed<number>(() => {
-  return 100 / total_requirements.value;
-});
+const requirement_ratio = computed<number>(() => 100 / total_requirements.value);
 
 // Compute the total number of active requirements
 const total_requirements = computed<number>(() => {
@@ -220,7 +218,7 @@ onMounted(() => {
   <v-row>
     <v-col :cols="12">
       <!-- Render EasyInput component with provided props -->
-      <easy-input
+      <EasyInput
         v-model:field="textfield"
         v-bind="textfield?.props()"
         :fields="props.fields ?? []"

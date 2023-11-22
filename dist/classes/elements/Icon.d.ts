@@ -2,7 +2,7 @@ import { Tooltip } from ".";
 import { GotProps } from "../../abstracts/GotProps";
 import HasIcon from "../../contracts/HasIcon";
 export declare class Icon extends GotProps implements HasIcon {
-    class: string | undefined;
+    classes: string | undefined;
     color: string;
     end: boolean;
     icon: string;

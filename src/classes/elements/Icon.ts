@@ -4,7 +4,7 @@ import { isEmpty } from "../../composables/utils";
 import HasIcon from "../../contracts/HasIcon";
 
 export class Icon extends GotProps implements HasIcon {
-  class: string | undefined;
+  classes: string | undefined;
   color = "primary";
   end = false;
   icon = "";
@@ -17,7 +17,11 @@ export class Icon extends GotProps implements HasIcon {
     super(init);
 
     if (!isEmpty(init?.tooltip)) {
-      this.tooltip = new Tooltip(init?.tooltip);
+      if (init?.tooltip instanceof Tooltip) {
+        this.tooltip = init?.tooltip;
+      } else {
+        this.tooltip = new Tooltip(init?.tooltip);
+      }
       delete init?.tooltip;
     }
 
@@ -37,6 +41,6 @@ export class Icon extends GotProps implements HasIcon {
    * @returns string[]
    */
   allowedProps(): string[] {
-    return ["class", "color", "end", "icon", "size", "start", "tag", "theme"];
+    return ["classes", "color", "end", "icon", "size", "start", "tag", "theme"];
   }
 }

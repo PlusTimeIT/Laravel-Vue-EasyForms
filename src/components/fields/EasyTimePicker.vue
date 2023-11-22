@@ -90,7 +90,7 @@ onMounted(() => {
     <v-menu v-model="show_menu" v-bind="menu?.props()">
       <template #activator="{ props }">
         <!-- Render EasyInput component with provided props -->
-        <easy-input
+        <EasyInput
           :field="textfield"
           v-bind="{ ...props, ...textfield?.props() }"
           :fields="fields"
@@ -104,7 +104,7 @@ onMounted(() => {
       <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
         <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
           <!-- Render TempTimePicker component with provided props -->
-          <temp-time-picker v-model="picker.value" v-bind="picker?.props()" @click:save="save" @click:cancel="cancel" />
+          <TempTimePicker v-model="picker.value" v-bind="picker?.props()" @click:save="save" @click:cancel="cancel" />
         </v-card-text>
       </v-card>
     </v-menu>

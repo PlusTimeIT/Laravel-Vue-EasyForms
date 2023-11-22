@@ -11,17 +11,17 @@ interface Props {
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    validated: (value: string) => void;
-    invalidated: (value: string) => void;
+    validated: (value: string | undefined) => void;
+    invalidated: (value: string | undefined) => void;
     "update:modelValue": (value: any) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>>> & {
-    "onUpdate:modelValue"?: (value: any) => any;
-    onValidated?: (value: string) => any;
-    onInvalidated?: (value: string) => any;
+    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
+    onValidated?: ((value: string | undefined) => any) | undefined;
+    onInvalidated?: ((value: string | undefined) => any) | undefined;
 }, {
-    modelValue: string;
+    modelValue: string | undefined;
 }, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

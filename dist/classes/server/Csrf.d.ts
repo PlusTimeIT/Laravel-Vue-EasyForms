@@ -6,7 +6,7 @@ export declare class Csrf {
     protected loading: boolean;
     retry_wait: number;
     protected token: boolean;
-    protected prefix: any;
+    protected prefix: null;
     error_message: string;
     endpoint: string;
     constructor(init?: Partial<Csrf>);

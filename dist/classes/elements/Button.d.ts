@@ -9,7 +9,7 @@ export declare class Button extends GotProps {
     append_icon: Icon | undefined;
     block: boolean;
     border: string | number | boolean;
-    class: string;
+    classes: string;
     color: string;
     density: DensityTypes;
     disabled: boolean;

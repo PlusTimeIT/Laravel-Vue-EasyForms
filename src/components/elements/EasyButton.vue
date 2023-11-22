@@ -37,10 +37,10 @@ function click() {
     <template #activator="{ props }">
       <v-btn v-bind="{ ...props, ...button.props() }" :disabled="button.disabled" @click="click">
         <template #prepend v-if="has_prepend_icon">
-          <easy-icon :icon="button.prepend_icon" />
+          <EasyIcon :icon="button.prepend_icon" />
         </template>
         <template #append v-if="has_append_icon">
-          <easy-icon :icon="button.append_icon" />
+          <EasyIcon :icon="button.append_icon" />
         </template>
       </v-btn>
     </template>

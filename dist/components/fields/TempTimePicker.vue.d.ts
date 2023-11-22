@@ -22,8 +22,8 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     closeOnOutsideClick: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (value: any) => void;
-    "click:cancel": (value: string) => void;
-    "click:save": (value: string) => void;
+    "click:cancel": (value: string | undefined) => void;
+    "click:save": (value: string | undefined) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
     padStart: boolean;
@@ -35,18 +35,18 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     title: string;
     closeOnOutsideClick: boolean;
 }>>> & {
-    "onUpdate:modelValue"?: (value: any) => any;
-    "onClick:save"?: (value: string) => any;
-    "onClick:cancel"?: (value: string) => any;
+    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
+    "onClick:save"?: ((value: string | undefined) => any) | undefined;
+    "onClick:cancel"?: ((value: string | undefined) => any) | undefined;
 }, {
     width: string | number;
     title: string;
     mode: TimePickerModeTypes;
-    modelValue: string;
+    modelValue: string | undefined;
     padStart: boolean;
+    rollingNumbers: boolean;
     cancelText: string;
     okText: string;
-    rollingNumbers: boolean;
     closeOnOutsideClick: boolean;
 }, {}>;
 export default _default;

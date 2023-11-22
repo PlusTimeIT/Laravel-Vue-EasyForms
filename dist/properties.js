@@ -1,53 +1,49 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import { a, A } from "./AxiosOptions-a3506c4f.js";
-import { C, V } from "./ValidationRule-73a2fa9e.js";
-import { F } from "./FormLoader-c385b8c2.js";
-import "./FormLoaderTypes-8047088c.js";
-import "./Types-dbac3a4a.js";
+var e = Object.defineProperty;
+var r = (a, t, o) => t in a ? e(a, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : a[t] = o;
+var s = (a, t, o) => (r(a, typeof t != "symbol" ? t + "" : t, o), o);
+import { a as f, A as k } from "./AxiosOptions-6a3d3f30.js";
+import { C as g, V as j } from "./ValidationRule-cec9d477.js";
+import { F as A } from "./FormLoader-7688a5bf.js";
+import "./FormLoaderTypes-b32e44d6.js";
+import "./Types-cc63165d.js";
 import "axios";
-import "./ProgressLinear-fca54ab2.js";
-import "./GotProps-440b6309.js";
-class AdditionalData {
-  constructor(init) {
-    __publicField(this, "data", []);
-    __publicField(this, "key", "");
-    __publicField(this, "value", "");
-    Object.assign(this, init);
+import "./ProgressLinear-fd659726.js";
+import "./GotProps-c8fa699d.js";
+class u {
+  constructor(t) {
+    s(this, "data", []);
+    s(this, "key", "");
+    s(this, "value", "");
+    Object.assign(this, t);
   }
   toObject() {
-    const result = {};
-    for (const item of this.data) {
-      result[item.key] = item.value;
-    }
-    return result;
+    const t = {};
+    for (const o of this.data)
+      t[o.key] = o.value;
+    return t;
   }
 }
-class DataItem {
-  constructor(init) {
-    __publicField(this, "key", "");
-    __publicField(this, "value", "");
-    Object.assign(this, init);
+class d {
+  constructor(t) {
+    s(this, "key", "");
+    s(this, "value", "");
+    Object.assign(this, t);
   }
 }
-class MessageParameter {
-  constructor(init) {
-    __publicField(this, "key", "");
-    __publicField(this, "replace_with");
-    Object.assign(this, init);
+class x {
+  constructor(t) {
+    s(this, "key", "");
+    s(this, "replace_with");
+    Object.assign(this, t);
   }
 }
 export {
-  AdditionalData,
-  a as AxiosHeader,
-  A as AxiosOptions,
-  C as CheckboxGroupValue,
-  DataItem,
-  F as FormLoader,
-  MessageParameter,
-  V as ValidationRule
+  u as AdditionalData,
+  f as AxiosHeader,
+  k as AxiosOptions,
+  g as CheckboxGroupValue,
+  d as DataItem,
+  A as FormLoader,
+  x as MessageParameter,
+  j as ValidationRule
 };

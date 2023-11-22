@@ -1,7 +1,7 @@
 import { Tooltip } from "../classes/elements";
 
 export default interface HasIcon {
-  class: string | undefined;
+  classes: string | undefined;
   color: string;
   end: boolean;
   icon: string;
