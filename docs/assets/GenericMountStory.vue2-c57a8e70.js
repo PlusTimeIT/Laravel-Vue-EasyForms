@@ -1,4 +1,4 @@
-import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from './vendor-128b6654.js';
+import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from './vendor-a50d6b6b.js';
 
 const scriptRel = 'modulepreload';const assetsURL = function(dep, importerUrl) { return new URL(dep, importerUrl).href };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
     // @ts-expect-error true will be replaced with boolean later
@@ -64,8 +64,8 @@ const Comp2 = {"title":"Installation","icon":"carbon:bookmark","group":"getting-
 
 const Comp3 = {"title":"Intro","icon":"carbon:bookmark","group":"top","docsOnly":true,"variants":[]};
 
-const Comp0 = defineAsyncComponent(() => __vitePreload(() => import('./FormLoader.story-de1d4c83.js'),true?["./FormLoader.story-de1d4c83.js","./vendor-128b6654.js"]:void 0,import.meta.url));
-const Comp4 = defineAsyncComponent(() => __vitePreload(() => import('./vendor-128b6654.js').then(n => n.a_),true?[]:void 0,import.meta.url));
+const Comp0 = defineAsyncComponent(() => __vitePreload(() => import('./FormLoader.story-cb07ebf4.js'),true?["./FormLoader.story-cb07ebf4.js","./vendor-a50d6b6b.js"]:void 0,import.meta.url));
+const Comp4 = defineAsyncComponent(() => __vitePreload(() => import('./vendor-a50d6b6b.js').then(n => n.a_),true?[]:void 0,import.meta.url));
 let files = [{"id":"src-components-formloader-story-vue","path":["Form Loader"],"filePath":"src/components/FormLoader.story.vue","story":{"id":"src-components-formloader-story-vue","title":"Form Loader","group":"forms","layout":{"type":"single","iframe":true},"docsOnly":false,"variants":[{"id":"src-components-formloader-story-vue-0","title":"Input Form - Basic"},{"id":"src-components-formloader-story-vue-1","title":"Input Form - Advanced"},{"id":"src-components-formloader-story-vue-2","title":"Action Form - Buttons Vertical"},{"id":"src-components-formloader-story-vue-3","title":"Action Form - Buttons Horizontal"},{"id":"src-components-formloader-story-vue-4","title":"Action Form - Icons Vertical"},{"id":"src-components-formloader-story-vue-5","title":"Action Form - Icons Horizontal"}]},"supportPluginId":"vue3","index":0, component: Comp0, source: () => __vitePreload(() => import('./__resolved__virtual_story-source_src-components-formloader-story-vue-c71d2f8e.js'),true?[]:void 0,import.meta.url)},
 {"id":"src-docs-formbasics-story-js","path":["Form Basics"],"filePath":"src/docs/FormBasics.story.js","story":{"id":"src-docs-formbasics-story-js","title":"Form Basics","group":"forms","layout":{"type":"single","iframe":true},"icon":"carbon:bookmark","docsOnly":true,"variants":[]},"supportPluginId":"vanilla","docsFilePath":"src/docs/FormBasics.story.md","index":1, component: Comp1, source: () => __vitePreload(() => import('./__resolved__virtual_story-source_src-docs-formbasics-story-js-8bcfbb4c.js'),true?[]:void 0,import.meta.url)},
 {"id":"src-docs-installation-story-js","path":["Installation"],"filePath":"src/docs/Installation.story.js","story":{"id":"src-docs-installation-story-js","title":"Installation","group":"getting-started","layout":{"type":"single","iframe":true},"icon":"carbon:bookmark","docsOnly":true,"variants":[]},"supportPluginId":"vanilla","docsFilePath":"src/docs/Installation.story.md","index":2, component: Comp2, source: () => __vitePreload(() => import('./__resolved__virtual_story-source_src-docs-installation-story-js-27959641.js'),true?[]:void 0,import.meta.url)},
@@ -99,12 +99,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import('./HomeView.vue-fb7e065b.js'),true?["./HomeView.vue-fb7e065b.js","./story-35450487.js","./vendor-128b6654.js"]:void 0,import.meta.url)
+      component: () => __vitePreload(() => import('./HomeView.vue-aef49cec.js'),true?["./HomeView.vue-aef49cec.js","./story-015f815e.js","./vendor-a50d6b6b.js"]:void 0,import.meta.url)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import('./StoryView.vue-56217560.js'),true?["./StoryView.vue-56217560.js","./vendor-128b6654.js","./story-35450487.js","./MobileOverlay.vue2-cc3861c6.js","./BaseEmpty.vue-abe12e51.js","./state-0d6ff99a.js"]:void 0,import.meta.url)
+      component: () => __vitePreload(() => import('./StoryView.vue-a4f45e4d.js'),true?["./StoryView.vue-a4f45e4d.js","./vendor-a50d6b6b.js","./story-015f815e.js","./MobileOverlay.vue2-96e7982e.js","./BaseEmpty.vue-57470a54.js","./state-25102ce6.js"]:void 0,import.meta.url)
     }
   ]
 });
@@ -197,8 +197,8 @@ function mapVariant(variant, existingVariant) {
 }
 
 const clientSupportPlugins = {
-    'vanilla': () => __vitePreload(() => import('./vendor-128b6654.js').then(n => n.a$),true?[]:void 0,import.meta.url),
-  'vue3': () => __vitePreload(() => import('./vendor-128b6654.js').then(n => n.b0),true?[]:void 0,import.meta.url)
+    'vanilla': () => __vitePreload(() => import('./vendor-a50d6b6b.js').then(n => n.a$),true?[]:void 0,import.meta.url),
+  'vue3': () => __vitePreload(() => import('./vendor-a50d6b6b.js').then(n => n.b0),true?[]:void 0,import.meta.url)
   };
 
 const __default__ = {

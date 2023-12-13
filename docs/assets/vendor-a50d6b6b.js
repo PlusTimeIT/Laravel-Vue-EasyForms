@@ -88747,6 +88747,57 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     lg: $setup.container?.lg ?? 12
   }, {
     default: withCtx(() => [
+      createVNode(VRow, null, {
+        default: withCtx(() => [
+          createVNode(VCol, null, {
+            default: withCtx(() => [
+              createTextVNode(
+                " CComponent: " + toDisplayString($setup.form_component),
+                1
+                /* TEXT */
+              )
+            ]),
+            _: 1
+            /* STABLE */
+          })
+        ]),
+        _: 1
+        /* STABLE */
+      }),
+      createVNode(VRow, null, {
+        default: withCtx(() => [
+          createVNode(VCol, null, {
+            default: withCtx(() => [
+              createTextVNode(
+                " Loading: " + toDisplayString($setup.loading),
+                1
+                /* TEXT */
+              )
+            ]),
+            _: 1
+            /* STABLE */
+          })
+        ]),
+        _: 1
+        /* STABLE */
+      }),
+      createVNode(VRow, null, {
+        default: withCtx(() => [
+          createVNode(VCol, null, {
+            default: withCtx(() => [
+              createTextVNode(
+                " Loaded Form: " + toDisplayString($setup.loaded_form),
+                1
+                /* TEXT */
+              )
+            ]),
+            _: 1
+            /* STABLE */
+          })
+        ]),
+        _: 1
+        /* STABLE */
+      }),
       $setup.has_alerts ? (openBlock(), createBlock(VRow, { key: 0 }, {
         default: withCtx(() => [
           createVNode($setup["EasyAlerts"], {

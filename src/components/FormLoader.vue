@@ -220,6 +220,15 @@ async function load() {
 
 <template>
   <v-col :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
+    <v-row>
+      <v-col> CComponent: {{ form_component }} </v-col>
+    </v-row>
+    <v-row>
+      <v-col> Loading: {{ loading }} </v-col>
+    </v-row>
+    <v-row>
+      <v-col> Loaded Form: {{ loaded_form }} </v-col>
+    </v-row>
     <v-row v-if="has_alerts">
       <EasyAlerts :alerts="loaded_form?.alerts"></EasyAlerts>
     </v-row>

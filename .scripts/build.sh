@@ -1,11 +1,38 @@
 #!/bin/bash
 
+set -e
+
 # ANSI color codes
 BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+# Get the current version from package.json
 VERSION=$(node -p "require('./package.json').version")
+
+update_version() {
+    local version_type=$1
+    local updated_version
+
+    case "$version_type" in
+        "patch")
+            updated_version=$(npm version patch)
+            ;;
+        "minor")
+            updated_version=$(npm version minor)
+            ;;
+        "major")
+            updated_version=$(npm version major)
+            ;;
+        *)
+            echo "Invalid version type. Please use 'patch', 'minor', or 'major'."
+            exit 1
+            ;;
+    esac
+
+    echo $updated_version
+}
+
 header() {
     echo -e "${YELLOW}"
     cat << "EOF"
@@ -41,6 +68,7 @@ run_section() {
     fi
 
     eval "$1"
+    completed "$2 completed."
 }
 
 # Main Script
@@ -54,32 +82,14 @@ for arg in "$@"; do
     esac
 done
 
-header "Starting Laravel Vue EasyForms Build v$VERSION"
+header "Starting Laravel Vue EasyForms Build - $VERSION"
 
-tasks=("Running Tests" "Linting" "Prettifying" "Building Vite" "Building Types" "Building Story" "Additional Files")
-commands=("npm run test:run" "npm run lint" "npm run format" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll")
+tasks=("Running Tests" "Linting" "Prettifying" "Clean Working Directory" "Update Version" "Building Vite" "Building Types" "Building Story" "Additional Files" "Publish to NPM" "Deploy to GitHub" )
+commands=("npm run test:run" "npm run lint" "npm run format" "git add . && git commit -m "update: version update"" "update_version $1" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll" "npm publish" "git add . && git commit -m "update: $VERSION" && git push")
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."
-    run_section "${commands[i]}"
+    run_section "${commands[i]}" "${tasks[i]}"
 done
-
-read -p "Do you want to deploy this build? " choice
-if [ "$choice" == "y" ]; then
-    read -p "Leave commit message: " commitMsg
-    if [ "$commitMsg" == "" ]; then
-        commitMsg="update: $VERSION"
-    fi
-    task "Deploying to git..."
-    git add .
-    git commit -m "$commitMsg"
-    git push
-fi
-
-read -p "Do you want to publish this build to npm? " npmPublish
-if [ "$npmPublish" == "y" ]; then
-    task "Publishing to npm..."
-    npm publish
-fi
 
 completed "Build completed."
