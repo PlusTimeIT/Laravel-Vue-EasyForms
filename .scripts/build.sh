@@ -9,7 +9,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 # Get the current version from package.json
 VERSION=$(node -p "require('./package.json').version")
-PATCHTYPE=$1
+PATCHTYPE=$2
 
 update_version() {
     local version_type=$1
