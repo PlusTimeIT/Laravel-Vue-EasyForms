@@ -4,7 +4,7 @@
 
 ![Laravel EasyForms Logo](/src/docs/logos/lvef-logo-large-transparent-bg.png)
 
-![Version Badge](https://img.shields.io/badge/version-0.2.3%40beta-blue)
+![Version Badge](https://img.shields.io/badge/version-0.4.16%40beta-blue)
 
 </div>
 
