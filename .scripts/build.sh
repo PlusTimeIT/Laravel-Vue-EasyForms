@@ -84,8 +84,8 @@ done
 
 header "Starting Laravel Vue EasyForms Build - $VERSION"
 
-tasks=("Running Tests" "Linting" "Prettifying" "Clean Working Directory" "Update Version" "Building Vite" "Building Types" "Building Story" "Additional Files" "Publish to NPM" "Deploy to GitHub" )
-commands=("npm run test:run" "npm run lint" "npm run format" "git add . && git commit -m "update: version update"" "update_version $1" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll" "npm publish" "git add . && git commit -m "update: $VERSION" && git push")
+tasks=("Running Tests" "Linting" "Prettifying" "Building Vite" "Building Types" "Building Story" "Additional Files" "Publish to NPM" "Deploy to GitHub" "Update Version")
+commands=("npm run test:run" "npm run lint" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll" "npm publish" "git add . && git commit -m "update: $VERSION" && git push" "update_version $1")
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."
