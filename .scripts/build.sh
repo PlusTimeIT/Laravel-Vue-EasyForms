@@ -26,7 +26,7 @@ update_version() {
             updated_version=$(npm version major)
             ;;
         *)
-            echo "Invalid version type. Please use 'patch', 'minor', or 'major'."
+            echo "Invalid version type. Please use 'patch', 'minor', or 'major'. Supplied: $version_type"
             exit 1
             ;;
     esac
