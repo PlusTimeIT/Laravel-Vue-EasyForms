@@ -9,6 +9,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 # Get the current version from package.json
 VERSION=$(node -p "require('./package.json').version")
+PATCHTYPE=$1
 
 update_version() {
     local version_type=$1
@@ -85,7 +86,7 @@ done
 header "Starting Laravel Vue EasyForms Build - $VERSION"
 
 tasks=("Running Tests" "Linting" "Prettifying" "Building Vite" "Building Types" "Building Story" "Additional Files" "Publish to NPM" "Deploy to GitHub" "Update Version")
-commands=("npm run test:run" "npm run lint" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll" "npm publish" "git add . && git commit -m 'update: $VERSION' && git push" "update_version $1")
+commands=("npm run test:run" "npm run lint" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll" "npm publish" "git add . && git commit -m 'update: $VERSION' && git push" "update_version $PATCHTYPE")
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."
