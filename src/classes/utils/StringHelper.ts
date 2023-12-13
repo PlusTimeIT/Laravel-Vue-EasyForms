@@ -1,4 +1,4 @@
-import { MessageParameter } from "../../classes/properties";
+import { MessageParameter } from "../properties/MessageParameter";
 
 /**
  * Utility class for various string manipulation tasks.
@@ -89,5 +89,14 @@ export class StringHelper {
    */
   static snakeToKebab(input: string): string {
     return input.replaceAll("_", "-");
+  }
+  /**
+   * Convert Kebab to Snake case
+   *
+   * @param input The string to convert.
+   * @returns Snake case conversion of the string.
+   */
+  static kebabToSnake(input: string): string {
+    return input.replaceAll("-", "_");
   }
 }

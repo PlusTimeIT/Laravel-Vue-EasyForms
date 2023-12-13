@@ -22,15 +22,12 @@ export class PasswordField extends EasyField {
   constructor(init?: Partial<PasswordField>) {
     super(init);
 
-    if (!isEmpty(init.textfield)) {
+    this.textfield = new TextField(init as object);
+    if (!isEmpty(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
       delete init?.textfield;
     }
     Object.assign(this, init);
-
-    if (isEmpty(this.textfield)) {
-      this.textfield = new TextField(init as object);
-    }
 
     this.textfield.type = "password";
     this.textfield.component = "v-text-field";

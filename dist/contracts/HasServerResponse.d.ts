@@ -1,5 +1,8 @@
-import { HasAxiosReturn } from "./HasAxiosReturn";
-import { HttpStatusCode } from "axios";
+import type { HasAxiosReturn } from "./HasAxiosReturn";
+import type { HttpStatusCode } from "axios";
+/**
+ *  Server Response interface for handling responses
+ */
 export interface HasServerResponse {
     status: HttpStatusCode | undefined;
     statusText: string;

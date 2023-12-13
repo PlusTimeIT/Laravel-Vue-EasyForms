@@ -1,4 +1,4 @@
-import { Tooltip } from ".";
+import { Tooltip } from "./Tooltip";
 import { GotProps } from "../../abstracts/GotProps";
 import { isEmpty } from "../../composables/utils";
 import HasIcon from "../../contracts/HasIcon";

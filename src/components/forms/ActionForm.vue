@@ -5,7 +5,7 @@ import { ref, computed, watchEffect, onBeforeUnmount } from "vue";
 import { ActionForm } from "../../classes/forms";
 import { DataItem } from "../../classes/properties";
 import { EasyButton, EasyIcon } from "../../components/elements";
-import { ActionInputFormType } from "../../composables/validation/PropValidation";
+import { ActionFormType } from "../../composables/validation/PropValidation";
 import { LoaderEvents } from "../../enums";
 
 /**
@@ -21,7 +21,7 @@ const props: ActionFormProps = defineProps({
   form: {
     type: ActionForm,
     required: true,
-    validator: (value: ActionForm) => ActionInputFormType(value),
+    validator: (value: ActionForm) => ActionFormType(value),
   },
 });
 
@@ -137,7 +137,6 @@ onBeforeUnmount(() => {
 <template>
   <v-row :justify="loadedForm.justify_row">
     <v-col v-for="(action, index) in filteredActions" :key="index" :cols="getCols(action)" class="py-0 px-2">
-      get cols: {{ getCols(action) }}
       <EasyIcon
         v-if="!isEmpty((action as ActionIcon).icon)"
         :icon="(action as ActionIcon).icon"

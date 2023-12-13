@@ -1,8 +1,8 @@
-import { Tooltip, Icon } from "../classes/elements";
-import { ValidationRule } from "../classes/properties/ValidationRule";
-import { DensityTypes } from "../enums";
-import { ValidationTriggers } from "../enums";
-import { TextVariantTypes } from "../enums";
+import type { Tooltip, Icon } from "../classes/elements";
+import type { ValidationRule } from "../classes/properties";
+import type { ActionForm, InputForm } from "../classes/forms";
+import type { FieldType } from "../types";
+import { DensityTypes, TextVariantTypes, ValidationTriggers } from "../enums";
 export default interface HasField {
     active: boolean;
     append_icon: Icon | undefined;
@@ -62,5 +62,14 @@ export default interface HasField {
     validated: boolean;
     value: any;
     variant: TextVariantTypes;
+    addErrorMessage(message: string): this;
+    clearErrorMessages(): this;
+    invalidate(): this;
+    isLoading(loading: boolean): this;
+    isParentPopulated(parent_field: this | undefined): boolean;
+    load(form: InputForm | ActionForm, parent: this): Promise<object | boolean>;
+    validate(): this;
+    findValidation(name: string): ValidationRule | undefined;
+    validationRules(fields?: FieldType[]): Array<any>;
 }
 //# sourceMappingURL=HasField.d.ts.map

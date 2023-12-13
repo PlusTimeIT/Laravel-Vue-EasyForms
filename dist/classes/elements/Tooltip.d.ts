@@ -32,6 +32,14 @@ export declare class Tooltip extends GotProps {
     width: string | number | undefined;
     z_index: string | number | undefined;
     constructor(init?: Partial<Tooltip>);
+    /**
+     * Returns an array of all allowed props that are present on V-Tooltip
+     * https://vuetifyjs.com/en/api/v-tooltip/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=Tooltip.d.ts.map

@@ -3,10 +3,11 @@ import { ActionIcon, ActionButton } from "../actions";
 import { FormTypes, JustifyRow } from "../../enums";
 import { AxiosCalls } from "../../enums";
 import { ServerCall } from "../server";
-import { ServerResponse } from "../server";
 import { isArray, isEmpty, store } from "../../utils";
 import { getClassConstructor } from "../utils/ClassRegistry";
 import HasActionForm from "../../contracts/HasActionForm";
+import { AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 /**
  * Action form that uses action buttons and icons.
@@ -34,7 +35,6 @@ export class ActionForm extends EasyForm implements HasActionForm {
     }
 
     Object.assign(this, init);
-    console.log("Form Actions", this.name, this.actions, this);
   }
 
   instantiateAction(className: string, data: any) {
@@ -64,7 +64,7 @@ export class ActionForm extends EasyForm implements HasActionForm {
   }
 
   async process(action_identifier: string): Promise<object | boolean> {
-    let response: ServerResponse;
+    let response: AxiosResponse<HasAxiosReturn>;
     this.isLoading(true);
     try {
       response = await ServerCall.request(

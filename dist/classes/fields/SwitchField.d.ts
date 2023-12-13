@@ -19,6 +19,15 @@ export declare class SwitchField extends EasyField {
     true_value: any;
     type: string;
     constructor(init?: Partial<SwitchField>);
+    /**
+     * Returns an array of all allowed props that are present on VSwitch
+     * https://vuetifyjs.com/en/api/v-switch/
+     *
+     * Currently missing the following properties:
+     *
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=SwitchField.d.ts.map

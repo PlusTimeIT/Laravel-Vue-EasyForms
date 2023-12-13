@@ -147,7 +147,7 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onReset?: ((...args: any[]) => any) | undefined;
-    "onUpdate:form"?: ((...args: any[]) => any) | undefined;
+    onUpdated?: ((...args: any[]) => any) | undefined;
     onLoading?: ((...args: any[]) => any) | undefined;
     onLoaded?: ((...args: any[]) => any) | undefined;
     onResults?: ((...args: any[]) => any) | undefined;
@@ -155,7 +155,7 @@ declare const _default: import("vue").DefineComponent<{
     onProcessing?: ((...args: any[]) => any) | undefined;
     onFailed?: ((...args: any[]) => any) | undefined;
     onSuccessful?: ((...args: any[]) => any) | undefined;
-    onUpdated?: ((...args: any[]) => any) | undefined;
+    "onUpdate:form"?: ((...args: any[]) => any) | undefined;
 }, {
     cols: number;
     lg: number;

@@ -34,6 +34,15 @@ export declare class SelectField extends EasyField {
     type: string;
     constructor(init?: Partial<SelectField>);
     loadItems(items: any): this;
+    /**
+     * Returns an array of all allowed props that are present on V-Select
+     * https://vuetifyjs.com/en/api/v-select/
+     *
+     * Currently missing the following properties:
+     * location
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=SelectField.d.ts.map

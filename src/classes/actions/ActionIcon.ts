@@ -14,6 +14,7 @@ export class ActionIcon implements HasActionIcon {
   discriminator = "ActionIcon";
 
   constructor(init?: Partial<ActionIcon>) {
+    this.icon = new Icon({ icon: "mdi-home" });
     if (!isEmpty(init?.icon)) {
       if (init?.icon instanceof Icon) {
         this.icon = init?.icon;
@@ -23,7 +24,7 @@ export class ActionIcon implements HasActionIcon {
       delete init?.icon;
     }
     if (!isEmpty(init?.conditions)) {
-      for (const condition of init.conditions) {
+      for (const condition of init?.conditions ?? []) {
         if (condition instanceof ConditionItem) {
           this.conditions.push(condition);
         } else {

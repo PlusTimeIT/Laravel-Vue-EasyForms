@@ -1,5 +1,5 @@
 import { PluginOptions } from "../../classes/PluginOptions";
-import { Csrf } from "../../server";
+import type { Csrf } from "../../classes/server/Csrf";
 interface Store {
     csrf?: Csrf | undefined;
     options: PluginOptions;

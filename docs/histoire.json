@@ -12,22 +12,26 @@
       "variants": [
         {
           "id": "src-components-formloader-story-vue-0",
-          "title": "Input Form"
+          "title": "Input Form - Basic"
         },
         {
           "id": "src-components-formloader-story-vue-1",
-          "title": "Action Form - Buttons Vertical"
+          "title": "Input Form - Advanced"
         },
         {
           "id": "src-components-formloader-story-vue-2",
-          "title": "Action Form - Buttons Horizontal"
+          "title": "Action Form - Buttons Vertical"
         },
         {
           "id": "src-components-formloader-story-vue-3",
-          "title": "Action Form - Icons Vertical"
+          "title": "Action Form - Buttons Horizontal"
         },
         {
           "id": "src-components-formloader-story-vue-4",
+          "title": "Action Form - Icons Vertical"
+        },
+        {
+          "id": "src-components-formloader-story-vue-5",
           "title": "Action Form - Icons Horizontal"
         }
       ],
@@ -40,7 +44,7 @@
       "markdownFile": null
     },
     {
-      "id": "src-histoire-formbasics-story-js",
+      "id": "src-docs-formbasics-story-js",
       "title": "Form Basics",
       "group": "forms",
       "layout": {
@@ -50,15 +54,15 @@
       "icon": "carbon:bookmark",
       "docsOnly": true,
       "variants": [],
-      "relativePath": "src/histoire/FormBasics.story.js",
+      "relativePath": "src/docs/FormBasics.story.js",
       "supportPluginId": "vanilla",
       "treePath": [
         "Form Basics"
       ],
       "virtual": true,
       "markdownFile": {
-        "id": "src-histoire-formbasics-story-md",
-        "relativePath": "src/histoire/FormBasics.story.md",
+        "id": "src-docs-formbasics-story-md",
+        "relativePath": "src/docs/FormBasics.story.md",
         "isRelatedToStory": false,
         "frontmatter": {
           "group": "forms",
@@ -68,7 +72,7 @@
       }
     },
     {
-      "id": "src-histoire-installation-story-js",
+      "id": "src-docs-installation-story-js",
       "title": "Installation",
       "group": "getting-started",
       "layout": {
@@ -78,15 +82,15 @@
       "icon": "carbon:bookmark",
       "docsOnly": true,
       "variants": [],
-      "relativePath": "src/histoire/Installation.story.js",
+      "relativePath": "src/docs/Installation.story.js",
       "supportPluginId": "vanilla",
       "treePath": [
         "Installation"
       ],
       "virtual": true,
       "markdownFile": {
-        "id": "src-histoire-installation-story-md",
-        "relativePath": "src/histoire/Installation.story.md",
+        "id": "src-docs-installation-story-md",
+        "relativePath": "src/docs/Installation.story.md",
         "isRelatedToStory": false,
         "frontmatter": {
           "group": "getting-started",
@@ -96,7 +100,7 @@
       }
     },
     {
-      "id": "src-histoire-introduction-story-js",
+      "id": "src-docs-introduction-story-js",
       "title": "Intro",
       "group": "top",
       "layout": {
@@ -106,15 +110,15 @@
       "icon": "carbon:bookmark",
       "docsOnly": true,
       "variants": [],
-      "relativePath": "src/histoire/Introduction.story.js",
+      "relativePath": "src/docs/Introduction.story.js",
       "supportPluginId": "vanilla",
       "treePath": [
         "Intro"
       ],
       "virtual": true,
       "markdownFile": {
-        "id": "src-histoire-introduction-story-md",
-        "relativePath": "src/histoire/Introduction.story.md",
+        "id": "src-docs-introduction-story-md",
+        "relativePath": "src/docs/Introduction.story.md",
         "isRelatedToStory": false,
         "frontmatter": {
           "group": "top",
@@ -122,12 +126,82 @@
           "title": "Intro"
         }
       }
+    },
+    {
+      "id": "vuetify",
+      "title": "Vuetify",
+      "group": "design-system",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "icon": "mdi:vuetify",
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "vuetify-0",
+          "title": "Material Colors",
+          "icon": "mdi:palette"
+        },
+        {
+          "id": "vuetify-1",
+          "title": "Text And Typography",
+          "icon": "mdi:format-font"
+        },
+        {
+          "id": "vuetify-2",
+          "title": "Border Radius",
+          "icon": "mdi:border-all"
+        },
+        {
+          "id": "vuetify-3",
+          "title": "Content",
+          "icon": "mdi:view-grid-plus"
+        },
+        {
+          "id": "vuetify-4",
+          "title": "Elevation",
+          "icon": "mdi:box-shadow"
+        },
+        {
+          "id": "vuetify-5",
+          "title": "Display",
+          "icon": "mdi:monitor-screenshot"
+        },
+        {
+          "id": "vuetify-6",
+          "title": "Float",
+          "icon": "mdi:format-float-left"
+        },
+        {
+          "id": "vuetify-7",
+          "title": "Overflow",
+          "icon": "mdi:format-text-wrapping-overflow"
+        },
+        {
+          "id": "vuetify-8",
+          "title": "Sizing",
+          "icon": "mdi:image-size-select-small"
+        },
+        {
+          "id": "vuetify-9",
+          "title": "Spacing",
+          "icon": "mdi:space-invaders"
+        }
+      ],
+      "relativePath": "/development/plustime/Laravel-Vue-EasyForms/node_modules/.histoire/plugins/vuetify-design-system/Vuetify.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Vuetify"
+      ],
+      "virtual": false,
+      "markdownFile": null
     }
   ],
   "markdownFiles": [
     {
-      "id": "src-histoire-formbasics-story-md",
-      "relativePath": "src/histoire/FormBasics.story.md",
+      "id": "src-docs-formbasics-story-md",
+      "relativePath": "src/docs/FormBasics.story.md",
       "isRelatedToStory": false,
       "frontmatter": {
         "group": "forms",
@@ -136,8 +210,8 @@
       }
     },
     {
-      "id": "src-histoire-installation-story-md",
-      "relativePath": "src/histoire/Installation.story.md",
+      "id": "src-docs-installation-story-md",
+      "relativePath": "src/docs/Installation.story.md",
       "isRelatedToStory": false,
       "frontmatter": {
         "group": "getting-started",
@@ -146,8 +220,8 @@
       }
     },
     {
-      "id": "src-histoire-introduction-story-md",
-      "relativePath": "src/histoire/Introduction.story.md",
+      "id": "src-docs-introduction-story-md",
+      "relativePath": "src/docs/Introduction.story.md",
       "isRelatedToStory": false,
       "frontmatter": {
         "group": "top",

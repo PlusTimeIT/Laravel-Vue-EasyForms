@@ -1,7 +1,8 @@
-import { ServerCall } from "../../classes/server/ServerCall";
-import { ServerResponse } from "../../classes/server/ServerResponse";
+import { ServerCall } from "./ServerCall";
 import { AxiosCalls } from "../../enums";
 import { isEmpty, minutesBetween } from "../../composables/utils";
+import { AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 /**
  * Csrf Class for handling csrf token calls
@@ -22,7 +23,7 @@ export class Csrf {
   // csrf token is set
   protected token = false;
   // Substr of begining of token.
-  protected prefix = null;
+  protected prefix: string | undefined;
   // Error message to display on Token failure.
   error_message = "Error loading form. Please try refreshing the page.";
   // csrf endpoint
@@ -55,7 +56,7 @@ export class Csrf {
     this.token = false;
   }
 
-  async delay(milliseconds) {
+  async delay(milliseconds: number) {
     return new Promise((resolve) => {
       setTimeout(resolve as any, milliseconds);
     });
@@ -106,7 +107,7 @@ export class Csrf {
   // Adds token attempt
   async tokenAttempt() {
     this.attempts++;
-    let response: ServerResponse;
+    let response: AxiosResponse<HasAxiosReturn>;
     try {
       response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
       if (response.status === 200 || response.status === 204) {

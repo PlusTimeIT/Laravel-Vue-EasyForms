@@ -10,49 +10,6 @@ import { Alert } from "../../src/classes/elements";
 import { AlertTriggers, AlertTypes } from "../../src/enums";
 import { ActionButton } from "../../src/classes/actions";
 
-const actionForm = ref<ActionForm>(
-  new ActionForm({
-    name: "ActionFormIconsVertical",
-    type: FormTypes.Action,
-    inline: false,
-    actions: [
-      new ActionIcon({
-        name: "edit",
-        icon: new Icon({
-          icon: "mdi-pencil",
-          color: "#7c00ec",
-          classes: "pa-6",
-          tooltip: new Tooltip({
-            text: "Edit User",
-          }),
-        }),
-      }),
-      new ActionIcon({
-        name: "deactivate",
-        icon: new Icon({
-          icon: "mdi-cancel",
-          color: "#0e9f1d",
-          classes: "pa-6",
-          tooltip: new Tooltip({
-            text: "Deactivate User",
-          }),
-        }),
-      }),
-      new ActionIcon({
-        name: "delete",
-        icon: new Icon({
-          icon: "mdi-delete",
-          color: "#d00e30",
-          classes: "pa-6",
-          tooltip: new Tooltip({
-            text: "Delete User",
-          }),
-        }),
-      }),
-    ],
-  }),
-);
-
 const inputForm = new InputForm({
   name: "TestInputForm",
   type: FormTypes.Input,

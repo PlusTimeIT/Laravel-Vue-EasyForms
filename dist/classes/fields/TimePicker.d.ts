@@ -17,6 +17,14 @@ export declare class TimePicker extends EasyField {
     title: string;
     width: string | number | undefined;
     constructor(init?: Partial<TimePicker>);
+    /**
+     * Returns an array of all allowed props that are present on V-Color-Picker
+     * https://vuetifyjs.com/en/api/v-color-picker/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=TimePicker.d.ts.map

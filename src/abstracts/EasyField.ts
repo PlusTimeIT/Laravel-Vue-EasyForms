@@ -1,20 +1,18 @@
-import HasField from "../contracts/HasField";
-
-import { ServerCall, ServerResponse } from "../classes/server";
+import type HasField from "../contracts/HasField";
+import { ServerCall } from "../classes/server";
 import { ValidationRule } from "../classes/properties";
 import { Icon, Tooltip } from "../classes/elements";
 import { PluginOptions } from "../classes/PluginOptions";
-import { AxiosCalls } from "../enums";
-import { DensityTypes } from "../enums";
-import { ValidationTriggers } from "../enums";
-import { TextVariantTypes } from "../enums";
+import { AxiosCalls, DensityTypes, ValidationTriggers, TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
 import type { FieldType } from "../types";
 import { isArray, isEmpty, store } from "../composables/utils";
 import { ValidationHelper } from "../composables/validation/ValidationHelper";
 import { ValidationHandler } from "../composables/validation/ValidationHandler";
 import { FunctionBuilder } from "../composables/validation/FunctionBuilder";
-import { ActionForm, InputForm } from "../forms";
+import type { ActionForm, InputForm } from "../forms";
+import { AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../contracts/HasAxiosReturn";
 
 /**
  * Abstract class representing an EasyField, which is a base class for form fields.
@@ -116,6 +114,7 @@ export abstract class EasyField extends GotProps implements HasField {
       this.tooltip = new Tooltip(init?.tooltip);
       delete init?.tooltip;
     }
+
     Object.assign(this, init);
 
     // If required is set to false, check if rules contain required and set it to true.
@@ -201,7 +200,7 @@ export abstract class EasyField extends GotProps implements HasField {
    * @param {EasyField} parent_field - The parent field to check against.
    * @returns {boolean} True if the parent field is loaded; otherwise, false.
    */
-  isParentLoaded(parent_field: EasyField | undefined): boolean {
+  isParentPopulated(parent_field: EasyField | undefined): boolean {
     if (isEmpty(this.depends_on)) {
       return true;
     }
@@ -211,12 +210,12 @@ export abstract class EasyField extends GotProps implements HasField {
 
   /**
    * Load data for the field asynchronously.
-   * @param {string} form_name - The name of the form.
+   * @param {InputForm | ActionForm} form form its loading from.
    * @param {EasyField} parent - The parent field for additional data.
    * @returns {Promise<object|boolean>} A Promise that resolves to the loaded data or false if loading fails.
    */
   async load(form: InputForm | ActionForm, parent: EasyField): Promise<object | boolean> {
-    let response: ServerResponse;
+    let response: AxiosResponse<HasAxiosReturn>;
     this.isLoading(true);
     try {
       // Check if additional data is required from the parent.
@@ -254,19 +253,6 @@ export abstract class EasyField extends GotProps implements HasField {
   }
 
   /**
-   * Update the field based on the parent field.
-   * @param {this} parent_field - The parent field to check against.
-   * @returns {boolean} True if the parent field is loaded; otherwise, false.
-   */
-  update(parent_field: this): boolean {
-    if (isEmpty(this.depends_on)) {
-      return true;
-    }
-    // Check if parent loading data has been set
-    return !isEmpty(parent_field.value);
-  }
-
-  /**
    * Validate the field.
    * @returns {this} The EasyField instance for method chaining.
    */
@@ -279,7 +265,7 @@ export abstract class EasyField extends GotProps implements HasField {
    * Validate the field.
    * @returns {this} The EasyField instance for method chaining.
    */
-  findValidation(name: string): ValidationRule | null {
+  findValidation(name: string): ValidationRule | undefined {
     return this.rules.find((rule) => rule.name === name);
   }
 
@@ -291,12 +277,52 @@ export abstract class EasyField extends GotProps implements HasField {
   validationRules(fields?: FieldType[]): Array<any> {
     // Check if a validation handler function is present.
     return this.rules
-      .filter((rule) => ValidationHelper.exists(rule))
+      .filter((rule) => ValidationHelper.exists(rule.name))
       .map((rule) => {
         // eslint-disable-next-line @typescript-eslint/ban-types
         return (ValidationHandler[rule.name as keyof ValidationHandler] as Function)(
-          ...FunctionBuilder.buildArgs(this as FieldType, fields ?? [], rule),
+          ...this.buildValidation(fields ?? [], rule),
         );
       });
+  }
+
+  buildValidation(fields: FieldType[], rule: ValidationRule): Array<any> {
+    let args: any = [];
+    args.push(this);
+
+    // check second arg for all fields passed
+    if (FunctionBuilder.shouldPassFieldMessage(rule.name)) {
+      if (!isEmpty(rule.message)) {
+        args.push(rule.message);
+      }
+      return args;
+    }
+
+    if (FunctionBuilder.shouldPassAllFields(rule.name)) {
+      args.push(fields);
+    }
+
+    if (FunctionBuilder.shouldPassArray(rule.name)) {
+      // split value by comma, trim and return array.
+      args.push((rule.value || "").split(","));
+    }
+
+    if (FunctionBuilder.shouldSplit(rule.name)) {
+      if (rule.value.includes(",")) {
+        args = [...args, ...(rule.value || "").split(",")];
+      } else {
+        args.push(rule.value);
+      }
+    }
+
+    if (FunctionBuilder.shouldPass(rule.name)) {
+      // split value by comma, trim and return array.
+      args.push(rule.value);
+    }
+
+    if (!isEmpty(rule.message)) {
+      args.push(rule.message);
+    }
+    return args;
   }
 }

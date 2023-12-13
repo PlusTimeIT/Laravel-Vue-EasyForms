@@ -11,6 +11,15 @@ export declare class CheckboxGroupField extends EasyField {
     constructor(init?: Partial<CheckboxGroupField>);
     addAllItems(): void;
     addItem(key: string, value: any): void;
+    /**
+     * Returns an array of all allowed props that are present on V-Checkbox
+     * https://vuetifyjs.com/en/api/v-checkbox/
+     *
+     * Currently missing the following properties:
+     *
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
     clear(): void;
     find(checkbox: CheckboxField): CheckboxGroupValue | undefined;

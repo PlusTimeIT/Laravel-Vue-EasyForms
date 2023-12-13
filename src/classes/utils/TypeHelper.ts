@@ -29,39 +29,6 @@ export class TypeHelper {
     return typeof o === "boolean";
   }
 
-  /**
-   * Checks variable type and if it is empty. All cases are checked:
-   * Undefined, null, empty object, empty array, empty or blank string.
-   * Throws errors on number, boolean and function types.
-   * @param o
-   * @returns boolean
-   */
-  // static isEmpty(o: any): boolean {
-  //   // check if item is undefined first
-  //   if (this.isUndefined(o)) {
-  //     return true;
-  //   } else if (this.isNull(o)) {
-  //     return true;
-  //   } else if (this.isArray(o)) {
-  //     return this.isArrayEmpty(o);
-  //   } else if (this.isObject(o)) {
-  //     return this.isObjectEmpty(o);
-  //   } else if (this.isString(o)) {
-  //     return this.isStringEmpty(o);
-  //   } else if (this.isNumber(o)) {
-  //     // console.trace('Numbers can not be checked for emptiness - use isUndefined function instead. This cannot be trusted since we are only checking if the number is greater than 0')
-  //     return o <= 0;
-  //   } else if (this.isBoolean(o)) {
-  //     // console.trace('Booleans can not be checked for emptiness - use isUndefined function instead.')
-  //     return false;
-  //   } else if (this.isFunction(o)) {
-  //     // console.trace('Functions can not be checked for emptiness - use isUndefined function instead.')
-  //     return false;
-  //   }
-
-  //   throw new Error("Unknown type detected on emptiness check - " + typeof o);
-  // }
-
   static isEmpty(o: any): boolean {
     // simplified to help with overhead
     if (o === undefined || o === null) {
@@ -93,7 +60,7 @@ export class TypeHelper {
    * @returns boolean
    */
   static isFile(o: any): boolean {
-    return "File" in window && o instanceof File ? true : false;
+    return "File" in window && o instanceof File;
   }
 
   /**

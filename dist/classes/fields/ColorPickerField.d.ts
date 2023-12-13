@@ -8,6 +8,15 @@ export declare class ColorPickerField extends EasyField {
     picker: ColorPicker;
     textfield: TextField;
     constructor(init?: Partial<ColorPickerField>);
+    /**
+     * Returns an array of all allowed props that are present on V-Checkbox
+     * https://vuetifyjs.com/en/api/v-checkbox/
+     *
+     * Currently missing the following properties:
+     *
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=ColorPickerField.d.ts.map

@@ -1,4 +1,3 @@
-import { EasyField } from "../abstracts/EasyField";
 import {
   AutoCompleteField,
   CheckboxField,
@@ -24,7 +23,6 @@ type StrictUnionHelper<T, TAll> = T extends any
 type StrictUnion<T> = StrictUnionHelper<T, T>;
 
 export type FieldType = StrictUnion<
-  | EasyField
   | AutoCompleteField
   | CheckboxField
   | CheckboxGroupField

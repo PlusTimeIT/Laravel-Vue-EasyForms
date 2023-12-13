@@ -1,6 +1,6 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/env.d.ts", "*.ts"],
-  "exclude": ["node_modules", "dist", "sandbox", ".histoire", "src/**/*.spec.ts", "*.build-dts.json"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/env.d.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "*.ts"],
+  "exclude": ["node_modules", "dist", "sandbox", ".histoire", "*.build-dts.json"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "ESNext",
@@ -15,7 +15,7 @@
     "strict": true,
     "sourceMap": true,
     "allowJs": true,
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -24,7 +24,6 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "preserveWatchOutput": true,
-    "removeComments": true,
     "noEmit": true,
     "lib": ["esnext", "dom"],
     "baseUrl": "."

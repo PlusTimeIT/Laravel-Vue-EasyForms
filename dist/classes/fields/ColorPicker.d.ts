@@ -37,6 +37,14 @@ export declare class ColorPicker extends EasyField {
     tag: string;
     width: string | number;
     constructor(init?: Partial<ColorPicker>);
+    /**
+     * Returns an array of all allowed props that are present on V-Color-Picker
+     * https://vuetifyjs.com/en/api/v-color-picker/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 export {};

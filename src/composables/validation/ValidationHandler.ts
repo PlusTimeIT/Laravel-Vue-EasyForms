@@ -1,5 +1,4 @@
-import { FieldType, ValidationFunction } from "../../types";
-export type { FieldType };
+import type { FieldType, ValidationFunction } from "../../types";
 import { isEmpty, isArray, isNumber, isString, isNull, isFile, isNumeric } from "../../composables/utils/Types";
 import { convertMessageHolders } from "../../composables/utils/Strings";
 import { ValidationMessages } from "../../enums";
@@ -273,7 +272,9 @@ export class ValidationHandler {
       const required_fields: FieldType[] = fields.filter((f) => values.includes(f.name) && !isEmpty(f.value));
       return (
         (!isEmpty(required_fields) && !isEmpty(value)) ||
-        convertMessageHolders(field.name, message, [{ key: ":values", replace_with: values.join(",") }])
+        convertMessageHolders(field.name, message, [
+          { key: ":values", replace_with: isArray(values) ? values.join(",") : values },
+        ])
       );
     };
 

@@ -56,8 +56,8 @@ done
 
 header "Starting Laravel Vue EasyForms Build"
 
-tasks=("Linting", "Prettifying", "Building Vite" "Building Types" "Building Story" "Additional Files")
-commands=("npm run lint" "npm run format" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll")
+tasks=("Running Tests" "Linting" "Prettifying" "Building Vite" "Building Types" "Building Story" "Additional Files")
+commands=("npm run test:run" "npm run lint" "npm run format" "npm run build:vite" "npm run build:types" "npm run build:story" "touch ./docs/.nojekyll")
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."

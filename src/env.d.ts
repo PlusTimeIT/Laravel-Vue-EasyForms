@@ -1,6 +1,8 @@
+/// <reference types="histoire" />
 /// <reference types="histoire/client" />
 /// <reference types="@histoire/plugin-vue/components" />
 /// <reference types="vite/client" />
+/// <reference types="vitest" />
 
 declare module "*.vue" {
   import type { DefineComponent } from "vue";

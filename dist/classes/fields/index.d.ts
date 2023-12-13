@@ -9,6 +9,7 @@ export * from "./FileInputField";
 export * from "./PasswordField";
 export * from "./RadioGroupField";
 export * from "./RadioField";
+export * from "./SelectField";
 export * from "./SwitchField";
 export * from "./TextField";
 export * from "./TimePickerField";

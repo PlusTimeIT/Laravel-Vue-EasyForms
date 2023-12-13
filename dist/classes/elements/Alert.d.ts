@@ -40,11 +40,39 @@ export declare class Alert extends GotProps {
     constructor(init?: Partial<Alert>);
     setDefaults(): void;
     iconCheck(icon: Icon): void;
+    /**
+     * Returns an array of all allowed props that are present on V-Alert
+     * https://vuetifyjs.com/en/api/v-alert/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
+    /**
+     * Prepares auto close feature
+     * @returns Alert
+     */
     autoClose(): Alert;
+    /**
+     * Reset alerts so they aren't displayed
+     * @returns Alert
+     */
     convertContents(text: string): Alert;
+    /**
+     * Hide alert
+     * @returns Alert
+     */
     hide(): Alert;
+    /**
+     * Reset alerts so they aren't displayed
+     * @returns Alert
+     */
     reset(): Alert;
+    /**
+     * Show alert
+     * @returns Alert
+     */
     show(): Alert;
 }
 //# sourceMappingURL=Alert.d.ts.map

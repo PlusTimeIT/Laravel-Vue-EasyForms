@@ -1,12 +1,17 @@
-import HasField from "../contracts/HasField";
+import type HasField from "../contracts/HasField";
 import { ValidationRule } from "../classes/properties";
 import { Icon, Tooltip } from "../classes/elements";
-import { DensityTypes } from "../enums";
-import { ValidationTriggers } from "../enums";
-import { TextVariantTypes } from "../enums";
+import { DensityTypes, ValidationTriggers, TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
 import type { FieldType } from "../types";
-import { ActionForm, InputForm } from "../forms";
+import type { ActionForm, InputForm } from "../forms";
+/**
+ * Abstract class representing an EasyField, which is a base class for form fields.
+ * @abstract
+ * @class
+ * @extends GotProps
+ * @implements HasField
+ */
 export declare abstract class EasyField extends GotProps implements HasField {
     active: boolean;
     append_icon: Icon | undefined;
@@ -67,16 +72,53 @@ export declare abstract class EasyField extends GotProps implements HasField {
     validated: boolean;
     value: any;
     variant: TextVariantTypes;
+    /**
+     * Creates an instance of EasyField.
+     * @param {Partial<EasyField>} [init] - Initialization object for setting properties.
+     */
     constructor(init?: Partial<EasyField>);
     addErrorMessage(message: string): this;
     clearErrorMessages(): this;
+    /**
+     * Invalidate the field's validation state.
+     * @returns {this} The EasyField instance for method chaining.
+     */
     invalidate(): this;
+    /**
+     * Set the loading state of the field.
+     * @param {boolean} loading - Whether the field is in a loading state.
+     * @returns {this} The EasyField instance for method chaining.
+     */
     isLoading(loading: boolean): this;
-    isParentLoaded(parent_field: EasyField | undefined): boolean;
+    /**
+     * Check if the parent field is loaded.
+     * @param {EasyField} parent_field - The parent field to check against.
+     * @returns {boolean} True if the parent field is loaded; otherwise, false.
+     */
+    isParentPopulated(parent_field: EasyField | undefined): boolean;
+    /**
+     * Load data for the field asynchronously.
+     * @param {InputForm | ActionForm} form form its loading from.
+     * @param {EasyField} parent - The parent field for additional data.
+     * @returns {Promise<object|boolean>} A Promise that resolves to the loaded data or false if loading fails.
+     */
     load(form: InputForm | ActionForm, parent: EasyField): Promise<object | boolean>;
-    update(parent_field: this): boolean;
+    /**
+     * Validate the field.
+     * @returns {this} The EasyField instance for method chaining.
+     */
     validate(): this;
-    findValidation(name: string): ValidationRule | null;
+    /**
+     * Validate the field.
+     * @returns {this} The EasyField instance for method chaining.
+     */
+    findValidation(name: string): ValidationRule | undefined;
+    /**
+     * Apply validation rules to the field.
+     * @param {FieldType[]} [fields] - An optional array of fields to use in validation.
+     * @returns {any[]} An array of validation results.
+     */
     validationRules(fields?: FieldType[]): Array<any>;
+    buildValidation(fields: FieldType[], rule: ValidationRule): Array<any>;
 }
 //# sourceMappingURL=EasyField.d.ts.map

@@ -7,15 +7,20 @@ import { ref, computed, watch, onBeforeMount, onBeforeUnmount } from "vue";
 import { ColumnRestriction } from "../composables/validation/PropValidation";
 import { ActionForm, InputForm, EasyForm } from "../classes/forms";
 import EasyAlerts from "../components/elements/EasyAlerts.vue";
-import { AdditionalData } from "../classes/properties";
+import { AdditionalData, FormLoader } from "../classes/properties";
 import { isEmpty } from "../composables/utils";
+import {
+  ActionForm as ActionFormLoader,
+  InputForm as InputFormLoader,
+  ErrorForm as ErrorFormLoader,
+} from "../components/forms";
 import { FormContainer } from "../classes/elements";
-import { FormLoaderTypes, LoaderEvents } from "../enums";
+import { LoaderEvents } from "../enums";
 import { FormTypes } from "../enums";
 import { store } from "../composables/utils";
 import { AlertTriggers } from "../enums";
 import { Csrf } from "../server";
-import { ActionIcon } from "../classes/actions";
+import EasyLoader from "./elements/EasyLoader.vue";
 
 const emit = defineEmits([
   "update:form",
@@ -74,7 +79,7 @@ const props = defineProps({
 });
 
 const requires_api = ref<boolean>(false);
-const csrf = ref<Csrf>(store.csrf);
+const csrf = ref<Csrf>((store.csrf ?? new Csrf()) as Csrf);
 const loading = ref<boolean>(true);
 
 const loaded_form = ref<InputForm | ActionForm | EasyForm>(props.form);
@@ -86,6 +91,7 @@ const container = computed<FormContainer>(() => {
     lg: props.lg,
   });
 });
+
 const has_error = computed<boolean>(() => !isEmpty(loaded_form.value!.text));
 const has_valid_csrf_token = computed<boolean>(() => csrf.value.isValidCsrfToken());
 const is_csrf_token_loading = computed<boolean>(() => csrf.value.isLoading());
@@ -112,6 +118,18 @@ const form_component = computed<string | undefined>(() => {
     }
   }
   return FormTypes.Error;
+});
+
+const is_action = computed<boolean>(() => {
+  return form_component.value === FormTypes.Action;
+});
+
+const is_input = computed<boolean>(() => {
+  return form_component.value === FormTypes.Input;
+});
+
+const is_error = computed<boolean>(() => {
+  return form_component.value === FormTypes.Error;
 });
 
 function reset() {
@@ -170,6 +188,7 @@ onBeforeMount(async () => {
     requires_api.value = false;
     loaded_form.value = props.form;
     isLoading(false);
+    emit(LoaderEvents.Loaded, true);
   } else if (!isEmpty(props.name)) {
     requires_api.value = true;
     if (has_valid_csrf_token.value) {
@@ -186,7 +205,6 @@ onBeforeMount(async () => {
 });
 
 async function load() {
-  console.log("LOADING FORM");
   loaded_form.value.name = props.name;
   loaded_form.value.additional_data = props.additionalData;
   loaded_form.value.additional_load_data = props.additionalLoadData;
@@ -208,26 +226,17 @@ async function load() {
 </script>
 
 <template>
-  <v-col :cols="container.cols" :sm="container.sm" :md="container.md" :lg="container.lg">
+  <v-col :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
     <v-row v-if="has_alerts">
       <EasyAlerts :alerts="loaded_form?.alerts"></EasyAlerts>
     </v-row>
     <v-row v-show="!form_ready" justify="center" class="form-loader">
-      <v-col cols="auto" :class="loaded_form.loader?.progress?.classes ?? ''">
-        <v-progress-circular
-          v-if="loaded_form.loader?.type === FormLoaderTypes.Circular"
-          v-bind="loaded_form.loader?.progress?.props()"
-        ></v-progress-circular>
-        <v-progress-linear
-          v-if="loaded_form.loader?.type === FormLoaderTypes.Linear"
-          v-bind="loaded_form.loader?.progress?.props()"
-        ></v-progress-linear>
-      </v-col>
+      <EasyLoader :loader="loaded_form?.loader as FormLoader" />
     </v-row>
     <v-row v-show="form_ready">
-      <input-form-loader
-        v-if="form_component == FormTypes.Input && !has_error"
-        v-model:form="loaded_form"
+      <InputFormLoader
+        v-if="is_input && !has_error"
+        v-model:form="loaded_form as InputForm"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
@@ -238,9 +247,9 @@ async function load() {
         @failed="failed"
         @successful="success"
       />
-      <action-form-loader
-        v-else-if="form_component == FormTypes.Action && !has_error"
-        v-model:form="loaded_form"
+      <ActionFormLoader
+        v-else-if="is_action && !has_error"
+        v-model:form="loaded_form as ActionForm"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
@@ -251,12 +260,7 @@ async function load() {
         @failed="failed"
         @successful="success"
       />
-      <error-form-loader v-else-if="form_component == FormTypes.Error || has_error" :text="loaded_form.text" />
-    </v-row>
-    <v-row>
-      <v-col v-for="(action, i) in (loaded_form as ActionForm).actions" :key="i">
-        {{ action.name }}: {{ (action as ActionIcon).icon.color }}
-      </v-col>
+      <ErrorFormLoader v-else-if="is_error || has_error" :text="loaded_form.text" />
     </v-row>
   </v-col>
 </template>

@@ -1,5 +1,5 @@
-import { ConditionItem } from "../classes/actions";
-import { Icon } from "../classes/elements";
+import type { ConditionItem } from "../classes/actions";
+import type { Icon } from "../classes/elements";
 
 export default interface HasActionIcon {
   callback: string;

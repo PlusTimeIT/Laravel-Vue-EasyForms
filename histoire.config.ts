@@ -6,7 +6,7 @@ import { vuetifyDesignSystem } from "histoire-vuetify-design-system/design";
 
 export default defineConfig({
   outDir: resolve(__dirname, "docs"),
-  setupFile: "./src/histoire/histoire.setup.ts",
+  setupFile: "./src/docs/histoire.setup.ts",
   plugins: [
     HstVue(),
     vuetifyDesignSystem({
@@ -17,9 +17,9 @@ export default defineConfig({
   theme: {
     title: "Vue EasyForms Documentation",
     logo: {
-      square: "./src/histoire/logos/square-logo-transparent-bg.png",
-      light: "./src/histoire/logos/lvef-logo-large-transparent-bg.png",
-      dark: "./src/histoire/logos/lvef-logo-large-transparent-bg.png",
+      square: "./src/docs/logos/square-logo-transparent-bg.png",
+      light: "./src/docs/logos/lvef-logo-large-transparent-bg.png",
+      dark: "./src/docs/logos/lvef-logo-large-transparent-bg.png",
     },
     colors: {
       primary: {

@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { describe, expect, test } from "vitest";
-import { TextField } from "../../classes/fields";
+import { TextField } from "../../../classes/fields";
 import { ValidationHandler } from "../ValidationHandler";
-import { convertMessageHolders } from "../../composables/utils";
+import { convertMessageHolders } from "../../utils/Strings";
 
 const textfield: TextField = new TextField({
   name: "test",
@@ -511,7 +511,7 @@ describe("Validation Functions", () => {
     });
 
     test("numeric validation fails - numeric string", () => {
-      textfield.value = "999";
+      textfield.value = "999khh";
       expect(ValidationHandler.numeric(textfield, "Error Msg")(textfield.value)).toEqual("Error Msg");
     });
   });
@@ -571,8 +571,12 @@ describe("Validation Functions", () => {
     });
 
     test("required_if validation failed - not matching", () => {
-      textfield.value = "hello";
-      expect(ValidationHandler.required_if(textfield, "goodbye", "hello", "Error Msg")(textfield.value)).toEqual(
+      textfield.value = "";
+      const requiredfield: TextField = new TextField({
+        name: "test_not",
+        value: "hello",
+      });
+      expect(ValidationHandler.required_if(textfield, requiredfield, "hello", "Error Msg")(textfield.value)).toEqual(
         "Error Msg",
       );
     });

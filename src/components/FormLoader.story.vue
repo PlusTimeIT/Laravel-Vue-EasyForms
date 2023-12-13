@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { ActionForm, InputForm } from "../classes/forms";
-import { TextField } from "../classes/fields";
+import {
+  ColorPicker,
+  ColorPickerField,
+  DatePickerField,
+  RadioField,
+  RadioGroupField,
+  TextareaField,
+  TextField,
+  TimePickerField,
+} from "../classes/fields";
 import { Alert, Button, Icon, Tooltip } from "../classes/elements";
-import { AlertTriggers, AlertTypes, ButtonTypes, FormTypes } from "../enums";
-import { ref, computed, watch } from "vue";
+import { AlertTriggers, AlertTypes, ButtonTypes, ColorPickerModeTypes, FormTypes } from "../enums";
+import { ref } from "vue";
 import { ActionButton, ActionIcon } from "../classes/actions";
 
 interface StoryState {
-  inputForm: InputForm;
+  inputFormBasic: InputForm;
+  inputFormAdvanced: InputForm;
   actionFormButtonsHorizontal: ActionForm;
   actionFormButtons: ActionForm;
   actionFormIconsHorizontal: ActionForm;
@@ -15,6 +25,125 @@ interface StoryState {
 }
 
 const state = ref<StoryState>({
+  inputFormBasic: new InputForm({
+    name: "BasicInputForm",
+    type: FormTypes.Input,
+    alerts: [
+      new Alert({
+        type: AlertTypes.Info,
+        trigger: AlertTriggers.AfterLoad,
+        text: "These forms are only test forms with no processing.",
+      }),
+    ],
+    fields: [
+      new TextField({
+        name: "username",
+        placeholder: "Enter your username",
+        label: "Username",
+        required: true,
+        cols: 12,
+      }),
+      new TextField({
+        name: "first_name",
+        placeholder: "Enter your first name",
+        label: "First Name",
+        required: true,
+        cols: 6,
+      }),
+      new TextField({
+        name: "last_name",
+        placeholder: "Enter your last name",
+        label: "Last Name",
+        required: true,
+        cols: 6,
+      }),
+    ],
+    buttons: [
+      new Button({
+        type: ButtonTypes.Process,
+        text: "Process",
+      }),
+      new Button({
+        type: ButtonTypes.Cancel,
+        text: "Cancel",
+        color: "red",
+      }),
+    ],
+  }),
+  inputFormAdvanced: new InputForm({
+    name: "AdvancedInputForm",
+    type: FormTypes.Input,
+    alerts: [
+      new Alert({
+        type: AlertTypes.Info,
+        trigger: AlertTriggers.AfterLoad,
+        text: "These forms are only test forms with no processing.",
+      }),
+    ],
+    fields: [
+      new ColorPickerField({
+        name: "favourite_colour",
+        placeholder: "Select Favourite Colour",
+        label: "Favourite Color",
+        picker: new ColorPicker({
+          mode: ColorPickerModeTypes.Hex,
+        }),
+        required: true,
+        cols: 12,
+      }),
+      new DatePickerField({
+        name: "selected_date",
+        placeholder: "Select a Date",
+        label: "Booking Date",
+        required: true,
+      }),
+      new TimePickerField({
+        name: "selected_time",
+        placeholder: "Select a Time",
+        label: "Booking Time",
+        required: true,
+      }),
+      new TextareaField({
+        name: "messages",
+        placeholder: "Enter your message",
+        label: "Your Message",
+        required: true,
+        rows: 8,
+      }),
+      new RadioGroupField({
+        name: "selected_colour",
+        label: "Choose your colour",
+        items: [
+          new RadioField({
+            label: "Blue",
+            value: "blue",
+            color: "blue",
+          }),
+          new RadioField({
+            label: "Red",
+            value: "red",
+            color: "red",
+          }),
+          new RadioField({
+            label: "Green",
+            value: "green",
+            color: "green",
+          }),
+        ],
+      }),
+    ],
+    buttons: [
+      new Button({
+        type: ButtonTypes.Process,
+        text: "Process",
+      }),
+      new Button({
+        type: ButtonTypes.Cancel,
+        text: "Cancel",
+        color: "red",
+      }),
+    ],
+  }),
   actionFormIconsHorizontal: new ActionForm({
     name: "ActionFormIconsHorizontal",
     type: FormTypes.Action,
@@ -52,32 +181,6 @@ const state = ref<StoryState>({
             text: "Delete User",
           }),
         }),
-      }),
-    ],
-  }),
-  inputForm: new InputForm({
-    name: "TestInputForm",
-    type: FormTypes.Input,
-    alerts: [
-      new Alert({
-        type: AlertTypes.Info,
-        trigger: AlertTriggers.AfterLoad,
-        text: "These forms are only test forms with no processing.",
-      }),
-    ],
-    fields: [
-      new TextField({
-        name: "test_basic_text_and_label",
-        placeholder: "Testing Basic Text and Label",
-        label: "Testing Basic Text and Label",
-        required: true,
-        cols: 12,
-      }),
-    ],
-    buttons: [
-      new Button({
-        type: ButtonTypes.Process,
-        text: "Process",
       }),
     ],
   }),
@@ -177,109 +280,46 @@ const state = ref<StoryState>({
     ],
   }),
 });
-
-const ActionFormIcons = computed<ActionForm>(() => {
-  const form = { ...state.value.actionFormIcons };
-  console.log("NEW FORM ACTIONS ActionFormIcons", form.actions);
-  console.log("NEW FORM ActionFormIcons", form);
-  return new ActionForm(form as ActionForm);
-});
-
-const ActionFormIconsHorizontal = computed<ActionForm>(() => {
-  const form = { ...state.value.actionFormIconsHorizontal };
-  console.log("NEW FORM ACTIONS", form.actions);
-  console.log("NEW FORM", form);
-  return new ActionForm(form as ActionForm);
-});
-
-function actionUpdate(event: any, action: ActionIcon, index: number) {
-  action.icon.color = event as string;
-  console.log("VALUE UPDATED ON STATE", event, action, index);
-  console.log(
-    "actionFormIconsHorizontal Action",
-    (state.value.actionFormIconsHorizontal.actions[index] as ActionIcon).icon,
-  );
-}
-
-watch(state.value, (value) => {
-  console.log("STATE UPDATE", value);
-});
 </script>
 
 <template>
   <Story group="forms" title="Form Loader">
-    <Variant title="Input Form">
-      <form-loader :form="state.inputForm as InputForm" />
+    <Variant title="Input Form - Basic">
+      <h2>Input Form - Basic</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.inputFormBasic as InputForm" />
+      </v-sheet>
+    </Variant>
+    <Variant title="Input Form - Advanced">
+      <h2>Input Form - Advanced</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.inputFormAdvanced as InputForm" />
+      </v-sheet>
     </Variant>
     <Variant title="Action Form - Buttons Vertical">
-      <form-loader :form="state.actionFormButtons as ActionForm" />
+      <h2>Action Form - Buttons Vertical</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.actionFormButtons as ActionForm" />
+      </v-sheet>
     </Variant>
     <Variant title="Action Form - Buttons Horizontal">
-      <form-loader :form="state.actionFormButtonsHorizontal as ActionForm" />
+      <h2>Action Form - Buttons Horizontal</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.actionFormButtonsHorizontal as ActionForm" />
+      </v-sheet>
     </Variant>
-    <Variant title="Action Form - Icons Vertical">
-      <template #controls>
-        <div>
-          <HstSelect
-            v-model="state.actionFormIcons.inline"
-            title="Inline Form"
-            :options="[
-              {
-                label: 'True',
-                value: true,
-              },
-              {
-                label: 'False',
-                value: false,
-              },
-            ]"
-          >
-          </HstSelect>
-        </div>
-      </template>
-      <form-loader :form="ActionFormIcons as ActionForm" />
-      <div>
-        Form:
-        <br />
-        {{ ActionFormIcons }}
-      </div>
+    <Variant title="Action Form - Icons Vertical" :auto-props-disabled="true">
+      <h2>Action Form - Icons Vertical</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.actionFormIcons as ActionForm" />
+      </v-sheet>
     </Variant>
 
     <Variant title="Action Form - Icons Horizontal">
-      <template #controls>
-        <div>
-          <HstSelect
-            v-model="state.actionFormIconsHorizontal.inline"
-            title="Inline Form"
-            :options="[
-              {
-                label: 'True',
-                value: true,
-              },
-              {
-                label: 'False',
-                value: false,
-              },
-            ]"
-          >
-          </HstSelect>
-        </div>
-        <div v-for="(actionIcon, i) in ActionFormIconsHorizontal.actions" :key="i">
-          {{ i }} - {{ (state.actionFormIconsHorizontal.actions[i] as ActionIcon).icon }}
-          <HstColorSelect
-            :model-value="(actionIcon as ActionIcon).icon.color"
-            @update:model-value="actionUpdate($event, actionIcon as ActionIcon, i)"
-            :title="actionIcon.name + ' icon color'"
-          >
-          </HstColorSelect>
-        </div>
-      </template>
-      <form-loader :form="ActionFormIconsHorizontal as ActionForm" />
-      <div>
-        Form:
-        <br />
-        {{ ActionFormIconsHorizontal }}
-      </div>
+      <h2>Action Form - Icons Horizontal</h2>
+      <v-sheet class="pa-4" color="grey-lighten-3">
+        <form-loader :form="state.actionFormIconsHorizontal as ActionForm" />
+      </v-sheet>
     </Variant>
   </Story>
 </template>

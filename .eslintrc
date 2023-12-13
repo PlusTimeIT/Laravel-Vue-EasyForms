@@ -9,11 +9,13 @@
     "plugin:vue/strongly-recommended",
     "plugin:vuetify/base",
     "eslint:recommended",
+    "plugin:import/typescript",
     "@vue/typescript/recommended",
     "prettier"
   ],
-  "plugins": ["vue", "@typescript-eslint", "prettier"],
+  "plugins": ["vue", "@typescript-eslint", "prettier", "import"],
   "rules": {
+    "import/no-cycle": "error",
     "prettier/prettier": "error",
     "vue/no-multiple-template-root": "off",
     "vue/no-unused-vars": "error",

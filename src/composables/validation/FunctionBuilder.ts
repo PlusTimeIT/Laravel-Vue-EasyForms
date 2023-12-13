@@ -1,7 +1,6 @@
-import type { FieldType } from "../../types";
-import { ValidationRule } from "../../classes/properties";
-import { isEmpty } from "../../composables/utils";
-
+/**
+ * This class converts Laravel validation format and maps it to the correct function
+ */
 export class FunctionBuilder {
   static expectingArray: string[] = [
     "doesnt_end_with",
@@ -52,46 +51,6 @@ export class FunctionBuilder {
   ];
   static expectingComparison: string[] = ["different", "same"];
   static expectingComparisonAndValue: string[] = ["required_if", "required_unless"];
-
-  static buildArgs(field: FieldType, fields: FieldType[], rule: ValidationRule): Array<any> {
-    let args: any = [];
-    args.push(field);
-
-    // check second arg for all fields passed
-    if (FunctionBuilder.shouldPassFieldMessage(rule.name)) {
-      if (!isEmpty(rule.message)) {
-        args.push(rule.message);
-      }
-      return args;
-    }
-
-    if (FunctionBuilder.shouldPassAllFields(rule.name)) {
-      args.push(fields);
-    }
-
-    if (FunctionBuilder.shouldPassArray(rule.name)) {
-      // split value by comma, trim and return array.
-      args.push((rule.value || "").split(","));
-    }
-
-    if (FunctionBuilder.shouldSplit(rule.name)) {
-      if (rule.value.includes(",")) {
-        args = [...args, ...(rule.value || "").split(",")];
-      } else {
-        args.push(rule.value);
-      }
-    }
-
-    if (FunctionBuilder.shouldPass(rule.name)) {
-      // split value by comma, trim and return array.
-      args.push(rule.value);
-    }
-
-    if (!isEmpty(rule.message)) {
-      args.push(rule.message);
-    }
-    return args;
-  }
   /** Validation requires all fields  */
   static shouldPassAllFields(name: string): boolean {
     return FunctionBuilder.expectingAllFields.includes(name);

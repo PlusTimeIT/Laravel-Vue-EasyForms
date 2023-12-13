@@ -1,4 +1,5 @@
-import { Tooltip, Icon } from ".";
+import { Tooltip } from "./Tooltip";
+import { Icon } from "./Icon";
 import { ButtonTypes } from "../../enums";
 import { DensityTypes } from "../../enums";
 import { PositionTypes } from "../../enums";

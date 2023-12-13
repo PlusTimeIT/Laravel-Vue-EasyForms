@@ -18,7 +18,7 @@ export class ActionButton {
       delete init?.button;
     }
     if (!isEmpty(init?.conditions)) {
-      for (const condition of init.conditions) {
+      for (const condition of init?.conditions ?? []) {
         this.conditions.push(new ConditionItem(condition));
       }
       delete init?.conditions;

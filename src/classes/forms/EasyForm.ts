@@ -3,11 +3,13 @@ import { isArray, isEmpty } from "../../composables/utils";
 import { AlertTriggers, FormLoaderTypes } from "../../enums";
 import { AxiosCalls } from "../../enums";
 import { Alert, ProgressCircular } from "../elements";
-import { ServerCall, ServerResponse } from "../../classes/server";
-import { AdditionalData, AxiosOptions } from "../../classes/properties";
+import { ServerCall } from "../server";
+import { AdditionalData, AxiosOptions } from "../properties";
 import { FieldType } from "../../types";
 import { store } from "../../composables/utils";
-import { FormLoader } from "../properties/FormLoader";
+import { FormLoader } from "../properties";
+import { AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 /**
  * Basic Form Class
@@ -17,7 +19,7 @@ export class EasyForm implements HasForm {
   additional_load_data: AdditionalData[] = [];
   alerts: Alert[] = [];
   axios: AxiosOptions = new AxiosOptions();
-  loader: FormLoader;
+  loader: FormLoader | undefined;
   loading = true;
   name = "";
   original: Array<FieldType> = [];
@@ -81,7 +83,7 @@ export class EasyForm implements HasForm {
   }
 
   async load(): Promise<object | boolean> {
-    let response: ServerResponse;
+    let response: AxiosResponse<HasAxiosReturn>;
     this.triggerAlert(AlertTriggers.BeforeLoad);
     this.isLoading(true);
 
@@ -145,22 +147,7 @@ export class EasyForm implements HasForm {
     return this;
   }
 
-  resetAlerts(triggers: AlertTriggers[] = []): this {
-    if (isEmpty(triggers.length)) {
-      triggers = [AlertTriggers.SuccessProcessing, AlertTriggers.FailedProcessing];
-    }
-    for (const alert of this.alerts) {
-      if (!triggers.includes(alert.trigger)) {
-        // trigger not found, skip resetting.
-        continue;
-      }
-      alert.reset();
-    }
-    return this;
-  }
-
   success(text?: any): this {
-    console.log("success alert");
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
   }

@@ -5,8 +5,8 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
     cols?: number | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     updated: (...args: any[]) => void;
-    blur: (...args: any[]) => void;
     validated: (...args: any[]) => void;
+    blur: (...args: any[]) => void;
     invalidated: (...args: any[]) => void;
     focus: (...args: any[]) => void;
     "click:clear": (...args: any[]) => void;
@@ -21,11 +21,11 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
 }>>> & {
     onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
-    onUpdated?: ((...args: any[]) => any) | undefined;
     onValidated?: ((...args: any[]) => any) | undefined;
     onInvalidated?: ((...args: any[]) => any) | undefined;
     "onClick:prepend"?: ((...args: any[]) => any) | undefined;
     "onClick:append"?: ((...args: any[]) => any) | undefined;
+    onUpdated?: ((...args: any[]) => any) | undefined;
     "onClick:clear"?: ((...args: any[]) => any) | undefined;
     "onClick:prependInner"?: ((...args: any[]) => any) | undefined;
     "onClick:appendInner"?: ((...args: any[]) => any) | undefined;

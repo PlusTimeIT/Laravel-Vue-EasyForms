@@ -14,7 +14,7 @@ export class Menu extends GotProps {
   disabled = false;
   eager = false;
   height: string | number | undefined;
-  id: string;
+  id: string | undefined;
   location: LocationTypes = LocationTypes.Bottom;
   max_height: string | number | undefined;
   max_width: string | number | undefined;
@@ -29,7 +29,7 @@ export class Menu extends GotProps {
   persistent: string | boolean = false;
   scrim: string | boolean = false;
   scroll_strategy: ScrollStrategyTypes = ScrollStrategyTypes.Reposition;
-  theme: string;
+  theme: string | undefined;
   width: string | number | undefined;
   z_index: string | number | undefined = 2000;
 

@@ -7,6 +7,9 @@ interface ErrorMessage {
     id: string;
     errorMessages: string[];
 }
+/**
+ * Input form that uses input fields
+ */
 export declare class InputForm extends EasyForm {
     button_align_row: AlignRow;
     button_justify_row: JustifyRow;
@@ -21,6 +24,10 @@ export declare class InputForm extends EasyForm {
     process(): Promise<object | boolean>;
     loadErrorMessages(errors: ErrorMessage[]): this;
     hasErrorMessage(field: FieldType, error: string): boolean;
+    /**
+     * Provides the props for VForm
+     * @returns VForm
+     */
     props(): object;
     reset(): this;
 }

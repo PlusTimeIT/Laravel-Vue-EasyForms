@@ -1,12 +1,9 @@
-import axios from "axios";
 import { PluginOptions } from "../../classes/PluginOptions";
-import { Csrf } from "../../server";
-
+import type { Csrf } from "../../classes/server/Csrf";
 interface Store {
   csrf?: Csrf | undefined;
   options: PluginOptions;
 }
-
 const store: Store = {
   options: new PluginOptions({
     axios_prefix: "",
@@ -21,7 +18,6 @@ const store: Store = {
     tags_on_placeholder: true,
     text_to_placeholder: true,
     uses_vue_router: false,
-    axios: axios,
   }),
 };
 

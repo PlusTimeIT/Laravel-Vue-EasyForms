@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect, watch, onBeforeUnmount } from "vue";
-import { ButtonTypes } from "../../enums";
-import { InputForm } from "../../classes/forms";
-import { isEmpty } from "../../composables/utils";
-import EasyInput from "../../components/fields/EasyInput.vue";
-import EasyButton from "../../components/elements/EasyButton.vue";
-import { InputFormType } from "../../composables/validation/PropValidation";
+import { ButtonTypes, LoaderEvents } from "../../enums";
 import { Button } from "../../classes/elements";
+import { InputForm } from "../../classes/forms";
+import { SelectField, AutoCompleteField } from "../../classes/fields";
+import { isEmpty } from "../../composables/utils";
+import { EasyInput } from "../../components/fields";
+import { EasyButton } from "../../components/elements";
+import { InputFormType } from "../../composables/validation/PropValidation";
 import { FieldType } from "../../types";
-import { LoaderEvents } from "../../enums";
+import { VForm } from "vuetify/components";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { EasyDatePicker, EasyTimePicker, EasyColorPicker, EasyCheckboxGroup, EasyPassword } from "../fields";
 
 const props = defineProps({
   form: {
@@ -18,34 +22,15 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits([
-  "update:form",
-  LoaderEvents.Loading,
-  LoaderEvents.Loaded,
-  LoaderEvents.Results,
-  LoaderEvents.Cancelled,
-  LoaderEvents.Updated,
-  LoaderEvents.Reset,
-  LoaderEvents.Processing,
-  LoaderEvents.Failed,
-  LoaderEvents.Successful,
-]);
+const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 
 const loadedForm = ref(props.form);
-const formEffectWatcher = watchEffect(() => {
-  loadedForm.value = props.form;
-});
-
-const formWatcher = watch(loadedForm.value, (updated) => {
-  emit(LoaderEvents.Updated, updated);
-});
-
-const formReference = ref(null);
+const formReference = ref(VForm);
 
 const filteredFields = computed<FieldType[]>({
   get: () =>
     loadedForm.value?.fields?.filter((field) => {
-      return field.isParentLoaded(getFieldByName(field.depends_on ?? ""));
+      return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));
     }) as FieldType[],
   set: (newValue) => {
     console.log("FILTERED UPDATED", newValue);
@@ -93,7 +78,7 @@ const fieldsConfirmation = computed<FieldType[]>(() => {
 });
 
 const hasInvalidatedFields = computed<boolean>(() => {
-  return fieldsConfirmation.value.filter((field) => field.validated === false).length > 0 || false;
+  return fieldsConfirmation.value.filter((field) => !field.validated).length > 0 || false;
 });
 
 function getFieldByName(name: string) {
@@ -124,6 +109,7 @@ async function processForm() {
   // Handle the process button click logic here
   const validation = await checkValidation();
   if (validation) {
+    emit(LoaderEvents.Validated, true);
     formReference.value.resetValidation();
     const results = await loadedForm.value.process();
     if (!results) {
@@ -136,6 +122,7 @@ async function processForm() {
       emit(LoaderEvents.Results, results);
     }
   } else {
+    emit(LoaderEvents.Validated, false);
     loadedForm.value.failedValidation();
     isLoading(false);
     emit(LoaderEvents.Failed, true);
@@ -148,13 +135,13 @@ async function checkValidation(): Promise<boolean> {
 }
 
 async function updated(field: FieldType) {
-  const children: FieldType[] = formFields.value.filter((f) => f.depends_on == field.name) as FieldType[];
-  children.forEach(async (child: FieldType) => {
-    const fieldData: any = await child.load(loadedForm.value as InputForm, field);
-    if (fieldData) {
+  const children: FieldType[] = formFields.value.filter((f) => f.depends_on === field.name) as FieldType[];
+  for (const child of children) {
+    const fieldData: object | boolean = await child.load(loadedForm.value as InputForm, field);
+    if (fieldData && (child instanceof SelectField || child instanceof AutoCompleteField)) {
       child.loadItems(fieldData);
     }
-  });
+  }
   emit(LoaderEvents.Updated, true);
 }
 
@@ -164,7 +151,7 @@ function isLoading(loading: boolean) {
 }
 
 function resetForm() {
-  formReference.value.resetValidation();
+  formReference.value!.resetValidation();
   isLoading(false);
   emit(LoaderEvents.Reset, true);
 }
@@ -173,6 +160,14 @@ function cancelForm() {
   emit(LoaderEvents.Cancelled, true);
 }
 
+const formEffectWatcher = watchEffect(() => {
+  loadedForm.value = props.form;
+});
+
+const formWatcher = watch(loadedForm.value, (updated) => {
+  emit(LoaderEvents.Updated, updated);
+});
+
 onBeforeUnmount(() => {
   formWatcher();
   formEffectWatcher();
@@ -180,7 +175,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <v-form v-bind="loadedForm?.props() ?? {}" ref="formReference" class="mx-auto w-100">
+  <VForm v-bind="loadedForm?.props() ?? {}" ref="formReference" class="mx-auto w-100">
     <v-col cols="12">
       <v-row>
         <v-col
@@ -209,5 +204,5 @@ onBeforeUnmount(() => {
         </v-col>
       </v-row>
     </v-col>
-  </v-form>
+  </VForm>
 </template>

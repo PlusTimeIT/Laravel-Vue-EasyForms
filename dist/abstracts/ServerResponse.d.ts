@@ -1,6 +1,9 @@
 import { HasAxiosReturn } from "../contracts/HasAxiosReturn";
 import { HasServerResponse } from "../contracts/HasServerResponse";
 import { HttpStatusCode } from "axios";
+/**
+ *  Abstract class for handling responses
+ */
 export declare abstract class ServerResponse implements HasServerResponse {
     config: object;
     data: HasAxiosReturn | null;

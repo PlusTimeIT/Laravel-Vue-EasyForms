@@ -15,8 +15,8 @@ import {
   ColorPicker,
   DatePicker,
   TextareaField,
+  SelectField,
 } from "../fields";
-import { SelectField } from "../fields/SelectField";
 
 type ClassConstructor<T> = new () => T;
 

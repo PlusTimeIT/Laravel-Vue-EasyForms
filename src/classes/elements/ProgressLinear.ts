@@ -1,4 +1,4 @@
-import { Tooltip } from ".";
+import { Tooltip } from "./Tooltip";
 import { GotProps } from "../../abstracts/GotProps";
 import { LocationTypes } from "../../enums";
 
@@ -11,7 +11,7 @@ export class ProgressLinear extends GotProps {
   color: string | undefined;
   height: string | number | undefined;
   indeterminate: string | boolean = false;
-  location: LocationTypes.Top;
+  location: LocationTypes = LocationTypes.Top;
   reverse = false;
   rounded = false;
   rounded_bar = false;

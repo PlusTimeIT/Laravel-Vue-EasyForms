@@ -1,7 +1,7 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { DirectionType } from "../../enums";
 import { Icon } from "../elements";
-import { RadioField } from "../../classes/fields";
+import { RadioField } from "../../classes/fields/RadioField";
 import { isArray, isEmpty } from "../../utils";
 
 export class RadioGroupField extends EasyField {

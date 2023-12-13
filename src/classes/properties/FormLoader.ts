@@ -7,10 +7,12 @@ export class FormLoader implements HasFormLoader {
   progress: ProgressLinear | ProgressCircular;
 
   constructor(init?: Partial<FormLoader>) {
+    this.type = FormLoaderTypes.Circular;
+    this.progress = new ProgressCircular();
     Object.assign(this, init);
-    if (this.type == FormLoaderTypes.Circular) {
+    if (init?.type == FormLoaderTypes.Circular) {
       this.progress = new ProgressCircular(init?.progress as ProgressCircular);
-    } else if (this.type == FormLoaderTypes.Linear) {
+    } else if (init?.type == FormLoaderTypes.Linear) {
       this.progress = new ProgressLinear(init?.progress as ProgressLinear);
     }
   }

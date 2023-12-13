@@ -42,6 +42,14 @@ export declare class DatePicker extends EasyField {
     view_mode: ViewModeTypes;
     width: string | number | undefined;
     constructor(init?: Partial<DatePicker>);
+    /**
+     * Returns an array of all allowed props that are present on V-Date-Picker
+     * https://vuetifyjs.com/en/api/v-date-picker/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=DatePicker.d.ts.map

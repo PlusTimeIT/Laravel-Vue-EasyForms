@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { Alert } from "../../classes/elements";
-import { EasyIcon } from ".";
+import EasyIcon from "./EasyIcon.vue";
 import { isEmpty } from "../../utils";
 
 const xProps = defineProps<{
@@ -9,7 +9,6 @@ const xProps = defineProps<{
 }>();
 
 const alerts = ref<Alert[]>(xProps.alerts);
-
 function has_append_icon(alert: Alert) {
   return !isEmpty(alert?.append_icon) && !isEmpty(alert?.append_icon?.icon);
 }

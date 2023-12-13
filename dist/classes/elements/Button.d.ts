@@ -1,4 +1,5 @@
-import { Tooltip, Icon } from ".";
+import { Tooltip } from "./Tooltip";
+import { Icon } from "./Icon";
 import { ButtonTypes } from "../../enums";
 import { DensityTypes } from "../../enums";
 import { PositionTypes } from "../../enums";
@@ -43,6 +44,15 @@ export declare class Button extends GotProps {
     variant: ButtonVariantTypes;
     width: string | number | undefined;
     constructor(init?: Partial<Button>);
+    /**
+     * Returns an array of all allowed props that are present on V-Btn
+     * https://vuetifyjs.com/en/api/v-btn/
+     *
+     * Currently missing the following properties:
+     * location
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=Button.d.ts.map

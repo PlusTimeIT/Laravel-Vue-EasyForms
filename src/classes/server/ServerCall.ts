@@ -1,8 +1,8 @@
-import { ServerResponse } from "./ServerResponse";
 import { AxiosCalls, ContentTypes } from "../../enums";
 import { isEmpty, store } from "../../composables/utils";
 import { AxiosHeader, AxiosOptions } from "../properties";
-import { AxiosHeaders } from "axios";
+import { AxiosHeaders, AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 /**
  * ServerCall for making API requests
@@ -17,11 +17,11 @@ export class ServerCall {
     endpoint: string,
     data: any = null,
     axiosOptions: AxiosOptions = new AxiosOptions(),
-  ): Promise<ServerResponse> {
-    const call = await store.options.axios[type](endpoint, data, {
+  ): Promise<AxiosResponse> {
+    return await store.options.axios[type](endpoint, data, {
       headers: ServerCall.buildHeaders(axiosOptions),
+      transformResponse: (r: HasAxiosReturn) => r.data,
     });
-    return new ServerResponse(call);
   }
 
   static buildHeaders(axiosOptions: AxiosOptions): AxiosHeaders {

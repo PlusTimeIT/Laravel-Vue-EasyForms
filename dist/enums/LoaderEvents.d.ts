@@ -7,6 +7,7 @@ export declare enum LoaderEvents {
     Processing = "processing",
     Failed = "failed",
     Successful = "successful",
-    Updated = "updated"
+    Updated = "updated",
+    Validated = "validated"
 }
 //# sourceMappingURL=LoaderEvents.d.ts.map

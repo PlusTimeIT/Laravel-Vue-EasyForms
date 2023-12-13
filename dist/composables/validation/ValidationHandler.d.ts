@@ -1,5 +1,7 @@
-import { FieldType, ValidationFunction } from "../../types";
-export type { FieldType };
+import type { ValidationFunction } from "../../types";
+/**
+ * Validation handler for converting backend validations to frontend
+ */
 export declare class ValidationHandler {
     protected static accepted_booleans: Array<string | number | boolean>;
     protected static accepted_values: Array<string | number | boolean>;

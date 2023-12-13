@@ -1,3 +1,8 @@
+/** @type {ErrorFormProps} */
+/**
+ * @typedef {Object} ErrorFormProps
+ * @property {string} text - The error message text to display.
+ */
 declare const _default: import("vue").DefineComponent<{
     text: {
         type: StringConstructor;

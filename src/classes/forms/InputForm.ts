@@ -3,11 +3,12 @@ import { EasyForm } from "./EasyForm";
 import { AxiosCalls, FormTypes, JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
 import { Button } from "../elements";
-import { DataItem } from "../../classes/properties/DataItem";
+import { DataItem } from "../properties";
 import { isArray, isObject, isEmpty, store } from "../../composables/utils";
 import { ContentTypes } from "../../enums";
 import type { FieldType } from "../../types";
 
+// noinspection ES6UnusedImports
 import {
   AutoCompleteField,
   CheckboxField,
@@ -25,8 +26,11 @@ import {
   TimePickerField,
   TimePicker,
 } from "../../classes/fields";
+
 import { getClassConstructor } from "../utils/ClassRegistry";
 import { ServerCall, ServerResponse } from "../server";
+import { AxiosResponse } from "axios";
+import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 interface ErrorMessage {
   id: string;
@@ -124,7 +128,7 @@ export class InputForm extends EasyForm {
   async process(): Promise<object | boolean> {
     this.processing();
     // continue to processing form.
-    let response: ServerResponse;
+    let response: AxiosResponse<HasAxiosReturn>;
     try {
       response = await ServerCall.request(
         AxiosCalls.Post,
@@ -146,7 +150,7 @@ export class InputForm extends EasyForm {
             const field = this.fields.find((f) => f.name === fieldName);
             const errors: string[] = tempResult?.validation_errors[fieldName];
             for (const error of errors) {
-              field.addErrorMessage(error);
+              field!.addErrorMessage(error);
             }
           }
           this.failedValidation();
@@ -167,8 +171,8 @@ export class InputForm extends EasyForm {
     for (validation of errors) {
       const field = this.fields.find((f) => f.name === validation.id);
       for (const error of validation.errorMessages) {
-        if (!this.hasErrorMessage(field, error)) {
-          field.addErrorMessage(error);
+        if (!this.hasErrorMessage(field as FieldType, error)) {
+          field!.addErrorMessage(error);
         }
       }
     }

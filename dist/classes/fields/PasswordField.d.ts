@@ -17,6 +17,11 @@ export declare class PasswordField extends EasyField {
     textfield: TextField;
     view_mode: boolean;
     constructor(init?: Partial<PasswordField>);
+    /**
+     * Returns an array of all allowed props for custom Password Field
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=PasswordField.d.ts.map

@@ -32,6 +32,15 @@ export declare class AutoCompleteField extends EasyField {
     transition: string | boolean;
     type: string;
     constructor(init?: Partial<AutoCompleteField>);
+    /**
+     * Returns an array of all allowed props that are present on V-Autocomplete
+     * https://vuetifyjs.com/en/api/v-autocomplete/
+     *
+     * Currently missing the following properties:
+     * location
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
     loadItems(items: any): this;
 }

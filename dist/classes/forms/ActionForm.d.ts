@@ -2,6 +2,9 @@ import { EasyForm } from "./EasyForm";
 import { ActionIcon, ActionButton } from "../actions";
 import { FormTypes, JustifyRow } from "../../enums";
 import HasActionForm from "../../contracts/HasActionForm";
+/**
+ * Action form that uses action buttons and icons.
+ */
 export declare class ActionForm extends EasyForm implements HasActionForm {
     actions: Array<ActionIcon | ActionButton>;
     callback: string;

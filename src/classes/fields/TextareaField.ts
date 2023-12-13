@@ -1,11 +1,10 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { Icon } from "../elements";
 import { DirectionType } from "../../enums";
-import { isEmpty } from "../../utils";
 
 export class TextareaField extends EasyField {
   append_inner_icon: Icon | undefined;
-  auto_grow: boolean;
+  auto_grow = false;
   component = "v-textarea";
   counter: string | number | boolean = false;
   direction: DirectionType = DirectionType.Horizontal;
@@ -19,16 +18,6 @@ export class TextareaField extends EasyField {
 
   constructor(init?: Partial<TextareaField>) {
     super(init);
-
-    if (!isEmpty(init?.append_inner_icon)) {
-      this.append_inner_icon = new Icon(init?.append_inner_icon);
-      delete init?.append_inner_icon;
-    }
-
-    if (!isEmpty(init?.prepend_inner_icon)) {
-      this.prepend_inner_icon = new Icon(init?.prepend_inner_icon);
-      delete init?.prepend_inner_icon;
-    }
 
     Object.assign(this, init);
 

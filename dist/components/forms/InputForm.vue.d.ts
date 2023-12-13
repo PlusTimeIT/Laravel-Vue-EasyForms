@@ -16,6 +16,7 @@ declare const _default: import("vue").DefineComponent<{
     failed: (...args: any[]) => void;
     successful: (...args: any[]) => void;
     updated: (...args: any[]) => void;
+    validated: (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     form: {
         type: typeof InputForm;
@@ -24,7 +25,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onReset?: ((...args: any[]) => any) | undefined;
-    "onUpdate:form"?: ((...args: any[]) => any) | undefined;
+    onValidated?: ((...args: any[]) => any) | undefined;
+    onUpdated?: ((...args: any[]) => any) | undefined;
     onLoading?: ((...args: any[]) => any) | undefined;
     onLoaded?: ((...args: any[]) => any) | undefined;
     onResults?: ((...args: any[]) => any) | undefined;
@@ -32,7 +34,7 @@ declare const _default: import("vue").DefineComponent<{
     onProcessing?: ((...args: any[]) => any) | undefined;
     onFailed?: ((...args: any[]) => any) | undefined;
     onSuccessful?: ((...args: any[]) => any) | undefined;
-    onUpdated?: ((...args: any[]) => any) | undefined;
+    "onUpdate:form"?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
 export default _default;
 //# sourceMappingURL=InputForm.vue.d.ts.map

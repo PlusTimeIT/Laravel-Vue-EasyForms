@@ -17,6 +17,18 @@ export declare class FileInputField extends EasyField {
     show_size: boolean | 1000 | 1024;
     single_line: boolean;
     constructor(init?: Partial<FileInputField>);
+    /**
+     * Returns an array of all allowed props that are present on V-Text-Field
+     * https://vuetifyjs.com/en/api/v-text-field/
+     *
+     * Currently missing the following properties:
+     * counter-value
+     * model-modifiers
+     * model-value
+     * validation-value
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=FileInputField.d.ts.map

@@ -13,7 +13,7 @@ export declare class Menu extends GotProps {
     disabled: boolean;
     eager: boolean;
     height: string | number | undefined;
-    id: string;
+    id: string | undefined;
     location: LocationTypes;
     max_height: string | number | undefined;
     max_width: string | number | undefined;
@@ -28,10 +28,18 @@ export declare class Menu extends GotProps {
     persistent: string | boolean;
     scrim: string | boolean;
     scroll_strategy: ScrollStrategyTypes;
-    theme: string;
+    theme: string | undefined;
     width: string | number | undefined;
     z_index: string | number | undefined;
     constructor(init?: Partial<Menu>);
+    /**
+     * Returns an array of all allowed props that are present on V-Menu
+     * https://vuetifyjs.com/en/api/v-menu/
+     *
+     * Currently missing the following properties:
+     *
+     * @returns string[]
+     */
     allowedProps(): string[];
 }
 //# sourceMappingURL=Menu.d.ts.map

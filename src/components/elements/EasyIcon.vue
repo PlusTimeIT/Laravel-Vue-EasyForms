@@ -15,7 +15,7 @@ const emit = defineEmits<{
   (e: "click", value: string | number | undefined): void;
 }>();
 
-const icon = ref<Icon>(xProps.icon);
+const icon = ref<Icon>(xProps.icon ?? new Icon({ icon: "mdi-home" }));
 
 function click() {
   if (!isEmpty(xProps?.identifier)) {

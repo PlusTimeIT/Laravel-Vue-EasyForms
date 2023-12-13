@@ -8,4 +8,5 @@ export enum LoaderEvents {
   Failed = "failed",
   Successful = "successful",
   Updated = "updated",
+  Validated = "validated",
 }

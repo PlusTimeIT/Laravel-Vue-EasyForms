@@ -1,5 +1,6 @@
-import { Axios } from "axios";
-import { isEmpty } from "../composables/utils";
+import type { Axios } from "axios";
+import axios from "axios";
+import { isEmpty } from "../composables/utils/Types";
 
 /**
  * Plugin Options singleton, set on plugin initiation.
@@ -14,19 +15,19 @@ export class PluginOptions {
    * The prefix for making calls via API, this is append to the backend domain.
    * It should begin with a forward slash and end without a forward slash.
    * This should match laravel.
-   * eg. /api/v1.0/
+   * e.g. /api/v1.0/
    */
   axios_prefix = "";
   /**
    * Backend domain for making API calls.
    * It should end without a forward slash.
-   * eg. https://domain.com
+   * e.g. https://domain.com
    */
   backend_domain = "";
   /**
    * If CSRF checks are required then this should be the endpoint.
    * It should begin with a forward slash and end without a forward slash.
-   * eg. /security/cookie
+   * e.g. /security/cookie
    */
   csrf_endpoint = "";
   /**
@@ -69,6 +70,14 @@ export class PluginOptions {
   uses_vue_router = false;
 
   constructor(init?: Partial<PluginOptions>) {
+    this.axios = axios.create({
+      withCredentials: true,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     Object.assign(this, init);
     PluginOptions.instance = this;
   }
@@ -79,9 +88,9 @@ export class PluginOptions {
    * This implementation lets us subclass the Singleton class while keeping
    * just one instance of each subclass around.
    */
-  static getInstance(): PluginOptions {
+  static getInstance(init?: Partial<PluginOptions>): PluginOptions {
     if (!PluginOptions.instance) {
-      PluginOptions.instance = new PluginOptions();
+      PluginOptions.instance = new PluginOptions(init);
     }
 
     return PluginOptions.instance;

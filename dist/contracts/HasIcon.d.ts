@@ -1,4 +1,4 @@
-import { Tooltip } from "../classes/elements";
+import type { Tooltip } from "../classes/elements";
 export default interface HasIcon {
     classes: string | undefined;
     color: string;
