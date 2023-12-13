@@ -16,7 +16,7 @@ It's not required to use the parent package, but you will need to conform to the
 
 ## Documentation Notes
 
-This documentation is only for this plugins version greater than `0.4.13-beta` and with the parent plugin [Laravel EasyForms `0.2.2@beta`](https://packagist.org/packages/plustime-it/laravel-easyforms) ( due to moving to Vue3 and Typescript ). You must also set your vuetify version to be greater than `Vuetify 3.3.7`.
+This documentation is only for this plugins version greater than `0.4.13-beta` and with the parent plugin [Laravel EasyForms `0.2.4@beta`](https://packagist.org/packages/plustime-it/laravel-easyforms) ( due to moving to Vue3 and Typescript ). You must also set your vuetify version to be greater than `Vuetify 3.3.7`.
 
 Whilst versions lower than this still work and are pretty similar, there are some breaking changes and no Vue 2 documentation is provided. If you decide to head down that road. Good luck solider.
 

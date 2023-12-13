@@ -22,18 +22,7 @@ import { AlertTriggers } from "../enums";
 import { Csrf } from "../server";
 import EasyLoader from "./elements/EasyLoader.vue";
 
-const emit = defineEmits([
-  "update:form",
-  LoaderEvents.Loading,
-  LoaderEvents.Loaded,
-  LoaderEvents.Results,
-  LoaderEvents.Cancelled,
-  LoaderEvents.Updated,
-  LoaderEvents.Reset,
-  LoaderEvents.Processing,
-  LoaderEvents.Failed,
-  LoaderEvents.Successful,
-]);
+const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 
 const props = defineProps({
   form: {
@@ -163,6 +152,10 @@ function results(data: any) {
   emit(LoaderEvents.Results, data);
 }
 
+function validated(event: any) {
+  emit(LoaderEvents.Validated, event);
+}
+
 function isLoading(load: boolean) {
   emit(LoaderEvents.Loading, load);
   // if loading false
@@ -246,6 +239,7 @@ async function load() {
         @processing="processing"
         @failed="failed"
         @successful="success"
+        @validated="validated"
       />
       <ActionFormLoader
         v-else-if="is_action && !has_error"
@@ -259,6 +253,7 @@ async function load() {
         @processing="processing"
         @failed="failed"
         @successful="success"
+        @validated="validated"
       />
       <ErrorFormLoader v-else-if="is_error || has_error" :text="loaded_form.text" />
     </v-row>

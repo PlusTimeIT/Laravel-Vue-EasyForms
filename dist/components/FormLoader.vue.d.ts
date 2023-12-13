@@ -78,6 +78,7 @@ declare const _default: import("vue").DefineComponent<{
     failed: (...args: any[]) => void;
     successful: (...args: any[]) => void;
     updated: (...args: any[]) => void;
+    validated: (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     form: {
         type: (typeof EasyForm)[];
@@ -147,6 +148,7 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onReset?: ((...args: any[]) => any) | undefined;
+    onValidated?: ((...args: any[]) => any) | undefined;
     onUpdated?: ((...args: any[]) => any) | undefined;
     onLoading?: ((...args: any[]) => any) | undefined;
     onLoaded?: ((...args: any[]) => any) | undefined;

@@ -88602,18 +88602,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       default: []
     }
   },
-  emits: [
-    "update:form",
-    LoaderEvents.Loading,
-    LoaderEvents.Loaded,
-    LoaderEvents.Results,
-    LoaderEvents.Cancelled,
-    LoaderEvents.Updated,
-    LoaderEvents.Reset,
-    LoaderEvents.Processing,
-    LoaderEvents.Failed,
-    LoaderEvents.Successful
-  ],
+  emits: ["update:form", ...Object.values(LoaderEvents)],
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
     const emit = __emit;
@@ -88683,6 +88672,9 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       loaded_form.value.hasResults(data);
       emit(LoaderEvents.Results, data);
     }
+    function validated(event) {
+      emit(LoaderEvents.Validated, event);
+    }
     function isLoading(load2) {
       emit(LoaderEvents.Loading, load2);
       loaded_form.value.isLoading(load2);
@@ -88734,7 +88726,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       }
       isLoading(false);
     }
-    const __returned__ = { emit, props, requires_api, csrf, loading, loaded_form, container, has_error, has_valid_csrf_token, is_csrf_token_loading, has_alerts, form_ready, form_component, is_action, is_input, is_error, reset, cancel, processing, failed, updated, success, results, isLoading, validCsrfWatcher, load, EasyAlerts, get ActionFormLoader() {
+    const __returned__ = { emit, props, requires_api, csrf, loading, loaded_form, container, has_error, has_valid_csrf_token, is_csrf_token_loading, has_alerts, form_ready, form_component, is_action, is_input, is_error, reset, cancel, processing, failed, updated, success, results, validated, isLoading, validCsrfWatcher, load, EasyAlerts, get ActionFormLoader() {
       return ActionFormLoader;
     }, get InputFormLoader() {
       return InputFormLoader;
@@ -88801,7 +88793,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
               onCancelled: $setup.cancel,
               onProcessing: $setup.processing,
               onFailed: $setup.failed,
-              onSuccessful: $setup.success
+              onSuccessful: $setup.success,
+              onValidated: $setup.validated
             }), null, 16, ["form"])) : $setup.is_action && !$setup.has_error ? (openBlock(), createBlock($setup["ActionFormLoader"], mergeProps({
               key: 1,
               form: $setup.loaded_form,
@@ -88814,7 +88807,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
               onCancelled: $setup.cancel,
               onProcessing: $setup.processing,
               onFailed: $setup.failed,
-              onSuccessful: $setup.success
+              onSuccessful: $setup.success,
+              onValidated: $setup.validated
             }), null, 16, ["form"])) : $setup.is_error || $setup.has_error ? (openBlock(), createBlock($setup["ErrorFormLoader"], {
               key: 2,
               text: $setup.loaded_form.text
