@@ -2,7 +2,7 @@
 
 <div style="text-align:center">
 
-![Laravel EasyForms Logo](/src/Docs/assets/Laravel%20EasyForms%20Logo.png)
+![Laravel EasyForms Logo](/src/docs/logos/lvef-logo-large-transparent-bg.png)
 
 ![Version Badge](https://img.shields.io/badge/version-0.2.3%40beta-blue)
 
