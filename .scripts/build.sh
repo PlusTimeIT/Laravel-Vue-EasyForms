@@ -69,7 +69,6 @@ run_section() {
     fi
 
     eval "$1"
-    completed "$2 completed."
 }
 
 # Main Script
@@ -90,7 +89,8 @@ commands=("npm run test:run" "npm run lint" "npm run format" "npm run build:vite
 
 for ((i=0; i<${#tasks[@]}; i++)); do
     task "$((i+1))/${#tasks[@]} ${tasks[i]}...."
-    run_section "${commands[i]}" "${tasks[i]}"
+    run_section "${commands[i]}"
+    completed "${tasks[i]} completed."
 done
 
 completed "Build completed."
