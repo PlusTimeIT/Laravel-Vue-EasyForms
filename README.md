@@ -8,6 +8,6 @@
 
 </div>
 
-* > [Documentation](https://boredlunatic.github.io/Laravel-Vue-EasyForms/)
+* > [Documentation](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
 * > [Npm](https://www.npmjs.com/package/laravel-vue-easyforms)
 
