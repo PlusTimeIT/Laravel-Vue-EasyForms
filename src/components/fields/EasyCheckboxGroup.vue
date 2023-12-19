@@ -89,29 +89,29 @@ function updatedCheckbox(value: any, checkbox: CheckboxField) {
 </script>
 
 <template>
-  <v-card elevation="0">
-    <v-card-title>
+  <VCard elevation="0">
+    <VCardTitle>
       <!-- Display the label of the checkbox group -->
       {{ group.label }}
-      <v-switch
+      <VSwitch
         v-if="has_switch"
         v-model="group!.switch!.value"
         v-bind="group!.switch!.props()"
         @update:modelValue="updatedSwitch"
       />
-    </v-card-title>
-    <v-card-text>
-      <v-row>
+    </VCardTitle>
+    <VCardText>
+      <VRow>
         <!-- Loop through each checkbox item in the group -->
-        <v-col v-for="(item, index) in group.items" :key="index" :cols="12" :md="item.cols">
+        <VCol v-for="(item, index) in group.items" :key="index" :cols="12" :md="item.cols">
           <!-- Display a checkbox for each item -->
-          <v-checkbox
+          <VCheckbox
             v-model="group.items[index].value"
             v-bind="item.props()"
             @update:modelValue="updatedCheckbox($event, item)"
-          ></v-checkbox>
-        </v-col>
-      </v-row>
-    </v-card-text>
-  </v-card>
+          ></VCheckbox>
+        </VCol>
+      </VRow>
+    </VCardText>
+  </VCard>
 </template>

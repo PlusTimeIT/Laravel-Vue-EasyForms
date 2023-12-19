@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
+    <VRow>
+      <VCol>
         <slot />
-      </v-col>
-    </v-row>
+      </VCol>
+    </VRow>
   </v-container>
 </template>

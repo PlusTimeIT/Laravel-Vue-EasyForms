@@ -10,6 +10,7 @@ import {
   FileInputField,
   SwitchField,
   TextField,
+  TextareaField,
   TimePickerField,
 } from "../classes/fields";
 
@@ -34,5 +35,6 @@ export type FieldType = StrictUnion<
   | RadioField
   | SwitchField
   | TextField
+  | TextareaField
   | TimePickerField
 >;

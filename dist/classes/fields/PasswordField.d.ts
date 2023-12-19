@@ -7,6 +7,7 @@ export declare class PasswordField extends EasyField {
     numbers: boolean;
     special: boolean;
     upper_case: boolean;
+    show_requirements_dialog: boolean;
     show_strength_bar: boolean;
     strength_error_color: string;
     strength_error_text: string;
@@ -14,7 +15,7 @@ export declare class PasswordField extends EasyField {
     strength_success_text: string;
     strength_warning_color: string;
     strength_warning_text: string;
-    textfield: TextField;
+    textfield: TextField | undefined;
     view_mode: boolean;
     constructor(init?: Partial<PasswordField>);
     /**

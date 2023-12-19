@@ -24,6 +24,7 @@ export class EasyForm implements HasForm {
   name = "";
   original: Array<FieldType> = [];
   results: any = null;
+  show_title = false;
   text = "";
   title = "";
   type = "";
@@ -82,6 +83,14 @@ export class EasyForm implements HasForm {
     return this;
   }
 
+  additionalArrayToObject(additionalData: AdditionalData[]): any {
+    const temp: any = {};
+    for (const data of additionalData) {
+      temp[data.key] = data.value;
+    }
+    return temp;
+  }
+
   async load(): Promise<object | boolean> {
     let response: AxiosResponse<HasAxiosReturn>;
     this.triggerAlert(AlertTriggers.BeforeLoad);
@@ -91,12 +100,11 @@ export class EasyForm implements HasForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additional_load_data),
+        ServerCall.mergeData({ form_name: this.name }, this.additionalArrayToObject(this.additional_load_data)),
         this.axios,
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);
-
         if (!response?.data?.result) {
           this.triggerAlert(AlertTriggers.FailedLoad);
           return false;

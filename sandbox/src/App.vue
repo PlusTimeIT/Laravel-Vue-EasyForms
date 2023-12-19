@@ -210,21 +210,21 @@ const state = ref<StoryState>({
 <template>
   <main>
     <v-container>
-      <v-row>
-        <v-col> Example Input Form </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
+      <VRow>
+        <VCol> Example Input Form </VCol>
+      </VRow>
+      <VRow>
+        <VCol>
           <form-loader :form="inputForm" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
+        </VCol>
+      </VRow>
+      <VRow>
+        <VCol>
           <form-loader :form="state.actionFormIcons" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
+        </VCol>
+      </VRow>
+      <VRow>
+        <VCol>
           <div>
             <v-checkbox v-model="state.actionFormIcons.inline" label="Form Inline" />
           </div>
@@ -234,15 +234,15 @@ const state = ref<StoryState>({
               label="Icon 1 Colour"
             />
           </div>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
+        </VCol>
+      </VRow>
+      <VRow>
+        <VCol>
           <div>
             <pre>{{ state.actionFormIcons }}</pre>
           </div>
-        </v-col>
-      </v-row>
+        </VCol>
+      </VRow>
     </v-container>
   </main>
 </template>

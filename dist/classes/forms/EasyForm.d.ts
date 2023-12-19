@@ -17,6 +17,7 @@ export declare class EasyForm implements HasForm {
     name: string;
     original: Array<FieldType>;
     results: any;
+    show_title: boolean;
     text: string;
     title: string;
     type: string;
@@ -26,6 +27,7 @@ export declare class EasyForm implements HasForm {
     failedValidation(text?: any): this;
     hasResults(results: any): this;
     isLoading(loading: boolean): this;
+    additionalArrayToObject(additionalData: AdditionalData[]): any;
     load(): Promise<object | boolean>;
     processing(): this;
     processed(): this;

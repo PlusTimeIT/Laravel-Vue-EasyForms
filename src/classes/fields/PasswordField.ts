@@ -9,6 +9,7 @@ export class PasswordField extends EasyField {
   numbers = true;
   special = true;
   upper_case = true;
+  show_requirements_dialog = false;
   show_strength_bar = false;
   strength_error_color = "error";
   strength_error_text = "Weak";
@@ -16,22 +17,23 @@ export class PasswordField extends EasyField {
   strength_success_text = "Strong";
   strength_warning_color = "warning";
   strength_warning_text = "Medium";
-  textfield: TextField;
+  textfield: TextField | undefined;
   view_mode = false;
 
   constructor(init?: Partial<PasswordField>) {
     super(init);
 
-    this.textfield = new TextField(init as object);
     if (!isEmpty(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
       delete init?.textfield;
     }
+
     Object.assign(this, init);
 
-    this.textfield.type = "password";
-    this.textfield.component = "v-text-field";
-    this.textfield.discriminator = "TextField";
+    this.textfield!.type = "password";
+    this.textfield!.component = "v-text-field";
+    this.textfield!.discriminator = "TextField";
+    this.textfield!.autocomplete = "on";
 
     this.discriminator = "PasswordField";
   }
@@ -49,6 +51,7 @@ export class PasswordField extends EasyField {
       "numbers",
       "special",
       "min_length",
+      "show_requirements_dialog",
       "show_strength_bar",
       "strength_error_color",
       "strength_error_text",

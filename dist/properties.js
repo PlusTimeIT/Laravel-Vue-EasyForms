@@ -1,50 +1,43 @@
-var e = Object.defineProperty;
-var r = (a, t, o) => t in a ? e(a, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : a[t] = o;
-var s = (a, t, o) => (r(a, typeof t != "symbol" ? t + "" : t, o), o);
-import { a as k, A as O } from "./AxiosOptions-6a3d3f30.js";
-import { C as j, V as y } from "./ValidationRule-cec9d477.js";
-import { F as v } from "./FormLoader-92c7e031.js";
+var r = Object.defineProperty;
+var e = (a, t, s) => t in a ? r(a, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : a[t] = s;
+var o = (a, t, s) => (e(a, typeof t != "symbol" ? t + "" : t, s), s);
+import { a as k, A } from "./AxiosOptions-6a3d3f30.js";
+import { C as f, V as j } from "./ValidationRule-cec9d477.js";
+import { F as V } from "./FormLoader-be04857a.js";
 import "./FormLoaderTypes-b32e44d6.js";
 import "./Store-dda3f8ae.js";
 import "axios";
-import "./ProgressLinear-c047f276.js";
-import "./GotProps-ebb373b7.js";
+import "./ProgressLinear-a6d9add9.js";
+import "./GotProps-a841b1a8.js";
 import "./LocationTypes-c293bdaa.js";
-class d {
-  constructor(t) {
-    s(this, "data", []);
-    s(this, "key", "");
-    s(this, "value", "");
-    Object.assign(this, t);
-  }
-  toObject() {
-    const t = {};
-    for (const o of this.data)
-      t[o.key] = o.value;
-    return t;
-  }
-}
 class x {
   constructor(t) {
-    s(this, "key", "");
-    s(this, "value", "");
+    o(this, "key", "");
+    o(this, "value", "");
+    Object.assign(this, t);
+  }
+}
+class d {
+  constructor(t) {
+    o(this, "key", "");
+    o(this, "value", "");
     Object.assign(this, t);
   }
 }
 class h {
   constructor(t) {
-    s(this, "key", "");
-    s(this, "replace_with");
+    o(this, "key", "");
+    o(this, "replace_with");
     Object.assign(this, t);
   }
 }
 export {
-  d as AdditionalData,
+  x as AdditionalData,
   k as AxiosHeader,
-  O as AxiosOptions,
-  j as CheckboxGroupValue,
-  x as DataItem,
-  v as FormLoader,
+  A as AxiosOptions,
+  f as CheckboxGroupValue,
+  d as DataItem,
+  V as FormLoader,
   h as MessageParameter,
-  y as ValidationRule
+  j as ValidationRule
 };

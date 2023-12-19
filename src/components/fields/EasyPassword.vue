@@ -3,7 +3,7 @@ import { onMounted, computed, ref, watch, onBeforeUnmount } from "vue";
 import { TextField } from "../../classes/fields";
 import type { FieldType } from "../../types";
 import EasyInput from "./EasyInput.vue";
-
+import { PasswordRequirementsDialog } from "../elements";
 // Define the component's props interface
 interface Props {
   fields: FieldType[];
@@ -13,6 +13,7 @@ interface Props {
   special?: boolean;
   upperCase?: boolean;
   modelValue: string | undefined;
+  showRequirementsDialog?: boolean;
   showStrengthBar?: boolean;
   strengthErrorColor?: string;
   strengthErrorText?: string;
@@ -26,10 +27,11 @@ interface Props {
 }
 
 // Define props with default values
-const props = withDefaults(defineProps<Props>(), {
+const xProps = withDefaults(defineProps<Props>(), {
   modelValue: "",
   showStrengthBar: false,
   viewMode: false,
+  showRequirementsDialog: false,
   strengthErrorColor: "error",
   strengthWarningColor: "warning",
   strengthSuccessColor: "success",
@@ -56,9 +58,10 @@ const emit = defineEmits<{
 }>();
 
 // Create a reference to the TextField object
-const textfield = ref<TextField>(props.textfield);
-const modelValue = ref<string>(props.modelValue);
-const errorMessages = ref<string[]>(props.errorMessages);
+const rTextfield = ref<TextField>(xProps.textfield);
+const rModelValue = ref<string>(xProps.modelValue);
+const dialog = ref<boolean>(false);
+const errorMessages = ref<string[]>(xProps.errorMessages);
 
 // Compute the percentage of passed password strength requirements
 const passed_percentage = computed<number>(() => {
@@ -73,19 +76,19 @@ const requirement_ratio = computed<number>(() => 100 / total_requirements.value)
 // Compute the total number of active requirements
 const total_requirements = computed<number>(() => {
   let total_active_requirements = 0;
-  if (props.lowerCase) {
+  if (xProps.lowerCase) {
     total_active_requirements++;
   }
-  if (props.upperCase) {
+  if (xProps.upperCase) {
     total_active_requirements++;
   }
-  if (props.numbers) {
+  if (xProps.numbers) {
     total_active_requirements++;
   }
-  if (props.special) {
+  if (xProps.special) {
     total_active_requirements++;
   }
-  if (props.minLength) {
+  if (xProps.minLength) {
     total_active_requirements++;
   }
   return total_active_requirements;
@@ -94,28 +97,28 @@ const total_requirements = computed<number>(() => {
 // Compute the password strength score
 const password_strength = computed<number>(() => {
   let strength = 0;
-  if (props.lowerCase) {
-    if (textfield?.value?.value?.match(/[a-z]+/)) {
+  if (xProps.lowerCase) {
+    if (rTextfield.value?.value?.match(/[a-z]+/)) {
       strength += 1;
     }
   }
-  if (props.upperCase) {
-    if (textfield?.value?.value?.match(/[A-Z]+/)) {
+  if (xProps.upperCase) {
+    if (rTextfield.value?.value?.match(/[A-Z]+/)) {
       strength += 1;
     }
   }
-  if (props.numbers) {
-    if (textfield?.value?.value?.match(/[0-9]+/)) {
+  if (xProps.numbers) {
+    if (rTextfield.value?.value?.match(/[0-9]+/)) {
       strength += 1;
     }
   }
-  if (props.special) {
-    if (textfield?.value?.value?.match(/[`!@#$%^&*()_\-+=[\]{};':"\\|,.<>/?~ ]+/)) {
+  if (xProps.special) {
+    if (rTextfield.value?.value?.match(/[`!@#$%^&*()_\-+=[\]{};':"\\|,.<>/?~ ]+/)) {
       strength += 1;
     }
   }
-  if (props.minLength) {
-    if (textfield?.value?.value?.length >= props.minLength) {
+  if (xProps.minLength) {
+    if (rTextfield.value?.value?.length >= xProps.minLength) {
       strength += 1;
     }
   }
@@ -127,33 +130,33 @@ const password_strength = computed<number>(() => {
 // Compute the color for the password strength bar
 const strength_color = computed<string>(() => {
   if (passed_percentage.value > 75) {
-    return props.strengthSuccessColor;
+    return xProps.strengthSuccessColor;
   } else if (passed_percentage.value > 50) {
-    return props.strengthWarningColor;
+    return xProps.strengthWarningColor;
   }
-  return props.strengthErrorColor;
+  return xProps.strengthErrorColor;
 });
 
 // Compute the text for the password strength indicator
 const strength_text = computed<string>(() => {
   if (passed_percentage.value > 75) {
-    return props.strengthSuccessText;
+    return xProps.strengthSuccessText;
   } else if (passed_percentage.value > 50) {
-    return props.strengthWarningText;
+    return xProps.strengthWarningText;
   }
-  return props.strengthErrorText;
+  return xProps.strengthErrorText;
 });
-// Watch for changes in the picker value
-const textfieldWatcher = watch(textfield.value, () => {
+
+const textfieldWatcher = watch(rTextfield.value, () => {
   updated();
 });
-// Watch for changes in the picker value
-const modelValueWatcher = watch(modelValue, (update) => {
-  textfield.value.value = update;
+
+const modelValueWatcher = watch(rModelValue, (update) => {
+  rTextfield.value.value = update;
 });
 
 const errorMessagesWatcher = watch(errorMessages.value, (messages) => {
-  textfield.value.error_messages = messages;
+  rTextfield.value.error_messages = messages;
 });
 
 onBeforeUnmount(() => {
@@ -164,44 +167,44 @@ onBeforeUnmount(() => {
 
 // Update the model value when the input is updated
 function updated() {
-  emit("update:modelValue", textfield.value.value);
+  emit("update:modelValue", rTextfield.value.value);
 }
 
 // Validate the input field
 function validate() {
-  textfield.value.validate();
-  emit("validated", textfield.value.name);
+  rTextfield.value.validate();
+  emit("validated", rTextfield.value.name);
 }
 
 // Invalidate the input field
 function invalidate() {
-  textfield.value.invalidate();
-  emit("invalidated", textfield.value.name);
+  rTextfield.value.invalidate();
+  emit("invalidated", rTextfield.value.name);
 }
 
 // Handle inner icon clicks (toggle password visibility)
 function innerClick(event: any, type: "prepend" | "append") {
-  if (props.viewMode) {
+  if (xProps.viewMode) {
     // Toggle password visibility for inner icons in view mode
-    if (textfield.value.value!.value!.type == "password") {
-      textfield.value.value!.value!.type = "text";
+    if (rTextfield.value.value!.value!.type == "password") {
+      rTextfield.value.value!.value!.type = "text";
       if (type == "prepend") {
         emit("click:prependInner", event);
-        textfield.value.value!.value!.prepend_inner_icon!.icon = "mdi-eye-off";
+        rTextfield.value.value!.value!.prepend_inner_icon!.icon = "mdi-eye-off";
       }
       if (type == "append") {
         emit("click:appendInner", event);
-        textfield.value.value!.value!.append_inner_icon!.icon = "mdi-eye-off";
+        rTextfield.value.value!.value!.append_inner_icon!.icon = "mdi-eye-off";
       }
     } else {
-      textfield.value.type = "password";
+      rTextfield.value.type = "password";
       if (type == "prepend") {
         emit("click:prependInner", event);
-        textfield.value.value!.value!.prepend_inner_icon!.icon = "mdi-eye";
+        rTextfield.value.value!.value!.prepend_inner_icon!.icon = "mdi-eye";
       }
       if (type == "append") {
         emit("click:appendInner", event);
-        textfield.value.value!.value!.append_inner_icon!.icon = "mdi-eye";
+        rTextfield.value.value!.value!.append_inner_icon!.icon = "mdi-eye";
       }
     }
   }
@@ -209,19 +212,24 @@ function innerClick(event: any, type: "prepend" | "append") {
 
 // Set the initial value and loading state of the textfield on mount
 onMounted(() => {
-  textfield.value!.value = props.modelValue;
-  textfield.value?.isLoading(false);
+  rTextfield.value.value = xProps.modelValue;
+  rTextfield.value?.isLoading(false);
 });
+
+function dialogClick(event: any) {
+  console.log("dialog clicked", event);
+  dialog.value = true;
+}
 </script>
 
 <template>
-  <v-row>
-    <v-col :cols="12">
+  <VRow>
+    <VCol :cols="12">
       <!-- Render EasyInput component with provided props -->
       <EasyInput
-        v-model:field="textfield"
-        v-bind="textfield?.props()"
-        :fields="props.fields ?? []"
+        v-model:field="rTextfield"
+        v-bind="rTextfield?.props()"
+        :fields="xProps.fields ?? []"
         @updated="updated"
         @validated="validate"
         @invalidated="invalidate"
@@ -230,12 +238,43 @@ onMounted(() => {
         @click:prepend="emit('click:prepend', $event)"
         @click:append="emit('click:append', $event)"
       />
-      <!-- Display password strength bar if showStrengthBar is true -->
-      <v-progress-linear v-if="props.showStrengthBar" v-model="password_strength" :color="strength_color" height="25">
-        <template #default>
-          <strong>{{ strength_text }}</strong>
-        </template>
-      </v-progress-linear>
-    </v-col>
-  </v-row>
+    </VCol>
+    <VCol :cols="12" v-if="xProps.showStrengthBar">
+      <VRow>
+        <VCol cols="12" style="position: relative">
+          <!-- Display password strength bar if showStrengthBar is true -->
+          <VProgressLinear v-model="password_strength" striped :color="strength_color" height="30">
+            <template #default>
+              <strong :class="'text-' + strength_color + '-lighten-2'"
+                >{{ strength_text }} - {{ passed_percentage }}%</strong
+              >
+            </template>
+          </VProgressLinear>
+          <VTooltip>
+            <template #activator="{ props }">
+              <VBtn
+                icon="mdi-information-slab-circle-outline"
+                v-bind="props"
+                density="compact"
+                style="position: absolute; right: 0px; top: 0px"
+                v-if="xProps.showRequirementsDialog"
+                @click="dialogClick"
+              >
+              </VBtn>
+            </template>
+            <span>Click for password requirements</span>
+          </VTooltip>
+        </VCol>
+      </VRow>
+    </VCol>
+    <PasswordRequirementsDialog
+      v-if="xProps.showRequirementsDialog"
+      v-model="dialog"
+      :lower-case="xProps.lowerCase"
+      :upper-case="xProps.upperCase"
+      :numbers="xProps.numbers"
+      :special="xProps.special"
+      :min-length="xProps.minLength"
+    />
+  </VRow>
 </template>

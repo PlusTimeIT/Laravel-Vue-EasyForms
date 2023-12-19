@@ -105,11 +105,6 @@ export abstract class EasyField extends GotProps implements HasField {
       delete init?.prepend_icon;
     }
 
-    if (!isEmpty(init?.prepend_icon)) {
-      this.prepend_icon = new Icon(init?.prepend_icon);
-      delete init?.prepend_icon;
-    }
-
     if (!isEmpty(init?.tooltip)) {
       this.tooltip = new Tooltip(init?.tooltip);
       delete init?.tooltip;

@@ -8,6 +8,7 @@ interface Props {
     special?: boolean;
     upperCase?: boolean;
     modelValue: string | undefined;
+    showRequirementsDialog?: boolean;
     showStrengthBar?: boolean;
     strengthErrorColor?: string;
     strengthErrorText?: string;
@@ -23,6 +24,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     modelValue: string;
     showStrengthBar: boolean;
     viewMode: boolean;
+    showRequirementsDialog: boolean;
     strengthErrorColor: string;
     strengthWarningColor: string;
     strengthSuccessColor: string;
@@ -47,6 +49,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     modelValue: string;
     showStrengthBar: boolean;
     viewMode: boolean;
+    showRequirementsDialog: boolean;
     strengthErrorColor: string;
     strengthWarningColor: string;
     strengthSuccessColor: string;
@@ -60,9 +63,9 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     special: boolean;
     minLength: number;
 }>>> & {
-    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
     onValidated?: ((value: string | undefined) => any) | undefined;
     onInvalidated?: ((value: string | undefined) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
     "onClick:prepend"?: ((value: any) => any) | undefined;
     "onClick:append"?: ((value: any) => any) | undefined;
     "onClick:prependInner"?: ((value: any) => any) | undefined;
@@ -76,6 +79,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     lowerCase: boolean;
     minLength: number | boolean;
     upperCase: boolean;
+    showRequirementsDialog: boolean;
     showStrengthBar: boolean;
     strengthErrorColor: string;
     strengthErrorText: string;

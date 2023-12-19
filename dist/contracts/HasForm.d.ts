@@ -11,6 +11,7 @@ export default interface HasForm {
     name: string;
     original: Array<FieldType>;
     results: any;
+    show_title: boolean;
     title: string;
     type: string;
     text: string;

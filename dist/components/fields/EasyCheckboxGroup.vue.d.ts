@@ -21,9 +21,9 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     label: string;
     switch: undefined;
 }>>> & {
-    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
     onValidated?: ((value: string | undefined) => any) | undefined;
     onInvalidated?: ((value: string | undefined) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: any) => any) | undefined;
 }, {
     cols: string | number;
     label: string;

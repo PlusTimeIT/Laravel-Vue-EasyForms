@@ -11,14 +11,14 @@ const loader = ref<FormLoader>(xProps.loader);
 </script>
 
 <template>
-  <v-col cols="auto" :class="loader?.progress?.classes ?? ''">
-    <v-progress-circular
+  <VCol cols="auto" :class="loader?.progress?.classes ?? ''">
+    <VProgressCircular
       v-if="loader?.type === FormLoaderTypes.Circular"
       v-bind="loader?.progress?.props()"
-    ></v-progress-circular>
-    <v-progress-linear
+    ></VProgressCircular>
+    <VProgressLinear
       v-if="loader?.type === FormLoaderTypes.Linear"
       v-bind="loader?.progress?.props()"
-    ></v-progress-linear>
-  </v-col>
+    ></VProgressLinear>
+  </VCol>
 </template>

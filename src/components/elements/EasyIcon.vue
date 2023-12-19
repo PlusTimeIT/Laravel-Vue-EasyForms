@@ -26,12 +26,12 @@ function click() {
 }
 </script>
 <template>
-  <v-tooltip v-bind="icon?.tooltip?.props()" :disabled="icon?.tooltip?.disabled ?? true">
+  <VTooltip v-bind="icon?.tooltip?.props()" :disabled="icon?.tooltip?.disabled ?? true">
     <template #activator="{ props }">
-      <v-icon v-bind="{ ...props, ...icon?.props() }" @click="click" :class="icon.classes">
+      <VIcon v-bind="{ ...props, ...icon?.props() }" @click="click" :class="icon.classes">
         {{ icon?.icon }}
-      </v-icon>
+      </VIcon>
     </template>
     <span>{{ icon?.tooltip?.text }}</span>
-  </v-tooltip>
+  </VTooltip>
 </template>

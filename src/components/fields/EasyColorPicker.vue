@@ -78,8 +78,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-row no-gutters>
-    <v-menu v-model="show_menu" v-bind="menu.props()">
+  <VRow no-gutters>
+    <VMenu v-model="show_menu" v-bind="menu.props()">
       <template #activator="{ props }">
         <!-- Use EasyInput component with v-model -->
         <EasyInput
@@ -93,11 +93,11 @@ onMounted(() => {
           @click:appendInner="toggleMenu"
         />
       </template>
-      <v-card width="300">
-        <v-card-text class="pa-0">
-          <v-color-picker v-model="picker.value" v-model:mode="picker.mode" v-bind="picker?.props()" />
-        </v-card-text>
-      </v-card>
-    </v-menu>
-  </v-row>
+      <VCard width="300">
+        <VCardText class="pa-0">
+          <VColorPicker v-model="picker.value" v-model:mode="picker.mode" v-bind="picker?.props()" />
+        </VCardText>
+      </VCard>
+    </VMenu>
+  </VRow>
 </template>

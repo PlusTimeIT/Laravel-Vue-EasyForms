@@ -6,14 +6,9 @@
 import { ref, computed, watch, onBeforeMount, onBeforeUnmount } from "vue";
 import { ColumnRestriction } from "../composables/validation/PropValidation";
 import { ActionForm, InputForm, EasyForm } from "../classes/forms";
-import EasyAlerts from "../components/elements/EasyAlerts.vue";
 import { AdditionalData, FormLoader } from "../classes/properties";
 import { isEmpty } from "../composables/utils";
-import {
-  ActionForm as ActionFormLoader,
-  InputForm as InputFormLoader,
-  ErrorForm as ErrorFormLoader,
-} from "../components/forms";
+import { ActionFormLoader, InputFormLoader, ErrorFormLoader } from "../components/forms";
 import { FormContainer } from "../classes/elements";
 import { LoaderEvents } from "../enums";
 import { FormTypes } from "../enums";
@@ -219,26 +214,22 @@ async function load() {
 </script>
 
 <template>
-  <v-col :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
-    <v-row>
-      <v-col> CComponent: {{ form_component }} </v-col>
-    </v-row>
-    <v-row>
-      <v-col> Loading: {{ loading }} </v-col>
-    </v-row>
-    <v-row>
-      <v-col> Loaded Form: {{ loaded_form }} </v-col>
-    </v-row>
-    <v-row v-if="has_alerts">
-      <EasyAlerts :alerts="loaded_form?.alerts"></EasyAlerts>
-    </v-row>
-    <v-row v-show="!form_ready" justify="center" class="form-loader">
-      <EasyLoader :loader="loaded_form?.loader as FormLoader" />
-    </v-row>
-    <v-row v-show="form_ready">
+  <VCol :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
+    <VRow v-if="has_alerts">
+      <EasyAlerts :alerts="loaded_form?.alerts" />
+    </VRow>
+    <VRow v-show="!form_ready" justify="center" class="form-loader">
+      <EasyLoader :loader="(loaded_form?.loader as FormLoader)" />
+    </VRow>
+    <VRow v-show="loaded_form.show_title">
+      <VCol class="pl-6 text-h3 text-h6">
+        {{ loaded_form.title }}
+      </VCol>
+    </VRow>
+    <VRow v-show="form_ready" no-gutters>
       <InputFormLoader
         v-if="is_input && !has_error"
-        v-model:form="loaded_form as InputForm"
+        v-model:form="(loaded_form as InputForm)"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
@@ -252,7 +243,7 @@ async function load() {
       />
       <ActionFormLoader
         v-else-if="is_action && !has_error"
-        v-model:form="loaded_form as ActionForm"
+        v-model:form="(loaded_form as ActionForm)"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
@@ -265,6 +256,6 @@ async function load() {
         @validated="validated"
       />
       <ErrorFormLoader v-else-if="is_error || has_error" :text="loaded_form.text" />
-    </v-row>
-  </v-col>
+    </VRow>
+  </VCol>
 </template>

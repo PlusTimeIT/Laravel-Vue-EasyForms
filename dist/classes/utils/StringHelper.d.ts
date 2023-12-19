@@ -63,5 +63,12 @@ export declare class StringHelper {
      * @returns Snake case conversion of the string.
      */
     static kebabToSnake(input: string): string;
+    /**
+     * Convert Kebab to Pascal case
+     *
+     * @param input The string to convert.
+     * @returns Snake case conversion of the string.
+     */
+    static kebabToPascal(input: string): string;
 }
 //# sourceMappingURL=StringHelper.d.ts.map

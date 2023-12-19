@@ -75,8 +75,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-row no-gutters>
-    <v-menu v-model="show_menu" v-bind="menu?.props()">
+  <VRow no-gutters>
+    <VMenu v-model="show_menu" v-bind="menu?.props()">
       <template #activator="{ props }">
         <!-- Use EasyInput component with v-model -->
         <EasyInput
@@ -90,17 +90,17 @@ onMounted(() => {
           @click:appendInner="toggleMenu"
         />
       </template>
-      <v-card class="pa-0" :width="picker.width" :max-width="picker.width">
-        <v-card-text class="pa-0" :width="picker.width" :max-width="picker.width">
+      <VCard class="pa-0" :width="picker.width" :max-width="picker.width">
+        <VCardText class="pa-0" :width="picker.width" :max-width="picker.width">
           <!-- Use v-date-picker component for date selection -->
-          <v-date-picker
+          <VDatePicker
             v-model="picker.value"
             v-bind="picker?.props()"
             @click:save="saveDatePicker"
             @click:cancel="cancelDatePicker"
           />
-        </v-card-text>
-      </v-card>
-    </v-menu>
-  </v-row>
+        </VCardText>
+      </VCard>
+    </VMenu>
+  </VRow>
 </template>

@@ -204,14 +204,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-sheet v-click-outside="clickOutside" class="v-picker v-picker--with-actions" :width="props.width">
-    <v-picker-title>
+  <VSheet v-click-outside="clickOutside" class="v-picker v-picker--with-actions" :width="props.width">
+    <VPickerTitle>
       {{ props.title }}
-    </v-picker-title>
+    </VPickerTitle>
     <div class="v-picker__header"></div>
     <div class="v-picker__body">
-      <v-row justify="center">
-        <v-col cols="3">
+      <VRow justify="center">
+        <VCol cols="3">
           <!-- Hour input field -->
           <v-text-field
             v-model="hours"
@@ -220,37 +220,37 @@ onMounted(() => {
             :max="hour_max"
             v-maska:[masking_options]
           ></v-text-field>
-        </v-col>
-        <v-col cols="1">
+        </VCol>
+        <VCol cols="1">
           <span class="text-h3">:</span>
-        </v-col>
-        <v-col cols="3">
+        </VCol>
+        <VCol cols="3">
           <!-- Minute input field -->
-          <v-text-field
+          <VTextField
             v-model="minutes"
             type="number"
             :min="minute_min"
             :max="minute_max"
             v-maska:[masking_options]
-          ></v-text-field>
-        </v-col>
-        <v-col v-if="show_am_pm" cols="4">
+          ></VTextField>
+        </VCol>
+        <VCol v-if="show_am_pm" cols="4">
           <!-- AM/PM selection dropdown -->
-          <v-select v-model="am_or_pm" :items="time_items"></v-select>
-        </v-col>
-      </v-row>
+          <VSelect v-model="am_or_pm" :items="time_items"></VSelect>
+        </VCol>
+      </VRow>
     </div>
     <div class="v-picker__actions">
       <div>
         <!-- Cancel button -->
-        <v-btn :elevation="0" variant="flat" @click="cancel">
+        <VBtn rounded="rounded-md" :elevation="0" variant="flat" @click="cancel">
           {{ props.cancelText }}
-        </v-btn>
+        </VBtn>
         <!-- Save button -->
-        <v-btn :elevation="0" variant="flat" @click="save">
+        <VBtn rounded="rounded-md" :elevation="0" variant="flat" @click="save">
           {{ props.okText }}
-        </v-btn>
+        </VBtn>
       </div>
     </div>
-  </v-sheet>
+  </VSheet>
 </template>

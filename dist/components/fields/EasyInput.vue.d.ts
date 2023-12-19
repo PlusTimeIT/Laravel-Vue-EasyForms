@@ -1,9 +1,20 @@
 import type { FieldType } from "../../types";
-declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<{
-    field: FieldType;
-    fields: FieldType[];
-    cols?: number | undefined;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+import { PropType } from "vue";
+declare const _default: import("vue").DefineComponent<{
+    field: {
+        type: PropType<FieldType>;
+        required: true;
+    };
+    fields: {
+        type: PropType<FieldType[]>;
+        required: true;
+    };
+    cols: {
+        type: NumberConstructor;
+        required: false;
+        default: number;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     updated: (...args: any[]) => void;
     validated: (...args: any[]) => void;
     blur: (...args: any[]) => void;
@@ -14,11 +25,21 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
     "click:prependInner": (...args: any[]) => void;
     "click:append": (...args: any[]) => void;
     "click:appendInner": (...args: any[]) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    field: FieldType;
-    fields: FieldType[];
-    cols?: number | undefined;
-}>>> & {
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    field: {
+        type: PropType<FieldType>;
+        required: true;
+    };
+    fields: {
+        type: PropType<FieldType[]>;
+        required: true;
+    };
+    cols: {
+        type: NumberConstructor;
+        required: false;
+        default: number;
+    };
+}>> & {
     onFocus?: ((...args: any[]) => any) | undefined;
     onBlur?: ((...args: any[]) => any) | undefined;
     onValidated?: ((...args: any[]) => any) | undefined;
@@ -29,15 +50,8 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
     "onClick:clear"?: ((...args: any[]) => any) | undefined;
     "onClick:prependInner"?: ((...args: any[]) => any) | undefined;
     "onClick:appendInner"?: ((...args: any[]) => any) | undefined;
-}, {}, {}>;
+}, {
+    cols: number;
+}, {}>;
 export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
-};
 //# sourceMappingURL=EasyInput.vue.d.ts.map

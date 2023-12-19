@@ -1,8 +1,10 @@
 import { EasyField } from "../../abstracts/EasyField";
 import { Icon } from "../elements";
 import { DirectionType } from "../../enums";
+import { isEmpty } from "../../utils";
 
 export class TextField extends EasyField {
+  autocomplete = "off";
   append_inner_icon: Icon | undefined;
   component = "v-text-field";
   counter: string | number | boolean = false;
@@ -13,6 +15,17 @@ export class TextField extends EasyField {
 
   constructor(init?: Partial<TextField>) {
     super(init);
+
+    if (!isEmpty(init?.append_inner_icon)) {
+      this.append_inner_icon = new Icon(init?.append_inner_icon);
+      delete init?.append_inner_icon;
+    }
+
+    if (!isEmpty(init?.prepend_inner_icon)) {
+      this.prepend_inner_icon = new Icon(init?.prepend_inner_icon);
+      delete init?.prepend_inner_icon;
+    }
+
     Object.assign(this, init);
 
     this.discriminator = "TextField";
@@ -33,6 +46,7 @@ export class TextField extends EasyField {
   allowedProps(): string[] {
     return [
       "active",
+      "autocomplete",
       // "append_icon",
       // "append_inner_icon",
       "autofocus",

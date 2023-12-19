@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, Ref, watchEffect, reactive, onBeforeUnmount } from "vue"; // Import necessary Vue Composition API functions
-import { isEmpty } from "../../composables/utils";
-import type { FieldType } from "../../types";
+import type { FieldType, Masking } from "../../types";
+import { ref, computed, onMounted, Ref, watchEffect, reactive, onBeforeUnmount, PropType } from "vue"; // Import necessary Vue Composition API functions
+import { isEmpty, kebabToPascal } from "../../composables/utils";
 import { TextField } from "../../classes/fields"; // Import TextField here
-import type { Masking } from "../../types";
-import EasyIcon from "../../components/elements/EasyIcon.vue";
+
 // Default masking options
 const MASKING_DEFAULTS: Masking = {
   mask: "",
@@ -12,11 +11,21 @@ const MASKING_DEFAULTS: Masking = {
 };
 
 // Access component props using defineProps
-const props = defineProps<{
-  field: FieldType;
-  fields: FieldType[];
-  cols?: number;
-}>();
+const props = defineProps({
+  field: {
+    type: Object as PropType<FieldType>,
+    required: true,
+  },
+  fields: {
+    type: Array as PropType<FieldType[]>,
+    required: true,
+  },
+  cols: {
+    type: Number,
+    required: false,
+    default: 12,
+  },
+});
 
 // Define emitted events using defineEmits
 const emit = defineEmits([
@@ -33,8 +42,8 @@ const emit = defineEmits([
 ]);
 
 // Create a ref for the field
-const field: Ref<FieldType> = ref(props.field) as Ref<FieldType>;
-const fieldWatcher = watchEffect(() => (field.value = props.field));
+const rField: Ref<FieldType> = ref(props.field) as Ref<FieldType>;
+const fieldWatcher = watchEffect(() => (rField.value = props.field));
 // Create a ref for masking options, including default mask if it's a TextField
 const maskingOptions = reactive({
   ...MASKING_DEFAULTS,
@@ -42,7 +51,7 @@ const maskingOptions = reactive({
 });
 
 // Compute validation rules for the field
-const rules = computed(() => field?.value?.validationRules());
+const rules = computed(() => rField.value?.validationRules());
 
 // Compute whether the field has a prepend icon
 const hasPrependIcon = computed(() => !isEmpty(props.field?.prepend_icon) && !isEmpty(props.field?.prepend_icon?.icon));
@@ -74,19 +83,19 @@ const showField = computed(() => {
 // Function to emit 'updated' event and update the field value
 function updated() {
   // check if other fields depend on this field, if so load it.
-  emit("updated", field.value);
+  emit("updated", rField.value);
 }
 
 // Function to validate the field and emit 'validated' event
 function validate() {
-  field.value.validate();
-  emit("validated", field.value.name);
+  rField.value.validate();
+  emit("validated", rField.value.name);
 }
 
 // Function to invalidate the field and emit 'invalidated' event
 function invalidate() {
-  field.value.invalidate();
-  emit("invalidated", field.value.name);
+  rField.value.invalidate();
+  emit("invalidated", rField.value.name);
 }
 
 onBeforeUnmount(() => {
@@ -95,15 +104,15 @@ onBeforeUnmount(() => {
 
 // On mounted, set field loading status to false
 onMounted(() => {
-  field?.value?.isLoading(false);
+  rField.value?.isLoading(false);
 });
 </script>
 
 <template>
   <component
     v-if="showField"
-    :is="field?.component"
-    v-model="field.value"
+    :is="kebabToPascal(field?.component)"
+    v-model="rField.value"
     v-bind="field?.props()"
     v-maska:[maskingOptions]
     :rules="rules"
@@ -133,10 +142,10 @@ onMounted(() => {
       <EasyIcon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
     </template>
     <p class="mb-3 mt-4" v-if="field.component == 'v-radio-group'">
-      <v-radio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />
+      <VRadio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />
     </p>
     <p class="mb-3 mt-4" v-if="field.component == 'h2'">
-      {{ field.value }}
+      {{ rField.value }}
     </p>
   </component>
 </template>

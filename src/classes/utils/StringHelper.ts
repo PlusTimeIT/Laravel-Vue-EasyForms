@@ -99,4 +99,14 @@ export class StringHelper {
   static kebabToSnake(input: string): string {
     return input.replaceAll("-", "_");
   }
+
+  /**
+   * Convert Kebab to Pascal case
+   *
+   * @param input The string to convert.
+   * @returns Snake case conversion of the string.
+   */
+  static kebabToPascal(input: string): string {
+    return input.split("-").map(this.capitalizeFirst).join("");
+  }
 }

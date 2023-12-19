@@ -1,3 +1,3 @@
-export { default as InputForm } from "./InputForm.vue";
-export { default as ActionForm } from "./ActionForm.vue";
-export { default as ErrorForm } from "./ErrorForm.vue";
+export { default as InputFormLoader } from "./InputFormLoader.vue";
+export { default as ActionFormLoader } from "./ActionFormLoader.vue";
+export { default as ErrorFormLoader } from "./ErrorFormLoader.vue";

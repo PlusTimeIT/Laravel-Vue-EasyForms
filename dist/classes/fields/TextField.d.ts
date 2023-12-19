@@ -2,6 +2,7 @@ import { EasyField } from "../../abstracts/EasyField";
 import { Icon } from "../elements";
 import { DirectionType } from "../../enums";
 export declare class TextField extends EasyField {
+    autocomplete: string;
     append_inner_icon: Icon | undefined;
     component: string;
     counter: string | number | boolean;

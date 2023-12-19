@@ -2,7 +2,6 @@ import { AxiosCalls, ContentTypes } from "../../enums";
 import { isEmpty, store } from "../../composables/utils";
 import { AxiosHeader, AxiosOptions } from "../properties";
 import { AxiosHeaders, AxiosResponse } from "axios";
-import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
 /**
  * ServerCall for making API requests
@@ -20,7 +19,7 @@ export class ServerCall {
   ): Promise<AxiosResponse> {
     return await store.options.axios[type](endpoint, data, {
       headers: ServerCall.buildHeaders(axiosOptions),
-      transformResponse: (r: HasAxiosReturn) => r.data,
+      // transformResponse: (r: AxiosResponse) => r.data,
     });
   }
 

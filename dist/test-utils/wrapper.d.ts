@@ -3,6 +3,73 @@ declare const testWrapper: {
         directives: {
             maska: import("vue").ObjectDirective<HTMLElement, import("maska").MaskaDetail | undefined> | import("vue").FunctionDirective<HTMLElement, import("maska").MaskaDetail | undefined>;
         };
+        components: {
+            EasyAlerts: import("vue").DefineComponent<{
+                alerts: {
+                    type: import("vue").PropType<import("../elements").Alert[]>;
+                    required: true;
+                };
+            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+                alerts: {
+                    type: import("vue").PropType<import("../elements").Alert[]>;
+                    required: true;
+                };
+            }>>, {}, {}>;
+            EasyIcon: import("vue").DefineComponent<{
+                icon: {
+                    type: import("vue").PropType<import("../elements").Icon | undefined>;
+                    required: true;
+                };
+                identifier: {
+                    type: import("vue").PropType<string | number>;
+                    default: string;
+                };
+            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                click: (value: string | number | undefined) => void;
+            }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+                icon: {
+                    type: import("vue").PropType<import("../elements").Icon | undefined>;
+                    required: true;
+                };
+                identifier: {
+                    type: import("vue").PropType<string | number>;
+                    default: string;
+                };
+            }>> & {
+                onClick?: ((value: string | number | undefined) => any) | undefined;
+            }, {
+                identifier: string | number;
+            }, {}>;
+            EasyButton: import("vue").DefineComponent<{
+                button: {
+                    type: import("vue").PropType<import("../elements").Button>;
+                    required: true;
+                };
+                disabled: {
+                    type: import("vue").PropType<boolean>;
+                    required: true;
+                };
+                identifier: {
+                    type: import("vue").PropType<string | number>;
+                };
+            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                click: (value: string | number | undefined) => void;
+            }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+                button: {
+                    type: import("vue").PropType<import("../elements").Button>;
+                    required: true;
+                };
+                disabled: {
+                    type: import("vue").PropType<boolean>;
+                    required: true;
+                };
+                identifier: {
+                    type: import("vue").PropType<string | number>;
+                };
+            }>> & {
+                onClick?: ((value: string | number | undefined) => any) | undefined;
+            }, {}, {}>;
+        };
         plugins: {
             install: (app: import("vue").App<any>) => void;
             defaults: import("vue").Ref<import("vuetify").DefaultsInstance>;

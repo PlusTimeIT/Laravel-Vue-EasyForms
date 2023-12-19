@@ -17,9 +17,9 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>>> & {
-    "onUpdate:modelValue"?: ((value: TextField | undefined) => any) | undefined;
     onValidated?: ((value: string | undefined) => any) | undefined;
     onInvalidated?: ((value: string | undefined) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: TextField | undefined) => any) | undefined;
 }, {
     modelValue: string | undefined;
 }, {}>;
