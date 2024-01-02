@@ -9,7 +9,7 @@ import { C as Oo, T as oo, k as co, S as to, A as no } from "./fields-fff04d55.j
 import { a as p2 } from "./ViewModeTypes-25f1573e.js";
 import { A as Ao } from "./AlertTriggers-18dccfa1.js";
 import { FormContainer as ao } from "./elements.js";
-import { C as fe } from "./Csrf-b8c21bb1.js";
+import { C as fe } from "./Csrf-17bbcd2c.js";
 import { F as dp } from "./FormLoaderTypes-b32e44d6.js";
 import { I as qo } from "./Icon-45b27861.js";
 import "./ContentTypes-f2427ff5.js";
@@ -15785,9 +15785,9 @@ const zd = w({
       N(!0), !a0(p.form) && a0(p.name) ? (e.value = !1, c.value = p.form, N(!1), z(t0.Loaded, !0)) : a0(p.name) || (e.value = !0, a.value ? await k() : q.value || await O.value.fetchNewToken() || (c.value.text = O.value.error_message, N(!1)));
     });
     async function k() {
-      c.value.name = p.name, c.value.additional_data = p.additionalData, c.value.additional_load_data = p.additionalLoadData;
+      console.log("Loadingf form....", p.name), c.value.name = p.name, c.value.additional_data = p.additionalData, c.value.additional_load_data = p.additionalLoadData;
       const y = await c.value.load();
-      y ? (y == null ? void 0 : y.type) == T1.Input ? (c.value = new S2(y), c.value.triggerAlert(Ao.AfterLoad), z(t0.Loaded, !0)) : y.type == T1.Action && (c.value = new C2(y), z(t0.Loaded, !0)) : (c.value.text = "Error Loading Form - Not Found", z(t0.Loaded, !1)), N(!1);
+      console.log("Results....", y), y ? (y == null ? void 0 : y.type) == T1.Input ? (c.value = new S2(y), c.value.triggerAlert(Ao.AfterLoad), z(t0.Loaded, !0)) : y.type == T1.Action && (c.value = new C2(y), z(t0.Loaded, !0)) : (c.value.text = "Error Loading Form - Not Found", z(t0.Loaded, !1)), N(!1);
     }
     return (y, V) => {
       var E, $, F, U;

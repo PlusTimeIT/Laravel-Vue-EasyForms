@@ -193,11 +193,13 @@ onBeforeMount(async () => {
 });
 
 async function load() {
+  console.log("Loadingf form....", props.name);
   loaded_form.value.name = props.name;
   loaded_form.value.additional_data = props.additionalData;
   loaded_form.value.additional_load_data = props.additionalLoadData;
 
   const results: any = await loaded_form.value.load();
+  console.log("Results....", results);
   if (!results) {
     loaded_form.value.text = "Error Loading Form - Not Found";
     emit(LoaderEvents.Loaded, false);
