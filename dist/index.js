@@ -9,7 +9,7 @@ import { C as Oo, T as oo, k as co, S as to, A as no } from "./fields-fff04d55.j
 import { a as p2 } from "./ViewModeTypes-25f1573e.js";
 import { A as Ao } from "./AlertTriggers-18dccfa1.js";
 import { FormContainer as ao } from "./elements.js";
-import { C as fe } from "./Csrf-17bbcd2c.js";
+import { C as fe } from "./Csrf-a60b9722.js";
 import { F as dp } from "./FormLoaderTypes-b32e44d6.js";
 import { I as qo } from "./Icon-45b27861.js";
 import "./ContentTypes-f2427ff5.js";

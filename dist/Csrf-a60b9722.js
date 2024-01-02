@@ -3,8 +3,8 @@ var n = (i, t, s) => t in i ? r(i, t, { enumerable: !0, configurable: !0, writab
 var e = (i, t, s) => (n(i, typeof t != "symbol" ? t + "" : t, s), s);
 import { S as o } from "./ServerCall-2469f5a5.js";
 import { A as l } from "./ContentTypes-f2427ff5.js";
-import { i as m } from "./Store-dda3f8ae.js";
-class h {
+import { i as h } from "./Store-dda3f8ae.js";
+class m {
   /**
    * Get minutes between 2 Date objects
    * @param start Date the start date with time included.
@@ -17,9 +17,9 @@ class h {
   }
 }
 const f = function(i, t) {
-  return h.minutesBetween(i, t);
+  return m.minutesBetween(i, t);
 };
-class w {
+class g {
   constructor(t) {
     // Number of attempts allowed for csrf before wait time is imposed.
     e(this, "allowed_attempts", 5);
@@ -71,7 +71,7 @@ class w {
   }
   // Is CSRF Token valid
   isValidCsrfToken() {
-    return this.token && !m(this.prefix);
+    return this.token && !h(this.prefix);
   }
   // reset attempts on successful csrf token call
   resetAttempts() {
@@ -91,7 +91,7 @@ class w {
     let t;
     try {
       if (t = await o.request(l.Get, this.endpoint), console.log(t), console.log(t.status), t.status === 200 || t.status === 204)
-        return await this.successfulAttempt(t.config.headers["X-XSRF-TOKEN"].substr(0, 5)), !0;
+        return console.log("HEADERS", t.config.headers), console.log("X-XSRF-TOKEN", t.config.headers["X-XSRF-TOKEN"]), await this.successfulAttempt(t.config.headers["X-XSRF-TOKEN"].substr(0, 5)), !0;
     } catch {
       return !1;
     }
@@ -99,5 +99,5 @@ class w {
   }
 }
 export {
-  w as C
+  g as C
 };

@@ -114,6 +114,8 @@ export class Csrf {
       console.log(response);
       console.log(response.status);
       if (response.status === 200 || response.status === 204) {
+        console.log("HEADERS", response.config["headers"]);
+        console.log("X-XSRF-TOKEN", response.config["headers"]["X-XSRF-TOKEN"]);
         await this.successfulAttempt(response.config["headers"]["X-XSRF-TOKEN"].substr(0, 5));
         return true;
       }
