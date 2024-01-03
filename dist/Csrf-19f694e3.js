@@ -1,7 +1,7 @@
 var r = Object.defineProperty;
 var n = (i, t, s) => t in i ? r(i, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : i[t] = s;
 var e = (i, t, s) => (n(i, typeof t != "symbol" ? t + "" : t, s), s);
-import { S as l, g as o } from "./ServerCall-fbfd55a2.js";
+import { S as o, g as l } from "./ServerCall-fbfd55a2.js";
 import { A as m } from "./ContentTypes-f2427ff5.js";
 import { i as h } from "./Store-53e83c02.js";
 class f {
@@ -19,7 +19,7 @@ class f {
 const p = function(i, t) {
   return f.minutesBetween(i, t);
 };
-class g {
+class w {
   constructor(t) {
     // Number of attempts allowed for csrf before wait time is imposed.
     e(this, "allowed_attempts", 5);
@@ -87,11 +87,11 @@ class g {
   }
   // Adds token attempt
   async tokenAttempt() {
-    this.attempts++;
+    console.log("MAKING TOKEN ATTEMPT"), this.attempts++;
     let t;
     try {
-      if (t = await l.request(m.Get, this.endpoint), t.status === 200 || t.status === 204)
-        return await this.successfulAttempt(o(5)), !0;
+      if (t = await o.request(m.Get, this.endpoint), console.log(t), console.log(t.status), t.status === 200 || t.status === 204)
+        return console.log("HEADERS", t.config.headers), console.log("X-XSRF-TOKEN", t.config.headers["X-XSRF-TOKEN"]), await this.successfulAttempt(l(5)), !0;
     } catch {
       return !1;
     }
@@ -99,5 +99,5 @@ class g {
   }
 }
 export {
-  g as C
+  w as C
 };

@@ -10,7 +10,7 @@ import { k as no } from "./ServerCall-fbfd55a2.js";
 import { a as p2 } from "./ViewModeTypes-25f1573e.js";
 import { A as Ao } from "./AlertTriggers-18dccfa1.js";
 import { FormContainer as ao } from "./elements.js";
-import { C as fe } from "./Csrf-3ce828a0.js";
+import { C as fe } from "./Csrf-19f694e3.js";
 import { F as dp } from "./FormLoaderTypes-b32e44d6.js";
 import { I as qo } from "./Icon-340ce0a0.js";
 import "./ContentTypes-f2427ff5.js";
