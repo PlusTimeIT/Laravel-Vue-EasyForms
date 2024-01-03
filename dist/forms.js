@@ -1,43 +1,43 @@
 var L = Object.defineProperty;
-var T = (d, r, e) => r in d ? L(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
-var t = (d, r, e) => (T(d, typeof r != "symbol" ? r + "" : r, e), e);
-import { i as l, a as n, s as m, g as j } from "./Store-dda3f8ae.js";
+var j = (d, r, e) => r in d ? L(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
+var a = (d, r, e) => (j(d, typeof r != "symbol" ? r + "" : r, e), e);
+import { i as l, a as n, s as m, g as T } from "./Store-53e83c02.js";
 import { A as i } from "./AlertTriggers-18dccfa1.js";
 import { A as g, C as y } from "./ContentTypes-f2427ff5.js";
 import { F as E } from "./FormLoaderTypes-b32e44d6.js";
-import { A as J } from "./Alert-b2585c9f.js";
-import { P as M } from "./ProgressLinear-a6d9add9.js";
-import { S as f } from "./ServerCall-2469f5a5.js";
+import { A as J } from "./Alert-f745a3a2.js";
+import { P as M } from "./ProgressLinear-e9501234.js";
+import { S as f } from "./ServerCall-fbfd55a2.js";
 import { A as b } from "./AxiosOptions-6a3d3f30.js";
-import { F as C } from "./FormLoader-be04857a.js";
+import { F as C } from "./FormLoader-998aef7a.js";
 import { ActionIcon as w, ActionButton as x } from "./actions.js";
 import { J as _, F as P, A as N } from "./JustifyRow-eb5715b2.js";
-import { A as B, a as I, C as R, P as G, R as q, b as V, c as $, d as z, D as H, e as K, F as Q, f as U, T as W, g as X, S as Y, h as Z } from "./fields-fff04d55.js";
+import { AutoCompleteField as B, CheckboxField as I, CheckboxGroupField as G, PasswordField as R, RadioGroupField as q, RadioField as V, ColorPicker as $, ColorPickerField as z, DatePicker as H, DatePickerField as K, FileInputField as Q, SwitchField as U, TextField as W, TimePickerField as X, SelectField as Y, TextareaField as Z } from "./fields.js";
 import "axios";
-import { B as ee } from "./Button-c31ec1fd.js";
+import { B as ee } from "./Button-50a5f701.js";
 import "./ButtonVariantTypes-85a127bd.js";
 import "./ScrollStrategyTypes-59a25e2a.js";
-import "./Icon-45b27861.js";
+import "./Icon-340ce0a0.js";
 import "./LocationTypes-c293bdaa.js";
-import "./GotProps-a841b1a8.js";
+import "./GotProps-feabb85b.js";
 import "./ViewModeTypes-25f1573e.js";
 import "./ValidationRule-cec9d477.js";
-import "./Menu-10e523a9.js";
+import "./Menu-1dab5f4c.js";
 class O {
   constructor(r) {
-    t(this, "additional_data", []);
-    t(this, "additional_load_data", []);
-    t(this, "alerts", []);
-    t(this, "axios", new b());
-    t(this, "loader");
-    t(this, "loading", !0);
-    t(this, "name", "");
-    t(this, "original", []);
-    t(this, "results", null);
-    t(this, "show_title", !1);
-    t(this, "text", "");
-    t(this, "title", "");
-    t(this, "type", "");
+    a(this, "additional_data", []);
+    a(this, "additional_load_data", []);
+    a(this, "alerts", []);
+    a(this, "axios", new b());
+    a(this, "loader");
+    a(this, "loading", !0);
+    a(this, "name", "");
+    a(this, "original", []);
+    a(this, "results", null);
+    a(this, "show_title", !1);
+    a(this, "text", "");
+    a(this, "title", "");
+    a(this, "type", "");
     if (!l(r == null ? void 0 : r.alerts) && n(r == null ? void 0 : r.alerts)) {
       for (const e of (r == null ? void 0 : r.alerts) ?? [])
         this.alerts.push(new J(e));
@@ -70,7 +70,7 @@ class O {
     return e;
   }
   async load() {
-    var e, s, a;
+    var e, s, t;
     let r;
     this.triggerAlert(i.BeforeLoad), this.isLoading(!0);
     try {
@@ -82,7 +82,7 @@ class O {
       ), r.status === 200 || r.status === 204) {
         if (this.isLoading(((e = r == null ? void 0 : r.data) == null ? void 0 : e.loader) ?? !1), !((s = r == null ? void 0 : r.data) != null && s.result))
           return this.triggerAlert(i.FailedLoad), !1;
-        const o = JSON.parse(JSON.stringify((a = r == null ? void 0 : r.data) == null ? void 0 : a.data));
+        const o = JSON.parse(JSON.stringify((t = r == null ? void 0 : r.data) == null ? void 0 : t.data));
         return l(o.type) ? (this.triggerAlert(i.FailedLoad), !1) : o;
       }
     } catch {
@@ -111,7 +111,7 @@ class O {
     return this.triggerAlert(i.SuccessProcessing, r), this;
   }
   triggerAlert(r, e = "") {
-    const s = this.alerts.find((a) => a.trigger == r);
+    const s = this.alerts.find((t) => t.trigger == r);
     return l(s) ? this : (s == null || s.convertContents(e).show().autoClose(), this);
   }
 }
@@ -128,11 +128,11 @@ function re() {
     },
     {
       name: "CheckboxGroupField",
-      field: R
+      field: G
     },
     {
       name: "PasswordField",
-      field: G
+      field: R
     },
     {
       name: "RadioGroupField",
@@ -205,27 +205,27 @@ class Oe extends O {
   constructor(e) {
     super(e);
     // actions: Array<ActionIcon | ActionButton> = [];
-    t(this, "actions", []);
-    t(this, "callback", "");
-    t(this, "inline", !1);
-    t(this, "justify_row", _.Center);
-    t(this, "type", P.Action);
+    a(this, "actions", []);
+    a(this, "callback", "");
+    a(this, "inline", !1);
+    a(this, "justify_row", _.Center);
+    a(this, "type", P.Action);
     if (!l(e == null ? void 0 : e.actions) && n(e == null ? void 0 : e.actions)) {
       for (const s of (e == null ? void 0 : e.actions) ?? [])
         if (s instanceof w || s instanceof x)
           this.actions.push(s);
         else if (!l(s.discriminator)) {
-          const a = s.discriminator;
-          this.instantiateAction(a, s);
+          const t = s.discriminator;
+          this.instantiateAction(t, s);
         }
       e == null || delete e.actions;
     }
     Object.assign(this, e);
   }
   instantiateAction(e, s) {
-    const a = v(e);
-    if (a) {
-      const o = new a(s);
+    const t = v(e);
+    if (t) {
+      const o = new t(s);
       this.actions.push(o);
     } else
       console.error(`Class "${e}" not found in the registry.`);
@@ -235,7 +235,7 @@ class Oe extends O {
     return s.set("form_name", this.name), s.set("form_action", e), s;
   }
   async process(e) {
-    var a, o;
+    var t, o;
     let s;
     this.isLoading(!0);
     try {
@@ -245,7 +245,7 @@ class Oe extends O {
         f.mergeData(this.data(e), this.additional_data),
         this.axios
       ), s.status === 200 || s.status === 204)
-        return this.isLoading(((a = s == null ? void 0 : s.data) == null ? void 0 : a.loader) ?? !1), (o = s == null ? void 0 : s.data) != null && o.result ? JSON.parse(JSON.stringify(s.data)) : !1;
+        return this.isLoading(((t = s == null ? void 0 : s.data) == null ? void 0 : t.loader) ?? !1), (o = s == null ? void 0 : s.data) != null && o.result ? JSON.parse(JSON.stringify(s.data)) : !1;
     } catch {
       return !1;
     }
@@ -258,17 +258,17 @@ class Oe extends O {
 class ke extends O {
   constructor(e) {
     super(e);
-    t(this, "button_align_row", N.Center);
-    t(this, "button_justify_row", _.Center);
-    t(this, "buttons", []);
-    t(this, "fields", []);
-    t(this, "original", []);
-    t(this, "type", P.Input);
+    a(this, "button_align_row", N.Center);
+    a(this, "button_justify_row", _.Center);
+    a(this, "buttons", []);
+    a(this, "fields", []);
+    a(this, "original", []);
+    a(this, "type", P.Input);
     if (!l(e == null ? void 0 : e.fields) && n(e == null ? void 0 : e.fields)) {
       for (const s of (e == null ? void 0 : e.fields) ?? [])
         if (!l(s.discriminator)) {
-          const a = s.discriminator;
-          this.instantiateField(a, s);
+          const t = s.discriminator;
+          this.instantiateField(t, s);
         }
       e == null || delete e.fields;
     }
@@ -277,29 +277,29 @@ class ke extends O {
         this.buttons.push(new ee(s));
       e == null || delete e.buttons;
     }
-    Object.assign(this, e), this.original = this.fields.map((s) => Object.assign({}, s)), this.fields = this.fields.sort((s, a) => s.order - a.order), this.buttons = this.buttons.sort((s, a) => s.order - a.order);
+    Object.assign(this, e), this.original = this.fields.map((s) => Object.assign({}, s)), this.fields = this.fields.sort((s, t) => s.order - t.order), this.buttons = this.buttons.sort((s, t) => s.order - t.order);
   }
   data() {
-    const e = this.additional_data.find((a) => a.key == "identifier" || a.key == "id"), s = new FormData();
-    return s.set("form_name", this.name), l(e) || s.set("id", e == null ? void 0 : e.value), this.fields.forEach((a) => {
-      l(a.value) || (n(a.value) ? a.value.forEach((o) => {
-        s.set(this.formatForArrayOrObject(a.name), o);
-      }) : j(a.value) ? s.set(this.formatForArrayOrObject(a.name), a.value) : s.set(a.name, a.value));
+    const e = this.additional_data.find((t) => t.key == "identifier" || t.key == "id"), s = new FormData();
+    return s.set("form_name", this.name), l(e) || s.set("id", e == null ? void 0 : e.value), this.fields.forEach((t) => {
+      l(t.value) || (n(t.value) ? t.value.forEach((o) => {
+        s.set(this.formatForArrayOrObject(t.name), o);
+      }) : T(t.value) ? s.set(this.formatForArrayOrObject(t.name), t.value) : s.set(t.name, t.value));
     }), s;
   }
   formatForArrayOrObject(e) {
     return e + "[]";
   }
   instantiateField(e, s) {
-    const a = v(e);
-    if (a) {
-      const o = new a(s);
+    const t = v(e);
+    if (t) {
+      const o = new t(s);
       this.fields.push(o);
     } else
       console.error(`Class "${e}" not found in the registry.`);
   }
   async process() {
-    var s, a, o, u, p, F;
+    var s, t, o, u, p, F;
     this.processing();
     let e;
     try {
@@ -310,7 +310,7 @@ class ke extends O {
         this.axios
       ), this.processed(), e.status === 200 || e.status === 204) {
         this.isLoading(((s = e == null ? void 0 : e.data) == null ? void 0 : s.loader) ?? !1);
-        const c = JSON.parse(JSON.stringify((a = e == null ? void 0 : e.data) == null ? void 0 : a.data));
+        const c = JSON.parse(JSON.stringify((t = e == null ? void 0 : e.data) == null ? void 0 : t.data));
         if ((o = e == null ? void 0 : e.data) != null && o.result)
           return this.success((u = e == null ? void 0 : e.data) == null ? void 0 : u.data), (p = e == null ? void 0 : e.data) == null ? void 0 : p.data;
         if (!l(c == null ? void 0 : c.validation_errors)) {
@@ -331,17 +331,17 @@ class ke extends O {
   loadErrorMessages(e) {
     let s;
     for (s of e) {
-      const a = this.fields.find((o) => o.name === s.id);
+      const t = this.fields.find((o) => o.name === s.id);
       for (const o of s.errorMessages)
-        this.hasErrorMessage(a, o) || a.addErrorMessage(o);
+        this.hasErrorMessage(t, o) || t.addErrorMessage(o);
     }
     return this;
   }
   hasErrorMessage(e, s) {
     if (typeof e.error_messages == "string")
       return e.error_messages == s;
-    const a = e.error_messages.find((o) => o === s);
-    return !l(a);
+    const t = e.error_messages.find((o) => o === s);
+    return !l(t);
   }
   /**
    * Provides the props for VForm
@@ -355,8 +355,8 @@ class ke extends O {
     super.reset();
     const e = this.original;
     return this.fields = this.fields.map((s) => {
-      var a;
-      return s.value = (a = e.find((o) => o.name === s.name)) == null ? void 0 : a.value, s.clearErrorMessages(), s;
+      var t;
+      return s.value = (t = e.find((o) => o.name === s.name)) == null ? void 0 : t.value, s.clearErrorMessages(), s;
     }), this;
   }
 }

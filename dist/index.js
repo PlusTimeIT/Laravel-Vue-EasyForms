@@ -1,30 +1,30 @@
 import { Fragment as m0, reactive as H2, computed as l, watchEffect as z1, toRefs as le, capitalize as sM, isVNode as K3, Comment as Q3, unref as w0, warn as Ab, defineComponent as V0, camelize as se, h as Y2, getCurrentInstance as J3, inject as P0, ref as D, provide as p1, shallowRef as d0, createVNode as n, isRef as uM, mergeProps as H, toRef as b0, Text as Z3, Transition as v2, watch as M0, onBeforeMount as Wz, nextTick as J0, onBeforeUnmount as I0, withDirectives as T0, resolveDirective as g1, vShow as R1, onScopeDispose as Z0, effectScope as fz, toRaw as a2, resolveDynamicComponent as ue, TransitionGroup as Mo, onMounted as e1, readonly as Rz, openBlock as o0, createBlock as q0, withCtx as x, createTextVNode as C0, toDisplayString as t1, createCommentVNode as _0, createElementBlock as c2, renderList as I2, resolveComponent as n2, createSlots as Lz, onUnmounted as bo, Teleport as zo, cloneVNode as po, createElementVNode as L1, normalizeClass as We, normalizeProps as qp } from "vue";
 import { InputForm as S2, ActionForm as C2, EasyForm as ip } from "./forms.js";
-import { i as a0, s as Qb, P as eo } from "./Store-dda3f8ae.js";
+import { i as a0, s as Qb, P as eo } from "./Store-53e83c02.js";
 import { F as T1 } from "./JustifyRow-eb5715b2.js";
 import "axios";
 import { a as kM } from "./ButtonVariantTypes-85a127bd.js";
 import { L as t0 } from "./LoaderEvents-57799137.js";
-import { C as Oo, T as oo, k as co, S as to, A as no } from "./fields-fff04d55.js";
+import { CheckboxGroupField as Oo, TextField as oo, SelectField as co, AutoCompleteField as to } from "./fields.js";
+import { k as no } from "./ServerCall-fbfd55a2.js";
 import { a as p2 } from "./ViewModeTypes-25f1573e.js";
 import { A as Ao } from "./AlertTriggers-18dccfa1.js";
 import { FormContainer as ao } from "./elements.js";
-import { C as fe } from "./Csrf-a60b9722.js";
+import { C as fe } from "./Csrf-3ce828a0.js";
 import { F as dp } from "./FormLoaderTypes-b32e44d6.js";
-import { I as qo } from "./Icon-45b27861.js";
+import { I as qo } from "./Icon-340ce0a0.js";
 import "./ContentTypes-f2427ff5.js";
-import "./Alert-b2585c9f.js";
+import "./Alert-f745a3a2.js";
 import "./ScrollStrategyTypes-59a25e2a.js";
-import "./GotProps-a841b1a8.js";
-import "./ProgressLinear-a6d9add9.js";
+import "./GotProps-feabb85b.js";
+import "./ProgressLinear-e9501234.js";
 import "./LocationTypes-c293bdaa.js";
-import "./ServerCall-2469f5a5.js";
 import "./AxiosOptions-6a3d3f30.js";
-import "./FormLoader-be04857a.js";
+import "./FormLoader-998aef7a.js";
 import "./actions.js";
-import "./Button-c31ec1fd.js";
+import "./Button-50a5f701.js";
 import "./ValidationRule-cec9d477.js";
-import "./Menu-10e523a9.js";
+import "./Menu-1dab5f4c.js";
 function SM(M) {
   return M <= 12 && M >= 1;
 }
@@ -4113,7 +4113,7 @@ const Kc = w({
     }), (R, v) => {
       var h, g;
       const X = n2("EasyIcon"), B = g1("maska");
-      return u.value ? T0((o0(), q0(ue(w0(co)((h = M.field) == null ? void 0 : h.component)), H({
+      return u.value ? T0((o0(), q0(ue(w0(no)((h = M.field) == null ? void 0 : h.component)), H({
         key: 0,
         modelValue: O.value.value,
         "onUpdate:modelValue": v[5] || (v[5] = (m) => O.value.value = m)
@@ -15427,7 +15427,7 @@ const zd = w({
       const T = c.value.filter((k) => k.depends_on === N.name);
       for (const k of T) {
         const y = await k.load(e.value, N);
-        y && (k instanceof to || k instanceof no) && k.loadItems(y);
+        y && (k instanceof co || k instanceof to) && k.loadItems(y);
       }
       p(t0.Updated, !0);
     }

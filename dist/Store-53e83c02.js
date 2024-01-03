@@ -1,8 +1,102 @@
-var c = Object.defineProperty;
-var o = (e, t, n) => t in e ? c(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var i = (e, t, n) => (o(e, typeof t != "symbol" ? t + "" : t, n), n);
-import l from "axios";
-class r {
+var p = Object.defineProperty;
+var d = (e, t, r) => t in e ? p(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var i = (e, t, r) => (d(e, typeof t != "symbol" ? t + "" : t, r), r);
+import _ from "axios";
+class o {
+  /**
+   * Capitalizes the first letter of each word in a string.
+   *
+   * @param input The string to capitalize.
+   * @returns The string with the first letter of each word capitalized.
+   */
+  static capitalizeEach(t) {
+    return t.split(" ").map((r) => o.capitalizeFirst(r)).join(" ");
+  }
+  /**
+   * Capitalizes the first letter of a string.
+   *
+   * @param input The string to capitalize.
+   * @returns The string with the first letter capitalized.
+   */
+  static capitalizeFirst(t) {
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  /**
+   * Convert validation message placeholders in a string.
+   *
+   * @param name The attribute name associated with the validation message.
+   * @param message The validation message containing placeholders.
+   * @param params An array of objects containing key-value pairs to replace placeholders.
+   * @returns A string with placeholders replaced and kebab case conversion applied.
+   */
+  static convertMessageHolders(t, r, c = []) {
+    for (const n of c)
+      r = r.replace(n.key, n.replace_with);
+    return r.replace(":attribute", o.replaceUnderscoresAndHyphens(t));
+  }
+  /**
+   * Generates a random string of the specified length using characters from the given character set.
+   *
+   * @param length The length of the random string to generate.
+   * @param charSet The character set to use for generating the random string.
+   *                Defaults to 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.
+   * @returns A randomly generated string of the specified length.
+   */
+  static generate(t, r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") {
+    const c = [];
+    for (let n = 0; n < t; n++) {
+      const u = Math.floor(Math.random() * r.length);
+      c.push(r[u]);
+    }
+    return c.join("");
+  }
+  /**
+   * Replaces underscores and hyphens with spaces in a string.
+   *
+   * @param input The input string containing underscores or hyphens.
+   * @returns A new string with underscores and hyphens replaced by spaces.
+   */
+  static replaceUnderscoresAndHyphens(t) {
+    return t.replace(/[_-]/g, " ");
+  }
+  /**
+   * Converts Snake case to Camel case.
+   *
+   * @param input The string to convert.
+   * @returns Camel case conversion of the string.
+   */
+  static snakeToCamel(t) {
+    return t.toLowerCase().replace(/[-_][a-z0-9]/g, (r) => r.slice(-1).toUpperCase());
+  }
+  /**
+   * Convert Snake case to Kebab case.
+   *
+   * @param input The string to convert.
+   * @returns Kebab case conversion of the string.
+   */
+  static snakeToKebab(t) {
+    return t.replaceAll("_", "-");
+  }
+  /**
+   * Convert Kebab to Snake case
+   *
+   * @param input The string to convert.
+   * @returns Snake case conversion of the string.
+   */
+  static kebabToSnake(t) {
+    return t.replaceAll("-", "_");
+  }
+  /**
+   * Convert Kebab to Pascal case
+   *
+   * @param input The string to convert.
+   * @returns Snake case conversion of the string.
+   */
+  static kebabToPascal(t) {
+    return t.split("-").map(this.capitalizeFirst).join("");
+  }
+}
+class s {
   /**
    * Checks if a variable is an Array
    * @param o
@@ -68,7 +162,7 @@ class r {
    * @returns boolean
    */
   static isNumeric(t) {
-    return r.isNumber(t) ? !0 : typeof t == "string" && !isNaN(+t);
+    return s.isNumber(t) ? !0 : typeof t == "string" && !isNaN(+t);
   }
   /**
    * Checks if a variable is of type Object
@@ -111,7 +205,7 @@ class r {
     return typeof t > "u";
   }
 }
-const _ = (e) => r.isArray(e), f = (e) => r.isObject(e), b = (e) => r.isFile(e), y = (e) => r.isString(e), h = (e) => r.isNumber(e), m = (e) => r.isNumeric(e), x = (e) => r.isNull(e), u = (e) => r.isEmpty(e), s = class s {
+const y = (e) => s.isArray(e), m = (e) => s.isObject(e), x = (e) => s.isFile(e), g = (e) => s.isString(e), j = (e) => s.isNumber(e), N = (e) => s.isNumeric(e), A = (e) => s.isNull(e), f = (e) => s.isEmpty(e), a = class a {
   constructor(t) {
     /**
      * Pass the axios instance to use for the form loader
@@ -174,14 +268,14 @@ const _ = (e) => r.isArray(e), f = (e) => r.isObject(e), b = (e) => r.isFile(e),
      * Does your frontend application use vue router.
      */
     i(this, "uses_vue_router", !1);
-    this.axios = l.create({
+    this.axios = _.create({
       withCredentials: !0,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",
         Accept: "application/json"
       }
-    }), Object.assign(this, t), s.instance = this;
+    }), Object.assign(this, t), a.instance = this;
   }
   /**
    * The static method that controls the access to the singleton instance.
@@ -190,16 +284,16 @@ const _ = (e) => r.isArray(e), f = (e) => r.isObject(e), b = (e) => r.isFile(e),
    * just one instance of each subclass around.
    */
   static getInstance(t) {
-    return s.instance || (s.instance = new s(t)), s.instance;
+    return a.instance || (a.instance = new a(t)), a.instance;
   }
   buildDomain(t = "") {
-    return u(t) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(t));
+    return f(t) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(t));
   }
 };
-i(s, "instance");
-let a = s;
-const g = {
-  options: new a({
+i(a, "instance");
+let l = a;
+const k = {
+  options: new l({
     axios_prefix: "",
     backend_domain: "",
     csrf_endpoint: "",
@@ -215,14 +309,15 @@ const g = {
   })
 };
 export {
-  a as P,
-  _ as a,
-  h as b,
-  y as c,
-  x as d,
-  b as e,
-  m as f,
-  f as g,
-  u as i,
-  g as s
+  l as P,
+  o as S,
+  y as a,
+  j as b,
+  g as c,
+  A as d,
+  x as e,
+  N as f,
+  m as g,
+  f as i,
+  k as s
 };

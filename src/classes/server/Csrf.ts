@@ -1,6 +1,6 @@
 import { ServerCall } from "./ServerCall";
 import { AxiosCalls } from "../../enums";
-import { isEmpty, minutesBetween } from "../../composables/utils";
+import { generate, isEmpty, minutesBetween } from "../../composables/utils";
 import { AxiosResponse } from "axios";
 import { HasAxiosReturn } from "../../contracts/HasAxiosReturn";
 
@@ -106,17 +106,12 @@ export class Csrf {
 
   // Adds token attempt
   async tokenAttempt() {
-    console.log("MAKING TOKEN ATTEMPT");
     this.attempts++;
     let response: AxiosResponse<HasAxiosReturn>;
     try {
       response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
-      console.log(response);
-      console.log(response.status);
       if (response.status === 200 || response.status === 204) {
-        console.log("HEADERS", response.config["headers"]);
-        console.log("X-XSRF-TOKEN", response.config["headers"]["X-XSRF-TOKEN"]);
-        await this.successfulAttempt(response.config["headers"]["X-XSRF-TOKEN"].substr(0, 5));
+        await this.successfulAttempt(generate(5));
         return true;
       }
     } catch (error) {

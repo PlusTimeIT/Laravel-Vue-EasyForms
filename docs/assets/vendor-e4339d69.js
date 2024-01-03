@@ -33024,6 +33024,7 @@ const store = {
 const convertMessageHolders = (name, message, params) => StringHelper.convertMessageHolders(name, message, params);
 const kebabToPascal = (o) => StringHelper.kebabToPascal(o);
 const capitalizeFirst = (o) => StringHelper.capitalizeFirst(o);
+const generate = (length, charSet) => StringHelper.generate(length, charSet);
 
 var AlertTriggers = /* @__PURE__ */ ((AlertTriggers2) => {
   AlertTriggers2["BeforeLoad"] = "before_load";
@@ -34061,17 +34062,12 @@ class Csrf {
   }
   // Adds token attempt
   async tokenAttempt() {
-    console.log("MAKING TOKEN ATTEMPT");
     this.attempts++;
     let response;
     try {
       response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
-      console.log(response);
-      console.log(response.status);
       if (response.status === 200 || response.status === 204) {
-        console.log("HEADERS", response.config["headers"]);
-        console.log("X-XSRF-TOKEN", response.config["headers"]["X-XSRF-TOKEN"]);
-        await this.successfulAttempt(response.config["headers"]["X-XSRF-TOKEN"].substr(0, 5));
+        await this.successfulAttempt(generate(5));
         return true;
       }
     } catch (error) {
