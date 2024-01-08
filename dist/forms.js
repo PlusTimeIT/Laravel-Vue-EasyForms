@@ -1,7 +1,7 @@
-var L = Object.defineProperty;
-var j = (d, r, e) => r in d ? L(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
-var a = (d, r, e) => (j(d, typeof r != "symbol" ? r + "" : r, e), e);
-import { i as l, a as n, s as m, g as T } from "./Store-ff430d87.js";
+var S = Object.defineProperty;
+var T = (d, r, e) => r in d ? S(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
+var a = (d, r, e) => (T(d, typeof r != "symbol" ? r + "" : r, e), e);
+import { i as l, a as n, s as m, g as L } from "./Store-ff430d87.js";
 import { A as i } from "./AlertTriggers-18dccfa1.js";
 import { A as g, C as y } from "./ContentTypes-f2427ff5.js";
 import { F as E } from "./FormLoaderTypes-b32e44d6.js";
@@ -11,7 +11,7 @@ import { S as f } from "./ServerCall-ec2ee9bd.js";
 import { A as b } from "./AxiosOptions-6a3d3f30.js";
 import { F as C } from "./FormLoader-1edcf0ff.js";
 import { ActionIcon as w, ActionButton as x } from "./actions.js";
-import { J as _, F as P, A as N } from "./JustifyRow-eb5715b2.js";
+import { J as _, F as O, A as N } from "./JustifyRow-eb5715b2.js";
 import { AutoCompleteField as B, CheckboxField as I, CheckboxGroupField as G, PasswordField as R, RadioGroupField as q, RadioField as V, ColorPicker as $, ColorPickerField as z, DatePicker as H, DatePickerField as K, FileInputField as Q, SwitchField as U, TextField as W, TimePickerField as X, SelectField as Y, TextareaField as Z } from "./fields.js";
 import "axios";
 import { B as ee } from "./Button-da6cf979.js";
@@ -23,7 +23,7 @@ import "./GotProps-12eeba8a.js";
 import "./ViewModeTypes-25f1573e.js";
 import "./ValidationRule-cec9d477.js";
 import "./Menu-abb2e0c5.js";
-class O {
+class P {
   constructor(r) {
     a(this, "additional_data", []);
     a(this, "additional_load_data", []);
@@ -201,7 +201,7 @@ function se(d, r) {
 function v(d) {
   return k[d];
 }
-class Oe extends O {
+class Pe extends P {
   constructor(e) {
     super(e);
     // actions: Array<ActionIcon | ActionButton> = [];
@@ -209,7 +209,7 @@ class Oe extends O {
     a(this, "callback", "");
     a(this, "inline", !1);
     a(this, "justify_row", _.Center);
-    a(this, "type", P.Action);
+    a(this, "type", O.Action);
     if (!l(e == null ? void 0 : e.actions) && n(e == null ? void 0 : e.actions)) {
       for (const s of (e == null ? void 0 : e.actions) ?? [])
         if (s instanceof w || s instanceof x)
@@ -242,7 +242,7 @@ class Oe extends O {
       if (s = await f.request(
         g.Post,
         m.options.buildDomain("/forms/process"),
-        f.mergeData(this.data(e), this.additional_data),
+        f.mergeData(this.data(e), this.additionalArrayToObject(this.additional_data)),
         this.axios
       ), s.status === 200 || s.status === 204)
         return this.isLoading(((t = s == null ? void 0 : s.data) == null ? void 0 : t.loader) ?? !1), (o = s == null ? void 0 : s.data) != null && o.result ? JSON.parse(JSON.stringify(s.data)) : !1;
@@ -255,7 +255,7 @@ class Oe extends O {
     return {};
   }
 }
-class ke extends O {
+class ke extends P {
   constructor(e) {
     super(e);
     a(this, "button_align_row", N.Center);
@@ -263,7 +263,7 @@ class ke extends O {
     a(this, "buttons", []);
     a(this, "fields", []);
     a(this, "original", []);
-    a(this, "type", P.Input);
+    a(this, "type", O.Input);
     if (!l(e == null ? void 0 : e.fields) && n(e == null ? void 0 : e.fields)) {
       for (const s of (e == null ? void 0 : e.fields) ?? [])
         if (!l(s.discriminator)) {
@@ -284,7 +284,7 @@ class ke extends O {
     return s.set("form_name", this.name), l(e) || s.set("id", e == null ? void 0 : e.value), this.fields.forEach((t) => {
       l(t.value) || (n(t.value) ? t.value.forEach((o) => {
         s.set(this.formatForArrayOrObject(t.name), o);
-      }) : T(t.value) ? s.set(this.formatForArrayOrObject(t.name), t.value) : s.set(t.name, t.value));
+      }) : L(t.value) ? s.set(this.formatForArrayOrObject(t.name), t.value) : s.set(t.name, t.value));
     }), s;
   }
   formatForArrayOrObject(e) {
@@ -306,7 +306,7 @@ class ke extends O {
       if (e = await f.request(
         g.Post,
         m.options.buildDomain("/forms/process"),
-        f.mergeData(this.data(), this.additional_data),
+        f.mergeData(this.data(), this.additionalArrayToObject(this.additional_data)),
         this.axios
       ), this.processed(), e.status === 200 || e.status === 204) {
         this.isLoading(((s = e == null ? void 0 : e.data) == null ? void 0 : s.loader) ?? !1);
@@ -315,9 +315,9 @@ class ke extends O {
           return this.success((u = e == null ? void 0 : e.data) == null ? void 0 : u.data), (p = e == null ? void 0 : e.data) == null ? void 0 : p.data;
         if (!l(c == null ? void 0 : c.validation_errors)) {
           for (const A in c == null ? void 0 : c.validation_errors) {
-            const D = this.fields.find((h) => h.name === A), S = c == null ? void 0 : c.validation_errors[A];
-            for (const h of S)
-              D.addErrorMessage(h);
+            const j = this.fields.find((h) => h.name === A), D = c == null ? void 0 : c.validation_errors[A];
+            for (const h of D)
+              j.addErrorMessage(h);
           }
           return this.failedValidation(), !1;
         }
@@ -361,7 +361,7 @@ class ke extends O {
   }
 }
 export {
-  Oe as ActionForm,
-  O as EasyForm,
+  Pe as ActionForm,
+  P as EasyForm,
   ke as InputForm
 };

@@ -70,7 +70,7 @@ export class ActionForm extends EasyForm implements HasActionForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(action_identifier), this.additional_data),
+        ServerCall.mergeData(this.data(action_identifier), this.additionalArrayToObject(this.additional_data)),
         this.axios,
       );
       if (response.status === 200 || response.status === 204) {

@@ -133,7 +133,7 @@ export class InputForm extends EasyForm {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/process"),
-        ServerCall.mergeData(this.data(), this.additional_data),
+        ServerCall.mergeData(this.data(), this.additionalArrayToObject(this.additional_data)),
         this.axios,
       );
       this.processed();
