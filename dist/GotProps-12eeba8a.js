@@ -1,4 +1,4 @@
-import { S as n, i } from "./Store-53e83c02.js";
+import { S as n, i } from "./Store-ff430d87.js";
 class a {
   /**
    * Format the components prop names.

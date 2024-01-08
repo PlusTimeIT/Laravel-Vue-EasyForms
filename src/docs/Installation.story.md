@@ -61,10 +61,10 @@ The plugin has the following `PluginOptions` object with the below defaults:
  */
 backend_domain = "";
 /**
- * The prefix for making calls via API, this is append to the backend domain.
+ * The prefix for making calls via API, this is appended to the backend domain.
  * It should begin with a forward slash and end without a forward slash.
  * This should match laravel.
- * eg. /api/v1.0/
+ * eg. /api/v1.0
  */
 axios_prefix = "";
 /**
@@ -77,11 +77,6 @@ csrf_endpoint = "";
  * Does your frontend application use vue router.
  */
 uses_vue_router = false;
-/**
- * When initiated, if placeholder is present and empty,
- * and text is present and not empty, placeholder should = text
- */
-text_to_placeholder = true;
 /**
  * Display required tags only, either tags_on_placeholder or tags_on_labels
  * must be set to true for this to take effect.
@@ -123,10 +118,12 @@ You should also make sure your main project sets axios defaults:
 axios.defaults.withCredentials = true;
 ```
 
+For newer versions of axios (v1.6.1+) updating `withCredentials` with `withXSRFToken` will expose the correct headers.
+
 ## Vue Components
 
 You are now ready to start using the form loader component.
 
 ```html
-<form-loader />
+<FormLoader />
 ```

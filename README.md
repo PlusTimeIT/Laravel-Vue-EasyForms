@@ -7,5 +7,5 @@
 
 </div>
 
-* > [Documentation](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
-* > [Npm](https://www.npmjs.com/package/laravel-vue-easyforms)
+- > [Documentation](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
+- > [Npm](https://www.npmjs.com/package/laravel-vue-easyforms)

@@ -3,7 +3,7 @@ var a = (n, o, t) => o in n ? s(n, o, { enumerable: !0, configurable: !0, writab
 var e = (n, o, t) => (a(n, typeof o != "symbol" ? o + "" : o, t), t);
 import { L as i } from "./LocationTypes-c293bdaa.js";
 import { S as c } from "./ScrollStrategyTypes-59a25e2a.js";
-import { G as _ } from "./GotProps-feabb85b.js";
+import { G as _ } from "./GotProps-12eeba8a.js";
 class d extends _ {
   constructor(t) {
     super(t);

@@ -23,9 +23,11 @@ const FormLoaderPlugin: Plugin = {
       .component("FormLoader", FormLoader);
 
     store.options = finalOptions;
-    store.csrf = new Csrf({
-      endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint),
-    });
+    if (finalOptions.csrf_endpoint !== null) {
+      store.csrf = new Csrf({
+        endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint),
+      });
+    }
   },
 };
 

@@ -1,7 +1,7 @@
 var p = Object.defineProperty;
 var d = (e, t, r) => t in e ? p(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
 var i = (e, t, r) => (d(e, typeof t != "symbol" ? t + "" : t, r), r);
-import _ from "axios";
+import f from "axios";
 class o {
   /**
    * Capitalizes the first letter of each word in a string.
@@ -205,7 +205,7 @@ class s {
     return typeof t > "u";
   }
 }
-const y = (e) => s.isArray(e), m = (e) => s.isObject(e), x = (e) => s.isFile(e), g = (e) => s.isString(e), j = (e) => s.isNumber(e), N = (e) => s.isNumeric(e), A = (e) => s.isNull(e), f = (e) => s.isEmpty(e), a = class a {
+const y = (e) => s.isArray(e), m = (e) => s.isObject(e), g = (e) => s.isFile(e), x = (e) => s.isString(e), j = (e) => s.isNumber(e), N = (e) => s.isNumeric(e), A = (e) => s.isNull(e), b = (e) => s.isEmpty(e), a = class a {
   constructor(t) {
     /**
      * Pass the axios instance to use for the form loader
@@ -227,6 +227,7 @@ const y = (e) => s.isArray(e), m = (e) => s.isObject(e), x = (e) => s.isFile(e),
     /**
      * If CSRF checks are required then this should be the endpoint.
      * It should begin with a forward slash and end without a forward slash.
+     * If null no CSRF checks will be made.
      * e.g. /security/cookie
      */
     i(this, "csrf_endpoint", "");
@@ -260,15 +261,10 @@ const y = (e) => s.isArray(e), m = (e) => s.isObject(e), x = (e) => s.isFile(e),
      */
     i(this, "tags_on_placeholder", !0);
     /**
-     * When initiated, if placeholder is present and empty,
-     * and text is present and not empty, placeholder should = text
-     */
-    i(this, "text_to_placeholder", !0);
-    /**
      * Does your frontend application use vue router.
      */
     i(this, "uses_vue_router", !1);
-    this.axios = _.create({
+    this.axios = f.create({
       withCredentials: !0,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -287,7 +283,7 @@ const y = (e) => s.isArray(e), m = (e) => s.isObject(e), x = (e) => s.isFile(e),
     return a.instance || (a.instance = new a(t)), a.instance;
   }
   buildDomain(t = "") {
-    return f(t) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(t));
+    return b(t) ? this.backend_domain.concat(this.axios_prefix) : this.backend_domain.concat(this.axios_prefix.concat(t));
   }
 };
 i(a, "instance");
@@ -304,7 +300,6 @@ const k = {
     required_tags_only: !0,
     tags_on_labels: !1,
     tags_on_placeholder: !0,
-    text_to_placeholder: !0,
     uses_vue_router: !1
   })
 };
@@ -313,11 +308,11 @@ export {
   o as S,
   y as a,
   j as b,
-  g as c,
+  x as c,
   A as d,
-  x as e,
+  g as e,
   N as f,
   m as g,
-  f as i,
+  b as i,
   k as s
 };

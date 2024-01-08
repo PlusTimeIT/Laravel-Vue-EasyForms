@@ -23,14 +23,10 @@ const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 const loadedForm = ref(props.form);
 const formReference = ref(VForm);
 
-const filteredFields = computed<FieldType[]>({
-  get: () =>
-    loadedForm.value?.fields?.filter((field) => {
-      return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));
-    }) as FieldType[],
-  set: (newValue) => {
-    console.log("FILTERED UPDATED", newValue);
-  },
+const filteredFields = computed<FieldType[]>(() => {
+  return loadedForm.value?.fields?.filter((field) => {
+    return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));
+  }) as FieldType[];
 });
 
 const formFields = computed<FieldType[]>(() => {
@@ -172,7 +168,7 @@ onBeforeUnmount(() => {
 <template>
   <VForm v-bind="loadedForm?.props() ?? {}" ref="formReference" class="mx-auto w-100">
     <VCol cols="12">
-      <VRow>
+      <VRow class="easy-fields">
         <VCol
           v-for="(field, index_f) in filteredFields"
           :cols="field.cols?.toString() ?? '12'"
@@ -188,7 +184,12 @@ onBeforeUnmount(() => {
           />
         </VCol>
       </VRow>
-      <VRow v-if="hasButtons" :align="loadedForm.button_align_row" :justify="loadedForm.button_justify_row">
+      <VRow
+        v-if="hasButtons"
+        :align="loadedForm.button_align_row"
+        :justify="loadedForm.button_justify_row"
+        class="easy-buttons"
+      >
         <VCol cols="auto" v-for="(button, index) in loadedForm?.buttons" :key="index">
           <EasyButton
             :button="button"

@@ -32931,6 +32931,7 @@ class PluginOptions {
   /**
    * If CSRF checks are required then this should be the endpoint.
    * It should begin with a forward slash and end without a forward slash.
+   * If null no CSRF checks will be made.
    * e.g. /security/cookie
    */
   csrf_endpoint = "";
@@ -32963,11 +32964,6 @@ class PluginOptions {
    * Should the placeholder text display required and optional tags
    */
   tags_on_placeholder = true;
-  /**
-   * When initiated, if placeholder is present and empty,
-   * and text is present and not empty, placeholder should = text
-   */
-  text_to_placeholder = true;
   /**
    * Does your frontend application use vue router.
    */
@@ -33016,7 +33012,6 @@ const store = {
     required_tags_only: true,
     tags_on_labels: false,
     tags_on_placeholder: true,
-    text_to_placeholder: true,
     uses_vue_router: false
   })
 };
@@ -34062,16 +34057,11 @@ class Csrf {
   }
   // Adds token attempt
   async tokenAttempt() {
-    console.log("MAKING TOKEN ATTEMPT");
     this.attempts++;
     let response;
     try {
       response = await ServerCall.request(AxiosCalls.Get, this.endpoint);
-      console.log(response);
-      console.log(response.status);
       if (response.status === 200 || response.status === 204) {
-        console.log("HEADERS", response.config["headers"]);
-        console.log("X-XSRF-TOKEN", response.config["headers"]["X-XSRF-TOKEN"]);
         await this.successfulAttempt(generate(5));
         return true;
       }
@@ -87818,7 +87808,6 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent$1({
     const dialog = ref(props.modelValue);
     const dialogEffectWatcher = watchEffect(() => dialog.value = props.modelValue);
     const dialogWatcher = watch(dialog, (update) => {
-      console.log("Dialog value changed to: ", update);
       emit("update:modelValue", update);
     });
     onBeforeUnmount(() => {
@@ -88146,8 +88135,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent$1({
       rTextfield.value.value = xProps.modelValue;
       rTextfield.value?.isLoading(false);
     });
-    function dialogClick(event) {
-      console.log("dialog clicked", event);
+    function dialogClick() {
       dialog.value = true;
     }
     const __returned__ = { xProps, emit, rTextfield, rModelValue, dialog, errorMessages, passed_percentage, requirement_ratio, total_requirements, password_strength, strength_color, strength_text, textfieldWatcher, modelValueWatcher, errorMessagesWatcher, updated, validate, invalidate, innerClick, dialogClick, EasyInput, get PasswordRequirementsDialog() {
@@ -88717,13 +88705,10 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
     const emit = __emit;
     const loadedForm = ref(props.form);
     const formReference = ref(VForm);
-    const filteredFields = computed({
-      get: () => loadedForm.value?.fields?.filter((field) => {
+    const filteredFields = computed(() => {
+      return loadedForm.value?.fields?.filter((field) => {
         return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));
-      }),
-      set: (newValue) => {
-        console.log("FILTERED UPDATED", newValue);
-      }
+      });
     });
     const formFields = computed(() => {
       if (Array.isArray(loadedForm.value?.fields)) {
@@ -88858,7 +88843,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [
         createVNode(VCol, { cols: "12" }, {
           default: withCtx(() => [
-            createVNode(VRow, null, {
+            createVNode(VRow, { class: "easy-fields" }, {
               default: withCtx(() => [
                 (openBlock(true), createElementBlock(
                   Fragment,
@@ -88893,7 +88878,8 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
             $setup.hasButtons ? (openBlock(), createBlock(VRow, {
               key: 0,
               align: $setup.loadedForm.button_align_row,
-              justify: $setup.loadedForm.button_justify_row
+              justify: $setup.loadedForm.button_justify_row,
+              class: "easy-buttons"
             }, {
               default: withCtx(() => [
                 (openBlock(true), createElementBlock(
@@ -89242,6 +89228,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
     __expose();
     const emit = __emit;
     const props = __props;
+    const PLUGIN_OPTIONS = PluginOptions.getInstance();
     const requires_api = ref(false);
     const csrf = ref(store.csrf ?? new Csrf());
     const loading = ref(true);
@@ -89255,7 +89242,9 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       });
     });
     const has_error = computed(() => !isEmpty$1(loaded_form.value.text));
-    const has_valid_csrf_token = computed(() => csrf.value.isValidCsrfToken());
+    const has_valid_csrf_token = computed(
+      () => PLUGIN_OPTIONS.csrf_endpoint === null ? true : csrf.value.isValidCsrfToken()
+    );
     const is_csrf_token_loading = computed(() => csrf.value.isLoading());
     const has_alerts = computed(
       () => (loaded_form?.value?.alerts?.filter((alert) => alert.display).length ?? 0) > 0
@@ -89344,12 +89333,10 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       }
     });
     async function load() {
-      console.log("Loadingf form....", props.name);
       loaded_form.value.name = props.name;
       loaded_form.value.additional_data = props.additionalData;
       loaded_form.value.additional_load_data = props.additionalLoadData;
       const results2 = await loaded_form.value.load();
-      console.log("Results....", results2);
       if (!results2) {
         loaded_form.value.text = "Error Loading Form - Not Found";
         emit(LoaderEvents.Loaded, false);
@@ -89363,7 +89350,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
       }
       isLoading(false);
     }
-    const __returned__ = { emit, props, requires_api, csrf, loading, loaded_form, container, has_error, has_valid_csrf_token, is_csrf_token_loading, has_alerts, form_ready, form_component, is_action, is_input, is_error, reset, cancel, processing, failed, updated, success, results, validated, isLoading, validCsrfWatcher, load, get ActionFormLoader() {
+    const __returned__ = { emit, props, PLUGIN_OPTIONS, requires_api, csrf, loading, loaded_form, container, has_error, has_valid_csrf_token, is_csrf_token_loading, has_alerts, form_ready, form_component, is_action, is_input, is_error, reset, cancel, processing, failed, updated, success, results, validated, isLoading, validCsrfWatcher, load, get ActionFormLoader() {
       return ActionFormLoader;
     }, get InputFormLoader() {
       return InputFormLoader;
@@ -89385,7 +89372,10 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     lg: $setup.container?.lg ?? 12
   }, {
     default: withCtx(() => [
-      $setup.has_alerts ? (openBlock(), createBlock(VRow, { key: 0 }, {
+      $setup.has_alerts ? (openBlock(), createBlock(VRow, {
+        key: 0,
+        class: "easy-alerts"
+      }, {
         default: withCtx(() => [
           createVNode(_component_EasyAlerts, {
             alerts: $setup.loaded_form?.alerts
@@ -89398,7 +89388,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         VRow,
         {
           justify: "center",
-          class: "form-loader"
+          class: "easy-loader"
         },
         {
           default: withCtx(() => [
@@ -89441,7 +89431,10 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       withDirectives(createVNode(
         VRow,
-        { "no-gutters": "" },
+        {
+          "no-gutters": "",
+          class: "easy-form"
+        },
         {
           default: withCtx(() => [
             $setup.is_input && !$setup.has_error ? (openBlock(), createBlock($setup["InputFormLoader"], mergeProps({
@@ -89687,9 +89680,11 @@ const FormLoaderPlugin = {
     const finalOptions = new PluginOptions(options);
     app.directive("maska", U$2).component("EasyIcon", EasyIcon).component("EasyButton", EasyButton).component("EasyAlerts", EasyAlerts).component("EasyDatePicker", EasyDatePicker).component("EasyTimePicker", EasyTimePicker).component("EasyColorPicker", EasyColorPicker).component("EasyCheckboxGroup", EasyCheckboxGroup).component("EasyPassword", EasyPassword).component("FormLoader", FormLoader);
     store.options = finalOptions;
-    store.csrf = new Csrf({
-      endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint)
-    });
+    if (finalOptions.csrf_endpoint !== null) {
+      store.csrf = new Csrf({
+        endpoint: finalOptions.buildDomain(finalOptions.csrf_endpoint)
+      });
+    }
   }
 };
 

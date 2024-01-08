@@ -16,6 +16,7 @@ import { store } from "../composables/utils";
 import { AlertTriggers } from "../enums";
 import { Csrf } from "../server";
 import EasyLoader from "./elements/EasyLoader.vue";
+import { PluginOptions } from "../classes/PluginOptions";
 
 const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 
@@ -62,6 +63,7 @@ const props = defineProps({
   },
 });
 
+const PLUGIN_OPTIONS = PluginOptions.getInstance();
 const requires_api = ref<boolean>(false);
 const csrf = ref<Csrf>((store.csrf ?? new Csrf()) as Csrf);
 const loading = ref<boolean>(true);
@@ -77,7 +79,9 @@ const container = computed<FormContainer>(() => {
 });
 
 const has_error = computed<boolean>(() => !isEmpty(loaded_form.value!.text));
-const has_valid_csrf_token = computed<boolean>(() => csrf.value.isValidCsrfToken());
+const has_valid_csrf_token = computed<boolean>(() =>
+  PLUGIN_OPTIONS.csrf_endpoint === null ? true : csrf.value.isValidCsrfToken(),
+);
 const is_csrf_token_loading = computed<boolean>(() => csrf.value.isLoading());
 const has_alerts = computed<boolean>(
   () => (loaded_form?.value?.alerts?.filter((alert) => alert.display).length ?? 0) > 0,
@@ -193,13 +197,11 @@ onBeforeMount(async () => {
 });
 
 async function load() {
-  console.log("Loadingf form....", props.name);
   loaded_form.value.name = props.name;
   loaded_form.value.additional_data = props.additionalData;
   loaded_form.value.additional_load_data = props.additionalLoadData;
 
   const results: any = await loaded_form.value.load();
-  console.log("Results....", results);
   if (!results) {
     loaded_form.value.text = "Error Loading Form - Not Found";
     emit(LoaderEvents.Loaded, false);
@@ -217,10 +219,10 @@ async function load() {
 
 <template>
   <VCol :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
-    <VRow v-if="has_alerts">
+    <VRow v-if="has_alerts" class="easy-alerts">
       <EasyAlerts :alerts="loaded_form?.alerts" />
     </VRow>
-    <VRow v-show="!form_ready" justify="center" class="form-loader">
+    <VRow v-show="!form_ready" justify="center" class="easy-loader">
       <EasyLoader :loader="(loaded_form?.loader as FormLoader)" />
     </VRow>
     <VRow v-show="loaded_form.show_title">
@@ -228,7 +230,7 @@ async function load() {
         {{ loaded_form.title }}
       </VCol>
     </VRow>
-    <VRow v-show="form_ready" no-gutters>
+    <VRow v-show="form_ready" no-gutters class="easy-form">
       <InputFormLoader
         v-if="is_input && !has_error"
         v-model:form="(loaded_form as InputForm)"

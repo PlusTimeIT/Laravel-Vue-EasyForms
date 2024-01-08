@@ -131,7 +131,6 @@ export abstract class EasyField extends GotProps implements HasField {
       this.clear_icon = new Icon({ icon: "mdi-close", color: "secondary" });
     }
 
-    // Check if text_to_placeholder conversion is on.
     const PLUGIN_OPTIONS = PluginOptions.getInstance();
     if (PLUGIN_OPTIONS.tags_on_placeholder && !isEmpty(this.placeholder)) {
       if (this.required) {

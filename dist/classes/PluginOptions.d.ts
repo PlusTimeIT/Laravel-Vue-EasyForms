@@ -24,9 +24,10 @@ export declare class PluginOptions {
     /**
      * If CSRF checks are required then this should be the endpoint.
      * It should begin with a forward slash and end without a forward slash.
+     * If null no CSRF checks will be made.
      * e.g. /security/cookie
      */
-    csrf_endpoint: string;
+    csrf_endpoint: string | null;
     /**
      * Optional label text to append placeholder attribute
      */
@@ -56,11 +57,6 @@ export declare class PluginOptions {
      * Should the placeholder text display required and optional tags
      */
     tags_on_placeholder: boolean;
-    /**
-     * When initiated, if placeholder is present and empty,
-     * and text is present and not empty, placeholder should = text
-     */
-    text_to_placeholder: boolean;
     /**
      * Does your frontend application use vue router.
      */

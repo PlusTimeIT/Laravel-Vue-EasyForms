@@ -215,24 +215,21 @@ const state = ref<StoryState>({
       </VRow>
       <VRow>
         <VCol>
-          <form-loader :form="inputForm" />
+          <FormLoader :form="inputForm" />
         </VCol>
       </VRow>
       <VRow>
         <VCol>
-          <form-loader :form="state.actionFormIcons" />
+          <FormLoader :form="state.actionFormIcons" />
         </VCol>
       </VRow>
       <VRow>
         <VCol>
           <div>
-            <v-checkbox v-model="state.actionFormIcons.inline" label="Form Inline" />
+            <VCheckbox v-model="state.actionFormIcons.inline" label="Form Inline" />
           </div>
           <div>
-            <v-color-picker
-              v-model="(state.actionFormIcons.actions[0] as ActionIcon).icon.color"
-              label="Icon 1 Colour"
-            />
+            <VColorPicker v-model="(state.actionFormIcons.actions[0] as ActionIcon).icon.color" label="Icon 1 Colour" />
           </div>
         </VCol>
       </VRow>

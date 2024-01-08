@@ -16,7 +16,6 @@ const store: Store = {
     required_tags_only: true,
     tags_on_labels: false,
     tags_on_placeholder: true,
-    text_to_placeholder: true,
     uses_vue_router: false,
   }),
 };

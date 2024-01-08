@@ -216,8 +216,7 @@ onMounted(() => {
   rTextfield.value?.isLoading(false);
 });
 
-function dialogClick(event: any) {
-  console.log("dialog clicked", event);
+function dialogClick() {
   dialog.value = true;
 }
 </script>

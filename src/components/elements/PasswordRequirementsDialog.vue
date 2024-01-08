@@ -16,7 +16,6 @@ const dialog = ref<boolean>(props.modelValue);
 const dialogEffectWatcher = watchEffect(() => (dialog.value = props.modelValue));
 
 const dialogWatcher = watch(dialog, (update) => {
-  console.log("Dialog value changed to: ", update);
   emit("update:modelValue", update);
 });
 

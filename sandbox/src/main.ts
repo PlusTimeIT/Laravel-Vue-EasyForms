@@ -8,7 +8,7 @@ createApp(App)
   .use(FormLoaderPlugin, {
     backend_domain: "",
     axios_prefix: "",
-    csrf_endpoint: "",
+    csrf_endpoint: null,
     uses_vue_router: false,
     required_tags_only: false,
     tags_on_placeholder: true,
