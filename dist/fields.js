@@ -1,11 +1,11 @@
-var T = Object.defineProperty;
-var I = (d, r, t) => r in d ? T(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
+var D = Object.defineProperty;
+var I = (d, r, t) => r in d ? D(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
 var e = (d, r, t) => (I(d, typeof r != "symbol" ? r + "" : r, t), t);
 import { c as l, a as j, S as O } from "./ServerCall-e0f70588.js";
 import { A as z } from "./ContentTypes-f2427ff5.js";
 import { D as C } from "./ScrollStrategyTypes-59a25e2a.js";
-import { V as i, b as A, T as R, D as g, F as D, C as y, I as N, c as W, a as E } from "./ViewModeTypes-25f1573e.js";
-import { a as w, b as f, c as b, i as c, d as G, e as L, f as U, P as Y, s as J } from "./Store-ff430d87.js";
+import { V as i, b as A, T as N, D as g, F as T, C as y, I as R, c as W, a as G } from "./ViewModeTypes-25f1573e.js";
+import { a as w, b as f, c as b, i as c, d as E, e as U, f as L, P as Y, s as J } from "./Store-ff430d87.js";
 import { V as Z, C as $ } from "./ValidationRule-cec9d477.js";
 import { I as m, T as K } from "./Icon-3ae1af1e.js";
 import { G as Q } from "./GotProps-12eeba8a.js";
@@ -33,7 +33,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
   if (Math.floor(o) === o)
     return l(r.name, a, p);
   const x = o.toString().split(".")[1].length;
-  return G(s) ? x === t || l(r.name, a, p) : x > t && x < s || l(r.name, a, p);
+  return E(s) ? x === t || l(r.name, a, p) : x > t && x < s || l(r.name, a, p);
 }), e(n, "declined", (r, t = i.Declined) => (s) => n.declined_values.includes(s) || l(r.name, t)), e(n, "different", (r, t, s = i.Different) => (a) => a !== t.value || l(r.name, s, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") }
 ])), e(n, "digits", (r, t, s = i.Digits) => (a) => f(a) && a.toString().length === t || l(r.name, s, [{ key: ":digits", replace_with: t }])), e(n, "digits_between", (r, t, s, a = i.DigitsBetween) => (o) => {
@@ -42,7 +42,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
     { key: ":max", replace_with: s }
   ];
   return f(o) ? o > t && o < s || l(r.name, a, _) : l(r.name, a, _);
-}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((o) => !a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((o) => !a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || l(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((o) => a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => L(s) || l(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || l(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || l(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || l(r.name, t)), e(n, "max", (r, t, s) => (a) => {
+}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((o) => !a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((o) => !a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || l(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((o) => a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => U(s) || l(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || l(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || l(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || l(r.name, t)), e(n, "max", (r, t, s) => (a) => {
   const o = [{ key: ":max", replace_with: t }];
   return f(a) ? a <= t || l(r.name, s ?? i.MaxNumeric, o) : b(a) || w(a) ? a.length <= t || l(
     r.name,
@@ -56,7 +56,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
     s ?? (b(a) ? i.MinString : i.MinArray),
     o
   ) : l(r.name, s ?? i.MinFile, o);
-}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || l(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || l(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || l(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || l(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => U(s) || l(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || l(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || l(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (o) => (t.value === s ? !c(o) : !0) || l(r.name, a, [
+}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || l(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || l(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || l(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || l(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => L(s) || l(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || l(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || l(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (o) => (t.value === s ? !c(o) : !0) || l(r.name, a, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") },
   { key: ":value", replace_with: s }
 ])), e(n, "required_unless", (r, t, s, a = i.RequiredUnless) => (o) => (t.value !== s ? !c(o) : !0) || l(r.name, a, [
@@ -221,14 +221,14 @@ class u extends Q {
     e(this, "validate_on");
     e(this, "validated", !0);
     e(this, "value");
-    e(this, "variant", R.Filled);
-    if (c(t == null ? void 0 : t.clear_icon) || (this.clear_icon = new m(t == null ? void 0 : t.clear_icon), t == null || delete t.clear_icon), c(t == null ? void 0 : t.append_icon) || (this.append_icon = new m(t == null ? void 0 : t.append_icon), t == null || delete t.append_icon), c(t == null ? void 0 : t.prepend_icon) || (this.prepend_icon = new m(t == null ? void 0 : t.prepend_icon), t == null || delete t.prepend_icon), c(t == null ? void 0 : t.tooltip) || (this.tooltip = new K(t == null ? void 0 : t.tooltip), t == null || delete t.tooltip), Object.assign(this, t), console.log("FIELD NAME", this.name), !this.required)
-      console.log("Required not set on field.", this.required), this.required = this.rules.some((a) => a.name === "required" && a.value), console.log("Required not set on field after.", this.required);
+    e(this, "variant", N.Filled);
+    if (c(t == null ? void 0 : t.clear_icon) || (this.clear_icon = new m(t == null ? void 0 : t.clear_icon), t == null || delete t.clear_icon), c(t == null ? void 0 : t.append_icon) || (this.append_icon = new m(t == null ? void 0 : t.append_icon), t == null || delete t.append_icon), c(t == null ? void 0 : t.prepend_icon) || (this.prepend_icon = new m(t == null ? void 0 : t.prepend_icon), t == null || delete t.prepend_icon), c(t == null ? void 0 : t.tooltip) || (this.tooltip = new K(t == null ? void 0 : t.tooltip), t == null || delete t.tooltip), Object.assign(this, t), !this.required)
+      this.required = this.rules.some((a) => a.name === "required" && a.value);
     else {
       const a = this.rules.find(
         (o) => o.name === "required"
       );
-      console.log("Required set on field.", a), a ? (console.log("validation set on field.", a), a.value = !0, console.log("validation set on field after.", a)) : (this.rules.push(new Z({ name: "required", value: !0 })), console.log("validation rule added.", this.rules));
+      a ? a.value = !0 : this.rules.push(new Z({ name: "required", value: !0 }));
     }
     this.clearable && c(this.clear_icon) && (this.clear_icon = new m({ icon: "mdi-close", color: "secondary" }));
     const s = Y.getInstance();
@@ -333,7 +333,7 @@ class ue extends u {
     e(this, "counter", !1);
     e(this, "direction", g.Horizontal);
     e(this, "filter_keys", ["title"]);
-    e(this, "filter_mode", D.Intersection);
+    e(this, "filter_mode", T.Intersection);
     e(this, "hide_no_data", !1);
     e(this, "hide_selected", !1);
     e(this, "item_children", !1);
@@ -744,7 +744,7 @@ class B extends u {
     e(this, "hide_actions", !1);
     e(this, "hide_weekdays", !1);
     e(this, "hover_date");
-    e(this, "input_mode", N.Calendar);
+    e(this, "input_mode", R.Calendar);
     e(this, "input_placeholder", "dd/mm/yyyy");
     e(this, "input_text", "$vuetify.datePicker.input.placeholder");
     e(this, "keyboard_icon", "$edit");
@@ -1128,7 +1128,7 @@ class be extends u {
     e(this, "counter", !1);
     e(this, "direction", g.Horizontal);
     e(this, "filter_keys", ["title"]);
-    e(this, "filter_mode", D.Intersection);
+    e(this, "filter_mode", T.Intersection);
     e(this, "hide_no_data", !1);
     e(this, "hide_selected", !1);
     e(this, "item_children", !1);
@@ -1324,7 +1324,7 @@ class H extends u {
     e(this, "header", "");
     e(this, "height");
     e(this, "hide_actions", !1);
-    e(this, "mode", E.Normal);
+    e(this, "mode", G.Normal);
     e(this, "ok_text", "ok");
     e(this, "pad_start", !0);
     e(this, "position");
