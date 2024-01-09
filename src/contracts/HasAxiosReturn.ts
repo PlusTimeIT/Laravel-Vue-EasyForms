@@ -18,4 +18,8 @@ export interface HasAxiosReturn {
    * Should the form loader be set to true or false
    */
   loader: boolean;
+  /**
+   * Should the page redirect somewhere after processing (can be added on failure and success)
+   */
+  redirect?: string;
 }

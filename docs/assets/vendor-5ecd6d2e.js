@@ -34195,6 +34195,14 @@ class EasyForm {
     this.triggerAlert(AlertTriggers.FormReset);
     return this;
   }
+  redirect(redirect) {
+    if (!isEmpty$1(redirect)) {
+      if (redirect == "reload") {
+        window.location.reload();
+      }
+      window.location.href = redirect;
+    }
+  }
   success(text) {
     this.triggerAlert(AlertTriggers.SuccessProcessing, text);
     return this;
@@ -36147,6 +36155,7 @@ class ActionForm extends EasyForm {
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);
+        this.redirect(response?.data?.redirect);
         if (!response?.data?.result) {
           return false;
         }
@@ -36241,6 +36250,7 @@ class InputForm extends EasyForm {
         const tempResult = JSON.parse(JSON.stringify(response?.data?.data));
         if (response?.data?.result) {
           this.success(response?.data?.data);
+          this.redirect(response?.data?.redirect);
           return response?.data?.data;
         }
         if (!isEmpty$1(tempResult?.validation_errors)) {
@@ -36255,9 +36265,14 @@ class InputForm extends EasyForm {
           return false;
         }
         this.failed(response?.data?.data);
+        this.redirect(response?.data?.redirect);
         return false;
       }
     } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error)
+        message = error.message;
+      console.error("Unable to process form: " + message);
       return false;
     }
     this.failed();

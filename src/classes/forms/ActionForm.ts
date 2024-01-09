@@ -76,7 +76,7 @@ export class ActionForm extends EasyForm implements HasActionForm {
       );
       if (response.status === 200 || response.status === 204) {
         this.isLoading(response?.data?.loader ?? false);
-
+        this.redirect(response?.data?.redirect);
         if (!response?.data?.result) {
           return false;
         }

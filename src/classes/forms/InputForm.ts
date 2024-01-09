@@ -142,6 +142,8 @@ export class InputForm extends EasyForm {
         const tempResult = JSON.parse(JSON.stringify(response?.data?.data));
         if (response?.data?.result) {
           this.success(response?.data?.data);
+          // check if redirection is required
+          this.redirect(response?.data?.redirect);
           return response?.data?.data;
         }
         // check if validation errors: validation_errors
@@ -156,10 +158,15 @@ export class InputForm extends EasyForm {
           this.failedValidation();
           return false;
         }
+
         this.failed(response?.data?.data);
+        this.redirect(response?.data?.redirect);
         return false;
       }
     } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error) message = error.message;
+      console.error("Unable to process form: " + message);
       return false;
     }
     this.failed();

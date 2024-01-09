@@ -34,6 +34,7 @@ export declare class EasyForm implements HasForm {
     props(): object;
     hideAllAlerts(): this;
     reset(): this;
+    redirect(redirect: string | undefined): void;
     success(text?: any): this;
     triggerAlert(trigger: AlertTriggers, text?: string): this;
 }
