@@ -220,10 +220,14 @@ export abstract class EasyField extends GotProps implements HasField {
           parent_value: parent.value,
         };
       }
+      const data = new FormData();
+      data.set('form_name', form.name);
+      data.set('field_name', this.name);
+      
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/fields/load"),
-        ServerCall.mergeData({ form_name: form.name, field_name: this.name }, additional_load_data),
+        ServerCall.mergeData(data, form.additionalArrayToObject(additional_load_data)),
         form.axios,
       );
       if (response.status === 200 || response.status === 204) {

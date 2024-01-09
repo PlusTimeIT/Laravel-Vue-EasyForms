@@ -1,14 +1,14 @@
-var T = Object.defineProperty;
-var D = (d, r, t) => r in d ? T(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
-var e = (d, r, t) => (D(d, typeof r != "symbol" ? r + "" : r, t), t);
-import { c as l, a as F, S as M } from "./ServerCall-ec2ee9bd.js";
-import { A as I } from "./ContentTypes-f2427ff5.js";
-import { D as z } from "./ScrollStrategyTypes-59a25e2a.js";
-import { V as i, b as j, T as C, D as g, F as S, C as y, I as N, c as R, a as W } from "./ViewModeTypes-25f1573e.js";
-import { a as x, b as f, c as b, i as c, d as G, e as E, f as U, P as L, s as Y } from "./Store-ff430d87.js";
-import { V as J, C as $ } from "./ValidationRule-cec9d477.js";
-import { I as m, T as Z } from "./Icon-3ae1af1e.js";
-import { G as K } from "./GotProps-12eeba8a.js";
+var D = Object.defineProperty;
+var I = (d, r, t) => r in d ? D(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
+var e = (d, r, t) => (I(d, typeof r != "symbol" ? r + "" : r, t), t);
+import { c as l, a as j, S as O } from "./ServerCall-f623f2f3.js";
+import { A as z } from "./ContentTypes-f2427ff5.js";
+import { D as C } from "./ScrollStrategyTypes-59a25e2a.js";
+import { V as i, b as A, T as N, D as g, F as T, C as y, I as R, c as W, a as G } from "./ViewModeTypes-25f1573e.js";
+import { a as x, b as f, c as b, i as c, d as E, e as U, f as L, P as Y, s as J } from "./Store-ff430d87.js";
+import { V as Z, C as $ } from "./ValidationRule-cec9d477.js";
+import { I as m, T as K } from "./Icon-3ae1af1e.js";
+import { G as Q } from "./GotProps-12eeba8a.js";
 import { M as q } from "./Menu-abb2e0c5.js";
 import "./AxiosOptions-6a3d3f30.js";
 import "axios";
@@ -33,7 +33,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
   if (Math.floor(o) === o)
     return l(r.name, a, p);
   const w = o.toString().split(".")[1].length;
-  return G(s) ? w === t || l(r.name, a, p) : w > t && w < s || l(r.name, a, p);
+  return E(s) ? w === t || l(r.name, a, p) : w > t && w < s || l(r.name, a, p);
 }), e(n, "declined", (r, t = i.Declined) => (s) => n.declined_values.includes(s) || l(r.name, t)), e(n, "different", (r, t, s = i.Different) => (a) => a !== t.value || l(r.name, s, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") }
 ])), e(n, "digits", (r, t, s = i.Digits) => (a) => f(a) && a.toString().length === t || l(r.name, s, [{ key: ":digits", replace_with: t }])), e(n, "digits_between", (r, t, s, a = i.DigitsBetween) => (o) => {
@@ -42,7 +42,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
     { key: ":max", replace_with: s }
   ];
   return f(o) ? o > t && o < s || l(r.name, a, _) : l(r.name, a, _);
-}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((o) => !a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((o) => !a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || l(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((o) => a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => E(s) || l(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || l(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || l(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || l(r.name, t)), e(n, "max", (r, t, s) => (a) => {
+}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((o) => !a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((o) => !a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || l(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((o) => a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => U(s) || l(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || l(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || l(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || l(r.name, t)), e(n, "max", (r, t, s) => (a) => {
   const o = [{ key: ":max", replace_with: t }];
   return f(a) ? a <= t || l(r.name, s ?? i.MaxNumeric, o) : b(a) || x(a) ? a.length <= t || l(
     r.name,
@@ -56,7 +56,7 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
     s ?? (b(a) ? i.MinString : i.MinArray),
     o
   ) : l(r.name, s ?? i.MinFile, o);
-}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || l(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || l(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || l(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || l(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => U(s) || l(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || l(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || l(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (o) => (t.value === s ? !c(o) : !0) || l(r.name, a, [
+}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || l(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || l(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || l(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || l(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => L(s) || l(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || l(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || l(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (o) => (t.value === s ? !c(o) : !0) || l(r.name, a, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") },
   { key: ":value", replace_with: s }
 ])), e(n, "required_unless", (r, t, s, a = i.RequiredUnless) => (o) => (t.value !== s ? !c(o) : !0) || l(r.name, a, [
@@ -77,9 +77,9 @@ e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["y
   return !!s.match(a) || l(r.name, t);
 }), e(n, "uppercase", (r, t = i.Uppercase) => (s) => s.toUpperCase() === s || l(r.name, t)), e(n, "uuid", (r, t = i.Uuid) => (s) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(s) || l(r.name, t));
 let k = n;
-class Q {
+class X {
   static exists(r) {
-    return typeof k[r] < "u" ? !0 : F(r) in j;
+    return typeof k[r] < "u" ? !0 : j(r) in A;
   }
   // eslint-disable-next-line @typescript-eslint/ban-types
   static getFunction(r) {
@@ -87,7 +87,7 @@ class Q {
   }
   static getName(r) {
     if (this.exists(r.name))
-      return F(r.name) in j ? j[F(r.name)] : r.name;
+      return j(r.name) in A ? A[j(r.name)] : r.name;
   }
 }
 const h = class h {
@@ -156,7 +156,7 @@ e(h, "expectingArray", [
   "required_without_all"
 ]), e(h, "expectingComparison", ["different", "same"]), e(h, "expectingComparisonAndValue", ["required_if", "required_unless"]);
 let v = h;
-class u extends K {
+class u extends Q {
   /**
    * Creates an instance of EasyField.
    * @param {Partial<EasyField>} [init] - Initialization object for setting properties.
@@ -175,7 +175,7 @@ class u extends K {
     e(this, "cols", 12);
     e(this, "component", "");
     e(this, "component_type");
-    e(this, "density", z.Default);
+    e(this, "density", C.Default);
     e(this, "depends_on", "");
     e(this, "disabled", !1);
     e(this, "discriminator", "");
@@ -221,17 +221,17 @@ class u extends K {
     e(this, "validate_on");
     e(this, "validated", !0);
     e(this, "value");
-    e(this, "variant", C.Filled);
-    if (c(t == null ? void 0 : t.clear_icon) || (this.clear_icon = new m(t == null ? void 0 : t.clear_icon), t == null || delete t.clear_icon), c(t == null ? void 0 : t.append_icon) || (this.append_icon = new m(t == null ? void 0 : t.append_icon), t == null || delete t.append_icon), c(t == null ? void 0 : t.prepend_icon) || (this.prepend_icon = new m(t == null ? void 0 : t.prepend_icon), t == null || delete t.prepend_icon), c(t == null ? void 0 : t.tooltip) || (this.tooltip = new Z(t == null ? void 0 : t.tooltip), t == null || delete t.tooltip), Object.assign(this, t), !this.required)
+    e(this, "variant", N.Filled);
+    if (c(t == null ? void 0 : t.clear_icon) || (this.clear_icon = new m(t == null ? void 0 : t.clear_icon), t == null || delete t.clear_icon), c(t == null ? void 0 : t.append_icon) || (this.append_icon = new m(t == null ? void 0 : t.append_icon), t == null || delete t.append_icon), c(t == null ? void 0 : t.prepend_icon) || (this.prepend_icon = new m(t == null ? void 0 : t.prepend_icon), t == null || delete t.prepend_icon), c(t == null ? void 0 : t.tooltip) || (this.tooltip = new K(t == null ? void 0 : t.tooltip), t == null || delete t.tooltip), Object.assign(this, t), !this.required)
       this.required = this.rules.some((a) => a.name === "required" && a.value);
     else {
       const a = this.rules.find(
         (o) => o.name === "required"
       );
-      a ? a.value = !0 : this.rules.push(new J({ name: "required", value: !0 }));
+      a ? a.value = !0 : this.rules.push(new Z({ name: "required", value: !0 }));
     }
     this.clearable && c(this.clear_icon) && (this.clear_icon = new m({ icon: "mdi-close", color: "secondary" }));
-    const s = L.getInstance();
+    const s = Y.getInstance();
     s.tags_on_placeholder && !c(this.placeholder) && (this.required ? this.placeholder += s.required_placeholder_text : s.required_tags_only || (this.placeholder += s.optional_placeholder_text)), s.tags_on_labels && !c(this.label) && (this.required ? this.label += s.required_label_text : s.required_tags_only || (this.label += s.optional_label_text));
   }
   addErrorMessage(t) {
@@ -275,19 +275,21 @@ class u extends K {
     this.isLoading(!0);
     try {
       let w = {};
-      if (c(this.depends_on) || (w = {
+      c(this.depends_on) || (w = {
         parent_name: s.name,
         parent_value: s.value
-      }), a = await M.request(
-        I.Post,
-        Y.options.buildDomain("/forms/fields/load"),
-        M.mergeData({ form_name: t.name, field_name: this.name }, w),
+      });
+      const F = new FormData();
+      if (F.set("form_name", t.name), F.set("field_name", this.name), a = await O.request(
+        z.Post,
+        J.options.buildDomain("/forms/fields/load"),
+        O.mergeData(F, t.additionalArrayToObject(w)),
         t.axios
       ), a.status === 200 || a.status === 204) {
         if (this.isLoading(((o = a == null ? void 0 : a.data) == null ? void 0 : o.loader) ?? !1), !((_ = a == null ? void 0 : a.data) != null && _.result))
           return !1;
-        const A = JSON.parse(JSON.stringify((p = a == null ? void 0 : a.data) == null ? void 0 : p.data));
-        return c(A) ? !1 : A;
+        const M = JSON.parse(JSON.stringify((p = a == null ? void 0 : a.data) == null ? void 0 : p.data));
+        return c(M) ? !1 : M;
       }
     } catch {
       return !1;
@@ -314,7 +316,7 @@ class u extends K {
    * @returns {any[]} An array of validation results.
    */
   validationRules(t) {
-    return this.rules.filter((s) => Q.exists(s.name)).map((s) => k[s.name](
+    return this.rules.filter((s) => X.exists(s.name)).map((s) => k[s.name](
       ...this.buildValidation(t ?? [], s)
     ));
   }
@@ -323,7 +325,7 @@ class u extends K {
     return a.push(this), v.shouldPassFieldMessage(s.name) ? (c(s.message) || a.push(s.message), a) : (v.shouldPassAllFields(s.name) && a.push(t), v.shouldPassArray(s.name) && a.push((s.value || "").split(",")), v.shouldSplit(s.name) && (s.value.includes(",") ? a = [...a, ...(s.value || "").split(",")] : a.push(s.value)), v.shouldPass(s.name) && a.push(s.value), c(s.message) || a.push(s.message), a);
   }
 }
-class pe extends u {
+class ue extends u {
   constructor(t) {
     super(t);
     e(this, "auto_select_first", !1);
@@ -334,7 +336,7 @@ class pe extends u {
     e(this, "counter", !1);
     e(this, "direction", g.Horizontal);
     e(this, "filter_keys", ["title"]);
-    e(this, "filter_mode", S.Intersection);
+    e(this, "filter_mode", T.Intersection);
     e(this, "hide_no_data", !1);
     e(this, "hide_selected", !1);
     e(this, "item_children", !1);
@@ -443,7 +445,7 @@ class pe extends u {
     return this.items = t, this;
   }
 }
-class ue extends u {
+class he extends u {
   constructor(t) {
     super(t);
     e(this, "center_affix", !0);
@@ -515,7 +517,7 @@ class ue extends u {
     ];
   }
 }
-class he extends u {
+class me extends u {
   constructor(t) {
     super(t);
     e(this, "class", "ml-auto");
@@ -639,7 +641,7 @@ class P extends u {
     ];
   }
 }
-class O extends u {
+class S extends u {
   constructor(t) {
     super(t);
     e(this, "border", !1);
@@ -699,12 +701,12 @@ class O extends u {
     ];
   }
 }
-class me extends u {
+class fe extends u {
   constructor(t) {
     super(t);
     e(this, "component", "easy-color-picker");
     e(this, "menu", new q());
-    e(this, "picker", new O({}));
+    e(this, "picker", new S({}));
     e(this, "textfield", new P({
       name: "picker_value",
       label: "Color Picker",
@@ -714,7 +716,7 @@ class me extends u {
         size: "x-large"
       })
     }));
-    c(t == null ? void 0 : t.menu) || (this.menu = new q(t == null ? void 0 : t.menu), t == null || delete t.menu), c(t == null ? void 0 : t.picker) || (this.picker = new O(t == null ? void 0 : t.picker), t == null || delete t.picker), c(t == null ? void 0 : t.textfield) || (this.textfield = new P(t == null ? void 0 : t.textfield), t == null || delete t.textfield), Object.assign(this, t), this.discriminator = "ColorPickerField";
+    c(t == null ? void 0 : t.menu) || (this.menu = new q(t == null ? void 0 : t.menu), t == null || delete t.menu), c(t == null ? void 0 : t.picker) || (this.picker = new S(t == null ? void 0 : t.picker), t == null || delete t.picker), c(t == null ? void 0 : t.textfield) || (this.textfield = new P(t == null ? void 0 : t.textfield), t == null || delete t.textfield), Object.assign(this, t), this.discriminator = "ColorPickerField";
   }
   /**
    * Returns an array of all allowed props that are present on V-Checkbox
@@ -729,7 +731,7 @@ class me extends u {
     return ["menu", "textfield", "picker"];
   }
 }
-class X extends u {
+class B extends u {
   constructor(t) {
     super(t);
     e(this, "border", !1);
@@ -745,7 +747,7 @@ class X extends u {
     e(this, "hide_actions", !1);
     e(this, "hide_weekdays", !1);
     e(this, "hover_date");
-    e(this, "input_mode", N.Calendar);
+    e(this, "input_mode", R.Calendar);
     e(this, "input_placeholder", "dd/mm/yyyy");
     e(this, "input_text", "$vuetify.datePicker.input.placeholder");
     e(this, "keyboard_icon", "$edit");
@@ -767,7 +769,7 @@ class X extends u {
     e(this, "side");
     e(this, "tag", "div");
     e(this, "title", "$vuetify.datePicker.title");
-    e(this, "view_mode", R.Month);
+    e(this, "view_mode", W.Month);
     e(this, "width");
     Object.assign(this, t), this.discriminator = "DatePicker";
   }
@@ -824,7 +826,7 @@ class X extends u {
     ];
   }
 }
-class fe extends u {
+class ge extends u {
   constructor(t) {
     super(t);
     e(this, "component", "easy-date-picker");
@@ -832,7 +834,7 @@ class fe extends u {
       close_on_content_click: !1,
       open_delay: 0
     }));
-    e(this, "picker", new X({
+    e(this, "picker", new B({
       width: 360,
       format: "YYYY-MM-DD"
     }));
@@ -859,7 +861,7 @@ class fe extends u {
     return ["menu", "textfield", "picker"];
   }
 }
-class ge extends u {
+class xe extends u {
   constructor(t) {
     super(t);
     e(this, "accept", "image/png, image/jpeg");
@@ -947,7 +949,7 @@ class ge extends u {
     ];
   }
 }
-class xe extends u {
+class we extends u {
   constructor(t) {
     super(t);
     e(this, "component", "easy-password");
@@ -995,7 +997,7 @@ class xe extends u {
     ];
   }
 }
-class B extends u {
+class V extends u {
   constructor(t) {
     super(t);
     e(this, "component", "v-radio");
@@ -1047,7 +1049,7 @@ class B extends u {
     ];
   }
 }
-class we extends u {
+class ye extends u {
   constructor(t) {
     super(t);
     e(this, "component", "v-radio-group");
@@ -1062,7 +1064,7 @@ class we extends u {
     e(this, "type", "radio");
     if (!c(t == null ? void 0 : t.items) && x(t == null ? void 0 : t.items)) {
       for (const s of (t == null ? void 0 : t.items) ?? [])
-        this.items.push(new B(s));
+        this.items.push(new V(s));
       t == null || delete t.items;
     }
     Object.assign(this, t), this.discriminator = "RadioGroupField";
@@ -1117,7 +1119,7 @@ class we extends u {
     ];
   }
 }
-class ye extends u {
+class be extends u {
   constructor(t) {
     super(t);
     e(this, "auto_select_first", !1);
@@ -1128,7 +1130,7 @@ class ye extends u {
     e(this, "counter", !1);
     e(this, "direction", g.Horizontal);
     e(this, "filter_keys", ["title"]);
-    e(this, "filter_mode", S.Intersection);
+    e(this, "filter_mode", T.Intersection);
     e(this, "hide_no_data", !1);
     e(this, "hide_selected", !1);
     e(this, "item_children", !1);
@@ -1241,7 +1243,7 @@ class ye extends u {
     ];
   }
 }
-class be extends u {
+class ve extends u {
   constructor(t) {
     super(t);
     e(this, "center_affix", !0);
@@ -1315,7 +1317,7 @@ class be extends u {
     ];
   }
 }
-class V extends u {
+class H extends u {
   constructor(t) {
     super(t);
     e(this, "cancel_text", "cancel");
@@ -1324,7 +1326,7 @@ class V extends u {
     e(this, "header", "");
     e(this, "height");
     e(this, "hide_actions", !1);
-    e(this, "mode", W.Normal);
+    e(this, "mode", G.Normal);
     e(this, "ok_text", "ok");
     e(this, "pad_start", !0);
     e(this, "position");
@@ -1365,12 +1367,12 @@ class V extends u {
     ];
   }
 }
-class ve extends u {
+class ke extends u {
   constructor(t) {
     super(t);
     e(this, "component", "easy-time-picker");
     e(this, "menu", new q());
-    e(this, "picker", new V({
+    e(this, "picker", new H({
       width: 360
     }));
     e(this, "textfield", new P({
@@ -1396,7 +1398,7 @@ class ve extends u {
     return ["menu", "textfield", "picker"];
   }
 }
-class ke extends u {
+class Pe extends u {
   constructor(t) {
     super(t);
     e(this, "append_inner_icon");
@@ -1481,21 +1483,21 @@ class ke extends u {
   }
 }
 export {
-  pe as AutoCompleteField,
-  ue as CheckboxField,
-  he as CheckboxGroupField,
-  O as ColorPicker,
-  me as ColorPickerField,
-  X as DatePicker,
-  fe as DatePickerField,
-  ge as FileInputField,
-  xe as PasswordField,
-  B as RadioField,
-  we as RadioGroupField,
-  ye as SelectField,
-  be as SwitchField,
+  ue as AutoCompleteField,
+  he as CheckboxField,
+  me as CheckboxGroupField,
+  S as ColorPicker,
+  fe as ColorPickerField,
+  B as DatePicker,
+  ge as DatePickerField,
+  xe as FileInputField,
+  we as PasswordField,
+  V as RadioField,
+  ye as RadioGroupField,
+  be as SelectField,
+  ve as SwitchField,
   P as TextField,
-  ke as TextareaField,
-  V as TimePicker,
-  ve as TimePickerField
+  Pe as TextareaField,
+  H as TimePicker,
+  ke as TimePickerField
 };

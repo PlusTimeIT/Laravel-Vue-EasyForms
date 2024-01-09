@@ -1,13 +1,13 @@
 var S = Object.defineProperty;
 var T = (d, r, e) => r in d ? S(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
 var a = (d, r, e) => (T(d, typeof r != "symbol" ? r + "" : r, e), e);
-import { i as l, a as n, s as m, g as L } from "./Store-ff430d87.js";
+import { i as l, a as u, s as m, g as L } from "./Store-ff430d87.js";
 import { A as i } from "./AlertTriggers-18dccfa1.js";
 import { A as g, C as y } from "./ContentTypes-f2427ff5.js";
 import { F as E } from "./FormLoaderTypes-b32e44d6.js";
 import { A as J } from "./Alert-ecc48ffd.js";
 import { P as M } from "./ProgressLinear-0f32cd16.js";
-import { S as f } from "./ServerCall-ec2ee9bd.js";
+import { S as n } from "./ServerCall-f623f2f3.js";
 import { A as b } from "./AxiosOptions-6a3d3f30.js";
 import { F as C } from "./FormLoader-1edcf0ff.js";
 import { ActionIcon as w, ActionButton as x } from "./actions.js";
@@ -38,7 +38,7 @@ class P {
     a(this, "text", "");
     a(this, "title", "");
     a(this, "type", "");
-    if (!l(r == null ? void 0 : r.alerts) && n(r == null ? void 0 : r.alerts)) {
+    if (!l(r == null ? void 0 : r.alerts) && u(r == null ? void 0 : r.alerts)) {
       for (const e of (r == null ? void 0 : r.alerts) ?? [])
         this.alerts.push(new J(e));
       r == null || delete r.alerts;
@@ -65,25 +65,27 @@ class P {
   }
   additionalArrayToObject(r) {
     const e = {};
-    for (const s of r)
-      e[s.key] = s.value;
+    for (const t of r)
+      e[t.key] = t.value;
     return e;
   }
   async load() {
-    var e, s, t;
+    var t, s, o;
     let r;
     this.triggerAlert(i.BeforeLoad), this.isLoading(!0);
+    const e = new FormData();
+    e.set("form_name", this.name);
     try {
-      if (r = await f.request(
+      if (r = await n.request(
         g.Post,
         m.options.buildDomain("/forms/load"),
-        f.mergeData({ form_name: this.name }, this.additionalArrayToObject(this.additional_load_data)),
+        n.mergeData(e, this.additionalArrayToObject(this.additional_load_data)),
         this.axios
       ), r.status === 200 || r.status === 204) {
-        if (this.isLoading(((e = r == null ? void 0 : r.data) == null ? void 0 : e.loader) ?? !1), !((s = r == null ? void 0 : r.data) != null && s.result))
+        if (this.isLoading(((t = r == null ? void 0 : r.data) == null ? void 0 : t.loader) ?? !1), !((s = r == null ? void 0 : r.data) != null && s.result))
           return this.triggerAlert(i.FailedLoad), !1;
-        const o = JSON.parse(JSON.stringify((t = r == null ? void 0 : r.data) == null ? void 0 : t.data));
-        return l(o.type) ? (this.triggerAlert(i.FailedLoad), !1) : o;
+        const f = JSON.parse(JSON.stringify((o = r == null ? void 0 : r.data) == null ? void 0 : o.data));
+        return l(f.type) ? (this.triggerAlert(i.FailedLoad), !1) : f;
       }
     } catch {
       return this.triggerAlert(i.FailedLoad), !1;
@@ -111,8 +113,8 @@ class P {
     return this.triggerAlert(i.SuccessProcessing, r), this;
   }
   triggerAlert(r, e = "") {
-    const s = this.alerts.find((t) => t.trigger == r);
-    return l(s) ? this : (s == null || s.convertContents(e).show().autoClose(), this);
+    const t = this.alerts.find((s) => s.trigger == r);
+    return l(t) ? this : (t == null || t.convertContents(e).show().autoClose(), this);
   }
 }
 const k = {};
@@ -192,10 +194,10 @@ function re() {
     }
   ];
   for (const r of d)
-    se(r.name, r.field);
+    te(r.name, r.field);
 }
 re();
-function se(d, r) {
+function te(d, r) {
   k[d] = r;
 }
 function v(d) {
@@ -210,42 +212,42 @@ class Pe extends P {
     a(this, "inline", !1);
     a(this, "justify_row", _.Center);
     a(this, "type", O.Action);
-    if (!l(e == null ? void 0 : e.actions) && n(e == null ? void 0 : e.actions)) {
-      for (const s of (e == null ? void 0 : e.actions) ?? [])
-        if (s instanceof w || s instanceof x)
-          this.actions.push(s);
-        else if (!l(s.discriminator)) {
-          const t = s.discriminator;
-          this.instantiateAction(t, s);
+    if (!l(e == null ? void 0 : e.actions) && u(e == null ? void 0 : e.actions)) {
+      for (const t of (e == null ? void 0 : e.actions) ?? [])
+        if (t instanceof w || t instanceof x)
+          this.actions.push(t);
+        else if (!l(t.discriminator)) {
+          const s = t.discriminator;
+          this.instantiateAction(s, t);
         }
       e == null || delete e.actions;
     }
     Object.assign(this, e);
   }
-  instantiateAction(e, s) {
-    const t = v(e);
-    if (t) {
-      const o = new t(s);
+  instantiateAction(e, t) {
+    const s = v(e);
+    if (s) {
+      const o = new s(t);
       this.actions.push(o);
     } else
       console.error(`Class "${e}" not found in the registry.`);
   }
   data(e) {
-    const s = new FormData();
-    return s.set("form_name", this.name), s.set("form_action", e), s;
+    const t = new FormData();
+    return t.set("form_name", this.name), t.set("form_action", e), t;
   }
   async process(e) {
-    var t, o;
-    let s;
+    var s, o;
+    let t;
     this.isLoading(!0);
     try {
-      if (s = await f.request(
+      if (t = await n.request(
         g.Post,
         m.options.buildDomain("/forms/process"),
-        f.mergeData(this.data(e), this.additionalArrayToObject(this.additional_data)),
+        n.mergeData(this.data(e), this.additionalArrayToObject(this.additional_data)),
         this.axios
-      ), s.status === 200 || s.status === 204)
-        return this.isLoading(((t = s == null ? void 0 : s.data) == null ? void 0 : t.loader) ?? !1), (o = s == null ? void 0 : s.data) != null && o.result ? JSON.parse(JSON.stringify(s.data)) : !1;
+      ), t.status === 200 || t.status === 204)
+        return this.isLoading(((s = t == null ? void 0 : t.data) == null ? void 0 : s.loader) ?? !1), (o = t == null ? void 0 : t.data) != null && o.result ? JSON.parse(JSON.stringify(t.data)) : !1;
     } catch {
       return !1;
     }
@@ -264,60 +266,60 @@ class ke extends P {
     a(this, "fields", []);
     a(this, "original", []);
     a(this, "type", O.Input);
-    if (!l(e == null ? void 0 : e.fields) && n(e == null ? void 0 : e.fields)) {
-      for (const s of (e == null ? void 0 : e.fields) ?? [])
-        if (!l(s.discriminator)) {
-          const t = s.discriminator;
-          this.instantiateField(t, s);
+    if (!l(e == null ? void 0 : e.fields) && u(e == null ? void 0 : e.fields)) {
+      for (const t of (e == null ? void 0 : e.fields) ?? [])
+        if (!l(t.discriminator)) {
+          const s = t.discriminator;
+          this.instantiateField(s, t);
         }
       e == null || delete e.fields;
     }
-    if (!l(e == null ? void 0 : e.buttons) && n(e == null ? void 0 : e.buttons)) {
-      for (const s of (e == null ? void 0 : e.buttons) ?? [])
-        this.buttons.push(new ee(s));
+    if (!l(e == null ? void 0 : e.buttons) && u(e == null ? void 0 : e.buttons)) {
+      for (const t of (e == null ? void 0 : e.buttons) ?? [])
+        this.buttons.push(new ee(t));
       e == null || delete e.buttons;
     }
-    Object.assign(this, e), this.original = this.fields.map((s) => Object.assign({}, s)), this.fields = this.fields.sort((s, t) => s.order - t.order), this.buttons = this.buttons.sort((s, t) => s.order - t.order);
+    Object.assign(this, e), this.original = this.fields.map((t) => Object.assign({}, t)), this.fields = this.fields.sort((t, s) => t.order - s.order), this.buttons = this.buttons.sort((t, s) => t.order - s.order);
   }
   data() {
-    const e = this.additional_data.find((t) => t.key == "identifier" || t.key == "id"), s = new FormData();
-    return s.set("form_name", this.name), l(e) || s.set("id", e == null ? void 0 : e.value), this.fields.forEach((t) => {
-      l(t.value) || (n(t.value) ? t.value.forEach((o) => {
-        s.set(this.formatForArrayOrObject(t.name), o);
-      }) : L(t.value) ? s.set(this.formatForArrayOrObject(t.name), t.value) : s.set(t.name, t.value));
-    }), s;
+    const e = this.additional_data.find((s) => s.key == "identifier" || s.key == "id"), t = new FormData();
+    return t.set("form_name", this.name), l(e) || t.set("id", e == null ? void 0 : e.value), this.fields.forEach((s) => {
+      l(s.value) || (u(s.value) ? s.value.forEach((o) => {
+        t.set(this.formatForArrayOrObject(s.name), o);
+      }) : L(s.value) ? t.set(this.formatForArrayOrObject(s.name), s.value) : t.set(s.name, s.value));
+    }), t;
   }
   formatForArrayOrObject(e) {
     return e + "[]";
   }
-  instantiateField(e, s) {
-    const t = v(e);
-    if (t) {
-      const o = new t(s);
+  instantiateField(e, t) {
+    const s = v(e);
+    if (s) {
+      const o = new s(t);
       this.fields.push(o);
     } else
       console.error(`Class "${e}" not found in the registry.`);
   }
   async process() {
-    var s, t, o, u, p, F;
+    var t, s, o, f, p, F;
     this.processing();
     let e;
     try {
-      if (e = await f.request(
+      if (e = await n.request(
         g.Post,
         m.options.buildDomain("/forms/process"),
-        f.mergeData(this.data(), this.additionalArrayToObject(this.additional_data)),
+        n.mergeData(this.data(), this.additionalArrayToObject(this.additional_data)),
         this.axios
       ), this.processed(), e.status === 200 || e.status === 204) {
-        this.isLoading(((s = e == null ? void 0 : e.data) == null ? void 0 : s.loader) ?? !1);
-        const c = JSON.parse(JSON.stringify((t = e == null ? void 0 : e.data) == null ? void 0 : t.data));
+        this.isLoading(((t = e == null ? void 0 : e.data) == null ? void 0 : t.loader) ?? !1);
+        const c = JSON.parse(JSON.stringify((s = e == null ? void 0 : e.data) == null ? void 0 : s.data));
         if ((o = e == null ? void 0 : e.data) != null && o.result)
-          return this.success((u = e == null ? void 0 : e.data) == null ? void 0 : u.data), (p = e == null ? void 0 : e.data) == null ? void 0 : p.data;
+          return this.success((f = e == null ? void 0 : e.data) == null ? void 0 : f.data), (p = e == null ? void 0 : e.data) == null ? void 0 : p.data;
         if (!l(c == null ? void 0 : c.validation_errors)) {
           for (const A in c == null ? void 0 : c.validation_errors) {
-            const j = this.fields.find((h) => h.name === A), D = c == null ? void 0 : c.validation_errors[A];
-            for (const h of D)
-              j.addErrorMessage(h);
+            const D = this.fields.find((h) => h.name === A), j = c == null ? void 0 : c.validation_errors[A];
+            for (const h of j)
+              D.addErrorMessage(h);
           }
           return this.failedValidation(), !1;
         }
@@ -329,19 +331,19 @@ class ke extends P {
     return this.failed(), !1;
   }
   loadErrorMessages(e) {
-    let s;
-    for (s of e) {
-      const t = this.fields.find((o) => o.name === s.id);
-      for (const o of s.errorMessages)
-        this.hasErrorMessage(t, o) || t.addErrorMessage(o);
+    let t;
+    for (t of e) {
+      const s = this.fields.find((o) => o.name === t.id);
+      for (const o of t.errorMessages)
+        this.hasErrorMessage(s, o) || s.addErrorMessage(o);
     }
     return this;
   }
-  hasErrorMessage(e, s) {
+  hasErrorMessage(e, t) {
     if (typeof e.error_messages == "string")
-      return e.error_messages == s;
-    const t = e.error_messages.find((o) => o === s);
-    return !l(t);
+      return e.error_messages == t;
+    const s = e.error_messages.find((o) => o === t);
+    return !l(s);
   }
   /**
    * Provides the props for VForm
@@ -354,9 +356,9 @@ class ke extends P {
   reset() {
     super.reset();
     const e = this.original;
-    return this.fields = this.fields.map((s) => {
-      var t;
-      return s.value = (t = e.find((o) => o.name === s.name)) == null ? void 0 : t.value, s.clearErrorMessages(), s;
+    return this.fields = this.fields.map((t) => {
+      var s;
+      return t.value = (s = e.find((o) => o.name === t.name)) == null ? void 0 : s.value, t.clearErrorMessages(), t;
     }), this;
   }
 }

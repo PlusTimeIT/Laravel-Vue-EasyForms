@@ -96,11 +96,14 @@ export class EasyForm implements HasForm {
     this.triggerAlert(AlertTriggers.BeforeLoad);
     this.isLoading(true);
 
+      const data = new FormData();
+      data.set('form_name', this.name);
+
     try {
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/load"),
-        ServerCall.mergeData({ form_name: this.name }, this.additionalArrayToObject(this.additional_load_data)),
+        ServerCall.mergeData(data, this.additionalArrayToObject(this.additional_load_data)),
         this.axios,
       );
       if (response.status === 200 || response.status === 204) {

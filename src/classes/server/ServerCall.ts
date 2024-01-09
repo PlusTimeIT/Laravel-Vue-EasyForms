@@ -7,8 +7,13 @@ import { AxiosHeaders, AxiosResponse } from "axios";
  * ServerCall for making API requests
  */
 export class ServerCall {
-  static mergeData(o1: object, o2: object): object {
-    return Object.assign(o1, o2);
+
+  // take a 
+  static mergeData(data: FormData, merge: object): object {
+    for (const [key, value] of Object.entries(merge)) {
+      data.set(key, value);
+    }
+    return data;
   }
 
   static async request(

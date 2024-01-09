@@ -179,6 +179,9 @@ onBeforeMount(async () => {
   if (!isEmpty(props.form) && isEmpty(props.name)) {
     requires_api.value = false;
     loaded_form.value = props.form;
+    loaded_form.value.additional_data = props.additionalData;
+    loaded_form.value.additional_load_data = props.additionalLoadData;
+    console.log('PROPS', props.additionalData)
     isLoading(false);
     emit(LoaderEvents.Loaded, true);
   } else if (!isEmpty(props.name)) {
@@ -200,7 +203,7 @@ async function load() {
   loaded_form.value.name = props.name;
   loaded_form.value.additional_data = props.additionalData;
   loaded_form.value.additional_load_data = props.additionalLoadData;
-
+  console.log('PROPS', props.additionalData)
   const results: any = await loaded_form.value.load();
   if (!results) {
     loaded_form.value.text = "Error Loading Form - Not Found";
