@@ -89344,9 +89344,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
     });
     async function load() {
       loaded_form.value.name = props.name;
-      loaded_form.value.additional_data = props.additionalData;
       loaded_form.value.additional_load_data = props.additionalLoadData;
-      console.log("PROPS", props.additionalData);
       const results2 = await loaded_form.value.load();
       if (!results2) {
         loaded_form.value.text = "Error Loading Form - Not Found";
@@ -89359,6 +89357,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
         loaded_form.value = new ActionForm(results2);
         emit(LoaderEvents.Loaded, true);
       }
+      loaded_form.value.additional_data = props.additionalData;
+      loaded_form.value.additional_load_data = props.additionalLoadData;
       isLoading(false);
     }
     const __returned__ = { emit, props, PLUGIN_OPTIONS, requires_api, csrf, loading, loaded_form, container, has_error, has_valid_csrf_token, is_csrf_token_loading, has_alerts, form_ready, form_component, is_action, is_input, is_error, reset, cancel, processing, failed, updated, success, results, validated, isLoading, validCsrfWatcher, load, get ActionFormLoader() {

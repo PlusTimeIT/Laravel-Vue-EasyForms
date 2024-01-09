@@ -201,9 +201,8 @@ onBeforeMount(async () => {
 
 async function load() {
   loaded_form.value.name = props.name;
-  loaded_form.value.additional_data = props.additionalData;
+  //set additional load data before load.
   loaded_form.value.additional_load_data = props.additionalLoadData;
-  console.log("PROPS", props.additionalData);
   const results: any = await loaded_form.value.load();
   if (!results) {
     loaded_form.value.text = "Error Loading Form - Not Found";
@@ -216,6 +215,10 @@ async function load() {
     loaded_form.value = new ActionForm(results);
     emit(LoaderEvents.Loaded, true);
   }
+
+  // set additional data and load data again after load.
+  loaded_form.value.additional_data = props.additionalData;
+  loaded_form.value.additional_load_data = props.additionalLoadData;
   isLoading(false);
 }
 </script>

@@ -15783,9 +15783,9 @@ const zd = E({
       T(!0), !a0(p.form) && a0(p.name) ? (O.value = !1, t.value = p.form, t.value.additional_data = p.additionalData, t.value.additional_load_data = p.additionalLoadData, console.log("PROPS", p.additionalData), T(!1), z(t0.Loaded, !0)) : a0(p.name) || (O.value = !0, q.value ? await _() : i.value || await o.value.fetchNewToken() || (t.value.text = o.value.error_message, T(!1)));
     });
     async function _() {
-      t.value.name = p.name, t.value.additional_data = p.additionalData, t.value.additional_load_data = p.additionalLoadData, console.log("PROPS", p.additionalData);
+      t.value.name = p.name, t.value.additional_load_data = p.additionalLoadData;
       const y = await t.value.load();
-      y ? (y == null ? void 0 : y.type) == T1.Input ? (t.value = new S2(y), t.value.triggerAlert(Ao.AfterLoad), z(t0.Loaded, !0)) : y.type == T1.Action && (t.value = new C2(y), z(t0.Loaded, !0)) : (t.value.text = "Error Loading Form - Not Found", z(t0.Loaded, !1)), T(!1);
+      y ? (y == null ? void 0 : y.type) == T1.Input ? (t.value = new S2(y), t.value.triggerAlert(Ao.AfterLoad), z(t0.Loaded, !0)) : y.type == T1.Action && (t.value = new C2(y), z(t0.Loaded, !0)) : (t.value.text = "Error Loading Form - Not Found", z(t0.Loaded, !1)), t.value.additional_data = p.additionalData, t.value.additional_load_data = p.additionalLoadData, T(!1);
     }
     return (y, S) => {
       var K, F, U, M0;
