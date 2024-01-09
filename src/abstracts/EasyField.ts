@@ -113,16 +113,23 @@ export abstract class EasyField extends GotProps implements HasField {
     Object.assign(this, init);
 
     // If required is set to false, check if rules contain required and set it to true.
+    console.log("FIELD NAME", this.name);
     if (!this.required) {
+      console.log("Required not set on field.", this.required);
       this.required = this.rules.some((rule: ValidationRule) => rule.name === "required" && rule.value);
+      console.log("Required not set on field after.", this.required);
     } else {
       const validation: ValidationRule | undefined = this.rules.find(
         (rule: ValidationRule) => rule.name === "required",
       );
+      console.log("Required set on field.", validation);
       if (validation) {
+        console.log("validation set on field.", validation);
         validation.value = true;
+        console.log("validation set on field after.", validation);
       } else {
         this.rules.push(new ValidationRule({ name: "required", value: true }));
+        console.log("validation rule added.", this.rules);
       }
     }
 

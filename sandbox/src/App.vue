@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { InputForm, ActionForm } from "../../dist/forms";
-import { TextField } from "../../dist/fields";
+import { PasswordField, TextField } from "../../dist/fields";
 import { Button, Icon } from "../../dist/elements";
 import { ButtonTypes, FormTypes } from "../../dist/enums";
 import { ActionIcon } from "../../dist/actions";
@@ -9,30 +9,7 @@ import { ref } from "vue";
 import { Alert } from "../../src/classes/elements";
 import { AlertTriggers, AlertTypes } from "../../src/enums";
 import { ActionButton } from "../../src/classes/actions";
-
-const inputForm = new InputForm({
-  name: "TestInputForm",
-  type: FormTypes.Input,
-  fields: [
-    new TextField({
-      name: "test_basic_text_and_label",
-      placeholder: "Testing Basic Text and Label",
-      label: "Testing Basic Text and Label",
-      required: true,
-      cols: 12,
-    }),
-  ],
-  buttons: [
-    new Button({
-      type: ButtonTypes.Process,
-      text: "Process",
-      prepend_icon: new Icon({
-        color: "secondary",
-        icon: "mdi-checkmark",
-      }),
-    }),
-  ],
-});
+import { ValidationRule } from "../../src/classes/properties";
 
 interface StoryState {
   inputForm: InputForm;
@@ -94,6 +71,18 @@ const state = ref<StoryState>({
       }),
     ],
     fields: [
+      new PasswordField({
+        name: "test_basic_password_and_label",
+        placeholder: "Testing Basic Password and Label",
+        label: "Testing Basic Password and Label",
+        cols: 12,
+        rules: [
+          new ValidationRule({
+            name: "required",
+            value: false,
+          }),
+        ],
+      }),
       new TextField({
         name: "test_basic_text_and_label",
         placeholder: "Testing Basic Text and Label",
@@ -217,29 +206,7 @@ const state = ref<StoryState>({
       </VRow>
       <VRow>
         <VCol>
-          <FormLoader :form="inputForm" />
-        </VCol>
-      </VRow>
-      <VRow>
-        <VCol>
-          <FormLoader :form="state.actionFormIcons" :additional-data="[{ key: 'hello', value: 'yes' }]" />
-        </VCol>
-      </VRow>
-      <VRow>
-        <VCol>
-          <div>
-            <VCheckbox v-model="state.actionFormIcons.inline" label="Form Inline" />
-          </div>
-          <div>
-            <VColorPicker v-model="(state.actionFormIcons.actions[0] as ActionIcon).icon.color" label="Icon 1 Colour" />
-          </div>
-        </VCol>
-      </VRow>
-      <VRow>
-        <VCol>
-          <div>
-            <pre>{{ state.actionFormIcons }}</pre>
-          </div>
+          <FormLoader :form="state.inputForm" />
         </VCol>
       </VRow>
     </v-container>

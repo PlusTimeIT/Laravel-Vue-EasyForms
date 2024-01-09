@@ -2,6 +2,7 @@ import { EasyField } from "../../abstracts/EasyField";
 import { TextField } from "./TextField";
 export declare class PasswordField extends EasyField {
     component: string;
+    discriminator: string;
     lower_case: boolean;
     min_length: number | boolean;
     numbers: boolean;

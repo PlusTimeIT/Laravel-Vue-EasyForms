@@ -4,6 +4,7 @@ import { TextField } from "./TextField";
 
 export class PasswordField extends EasyField {
   component = "easy-password";
+  discriminator = "PasswordField";
   lower_case = true;
   min_length: number | boolean = 8;
   numbers = true;
@@ -26,6 +27,8 @@ export class PasswordField extends EasyField {
     if (!isEmpty(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
       delete init?.textfield;
+    } else {
+      this.textfield = new TextField(init as Partial<TextField>);
     }
 
     Object.assign(this, init);

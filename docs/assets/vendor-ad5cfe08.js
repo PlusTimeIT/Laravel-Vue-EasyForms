@@ -34602,16 +34602,23 @@ class EasyField extends GotProps {
       delete init?.tooltip;
     }
     Object.assign(this, init);
+    console.log("FIELD NAME", this.name);
     if (!this.required) {
+      console.log("Required not set on field.", this.required);
       this.required = this.rules.some((rule) => rule.name === "required" && rule.value);
+      console.log("Required not set on field after.", this.required);
     } else {
       const validation = this.rules.find(
         (rule) => rule.name === "required"
       );
+      console.log("Required set on field.", validation);
       if (validation) {
+        console.log("validation set on field.", validation);
         validation.value = true;
+        console.log("validation set on field after.", validation);
       } else {
         this.rules.push(new ValidationRule({ name: "required", value: true }));
+        console.log("validation rule added.", this.rules);
       }
     }
     if (this.clearable && isEmpty$1(this.clear_icon)) {
@@ -35454,6 +35461,7 @@ class FileInputField extends EasyField {
 
 class PasswordField extends EasyField {
   component = "easy-password";
+  discriminator = "PasswordField";
   lower_case = true;
   min_length = 8;
   numbers = true;
@@ -35474,6 +35482,8 @@ class PasswordField extends EasyField {
     if (!isEmpty$1(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
       delete init?.textfield;
+    } else {
+      this.textfield = new TextField(init);
     }
     Object.assign(this, init);
     this.textfield.type = "password";
