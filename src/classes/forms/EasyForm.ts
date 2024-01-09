@@ -162,8 +162,9 @@ export class EasyForm implements HasForm {
     if (!isEmpty(redirect) && typeof redirect === "string") {
       if (redirect == "reload") {
         window.location.reload();
+      } else {
+        window.location.href = redirect as string;
       }
-      window.location.href = redirect as string;
     }
   }
 

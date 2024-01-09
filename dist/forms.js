@@ -110,7 +110,7 @@ class v {
     return this.hideAllAlerts(), this.triggerAlert(c.FormReset), this;
   }
   redirect(r) {
-    !l(r) && typeof r == "string" && (r == "reload" && window.location.reload(), window.location.href = r);
+    !l(r) && typeof r == "string" && (r == "reload" ? window.location.reload() : window.location.href = r);
   }
   success(r) {
     return this.triggerAlert(c.SuccessProcessing, r), this;

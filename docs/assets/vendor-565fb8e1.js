@@ -34199,8 +34199,9 @@ class EasyForm {
     if (!isEmpty$1(redirect) && typeof redirect === "string") {
       if (redirect == "reload") {
         window.location.reload();
+      } else {
+        window.location.href = redirect;
       }
-      window.location.href = redirect;
     }
   }
   success(text) {
