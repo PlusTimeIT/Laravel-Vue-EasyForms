@@ -1,6 +1,6 @@
 var E = Object.defineProperty;
-var L = (d, r, e) => r in d ? E(d, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[r] = e;
-var a = (d, r, e) => (L(d, typeof r != "symbol" ? r + "" : r, e), e);
+var L = (i, r, e) => r in i ? E(i, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[r] = e;
+var a = (i, r, e) => (L(i, typeof r != "symbol" ? r + "" : r, e), e);
 import { i as l, a as h, s as F, g as J } from "./Store-ff430d87.js";
 import { A as c } from "./AlertTriggers-18dccfa1.js";
 import { A as p, C as w } from "./ContentTypes-f2427ff5.js";
@@ -110,7 +110,7 @@ class v {
     return this.hideAllAlerts(), this.triggerAlert(c.FormReset), this;
   }
   redirect(r) {
-    l(r) || (r == "reload" && window.location.reload(), window.location.href = r);
+    !l(r) && typeof r == "string" && (r == "reload" && window.location.reload(), window.location.href = r);
   }
   success(r) {
     return this.triggerAlert(c.SuccessProcessing, r), this;
@@ -122,7 +122,7 @@ class v {
 }
 const D = {};
 function se() {
-  const d = [
+  const i = [
     {
       name: "AutoCompleteField",
       field: G
@@ -196,15 +196,15 @@ function se() {
       field: re
     }
   ];
-  for (const r of d)
+  for (const r of i)
     ae(r.name, r.field);
 }
 se();
-function ae(d, r) {
-  D[d] = r;
+function ae(i, r) {
+  D[i] = r;
 }
-function j(d) {
-  return D[d];
+function j(i) {
+  return D[i];
 }
 class ve extends v {
   constructor(e) {
@@ -315,12 +315,12 @@ class De extends v {
         this.axios
       ), this.processed(), e.status === 200 || e.status === 204) {
         this.isLoading(((t = e == null ? void 0 : e.data) == null ? void 0 : t.loader) ?? !1);
-        const i = JSON.parse(JSON.stringify((s = e == null ? void 0 : e.data) == null ? void 0 : s.data));
+        const d = JSON.parse(JSON.stringify((s = e == null ? void 0 : e.data) == null ? void 0 : s.data));
         if ((o = e == null ? void 0 : e.data) != null && o.result)
           return this.success((f = e == null ? void 0 : e.data) == null ? void 0 : f.data), this.redirect((m = e == null ? void 0 : e.data) == null ? void 0 : m.redirect), (A = e == null ? void 0 : e.data) == null ? void 0 : A.data;
-        if (!l(i == null ? void 0 : i.validation_errors)) {
-          for (const u in i == null ? void 0 : i.validation_errors) {
-            const S = this.fields.find((g) => g.name === u), T = i == null ? void 0 : i.validation_errors[u];
+        if (!l(d == null ? void 0 : d.validation_errors)) {
+          for (const u in d == null ? void 0 : d.validation_errors) {
+            const S = this.fields.find((g) => g.name === u), T = d == null ? void 0 : d.validation_errors[u];
             for (const g of T)
               S.addErrorMessage(g);
           }
@@ -328,9 +328,9 @@ class De extends v {
         }
         return this.failed((y = e == null ? void 0 : e.data) == null ? void 0 : y.data), this.redirect((b = e == null ? void 0 : e.data) == null ? void 0 : b.redirect), !1;
       }
-    } catch (i) {
+    } catch (d) {
       let u = "Unknown Error";
-      return i instanceof Error && (u = i.message), console.error("Unable to process form: " + u), !1;
+      return d instanceof Error && (u = d.message), console.error("Unable to process form: " + u), !1;
     }
     return this.failed(), !1;
   }

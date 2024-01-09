@@ -159,7 +159,7 @@ export class EasyForm implements HasForm {
   }
 
   redirect(redirect: string | undefined) {
-    if (!isEmpty(redirect)) {
+    if (!isEmpty(redirect) && typeof redirect === "string") {
       if (redirect == "reload") {
         window.location.reload();
       }

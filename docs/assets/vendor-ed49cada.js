@@ -34196,7 +34196,7 @@ class EasyForm {
     return this;
   }
   redirect(redirect) {
-    if (!isEmpty$1(redirect)) {
+    if (!isEmpty$1(redirect) && typeof redirect === "string") {
       if (redirect == "reload") {
         window.location.reload();
       }
