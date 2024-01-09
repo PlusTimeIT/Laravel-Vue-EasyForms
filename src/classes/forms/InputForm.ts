@@ -76,7 +76,7 @@ export class InputForm extends EasyForm {
     this.buttons = this.buttons.sort((a, b) => a.order - b.order);
   }
 
-  data(): object {
+  data(): FormData {
     // check for additional data with key identifier
     const identifier = this.additional_data.find((data: DataItem) => data.key == "identifier" || data.key == "id");
 

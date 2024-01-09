@@ -66,7 +66,7 @@ export class ActionForm extends EasyForm implements HasActionForm {
   async process(action_identifier: string): Promise<object | boolean> {
     let response: AxiosResponse<HasAxiosReturn>;
     this.isLoading(true);
-    
+
     try {
       response = await ServerCall.request(
         AxiosCalls.Post,

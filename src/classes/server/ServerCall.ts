@@ -7,8 +7,7 @@ import { AxiosHeaders, AxiosResponse } from "axios";
  * ServerCall for making API requests
  */
 export class ServerCall {
-
-  // take a 
+  // take a
   static mergeData(data: FormData, merge: object): object {
     for (const [key, value] of Object.entries(merge)) {
       data.set(key, value);

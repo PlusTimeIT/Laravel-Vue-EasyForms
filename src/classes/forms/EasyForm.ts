@@ -96,8 +96,8 @@ export class EasyForm implements HasForm {
     this.triggerAlert(AlertTriggers.BeforeLoad);
     this.isLoading(true);
 
-      const data = new FormData();
-      data.set('form_name', this.name);
+    const data = new FormData();
+    data.set("form_name", this.name);
 
     try {
       response = await ServerCall.request(

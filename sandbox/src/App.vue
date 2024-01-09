@@ -171,8 +171,8 @@ const state = ref<StoryState>({
     actions: [
       new ActionIcon({
         name: "edit",
-        identifier: 'edit',
-        callback: 'edit',
+        identifier: "edit",
+        callback: "edit",
         icon: new Icon({
           icon: "mdi-pencil",
           color: "#7c00ec",
@@ -222,7 +222,7 @@ const state = ref<StoryState>({
       </VRow>
       <VRow>
         <VCol>
-          <FormLoader :form="state.actionFormIcons" :additional-data="[ { key: 'hello', value: 'yes' } ]" />
+          <FormLoader :form="state.actionFormIcons" :additional-data="[{ key: 'hello', value: 'yes' }]" />
         </VCol>
       </VRow>
       <VRow>

@@ -1,6 +1,6 @@
 import type HasField from "../contracts/HasField";
 import { ServerCall } from "../classes/server";
-import { ValidationRule } from "../classes/properties";
+import { ValidationRule, AdditionalData } from "../classes/properties";
 import { Icon, Tooltip } from "../classes/elements";
 import { PluginOptions } from "../classes/PluginOptions";
 import { AxiosCalls, DensityTypes, ValidationTriggers, TextVariantTypes } from "../enums";
@@ -213,17 +213,16 @@ export abstract class EasyField extends GotProps implements HasField {
     this.isLoading(true);
     try {
       // Check if additional data is required from the parent.
-      let additional_load_data: object = {};
+      const additional_load_data: AdditionalData[] = [];
       if (!isEmpty(this.depends_on)) {
-        additional_load_data = {
-          parent_name: parent.name,
-          parent_value: parent.value,
-        };
+        additional_load_data.push({ key: "parent_name", value: parent.name });
+        additional_load_data.push({ key: "parent_value", value: parent.value });
       }
+
       const data = new FormData();
-      data.set('form_name', form.name);
-      data.set('field_name', this.name);
-      
+      data.set("form_name", form.name);
+      data.set("field_name", this.name);
+
       response = await ServerCall.request(
         AxiosCalls.Post,
         store.options.buildDomain("/forms/fields/load"),

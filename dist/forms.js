@@ -7,7 +7,7 @@ import { A as g, C as y } from "./ContentTypes-f2427ff5.js";
 import { F as E } from "./FormLoaderTypes-b32e44d6.js";
 import { A as J } from "./Alert-ecc48ffd.js";
 import { P as M } from "./ProgressLinear-0f32cd16.js";
-import { S as n } from "./ServerCall-f623f2f3.js";
+import { S as n } from "./ServerCall-e0f70588.js";
 import { A as b } from "./AxiosOptions-6a3d3f30.js";
 import { F as C } from "./FormLoader-1edcf0ff.js";
 import { ActionIcon as w, ActionButton as x } from "./actions.js";
