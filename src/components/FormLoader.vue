@@ -181,7 +181,6 @@ onBeforeMount(async () => {
     loaded_form.value = props.form;
     loaded_form.value.additional_data = props.additionalData;
     loaded_form.value.additional_load_data = props.additionalLoadData;
-    console.log("PROPS", props.additionalData);
     isLoading(false);
     emit(LoaderEvents.Loaded, true);
   } else if (!isEmpty(props.name)) {

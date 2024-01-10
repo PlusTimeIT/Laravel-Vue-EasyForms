@@ -6,7 +6,7 @@ import { PluginOptions } from "../classes/PluginOptions";
 import { AxiosCalls, DensityTypes, ValidationTriggers, TextVariantTypes } from "../enums";
 import { GotProps } from "./GotProps";
 import type { FieldType } from "../types";
-import { isArray, isEmpty, store } from "../composables/utils";
+import { generate, isArray, isEmpty, store } from "../composables/utils";
 import { ValidationHelper } from "../composables/validation/ValidationHelper";
 import { ValidationHandler } from "../composables/validation/ValidationHandler";
 import { FunctionBuilder } from "../composables/validation/FunctionBuilder";
@@ -150,6 +150,10 @@ export abstract class EasyField extends GotProps implements HasField {
           this.label += PLUGIN_OPTIONS.optional_label_text;
         }
       }
+    }
+    //check if ID is set, if not generate a unique string ID based on formname and field name.
+    if (isEmpty(this.id)) {
+      this.id = "ef-" + generate(15);
     }
   }
 

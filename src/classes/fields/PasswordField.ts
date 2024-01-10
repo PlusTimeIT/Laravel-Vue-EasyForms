@@ -26,6 +26,8 @@ export class PasswordField extends EasyField {
 
     if (!isEmpty(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
+      this.textfield.rules = this.rules;
+      this.textfield.required = this.required;
       delete init?.textfield;
     } else {
       this.textfield = new TextField(init as Partial<TextField>);

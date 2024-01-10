@@ -34636,6 +34636,9 @@ class EasyField extends GotProps {
         }
       }
     }
+    if (isEmpty$1(this.id)) {
+      this.id = "ef-" + generate(15);
+    }
   }
   addErrorMessage(message) {
     this.validated = false;
@@ -35474,6 +35477,8 @@ class PasswordField extends EasyField {
     super(init);
     if (!isEmpty$1(init?.textfield)) {
       this.textfield = new TextField(init?.textfield);
+      this.textfield.rules = this.rules;
+      this.textfield.required = this.required;
       delete init?.textfield;
     } else {
       this.textfield = new TextField(init);
@@ -89345,7 +89350,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent$1({
         loaded_form.value = props.form;
         loaded_form.value.additional_data = props.additionalData;
         loaded_form.value.additional_load_data = props.additionalLoadData;
-        console.log("PROPS", props.additionalData);
         isLoading(false);
         emit(LoaderEvents.Loaded, true);
       } else if (!isEmpty$1(props.name)) {

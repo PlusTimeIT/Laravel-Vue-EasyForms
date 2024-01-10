@@ -15780,7 +15780,7 @@ const zd = E({
     I0(() => {
       k();
     }), Wz(async () => {
-      T(!0), !a0(p.form) && a0(p.name) ? (O.value = !1, t.value = p.form, t.value.additional_data = p.additionalData, t.value.additional_load_data = p.additionalLoadData, console.log("PROPS", p.additionalData), T(!1), z(t0.Loaded, !0)) : a0(p.name) || (O.value = !0, q.value ? await _() : i.value || await o.value.fetchNewToken() || (t.value.text = o.value.error_message, T(!1)));
+      T(!0), !a0(p.form) && a0(p.name) ? (O.value = !1, t.value = p.form, t.value.additional_data = p.additionalData, t.value.additional_load_data = p.additionalLoadData, T(!1), z(t0.Loaded, !0)) : a0(p.name) || (O.value = !0, q.value ? await _() : i.value || await o.value.fetchNewToken() || (t.value.text = o.value.error_message, T(!1)));
     });
     async function _() {
       t.value.name = p.name, t.value.additional_load_data = p.additionalLoadData;
