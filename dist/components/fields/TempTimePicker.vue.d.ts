@@ -24,7 +24,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     "update:modelValue": (value: any) => void;
     "click:cancel": (value: string | undefined) => void;
     "click:save": (value: string | undefined) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
     padStart: boolean;
     rollingNumbers: boolean;

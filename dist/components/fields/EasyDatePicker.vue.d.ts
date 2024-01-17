@@ -14,7 +14,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     validated: (value: string | undefined) => void;
     invalidated: (value: string | undefined) => void;
     "update:modelValue": (value: TextField | undefined) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
 }>>> & {
     onValidated?: ((value: string | undefined) => any) | undefined;

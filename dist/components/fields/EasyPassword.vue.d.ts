@@ -45,7 +45,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     "click:prependInner": (value: any) => void;
     "click:append": (value: any) => void;
     "click:appendInner": (value: any) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
     modelValue: string;
     showStrengthBar: boolean;
     viewMode: boolean;

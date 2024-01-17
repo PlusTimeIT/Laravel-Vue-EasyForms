@@ -25,7 +25,7 @@ declare const _default: import("vue").DefineComponent<{
     "click:prependInner": (...args: any[]) => void;
     "click:append": (...args: any[]) => void;
     "click:appendInner": (...args: any[]) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     field: {
         type: PropType<FieldType>;
         required: true;

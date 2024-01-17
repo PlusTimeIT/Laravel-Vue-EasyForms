@@ -9,7 +9,7 @@ declare const testWrapper: {
                     type: import("vue").PropType<import("../elements").Alert[]>;
                     required: true;
                 };
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
                 alerts: {
                     type: import("vue").PropType<import("../elements").Alert[]>;
                     required: true;
@@ -26,7 +26,7 @@ declare const testWrapper: {
                 };
             }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
                 click: (value: string | number | undefined) => void;
-            }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+            }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
                 icon: {
                     type: import("vue").PropType<import("../elements").Icon | undefined>;
                     required: true;
@@ -54,7 +54,7 @@ declare const testWrapper: {
                 };
             }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
                 click: (value: string | number | undefined) => void;
-            }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+            }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
                 button: {
                     type: import("vue").PropType<import("../elements").Button>;
                     required: true;
@@ -108,6 +108,8 @@ declare const testWrapper: {
                     toISO: (date: unknown) => string;
                     startOfDay: (date: unknown) => unknown;
                     endOfDay: (date: unknown) => unknown;
+                    startOfWeek: (date: unknown) => unknown;
+                    endOfWeek: (date: unknown) => unknown;
                     startOfMonth: (date: unknown) => unknown;
                     endOfMonth: (date: unknown) => unknown;
                     startOfYear: (date: unknown) => unknown;
@@ -119,7 +121,10 @@ declare const testWrapper: {
                     isSameMonth: (date: unknown, comparing: unknown) => boolean;
                     isValid: (date: any) => boolean;
                     isWithinRange: (date: unknown, range: [unknown, unknown]) => boolean;
+                    addMinutes: (date: unknown, amount: number) => unknown;
+                    addHours: (date: unknown, amount: number) => unknown;
                     addDays: (date: unknown, amount: number) => unknown;
+                    addWeeks: (date: unknown, amount: number) => unknown;
                     addMonths: (date: unknown, amount: number) => unknown;
                     getYear: (date: unknown) => number;
                     setYear: (date: unknown, year: number) => unknown;
@@ -129,6 +134,10 @@ declare const testWrapper: {
                     getMonth: (date: unknown) => number;
                     setMonth: (date: unknown, month: number) => unknown;
                     getNextMonth: (date: unknown) => unknown;
+                    getHours: (date: unknown) => number;
+                    setHours: (date: unknown, hours: number) => unknown;
+                    getMinutes: (date: unknown) => number;
+                    setMinutes: (date: unknown, minutes: number) => unknown;
                 };
             };
         }[];

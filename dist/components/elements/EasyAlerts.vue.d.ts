@@ -1,7 +1,7 @@
 import { Alert } from "../../classes/elements";
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<{
     alerts: Alert[];
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     alerts: Alert[];
 }>>>, {}, {}>;
 export default _default;

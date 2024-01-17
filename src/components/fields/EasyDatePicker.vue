@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import { TextField, DatePicker } from "../../classes/fields";
 import { Menu } from "../../classes/elements";
-import moment from "moment-timezone";
+import moment from "moment";
 import EasyInput from "./EasyInput.vue";
 import type { FieldType } from "../../types";
 
