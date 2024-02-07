@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { isEmpty } from "../../composables/utils";
 import { ActionIcon, ActionButton } from "../../classes/actions";
-import { ref, computed, watchEffect, onBeforeUnmount } from "vue";
+import { ref, computed, watchEffect, onBeforeUnmount, onMounted } from "vue";
 import { ActionForm } from "../../classes/forms";
 import { DataItem } from "../../classes/properties";
 import { ActionFormType } from "../../composables/validation/PropValidation";
 import { LoaderEvents } from "../../enums";
+import { loadRecaptcha } from "../../composables/Recaptcha";
 
 /**
  * ActionFormProps represents the props for the InputForm component.
@@ -38,6 +39,7 @@ const emit = defineEmits([
 ]);
 
 const loadedForm = ref<ActionForm>(props.form);
+const hasRecaptcha = computed<boolean>(() => !isEmpty(loadedForm.value.google_recaptcha_site_key));
 const formWatcher = watchEffect(() => (loadedForm.value = props.form));
 
 const filteredActions = computed<Array<ActionIcon | ActionButton>>(() => {
@@ -116,7 +118,21 @@ async function runAction(action_identifier: string) {
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
-  const results = await loadedForm.value.process(action_identifier);
+  const win = window as any;
+  let results: any;
+  if (hasRecaptcha.value && win.grecaptcha) {
+    win.grecaptcha.ready(function () {
+      win.grecaptcha
+        .execute(loadedForm.value.google_recaptcha_site_key, {
+          action: `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`,
+        })
+        .then(async function (token: any) {
+          results = await loadedForm.value.process(action_identifier, token)
+        });
+    });
+  } else {
+    results = await loadedForm.value.process(action_identifier);
+  }
   if (!results) {
     emit(LoaderEvents.Failed, true);
     isLoading(false);
@@ -130,6 +146,12 @@ async function runAction(action_identifier: string) {
 
 onBeforeUnmount(() => {
   formWatcher();
+});
+
+onMounted(() => {
+  if (hasRecaptcha.value) {
+    loadRecaptcha(loadedForm.value.google_recaptcha_site_key as string);
+  }
 });
 </script>
 

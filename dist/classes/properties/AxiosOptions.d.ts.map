@@ -1,1 +1,0 @@
-{"version":3,"file":"AxiosOptions.d.ts","sourceRoot":"","sources":["../../../src/classes/properties/AxiosOptions.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,eAAe,CAAC;AAE5C,qBAAa,YAAY;IACvB,iBAAiB,UAAS;IAC1B,OAAO,EAAE,WAAW,EAAE,CAAM;IAC5B,UAAU,UAAS;gBAEP,IAAI,CAAC,EAAE,OAAO,CAAC,YAAY,CAAC;CAGzC"}

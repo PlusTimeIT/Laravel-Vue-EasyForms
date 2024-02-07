@@ -7,6 +7,7 @@ import { SelectField, AutoCompleteField } from "../../classes/fields";
 import { isEmpty } from "../../composables/utils";
 import { EasyInput } from "../../components/fields";
 import { InputFormType } from "../../composables/validation/PropValidation";
+import { isRecaptchaLoaded, loadRecaptcha } from "../../composables/Recaptcha";
 import { FieldType } from "../../types";
 import { VForm } from "vuetify/components";
 import { onMounted } from "vue";
@@ -24,7 +25,7 @@ const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 const loadedForm = ref(props.form);
 const formReference = ref(VForm);
 const hasRecaptcha = computed<boolean>(() => !isEmpty(loadedForm.value.google_recaptcha_site_key));
-const recaptchaIsLoaded = ref<boolean>(false);
+
 
 const filteredFields = computed<FieldType[]>(() => {
   return loadedForm.value?.fields?.filter((field) => {
@@ -83,7 +84,7 @@ function getFieldByName(name: string) {
 function isButtonDisabled(button: Button) {
   console.log();
   if (button.type === ButtonTypes.Process) {
-    return hasRecaptcha.value ? (recaptchaIsLoaded.value ? processEnabled.value : true) : processEnabled.value;
+    return hasRecaptcha.value ? (isRecaptchaLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
   return button.disabled;
 }
@@ -95,29 +96,6 @@ async function handleButtonClick(button: Button) {
     resetForm();
   } else if (button.type === ButtonTypes.Cancel) {
     cancelForm();
-  }
-}
-
-function recaptchaCheck(e: any) {
-  console.log("recaptchaCheck", e);
-}
-
-function loadRecaptcha() {
-  const win = window as any;
-  win.recaptchaCheck = recaptchaCheck;
-  if (win && !win.grecaptcha) {
-    const recaptchaScript = document.createElement("script");
-    document.head.appendChild(recaptchaScript);
-    recaptchaScript.onload = () => {
-      const win = window as any;
-      win.grecaptcha.ready(() => {
-        recaptchaIsLoaded.value = true;
-      });
-    };
-    recaptchaScript.setAttribute(
-      "src",
-      `https://www.google.com/recaptcha/api.js?render=${loadedForm.value.google_recaptcha_site_key}`,
-    );
   }
 }
 
@@ -202,7 +180,7 @@ const formWatcher = watch(loadedForm.value, (updated) => {
 
 onMounted(() => {
   if (hasRecaptcha.value) {
-    loadRecaptcha();
+    loadRecaptcha(loadedForm.value.google_recaptcha_site_key as string);
   }
 });
 
