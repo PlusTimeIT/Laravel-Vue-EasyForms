@@ -14301,9 +14301,7 @@ const $p = L({
       _: 1
     }));
   }
-});
-let zu = N(!1);
-const Zp = h(() => zu.value);
+}), zu = N(!1), Zp = h(() => zu.value);
 function ju(e) {
   const t = window;
   if (t && !t.grecaptcha) {
@@ -14312,10 +14310,7 @@ function ju(e) {
       window.grecaptcha.ready(() => {
         zu.value = !0;
       });
-    }, n.setAttribute(
-      "src",
-      `https://www.google.com/recaptcha/api.js?render=${e}`
-    );
+    }, n.setAttribute("src", `https://www.google.com/recaptcha/api.js?render=${e}`);
   }
 }
 const Xp = L({

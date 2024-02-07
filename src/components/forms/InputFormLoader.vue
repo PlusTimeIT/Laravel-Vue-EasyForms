@@ -26,7 +26,6 @@ const loadedForm = ref(props.form);
 const formReference = ref(VForm);
 const hasRecaptcha = computed<boolean>(() => !isEmpty(loadedForm.value.google_recaptcha_site_key));
 
-
 const filteredFields = computed<FieldType[]>(() => {
   return loadedForm.value?.fields?.filter((field) => {
     return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));

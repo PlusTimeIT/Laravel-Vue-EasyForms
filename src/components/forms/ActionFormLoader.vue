@@ -127,7 +127,7 @@ async function runAction(action_identifier: string) {
           action: `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`,
         })
         .then(async function (token: any) {
-          results = await loadedForm.value.process(action_identifier, token)
+          results = await loadedForm.value.process(action_identifier, token);
         });
     });
   } else {

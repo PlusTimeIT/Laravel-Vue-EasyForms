@@ -6,7 +6,7 @@
 
 ![Version Badge](./badges/version.svg)
 [![License Badge](./badges/license.svg)](LICENSE)
-[![Documentation Badge](./badges/documentation.svg)](https://plustimeit.github.io/Laravel-EasyForms/)
+[![Documentation Badge](./badges/documentation.svg)](https://plustimeit.github.io/Laravel-Vue-EasyForms/#/)
 [![Made By](./badges/madeby.svg)](https://plustime.com.au)
 
 </div>
