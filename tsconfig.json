@@ -1,5 +1,14 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/env.d.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/env.d.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "*.ts"
+  ],
   "exclude": ["node_modules", "dist", "sandbox", ".histoire", "*.build-dts.json"],
   "compilerOptions": {
     "outDir": "dist",

@@ -68,6 +68,7 @@ export class PluginOptions {
   constructor(init?: Partial<PluginOptions>) {
     this.axios = axios.create({
       withCredentials: true,
+      withXSRFToken: true,
       headers: {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",

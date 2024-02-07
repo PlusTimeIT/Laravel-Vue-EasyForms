@@ -21,7 +21,7 @@ export declare class InputForm extends EasyForm {
     data(): FormData;
     formatForArrayOrObject(name: string): string;
     instantiateField(className: string, fieldData: any): void;
-    process(): Promise<object | boolean>;
+    process(recaptchaToken?: string | undefined): Promise<object | boolean>;
     loadErrorMessages(errors: ErrorMessage[]): this;
     hasErrorMessage(field: FieldType, error: string): boolean;
     /**

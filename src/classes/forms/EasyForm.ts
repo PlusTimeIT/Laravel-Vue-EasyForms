@@ -19,6 +19,7 @@ export class EasyForm implements HasForm {
   additional_load_data: AdditionalData[] = [];
   alerts: Alert[] = [];
   axios: AxiosOptions = new AxiosOptions();
+  google_recaptcha_site_key: string | null = null;
   loader: FormLoader | undefined;
   loading = true;
   name = "";

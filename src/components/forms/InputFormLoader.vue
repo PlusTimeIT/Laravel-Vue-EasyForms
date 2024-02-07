@@ -9,6 +9,7 @@ import { EasyInput } from "../../components/fields";
 import { InputFormType } from "../../composables/validation/PropValidation";
 import { FieldType } from "../../types";
 import { VForm } from "vuetify/components";
+import { onMounted } from "vue";
 
 const props = defineProps({
   form: {
@@ -22,6 +23,8 @@ const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
 
 const loadedForm = ref(props.form);
 const formReference = ref(VForm);
+const hasRecaptcha = computed<boolean>(() => !isEmpty(loadedForm.value.google_recaptcha_site_key));
+const recaptchaIsLoaded = ref<boolean>(false);
 
 const filteredFields = computed<FieldType[]>(() => {
   return loadedForm.value?.fields?.filter((field) => {
@@ -78,8 +81,9 @@ function getFieldByName(name: string) {
 }
 
 function isButtonDisabled(button: Button) {
+  console.log();
   if (button.type === ButtonTypes.Process) {
-    return processEnabled.value;
+    return hasRecaptcha.value ? (recaptchaIsLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
   return button.disabled;
 }
@@ -94,6 +98,29 @@ async function handleButtonClick(button: Button) {
   }
 }
 
+function recaptchaCheck(e: any) {
+  console.log("recaptchaCheck", e);
+}
+
+function loadRecaptcha() {
+  const win = window as any;
+  win.recaptchaCheck = recaptchaCheck;
+  if (win && !win.grecaptcha) {
+    const recaptchaScript = document.createElement("script");
+    document.head.appendChild(recaptchaScript);
+    recaptchaScript.onload = () => {
+      const win = window as any;
+      win.grecaptcha.ready(() => {
+        recaptchaIsLoaded.value = true;
+      });
+    };
+    recaptchaScript.setAttribute(
+      "src",
+      `https://www.google.com/recaptcha/api.js?render=${loadedForm.value.google_recaptcha_site_key}`,
+    );
+  }
+}
+
 async function processForm() {
   emit(LoaderEvents.Processing, true);
   isLoading(true);
@@ -102,7 +129,21 @@ async function processForm() {
   if (validation) {
     emit(LoaderEvents.Validated, true);
     formReference.value.resetValidation();
-    const results = await loadedForm.value.process();
+    const win = window as any;
+    let results: any;
+    if (hasRecaptcha.value && win.grecaptcha) {
+      win.grecaptcha.ready(function () {
+        win.grecaptcha
+          .execute(loadedForm.value.google_recaptcha_site_key, {
+            action: `process_form_${loadedForm.value.name.replace("\\", "_")}`,
+          })
+          .then(async function (token: any) {
+            results = await loadedForm.value.process(token);
+          });
+      });
+    } else {
+      results = await loadedForm.value.process();
+    }
     if (!results) {
       emit(LoaderEvents.Failed, true);
       isLoading(false);
@@ -157,6 +198,12 @@ const formEffectWatcher = watchEffect(() => {
 
 const formWatcher = watch(loadedForm.value, (updated) => {
   emit(LoaderEvents.Updated, updated);
+});
+
+onMounted(() => {
+  if (hasRecaptcha.value) {
+    loadRecaptcha();
+  }
 });
 
 onBeforeUnmount(() => {

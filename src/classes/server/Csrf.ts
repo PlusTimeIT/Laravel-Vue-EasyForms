@@ -22,7 +22,7 @@ export class Csrf {
   retry_wait = 5;
   // csrf token is set
   protected token = false;
-  // Substr of begining of token.
+  // Substr of beginning of token.
   protected prefix: string | undefined;
   // Error message to display on Token failure.
   error_message = "Error loading form. Please try refreshing the page.";

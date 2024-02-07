@@ -14,12 +14,14 @@ const emit = defineEmits<{
 }>();
 
 const button = ref<Button>(xProps.button);
-
 const has_prepend_icon = computed<boolean>(() => {
   return !isEmpty(xProps.button.prepend_icon) && !isEmpty(xProps.button?.prepend_icon?.icon);
 });
 const has_append_icon = computed<boolean>(() => {
   return !isEmpty(xProps.button.append_icon) && !isEmpty(xProps.button?.append_icon?.icon);
+});
+const is_disabled = computed<boolean>(() => {
+  return xProps.disabled ? true : button.value.disabled;
 });
 
 function click() {
@@ -34,7 +36,7 @@ function click() {
 <template>
   <VTooltip v-bind="button?.tooltip?.props()" :disabled="button?.tooltip?.disabled ?? true">
     <template #activator="{ props }">
-      <VBtn v-bind="{ ...props, ...button.props() }" :class="button.classes" :disabled="button.disabled" @click="click">
+      <VBtn v-bind="{ ...props, ...button.props() }" :class="button.classes" :disabled="is_disabled" @click="click">
         <template #prepend v-if="has_prepend_icon">
           <EasyIcon :icon="button.prepend_icon" />
         </template>

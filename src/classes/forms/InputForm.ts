@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { EasyForm } from "./EasyForm";
-import { AxiosCalls, FormTypes, JustifyRow } from "../../enums";
+import { AxiosCalls, ButtonTypes, FormTypes, JustifyRow } from "../../enums";
 import { AlignRow } from "../../enums";
 import { Button } from "../elements";
 import { DataItem } from "../properties";
@@ -125,10 +125,14 @@ export class InputForm extends EasyForm {
     }
   }
 
-  async process(): Promise<object | boolean> {
+  async process(recaptchaToken?: string | undefined): Promise<object | boolean> {
     this.processing();
     // continue to processing form.
     let response: AxiosResponse<HasAxiosReturn>;
+
+    if (!isEmpty(recaptchaToken)) {
+      this.additional_data.push({ key: "recaptcha_token", value: recaptchaToken });
+    }
     try {
       response = await ServerCall.request(
         AxiosCalls.Post,

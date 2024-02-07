@@ -14,6 +14,9 @@ export class Button extends GotProps {
   border: string | number | boolean = false;
   classes = "";
   color = "primary";
+  // data_action: string | null = null;
+  // data_callback: string | null = null;
+  // data_sitekey: string | null = null;
   density: DensityTypes = DensityTypes.Default;
   disabled = false;
   elevation: string | number = 0;
@@ -89,6 +92,9 @@ export class Button extends GotProps {
       "block",
       "border",
       "color",
+      "data_action",
+      "data_callback",
+      "data_sitekey",
       "density",
       "disabled",
       "elevation",

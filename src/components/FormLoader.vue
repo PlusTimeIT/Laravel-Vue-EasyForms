@@ -224,16 +224,16 @@ async function load() {
 
 <template>
   <VCol :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
-    <VRow v-if="has_alerts" class="easy-alerts">
-      <EasyAlerts :alerts="loaded_form?.alerts" />
-    </VRow>
     <VRow v-show="!form_ready" justify="center" class="easy-loader">
       <EasyLoader :loader="(loaded_form?.loader as FormLoader)" />
     </VRow>
-    <VRow v-show="loaded_form.show_title">
+    <VRow v-show="loaded_form.show_title" class="easy-title">
       <VCol class="pl-6 text-h3 text-h6">
         {{ loaded_form.title }}
       </VCol>
+    </VRow>
+    <VRow v-if="has_alerts" class="easy-alerts">
+      <EasyAlerts :alerts="loaded_form?.alerts" />
     </VRow>
     <VRow v-show="form_ready" no-gutters class="easy-form">
       <InputFormLoader

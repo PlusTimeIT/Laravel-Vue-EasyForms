@@ -3,7 +3,11 @@
 <div style="text-align:center">
 
 ![Laravel EasyForms Logo](/src/docs/logos/lvef-logo-large-transparent-bg.png)
-![Version Badge](https://img.shields.io/badge/version-0.4.16%40beta-blue)
+
+![Version Badge](./badges/version.svg)
+[![License Badge](./badges/license.svg)](LICENSE)
+[![Documentation Badge](./badges/documentation.svg)](https://plustimeit.github.io/Laravel-EasyForms/)
+[![Made By](./badges/madeby.svg)](https://plustime.com.au)
 
 </div>
 
