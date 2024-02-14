@@ -108,8 +108,8 @@ async function processForm() {
     const win = window as any;
     let results: any;
     if (hasRecaptcha.value && win.grecaptcha) {
-      win.grecaptcha.ready(function () {
-        win.grecaptcha
+      await win.grecaptcha.ready(async function () {
+        await win.grecaptcha
           .execute(loadedForm.value.google_recaptcha_site_key, {
             action: `process_form_${loadedForm.value.name.replace("\\", "_")}`,
           })

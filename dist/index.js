@@ -14397,8 +14397,8 @@ const Xp = L({
         a(ae.Validated, !0), i.value.resetValidation();
         const A = window;
         let T;
-        if (s.value && A.grecaptcha ? A.grecaptcha.ready(function() {
-          A.grecaptcha.execute(l.value.google_recaptcha_site_key, {
+        if (s.value && A.grecaptcha ? await A.grecaptcha.ready(async function() {
+          await A.grecaptcha.execute(l.value.google_recaptcha_site_key, {
             action: `process_form_${l.value.name.replace("\\", "_")}`
           }).then(async function(P) {
             T = await l.value.process(P);

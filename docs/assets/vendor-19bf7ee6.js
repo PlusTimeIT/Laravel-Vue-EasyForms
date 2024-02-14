@@ -88233,8 +88233,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
         const win = window;
         let results;
         if (hasRecaptcha.value && win.grecaptcha) {
-          win.grecaptcha.ready(function() {
-            win.grecaptcha.execute(loadedForm.value.google_recaptcha_site_key, {
+          await win.grecaptcha.ready(async function() {
+            await win.grecaptcha.execute(loadedForm.value.google_recaptcha_site_key, {
               action: `process_form_${loadedForm.value.name.replace("\\", "_")}`
             }).then(async function(token) {
               results = await loadedForm.value.process(token);
