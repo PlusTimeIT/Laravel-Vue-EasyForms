@@ -110,31 +110,23 @@ async function processForm() {
     console.log("captcha step 1");
     if (hasRecaptcha.value && win.grecaptcha) {
       console.log("captcha step 2");
-      await win.grecaptcha.ready(async function () {
+      win.grecaptcha.ready(async function () {
         console.log("captcha step 3");
-        await win.grecaptcha
+        win.grecaptcha
           .execute(loadedForm.value.google_recaptcha_site_key, {
             action: `process_form_${loadedForm.value.name.replace("\\", "_")}`,
           })
           .then(async function (token: any) {
             console.log("captcha step 4");
             results = await loadedForm.value.process(token);
+            processResults(results);
+            console.log("captcha results processed");
           });
-        console.log("captcha step 5");
       });
-      console.log("captcha step 6");
     } else {
       results = await loadedForm.value.process();
-    }
-    console.log("results", results);
-    if (!results) {
-      emit(LoaderEvents.Failed, true);
-      isLoading(false);
-      return;
-    }
-    emit(LoaderEvents.Successful, true);
-    if (loadedForm.value.axios.expecting_results) {
-      emit(LoaderEvents.Results, results);
+      processResults(results);
+      console.log("normal results processed");
     }
   } else {
     console.log("validation failed", validation);
@@ -142,6 +134,19 @@ async function processForm() {
     loadedForm.value.failedValidation();
     isLoading(false);
     emit(LoaderEvents.Failed, true);
+  }
+}
+
+function processResults(results: any) {
+  console.log("results", results);
+  if (!results) {
+    emit(LoaderEvents.Failed, true);
+    isLoading(false);
+    return;
+  }
+  emit(LoaderEvents.Successful, true);
+  if (loadedForm.value.axios.expecting_results) {
+    emit(LoaderEvents.Results, results);
   }
 }
 

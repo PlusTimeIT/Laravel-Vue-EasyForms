@@ -88235,29 +88235,21 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
         console.log("captcha step 1");
         if (hasRecaptcha.value && win.grecaptcha) {
           console.log("captcha step 2");
-          await win.grecaptcha.ready(async function() {
+          win.grecaptcha.ready(async function() {
             console.log("captcha step 3");
-            await win.grecaptcha.execute(loadedForm.value.google_recaptcha_site_key, {
+            win.grecaptcha.execute(loadedForm.value.google_recaptcha_site_key, {
               action: `process_form_${loadedForm.value.name.replace("\\", "_")}`
             }).then(async function(token) {
               console.log("captcha step 4");
               results = await loadedForm.value.process(token);
+              processResults(results);
+              console.log("captcha results processed");
             });
-            console.log("captcha step 5");
           });
-          console.log("captcha step 6");
         } else {
           results = await loadedForm.value.process();
-        }
-        console.log("results", results);
-        if (!results) {
-          emit(LoaderEvents.Failed, true);
-          isLoading(false);
-          return;
-        }
-        emit(LoaderEvents.Successful, true);
-        if (loadedForm.value.axios.expecting_results) {
-          emit(LoaderEvents.Results, results);
+          processResults(results);
+          console.log("normal results processed");
         }
       } else {
         console.log("validation failed", validation);
@@ -88265,6 +88257,18 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
         loadedForm.value.failedValidation();
         isLoading(false);
         emit(LoaderEvents.Failed, true);
+      }
+    }
+    function processResults(results) {
+      console.log("results", results);
+      if (!results) {
+        emit(LoaderEvents.Failed, true);
+        isLoading(false);
+        return;
+      }
+      emit(LoaderEvents.Successful, true);
+      if (loadedForm.value.axios.expecting_results) {
+        emit(LoaderEvents.Results, results);
       }
     }
     async function checkValidation() {
@@ -88311,7 +88315,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
       formWatcher();
       formEffectWatcher();
     });
-    const __returned__ = { props, emit, loadedForm, formReference, hasRecaptcha, filteredFields, formFields, hasButtons, processEnabled, confirmationValidated, confirmationRequired, confirmationCount, fieldsConfirmation, hasInvalidatedFields, getFieldByName, isButtonDisabled, handleButtonClick, processForm, checkValidation, updated, isLoading, resetForm, cancelForm, formEffectWatcher, formWatcher, get EasyInput() {
+    const __returned__ = { props, emit, loadedForm, formReference, hasRecaptcha, filteredFields, formFields, hasButtons, processEnabled, confirmationValidated, confirmationRequired, confirmationCount, fieldsConfirmation, hasInvalidatedFields, getFieldByName, isButtonDisabled, handleButtonClick, processForm, processResults, checkValidation, updated, isLoading, resetForm, cancelForm, formEffectWatcher, formWatcher, get EasyInput() {
       return EasyInput;
     }, get VForm() {
       return VForm;
