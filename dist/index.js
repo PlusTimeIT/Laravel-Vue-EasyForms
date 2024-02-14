@@ -14436,7 +14436,7 @@ const Xp = L({
       a(ae.Updated, D);
     });
     return We(() => {
-      s.value && (console.log("LOADING RECAPTCHA"), ju(l.value.google_recaptcha_site_key));
+      console.log("loadedForm.value", l.value), console.log("hasRecaptcha.value", s.value), s.value && (console.log("LOADING RECAPTCHA"), ju(l.value.google_recaptcha_site_key));
     }), Ae(() => {
       O(), C();
     }), (D, A) => {

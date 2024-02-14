@@ -177,6 +177,8 @@ const formWatcher = watch(loadedForm.value, (updated) => {
 });
 
 onMounted(() => {
+  console.log("loadedForm.value", loadedForm.value);
+  console.log("hasRecaptcha.value", hasRecaptcha.value);
   if (hasRecaptcha.value) {
     console.log("LOADING RECAPTCHA");
     loadRecaptcha(loadedForm.value.google_recaptcha_site_key as string);

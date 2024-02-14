@@ -88292,6 +88292,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
       emit(LoaderEvents.Updated, updated2);
     });
     onMounted(() => {
+      console.log("loadedForm.value", loadedForm.value);
+      console.log("hasRecaptcha.value", hasRecaptcha.value);
       if (hasRecaptcha.value) {
         console.log("LOADING RECAPTCHA");
         loadRecaptcha(loadedForm.value.google_recaptcha_site_key);
