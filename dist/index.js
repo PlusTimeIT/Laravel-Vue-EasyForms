@@ -14397,13 +14397,13 @@ const Xp = L({
         a(ae.Validated, !0), i.value.resetValidation();
         const A = window;
         let T;
-        if (s.value && A.grecaptcha ? await A.grecaptcha.ready(async function() {
-          await A.grecaptcha.execute(l.value.google_recaptcha_site_key, {
+        if (console.log("captcha step 1"), s.value && A.grecaptcha ? (console.log("captcha step 2"), await A.grecaptcha.ready(async function() {
+          console.log("captcha step 3"), await A.grecaptcha.execute(l.value.google_recaptcha_site_key, {
             action: `process_form_${l.value.name.replace("\\", "_")}`
           }).then(async function(P) {
-            T = await l.value.process(P);
-          });
-        }) : T = await l.value.process(), console.log("results", T), !T) {
+            console.log("captcha step 4"), T = await l.value.process(P);
+          }), console.log("captcha step 5");
+        }), console.log("captcha step 6")) : T = await l.value.process(), console.log("results", T), !T) {
           a(ae.Failed, !0), V(!1);
           return;
         }

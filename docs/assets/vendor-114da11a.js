@@ -88232,14 +88232,20 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
         formReference.value.resetValidation();
         const win = window;
         let results;
+        console.log("captcha step 1");
         if (hasRecaptcha.value && win.grecaptcha) {
+          console.log("captcha step 2");
           await win.grecaptcha.ready(async function() {
+            console.log("captcha step 3");
             await win.grecaptcha.execute(loadedForm.value.google_recaptcha_site_key, {
               action: `process_form_${loadedForm.value.name.replace("\\", "_")}`
             }).then(async function(token) {
+              console.log("captcha step 4");
               results = await loadedForm.value.process(token);
             });
+            console.log("captcha step 5");
           });
+          console.log("captcha step 6");
         } else {
           results = await loadedForm.value.process();
         }
