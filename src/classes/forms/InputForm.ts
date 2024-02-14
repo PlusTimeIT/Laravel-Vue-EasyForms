@@ -116,10 +116,7 @@ export class InputForm extends EasyForm {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       const instance = new classConstructor(fieldData);
-      // instance not assignable to fieldtype?
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      this.fields.push(instance);
+      this.fields.push(instance as FieldType);
     } else {
       console.error(`Class "${className}" not found in the registry.`);
     }

@@ -81,7 +81,6 @@ function getFieldByName(name: string) {
 }
 
 function isButtonDisabled(button: Button) {
-  console.log();
   if (button.type === ButtonTypes.Process) {
     return hasRecaptcha.value ? (isRecaptchaLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
@@ -179,6 +178,7 @@ const formWatcher = watch(loadedForm.value, (updated) => {
 
 onMounted(() => {
   if (hasRecaptcha.value) {
+    console.log("LOADING RECAPTCHA");
     loadRecaptcha(loadedForm.value.google_recaptcha_site_key as string);
   }
 });

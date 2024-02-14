@@ -15,5 +15,6 @@ export function loadRecaptcha(siteKey: string) {
       });
     };
     recaptchaScript.setAttribute("src", `https://www.google.com/recaptcha/api.js?render=${siteKey}`);
+    console.log("recaptchaScript", recaptchaScript);
   }
 }

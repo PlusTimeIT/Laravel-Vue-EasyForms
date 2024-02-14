@@ -88147,6 +88147,7 @@ function loadRecaptcha(siteKey) {
       });
     };
     recaptchaScript.setAttribute("src", `https://www.google.com/recaptcha/api.js?render=${siteKey}`);
+    console.log("recaptchaScript", recaptchaScript);
   }
 }
 
@@ -88208,7 +88209,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
       return loadedForm.value?.fields.find((field) => field.name === name);
     }
     function isButtonDisabled(button) {
-      console.log();
       if (button.type === ButtonTypes.Process) {
         return hasRecaptcha.value ? isRecaptchaLoaded.value ? processEnabled.value : true : processEnabled.value;
       }
@@ -88293,6 +88293,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
     });
     onMounted(() => {
       if (hasRecaptcha.value) {
+        console.log("LOADING RECAPTCHA");
         loadRecaptcha(loadedForm.value.google_recaptcha_site_key);
       }
     });
