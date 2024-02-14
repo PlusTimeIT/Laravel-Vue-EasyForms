@@ -120,6 +120,7 @@ async function processForm() {
     } else {
       results = await loadedForm.value.process();
     }
+    console.log("results", results);
     if (!results) {
       emit(LoaderEvents.Failed, true);
       isLoading(false);
@@ -130,6 +131,7 @@ async function processForm() {
       emit(LoaderEvents.Results, results);
     }
   } else {
+    console.log("validation failed", validation);
     emit(LoaderEvents.Validated, false);
     loadedForm.value.failedValidation();
     isLoading(false);
