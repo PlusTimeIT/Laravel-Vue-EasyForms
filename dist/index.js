@@ -14929,10 +14929,8 @@ const Gp = R({
     }
     async function g(m) {
       a(ve.Processing, !0), v(!0);
-      const h = await s(
-        `process_form_${l.value.name.replaceAll("\\", "_")}_${m.replaceAll("\\", "_").toLowerCase()}`
-      ), k = await l.value.process(m, h);
-      p(k);
+      const h = l.value.name.replaceAll("\\", "_").toLowerCase(), k = m.replaceAll("\\", "_").toLowerCase(), S = await s(`process_form_${h}_${k}`), _ = await l.value.process(m, S);
+      p(_);
     }
     function p(m) {
       if (!m) {

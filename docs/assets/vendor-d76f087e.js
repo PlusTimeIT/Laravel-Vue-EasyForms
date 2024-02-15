@@ -88735,9 +88735,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
     async function runAction(action_identifier) {
       emit(LoaderEvents.Processing, true);
       isLoading(true);
-      const token = await getToken(
-        `process_form_${loadedForm.value.name.replaceAll("\\", "_")}_${action_identifier.replaceAll("\\", "_").toLowerCase()}`
-      );
+      const formToGoogleAction = loadedForm.value.name.replaceAll("\\", "_").toLowerCase();
+      const actionToGoogleAction = action_identifier.replaceAll("\\", "_").toLowerCase();
+      const token = await getToken(`process_form_${formToGoogleAction}_${actionToGoogleAction}`);
       const results = await loadedForm.value.process(action_identifier, token);
       processResults(results);
     }

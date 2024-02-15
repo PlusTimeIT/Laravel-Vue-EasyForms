@@ -107,11 +107,9 @@ async function runAction(action_identifier: string) {
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
-  const token = await getToken(
-    `process_form_${loadedForm.value.name.replaceAll("\\", "_")}_${action_identifier
-      .replaceAll("\\", "_")
-      .toLowerCase()}`,
-  );
+  const formToGoogleAction = loadedForm.value.name.replaceAll("\\", "_").toLowerCase();
+  const actionToGoogleAction = action_identifier.replaceAll("\\", "_").toLowerCase();
+  const token = await getToken(`process_form_${formToGoogleAction}_${actionToGoogleAction}`);
   const results = await loadedForm.value.process(action_identifier, token);
   processResults(results);
 }
