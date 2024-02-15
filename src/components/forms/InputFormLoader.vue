@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect, watch, onBeforeUnmount } from "vue";
+import { useV3Recaptcha } from "v3-recaptcha";
 import { ButtonTypes, LoaderEvents } from "../../enums";
 import { Button } from "../../classes/elements";
 import { InputForm } from "../../classes/forms";
@@ -7,7 +8,6 @@ import { SelectField, AutoCompleteField } from "../../classes/fields";
 import { isEmpty } from "../../composables/utils";
 import { EasyInput } from "../../components/fields";
 import { InputFormType } from "../../composables/validation/PropValidation";
-import { isRecaptchaLoaded, loadRecaptcha } from "../../composables/Recaptcha";
 import { FieldType } from "../../types";
 import { VForm } from "vuetify/components";
 import { onMounted } from "vue";
@@ -21,10 +21,11 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:form", ...Object.values(LoaderEvents)]);
-
 const loadedForm = ref(props.form);
+const { recaptchaIsLoaded, hasRecaptcha, loadRecaptcha, getToken } = useV3Recaptcha(
+  loadedForm.value.google_recaptcha_site_key,
+);
 const formReference = ref(VForm);
-const hasRecaptcha = computed<boolean>(() => !isEmpty(loadedForm.value.google_recaptcha_site_key));
 
 const filteredFields = computed<FieldType[]>(() => {
   return loadedForm.value?.fields?.filter((field) => {
@@ -82,7 +83,7 @@ function getFieldByName(name: string) {
 
 function isButtonDisabled(button: Button) {
   if (button.type === ButtonTypes.Process) {
-    return hasRecaptcha.value ? (isRecaptchaLoaded.value ? processEnabled.value : true) : processEnabled.value;
+    return hasRecaptcha.value ? (recaptchaIsLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
   return button.disabled;
 }
@@ -105,31 +106,10 @@ async function processForm() {
   if (validation) {
     emit(LoaderEvents.Validated, true);
     formReference.value.resetValidation();
-    const win = window as any;
-    let results: any;
-    console.log("captcha step 1");
-    if (hasRecaptcha.value && win.grecaptcha) {
-      console.log("captcha step 2");
-      win.grecaptcha.ready(async function () {
-        console.log("captcha step 3");
-        win.grecaptcha
-          .execute(loadedForm.value.google_recaptcha_site_key, {
-            action: `process_form_${loadedForm.value.name.replace("\\", "_")}`,
-          })
-          .then(async function (token: any) {
-            console.log("captcha step 4");
-            results = await loadedForm.value.process(token);
-            processResults(results);
-            console.log("captcha results processed");
-          });
-      });
-    } else {
-      results = await loadedForm.value.process();
-      processResults(results);
-      console.log("normal results processed");
-    }
+    const token = await getToken(`process_form_${loadedForm.value.name.replace("\\", "_")}`);
+    const results = await loadedForm.value.process(token);
+    processResults(results);
   } else {
-    console.log("validation failed", validation);
     emit(LoaderEvents.Validated, false);
     loadedForm.value.failedValidation();
     isLoading(false);
@@ -138,7 +118,6 @@ async function processForm() {
 }
 
 function processResults(results: any) {
-  console.log("results", results);
   if (!results) {
     emit(LoaderEvents.Failed, true);
     isLoading(false);
@@ -190,12 +169,7 @@ const formWatcher = watch(loadedForm.value, (updated) => {
 });
 
 onMounted(() => {
-  console.log("loadedForm.value", loadedForm.value);
-  console.log("hasRecaptcha.value", hasRecaptcha.value);
-  if (hasRecaptcha.value) {
-    console.log("LOADING RECAPTCHA");
-    loadRecaptcha(loadedForm.value.google_recaptcha_site_key as string);
-  }
+  loadRecaptcha();
 });
 
 onBeforeUnmount(() => {
@@ -241,3 +215,4 @@ onBeforeUnmount(() => {
     </VCol>
   </VForm>
 </template>
+../../composables/V3Recaptcha

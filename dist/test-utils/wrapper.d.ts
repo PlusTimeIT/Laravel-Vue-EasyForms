@@ -140,6 +140,10 @@ declare const testWrapper: {
                     setMinutes: (date: unknown, minutes: number) => unknown;
                 };
             };
+            goTo: {
+                rtl: import("vue").Ref<boolean>;
+                options: Record<string, any>;
+            };
         }[];
     };
 };
