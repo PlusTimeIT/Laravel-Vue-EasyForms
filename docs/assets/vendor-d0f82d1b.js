@@ -88735,12 +88735,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent$1({
     async function runAction(action_identifier) {
       emit(LoaderEvents.Processing, true);
       isLoading(true);
-      console.log(
-        "Action Name:",
-        `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`
-      );
       const token = await getToken(
-        `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`
+        `process_form_${loadedForm.value.name.replaceAll("\\", "_")}_${action_identifier.replaceAll("\\", "_").toLowerCase()}`
       );
       const results = await loadedForm.value.process(action_identifier, token);
       processResults(results);

@@ -14928,12 +14928,9 @@ const Gp = R({
       l.value.isLoading(m), a(ve.Loading, m);
     }
     async function g(m) {
-      a(ve.Processing, !0), v(!0), console.log(
-        "Action Name:",
-        `process_form_${l.value.name.replace("\\", "_")}_${m.replace("\\", "_")}`
-      );
+      a(ve.Processing, !0), v(!0);
       const h = await s(
-        `process_form_${l.value.name.replace("\\", "_")}_${m.replace("\\", "_")}`
+        `process_form_${l.value.name.replaceAll("\\", "_")}_${m.replaceAll("\\", "_").toLowerCase()}`
       ), k = await l.value.process(m, h);
       p(k);
     }
