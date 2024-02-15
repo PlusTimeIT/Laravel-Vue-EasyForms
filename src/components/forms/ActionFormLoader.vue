@@ -107,6 +107,10 @@ async function runAction(action_identifier: string) {
   emit(LoaderEvents.Processing, true);
   isLoading(true);
   // Handle the process button click logic here
+  console.log(
+    "Action Name:",
+    `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`,
+  );
   const token = await getToken(
     `process_form_${loadedForm.value.name.replace("\\", "_")}_${action_identifier.replace("\\", "_")}`,
   );
