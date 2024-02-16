@@ -88483,6 +88483,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
     }
     function isButtonDisabled(button) {
       if (button.type === ButtonTypes.Process) {
+        console.log("hasRecaptcha", hasRecaptcha.value);
+        console.log("recaptchaIsLoaded", recaptchaIsLoaded.value);
         return hasRecaptcha.value ? recaptchaIsLoaded.value ? processEnabled.value : true : processEnabled.value;
       }
       return button.disabled;
@@ -88503,7 +88505,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
       if (validation) {
         emit(LoaderEvents.Validated, true);
         formReference.value.resetValidation();
-        const token = await getToken(`process_form_${loadedForm.value.name.replace("\\", "_")}`);
+        const token = await getToken(`process_form_${loadedForm.value.name.replace("\\", "_").toLowerCase()}`);
         const results = await loadedForm.value.process(token);
         processResults(results);
       } else {

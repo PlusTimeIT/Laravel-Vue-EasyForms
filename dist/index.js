@@ -14760,7 +14760,7 @@ const Gp = R({
       return (U = l.value) == null ? void 0 : U.fields.find((Z) => Z.name === O);
     }
     function w(O) {
-      return O.type === xa.Process ? s.value ? i.value ? g.value : !0 : g.value : O.disabled;
+      return O.type === xa.Process ? (console.log("hasRecaptcha", s.value), console.log("recaptchaIsLoaded", i.value), s.value ? i.value ? g.value : !0 : g.value) : O.disabled;
     }
     async function P(O) {
       O.type === xa.Process ? await C() : O.type === xa.Reset ? Y() : O.type === xa.Cancel && I();
@@ -14768,7 +14768,7 @@ const Gp = R({
     async function C() {
       if (a(ve.Processing, !0), E(!0), await M()) {
         a(ve.Validated, !0), c.value.resetValidation();
-        const U = await o(`process_form_${l.value.name.replace("\\", "_")}`), Z = await l.value.process(U);
+        const U = await o(`process_form_${l.value.name.replace("\\", "_").toLowerCase()}`), Z = await l.value.process(U);
         b(Z);
       } else
         a(ve.Validated, !1), l.value.failedValidation(), E(!1), a(ve.Failed, !0);

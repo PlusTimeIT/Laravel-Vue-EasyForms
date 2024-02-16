@@ -83,6 +83,9 @@ function getFieldByName(name: string) {
 
 function isButtonDisabled(button: Button) {
   if (button.type === ButtonTypes.Process) {
+    console.log("hasRecaptcha", hasRecaptcha.value);
+    console.log("recaptchaIsLoaded", recaptchaIsLoaded.value);
+
     return hasRecaptcha.value ? (recaptchaIsLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
   return button.disabled;
@@ -106,7 +109,7 @@ async function processForm() {
   if (validation) {
     emit(LoaderEvents.Validated, true);
     formReference.value.resetValidation();
-    const token = await getToken(`process_form_${loadedForm.value.name.replace("\\", "_")}`);
+    const token = await getToken(`process_form_${loadedForm.value.name.replace("\\", "_").toLowerCase()}`);
     const results = await loadedForm.value.process(token);
     processResults(results);
   } else {
