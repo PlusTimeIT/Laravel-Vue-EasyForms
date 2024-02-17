@@ -192,8 +192,8 @@ onBeforeUnmount(() => {
           :key="index_f"
         >
           <EasyInput
-            v-model:field="(filteredFields[index_f] as FieldType)"
-            :fields="(formFields as FieldType[])"
+            v-model:field="filteredFields[index_f] as FieldType"
+            :fields="formFields as FieldType[]"
             @updated="updated(field as FieldType)"
             @validated="field.validate"
             @invalidated="field.invalidate"

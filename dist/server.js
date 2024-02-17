@@ -1,43 +1,39 @@
-var o = Object.defineProperty;
-var a = (s, r, e) => r in s ? o(s, r, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[r] = e;
-var t = (s, r, e) => (a(s, typeof r != "symbol" ? r + "" : r, e), e);
-import { C as x } from "./Csrf-74d54fab.js";
-import { S } from "./ServerCall-badff9b1.js";
-import "./ContentTypes-f2427ff5.js";
-import "./Store-03b8f4cc.js";
-import "axios";
-import "./AxiosOptions-6a3d3f30.js";
-class n {
-  constructor(r) {
+var a = Object.defineProperty;
+var o = (r, s, t) => s in r ? a(r, s, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[s] = t;
+var e = (r, s, t) => (o(r, typeof s != "symbol" ? s + "" : s, t), t);
+import { C as f } from "./Csrf-CsvOxUQg.js";
+import { S as x } from "./ServerCall-Dz5gbGF4.js";
+class l {
+  constructor(s) {
     /**
      * HTTP config object
      */
-    t(this, "config", {});
+    e(this, "config", {});
     /**
      * Axios return data
      */
-    t(this, "data", null);
+    e(this, "data", null);
     /**
      * HTTP headers object
      */
-    t(this, "headers", {});
+    e(this, "headers", {});
     /**
      * HTTP request object
      */
-    t(this, "request", {});
+    e(this, "request", {});
     /**
      * HTTP status code
      */
-    t(this, "status");
+    e(this, "status");
     /**
      * HTTP Status Text
      */
-    t(this, "statusText", "");
-    Object.assign(this, r);
+    e(this, "statusText", "");
+    Object.assign(this, s);
   }
 }
 export {
-  x as Csrf,
-  S as ServerCall,
-  n as ServerResponse
+  f as Csrf,
+  x as ServerCall,
+  l as ServerResponse
 };

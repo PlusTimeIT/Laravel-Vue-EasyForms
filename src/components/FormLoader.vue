@@ -225,7 +225,7 @@ async function load() {
 <template>
   <VCol :cols="container?.cols ?? 12" :sm="container?.sm ?? 12" :md="container?.md ?? 12" :lg="container?.lg ?? 12">
     <VRow v-show="!form_ready" justify="center" class="easy-loader">
-      <EasyLoader :loader="(loaded_form?.loader as FormLoader)" />
+      <EasyLoader :loader="loaded_form?.loader as FormLoader" />
     </VRow>
     <VRow v-show="loaded_form.show_title" class="easy-title">
       <VCol class="pl-6 text-h3 text-h6">
@@ -238,7 +238,7 @@ async function load() {
     <VRow v-show="form_ready" no-gutters class="easy-form">
       <InputFormLoader
         v-if="is_input && !has_error"
-        v-model:form="(loaded_form as InputForm)"
+        v-model:form="loaded_form as InputForm"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
@@ -252,7 +252,7 @@ async function load() {
       />
       <ActionFormLoader
         v-else-if="is_action && !has_error"
-        v-model:form="(loaded_form as ActionForm)"
+        v-model:form="loaded_form as ActionForm"
         v-bind="loaded_form!.props()"
         @results="results"
         @loading="isLoading"
