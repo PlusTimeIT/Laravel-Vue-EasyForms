@@ -35,7 +35,9 @@ function hc(e) {
   return e.type === kt.Action && e instanceof Cn;
 }
 const xr = (e) => {
-  const t = window, n = B(!1), a = y(() => e != null && e !== "");
+  const t = window;
+  console.log("global", t);
+  const n = B(!1), a = y(() => e != null && e !== "");
   return {
     loadRecaptcha: () => {
       if (a.value && t && !t.grecaptcha) {
@@ -45,7 +47,8 @@ const xr = (e) => {
             n.value = !0;
           });
         }, l.setAttribute("src", `https://www.google.com/recaptcha/api.js?render=${e}`);
-      }
+      } else
+        t.grecaptcha && (n.value = !0);
     },
     getToken: async (l) => !a.value || !t.grecaptcha ? Promise.resolve(void 0) : new Promise((i) => {
       t.grecaptcha.ready(
