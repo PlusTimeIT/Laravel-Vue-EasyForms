@@ -3,7 +3,7 @@ var r = (s, a, t) => a in s ? o(s, a, { enumerable: !0, configurable: !0, writab
 var e = (s, a, t) => (r(s, typeof a != "symbol" ? a + "" : a, t), t);
 import { a as x, A as m } from "./AxiosOptions-BgVktJZx.js";
 import { C as h, V as b } from "./ValidationRule-CJjGCVh6.js";
-import { F as k } from "./FormLoader-Dtsh1f7C.js";
+import { F as k } from "./FormLoader-BdwctECh.js";
 class i {
   constructor(a) {
     e(this, "key", "");

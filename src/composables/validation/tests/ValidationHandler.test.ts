@@ -551,7 +551,8 @@ describe("Validation Functions", () => {
       expect(ValidationHandler.required(textfield, "Error Msg")(textfield.value)).toEqual("Error Msg");
     });
     test("required validation failed - invalid number", () => {
-      textfield.value = 0;
+      // 0 should return false when 0 is provided. Field should be able to handle this. Set to -1 to test.
+      textfield.value = -1;
       expect(ValidationHandler.required(textfield, "Error Msg")(textfield.value)).toEqual("Error Msg");
     });
     test("required validation failed - undefined", () => {

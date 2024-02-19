@@ -1,0 +1,1 @@
+{"version":3,"file":"AxiosHeader.d.ts","sourceRoot":"","sources":["../../../src/classes/properties/AxiosHeader.ts"],"names":[],"mappings":"AAAA,OAAO,WAAW,MAAM,6BAA6B,CAAC;AAEtD,qBAAa,WAAY,YAAW,WAAW;IAC7C,GAAG,SAAM;IACT,KAAK,EAAE,GAAG,CAAM;gBAEJ,IAAI,CAAC,EAAE,OAAO,CAAC,WAAW,CAAC;CAGxC"}
