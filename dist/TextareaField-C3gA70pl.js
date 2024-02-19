@@ -189,6 +189,7 @@ class u extends X {
     e(this, "loading", !1);
     e(this, "max_errors", 1);
     e(this, "messages", []);
+    e(this, "model_value");
     e(this, "name", "");
     e(this, "offset", 0);
     e(this, "order", 0);
@@ -1204,6 +1205,7 @@ class we extends u {
       "max_errors",
       "menu",
       "messages",
+      // "model_value",
       "multiple",
       "name",
       "no_data_text",
@@ -1232,7 +1234,7 @@ class we extends u {
       "theme",
       "transition",
       "type",
-      "value",
+      // "value",
       "validate_on",
       "variant"
     ];

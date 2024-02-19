@@ -1,11 +1,11 @@
 import { ref as B, computed as y, Fragment as pe, reactive as Ln, watchEffect as je, toRefs as br, capitalize as ra, isVNode as Ju, Comment as Qu, unref as Me, warn as nl, defineComponent as Fe, camelize as kr, h as Rn, getCurrentInstance as ec, inject as Te, provide as Ge, shallowRef as ae, createVNode as u, isRef as oa, mergeProps as W, toRef as X, Text as tc, Transition as fn, watch as J, onBeforeMount as fi, nextTick as He, onBeforeUnmount as Ae, withDirectives as Ve, resolveDirective as gt, vShow as dt, onScopeDispose as qe, effectScope as vi, toRaw as tn, resolveDynamicComponent as _r, TransitionGroup as nc, onMounted as We, readonly as mi, openBlock as ne, createBlock as ue, withCtx as N, createTextVNode as De, toDisplayString as Ze, createCommentVNode as Ie, createElementBlock as Xt, renderList as Tn, resolveComponent as Qt, createSlots as hi, onUnmounted as ac, Teleport as lc, createElementVNode as ft, normalizeClass as Sr, cloneVNode as ic, normalizeProps as ds } from "vue";
-import { I as wn, A as Cn, E as fs } from "./InputForm-Duc94HB3.js";
+import { I as wn, A as Cn, E as fs } from "./InputForm-xIZTv68a.js";
 import { i as oe, P as wr, s as Ul } from "./Store-C0lLqhvS.js";
 import { F as bt } from "./JustifyRow-lPR7z0LW.js";
 import "axios";
 import { a as xa } from "./ButtonVariantTypes-BAysDaum.js";
 import { L as ve } from "./LoaderEvents-BGnGmwoU.js";
-import { a as sc, T as rc, S as oc, A as uc } from "./TextareaField-BniQuau2.js";
+import { a as sc, T as rc, S as oc, A as uc } from "./TextareaField-C3gA70pl.js";
 import { k as cc } from "./ServerCall-Dz5gbGF4.js";
 import { a as Gt } from "./ViewModeTypes-H7WnQZe3.js";
 import { A as dc } from "./AlertTriggers-cgUyFNKK.js";
@@ -23,9 +23,7 @@ function hc(e) {
   return e.type === bt.Action && e instanceof Cn;
 }
 const xr = (e) => {
-  const t = window;
-  console.log("global", t);
-  const n = B(!1), a = y(() => e != null && e !== "");
+  const t = window, n = B(!1), a = y(() => e != null && e !== "");
   return {
     loadRecaptcha: () => {
       if (a.value && t && !t.grecaptcha) {
@@ -4193,7 +4191,7 @@ const Xd = R({
         key: 0,
         modelValue: i.value.value,
         "onUpdate:modelValue": w[5] || (w[5] = (x) => i.value.value = x)
-      }, (M = e.field) == null ? void 0 : M.props(), {
+      }, (M = i.value) == null ? void 0 : M.props(), {
         rules: o.value,
         fields: a.fields ?? [],
         "onUpdate:modelValue": m,
@@ -4206,10 +4204,10 @@ const Xd = R({
         "onClick:appendInner": w[10] || (w[10] = (x) => l("click:appendInner", x))
       }), hi({
         default: N(() => [
-          e.field.component == "v-radio-group" ? (ne(), Xt("p", af, [
-            (ne(!0), Xt(pe, null, Tn(e.field.items, (x, E) => (ne(), ue(nf, W({ key: E }, x.props()), null, 16))), 128))
+          i.value.component == "v-radio-group" ? (ne(), Xt("p", af, [
+            (ne(!0), Xt(pe, null, Tn(i.value.items, (x, E) => (ne(), ue(nf, W({ key: E }, x.props()), null, 16))), 128))
           ])) : Ie("", !0),
-          e.field.component == "h2" ? (ne(), Xt("p", lf, Ze(i.value.value), 1)) : Ie("", !0)
+          i.value.component == "h2" ? (ne(), Xt("p", lf, Ze(i.value.value), 1)) : Ie("", !0)
         ]),
         _: 2
       }, [
@@ -4219,7 +4217,7 @@ const Xd = R({
             var x;
             return [
               u(P, {
-                icon: (x = a == null ? void 0 : a.field) == null ? void 0 : x.clear_icon,
+                icon: (x = i.value) == null ? void 0 : x.clear_icon,
                 onClick: w[0] || (w[0] = (E) => l("click:clear", E))
               }, null, 8, ["icon"])
             ];
@@ -4232,7 +4230,7 @@ const Xd = R({
             var x;
             return [
               u(P, {
-                icon: (x = a == null ? void 0 : a.field) == null ? void 0 : x.append_icon,
+                icon: (x = i.value) == null ? void 0 : x.append_icon,
                 onClick: w[1] || (w[1] = (E) => l("click:append", E))
               }, null, 8, ["icon"])
             ];
@@ -4245,7 +4243,7 @@ const Xd = R({
             var x;
             return [
               u(P, {
-                icon: (x = a == null ? void 0 : a.field) == null ? void 0 : x.append_inner_icon,
+                icon: (x = i.value) == null ? void 0 : x.append_inner_icon,
                 onClick: w[2] || (w[2] = (E) => l("click:appendInner", E))
               }, null, 8, ["icon"])
             ];
@@ -4258,7 +4256,7 @@ const Xd = R({
             var x;
             return [
               u(P, {
-                icon: (x = a == null ? void 0 : a.field) == null ? void 0 : x.prepend_icon,
+                icon: (x = i.value) == null ? void 0 : x.prepend_icon,
                 onClick: w[3] || (w[3] = (E) => l("click:prepend", E))
               }, null, 8, ["icon"])
             ];
@@ -4271,7 +4269,7 @@ const Xd = R({
             var x;
             return [
               u(P, {
-                icon: (x = a == null ? void 0 : a.field) == null ? void 0 : x.prepend_inner_icon,
+                icon: (x = i.value) == null ? void 0 : x.prepend_inner_icon,
                 onClick: w[4] || (w[4] = (E) => l("click:prependInner", E))
               }, null, 8, ["icon"])
             ];
@@ -14726,7 +14724,7 @@ const Gp = R({
       return (U = l.value) == null ? void 0 : U.fields.find((Z) => Z.name === O);
     }
     function w(O) {
-      return O.type === xa.Process ? (console.log("hasRecaptcha", s.value), console.log("recaptchaIsLoaded", i.value), s.value ? i.value ? g.value : !0 : g.value) : O.disabled;
+      return O.type === xa.Process ? s.value ? i.value ? g.value : !0 : g.value : O.disabled;
     }
     async function P(O) {
       O.type === xa.Process ? await C() : O.type === xa.Reset ? Y() : O.type === xa.Cancel && I();

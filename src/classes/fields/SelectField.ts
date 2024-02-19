@@ -99,6 +99,7 @@ export class SelectField extends EasyField {
       "max_errors",
       "menu",
       "messages",
+      // "model_value",
       "multiple",
       "name",
       "no_data_text",
@@ -127,7 +128,7 @@ export class SelectField extends EasyField {
       "theme",
       "transition",
       "type",
-      "value",
+      // "value",
       "validate_on",
       "variant",
     ];

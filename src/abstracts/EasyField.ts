@@ -51,6 +51,7 @@ export abstract class EasyField extends GotProps implements HasField {
   loading = false;
   max_errors: string | number = 1;
   messages: string | string[] = [];
+  model_value: any;
   name = "";
   offset: string | number = 0;
   order = 0;
@@ -151,7 +152,7 @@ export abstract class EasyField extends GotProps implements HasField {
         }
       }
     }
-    //check if ID is set, if not generate a unique string ID based on formname and field name.
+    //check if ID is set, if not generate a unique string ID based on form name and field name.
     if (isEmpty(this.id)) {
       this.id = "ef-" + generate(15);
     }

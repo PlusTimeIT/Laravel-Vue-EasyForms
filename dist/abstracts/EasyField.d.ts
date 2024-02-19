@@ -42,6 +42,7 @@ export declare abstract class EasyField extends GotProps implements HasField {
     loading: boolean;
     max_errors: string | number;
     messages: string | string[];
+    model_value: any;
     name: string;
     offset: string | number;
     order: number;

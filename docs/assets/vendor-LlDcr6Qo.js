@@ -33218,6 +33218,7 @@ class EasyField extends GotProps {
   loading = false;
   max_errors = 1;
   messages = [];
+  model_value;
   name = "";
   offset = 0;
   order = 0;
@@ -34406,6 +34407,7 @@ class SelectField extends EasyField {
       "max_errors",
       "menu",
       "messages",
+      // "model_value",
       "multiple",
       "name",
       "no_data_text",
@@ -34434,7 +34436,7 @@ class SelectField extends EasyField {
       "theme",
       "transition",
       "type",
-      "value",
+      // "value",
       "validate_on",
       "variant"
     ];
@@ -81634,9 +81636,7 @@ function ActionFormType(value) {
 }
 
 const u = (a) => {
-  const e = window;
-  console.log("global", e);
-  const t = ref(!1), o = computed(() => a != null && a !== "");
+  const e = window, t = ref(!1), o = computed(() => a != null && a !== "");
   return {
     loadRecaptcha: () => {
       if (o.value && e && !e.grecaptcha) {
@@ -81898,7 +81898,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     modelValue: $setup.rField.value,
     "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $setup.rField.value = $event)
-  }, $props.field?.props(), {
+  }, $setup.rField?.props(), {
     rules: $setup.rules,
     fields: $setup.props.fields ?? [],
     "onUpdate:modelValue": $setup.updated,
@@ -81911,11 +81911,11 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     "onClick:appendInner": _cache[10] || (_cache[10] = ($event) => $setup.emit("click:appendInner", $event))
   }), createSlots({
     default: withCtx(() => [
-      $props.field.component == "v-radio-group" ? (openBlock(), createElementBlock("p", _hoisted_1$3, [
+      $setup.rField.component == "v-radio-group" ? (openBlock(), createElementBlock("p", _hoisted_1$3, [
         (openBlock(true), createElementBlock(
           Fragment,
           null,
-          renderList($props.field.items, (radio, i) => {
+          renderList($setup.rField.items, (radio, i) => {
             return openBlock(), createBlock(
               VRadio,
               mergeProps({ key: i }, radio.props()),
@@ -81928,7 +81928,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
           /* KEYED_FRAGMENT */
         ))
       ])) : createCommentVNode("v-if", true),
-      $props.field.component == "h2" ? (openBlock(), createElementBlock(
+      $setup.rField.component == "h2" ? (openBlock(), createElementBlock(
         "p",
         _hoisted_2$1,
         toDisplayString($setup.rField.value),
@@ -81943,7 +81943,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: "clear",
       fn: withCtx(() => [
         createVNode(_component_EasyIcon, {
-          icon: $setup.props?.field?.clear_icon,
+          icon: $setup.rField?.clear_icon,
           onClick: _cache[0] || (_cache[0] = ($event) => $setup.emit("click:clear", $event))
         }, null, 8, ["icon"])
       ]),
@@ -81953,7 +81953,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: "append",
       fn: withCtx(() => [
         createVNode(_component_EasyIcon, {
-          icon: $setup.props?.field?.append_icon,
+          icon: $setup.rField?.append_icon,
           onClick: _cache[1] || (_cache[1] = ($event) => $setup.emit("click:append", $event))
         }, null, 8, ["icon"])
       ]),
@@ -81963,7 +81963,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: "append-inner",
       fn: withCtx(() => [
         createVNode(_component_EasyIcon, {
-          icon: $setup.props?.field?.append_inner_icon,
+          icon: $setup.rField?.append_inner_icon,
           onClick: _cache[2] || (_cache[2] = ($event) => $setup.emit("click:appendInner", $event))
         }, null, 8, ["icon"])
       ]),
@@ -81973,7 +81973,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: "prepend",
       fn: withCtx(() => [
         createVNode(_component_EasyIcon, {
-          icon: $setup.props?.field?.prepend_icon,
+          icon: $setup.rField?.prepend_icon,
           onClick: _cache[3] || (_cache[3] = ($event) => $setup.emit("click:prepend", $event))
         }, null, 8, ["icon"])
       ]),
@@ -81983,7 +81983,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: "prepend-inner",
       fn: withCtx(() => [
         createVNode(_component_EasyIcon, {
-          icon: $setup.props?.field?.prepend_inner_icon,
+          icon: $setup.rField?.prepend_inner_icon,
           onClick: _cache[4] || (_cache[4] = ($event) => $setup.emit("click:prependInner", $event))
         }, null, 8, ["icon"])
       ]),
@@ -89092,8 +89092,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent$1({
     }
     function isButtonDisabled(button) {
       if (button.type === ButtonTypes.Process) {
-        console.log("hasRecaptcha", hasRecaptcha.value);
-        console.log("recaptchaIsLoaded", recaptchaIsLoaded.value);
         return hasRecaptcha.value ? recaptchaIsLoaded.value ? processEnabled.value : true : processEnabled.value;
       }
       return button.disabled;

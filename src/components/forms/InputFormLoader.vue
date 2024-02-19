@@ -83,9 +83,6 @@ function getFieldByName(name: string) {
 
 function isButtonDisabled(button: Button) {
   if (button.type === ButtonTypes.Process) {
-    console.log("hasRecaptcha", hasRecaptcha.value);
-    console.log("recaptchaIsLoaded", recaptchaIsLoaded.value);
-
     return hasRecaptcha.value ? (recaptchaIsLoaded.value ? processEnabled.value : true) : processEnabled.value;
   }
   return button.disabled;
@@ -192,8 +189,8 @@ onBeforeUnmount(() => {
           :key="index_f"
         >
           <EasyInput
-            v-model:field="filteredFields[index_f] as FieldType"
-            :fields="formFields as FieldType[]"
+            v-model:field="filteredFields[index_f]"
+            :fields="formFields"
             @updated="updated(field as FieldType)"
             @validated="field.validate"
             @invalidated="field.invalidate"
@@ -218,4 +215,3 @@ onBeforeUnmount(() => {
     </VCol>
   </VForm>
 </template>
-../../composables/V3Recaptcha

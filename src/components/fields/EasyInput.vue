@@ -113,7 +113,7 @@ onMounted(() => {
     v-if="showField"
     :is="kebabToPascal(field?.component)"
     v-model="rField.value"
-    v-bind="field?.props()"
+    v-bind="rField?.props()"
     v-maska:[maskingOptions]
     :rules="rules"
     :fields="props.fields ?? []"
@@ -127,24 +127,24 @@ onMounted(() => {
     @click:appendInner="emit('click:appendInner', $event)"
   >
     <template #clear v-if="hasClearIcon">
-      <EasyIcon :icon="props?.field?.clear_icon" @click="emit('click:clear', $event)" />
+      <EasyIcon :icon="rField?.clear_icon" @click="emit('click:clear', $event)" />
     </template>
     <template #append v-if="hasAppendIcon">
-      <EasyIcon :icon="props?.field?.append_icon" @click="emit('click:append', $event)" />
+      <EasyIcon :icon="rField?.append_icon" @click="emit('click:append', $event)" />
     </template>
     <template #append-inner v-if="hasAppendInnerIcon">
-      <EasyIcon :icon="props?.field?.append_inner_icon" @click="emit('click:appendInner', $event)" />
+      <EasyIcon :icon="rField?.append_inner_icon" @click="emit('click:appendInner', $event)" />
     </template>
     <template #prepend v-if="hasPrependIcon">
-      <EasyIcon :icon="props?.field?.prepend_icon" @click="emit('click:prepend', $event)" />
+      <EasyIcon :icon="rField?.prepend_icon" @click="emit('click:prepend', $event)" />
     </template>
     <template #prepend-inner v-if="hasPrependInnerIcon">
-      <EasyIcon :icon="props?.field?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
+      <EasyIcon :icon="rField?.prepend_inner_icon" @click="emit('click:prependInner', $event)" />
     </template>
-    <p class="mb-3 mt-4" v-if="field.component == 'v-radio-group'">
-      <VRadio v-for="(radio, i) in field.items" :key="i" v-bind="radio.props()" />
+    <p class="mb-3 mt-4" v-if="rField.component == 'v-radio-group'">
+      <VRadio v-for="(radio, i) in rField.items" :key="i" v-bind="radio.props()" />
     </p>
-    <p class="mb-3 mt-4" v-if="field.component == 'h2'">
+    <p class="mb-3 mt-4" v-if="rField.component == 'h2'">
       {{ rField.value }}
     </p>
   </component>
