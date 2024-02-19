@@ -1,78 +1,78 @@
 var D = Object.defineProperty;
-var C = (d, r, t) => r in d ? D(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
-var e = (d, r, t) => (C(d, typeof r != "symbol" ? r + "" : r, t), t);
-import { V as i, b as j, T as I, D as g, F as T, C as y, I as z, c as R, a as N } from "./ViewModeTypes-H7WnQZe3.js";
+var I = (d, r, t) => r in d ? D(d, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[r] = t;
+var e = (d, r, t) => (I(d, typeof r != "symbol" ? r + "" : r, t), t);
+import { V as i, b as j, T as C, D as g, F as T, C as y, I as z, c as R, a as N } from "./ViewModeTypes-H7WnQZe3.js";
 import { V as W, C as O } from "./ValidationRule-CJjGCVh6.js";
 import { I as m, T as G } from "./Icon-P0BPHSMm.js";
-import { a as w, c as f, d as b, i as c, e as E, f as U, g as L, P as Y, s as J } from "./Store-Bpb2Spwb.js";
+import { a as x, c as f, d as b, i as c, e as E, f as U, g as L, P as Y, s as J } from "./Store-Bpb2Spwb.js";
 import { M as q } from "./Menu-B3NG9_7c.js";
-import { c as o, a as A, g as Z, S as $ } from "./ServerCall-B0GxkGze.js";
+import { c as l, a as A, g as Z, S as $ } from "./ServerCall-B0GxkGze.js";
 import { A as K } from "./ContentTypes-DALGF8cl.js";
 import { D as Q } from "./ScrollStrategyTypes-E4DrddYC.js";
 import { G as X } from "./GotProps-2_EZ53Fa.js";
 const n = class n {
 };
-e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["yes", "on", 1, !0]), e(n, "declined_values", ["no", "off", 0, !1]), e(n, "accepted", (r, t = i.Accepted) => (s) => n.accepted_values.includes(s) || o(r.name, t)), e(n, "array", (r, t = i.Array) => (s) => w(s) || o(r.name, t)), e(n, "between", (r, t, s, a) => (l) => {
+e(n, "accepted_booleans", [!0, !1, 1, 0, "0", "1"]), e(n, "accepted_values", ["yes", "on", 1, !0]), e(n, "declined_values", ["no", "off", 0, !1]), e(n, "accepted", (r, t = i.Accepted) => (s) => n.accepted_values.includes(s) || l(r.name, t)), e(n, "array", (r, t = i.Array) => (s) => x(s) || l(r.name, t)), e(n, "between", (r, t, s, a) => (o) => {
   const _ = [
     { key: ":min", replace_with: t },
     { key: ":max", replace_with: s }
   ];
-  return f(l) ? l > t && l < s || o(r.name, a ?? i.BetweenNumeric, _) : b(l) || w(l) ? l.length > t && l.length < s || o(
+  return f(o) ? o > t && o < s || l(r.name, a ?? i.BetweenNumeric, _) : b(o) || x(o) ? o.length > t && o.length < s || l(
     r.name,
-    a ?? (b(l) ? i.BetweenString : i.BetweenArray),
+    a ?? (b(o) ? i.BetweenString : i.BetweenArray),
     _
-  ) : o(r.name, a ?? i.BetweenFile, _);
-}), e(n, "boolean", (r, t = i.Boolean) => (s) => n.accepted_booleans.includes(s) || o(r.name, t)), e(n, "confirmed", (r, t, s = i.Confirmed) => (a) => {
-  const l = t.find((_) => _.name === r.name + "_confirmation");
-  return c(l) ? o(r.name, s) : l.value === a || o(r.name, s);
-}), e(n, "decimal", (r, t, s = null, a = i.Decimal) => (l) => {
+  ) : l(r.name, a ?? i.BetweenFile, _);
+}), e(n, "boolean", (r, t = i.Boolean) => (s) => n.accepted_booleans.includes(s) || l(r.name, t)), e(n, "confirmed", (r, t, s = i.Confirmed) => (a) => {
+  const o = t.find((_) => _.name === r.name + "_confirmation");
+  return c(o) ? l(r.name, s) : o.value === a || l(r.name, s);
+}), e(n, "decimal", (r, t, s = null, a = i.Decimal) => (o) => {
   const p = [{ key: ":decimal", replace_with: s ? `between ${t} and ${s}` : t }];
-  if (Math.floor(l) === l)
-    return o(r.name, a, p);
-  const x = l.toString().split(".")[1].length;
-  return E(s) ? x === t || o(r.name, a, p) : x > t && x < s || o(r.name, a, p);
-}), e(n, "declined", (r, t = i.Declined) => (s) => n.declined_values.includes(s) || o(r.name, t)), e(n, "different", (r, t, s = i.Different) => (a) => a !== t.value || o(r.name, s, [
+  if (Math.floor(o) === o)
+    return l(r.name, a, p);
+  const w = o.toString().split(".")[1].length;
+  return E(s) ? w === t || l(r.name, a, p) : w > t && w < s || l(r.name, a, p);
+}), e(n, "declined", (r, t = i.Declined) => (s) => n.declined_values.includes(s) || l(r.name, t)), e(n, "different", (r, t, s = i.Different) => (a) => a !== t.value || l(r.name, s, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") }
-])), e(n, "digits", (r, t, s = i.Digits) => (a) => f(a) && a.toString().length === t || o(r.name, s, [{ key: ":digits", replace_with: t }])), e(n, "digits_between", (r, t, s, a = i.DigitsBetween) => (l) => {
+])), e(n, "digits", (r, t, s = i.Digits) => (a) => f(a) && a.toString().length === t || l(r.name, s, [{ key: ":digits", replace_with: t }])), e(n, "digits_between", (r, t, s, a = i.DigitsBetween) => (o) => {
   const _ = [
     { key: ":min", replace_with: t },
     { key: ":max", replace_with: s }
   ];
-  return f(l) ? l > t && l < s || o(r.name, a, _) : o(r.name, a, _);
-}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((l) => !a.endsWith(l)).length > 0 || o(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((l) => !a.startsWith(l)).length > 0 || o(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || o(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((l) => a.endsWith(l)).length > 0 || o(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => U(s) || o(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || o(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || o(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || o(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || o(r.name, t)), e(n, "max", (r, t, s) => (a) => {
-  const l = [{ key: ":max", replace_with: t }];
-  return f(a) ? a <= t || o(r.name, s ?? i.MaxNumeric, l) : b(a) || w(a) ? a.length <= t || o(
+  return f(o) ? o > t && o < s || l(r.name, a, _) : l(r.name, a, _);
+}), e(n, "doesnt_end_with", (r, t, s = i.DoesntEndWith) => (a) => t.filter((o) => !a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "doesnt_start_with", (r, t, s = i.DoesntStartWith) => (a) => t.filter((o) => !a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "email", (r, t = i.Email) => (s) => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(s) || l(r.name, t)), e(n, "ends_with", (r, t, s = i.EndsWith) => (a) => t.filter((o) => a.endsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "file", (r, t = i.File) => (s) => U(s) || l(r.name, t)), e(n, "in_array", (r, t, s = i.InArray) => (a) => t.includes(a) || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "integer", (r, t = i.Integer) => (s) => f(s) || l(r.name, t)), e(n, "is_in", (r, t, s = i.In) => (a) => t.includes(a) || l(r.name, s)), e(n, "lowercase", (r, t = i.Lowercase) => (s) => s.toLowerCase() === s || l(r.name, t)), e(n, "max", (r, t, s) => (a) => {
+  const o = [{ key: ":max", replace_with: t }];
+  return f(a) ? a <= t || l(r.name, s ?? i.MaxNumeric, o) : b(a) || x(a) ? a.length <= t || l(
     r.name,
     s ?? (b(a) ? i.MaxString : i.MaxArray),
-    l
-  ) : o(r.name, s ?? i.MaxFile, l);
-}), e(n, "max_digits", (r, t, s = i.MaxDigits) => (a) => f(a) && a.toString().length <= t || o(r.name, s, [{ key: ":max", replace_with: t }])), e(n, "min", (r, t, s) => (a) => {
-  const l = [{ key: ":min", replace_with: t }];
-  return f(a) ? a >= t || o(r.name, s ?? i.MinNumeric, l) : b(a) || w(a) ? a.length >= t || o(
+    o
+  ) : l(r.name, s ?? i.MaxFile, o);
+}), e(n, "max_digits", (r, t, s = i.MaxDigits) => (a) => f(a) && a.toString().length <= t || l(r.name, s, [{ key: ":max", replace_with: t }])), e(n, "min", (r, t, s) => (a) => {
+  const o = [{ key: ":min", replace_with: t }];
+  return f(a) ? a >= t || l(r.name, s ?? i.MinNumeric, o) : b(a) || x(a) ? a.length >= t || l(
     r.name,
     s ?? (b(a) ? i.MinString : i.MinArray),
-    l
-  ) : o(r.name, s ?? i.MinFile, l);
-}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || o(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || o(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || o(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || o(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => L(s) || o(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || o(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || o(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (l) => (t.value === s ? !c(l) : !0) || o(r.name, a, [
+    o
+  ) : l(r.name, s ?? i.MinFile, o);
+}), e(n, "min_digits", (r, t, s = i.MinDigits) => (a) => f(a) && a.toString().length >= t || l(r.name, s, [{ key: ":min", replace_with: t }])), e(n, "multiple_of", (r, t, s = i.MultipleOf) => (a) => f(a) && a % t === 0 || l(r.name, s, [{ key: ":value", replace_with: t }])), e(n, "not_in", (r, t, s = i.NotIn) => (a) => !t.includes(a) || l(r.name, s)), e(n, "not_regex", (r, t, s = i.NotRegex) => (a) => !t.test(a) || l(r.name, s)), e(n, "numeric", (r, t = i.Numeric) => (s) => L(s) || l(r.name, t)), e(n, "regex", (r, t, s = i.Regex) => (a) => t.test(a) || l(r.name, s)), e(n, "required", (r, t = i.Required) => (s) => !c(s) || l(r.name, t)), e(n, "required_if", (r, t, s, a = i.RequiredIf) => (o) => (t.value === s ? !c(o) : !0) || l(r.name, a, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") },
   { key: ":value", replace_with: s }
-])), e(n, "required_unless", (r, t, s, a = i.RequiredUnless) => (l) => (t.value !== s ? !c(l) : !0) || o(r.name, a, [
+])), e(n, "required_unless", (r, t, s, a = i.RequiredUnless) => (o) => (t.value !== s ? !c(o) : !0) || l(r.name, a, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") },
-  { key: ":values", replace_with: w(s) ? s.join(",") : s }
-])), e(n, "required_with", (r, t, s, a = i.RequiredWith) => (l) => {
+  { key: ":values", replace_with: x(s) ? s.join(",") : s }
+])), e(n, "required_with", (r, t, s, a = i.RequiredWith) => (o) => {
   const _ = t.filter((p) => s.includes(p.name) && !c(p.value));
-  return !c(_) && !c(l) || o(r.name, a, [
-    { key: ":values", replace_with: w(s) ? s.join(",") : s }
+  return !c(_) && !c(o) || l(r.name, a, [
+    { key: ":values", replace_with: x(s) ? s.join(",") : s }
   ]);
-}), e(n, "required_with_all", (r, t, s, a = i.RequiredWithAll) => (l) => t.filter((p) => s.includes(p.name) && !c(p.value)).length === s.length && !c(l) || o(r.name, a, [{ key: ":values", replace_with: s.join(",") }])), e(n, "required_without", (r, t, s, a = i.RequiredWithout) => (l) => {
+}), e(n, "required_with_all", (r, t, s, a = i.RequiredWithAll) => (o) => t.filter((p) => s.includes(p.name) && !c(p.value)).length === s.length && !c(o) || l(r.name, a, [{ key: ":values", replace_with: s.join(",") }])), e(n, "required_without", (r, t, s, a = i.RequiredWithout) => (o) => {
   const _ = t.filter((p) => s.includes(p.name) && c(p.value));
-  return !c(_) && !c(l) || o(r.name, a, [{ key: ":values", replace_with: s.join(",") }]);
-}), e(n, "required_without_all", (r, t, s, a = i.RequiredWithoutAll) => (l) => t.filter((p) => s.includes(p.name) && c(p.value)).length === s.length && !c(l) || o(r.name, a, [{ key: ":values", replace_with: s.join(",") }])), e(n, "same", (r, t, s = i.Same) => (a) => a === t.value || o(r.name, s, [
+  return !c(_) && !c(o) || l(r.name, a, [{ key: ":values", replace_with: s.join(",") }]);
+}), e(n, "required_without_all", (r, t, s, a = i.RequiredWithoutAll) => (o) => t.filter((p) => s.includes(p.name) && c(p.value)).length === s.length && !c(o) || l(r.name, a, [{ key: ":values", replace_with: s.join(",") }])), e(n, "same", (r, t, s = i.Same) => (a) => a === t.value || l(r.name, s, [
   { key: ":other", replace_with: t.name.replaceAll("_", " ").replaceAll("-", " ") }
-])), e(n, "starts_with", (r, t, s = i.StartsWith) => (a) => t.filter((l) => a.startsWith(l)).length > 0 || o(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "string", (r, t = i.String) => (s) => b(s) || o(r.name, t)), e(n, "ulid", (r, t = i.Ulid) => (s) => {
+])), e(n, "starts_with", (r, t, s = i.StartsWith) => (a) => t.filter((o) => a.startsWith(o)).length > 0 || l(r.name, s, [{ key: ":values", replace_with: t.join(",") }])), e(n, "string", (r, t = i.String) => (s) => b(s) || l(r.name, t)), e(n, "ulid", (r, t = i.Ulid) => (s) => {
   const a = /^[0-7][0-9A-HJKMNP-TV-Z]{25}$/;
-  return !!s.match(a) || o(r.name, t);
-}), e(n, "uppercase", (r, t = i.Uppercase) => (s) => s.toUpperCase() === s || o(r.name, t)), e(n, "uuid", (r, t = i.Uuid) => (s) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(s) || o(r.name, t));
+  return !!s.match(a) || l(r.name, t);
+}), e(n, "uppercase", (r, t = i.Uppercase) => (s) => s.toUpperCase() === s || l(r.name, t)), e(n, "uuid", (r, t = i.Uuid) => (s) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(s) || l(r.name, t));
 let P = n;
 class B {
   static exists(r) {
@@ -219,12 +219,12 @@ class u extends X {
     e(this, "validate_on");
     e(this, "validated", !0);
     e(this, "value");
-    e(this, "variant", I.Filled);
+    e(this, "variant", C.Filled);
     if (c(t == null ? void 0 : t.clear_icon) || (this.clear_icon = new m(t == null ? void 0 : t.clear_icon), t == null || delete t.clear_icon), c(t == null ? void 0 : t.append_icon) || (this.append_icon = new m(t == null ? void 0 : t.append_icon), t == null || delete t.append_icon), c(t == null ? void 0 : t.prepend_icon) || (this.prepend_icon = new m(t == null ? void 0 : t.prepend_icon), t == null || delete t.prepend_icon), c(t == null ? void 0 : t.tooltip) || (this.tooltip = new G(t == null ? void 0 : t.tooltip), t == null || delete t.tooltip), Object.assign(this, t), !this.required)
       this.required = this.rules.some((a) => a.name === "required" && a.value);
     else {
       const a = this.rules.find(
-        (l) => l.name === "required"
+        (o) => o.name === "required"
       );
       a ? a.value = !0 : this.rules.push(new W({ name: "required", value: !0 }));
     }
@@ -233,7 +233,7 @@ class u extends X {
     s.tags_on_placeholder && !c(this.placeholder) && (this.required ? this.placeholder += s.required_placeholder_text : s.required_tags_only || (this.placeholder += s.optional_placeholder_text)), s.tags_on_labels && !c(this.label) && (this.required ? this.label += s.required_label_text : s.required_tags_only || (this.label += s.optional_label_text)), c(this.id) && (this.id = "ef-" + Z(15));
   }
   addErrorMessage(t) {
-    return this.validated = !1, w(this.error_messages) && (this.error_messages.find((a) => a == t) || this.error_messages.push(t)), this;
+    return this.validated = !1, x(this.error_messages) && (this.error_messages.find((a) => a == t) || this.error_messages.push(t)), this;
   }
   clearErrorMessages() {
     return this.error_messages = [], this;
@@ -262,26 +262,34 @@ class u extends X {
     return c(this.depends_on) ? !0 : !c(t == null ? void 0 : t.value);
   }
   /**
+   * Check if the field should be shown due to parent.
+   * @param {EasyField} parent_field - The parent field to check against.
+   * @returns {boolean} True if the parent fields value is correct; otherwise, false.
+   */
+  showIfParent(t) {
+    return c(this.show_if) || this.show_if === !1 ? !0 : (t == null ? void 0 : t.name) !== this.show_if_parent ? !1 : !c(t == null ? void 0 : t.value) && (t == null ? void 0 : t.value) === this.show_if_value;
+  }
+  /**
    * Load data for the field asynchronously.
    * @param {InputForm | ActionForm} form form its loading from.
    * @param {EasyField} parent - The parent field for additional data.
    * @returns {Promise<object|boolean>} A Promise that resolves to the loaded data or false if loading fails.
    */
   async load(t, s) {
-    var l, _, p;
+    var o, _, p;
     let a;
     this.isLoading(!0);
     try {
-      const x = [];
-      c(this.depends_on) || (x.push({ key: "parent_name", value: s.name }), x.push({ key: "parent_value", value: s.value }));
+      const w = [];
+      c(this.depends_on) || (w.push({ key: "parent_name", value: s.name }), w.push({ key: "parent_value", value: s.value }));
       const F = new FormData();
       if (F.set("form_name", t.name), F.set("field_name", this.name), a = await $.request(
         K.Post,
         J.options.buildDomain("/forms/fields/load"),
-        $.mergeData(F, t.additionalArrayToObject(x)),
+        $.mergeData(F, t.additionalArrayToObject(w)),
         t.axios
       ), a.status === 200 || a.status === 204) {
-        if (this.isLoading(((l = a == null ? void 0 : a.data) == null ? void 0 : l.loader) ?? !1), !((_ = a == null ? void 0 : a.data) != null && _.result))
+        if (this.isLoading(((o = a == null ? void 0 : a.data) == null ? void 0 : o.loader) ?? !1), !((_ = a == null ? void 0 : a.data) != null && _.result))
           return !1;
         const M = JSON.parse(JSON.stringify((p = a == null ? void 0 : a.data) == null ? void 0 : p.data));
         return c(M) ? !1 : M;
@@ -1045,7 +1053,7 @@ class H extends u {
     ];
   }
 }
-class xe extends u {
+class we extends u {
   constructor(t) {
     super(t);
     e(this, "component", "v-radio-group");
@@ -1058,7 +1066,7 @@ class xe extends u {
     e(this, "ripple", !1);
     e(this, "true_icon", "$radioOn");
     e(this, "type", "radio");
-    if (!c(t == null ? void 0 : t.items) && w(t == null ? void 0 : t.items)) {
+    if (!c(t == null ? void 0 : t.items) && x(t == null ? void 0 : t.items)) {
       for (const s of (t == null ? void 0 : t.items) ?? [])
         this.items.push(new H(s));
       t == null || delete t.items;
@@ -1115,7 +1123,7 @@ class xe extends u {
     ];
   }
 }
-class we extends u {
+class xe extends u {
   constructor(t) {
     super(t);
     e(this, "auto_select_first", !1);
@@ -1485,8 +1493,8 @@ export {
   me as D,
   fe as F,
   ge as P,
-  xe as R,
-  we as S,
+  we as R,
+  xe as S,
   k as T,
   ue as a,
   he as b,

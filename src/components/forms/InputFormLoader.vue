@@ -29,7 +29,10 @@ const formReference = ref(VForm);
 
 const filteredFields = computed<FieldType[]>(() => {
   return loadedForm.value?.fields?.filter((field) => {
-    return field.isParentPopulated(getFieldByName(field.depends_on ?? ""));
+    return (
+      field.isParentPopulated(getFieldByName(field.depends_on ?? "")) &&
+      field.showIfParent(getFieldByName(field.show_if_parent ?? ""))
+    );
   }) as FieldType[];
 });
 
